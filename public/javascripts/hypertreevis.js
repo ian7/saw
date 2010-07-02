@@ -12,8 +12,11 @@ var artifactTable;
 var  TimeToFade = 500.0;
 var clicked = false;
 var whatIsChecked = [3];
+var nodeValue =[];
+var countAlternatives = 0;
 
-//Test: find the position of an object in the page
+
+//Find the position of an object in the page
 	function findPos(obj) {
 		var curleft = curtop = 0;
 		if (obj.offsetParent) {
@@ -26,8 +29,15 @@ var whatIsChecked = [3];
 	return [curleft,curtop];
 }
 
-//Set the checkboxes is the fullscreen visualization
+//Function to add objects to nodeValue array
+function addNodeValue(nodeId){
+	nodeValue.push({id: nodeId, value: 0, pos: []});
+	return true;
+}
+
+//Set the checkboxes in the fullscreen visualization
 function checkboxesStatus(){
+	//alert("ciao");
 	document.check.issue.checked = whatIsChecked[0];
 	document.check.alternative.checked = whatIsChecked[1];
 	document.check.tag.checked = whatIsChecked[2];
@@ -118,6 +128,7 @@ function getHTML(url) {
  * @param {Boolean} pop_up Boolean flag used to check if the call came from the pop-up functionality or from the "normal" call as soon as the page loads.
  */
 function callback(json, pop_up) {
+	count = 0;
 	var infovis = document.getElementById('infovis');
 	var divPos = findPos(infovis);
     var w = infovis.offsetWidth - 50, h = infovis.offsetHeight - 50;
@@ -128,6 +139,8 @@ function callback(json, pop_up) {
 	//sets the global variables
 	jsons[index] = json;
 	index++;
+	
+	var nodeFlag = addNodeValue(json.id);
 	
     //init canvas
     //Create a new canvas instance.
@@ -154,7 +167,7 @@ function callback(json, pop_up) {
         Edge: {
 			'overridable': true,
             lineWidth: 4,
-            color: '#772277'
+            color: '#00f'
         },
         
         onBeforeCompute: function(node){
@@ -168,30 +181,34 @@ function callback(json, pop_up) {
         //labels. This method is only triggered on label
         //creation
         onCreateLabel: function(domElement, node) {
-            //domElement.innerHTML = node.name;
-			//alert(node.type);
 			if (node.data.typology == "Issue") {
-				domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\"><img src='../images/issue_cloud.png'></img></span>";
+				domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\">"+
+				"<img src='../images/issue_cloud.png'></img></span>";
 			}
 			else 
 				if (node.data.typology == "Alternative") {
-					domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\"><img src='../images/alternative_cloud.png'></img></span>";
+					domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\">"+
+					"<img src='../images/alternative_cloud.png'></img></span>";
 				}
 				else {
-					domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\"><img src='../images/tag.png'></img></span>";
+					domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\">"+
+					"<img src='../images/tag.png'></img></span>";
 				}
 			//OnDlbClick centers the node
             domElement.ondblclick = function() {
+				//turnBlack();
 				rgraph.onClick(node.id, {
 					onAfterCompute: function() {
 						center.push(node.id);
-						getNewJson(node.id, rgraph, json);
+						if(node.id != 208)
+							getNewJson(node.id, rgraph, json);
 						/*rgraph.op.sum(newjs, {
 							type: 'fade:seq',  
 							duration: 1000,  
 							hideLabels: true,  
 							transition: Trans.Quad.easeInOut
 						});*/
+						
 					}
 				});
 			},
@@ -231,12 +248,17 @@ function callback(json, pop_up) {
 			if(pop_up){
 				style.top = (parseInt(style.top) - 15) + 'px';
 			}
+			
         },
         
         onBeforePlotLine: function(adj){
 			var childNode = adj.nodeTo._depth >= adj.nodeFrom._depth? adj.nodeTo : adj.nodeFrom;
 			adj.data.$color = childNode.data.relationColor; 
-        }
+			
+        },
+		onAfterPlotLine: function(){
+			
+		}
     });
 	json = modjson(json);
     rgraph.loadJSON(json);
@@ -245,13 +267,19 @@ function callback(json, pop_up) {
     //compute positions and plot.
     rgraph.refresh();
     //end
+	//createLUT();
     rgraph.controller.onAfterCompute();
 	if (pop_up) {
 		computePopupVis(rgraph);
 		checkboxesStatus();
+		//rgraph.onClick(center[center.length - 1]);
 	}	
 		
 	overgraph = rgraph;
+	
+	//TEST TO CREATE THE MAP
+	createMap();
+	
 	
 	//Change css of the elements
 	changecss('.ui-tabs', 'display', 'position: relative; padding: .2em; zoom: 1; none !important');
@@ -270,27 +298,29 @@ function callback(json, pop_up) {
  */
 function processJson(json, rgraph, oldjson){
 	json = eval( '('+ json +')')
+	//If the node clicked is an issue, do the addNodeValue (since only issues will have the heatmap around)
+	if (json.type == "Issue") {
+		var flag = addNodeValue(json.id);
+	}
 	jsons[index] = json;
 	index++;
 	var nodes = nodesToRemove(json, oldjson);
 	json = modjson(json);
+	
 	//removes the elements looking at the checkboxes status
 	json = removeElementsBeforeVis(json);
 	rgraph.op.sum(json, {
 		type: 'fade:seq',
 		duration: 1000,
 		hideLabels: false,
-		transition: Trans.Quad.easeInOut /*,
+		transition: Trans.Quad.easeInOut,
 		onComplete: function(){
-			rgraph.op.removeNode(nodes, {
-				type: 'fade:seq',
-				duration: 1000,
-				hideLabels: true,
-				transition: Trans.Quad.easeInOut
-			}); 
-		} */
+			createMap();
+		}
 	});
+	
 	overgraph = rgraph;
+	
 }
 
 //Function that computes the nodes to remove (at distance 1)
@@ -373,21 +403,23 @@ function popup(){
  * @param {RGraph} rgraph Current RGraph object that represent the graph.
  */
 function computePopupVis(rgraph){
+	var d = 0;
 	var jsons = window.opener.jsons;
 	var center = window.opener.center;
 	for(i = 0; i < jsons.length - 1; i++){
-		var nodes = nodesToRemove(jsons[i+1], jsons[i]);
+		//var nodes = nodesToRemove(jsons[i+1], jsons[i]);
 		rgraph.op.sum(jsons[i+1], {
 			type: 'fade:seq',
-			duration: 0,
+			duration: d,
 			hideLabels: true,
 			transition: Trans.Quad.easeInOut,
 			onComplete: function(){
-				if(i == jsons.length - 1){
-					rgraph.onClick(center[center.length - 1]);
-				}
+				rgraph.onClick(center[center.length-1]);
 			}
 		});
+		if(i+1 == jsons.length - 1){
+			d = 1000;
+		}
 	}
 	overgraph = rgraph;
 }
@@ -407,6 +439,7 @@ function modjson(json){
 	else if(json.type == "Alternative"){
 		json.$type = "square";
 		json.data.typology = "Alternative";
+		
 	}
 	else {
 		json.$type = "circle";
@@ -430,6 +463,8 @@ function modjson(json){
 		if(json.children[i].type == "Alternative"){
 			json.children[i].data.$type = "square";
 			json.children[i].data.typology = "Alternative";
+			//alert(nodeValue[nodeValue.length - 1].id);
+			nodeValue[nodeValue.length - 1].value = nodeValue[nodeValue.length - 1].value + 1;
 		}
 		else if(json.children[i].type == "Issue"){
 			json.children[i].data.$type = "star";
@@ -618,7 +653,9 @@ function remove(c){
 					"parent": jsons[j].id
 				});
 			}
-			else if(c == "Tag" && jsons[j].children[k].data.typology != "Alternative" && jsons[j].children[k].data.typology != "Issue" && notCenter(jsons[j].children[k].id)){
+			else if(c == "Tag" && jsons[j].children[k].data.typology != 
+					"Alternative" && jsons[j].children[k].data.typology != 
+					"Issue" && notCenter(jsons[j].children[k].id)){
 				removed[i] = jsons[j].children[k].id;
 				i++;
 				removed_elements[c].push({
@@ -661,43 +698,33 @@ function removeElementsBeforeVis(json){
 			}
 			else{
 				newjson.children.push(json.children[i]);
-				//alert("issue is checked, we keep the element of type tag of id "+newjson.children[i].id +" round: "+i);
 			}
 		}
 		
 		else if (json.children[i].data.typology == "Alternative" && notCenter(json.children[i].id)) {
 			if (!document.check.alternative.checked) {
-				//alert("alternative is not checked (we dont have to show them, put it into removed elements), round: "+i);
 				removed_elements['Alternative'].push({
 					"id": json.children[i].id,
 					"parent": json.id
 				});
 			}
 			else {
-				//alert("this is the problem" + json.children[i].length);
 				newjson.children.push(json.children[i]);
-				//alert("alternative is checked, we keep the element of type tag of id "+newjson.children[i].id +" round: "+i);
 			}
 		}
 		
 		else if (json.children[i].data.typology == "Tag" && notCenter(json.children[i].id)) {
-			//alert("a children is a tag");
 			if (!document.check.tag.checked) {
-				//alert("tag is not checked (we dont have to show them, put it into removed elements), round: "+i);
 				removed_elements['Tag'].push({
 					"id": json.children[i].id,
 					"parent": json.id
 				});
 			}
 			else{
-				newjson.children.push(json.children[i]);	
-				//alert("tag is checked, we keep the element of type tag of id "+newjson.children[i].id +" round: "+i);
+				newjson.children.push(json.children[i]);
 			}
 		}
-		//alert("end of recursion "+ i + ", children.length = "+ newjson.children.length);
 	}
-//	for(var i = 0; i < newjson.children.length; i++)
-		//alert(newjson.children.length);
 	return newjson;
 }
 	
@@ -713,15 +740,21 @@ function resetView(){
    		}
  	}
 	overgraph.fx.labels = {};
+	
+	var firstJson = jsons[0];
+	index = 1;
+	jsons = new Array();
+	jsons[0] = firstJson;
+	
  	overgraph.loadJSON(jsons[0]);
  	overgraph.refresh();
+	overgraph.refresh();
 	//Sets all the checkbuttons to true
 	checkAll();
+	turnBlack();
 }
 
 /*Utilities for the Balloons javascript library*/
-   // white balloon with default configuration
-   // (see http://www.wormbase.org/wiki/index.php/Balloon_Tooltips)
    var balloon    = new Balloon;
    //BalloonConfig(balloon,'GBubble');
 
@@ -738,7 +771,7 @@ function resetView(){
    BalloonConfig(box,'GBox');
 
    // a box that fades in/out
-   var fadeBox     = new Box;
+   var fadeBox         = new Box;
    BalloonConfig(fadeBox,'GBox');
    fadeBox.bgColor     = 'black';
    fadeBox.fontColor   = 'white';
@@ -833,4 +866,30 @@ function  animateFade(lastTick, eid){
   setTimeout("animateFade(" + curTick + ",'" + eid + "')", 33);
 }
 
+//Method to dynamically add nodes that are pushed by any user
+function addNewNode(ownId, parentId, data){
+	//Add nodes only if the parent is in the graph, if not it's useless.
+	if (overgraph.graph.hasNode(parentId)) {
+		//Creating the instance node
+		var newNode = {
+			"id": ownId,
+			"name": "",
+			"data": data,
+		}
+		
+		//Adding newly created node to the graph
+		var fatherNode = overgraph.graph.getNode(parentId);
+		overgraph.graph.addNode(newNode);
+		overgraph.graph.addAdjacence(newNode, fatherNode);
+	}
+}
+
+//Method to dynamicaly remove nodes that are removed by any user
+function deleteNode(ownId, parentId){
+	//Remove nodes only if they are in the graph
+	if (overgraph.graph.hasNode(ownId)) {
+		overgraph.graph.removeAdjacence(ownId, parentId);
+		overgraph.graph.removeNode(ownId);
+	}
+}
 
