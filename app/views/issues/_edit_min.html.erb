@@ -1,0 +1,30 @@
+<h1>Editing issue</h1>
+<br/>
+<br/>
+<!--  this form_for puts the fields in the taggable instead of issue hash -->
+<form action="<%= issue_url(@issue.id) %>" class="edit_taggable" id="edit_taggable_<%= @issue.id %>" method="post">
+<input name="_method" type="hidden" value="put" />
+<p>
+    <label for="taggable_name">
+        Name
+    </label>
+    <br/>
+    <input id="taggable_name" name="issue[name]" size="70" type="text" value="<%= @issue.name %>" />
+</p>
+<p>
+    <label for="taggable_description">
+        Description
+    </label>
+    <br/>
+	<% if @issue["Description"] != nil %>
+    	<textarea cols="70" rows="10" id="taggable_description" name="issue[description]"><%= @issue["Description"].value %></textarea>
+	<% else %>
+		<textarea cols="70" rows="10" id="taggable_description" name="issue[description]"></textarea>
+	<% end %>
+</p>
+
+<%= render :partial=> "attributes_form" %>
+
+<p>
+    <input id="taggable_submit" name="commit" type="submit" value="Update" />
+</p>

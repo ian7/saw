@@ -1,0 +1,93 @@
+<h1>Alternative details:</h1>
+<div class="artifactTags" id="alternativeTags">
+
+    <%= render :partial => 'layouts/taggings', :object => @taggings %>
+	
+   
+	<div class="link">
+	<%= link_to image_tag("add.png"), {:controller=>'tag', :action=>'list', :overlay=>'true', :taggable_id=>@alternative.id}, :rel=>"#overlay" %>	
+
+	</div>
+</div>
+<div id="alternativeDetails" class="artifactDetails">
+    <table class="artifactDetails">
+        <tr>
+            <th>
+                Id:
+            </th>
+            <td>
+                <%=h @alternative.id %>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Name:
+            </th>
+            <td>
+            	<%= link_to @alternative.name, {:controller=>"alternatives", :action=>"edit", :id=>@alternative.id, :overlay=>"true"}, :rel=>"#overlay" %>
+                <!--<%=h @alternative.name %>-->
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Description:
+            </th>
+            <td>
+                <% if @alternative["Description"]!=nil %>
+				<%= link_to @alternative["Description"].value, {:controller=>"alternatives", :action=>"edit", :id=>@alternative.id, :overlay=>"true"}, :rel=>"#overlay" %>
+                	<% else %>
+				<%= link_to "<i>(none)</i>", {:controller=>"alternatives", :action=>"edit", :id=>@alternative.id, :overlay=>"true"}, :rel=>"#overlay" %>
+
+                <% end %>
+            </td>
+        </tr>
+        		<% @attributes.each do |attribute| %>
+		<tr>
+			<th>
+				<%= attribute.attribute_name %>:
+			</th>
+			<td>
+				<% if @alternative[attribute.attribute_name] != nil %>
+					<%= link_to @alternative[attribute.attribute_name].value, {:controller=>"alternatives", :action=>"edit", :id=>@alternative.id, :overlay=>"true"}, :rel=>"#overlay" %>            
+				<% else %>
+					<%= link_to "<i>(none)</i>", {:controller=>"alternatives", :action=>"edit", :id=>@alternative.id, :overlay=>"true"}, :rel=>"#overlay" %>
+				<% end %>
+			</td>
+		</tr>
+		<% end %>
+    </table>
+	<div class="link">
+    <a href="<%= alternative_path(@alternative.id) %>/edit?overlay=true" rel="#overlay">
+    	<%= image_tag("edit.png") %>
+    </a>
+    <a href="<%= alternatives_path %>">
+    	<%= image_tag('back.png') %>
+    </a>
+	</div>
+</div>
+<h2>Related issues</h2> 
+<table>
+	<% @issues.each do |issue| %>
+	<tr>
+		<td><a href="<%= issue_path(issue.id)%>"><%=issue.name%></a></td>
+		<td><a href="<%= issue_path(issue.id)%>">
+			<% if issue["Description"] != nil %>
+				<%=issue["Description"].value%>
+			<% else %>
+				<i>(none)</i>
+			<% end %>
+			
+			</a></td>
+	</tr>
+<% end %>
+</table>
+
+<!-- HyperTree Vis 
+<script type="text/javascript" src="/javascripts/jit-yc.js"></script>  
+<script type="text/javascript" src="/javascripts/hypertreevisalt.js"></script>
+-->
+
+<%= javascript_include_tag("jit-yc.js") %>
+<%= javascript_include_tag("hypertreevisalt.js") %>
+
+<div id="infovis" class="show"></div>

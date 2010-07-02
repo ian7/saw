@@ -1,0 +1,27 @@
+<h1><%=h @dynamic_type.name %></h1>
+<br/>
+<br/>
+<% form_for(@dynamic_type) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+    <p>
+  	<%= f.label :super_type %><br />
+   <!-- <%= f.text_field :super_type %> -->
+    <%= select :dynamic_type, :super_type,
+       DynamicType.find(:all).collect {|c| [ c.name, c.name ] },
+       { :include_blank => true } %>
+    </p>
+
+  	
+    <p>
+    <%= f.label :surrogate_class %><br />
+    <%= f.text_field :surrogate_class %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>

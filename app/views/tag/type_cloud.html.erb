@@ -1,0 +1,20 @@
+
+<div class="cloud">
+<ul id="tagcloud">
+<% @cloud.each do |tag| %>
+	<li>
+			<!-- "touch me i'm famous" monster type -->  
+			
+			<%= link_to tag["name"], {:controller=>"tag", :action=>"cloud", :type_name=>tag["name"]}, 
+				:title=>"instances: "+tag["count"].to_s+" taggings: "+tag["taggings_count"].to_s,
+				:id=>"rank"+tag["rank"].to_s %>
+				
+			<!-- <a id="rank<%= tag["rank"] %>" title="instances: <%= tag["count"] %> taggings: <%= tag["taggings_count"] %>" href="/tag/cloud?type_name=<%=tag["name"]%>">
+			<%= tag["name"] %>
+			</a>
+			-->
+	</li>
+	   
+<% end %>
+</ul>
+</div>

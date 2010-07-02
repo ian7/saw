@@ -1,0 +1,37 @@
+<h1>Tag list</h1>
+<table class="tagsTable" id="tagsTable">
+	<thead>
+    <tr>
+        <th>
+            Type
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+        </th>
+    </tr>
+	</thead>
+    <tfoot>
+        <tr>
+            <th>
+            </th>
+        </tr>
+    </tfoot>
+    <% @tags.each do |t| %>
+    <tr>
+        <td>
+            <%= t.attributes["type"] %>
+        </td>
+        <td>
+            <%= t.name %>
+        </td>
+        <td>
+        	<%= link_to "Add", {:controller=>"tag", :action=>"dotag", :from_taggable_id=>t.id, :to_taggable_id=>@taggable.id}%>
+            <!-- <a href="/tag/dotag?from_taggable_id=<%=h t.id %>&to_taggable_id=<%=h @taggable_id %>">Add</a> --> 
+        </td>
+    </tr>
+    <% end %>
+</table>
+<!-- <a href="/<%= Taggable.find( @taggable_id ).attributes["type"].downcase.pluralize%>/">Back</a> -->
+<%= link_to "Back", {:controller=>Taggable.find( @taggable_id ).attributes["type"].downcase.pluralize, :action=>"index"} %>

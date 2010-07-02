@@ -1,0 +1,28 @@
+<h1>New Dynamic Type Scope</h1>
+<br/>
+<br/>
+<% form_for(@dynamic_type_scope) do |f| %>
+  <%= f.error_messages %>
+	<p>
+    <%= f.label :type_name %><br />
+    <% if params[:adding_scope] then %>
+    	<%= f.text_field(:type_name, :readonly=>"true") %>
+    <% else %>
+    	<%= f.text_field :type_name %>
+    <% end %>
+  </p>
+  <p>
+  <%= f.label :type_scope %><br />
+   <% if params[:adding_scope] then %>
+   <%= hidden_field (:redirect_to_type  , params[:redirect_to_type]) %>
+      <%= select :dynamic_type_scope, :type_scope,
+       DynamicType.find(:all).collect {|c| [ c.name, c.name ] },
+       { :include_blank => true } %>
+    <% else %>
+    	<%= f.text_field :type_scope %>
+    <% end %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>

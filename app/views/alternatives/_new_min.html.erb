@@ -1,0 +1,25 @@
+<h1>New alternative</h1>
+<br/>
+<br/>
+<form action="<%= alternatives_url %>" method="post">
+	
+	<% if @related_issue_id != nil %>
+		<input type="hidden" name="related_issue_id" value="<%= @related_issue_id %>" />
+	<% end %>
+    <p>
+        <label for="taggable_name">
+            Name
+        </label>
+        <br/>
+        <input id="taggable_name" name="alternative[name]" size="70" type="text" />
+    </p>
+    <p>
+        <label for="taggable_description">
+            Description
+        </label>
+        <br/>
+        <textarea cols="70" rows="10" id="taggable_description" name="alternative[description]"></textarea>
+    </p>
+    <p>
+        <input name="commit" type="submit" value="Create" />
+    </p>

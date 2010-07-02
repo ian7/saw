@@ -1,0 +1,51 @@
+
+<h1>Listing Dynamic Types</h1>
+
+<table class="dynamic">
+	<thead>
+  <tr>
+    <th>Name</th>
+    <th>Super Type</th>
+    <th>Surrogate Class</th>
+  </tr>
+  </thead>
+  <tfoot>
+        <tr>
+            <th>
+            </th>
+        </tr>
+    </tfoot>
+
+<% @dynamic_types.each do |dynamic_type| %>
+<% @superType = (DynamicType.find( :first, :conditions=>{:name=>dynamic_type.super_type})) %>
+ <!-- <div id = "dyn_type_<%=h dynamic_type.id %>" > -->
+  <tr>
+  	<td>
+  		<%= link_to dynamic_type.name, dynamic_type_path( dynamic_type.id ) %>
+  		<!--<a href="/dynamic_types/<%=dynamic_type.id%>"><%=h dynamic_type.name %></a>-->
+		</td>
+    <!-- <td><%=h dynamic_type.name %></td> -->
+    <% if @superType != nil then %>
+    	<td>
+    		<%= link_to @superType.name, dynamic_type_path( @superType.id ) %>
+    		<!--<a href="/dynamic_types/<%=@superType.id%>"><%=h @superType.name %></a>-->
+			</td>
+    <% else %>
+    	<td><%=h dynamic_type.super_type %></td>
+    <% end %>
+    <td><%=h dynamic_type.surrogate_class %></td>
+    <!-- <td><%= link_to 'Show', dynamic_type %></td> -->
+    <!-- <td><%= link_to 'Edit', edit_dynamic_type_path(dynamic_type)+"?overlay=true", :rel => '#overlay' %></td> -->
+    <!-- <td><a href="/dynamic_types/<%=dynamic_type.id%>"><%=h dynamic_type.name %></a></td> -->
+    <td><%= link_to 'x', dynamic_type, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+ <!-- </div> -->
+<% end %>
+</table>
+<br />
+<div class="link">
+	<%= link_to image_tag("new.png"), {:controller=>"dynamic_types", :action=>"new"}, :rel=>"#overlay" %>
+<!--<a href="<%= new_dynamic_type_url %> /dynamic_types/new" rel="#overlay">
+	<%= image_tag("new.png") %>
+	</a>-->
+</div>

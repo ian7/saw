@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+AuthorizationParent:
+  id: 1
+  taggable_id: 2
+  name: Parent
+  value: 1
+  
+AuthenticationParent:
+  id: 2
+  taggable_id: 3
+  name: Parent
+  value: 1
+  
+ProjectVersion:
+  id: 3
+  taggable_id: 1
+  name: MyString
+  value: MyString

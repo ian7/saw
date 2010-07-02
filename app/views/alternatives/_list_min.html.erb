@@ -1,0 +1,58 @@
+<div class="link">
+	<%= link_to image_tag("new.png"), new_alternative_path %>
+</div>
+<br/>
+
+<h1>Listing of alternatives</h1>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Type
+            </th>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+       <!--     <th>
+                Description
+            </th> -->
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+            </th>
+        </tr>
+    </tfoot>
+    <% @alternatives.each do |alternative| %>
+    <tr>
+        <td>
+        	<%= link_to alternative.attributes["type"], alternative_path( alternative.id ) %>
+            <!-- <a href="/alternatives/<%=alternative.id%>"><%=h alternative.attributes["type"] %></a> -->
+        </td>
+        <td>
+            <%=h alternative.id %></a>
+        </td>
+        <td>
+            <%=h alternative.name %></a>
+        </td>
+        <td>
+       <!--     <a href="/alternatives/<%=alternative.id%>"><% if (alternative["Description"] != nil) %>
+                <%=h alternative["Description"].value %>
+                <% else %>
+                <i>(none)</i><% end %>
+            </a> -->
+        </td>
+        <td>
+        	<%= link_to "+", {:controller=>"relations", :action=>"relate", :origin=>alternative.id, :tip=>params[:issue], :relation=>"SolvedBy"} %>
+	<!-- <a href="/relations/relate?origin=<%=alternative.id%>&tip=<%=params[:issue] %>&relation=SolvedBy">
+	+
+	</a>-->
+        </td>
+    </tr>
+    <% end %>
+</table>
+

@@ -1,0 +1,15 @@
+<% if @items && @items.length > 0 %>
+  <ul id="searchResults">
+  <% for t in @items %>
+    <li>
+      <%= link_to t.name, taggable_path( t ) %>	
+      <%# # @mark_term ? highlight(blog.title, @mark_term) : = link_to t.name, :controller => "taggables", :action => "show", :id => t.id %>
+	   
+    </li>
+  <% end %>
+  </ul>
+<% elsif @mark_term && @mark_term.length > 0 %>
+  No Results
+<% else %>
+  &nbsp;
+<% end %>

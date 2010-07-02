@@ -1,0 +1,57 @@
+
+
+<h1>Listing of alternatives</h1>
+<table>
+    <thead>
+        <tr>
+            <!--<th>
+                Type
+            </th>-->
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+            </th>
+        </tr>
+    </tfoot>
+    <% @alternatives.each do |alternative| %>
+    <tr>
+        <!--<td>
+            <a href="<%= alternative_url(alternative.id) %>"><%=h alternative.attributes["type"] %></a>
+        </td>-->
+        <td>
+            <a href="<%= alternative_url(alternative.id) %>"><%=h alternative.id %></a>
+        </td>
+        <td>
+            <a href="<%= alternative_url(alternative.id) %>"><%=h alternative.name %></a>
+        </td>
+        <td>
+            <a href="<%= alternative_url(alternative.id) %>"><% if (alternative["Description"] != nil) %>
+                <%=h alternative["Description"].value %>
+                <% else %>
+                <i>(none)</i><% end %>
+            </a>
+        </td>
+        <td>
+            <a href="<%= alternative_url(alternative.id) %>" onclick="if (confirm('Are you sure?')) { var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'delete'); f.appendChild(m);f.submit(); };return false;" style="color:#ff0000;">x</a>
+        </td>
+    </tr>
+    <% end %>
+</table>
+<br/>
+<div class="link">
+<a href="<%=alternatives_url%>/new?overlay=true" rel="#overlay">
+	<%= image_tag("new.png") %>
+</a>
+</div>
+

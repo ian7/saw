@@ -1,0 +1,32 @@
+<h1>Tags#new for tag of type: <%= @dynamic_type.name %></h1>
+
+
+<form action="<%=tag_url( @tag_instance ) %>" method="post">
+
+    <input name="_method" type="hidden" value="put" />	 
+	 <input id="tag_id" name="tag_id" value="<%= @tag_instance.id %>" type="hidden" />
+	
+	    <p>
+            Name
+        <input id="tag_name" name="tag_name" size="30" type="text" value="<%= @tag_instance.name %>"/>
+		
+    </p>
+	<% @tag_attributes.each do |attribute| %>
+
+    <p>
+            <%= attribute.attribute_name %>
+		<% if @tag_instance[attribute.attribute_name] == nil %>
+		        <input id="tag_<%= attribute.attribute_name %>" name="tag[<%=attribute.attribute_name%>]" size="30" type="text" value=""/>
+		<%else%>
+		        <input id="tag_<%= attribute.attribute_name %>" name="tag[<%=attribute.attribute_name%>]" size="30" type="text" value="<%= @tag_instance[attribute.attribute_name].value %>"/>
+		<%end%>
+    </p>
+
+	<% end %>
+    <p>
+        <input name="commit" type="submit" value="Update" />
+    </p>
+
+
+<p>
+</p>

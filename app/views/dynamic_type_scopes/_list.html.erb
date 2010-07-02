@@ -1,0 +1,33 @@
+<% session[:redirect_to_this_type]  = @dynamic_type  %>
+<!-- <div style="border:1px ridge #000; margin: 10px 5px 10px 5px; padding: 5px 5px 5px 5px; position:relative"> -->
+<table class="dynamic">
+<thead>
+  <tr>
+    <th>Scope List</th>
+  </tr>
+</thead>
+    <tfoot>
+        <tr>
+            <th>
+            </th>
+        </tr>
+    </tfoot>
+<% @dynamic_type_scopes.each do |dynamic_type_scope| %>
+  <tr>
+  	<td>
+  		<%= link_to dynamic_type_scope.type_scope, dynamic_type_scope_url(dynamic_type_scope.id)%>
+  		<!-- <a href="<%= dynamic_type_scope_url(dynamic_type_scope.id) %>"><%=h dynamic_type_scope.type_scope %></a> -->
+	</td>
+    <td><%= link_to 'Edit', edit_dynamic_type_scope_path(dynamic_type_scope , :adding_scope => true , :redirect_to_type => true) %></td>
+  	<td><%= link_to 'x', dynamic_type_scope, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<div class="link">
+	<%= link_to image_tag("new.png"), {:controller=>"dynamic_type_scopes", :action=>"new", :overlay=>"true", :redirect_to_type=>"true", :type_name=>@dynamic_type.name}, :rel=>"#overlay" %>
+	<!-- <a href="<%=dynamic_type_scopes_url%>/new?overlay=true&adding_scope=true&redirect_to_type=true&type_name=<%=@dynamic_type.name%>" rel="#overlay">
+	<%= image_tag("new.png") %>
+	</a>
+	-->
+</div>
+<!-- </div> -->

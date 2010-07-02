@@ -1,0 +1,3 @@
+class TreeTag < Tag
+  
+end

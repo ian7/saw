@@ -1,0 +1,27 @@
+<% session[:redirect_to_this_type]  = @dynamic_type  %>
+<table class="dynamic">
+<thead>
+  <tr>
+    <th>Attribute List</th>
+  </tr>
+  </thead>
+    <tfoot>
+        <tr>
+            <th>
+            </th>
+        </tr>
+    </tfoot>
+  
+
+<% @dynamic_type_attributes.each do |dynamic_type_attr| %>
+  <tr>
+  	<td><a href="<%=dynamic_type_attribute_url(dynamic_type_attr.id)%>"><%=h dynamic_type_attr.attribute_name %></a></td>
+    <td><%= link_to 'Edit', edit_dynamic_type_attribute_path(dynamic_type_attr, :adding_scope => true) %></td>
+    <td><%= link_to 'x', dynamic_type_attr, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<div class="link"><a href="<%=dynamic_type_attributes_url%>/new?overlay=true&adding_scope=true&redirect_to_type=true&type_name=<%=@dynamic_type.name%>" rel="#overlay">
+	<%= image_tag( "new.png" ) %>
+	</a>
+</div>

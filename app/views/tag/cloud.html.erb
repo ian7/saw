@@ -1,0 +1,17 @@
+<div class="cloud">
+<ul id="tagcloud">
+<% @cloud.each do |tag| %>
+	<li>
+			<!-- monsterous -->
+			
+			<%= link_to tag["name"], {:controller=>"tag", :action=>"taggings_list", :tag_id=>tag["id"]}, 
+					:title=>"instances: "+tag["count"].to_s, :id=>"rank"+tag["rank"].to_s %>
+			
+			<!-- <a id="rank<%= tag["rank"] %>" title="instances: <%= tag["count"] %>" href="/tag/taggings_list?tag_id=<%=tag["id"]%>">
+			<%= tag["name"] %>
+			</a>
+			-->
+	</li> 
+<% end %>
+</ul>
+</div>

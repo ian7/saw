@@ -1,0 +1,27 @@
+<%#= render :partial => "layouts/ribbon" %>
+<h1>Dynamic type scope details:</h1>
+<div id="dynamicTypeScopeDetails" class="artifactDetails">
+    <table class="artifactDetails">
+        <tr>
+            <th>
+                Type name:
+            </th>
+            <td>
+                <%=h @dynamic_type_scope.type_name %>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Type scope:
+            </th>
+            <td>
+                <%=h @dynamic_type_scope.type_scope %>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="link">
+<%= link_to image_tag("edit.png"), edit_dynamic_type_scope_path(@dynamic_type_scope)+"?overlay=true", :rel => '#overlay' %>
+<%= link_to image_tag("back1.png"),dynamic_type_path(@dynamic_type_scope.dynamic_type)%>
+</div>

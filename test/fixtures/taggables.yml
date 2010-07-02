@@ -1,0 +1,71 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+#Security:
+#  id: 1
+#  type: TopicGroup
+#  name: Security
+#
+#Authorization:
+#  id: 2
+#  type: TopicGroup
+#  name: Authorization
+#
+#Authentication:
+#  id: 3
+#  type: TopicGroup
+#  name: Authentication
+
+# decisions go there
+
+DecisionPositive:
+   id: 4
+   type: Decision
+   name: Positive  
+
+DecisionNegative:
+   id: 5
+   type: Decision
+   name: Negative
+   
+DecisionOpen:
+   id: 6
+   type: Decision
+   name: Open
+
+
+ProjectA:
+    id: 10
+    type: Project
+    name: A
+
+ProjectB:
+    id: 11
+    type: Project
+    name: B
+    
+  
+# scopes go there
+## scopes went out as dynamic creation of these exists now.
+
+
+## IBM stuff
+
+#Issue1:
+#  name: ServiceCompositionParadigm
+#  type: Issue
+#  id: 64
+
+
+## sample alternative
+#Alternative1:
+#    id: 7
+#    type: Alternative
+#    name: "Altrnative used for tests"
+
+#Issue1:
+#    id: 8
+#    type: Issue
+#    name: "Issue used for tests"
+
+
+    

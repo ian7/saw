@@ -1,0 +1,33 @@
+Enterprise Architecture::::::N151262567-51103476:::
+ Workflow::::::N151262567-51103476:::
+Enterprise Architecture::::::N151262597-2145983614:::
+Product Selection::::::N151262684771320106:::
+ Workflow::::::N151262684771320106:::
+Transaction Management::::::N1512625671484608885:::
+Transaction Management::::::N151262597-2145981284:::
+Transaction Management::::::N151262597-2145983575:::
+Transaction Management::::::N151262567-1760776756:::
+Transaction Management::::::N151262684771320109:::
+ Workflow::::::N151262684771320109:::
+Transaction Management::::::N151262684771320143:::
+Transaction Management::::::N151262684771319918:::
+ Sca::::::N151262684771319918:::
+Transaction Management::::::N151262684850893769:::
+ Sca::::::N151262684850893769:::
+Transaction Management::::::N151262684771319915:::
+ Sca::::::N151262684771319915:::
+Transaction Management::::::N151262684850893772:::
+ Sca::::::N151262684850893772:::
+Transaction Management::::::N151262684771320112:::
+Transaction Management::::::N151262567839123127:::
+Transaction Management::::::N151262684771320097:::
+Transaction Management::::::N151262684771320100:::
+ Error Handling::::::N151262684771320100:::
+Transaction Management::::::N151262684771320103:::
+ Workflow::::::N151262684771320103:::
+Service Design::::::N151262597-2145981139:::
+Service Design::::::N151262597-1902640887:::
+Web Services::::::N151262684850893740:::
+ Service Design::::::N151262684850893740:::
+Web Services::::::N151262597-2145981281:::
+Web Services::::::N151262597-2145981206:::

@@ -1,0 +1,43 @@
+<!-- <h1>Taggings list</h1> -->
+<br/>
+<br/>
+<table class="tagsTable" id="tagsTable">
+	<thead>
+    <tr>
+        <th>
+            Type
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+        </th>
+    </tr>
+	</thead>
+    <tfoot>
+        <tr>
+            <th>
+            </th>
+        </tr>
+    </tfoot>
+    <% @tags.each do |t| %>
+    <tr>
+        <td>
+            <%= t.attributes["type"] %>
+        </td>
+        <td>
+            <%= t.name %>
+        </td>
+        <td>
+        	<% if @return_taggable_id != nil %>
+				<%= link_to "+", {:controller=>"tag", :action=>"dotag", :from_taggable_id=>t.id, :to_taggable_id=>@taggable_id, :return_taggable_id=>@return_taggable_id} %>
+				
+				<!-- <a href="/tag/dotag?from_taggable_id=<%=h t.id %>&to_taggable_id=<%=h @taggable_id %>&return_taggable_id=<%=@return_taggable_id%>">+</a> -->
+			<% else %>
+				<%= link_to "+", {:controller=>"tag", :action=>"dotag", :from_taggable_id=>t.id, :to_taggable_id=>@taggable_id} %>
+            	<!-- <a href="/tag/dotag?from_taggable_id=<%=h t.id %>&to_taggable_id=<%=h @taggable_id %>">+</a> -->
+			<% end %>
+        </td>
+    </tr>
+    <% end %>
+</table>

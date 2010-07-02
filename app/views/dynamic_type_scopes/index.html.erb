@@ -1,0 +1,30 @@
+<h1>Listing of dynamic type scopes</h1>
+<% session[:redirect_to_this_type]  = nil  %>
+<table class="dynamic">
+	<thead>
+  <tr>
+    <th>Type name</th>
+    <th>Type scope</th>
+  </tr>
+  </thead>
+  <tfoot>
+        <tr>
+            <th>
+            </th>
+        </tr>
+    </tfoot>
+
+<% @dynamic_type_scopes.each do |dynamic_type_scope| %>
+  <tr>
+    <td><a href="<%=dynamic_type_scope_url(dynamic_type_scope.id)%>"><%=h dynamic_type_scope.type_name %></a></td>
+    <td><a href="<%=dynamic_type_scope_url(dynamic_type_scope.id)%>"><%=h dynamic_type_scope.type_scope %></a></td>
+	<td><%= link_to 'Destroy', dynamic_type_scope, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<div class="link">
+<%= link_to image_tag("new.png"), new_dynamic_type_scope_path(@dynamic_type_scope) %>
+</div>

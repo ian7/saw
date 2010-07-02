@@ -1,0 +1,20 @@
+<table>
+	<tr>
+		<th>Type</th>
+		<td><%=@taggable_instance.type%></td>
+	</tr>
+	<tr>
+		<th>Name</th>
+		<td><%=@taggable_instance.name%></td>
+	</tr>	
+	<% @taggable_instance.dynamic_type.dynamic_type_attributes.each do |attribute| %>
+
+		<% if @taggable_instance[attribute.attribute_name] != nil %>	
+		<tr>
+			<th><%=attribute.attribute_name%></th>
+			<td><%=@taggable_instance[attribute.attribute_name].value%></td>
+		</tr>
+		
+		<% end %>
+	<% end %>
+</table>

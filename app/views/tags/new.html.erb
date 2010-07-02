@@ -1,0 +1,30 @@
+<h1>Tags#new for tag of type: <%= @dynamic_type.name %></h1>
+
+
+<form action="<%=tags_url%>" method="post">
+	 
+	 <input id="tag_type" name="tag_type" value="<%= @dynamic_type.name %>" type="hidden" />
+	
+	    <p>
+            Name
+        <br/>
+        <input id="tag_name" name="tag_name" size="30" type="text" />
+		
+    </p>
+	<% @tag_attributes.each do |attribute| %>
+
+    <p>
+            <%= attribute.attribute_name %>
+
+        <input id="tag_<%= attribute.attribute_name %>" name="tag[<%=attribute.attribute_name%>]" size="30" type="text" />
+    </p>
+
+	<% end %>
+    <p>
+        <input name="commit" type="submit" value="Create" />
+
+    </p>
+
+
+<p>
+</p>

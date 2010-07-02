@@ -1,0 +1,836 @@
+//Global useful variables
+var thisID;
+var jsons = [];
+var index = 0;
+var center = [];
+var overgraph;
+var removed_elements = [3];
+removed_elements['Issue'] = [];
+removed_elements['Alternative'] = [];
+removed_elements['Tag'] = [];
+var artifactTable;
+var  TimeToFade = 500.0;
+var clicked = false;
+var whatIsChecked = [3];
+
+//Test: find the position of an object in the page
+	function findPos(obj) {
+		var curleft = curtop = 0;
+		if (obj.offsetParent) {
+			do {
+				curleft += obj.offsetLeft;
+				curtop += obj.offsetTop;
+			}
+			while (obj = obj.offsetParent);
+		}
+	return [curleft,curtop];
+}
+
+//Set the checkboxes is the fullscreen visualization
+function checkboxesStatus(){
+	document.check.issue.checked = whatIsChecked[0];
+	document.check.alternative.checked = whatIsChecked[1];
+	document.check.tag.checked = whatIsChecked[2];
+	
+	if(!whatIsChecked[0])
+		remove('Issue');
+		
+	if(!whatIsChecked[1])
+		remove('Alternative');
+		
+	if(!whatIsChecked[2])
+		remove('Tag');
+}
+
+var Log = {
+    elem: false,
+    write: function(text){
+        if (!this.elem) 
+            this.elem = document.getElementById('log');
+        this.elem.innerHTML = text;
+        this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
+    }
+};
+
+function addEvent(obj, type, fn) {
+    if (obj.addEventListener) obj.addEventListener(type, fn, false);
+    else obj.attachEvent('on' + type, fn);
+};
+
+/**
+ * Gets the JSON structure of the graph through an asynchronous request and calls the main function to plot it.
+ * @param {String} url URL of the JSON structure.
+ * @param {Function} callback Function to be called after the JSON is downloaded. 
+ */
+function getJSON(url, callback) {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open('GET', url, true);
+	xmlhttp.onreadystatechange = function() {
+		if(xmlhttp.readyState == 3) {
+		
+		}
+		if (xmlhttp.readyState == 4) {
+			callback(xmlhttp.responseText, false);
+		}
+	}
+	xmlhttp.send(null);
+}
+
+/**
+ * Gets the node's information table. It modifies dynamically the div containing the information of hovered nodes. As soon as
+ * the user goes on mouse over the node, this function is called, it does an asynchronous request to the server and gets the information
+ * needed. It's already on the HTML form. It also splits the table if the result is too long.
+ * @param {String} url URL of the node's information. 
+ */
+function getHTML(url) {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open('GET', url, true);
+	xmlhttp.onreadystatechange = function() {
+		if(xmlhttp.readyState == 3) {
+		
+		}
+		if (xmlhttp.readyState == 4) {
+			var arr = xmlhttp.responseText.match(/<td>/ig);
+			var splitted = xmlhttp.responseText.split('</td>');
+			var finalsum = '';
+			for(i = 0; i < arr.length; i++){
+				if(splitted[i].length > 100){
+					var subsplit = splitted[i].split('<td>');
+					if(subsplit[1].length > 40){
+						splitted[i] = subsplit[0] + '<td>' + subsplit[1].slice(0, 50) + '...';
+					}
+				//	splitted[i] = splitted[i].slice(0, 100);
+				//	splitted[i] += '...';
+				}
+				finalsum += splitted[i];
+			}
+			document.getElementById('infonode').innerHTML = /*xmlhttp.responseText*/finalsum.replace("<table>", "<table class='infotable'>");
+			fade('infonode');
+		}
+	}
+	xmlhttp.send(null);
+}
+
+/**
+ * Creates the view of the graph taking the div that contains the graph and working on it. It also works for the 
+ * fullscreen visualization but the flag must be set to true.
+ * @param {JSON} json JSON object that will be plotted by the graph.
+ * @param {Boolean} pop_up Boolean flag used to check if the call came from the pop-up functionality or from the "normal" call as soon as the page loads.
+ */
+function callback(json, pop_up) {
+	var infovis = document.getElementById('infovis');
+	var divPos = findPos(infovis);
+    var w = infovis.offsetWidth - 50, h = infovis.offsetHeight - 50;
+	//load JSON data.
+	if(!pop_up)
+		json = eval('(' + json + ')');
+	
+	//sets the global variables
+	jsons[index] = json;
+	index++;
+	
+    //init canvas
+    //Create a new canvas instance.
+    var canvas = new Canvas('mycanvas', {
+        'injectInto': 'infovis',
+        'width': w,
+        'height': h
+    });
+	overCanvas = canvas;
+    //end
+    var style = document.getElementById('mycanvas').style;
+    style.marginLeft = style.marginTop = "25px";
+    //init Hypertree
+    var rgraph = new RGraph(canvas, {
+        //Change node and edge styles such as
+        //color, width and dimensions.
+        Node: { 
+			'overridable': true, 
+            dim: 0.1,
+            color: '#fff',
+			type:'star'
+        },
+        
+        Edge: {
+			'overridable': true,
+            lineWidth: 4,
+            color: '#772277'
+        },
+        
+        onBeforeCompute: function(node){
+            Log.write("centering" + node.name +"...");
+        },
+		
+		onAfterCompute: function(){
+            Log.write("done");
+        },
+        //Attach event handlers and add text to the
+        //labels. This method is only triggered on label
+        //creation
+        onCreateLabel: function(domElement, node) {
+            //domElement.innerHTML = node.name;
+			//alert(node.type);
+			if (node.data.typology == "Issue") {
+				domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\"><img src='../images/issue_cloud.png'></img></span>";
+			}
+			else 
+				if (node.data.typology == "Alternative") {
+					domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\"><img src='../images/alternative_cloud.png'></img></span>";
+				}
+				else {
+					domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\"><img src='../images/tag.png'></img></span>";
+				}
+			//OnDlbClick centers the node
+            domElement.ondblclick = function() {
+				rgraph.onClick(node.id, {
+					onAfterCompute: function() {
+						center.push(node.id);
+						getNewJson(node.id, rgraph, json);
+						/*rgraph.op.sum(newjs, {
+							type: 'fade:seq',  
+							duration: 1000,  
+							hideLabels: true,  
+							transition: Trans.Quad.easeInOut
+						});*/
+					}
+				});
+			},
+			//OnClick writes outside the name of the node and the "data" in it. to be refactored soon (previously onMouseOver)
+			domElement.onclick = function(){
+				fade('infonode');
+				//document.getElementById('infonode').style.opacity = 0;
+				var path = '../taggables/'+node.id;
+				setTimeout("getHTML('../taggables/'+"+node.id+")", TimeToFade);
+			}
+			//OnMouseOver a box appears containing the node name
+			domElement.onmouseover = function(){
+				
+			}
+        },
+        //Change node styles when labels are placed
+        //or moved.
+        onPlaceLabel: function(domElement, node){
+			//Get the position of the node
+			var nodePos = findPos(domElement);
+			//draw(nodePos[0], nodePos[1]);
+            var style = domElement.style;
+            style.display = '';
+            style.cursor = 'pointer';
+
+            var left = parseInt(style.left);
+            var w = domElement.offsetWidth;
+            style.left = (left - w / 2) + 'px';
+			
+			divPos = findPos(document.getElementById('infovis'));
+			//Check if the element is inside the visualization div, if not, don't paint it
+			if(nodePos[1] < divPos[1] || nodePos[1] > divPos[1] + h || nodePos[0] < divPos[0] || nodePos[0] > divPos[0] + infovis.offsetWidth - 50){
+				style.display = 'none';
+			}
+			
+			//If popup (fullscreen vis) correct the label position
+			if(pop_up){
+				style.top = (parseInt(style.top) - 15) + 'px';
+			}
+        },
+        
+        onBeforePlotLine: function(adj){
+			var childNode = adj.nodeTo._depth >= adj.nodeFrom._depth? adj.nodeTo : adj.nodeFrom;
+			adj.data.$color = childNode.data.relationColor; 
+        }
+    });
+	json = modjson(json);
+    rgraph.loadJSON(json);
+	center.push(json.id);
+	//center = json.id;
+    //compute positions and plot.
+    rgraph.refresh();
+    //end
+    rgraph.controller.onAfterCompute();
+	if (pop_up) {
+		computePopupVis(rgraph);
+		checkboxesStatus();
+	}	
+		
+	overgraph = rgraph;
+	
+	//Change css of the elements
+	changecss('.ui-tabs', 'display', 'position: relative; padding: .2em; zoom: 1; none !important');
+	changecss('.ui-tabs-hide', 'display', 'none !important');
+}
+
+//Processes the new json adding it to the previous one with the sum operation
+/**
+ * This function checks the differences between the new JSON and the one the view is currently using. 
+ * The main functionality is to process the new JSON structure received and checks which nodes should be removed (for now this
+ * functionality is commented out since we don't want nodes to be removed yet) and which nodes are missing from the current view
+ * that must be added (through the op.sum() method).
+ * @param {JSON} json New JSON structure that must be processed.
+ * @param {RGraph} rgraph The RGraph structure that represents the current graph.
+ * @param {JSON} oldjson Old JSON structure that must be updated.
+ */
+function processJson(json, rgraph, oldjson){
+	json = eval( '('+ json +')')
+	jsons[index] = json;
+	index++;
+	var nodes = nodesToRemove(json, oldjson);
+	json = modjson(json);
+	//removes the elements looking at the checkboxes status
+	json = removeElementsBeforeVis(json);
+	rgraph.op.sum(json, {
+		type: 'fade:seq',
+		duration: 1000,
+		hideLabels: false,
+		transition: Trans.Quad.easeInOut /*,
+		onComplete: function(){
+			rgraph.op.removeNode(nodes, {
+				type: 'fade:seq',
+				duration: 1000,
+				hideLabels: true,
+				transition: Trans.Quad.easeInOut
+			}); 
+		} */
+	});
+	overgraph = rgraph;
+}
+
+//Function that computes the nodes to remove (at distance 1)
+/**
+ * This functins gathers the nodes that have to be removed from the view (if they are at distance more than 1 step from the current center).
+ * For now these nodes are not removed since we just keep them ad use the checkboxes to manage the view.
+ * @param {JSON} newJson It's the new JSON structure just received.
+ * @param {JSON} oldJson The old JSON structure used in the graph.
+ */
+function nodesToRemove(newJson, oldJson){
+	var elementsToRemove = [];
+	var x = 0;
+		for(j = 0; j < oldJson.children.length; j++){
+			if(oldJson.children[j].id != newJson.id){
+				elementsToRemove[x] = oldJson.children[j].id;
+				x++;
+			}
+		}
+	return elementsToRemove;
+}
+
+//Gets the new json when clicking on a node
+/**
+ * Gets the new JSON structure as soon as a node is clicked. The new JSON is received through an asynchronous request to the server.
+ * @param {Int} nodeID ID of the node that was clicked and is going to be centered.
+ * @param {RGraph} rgraph RGraph object that represent the full graph.
+ * @param {JSON} json Current JSON loaded by the graph.
+ */
+function getNewJson(nodeID, rgraph, json){
+	var url = "../relations/tree?id="+nodeID;
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open('GET', url, true);
+	xmlhttp.onreadystatechange = function() {
+		if(xmlhttp.readyState == 3) {
+			
+		}
+		if (xmlhttp.readyState == 4) {
+			processJson(xmlhttp.responseText, rgraph, json);
+		}
+	}
+	xmlhttp.send(null);
+}
+
+//init data as relation issue -> alternatives
+/**
+ * First method called that starts by getting the first JSON structure.
+ * @param {Int} id ID of the center of the node.
+ * @param {String} relation Type of the relation to get, currently not used.
+ */
+function init(id, relation){
+	if (!clicked) {
+		thisID = id;
+		clicked = true;
+		getJSON("../relations/tree?id=" + id /*+"&type="+relation*/, callback);
+	}
+}
+
+// Helper functions for related functionalities
+/**
+ * Helper function that is called when the fullscreen button is clicked. It starts all the computations to have
+ * the graph fullscreen.
+ * @returns false
+ */
+function popup(){
+ 	params  = 'width='+screen.width;
+ 	params += ', height='+screen.height;
+ 	params += ', top=0, left=0'
+ 	params += ', fullscreen=yes';
+	var url = '../relations/view';
+ 	newwin = window.open(url,'FullscreenGraph', params);
+ 	if (window.focus) {
+		newwin.focus();
+	}
+	return false;
+}
+
+//Computes the popup view of the graph
+/**
+ * Computes the visualization of the graph in the pop up widow.
+ * @param {RGraph} rgraph Current RGraph object that represent the graph.
+ */
+function computePopupVis(rgraph){
+	var jsons = window.opener.jsons;
+	var center = window.opener.center;
+	for(i = 0; i < jsons.length - 1; i++){
+		var nodes = nodesToRemove(jsons[i+1], jsons[i]);
+		rgraph.op.sum(jsons[i+1], {
+			type: 'fade:seq',
+			duration: 0,
+			hideLabels: true,
+			transition: Trans.Quad.easeInOut,
+			onComplete: function(){
+				if(i == jsons.length - 1){
+					rgraph.onClick(center[center.length - 1]);
+				}
+			}
+		});
+	}
+	overgraph = rgraph;
+}
+
+//Modifies the json to color the nodes and modifing the shape
+/**
+ * Modifies the received JSON object to have different colors and shapes depending on the type of nodes.
+ * @param {JSON} json The JSON object to be modified.
+ * @returns The modified JSON object.
+ */
+function modjson(json){
+	json.adjacencies = new Array();
+	if(json.type == "Issue"){
+		json.$type = "star";
+		json.data.typology = "Issue";
+	}
+	else if(json.type == "Alternative"){
+		json.$type = "square";
+		json.data.typology = "Alternative";
+	}
+	else {
+		json.$type = "circle";
+		json.data.typology = "Tag";
+	}
+	for(i = 0; i < json.children.length; i++){
+		//color of the node
+		if (json.children[i].data.Decision == "Negative") {
+			json.children[i].data.$color = "#f00";
+		}
+		else {
+			if (json.children[i].data.Decision == "Positive") {
+				json.children[i].data.$color = "#0f0";
+			}
+			else {
+				json.children[i].data.$color = "#fff";
+			}
+		}
+		
+		//shape [not useful anymore, we use icons!]
+		if(json.children[i].type == "Alternative"){
+			json.children[i].data.$type = "square";
+			json.children[i].data.typology = "Alternative";
+		}
+		else if(json.children[i].type == "Issue"){
+			json.children[i].data.$type = "star";
+			json.children[i].data.typology = "Issue";
+		}
+		else {
+			json.children[i].data.$type = "circle";
+			json.children[i].data.typology = "Tag";
+		}
+		
+		//Changing the color of the edges from center to node
+		/*var obj = new Object();
+		obj = {
+			"nodeTo": json.children[i].id,
+			"data": {
+				"$color": json.children[i].data.relationColor
+			}
+		};
+		json.adjacencies[i] = obj;
+		
+		//Changing the color of the edges from the node to the center
+		obj = new Object();
+		obj = {
+			"nodeTo": json.id,
+			"data": {
+				"$color": json.children[i].data.relationColor
+			}
+		};
+		json.children[i].adjacencies = obj;*/
+	} 
+	//alert(json.toString());
+	return json;
+}
+
+//Function to check all at the beginning of the script
+/**
+ * Checks all the checkboxes that works for the view. Might be come handy in the future.
+ */
+function checkAll(){
+	document.check.issue.checked = true;
+	document.check.alternative.checked = true;
+	document.check.tag.checked = true;
+	whatIsChecked[0] = true;
+	whatIsChecked[1] = true;
+	whatIsChecked[2] = true;
+}
+
+//Method to control the checkboxes
+/**
+ * Controller for the checkboxes.
+ * @param {String} c Type of the node to paint or delete from the graph.
+ */
+function controller(c){
+	//Checks if issue has been clicked
+	if(c == 'issues'){
+		//If it's checked paint the issues
+		if(document.check.issue.checked == true) {
+			paint('Issue');
+			whatIsChecked[0] = true;
+		}
+		else{
+			remove('Issue');
+			whatIsChecked[0] = false;
+		}
+	}
+	
+	if(c == 'alternatives'){
+		if(document.check.alternative.checked == true){
+			paint('Alternative');
+			whatIsChecked[1] = true;
+		}
+		else{
+			remove('Alternative');
+			whatIsChecked[1] = false;
+		}
+	}
+	
+	if(c == 'tags'){
+		if(document.check.tag.checked == true){
+			paint('Tag');
+			whatIsChecked[2] = true;
+		}
+		else{
+			remove('Tag');
+			whatIsChecked[2] = false;
+		}
+	}
+}
+
+//Method to check if a particular id was removed from the view
+/**
+ * Check what was removed from the graph. Useful for repainting the nodes that were previously deleted.
+ * @param {Int} id ID of the node that is checked if was removed.
+ * @param {String} c Type of the node that was removed.
+ * @returns The node that was removed. It is in the form Node, wich is an object for the visualization.
+ */
+function wasRemoved(id, c){
+	for(r = 0; r < removed_elements[c].length; r++){
+		if (id == removed_elements[c][r].id) {
+			return {
+				"flag": true,
+				"parent": removed_elements[c][r].parent
+			};
+		}
+	}
+	return {
+		"flag": false
+	};
+}
+
+//Method that paints what it's checked
+/**
+ * Paints the node that were removed from the view.
+ * @param {String} c Type of the nodes that were removed and have to be painted back.
+ */
+function paint(c){
+	var toPaint = [];
+	var j = 0;
+	for(var i = 0; i < jsons.length; i++){
+		var elem = wasRemoved(jsons[i].id, c)
+		if(elem.flag){
+			var node = {id : "", name: "", data: ""};
+			node.id = jsons[i].id;
+			node.name = jsons[i].name;
+			node.data = jsons[i].data;
+			toPaint[j] = {"node": node, "parent": elem.parent};
+			j++;
+		}
+		for(k = 0; k < jsons[i].children.length; k++){
+			var element = wasRemoved(jsons[i].children[k].id, c);
+			if(element.flag){
+				var node = {id : "", name: "", data: ""};
+				node.id = jsons[i].children[k].id;
+				node.name = jsons[i].children[k].name;
+				node.data = jsons[i].children[k].data;
+				toPaint[j] = {
+					"node": node,
+					"parent": element.parent
+				};
+				j++;
+			}
+		}
+		
+		for(m = 0; m < toPaint.length; m++){
+			overgraph.graph.addNode(toPaint[m].node);
+			overgraph.graph.addAdjacence(toPaint[m].node, overgraph.graph.getNode(toPaint[m].parent));
+		}
+		j = 0;	
+	}
+	
+	//Since there is a bug in the library, refresh twice to show the edges correctly.
+	overgraph.refresh();
+	overgraph.refresh();
+	removed_elements[c] = new Array();
+}
+
+//Check if the node was not the center
+/**
+ * Checks that the received ID was not one of the center of the graph in previous modifications.
+ * @param {Int} id ID of the node that has to be checked.
+ * @returns A boolean if the node was a center.
+ */
+function notCenter(id){
+	for(var i = 0; i < center.length; i ++){
+		if(center[i] == id)
+			return false;
+	}
+	return true;
+}
+
+//Method that removes what's not checked
+/**
+ * Function that removes certain types of nodes.
+ * @param {String} c Type of nodes to be removed.
+ */
+function remove(c){
+	var removed = [];
+	var i = 0;
+	for(j = 0; j < jsons.length; j++){
+		for(k = 0; k < jsons[j].children.length; k++){
+			if(jsons[j].children[k].data.typology == c && notCenter(jsons[j].children[k].id)){
+				removed[i] = jsons[j].children[k].id;
+				i++;
+				removed_elements[c].push({
+					"id": jsons[j].children[k].id,
+					"parent": jsons[j].id
+				});
+			}
+			else if(c == "Tag" && jsons[j].children[k].data.typology != "Alternative" && jsons[j].children[k].data.typology != "Issue" && notCenter(jsons[j].children[k].id)){
+				removed[i] = jsons[j].children[k].id;
+				i++;
+				removed_elements[c].push({
+					"id": jsons[j].children[k].id,
+					"parent": jsons[j].id
+				});
+			}
+		}
+	}
+	overgraph.op.removeNode(removed, {
+				type: 'fade:seq',
+				duration: 0,
+				hideLabels: true,
+				transition: Trans.Quad.easeInOut
+	});
+}
+
+//Removes elements from the json before it is plotted looking at the checkboxes status
+function removeElementsBeforeVis(json){
+	newjson = {
+		"name": json.name,
+		"type": json.type,
+		"id": json.id,
+		"children": [],
+		"data": []
+	}
+	
+	//Everything checked, we don't need to do anything
+	if(document.check.tag.checked && document.check.issue.checked && document.check.alternative.checked){
+		return json;
+	}
+
+	for (var i = 0; i < json.children.length; i++) {
+		if (json.children[i].data.typology == "Issue"&& notCenter(json.children[i].id)) {
+			if (!document.check.issue.checked ) {
+				removed_elements['Issue'].push({
+					"id": json.children[i].id,
+					"parent": json.id
+				});
+			}
+			else{
+				newjson.children.push(json.children[i]);
+				//alert("issue is checked, we keep the element of type tag of id "+newjson.children[i].id +" round: "+i);
+			}
+		}
+		
+		else if (json.children[i].data.typology == "Alternative" && notCenter(json.children[i].id)) {
+			if (!document.check.alternative.checked) {
+				//alert("alternative is not checked (we dont have to show them, put it into removed elements), round: "+i);
+				removed_elements['Alternative'].push({
+					"id": json.children[i].id,
+					"parent": json.id
+				});
+			}
+			else {
+				//alert("this is the problem" + json.children[i].length);
+				newjson.children.push(json.children[i]);
+				//alert("alternative is checked, we keep the element of type tag of id "+newjson.children[i].id +" round: "+i);
+			}
+		}
+		
+		else if (json.children[i].data.typology == "Tag" && notCenter(json.children[i].id)) {
+			//alert("a children is a tag");
+			if (!document.check.tag.checked) {
+				//alert("tag is not checked (we dont have to show them, put it into removed elements), round: "+i);
+				removed_elements['Tag'].push({
+					"id": json.children[i].id,
+					"parent": json.id
+				});
+			}
+			else{
+				newjson.children.push(json.children[i]);	
+				//alert("tag is checked, we keep the element of type tag of id "+newjson.children[i].id +" round: "+i);
+			}
+		}
+		//alert("end of recursion "+ i + ", children.length = "+ newjson.children.length);
+	}
+//	for(var i = 0; i < newjson.children.length; i++)
+		//alert(newjson.children.length);
+	return newjson;
+}
+	
+//Method to reset the view to the first one
+/**
+ * Reset the current view to the very first one.
+ */
+function resetView(){
+	var lbs = overgraph.fx.labels;
+ 	for (var label in lbs) {
+   		if (lbs[label]) {
+   		 	lbs[label].parentNode.removeChild(lbs[label]);
+   		}
+ 	}
+	overgraph.fx.labels = {};
+ 	overgraph.loadJSON(jsons[0]);
+ 	overgraph.refresh();
+	//Sets all the checkbuttons to true
+	checkAll();
+}
+
+/*Utilities for the Balloons javascript library*/
+   // white balloon with default configuration
+   // (see http://www.wormbase.org/wiki/index.php/Balloon_Tooltips)
+   var balloon    = new Balloon;
+   //BalloonConfig(balloon,'GBubble');
+
+   // plain balloon tooltip
+   var tooltip  = new Balloon;
+   BalloonConfig(tooltip,'GPlain');
+
+   // fading balloon
+   var fader = new Balloon;
+   BalloonConfig(fader,'GFade');
+
+   // a plainer popup box
+   var box         = new Box;
+   BalloonConfig(box,'GBox');
+
+   // a box that fades in/out
+   var fadeBox     = new Box;
+   BalloonConfig(fadeBox,'GBox');
+   fadeBox.bgColor     = 'black';
+   fadeBox.fontColor   = 'white';
+   fadeBox.borderStyle = 'none';
+   fadeBox.delayTime   = 200;
+   fadeBox.allowFade   = true;
+   fadeBox.fadeIn      = 750;
+   fadeBox.fadeOut     = 200;
+   
+/*Some tests with the graphic library to draw emboss*/
+	function draw(x, y){
+		var cnv = document.getElementById("infovis");
+		var jg = new jsGraphics(cnv);
+		var w, h;
+		var color = 00;
+		w = 100;
+		h = 100;
+		x = x - w + 25;
+		y = y - h - 10;
+		jg.setStroke(1);  
+		for (i = 0; i < 5; i++) {
+			jg.setColor("#"+color+""+color+""+color);
+			color = color + 10;
+			w = w - 10;
+			h = h - 10;
+			x = x + 5;
+			y = y + 5;
+			jg.fillEllipse(x, y, w, h);
+			
+		}
+		jg.paint();
+	}
+
+
+//Function to fade in/out the table with the information about the selected node
+function fade(eid){
+  var element = document.getElementById(eid);
+  if(element == null)
+    return;
+   
+  if(element.FadeState == null)
+  {
+    if(element.style.opacity == null
+        || element.style.opacity == ''
+        || element.style.opacity == '1')
+    {
+      element.FadeState = 2;
+    }
+    else
+    {
+      element.FadeState = -2;
+    }
+  }
+   
+  if(element.FadeState == 1 || element.FadeState == -1)
+  {
+    element.FadeState = element.FadeState == 1 ? -1 : 1;
+    element.FadeTimeLeft = TimeToFade - element.FadeTimeLeft;
+  }
+  else
+  {
+    element.FadeState = element.FadeState == 2 ? -1 : 1;
+    element.FadeTimeLeft = TimeToFade;
+    setTimeout("animateFade(" + new Date().getTime() + ",'" + eid + "')", 33);
+  }  
+}
+
+//Function that animates the fade in/out of the node's table
+function  animateFade(lastTick, eid){  
+  var curTick = new Date().getTime();
+  var elapsedTicks = curTick - lastTick;
+ 
+  var element = document.getElementById(eid);
+ 
+  if(element.FadeTimeLeft <= elapsedTicks)
+  {
+    element.style.opacity = element.FadeState == 1 ? '1' : '0';
+    element.style.filter = 'alpha(opacity = '
+        + (element.FadeState == 1 ? '100' : '0') + ')';
+    element.FadeState = element.FadeState == 1 ? 2 : -2;
+    return;
+  }
+ 
+  element.FadeTimeLeft -= elapsedTicks;
+  var newOpVal = element.FadeTimeLeft/TimeToFade;
+  if(element.FadeState == 1)
+    newOpVal = 1 - newOpVal;
+
+  element.style.opacity = newOpVal;
+  element.style.filter = 'alpha(opacity = ' + (newOpVal*100) + ')';
+ 
+  setTimeout("animateFade(" + curTick + ",'" + eid + "')", 33);
+}
+
+

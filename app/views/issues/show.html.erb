@@ -1,0 +1,174 @@
+<%= javascript_include_tag("balloon.config.js") %>
+<%= javascript_include_tag("balloon.js") %>
+<%= javascript_include_tag("box.js") %>
+<%= javascript_include_tag("yahoo-dom-event.js") %>
+<%= javascript_include_tag("wz_jsgraphics.js") %>
+<%= javascript_include_tag("jquery-ui-1.8.custom.min.js") %>
+<%= javascript_include_tag("public_smo_scripts.js") %>
+
+<!-- script for jQuery tabs -->
+  <script>
+  jQuery(document).ready(function() {
+    jQuery("#tabs").tabs();
+  });
+  </script>
+<!-- end of script -->
+
+<%#= render :partial => "layouts/ribbon" %>
+<div id="tabs">
+<ul> 
+    <li><a href="#fragment-1"><%=h @issue.name %> details</a></li> 
+    <li><a href="#fragment-2">Visualization</a></li> 
+</ul>  
+    <div id="fragment-1">
+
+<h1><%=h @issue.name %> details:</h1>
+<div class="artifactTags" id="alternativeTags">
+    <%= render :partial => 'layouts/taggings', :object => @taggings %>
+    <%#= link_to_show_overlay 'new', '/taggings/new?applies_to='+@issue.id.to_s %>
+	
+	<div class="link">
+		
+	<%= link_to image_tag("add.png"), {:controller=>'tag', :action=>'list', :overlay=>'true', :taggable_id=>@issue.id}, :rel=>"#overlay" %>	
+	
+	<!--<a href="<%#= path_for( :controller=>'tag', :action=>'list')%>?overlay=true&taggable_id=<%=h @issue.id %>" rel="#overlay">
+		<%= image_tag("add.png") %>
+	</a>-->
+	</div>
+</div>
+<div id="issueDetails" class="artifactDetails">
+    <table class="artifactDetails">
+        <tr>
+            <th>
+                Id:
+            </th>
+            <td>
+                <%=h @issue.id %>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Name:
+            </th>
+            <td>
+                <%=h @issue.name %>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Description:
+            </th>
+            <td>
+                <% if @issue["Description"]!=nil %>
+                <%=h @issue["Description"].value %>
+                <% else %>
+                <i>(none)</i>
+                <% end %>
+            </td>
+        </tr>
+		
+		<% @attributes.each do |attribute| %>
+		<tr>
+			<th>
+				<%= attribute.attribute_name %>:
+			</th>
+			<td>
+				<% if @issue[attribute.attribute_name] != nil %>
+					<%= @issue[attribute.attribute_name].value %>
+				<% else %>
+					<i>(none)</i>
+				<% end %>
+			</td>
+		</tr>
+		<% end %>
+		
+		
+    </table>
+	<div class="link">
+		<%= link_to image_tag("edit.png"), {:controller=>"issues", :action=>"edit", :id=>@issue.id, :overlay=>"true"}, :rel=>"#overlay" %>
+		
+		<%= link_to image_tag("back.png"), issues_url %> 
+	</div>
+</div>
+<h2>Related Alternatives:</h2>
+<table>
+    <% @alternative_relations.each do |r| %>
+	<% alternative = r.origin_taggable %>
+    <tr>
+        <td>
+            <a href="<%= alternative_url(alternative.id) %>"><%= alternative.name %></a>
+        </td>
+		<td>
+			<% if alternative["Description"] != nil %>
+				<a href="<%= alternative_url(alternative.id)%>"><%=alternative["Description"].value%></a>
+			<% else %>
+				<a href="<%= alternative_url(alternative.id)%>"><i>(none)</i></a>
+			<% end %>
+		</td>
+		<td>
+			
+			<% if r.tags("Decision").size == 0 %>
+				<%= link_to "Decide", {:controller=>'tag', :action=>'list', :taggable_id=>r.id, :overlay=>'true', :return_taggable_id=>@issue.id}, :rel=>"#overlay" %>
+				
+			<% else %>
+				Decided:
+				
+				<%= link_to r.tags("Decision").first.name, {:controller=>'tag', :action=>'tags_list', :taggable_id=>r.id, :return_taggable_id=>@issue.id}, :rel=>"#overlay" %>
+				
+			<%  end %> 
+		</td>
+    </tr>
+    <%  end %>
+</table>
+
+<div class="link">
+	<!-- TODO: refactor this monster ! -->
+	
+	<a href="<%=new_alternative_url%>/<%= @issue.id %>?overlay=true" rel="#overlay">
+		<%= image_tag("new.png") %>
+	</a>
+	<a href="<%=alternatives_url%>?overlay=true&issue=<%= @issue.id %>" rel="#overlay">
+		<%= image_tag("add.png") %>
+	</a>
+</div></div> 
+
+
+    <div id="fragment-2">
+
+<h2></h2>
+
+<div id="log"></div>
+
+<a href="#" onClick="popup();">Fullscreen</a>
+
+<div id="container">
+
+<!--
+<script type="text/javascript" src="/javascripts/jit.js"></script>  
+<script type="text/javascript" src="/javascripts/hypertreevis.js"></script>
+-->
+<%= javascript_include_tag("jit.js") %>
+<%= javascript_include_tag("hypertreevis.js") %>
+<div id="infovis" class="show">
+	<canvas id="newCanvas" width="1184" height="550" style="position: absolute; top: 0pt; left: 0pt; width: 1184px; height: 550px;"></canvas>
+	<div class="infonode" id="infonode"></div>
+	<div id="checkboxes">
+	<form name="check">
+		<input type="checkbox" name="issue" value="no" onClick="controller('issues')"> <font color="white"> Show Issues </font><br>
+		<input type="checkbox" name="alternative" value="no" onClick="controller('alternatives')"> <font color="white">Show Alternatives </font> <br>
+		<input type="checkbox" name="tag" value="no" onClick="controller('tags')"> <font color="white">Show Tags </font> <br>
+	</form>
+</div>
+</div>
+<input type="button" onclick="resetView()" value="Reset The View"><br>
+</div></div>
+</div>
+<%= javascript_include_tag("interpolation.js") %>
+
+
+<script type="text/javascript"> checkAll(); 
+// perform JavaScript after the document is scriptable. 
+jQuery(function() { 
+    // setup ul.tabs to work as tabs for each div directly under div.panes 
+    jQuery("ul.tabs").tabs("div.panes > div"); 
+});</script> 

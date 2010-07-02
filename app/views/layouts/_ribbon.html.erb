@@ -1,0 +1,90 @@
+<!-- header begining -->
+ <%= javascript_include_tag("helpers.js") %> 
+<%= javascript_include_tag :defaults %>  
+<table class="ribbon">
+<tr>
+	<td width="400px">
+
+		<%= link_to "Tag Cloud", {:controller=>"tag", :action=>"type_cloud"}, :class=>"header" %>
+		
+		<%if @dt != nil%>
+			&nbsp;&gt;&nbsp;	<%= link_to @dt.name, {:controller=>"tag", :action=>"cloud", :type_name=>@dt.name}, :class=>"header" %>
+								
+								<!-- <a href="/tag/cloud?type_name=<%=@dt.name%>" class="header"><%=@dt.name%></a> -->
+		<%end%>
+
+		<%if @tag != nil %>
+			&nbsp;&gt;&nbsp;	<%= link_to @tag.type, {:controller=>"tag", :action=>"cloud", :type_name=>@tag.type}, :class=>"header" %>
+								<!-- <a href="/tag/cloud?type_name=<%=@tag.type%>" class="header"><%=@tag.type%></a> -->
+			&nbsp;&gt;&nbsp;	<%= link_to @tag.name, {:controller=>"tag", :action=>"taggings_list", :tag_id=>@tag.id}, :class=>"header" %>    
+								<!-- <a href="/tag/cloud?type_name=<%=@tag.name%>" class="header"><%=@tag.name%></a> -->
+		<%end%>
+
+		<%# if @issue != nil %>
+		<%# @issue.tags_by_type(TopicGroup).each do |tag| %>
+<!--			<a href="/topic_groups/<%#=tag.id%>" class="header"><%#= tag.name %></a> --> 
+		<%# end %>
+		<%# end %>
+		</td>
+<!--projects -->
+
+<!--	<td id="header-td">
+		<a href="/projects/"  class="header">Projects</a>		
+
+		&nbsp;&gt;&nbsp;
+		<a href="/projects/"  class="header">Project XXX</a>
+	
+	</td>
+	-->	
+<!-- issues -->
+	<td>
+		<a href="<%= issues_url %>"  class="header">Issues</a>
+		<!-- <% if @issue != nil %>		
+		&nbsp;&gt;&nbsp;<%= link_to @issue.name, @issue, :class=>"header" %>
+		<% end %>	-->	
+	</td>
+<!-- alterantives -->
+	<td>
+		<a href="<%= alternatives_url %>"  class="header">Alternatives</a>
+		
+		<!--<% if @issue != nil %>		
+		&nbsp;&gt;&nbsp;<%= link_to @issue.name, @issue, :class=>"header" %>
+		<% end %>-->		
+	</td>
+<!--tags -->
+	<td>
+		<a href="<%= dynamic_types_url %>" class="header">Dynamic Types</a>
+	</td>
+	
+	<td>
+		<%= link_to "Tag Types", {:controller=>"tag", :action=>"index"}, :class=>"header" %>
+	</td>
+	
+	<td>
+		<div id="searchDiv">
+		<input type="text" id="search" name="search" />  	
+		<img id="busy" src="/images/spinner.gif" style="display:none" />   
+		<%= observe_field 'search',	
+    :frequency => 0.5,
+    :update => 'searchResults',	
+    :url => { :controller => 'taggables', :action=> 'search' },	
+    :with => "'criteria=' + escape(value)",	
+    :loading => "document.getElementById('busy').style.display='none'",	
+    :loaded => "document.getElementById('busy').style.display='none'", 
+	:complete => "searchControl();"%>
+		
+</div>	
+	</td>
+
+	<td align="right" width="400px">
+		<a href="http://saw.inf.unisi.ch/" class="header">Software Architecture Warehouse</a>
+	</td>	</tr>
+</table>
+<div id="searchResults"></div>
+<script>
+	var divPos = findPos(document.getElementById('searchDiv'));
+	
+	document.getElementById('searchResults').style.left = (divPos[0] + 24) + "px";
+	document.getElementById('searchResults').style.top = (divPos[1] + 25) + "px";
+</script>
+<!-- end of the header -->

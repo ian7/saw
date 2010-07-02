@@ -1,0 +1,13 @@
+<% @alternative.dynamic_type.dynamic_type_attributes.each do |attribute| %>
+	<p>
+    <label for="<%= attribute.attribute_name %>">
+        <%= attribute.attribute_name %>
+    </label>
+    <br/>
+	<% if @alternative[attribute.attribute_name] != nil %>
+    	<textarea cols="70" rows="10" id="taggable_description" name="alternative[<%= attribute.attribute_name %>]"><%= @alternative[attribute.attribute_name].value %></textarea>
+	<% else %>
+		<textarea cols="70" rows="10" id="taggable_description" name="alternative[<%= attribute.attribute_name %>]"></textarea>
+	<% end %>		
+	</p>
+<% end %>

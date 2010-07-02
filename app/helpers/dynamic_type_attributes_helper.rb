@@ -1,0 +1,2 @@
+module DynamicTypeAttributesHelper
+end

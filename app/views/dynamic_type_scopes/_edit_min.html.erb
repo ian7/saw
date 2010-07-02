@@ -1,0 +1,22 @@
+<h1>Editing dynamic type scope</h1>
+<br/>
+<br/>
+<% form_for(@dynamic_type_scope) do |f| %>
+	<%= f.error_messages %>
+	<%= hidden_field (:redirect_to_type  , params[:redirect_to_type]) %>
+	<p>
+		<%= f.label :type_name %><br />
+		<% if params[:adding_scope] then %>
+    		<%= f.text_field(:type_name, :readonly=>"true", :redirect_to_type => "true") %>
+    	<% else %>
+    		<%= f.text_field :type_name %>
+    	<% end %>
+	</p>
+	<p>
+		<%= f.label :type_scope %><br />
+		<%= f.text_field :type_scope %>
+	</p>
+	<p>
+		<%= f.submit 'Update' %>
+	</p>
+<% end %>

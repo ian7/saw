@@ -1,0 +1,24 @@
+<!--<h1>DynamicTypeAttributes#new</h1>
+<p>Find me in app/views/dynamic_type_attributes/new.html.erb</p>-->
+
+<h1>New dynamic type attribute</h1>
+<br/>
+<br/>
+
+<% form_for(@dynamic_type_attribute) do |f| %>
+  <%= f.error_messages %>
+<% if params[:adding_scope] then %>
+<%= hidden_field (:redirect_to_type  , params[:redirect_to_type]) %>
+<% end %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :attribute_name %>
+  </p>
+  <p>
+    <%= f.label :type %><br />
+    <%= f.text_field :type_name %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>

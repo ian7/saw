@@ -1,0 +1,33 @@
+<h1>Listing of tags</h1>
+<table class="dynamic">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Type
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+            </th>
+        </tr>
+    </tfoot>
+    <% @tags.each do |tag| %>
+    <tr>
+        <td>
+            <a href="<%= tag_url(tag.id) %>"><%=h tag.name %></a>
+        </td>
+        <td>
+            <a href="<%= tag_url(tag.id) %>"><%=h tag.type %></a>
+        </td>
+        <td>
+            <a href="<%= tag_url(tag.id) %>" onclick="if (confirm('Are you sure?')) { var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'delete'); f.appendChild(m);f.submit(); };return false;" style="color:#ff0000;">x</a>
+        </td>
+    </tr>
+    <% end %>
+</table>
+<br/>

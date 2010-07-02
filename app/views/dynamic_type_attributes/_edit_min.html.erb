@@ -1,0 +1,24 @@
+<h1> Editing dynamic type attribute</h1>
+<br/>
+<br/>
+
+<% form_for(@dynamic_type_attribute) do |f| %>
+	<%= hidden_field (:redirect_to_type  , params[:redirect_to_type]) %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :attribute_name %>
+  </p>
+  <p>
+    <%= f.label :type %><br />
+    	<% if params[:adding_scope] then %>
+    		<%= f.text_field(:type_name, :readonly=>"true") %>
+    	<% else %>
+    		<%= f.text_field :type_name %>
+    	<% end %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>

@@ -1,0 +1,34 @@
+<h2>Tags:</h2>
+<table class="tagsTable" id="tagsTable">
+	<thead>
+	<tr>
+		<th>Type</th>
+		<th>Content</th>
+		<th></th>
+	</tr>	
+	</thead>
+    <tfoot>
+        <tr>
+            <th>
+            </th>
+        </tr>
+    </tfoot>
+
+	
+    <% @taggings.each do |t| %>
+	    <tr>
+				<td>
+					<%= link_to t.tag.attributes["type"], {:controller=>"tag", :action=>"cloud", :type_name=>t.tag.attributes["type"]} %>
+		        </td>
+				<td>
+					<%= link_to t.tag.name, {:controller=>"tags", :action=>"show", :id=>t.tag.id } %>
+				</td>
+	        <td>
+				<!--<%#= button_to_remote('x', :update=>'tagsTable', :url=> tagging_url(:id=>t.id), :method=> :delete )%>-->
+				<%= link_to "x", {:controller=>"tag", :action=>"untag", :from_taggable_id=>t.tag.id, :to_taggable_id=>@taggable_id, :return_taggable_id=>@return_taggable_id},
+					:style=>"color: red;" %>
+				<!--<a href="/tag/untag?from_taggable_id=<%=h t.tag.id %>&to_taggable_id=<%=h @taggable_id %>&return_taggable_id=<%=@return_taggable_id%>" style="color:#ff0000;">x</a> -->
+			</td>		
+	    </tr>	
+	<% end %>
+</table>

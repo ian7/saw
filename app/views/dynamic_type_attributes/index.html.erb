@@ -1,0 +1,31 @@
+<h1>Listing of attributes</h1>
+<% session[:redirect_to_this_type]  = nil  %>
+<table class="dynamic">
+	<thead>
+  <tr>
+    <th>Type</th>
+    <th>Name</th>
+	<th></th>
+  </tr>
+  </thead>
+  <tfoot>
+        <tr>
+            <th>
+            </th>
+        </tr>
+    </tfoot>
+
+<% @dynamic_type_attributes.each do |attribute| %>
+  <tr>
+    <td><a href="<%= dynamic_type_attribute_url(attribute.id)%>"><%=h attribute.type_name %></a></td>
+    <td><a href="<%= dynamic_type_attribute_url(attribute.id)%>"><%=h attribute.attribute_name %></a></td>
+	<td><%= link_to 'x', attribute, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<div class="link">
+<%= link_to image_tag("new.png"), new_dynamic_type_attribute_path(@dynamic_type_attribute) %>
+</div>

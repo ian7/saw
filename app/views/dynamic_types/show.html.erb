@@ -1,0 +1,74 @@
+<h1>Type: <%=h @dynamic_type.name %></h1>
+<div class="DynamicType" id = <%=h @dynamic_type.id %> >
+<!-- <p>
+  <b>Name:</b>
+  <%=h @dynamic_type.name %>
+</p>
+<p>
+  <b>Super Type:</b>
+  <% @superType = (DynamicType.find( :first, :conditions=>{:name=>@dynamic_type.super_type})) %>
+  <% if @superType != nil then %>
+  	<a href="/dynamic_types/<%=@superType.id%>"><%=h @superType.name %></a>
+  <% else %>
+  	<%=h @dynamic_type.super_type %>
+  <% end %>
+</p>
+
+<p>
+  <b>Surrogate class:</b>
+  <%=h @dynamic_type.surrogate_class %>
+</p> -->
+
+    <table>
+        <tr>
+            <th>
+                Name:
+            </th>
+            <td>
+                <%=h @dynamic_type.name %>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Super Type:
+            </th>
+            <td>
+                <% @superType = (DynamicType.find( :first, :conditions=>{:name=>@dynamic_type.super_type})) %>
+  				<% if @superType != nil then %>
+  					<a href="<%=dynamic_type_url(@superType.id)%>"><%=h @superType.name %></a>
+  				<% else %>
+  					<%=h @dynamic_type.super_type %>
+  				<% end %>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Surrogate class:
+            </th>
+            <td>
+                <% if @dynamic_type.surrogate_class !=nil %>
+                <%=h @dynamic_type.surrogate_class %>
+                <% else %>
+                <i>(none)</i>
+                <% end %>
+            </td>
+        </tr>
+    </table>
+   <div class="link">
+    <a href="<%= dynamic_type_url(@dynamic_type.id) %>/edit" rel="#overlay">
+    	<%= image_tag("edit.png")%>
+    </a>
+    <a href="<%= dynamic_types_url%>">
+    	<%= image_tag("back1.png") %>
+    </a>
+	</div>
+    <br/>
+<%= render :partial => 'dynamic_type_attributes/list'%>
+<br/>
+<%= render :partial => 'dynamic_type_scopes/list' %>
+<div class="link">
+<!-- <%= link_to 'Edit', edit_dynamic_type_path(@dynamic_type) %>
+<%= link_to 'Dynamic Type list', dynamic_types_path %> -->
+
+</div>
+</div>

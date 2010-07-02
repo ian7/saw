@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+#ProjectName:
+#  type_name: Project
+#  attribute_name: Version
+
+AlternativeKnownUses:
+    type_name: Alternative
+    attribute_name: KnownUses
+    
+AlternativeBackground:  
+    type_name: Alternative
+    attribute_name: Background
+    
+IssueBackground:
+    type_name: Issue
+    attribute_name: Background
+    
+IssueDrivers:
+    type_name: Issue
+    attribute_name: Drivers
+    
+IssueStatus:
+    type_name: Issue
+    attribute_name: Status
+
+IssueRecommendation:
+    type_name: Issue
+    attribute_name: Recommendation
+    
+

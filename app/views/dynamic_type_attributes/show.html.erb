@@ -1,0 +1,29 @@
+<%#= render :partial => "layouts/ribbon" %>
+
+
+<h1>Attribute details:</h1>
+
+<div id="dynamicTypeAttributeDetails" class="artifactDetails">
+	<table class="artifactDetails">
+
+<tr>
+  <th>Name:</th>
+  <td><%=h @dynamic_type_attribute.attribute_name %></td>
+</tr>
+
+<tr>
+  <th>Type:</th>
+  <td><%=h @dynamic_type_attribute.type_name %></td>
+</tr>
+
+</table>
+
+<br />
+
+<div class="link">
+<%= link_to image_tag("edit.png"), edit_dynamic_type_attribute_path(@dynamic_type_attribute)+"?overlay=true", :rel => '#overlay' %>
+<%= link_to image_tag("back1.png"),dynamic_type_path(@dynamic_type_attribute.dynamic_type) %>
+</div>
+
+
+</div>

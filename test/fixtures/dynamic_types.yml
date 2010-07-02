@@ -1,0 +1,106 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+Artifact:
+  name: Artifact
+  
+Issue:
+  name: Issue
+  super_type: Artifact
+  surrogate_class: Taggable
+
+Alternative:
+  name: Alternative
+  super_type: Artifact
+  surrogate_class: Taggable
+
+Tag:
+  name: Tag
+  
+Tagging:
+  name: Tagging
+  surrogate_class: Tagging
+  
+Decision:
+  name: Decision
+  super_type: Tag
+  surrogate_class: Tag
+
+Relation:
+  name: Relation
+
+TreeTag:
+  name: TreeTag
+  super_type: Tag
+
+#TODO: implement aditional logics for handling that
+# which should remove the tag together with it's last Tagging.
+WeakTag:
+  name: WeakTag
+  super_type: Tag
+  surrogate_class: Tag
+ 
+Project:
+  name: Project
+  super_type: TreeTag
+  
+TopicGroup:
+  name: TopicGroup
+  super_type: TreeTag
+  surrogate_class: TreeTag
+
+# relations
+SolvedBy:
+  name: SolvedBy
+  super_type: Relation
+  surrogate_class: Relation
+  
+ChildOf:
+  name: ChildOf
+  super_type: Relation
+  surrogate_class: Relation
+  
+Influences:
+  name: Influences
+  super_type: Relation
+  surrogate_class: Relation
+  
+# general purpose tags
+Scope:
+  name: Scope
+  super_type: Tag
+  surrogate_class: Tag 
+ 
+Phase:
+  name: Phase
+  super_type: Tag
+  surrogate_class: Tag
+  
+Role:
+  name: Role
+  super_type: Tag
+  surrogate_class: Tag
+  
+SubjectArea:
+  name: SubjectArea
+  super_type: Tag
+  surrogate_class: Tag
+
+# pro/contra
+
+Pro:
+  name: Pro
+  super_type: Tag
+  surrogate_class: Tag
+
+Con:
+  name: Con
+  super_type: Tag
+  surrogate_class: Tag
+
+
+# vendor specific types
+
+IBM:
+  name: IBM-ID
+  super_type: Tag
+  surrogate_class: Tag

@@ -1,0 +1,66 @@
+
+<h1>Tag details:</h1>
+
+<div id="tag_instanceDetails" class="artifactDetails">
+    <table class="artifactDetails">
+        <tr>
+            <th>
+                Id:
+            </th>
+            <td>
+                <%=h @tag_instance.id %>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Name:
+            </th>
+            <td>
+                <%=h @tag_instance.name %>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Type:
+            </th>
+            <td>
+                <% if @tag_instance.type!=nil %>
+                <%=h @tag_instance.type %>
+                <% else %>
+                <i>(none)</i>
+                <% end %>
+            </td>
+        </tr>
+
+		<% @tag_instance.dynamic_type.dynamic_type_attributes.each do |attribute| %>
+		<tr>		
+			<th>
+				<%= attribute.attribute_name %>
+			</th>
+			<td>
+				
+				<% if @tag_instance[ attribute.attribute_name ] !=nil %>
+                <%= @tag_instance[ attribute.attribute_name ].value %>
+                <% else %>
+                <i>(none)</i>
+                <% end %>
+			</td>
+		</tr>
+		<% end %>
+    </table>
+	<div class="link">
+		
+	<%= link_to image_tag("edit.png"), {:controller=>"tags", :id=>@tag_instance.id, :action=>"edit", :overlay=>"true"}, :rel=>"overlay" %>
+  
+  	<%= link_to image_tag("back.png"), tags_url %>
+	</div>
+</div>
+<h2>Tagged objects:</h2>
+	<table>
+			<tr>
+				<th style="text-align: center;">Name</th>
+				<th style="text-align: center;">Description</th>
+			</tr>
+			<%= render :partial=>"relation/list_related" %>
+	</table>
+</table>

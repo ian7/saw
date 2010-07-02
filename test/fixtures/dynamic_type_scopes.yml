@@ -1,0 +1,50 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+#ProjectAlternative:
+#  type_name: Project
+#  type_scope: Alternative
+#
+
+## this is intentionaly commented out - we add ibm tags only by importing stuff
+#IBM-IDIssue:
+#  type_name: IBM-ID
+#  type_scope: Issue
+
+ProjectIssue:
+  type_name: Project
+  type_scope: Issue
+
+ScopeIssue:
+  type_name: Scope 
+  type_scope: Issue
+    
+PhaseIssue:
+  type_name: Phase 
+  type_scope: Issue
+
+SubjectAreaIssue:
+  type_name: SubjectArea
+  type_scope: Issue
+
+RoleIssue:
+  type_name: Role 
+  type_scope: Issue
+
+## this is intentionaly commented out - we add ibm tags only by importing stuff
+#IBM-IDAlternative:
+#  type_name: IBM-ID
+#  type_scope: Alternative
+
+ProAlternative:
+  type_name: Pro
+  type_scope: Alternative
+
+ConAlternative:
+  type_name: Con
+  type_scope: Alternative
+  
+DecisionSolvedBy:
+  type_name: Decision
+  type_scope: SolvedBy
+
+  
