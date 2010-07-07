@@ -34,6 +34,47 @@ a {
 	text-decoration:none;
 }
 /*---------------------basic format end---------------------*/
+
+#vertical {
+  position:fixed;
+/*  top:100px; */
+  left:0px;
+  z-index:1000;
+}
+
+#tab1, #tab2, #tab3, #tab4 {
+  -moz-transform: rotate(90deg);
+  -moz-transform-origin: 0% 0%;
+  -webkit-transform: rotate(90deg);
+  -webkit-transform-origin: 0% 0%;
+  position:fixed;
+  padding: 1em;
+  top:100px;
+  left:40px;
+  z-index:1000;  
+}
+
+#tab1 {
+  background-color: #F5B800;
+  top:120px;
+}
+#tab2 {
+  background-color:red;
+  top:200px;
+}
+#tab3 {
+  background-color:green;
+  top:300px;
+}
+#tab4 {
+  background-color: #33CCFF;
+  top:375px;
+}
+
+#vertical{
+
+}
+
 /*---------------------intro start---------------------*/
 div.intro {
 	text-align: center;
@@ -668,6 +709,8 @@ table.infotable td {
 	color: #fff !important ;
 	}
 /*---------------------infovis end---------------------*/
+
+
 /*---------------------jquery css----------------------*/
 /* The following CSS is edited on the original jQuery UI CSS Framework
 * jQuery UI CSS Framework

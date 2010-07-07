@@ -6,21 +6,32 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Artifacts: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'saw' %>
-  <!--<script type="text/javascript" src="/javascripts/jquery.tools.min.js"></script>-->
   <%= javascript_include_tag 'jquery.tools.min' %>
+  <%= javascript_include_tag 'jquery.min' %>
+
+
   <script>
   $.noConflict();
   </script>
   
 </head>
 <body <%= " onload='#{@onload}'"%>>
+
+
 	
 <%#= image_tag"background.png", :id => 'background' %>
 <%#= image_tag"background_bottom.png", :id => 'background_bottom' %>
 
 <p style="color: green"><%= flash[:notice] %></p>
 
+
+<!-- there we go with theh ribbon -->
 <%= render :partial => "layouts/ribbon", :object=>@issues %>
+
+  <div class="tab" id="tab1">Explore</div>
+  <div class="tab" id="tab2">Contribute</div>
+  <div class="tab" id="tab3">Decide</div>
+  <div class="tab" id="tab4">Report</div>
 
 <div id="center">
 
@@ -38,6 +49,8 @@
 </div>
 
 <!-- make all links with the 'rel' attribute open overlays -->
+
+
 <script>
 jQuery(function() {
 
