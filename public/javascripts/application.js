@@ -5,6 +5,6 @@ jQuery(document).ready(function() {
   jQuery('.tab').hover( function() {     
     jQuery(this).animate({left: '40px'}, 'fast');
   }, function() {
-    jQuery(this).animate({left: '15px'}, 'slow');
+    jQuery(this).delay(3000).animate({left: '15px'}, 'slow');
   });
 });
