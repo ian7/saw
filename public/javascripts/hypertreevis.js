@@ -14,9 +14,13 @@ var clicked = false;
 var whatIsChecked = [3];
 var nodeValue =[];
 var countAlternatives = 0;
+var popUpVariable = false;
 
 
-//Find the position of an object in the page
+/**
+ * Helper function to find a postion of an object in a page.
+ * @param {HTMLObject} Object which we need to find the position.
+ */
 	function findPos(obj) {
 		var curleft = curtop = 0;
 		if (obj.offsetParent) {
@@ -29,13 +33,18 @@ var countAlternatives = 0;
 	return [curleft,curtop];
 }
 
-//Function to add objects to nodeValue array
+/**
+ * Function to add an object that contains a node ID, a value and a position to the nodeValue array.
+ * @param {int} ID of the node we want to add.
+ */
 function addNodeValue(nodeId){
 	nodeValue.push({id: nodeId, value: 0, pos: []});
 	return true;
 }
 
-//Set the checkboxes in the fullscreen visualization
+/**
+ * Function to check the status of the checkboxes and remove nodes by concequence.
+ */
 function checkboxesStatus(){
 	//alert("ciao");
 	document.check.issue.checked = whatIsChecked[0];
@@ -62,6 +71,9 @@ var Log = {
     }
 };
 
+/**
+ * TODO I don't remember this one.
+ */
 function addEvent(obj, type, fn) {
     if (obj.addEventListener) obj.addEventListener(type, fn, false);
     else obj.attachEvent('on' + type, fn);
@@ -247,6 +259,7 @@ function callback(json, pop_up) {
 			//If popup (fullscreen vis) correct the label position
 			if(pop_up){
 				style.top = (parseInt(style.top) - 15) + 'px';
+				popUpVariable = true;
 			}
 			
         },
@@ -260,6 +273,9 @@ function callback(json, pop_up) {
 			
 		}
     });
+	//Putting the canvas to draw the heatmap
+	//document.getElementById('mycanvas').innerHTML += "<canvas id=\"newCanvas\" width=\"1184\" height=\"550\" style=\"position: absolute; top: 0pt; left: 0pt; width: 1184px; height: 550px;\"></canvas>";
+	
 	json = modjson(json);
     rgraph.loadJSON(json);
 	center.push(json.id);
@@ -302,8 +318,7 @@ function processJson(json, rgraph, oldjson){
 	if (json.type == "Issue") {
 		var flag = addNodeValue(json.id);
 	}
-	jsons[index] = json;
-	index++;
+	jsons.push(json);
 	var nodes = nodesToRemove(json, oldjson);
 	json = modjson(json);
 	
@@ -311,7 +326,7 @@ function processJson(json, rgraph, oldjson){
 	json = removeElementsBeforeVis(json);
 	rgraph.op.sum(json, {
 		type: 'fade:seq',
-		duration: 1000,
+		duration: 500,
 		hideLabels: false,
 		transition: Trans.Quad.easeInOut,
 		onComplete: function(){
@@ -418,7 +433,7 @@ function computePopupVis(rgraph){
 			}
 		});
 		if(i+1 == jsons.length - 1){
-			d = 1000;
+			d = 500;
 		}
 	}
 	overgraph = rgraph;
@@ -667,13 +682,17 @@ function remove(c){
 	}
 	overgraph.op.removeNode(removed, {
 				type: 'fade:seq',
-				duration: 0,
+				duration: 500,
 				hideLabels: true,
 				transition: Trans.Quad.easeInOut
 	});
 }
 
 //Removes elements from the json before it is plotted looking at the checkboxes status
+/**
+ * Removes the elements of a visualization (JSON object) according to the status of the checkboxes.
+ * @param {JSON} JSON from which we need to remove the elements.
+ */
 function removeElementsBeforeVis(json){
 	newjson = {
 		"name": json.name,
@@ -730,7 +749,7 @@ function removeElementsBeforeVis(json){
 	
 //Method to reset the view to the first one
 /**
- * Reset the current view to the very first one.
+ * Reset the current view to the very first one. Sets the heatmap to black and then redraws it.
  */
 function resetView(){
 	var lbs = overgraph.fx.labels;
@@ -742,6 +761,7 @@ function resetView(){
 	overgraph.fx.labels = {};
 	
 	var firstJson = jsons[0];
+	//alert(firstJson);
 	index = 1;
 	jsons = new Array();
 	jsons[0] = firstJson;
@@ -780,33 +800,13 @@ function resetView(){
    fadeBox.allowFade   = true;
    fadeBox.fadeIn      = 750;
    fadeBox.fadeOut     = 200;
-   
-/*Some tests with the graphic library to draw emboss*/
-	function draw(x, y){
-		var cnv = document.getElementById("infovis");
-		var jg = new jsGraphics(cnv);
-		var w, h;
-		var color = 00;
-		w = 100;
-		h = 100;
-		x = x - w + 25;
-		y = y - h - 10;
-		jg.setStroke(1);  
-		for (i = 0; i < 5; i++) {
-			jg.setColor("#"+color+""+color+""+color);
-			color = color + 10;
-			w = w - 10;
-			h = h - 10;
-			x = x + 5;
-			y = y + 5;
-			jg.fillEllipse(x, y, w, h);
-			
-		}
-		jg.paint();
-	}
 
 
 //Function to fade in/out the table with the information about the selected node
+/**
+ * Function to fade in/out the table with the information about the selected node.
+ * @param {String} ID of the element we want to fade in/out.
+ */
 function fade(eid){
   var element = document.getElementById(eid);
   if(element == null)
@@ -840,6 +840,11 @@ function fade(eid){
 }
 
 //Function that animates the fade in/out of the node's table
+/**
+ * Function that animates the fade in/out of the node's table
+ * @param {double} The time it has to fade.
+ * @param {String} ID of the element we want to fade in/out.
+ */
 function  animateFade(lastTick, eid){  
   var curTick = new Date().getTime();
   var elapsedTicks = curTick - lastTick;
@@ -867,6 +872,12 @@ function  animateFade(lastTick, eid){
 }
 
 //Method to dynamically add nodes that are pushed by any user
+/**
+ * This function dynamically adds nodes that are pushed in the view by any user.
+ * @param {int} Own ID of the node that is pushed.
+ * @param {int} Parent ID of the pushed node
+ * @param {Object} Data of the node.
+ */
 function addNewNode(ownId, parentId, data){
 	//Add nodes only if the parent is in the graph, if not it's useless.
 	if (overgraph.graph.hasNode(parentId)) {
@@ -885,11 +896,79 @@ function addNewNode(ownId, parentId, data){
 }
 
 //Method to dynamicaly remove nodes that are removed by any user
+/**
+ * Method to dynamicaly remove nodes that are removed by any user
+ * @param {int} Own ID of the node to be removed.
+ * @param {int} Parent ID of the node that has to be removed.
+ */
 function deleteNode(ownId, parentId){
 	//Remove nodes only if they are in the graph
 	if (overgraph.graph.hasNode(ownId)) {
 		overgraph.graph.removeAdjacence(ownId, parentId);
 		overgraph.graph.removeNode(ownId);
+	}
+}
+
+//Method to save the Tree status
+/**
+ * Saves the status of the tree in that particular moment.
+ */
+function saveTree(){
+	localStorage.setItem('length of jsons for '+center[0], jsons.length);
+	//alert(JSON.stringify(jsons[0]));
+	for (var i = 0; i < jsons.length; i++) {
+		localStorage.setItem('jsons '+ i +' for ' + center[0], JSON.stringify(jsons[i]));
+		//alert("Json to save: " + JSON.stringify(jsons[i]));
+	}
+	
+	//alert(nodeValue.length);
+	
+	localStorage.setItem('length of nodeValue for '+center[0], nodeValue.length);
+	//alert(nodeValue.length);
+	for (var i = 0; i < nodeValue.length; i++) {
+		localStorage.setItem('nodeValue '+ i +' for ' + center[0], nodeValue[i]);
+	}
+}
+
+//Method to load the previously saved tree
+/**
+ * Loads a previously saved tree.
+ */
+function loadTree(){
+	var jsonsLength = localStorage.getItem('length of jsons for '+center[0]);
+	var nodeValueLength = localStorage.getItem('length of nodeValue for '+center[0]);
+	alert('nodeValueLength = ' + nodeValueLength + " and jsonsLength = "+jsonsLength);
+	if(jsonsLength != null && nodeValueLength != null){
+		for(var i = 0; i < jsonsLength; i++){
+			//json = eval('(' + json + ')');
+			//alert("ciao");
+			jsons[i] = eval('('+localStorage.getItem('jsons '+ i +' for ' + center[0])+')');
+			alert("Json loaded: " + JSON.stringify(jsons[i]));
+		}
+		
+		for(var i = 0; i < nodeValueLength; i++){
+			nodeValue[i] = localStorage.getItem('nodeValue '+ i +' for '+center[0]);
+			alert("nodeValue[i].id loaded: " + nodeValue[i].id);
+		}
+		
+		//for(var jsonObject in jsons){
+		for(var i = 0; i < jsons.length; i++){
+			alert("jsonObject in iteration of jsons: " + jsons[i]);
+			overgraph.loadJSON(jsons[i]);
+		}
+		
+		overgraph.refresh();
+		overgraph.refresh();
+		
+		//The status of the checkboxes has to be checked too!
+		//checkAll();
+		turnBlack(true);
+		
+		
+	}
+	
+	else{
+		alert("Warning: No previously tree saved!");
 	}
 }
 

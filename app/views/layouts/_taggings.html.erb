@@ -16,7 +16,7 @@
 
 	
     <% @taggings.each do |t| %>
-	    <tr>
+	    <tr class="tagsTable">
 				<td>
 					<%= link_to t.tag.attributes["type"], {:controller=>"tag", :action=>"cloud", :type_name=>t.tag.attributes["type"]} %>
 		        </td>

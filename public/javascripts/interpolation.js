@@ -14,7 +14,9 @@
  var colorTable = [];
  
  startHeatMap();
- 
+ /**
+ * Function to start all the basic functions for the heatmap.
+ */
  function startHeatMap(){
  	createSquareTable();
  	createLUT();
@@ -27,6 +29,9 @@
 	}
  }
  
+ /**
+ * Creates the color table that will contain all the color values following a gaussian curve.
+ */
  function createColorTable(){
  	for(var i = 0; i < 500; i++){
 		colorTable[i] = gauss(i)*255;
@@ -35,6 +40,9 @@
  }
  
  //Gaussian function
+ /**
+ * Gaussian function.
+ */
 function gauss(x){
 	//var a, b, c;
 	return Math.exp(-0.0001*x*x);
@@ -44,6 +52,9 @@ function gauss(x){
 }
  
  //Create square table
+ /**
+ * Function that creates the table of squares used to speed up computations.
+ */
  function createSquareTable(){
     var width = generalCanvasWidth;
     var height = generalCanvasHeight;
@@ -53,6 +64,9 @@ function gauss(x){
  }
  
 //Create LUT
+/**
+ * Function that creates the lookup table that will contain all the gaussian values. (MAYBE Not used anymore)
+ */
 function createLUT(){
 	var infovisElement = document.getElementById('infovis');
 	//alert("asd");
@@ -69,6 +83,9 @@ function createLUT(){
 }
 
 //Getting the # of Alternatives of an Issue
+/**
+ * Gets the gaussian value of a issue node.
+ */
 function getIssueValue(nodeId){
 	for(var i = 0; i < nodeValue.length; i++){
 		if(nodeValue[i].id == nodeId){
@@ -80,6 +97,9 @@ function getIssueValue(nodeId){
 }
 
 //Normalize the value computed
+/**
+ * Computes the normalization sum used when computing the heatmap.
+ */
 function normalizationSum(){
 	/*var sum = 0;
 	for(var i = 0; i < nodeValue.length; i++)
@@ -94,6 +114,9 @@ function normalizationSum(){
 }
 
 //Find the value of the issue node into the nodeValue array
+/**
+ * Finds the value of the issue node in that particular moment.
+ */
 function findNodeValue(nodeId){
 	for(var i = 0; i < nodeValue.length; i++){
 		if(nodeValue[i].id == nodeId)
@@ -119,6 +142,9 @@ var pixel;
 var normSum;
 var finalResult;
 //Creates the heat map each time the graph is redrawn
+/**
+ * Big function that computes and draws the map. 
+ */
 function createMap(){
 	position = findPos(document.getElementById('infovis'));
 	//Get all the issue nodes (and fill the array)
@@ -145,12 +171,23 @@ function createMap(){
 	//For each pixel then do something
 	// Get a reference to the element.
 	var canvasElement = document.getElementById('newCanvas');
+	//alert(canvasElement);
 	context = canvasElement.getContext('2d');
 	
 	// Create an ImageData object.
 	// read the width and height of the canvas
-    width = parseInt(canvasElement.getAttribute("width"));
-    height = parseInt(canvasElement.getAttribute("height"));
+	
+	if(popUpVariable){
+		width = document.getElementById('newCanvas').offsetWidth;
+		height = document.getElementById('newCanvas').offsetHeight;
+		//alert(width);
+	}
+	
+	else{
+		width = parseInt(canvasElement.getAttribute("width"));
+    	height = parseInt(canvasElement.getAttribute("height"));
+	}
+	
 	imgd = context.createImageData(width, height);
 	var i,j;
 	var issueLength = issues.length;
@@ -162,7 +199,7 @@ function createMap(){
 			
 			
 		
-		pixel = [j + position[0] - 12, i + position[1] - 12];
+		pixel = [j + position[0] + 35, i + position[1] + 15];
 		result = 0;
 		
 		for(var k = 0; k < issueLength; k++){
@@ -235,6 +272,9 @@ function createMap(){
 }
 
 //Compute the value of the color in the heatmap
+/**
+ * Computes the color value of a particular pixel. Now implemented in createMap().
+ */
 function computeColorValue(x, y){
 	
 	x = x + position[0] - 12;
@@ -304,6 +344,9 @@ function computeColorValue(x, y){
 }
 
 //Compute the value of the function
+/**
+ * Computes the gaussian value of a pixel. Implemented in createMap().
+ */
 function gaussianFunction(pixel, node){
 	if (node == undefined) {
 		return 0;
@@ -348,6 +391,9 @@ function gaussianFunction(pixel, node){
 
 var half
 //Binary search to squareTable to speed up computations
+/**
+ * Binary search to speed up square root computations.
+ */
 function binarySearch(squaredValue){
 	if(squaredValue == 0)
 		return 0;
@@ -375,6 +421,9 @@ function binarySearch(squaredValue){
 }
 
 //Set the pixel values
+/**
+ * Sets the color value of a particular pixel.
+ */
 function setPixel(imageData, x, y, r, g, b, a) {
     index = (x + y * imageData.width) * 4;
     imageData.data[index+0] = r;
@@ -384,7 +433,11 @@ function setPixel(imageData, x, y, r, g, b, a) {
 }
 
 //Turn all black
-function turnBlack(){
+/**
+ * Turns all the canvas to black. Used when resetting the tree.
+ * @param {Object} Flag used to check if the function was called from the reset button.
+ */
+function turnBlack(flag){
 	// Get a reference to the element.
 	var canvasEl = document.getElementById('newCanvas');
 	var context = canvasEl.getContext('2d');
@@ -407,11 +460,16 @@ function turnBlack(){
 	context.putImageData(imgd, 0, 0);
 	
 	//Keep the first element of nodeValue (the center)
-	var firstElement = nodeValue[0];
-	nodeValue = [];
-	nodeValue.push(firstElement);
-	
-	createMap();
+	if (flag != null) {
+		createMap();
+	}
+	else {
+		var firstElement = nodeValue[0];
+		nodeValue = [];
+		nodeValue.push(firstElement);
+		
+		createMap();
+	}
 }
 
 //Some random text to be deleted soon

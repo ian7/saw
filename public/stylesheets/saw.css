@@ -293,7 +293,7 @@ ul{
 	*/
 }
 /*---------------------#center table start---------------------*/
-#center table,th,td{
+table,th,td{
 	position:relative;
 	border:none;
 	border-collapse:collapse;
@@ -301,7 +301,7 @@ ul{
 	font-size:1em;
 	line-height:1.5em
 }
-#center table{
+#center table.artifactDetails{
 	min-width:400px;
 	background:#000000;
 	-webkit-border-radius:6px;
@@ -310,6 +310,17 @@ ul{
 	-webkit-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
 	-moz-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
 }
+
+#center table.tagsTable{
+	min-width:400px;
+	background:#000000;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+	-webkit-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
+	-moz-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
+}
+
 #center table.dynamic td:nth-last-child(-n+1){
 	text-align:right;
 }
@@ -341,8 +352,11 @@ ul{
 	border-right:1px solid #aaa;
 }
 
-#center tbody tr:nth-child(odd) { background-color:#eeeeee; }
-#center tbody tr:nth-child(even) { background-color:#cccccc; }
+#center tbody tr.artifactDetails:nth-child(odd) { background-color:#eeeeee; }
+#center tbody tr.artifactDetails:nth-child(even) { background-color:#cccccc; }
+
+#center tbody tr.tagsTable:nth-child(odd) { background-color:#eeeeee; }
+#center tbody tr.tagsTable:nth-child(even) { background-color:#cccccc; }
 
 #center tfoot td, tfoot th{
 	border:none;
@@ -653,18 +667,26 @@ div.black h2, div.petrol h2 {
 	mid-width: 200px;
 	right: 0px;
 	/*width: 35%;
-	top: 50%;
+	top: 50%; */
 	z-index = 10;
 	filter:alpha(opacity = 50); 
    -moz-opacity: 0.5; 
-   opacity: 0.5;*/
+   opacity: 0.5;
+   background-color: none;
+}
+
+table.infotable{
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+	-webkit-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
+	-moz-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
+	background-color: none;
 }
 table.infotable th {
-	background-color: black !important;
 	color: #fff !important ;
 	}
 table.infotable td {
-	background-color: black !important;
 	color: #fff !important ;
 	}
 /*---------------------infovis end---------------------*/

@@ -38,7 +38,7 @@
 </div>
 <div id="issueDetails" class="artifactDetails">
     <table class="artifactDetails">
-        <tr>
+        <tr class="artifactDetails">
             <th>
                 Id:
             </th>
@@ -46,7 +46,7 @@
                 <%=h @issue.id %>
             </td>
         </tr>
-        <tr>
+        <tr class="artifactDetails">
             <th>
                 Name:
             </th>
@@ -54,7 +54,7 @@
                 <%=h @issue.name %>
             </td>
         </tr>
-        <tr>
+        <tr class="artifactDetails">
             <th>
                 Description:
             </th>
@@ -68,7 +68,7 @@
         </tr>
 		
 		<% @attributes.each do |attribute| %>
-		<tr>
+		<tr class="artifactDetails">
 			<th>
 				<%= attribute.attribute_name %>:
 			</th>
@@ -91,10 +91,10 @@
 	</div>
 </div>
 <h2>Related Alternatives:</h2>
-<table>
+<table class="artifactDetails">
     <% @alternative_relations.each do |r| %>
 	<% alternative = r.origin_taggable %>
-    <tr>
+    <tr class="artifactDetails">
         <td>
             <a href="<%= alternative_url(alternative.id) %>"><%= alternative.name %></a>
         </td>
@@ -150,7 +150,7 @@
 <%= javascript_include_tag("jit.js") %>
 <%= javascript_include_tag("hypertreevis.js") %>
 <div id="infovis" class="show">
-	<canvas id="newCanvas" width="1184" height="550" style="position: absolute; top: 0pt; left: 0pt; width: 1184px; height: 550px;"></canvas>
+	<canvas id="newCanvas" width="1184" height="550" style="position: absolute; top: 0pt; left: 0pt; width: 1300px; height: 600px;"></canvas>
 	<div class="infonode" id="infonode"></div>
 	<div id="checkboxes">
 	<form name="check">
@@ -160,7 +160,8 @@
 	</form>
 </div>
 </div>
-<input type="button" onclick="resetView()" value="Reset The View"><br>
+<input type="button" onclick="resetView()" value="Reset The View"> <input type="button" onclick="saveTree()" value="Save Tree"><br>
+<input type="button" onclick="loadTree()" value="Load Previously Saved Tree">
 </div></div>
 </div>
 

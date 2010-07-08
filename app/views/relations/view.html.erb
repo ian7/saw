@@ -9,6 +9,7 @@
 		<%= javascript_include_tag("wz_jsgraphics.js") %>
 		<%= javascript_include_tag("hypertreevis.js") %>
 		<%= javascript_include_tag("public_smo_scripts.js")%>
+		
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 				<LINK REL=StyleSheet HREF="/stylesheets/saw.css" TYPE="text/css" MEDIA=screen>
 		<title>Graph PopUp</title>
@@ -29,7 +30,7 @@
 	</head>
 	<body>
 		<div id="log"></div>
-
+		<canvas id="newCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"> </canvas>
 		<div id="infovis" class="show"><div class="infonode" id="infonode"></div>
 				<div id="checkboxes">
 	<form name="check">
@@ -39,6 +40,7 @@
 	</form>
 </div>
 		</div>
+		<%= javascript_include_tag("interpolation.js") %>
 		<script type="text/javascript">
 			var jsons = window.opener.jsons;
 			overgraph = window.opener.overgraph;
@@ -49,5 +51,6 @@
 			callback(jsons[0], true);
 			document.getElementById('infonode').style.top = '70%';
 		</script>
+		
 	</body>
 </html>
