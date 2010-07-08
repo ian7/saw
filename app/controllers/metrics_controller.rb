@@ -9,7 +9,7 @@ class MetricsController < ApplicationController
     @descriptiveness_level = 0
     if id != nil
       t=Taggable.find id
-      @descriptiveness_level = t.tags.count
+      @descriptiveness_level = t.tags.length
     end
     
     # in case there is node list, then return json
@@ -25,7 +25,7 @@ class MetricsController < ApplicationController
         
         if Taggable.exists? node
           t = Taggable.find node
-          retval[node] = t.tags.count  
+          retval[node] = t.tags.length  
         end
       end
       
