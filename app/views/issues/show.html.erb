@@ -6,19 +6,34 @@
 <%= javascript_include_tag("jquery-ui-1.8.custom.min.js") %>
 <%= javascript_include_tag("public_smo_scripts.js") %>
 
+
+   <script type="text/javascript"  src="http://js-hotkeys.googlecode.com/files/jquery.hotkeys-0.7.9.min.js"></script>
+   
 <!-- script for jQuery tabs -->
   <script>
-  jQuery(document).ready(function() {
-    jQuery("#tabs").tabs();
-  });
-  </script>
+            jQuery(document).ready(function(){
+                  //initialize tabs
+                  $tabs = jQuery('#tabs').tabs();
+                  //nothing fancy, just iterate over a number set and generate the shortcuts
+             
+                  jQuery.each([1,2,3,4,5,6,7,8,9], function(index){
+                      jQuery(document).bind('keydown', 'alt+'+index, function(e){
+                           $tabs.tabs('select', (index - 1));
+                           e.preventDefault();
+                       });
+                  });
+                 
+              });
+    </script>
 <!-- end of script -->
 
 <%#= render :partial => "layouts/ribbon" %>
 <div id="tabs">
 <ul> 
     <li><a href="#fragment-1"><%=h @issue.name %> details</a></li> 
-    <li><a href="#fragment-2">Visualization</a></li> 
+    <li><a href="#fragment-2">Visualization</a></li>
+    <li><a href="#fragment-3">Alternatives</a></li> 
+    <li><a href="#fragment-4">Related</a></li> 
 </ul>  
     <div id="fragment-1">
 
@@ -90,6 +105,8 @@
 		<%= link_to image_tag("back.png"), issues_url %> 
 	</div>
 </div>
+</div>
+<div id="fragment-3">
 <h2>Related Alternatives:</h2>
 <table>
     <% @alternative_relations.each do |r| %>
@@ -163,6 +180,10 @@
 <input type="button" onclick="resetView()" value="Reset The View"><br>
 </div></div>
 </div>
+
+<div id="fragment-4">nothing here so far</div>
+<div id="fragment-5">nothing here so far</div>
+
 <%= javascript_include_tag("interpolation.js") %>
 
 

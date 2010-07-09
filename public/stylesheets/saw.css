@@ -497,8 +497,8 @@ div.overlay {
 	/* growing background image */
 	/* MN: background-image:url(../images/white.png); */
 	/* dimensions after the growing animation finishes  */
-	width:600px;
-	height:470px;		
+	width:70%;
+	height:70%;		
 	/* initially overlay is hidden */
 	display:none;
 	/* some padding to layout nested elements nicely  */
@@ -508,11 +508,11 @@ div.overlay {
 #overlay {
 	background-image:url(../images/transparent.png);
 	color:#efefef;
-	height:450px;
+	height:70%;
 }
 /* container for external content. uses vertical scrollbar, if needed */
 div.contentWrap {
-	height:441px;
+	height:100%;
 	overflow-y:auto;
 }
 /* default close button positioned on upper right corner */
