@@ -33,7 +33,8 @@
     <li><a href="#fragment-1"><%=h @issue.name %> details</a></li> 
     <li><a href="#fragment-2">Visualization</a></li>
     <li><a href="#fragment-3">Alternatives</a></li> 
-    <li><a href="#fragment-4">Related</a></li> 
+    <li><a href="#fragment-4">Related to</a></li>
+    <li><a href="#fragment-5">Related from</a></li> 
 </ul>  
     <div id="fragment-1">
 
@@ -179,11 +180,29 @@
 </div>
 <input type="button" onclick="resetView()" value="Reset The View"><br>
 </div></div>
+
+
+<div id="fragment-4">
+  <table>
+<!--
+        <tr>
+        <th style="text-align: center;">Name</th>
+        <th style="text-align: center;">Description</th>
+      </tr>
+      
+-->
+    <% @taggable=@issue%>
+    <%= render :partial=>"relations/list_to"  %>
+  </table>
 </div>
 
-<div id="fragment-4">nothing here so far</div>
-<div id="fragment-5">nothing here so far</div>
+<div id="fragment-5">
+    <% @taggable=@issue%>
+    <%= render :partial=>"relations/list_from"  %>
+</div>
 
+
+</div>
 <%= javascript_include_tag("interpolation.js") %>
 
 

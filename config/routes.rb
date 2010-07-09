@@ -4,6 +4,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :issues  
   
+  map.resources :issues, :has_many => [:alternatives, :tags]
+  
   map.resources :dynamic_types
   
   map.resources :dynamic_type_attributes
@@ -13,6 +15,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tags
   
   map.connect 'taggables/search', :controller=>'taggables', :action=>'search'
+  
+  # MN: that rocks !
+  map.connect 'issues/:id/relations/:action', :controller=>'relations'
   
   map.resources :taggables
 

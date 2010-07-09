@@ -1,14 +1,14 @@
 <% @taggings.each do |tagging| %>
 	<tr>
 		<th>
-			<%= link_to tagging.taggable.name, taggable_path(tagging.taggable)  %>
+			<%= link_to tagging.tip_taggable.name, taggable_path(tagging.tip_taggable)  %>
 			<%#= link_to tagging.taggable.name, url_for( :controller=>tagging.taggable.attributes["type"].downcase.pluralize, :action=>"show", :id=>tagging.taggable.id )  %>			
 			<%# tagging.taggable.name%>
 			
 		</th>
 		<td>
-			<% if tagging.taggable["Description"] != nil %>
-				<%= link_to tagging.taggable["Description"].value, taggable_path(tagging.taggable) %>
+			<% if tagging.tip_taggable["Description"] != nil %>
+				<%= link_to tagging.tip_taggable["Description"].value, taggable_path(tagging.tip_taggable) %>
 			<% else %>
 				<i>(none)</i>
 			<% end %>

@@ -1,0 +1,14 @@
+<% @taggables.each do |taggable| %>
+  <tr>
+    <th>
+      <%= link_to taggable.name, taggable_path(taggable)  %>
+    </th>
+    <td>
+      <% if taggable["Description"] != nil %>
+        <%= link_to taggable["Description"].value, taggable_path(taggable) %>
+      <% else %>
+        <i>(none)</i>
+      <% end %>
+    </td>
+  </tr>
+<%end%>
