@@ -8,6 +8,7 @@ class RelationsController < ApplicationController
     respond_to do |format|
       format.json { render :json => taggable_instance.relations_from }
 #      format.xml  { render :xml => taggable_instance.relations_from }
+      format.html { @taggings =  taggable_instance.relations_from; }
     end
   end
 
@@ -16,6 +17,7 @@ class RelationsController < ApplicationController
     respond_to do |format|
       format.json { render :json => taggable_instance.relations_to }
 #      format.xml  { render :xml => taggable_instance.relations_from }
+      format.html { @taggings =  taggable_instance.relations_to; }
     end
   end
   
