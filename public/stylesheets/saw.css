@@ -672,7 +672,7 @@ div.black h2, div.petrol h2 {
 	filter:alpha(opacity = 50); 
    -moz-opacity: 0.5; 
    opacity: 0.5;
-   background-color: none;
+   background-color: rgba(0,0,0,0.25);
 }
 
 table.infotable{
