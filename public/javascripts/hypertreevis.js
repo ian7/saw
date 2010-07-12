@@ -972,3 +972,35 @@ function loadTree(){
 	}
 }
 
+//getMetric([69, 80]);
+/**
+ * Method to get the metrics of the nodes. Used (for now) with Issue nodes.
+ * @param {Array[int]} Array of node ids of the nodes we are interested.
+ */
+ function getMetric(ids){
+  var url = "../metrics/descriptiveness?nodes=["+ids+"]";
+  //alert(url);
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open('GET', url, true);
+  xmlhttp.onreadystatechange = function() {
+    if(xmlhttp.readyState == 3) {
+      
+    }
+    if (xmlhttp.readyState == 4) {
+      processMetricsResult(xmlhttp.responseText, ids);
+    }
+  }
+  xmlhttp.send(null);
+ }
+ 
+ /**
+  * Function to make use of the metrics fetched in getMetrics()
+  * @param {String} A JSON object still to be evaluated.
+  * @param {Array[int]} Array of node ids of the nodes we are interested. 
+  */
+ function processMetricsResult(metricJson, ids){
+   var metrics = eval('('+metricJson+')');
+   for(var i = 0; i < ids.length; i++){
+    alert(metrics[ids[i]] + " " + ids[i]);
+  }
+ }

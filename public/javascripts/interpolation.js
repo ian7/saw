@@ -141,6 +141,7 @@ var result;
 var pixel;
 var normSum;
 var finalResult;
+var denominator = 8;
 //Creates the heat map each time the graph is redrawn
 /**
  * Big function that computes and draws the map. 
@@ -193,8 +194,9 @@ function createMap(){
 	var issueLength = issues.length;
 	var squareTableLength = squareTable.length;
 	//Loop for each pixel and compute the value
-	for (i = 0; i < height; i++) {
-		for (j = 0; j < width; j++) {
+	//alert(height * 1/denominator);
+	for (i = 0; i < height *1/denominator; i++) {
+		for (j = 0; j < width * 1/denominator; j++) {
 			/*colorValue = computeColorValue(j, i);*/
 			
 			
@@ -212,18 +214,21 @@ function createMap(){
 			}
 			
 			flag = true;
-			deltaX = pixel[0] - thisNode[0];
-			
+			//alert(thisNode[0] * 1/denominator);
+			deltaX = Math.floor(pixel[0] * 1/denominator) - Math.floor(thisNode[0] * 1/denominator);
+			//alert(deltaX);
 			if(deltaX < 0)
 				deltaX = -deltaX;
 				
-				
-			deltaY = pixel[1] - thisNode[1];
+			//alert("pixel[0]: "+ pixel[0] * 1/denominator + " pixel[1] " + pixel[1] * 1/denominator)	
+			deltaY = Math.floor(pixel[1] * 1/denominator) - Math.floor(thisNode[1] * 1/denominator);
+			//alert(pixel[1]);
 			if(deltaY < 0)
 				deltaY = -deltaY;
-				
+			//alert(squareTable[deltaY] + squareTable[deltaY]);
 			squaredValue = squareTable[deltaX] + squareTable[deltaY];
-			if (squaredValue > 9800 * 5) {
+			//alert(squaredValue);
+			if (squaredValue > (9800 * 5) * 1/denominator) {
 				finalResult = 0;
 				result += issues[k].value * finalResult;
 				continue;
@@ -231,6 +236,7 @@ function createMap(){
 			//alert(squaredResult);
 			
 			if (squaredValue == 0) {
+			  //alert("lol");
 				finalResult = 255;
 				result += issues[k].value * finalResult;
 				continue;
@@ -249,10 +255,11 @@ function createMap(){
 				half = Math.round((end - start) / 2) + start;
 			}
 			distance = start;
+			//alert(distance);
 			//alert("inside: distance = " + distance +" pixel = "+ pixel[0] + " " + pixel[1] + " node = " + thisNode[0] + " " + thisNode[1] + " squaredValue");
 			finalResult =  colorTable[distance];
 			result += issues[k].value * finalResult;
-			
+			//if(result > 0) alert(result);
 		}
 		
 		result = result / normSum;
@@ -384,7 +391,7 @@ function gaussianFunction(pixel, node){
 		half = Math.round((end - start) / 2) + start;
 	}
 	distance = start;
-	alert("distance outside = " + distance);
+	//alert("distance outside = " + distance);
 	
 	return colorTable[distance];
 }
