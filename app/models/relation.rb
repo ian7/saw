@@ -44,12 +44,39 @@ class Relation < Taggable
 
   
   
-  def self.make_new( type )
+def self.make_new( type )
     t = Taggable.new
     t.type = type
     return t
-  end
-  
+end
+
+
+def to_hash()
+      c = {}    
+      c["relation"] = type
+      # c["data"]["direction"]="to"
+      
+      # this kind of sucks.....
+      if type == 'Influences'
+        c["relationColor"] = "#0000ff"
+      end
+      
+      if type == 'SolvedBy'
+        c["relationColor"] = "#ff0000"
+      end
+
+      if type == 'Tagging'
+        c["relationColor"] = "#ffff00"
+      end
+      
+     tags.each do |tag_instance|
+        c[tag_instance.type]=tag_instance.name
+      end
+
+      c["children"] = [];
+      
+      return c.to_hash;
+end  
 
 
 end
