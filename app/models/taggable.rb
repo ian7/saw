@@ -124,6 +124,14 @@ def related_to( relation_type = "", taggable_type = "" )
   return related_taggables
 end
 
+### returns taggables to which this one is both related to and related from
+def related( relation_type = "", taggable_type = "" )
+  related_taggables = [];
+  related_taggables.concat related_from( relation_type, taggable_type );
+  related_taggables.concat related_to( relation_type, taggable_type );
+  return related_taggables;
+end
+
 def to_hash
   h={}
   h["name"]=name
