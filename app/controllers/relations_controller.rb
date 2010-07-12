@@ -94,10 +94,10 @@ def tree
     
     taggable_instance = Taggable.find(params[:id])
     
-    @@max_degree = params[:degree]
+    max_degree = params[:degree]
  
-    if @@max_degree == nil
-      @@max_degree = 0
+    if max_degree == nil
+      max_degree = 3
     end
 
     # just to hack default parameter for related_from and _to
@@ -109,7 +109,7 @@ def tree
      
     children_taggables = taggable_instance.related(params[:type])
      
-    h = related_to_hash( taggable_instance, children_taggables, 0, (params[:degree]).to_i());
+    h = related_to_hash( taggable_instance, children_taggables, 0, max_degree );
 
 
     
