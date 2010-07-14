@@ -141,13 +141,13 @@ var result;
 var pixel;
 var normSum;
 var finalResult;
-var denominator = 8;
+var denominator = 1;
 //Creates the heat map each time the graph is redrawn
 /**
  * Big function that computes and draws the map. 
  */
 function createMap(){
-	position = findPos(document.getElementById('infovis'));
+	position = findPos(document.getElementById('mycanvas-canvas'));
 	//Get all the issue nodes (and fill the array)
 	normSum = normalizationSum();
 	issues = [];
@@ -201,7 +201,7 @@ function createMap(){
 			
 			
 		
-		pixel = [j + position[0] + 35, i + position[1] + 15];
+		pixel = [j + position[0] - 35, i + position[1] - 15];
 		result = 0;
 		
 		for(var k = 0; k < issueLength; k++){
@@ -258,6 +258,7 @@ function createMap(){
 			//alert(distance);
 			//alert("inside: distance = " + distance +" pixel = "+ pixel[0] + " " + pixel[1] + " node = " + thisNode[0] + " " + thisNode[1] + " squaredValue");
 			finalResult =  colorTable[distance];
+			//if(distance < 40) alert(distance);
 			result += issues[k].value * finalResult;
 			//if(result > 0) alert(result);
 		}

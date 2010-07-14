@@ -924,7 +924,7 @@ function saveTree(){
 	//alert(nodeValue.length);
 	
 	localStorage.setItem('length of nodeValue for '+center[0], nodeValue.length);
-	//alert(nodeValue.length);
+	alert(nodeValue.length);
 	for (var i = 0; i < nodeValue.length; i++) {
 		localStorage.setItem('nodeValue '+ i +' for ' + center[0], nodeValue[i]);
 	}
@@ -944,12 +944,21 @@ function loadTree(){
 			//alert("ciao");
 			jsons[i] = eval('('+localStorage.getItem('jsons '+ i +' for ' + center[0])+')');
 			alert("Json loaded: " + JSON.stringify(jsons[i]));
+			document.writeln(JSON.stringify(jsons[i]));
 		}
 		
 		for(var i = 0; i < nodeValueLength; i++){
 			nodeValue[i] = localStorage.getItem('nodeValue '+ i +' for '+center[0]);
 			alert("nodeValue[i].id loaded: " + nodeValue[i].id);
 		}
+		
+		  var lbs = overgraph.fx.labels;
+      for (var label in lbs) {
+        if (lbs[label]) {
+          lbs[label].parentNode.removeChild(lbs[label]);
+        }
+    }
+  overgraph.fx.labels = {};
 		
 		//for(var jsonObject in jsons){
 		for(var i = 0; i < jsons.length; i++){
@@ -971,7 +980,6 @@ function loadTree(){
 		alert("Warning: No previously tree saved!");
 	}
 }
-
 //getMetric([69, 80]);
 /**
  * Method to get the metrics of the nodes. Used (for now) with Issue nodes.
@@ -1000,6 +1008,7 @@ function loadTree(){
   */
  function processMetricsResult(metricJson, ids){
    var metrics = eval('('+metricJson+')');
+   //alert(metrics[69]);
    for(var i = 0; i < ids.length; i++){
     alert(metrics[ids[i]] + " " + ids[i]);
   }

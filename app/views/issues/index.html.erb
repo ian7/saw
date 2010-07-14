@@ -1,8 +1,8 @@
 
 <h1>Listing of issues</h1>
-<table>
+<table class="tableOfIssues">
     <thead>
-        <tr>
+        <tr class="tableOfIssues">
             <!--<th>
                 Type
             </th>-->
@@ -24,13 +24,13 @@
         </tr>
     </thead>
     <tfoot>
-        <tr>
+        <tr class="tableOfIssues">
             <th>
             </th>
         </tr>
     </tfoot>
     <% @issues.each do |issue| %>
-    <tr>
+    <tr class="tableOfIssues">
         <!--<td>
             <a href="<%= issue_url(issue.id) %>"><%=h issue.attributes["type"] %></a>
         </td>-->

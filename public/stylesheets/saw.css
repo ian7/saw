@@ -270,6 +270,23 @@ ul{
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
+/*---------------------Issue List Start-----------------*/
+table.tableOfIssue{
+  min-width:400px;
+  background:#000000;
+  -webkit-border-radius:6px;
+  -moz-border-radius:6px;
+  border-radius:6px;
+  -webkit-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
+  -moz-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
+  border:none;
+  border-collapse:collapse;
+  line-height:1.5em
+}
+
+tr.rableOfIssues:nth-child(odd) { background-color:#eeeeee; }
+tr.tableOfIssues:nth-child(even) { background-color:#cccccc; }
+/*---------------------Issue List End-------------------*/
 /*---------------------center start---------------------*/
 #center {
 	width: 90%;
