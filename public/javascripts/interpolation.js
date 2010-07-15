@@ -142,6 +142,8 @@ var pixel;
 var normSum;
 var finalResult;
 var denominator = 1;
+var issuesId = [];
+var issuesPosition = [];
 //Creates the heat map each time the graph is redrawn
 /**
  * Big function that computes and draws the map. 
@@ -153,7 +155,11 @@ function createMap(){
 	issues = [];
 	for(var i in overgraph.graph.nodes) {
  		if(overgraph.graph.nodes[i].data.typology == "Issue"){
-			var el = document.getElementById(overgraph.graph.nodes[i].id);
+ 		  var el = document.getElementById(overgraph.graph.nodes[i].id);
+ 		  
+ 		  issuesId.push(overgraph.graph.nodes[i].id);
+ 		  issuesPosition.push(findPos(el));
+			
 			issues.push({
 				//postion: array [x, y]
 				position: findPos(el),
@@ -168,6 +174,14 @@ function createMap(){
 				}
 			}
 		} 
+	}
+	getMetric(issuesId, issuesPosition);
+	setTimeout('drawMap()', 100);
+}
+function drawMap(){
+	
+	for(var i = 0; i < nodeValue.length; i++){
+	  alert(nodeValue[i].id);
 	}
 	//For each pixel then do something
 	// Get a reference to the element.
@@ -191,12 +205,12 @@ function createMap(){
 	
 	imgd = context.createImageData(width, height);
 	var i,j;
-	var issueLength = issues.length;
+	var issueLength = nodeValue.length;
 	var squareTableLength = squareTable.length;
 	//Loop for each pixel and compute the value
 	//alert(height * 1/denominator);
-	for (i = 0; i < height *1/denominator; i++) {
-		for (j = 0; j < width * 1/denominator; j++) {
+	for (i = 0; i < height; i++/*(1*denominator)*/) {
+		for (j = 0; j < width; j++) {
 			/*colorValue = computeColorValue(j, i);*/
 			
 			
@@ -205,11 +219,11 @@ function createMap(){
 		result = 0;
 		
 		for(var k = 0; k < issueLength; k++){
-			thisNode = issues[k].position;
+			thisNode = nodeValue[k].position;
 						
 			if (thisNode == undefined) {
 				finalResult = 0;
-				result += issues[k].value * finalResult;
+				result += nodeValue[k].value * finalResult;
 				continue;
 			}
 			
@@ -230,7 +244,7 @@ function createMap(){
 			//alert(squaredValue);
 			if (squaredValue > (9800 * 5) * 1/denominator) {
 				finalResult = 0;
-				result += issues[k].value * finalResult;
+				result += nodeValue[k].value * finalResult;
 				continue;
 			}
 			//alert(squaredResult);
@@ -238,7 +252,7 @@ function createMap(){
 			if (squaredValue == 0) {
 			  //alert("lol");
 				finalResult = 255;
-				result += issues[k].value * finalResult;
+				result += nodeValue[k].value * finalResult;
 				continue;
 			}
 				
@@ -259,7 +273,7 @@ function createMap(){
 			//alert("inside: distance = " + distance +" pixel = "+ pixel[0] + " " + pixel[1] + " node = " + thisNode[0] + " " + thisNode[1] + " squaredValue");
 			finalResult =  colorTable[distance];
 			//if(distance < 40) alert(distance);
-			result += issues[k].value * finalResult;
+			result += nodeValue[k].value * finalResult;
 			//if(result > 0) alert(result);
 		}
 		
@@ -290,8 +304,8 @@ function computeColorValue(x, y){
 	pixel = [x, y];
 	result = 0;
 	
-	for(var k = 0; k < issues.length; k++){
-		thisNode = issues[k].position;
+	for(var k = 0; k < nodeValue.length; k++){
+		thisNode = nodeValue[k].position;
 	
 		/*result += issues[k].value * gaussianFunction(pixel, thisNode);*/
 		

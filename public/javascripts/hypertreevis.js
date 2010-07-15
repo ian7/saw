@@ -37,8 +37,15 @@ var popUpVariable = false;
  * Function to add an object that contains a node ID, a value and a position to the nodeValue array.
  * @param {int} ID of the node we want to add.
  */
-function addNodeValue(nodeId){
-	nodeValue.push({id: nodeId, value: 0, pos: []});
+function addNodeValue(nodeId, value, position){
+  for(var i = 0; i<nodeValue.length; i++){
+    if(nodeId === nodeValue[i].id) return; //node is already added
+  }
+  
+  value = value === undefined ? 0 : value; //check for the undefineteness of the value
+  
+	nodeValue.push({id: nodeId, value: value, position: position});
+	//alert(value);
 	return true;
 }
 
@@ -918,13 +925,14 @@ function saveTree(){
 	//alert(JSON.stringify(jsons[0]));
 	for (var i = 0; i < jsons.length; i++) {
 		localStorage.setItem('jsons '+ i +' for ' + center[0], JSON.stringify(jsons[i]));
+		//document.writeln(JSON.stringify(jsons[i]);
 		//alert("Json to save: " + JSON.stringify(jsons[i]));
 	}
 	
 	//alert(nodeValue.length);
 	
 	localStorage.setItem('length of nodeValue for '+center[0], nodeValue.length);
-	alert(nodeValue.length);
+	//alert(nodeValue.length);
 	for (var i = 0; i < nodeValue.length; i++) {
 		localStorage.setItem('nodeValue '+ i +' for ' + center[0], nodeValue[i]);
 	}
@@ -943,13 +951,15 @@ function loadTree(){
 			//json = eval('(' + json + ')');
 			//alert("ciao");
 			jsons[i] = eval('('+localStorage.getItem('jsons '+ i +' for ' + center[0])+')');
-			alert("Json loaded: " + JSON.stringify(jsons[i]));
-			document.writeln(JSON.stringify(jsons[i]));
+			//alert("Json loaded: " + JSON.stringify(jsons[i]));
+			var print;
+			//typeof jsons[i].children === 'string' ? print = "string" : print = "no string"
+			//document.writeln(print);
 		}
 		
 		for(var i = 0; i < nodeValueLength; i++){
 			nodeValue[i] = localStorage.getItem('nodeValue '+ i +' for '+center[0]);
-			alert("nodeValue[i].id loaded: " + nodeValue[i].id);
+			//alert("nodeValue[i].id loaded: " + nodeValue[i].id);
 		}
 		
 		  var lbs = overgraph.fx.labels;
@@ -962,7 +972,7 @@ function loadTree(){
 		
 		//for(var jsonObject in jsons){
 		for(var i = 0; i < jsons.length; i++){
-			alert("jsonObject in iteration of jsons: " + jsons[i]);
+			//alert("jsonObject in iteration of jsons: " + jsons[i]);
 			overgraph.loadJSON(jsons[i]);
 		}
 		
@@ -985,7 +995,8 @@ function loadTree(){
  * Method to get the metrics of the nodes. Used (for now) with Issue nodes.
  * @param {Array[int]} Array of node ids of the nodes we are interested.
  */
- function getMetric(ids){
+ function getMetric(ids, pos){
+  //alert(ids.toString());
   var url = "../metrics/descriptiveness?nodes=["+ids+"]";
   //alert(url);
   var xmlhttp = new XMLHttpRequest();
@@ -995,7 +1006,7 @@ function loadTree(){
       
     }
     if (xmlhttp.readyState == 4) {
-      processMetricsResult(xmlhttp.responseText, ids);
+      processMetricsResult(xmlhttp.responseText, ids, pos);
     }
   }
   xmlhttp.send(null);
@@ -1006,10 +1017,14 @@ function loadTree(){
   * @param {String} A JSON object still to be evaluated.
   * @param {Array[int]} Array of node ids of the nodes we are interested. 
   */
- function processMetricsResult(metricJson, ids){
+ function processMetricsResult(metricJson, ids, pos){
+   
    var metrics = eval('('+metricJson+')');
+   //alert(ids.length);
    //alert(metrics[69]);
    for(var i = 0; i < ids.length; i++){
-    alert(metrics[ids[i]] + " " + ids[i]);
+     //alert("lol");
+     //alert(ids[i] + " and metric " + metrics[ids[i]]);
+     addNodeValue(ids[i], metrics[ids[i]], pos[i]);
   }
  }
