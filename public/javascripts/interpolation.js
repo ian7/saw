@@ -119,11 +119,23 @@ function normalizationSum(){
  */
 function findNodeValue(nodeId){
 	for(var i = 0; i < nodeValue.length; i++){
-		if(nodeValue[i].id == nodeId)
-			return nodeValue[i].value;
+		if(nodeValue[i].id == nodeId){
+		    //alert(nodeValue[i].value + " id: "+nodeValue[i].id);
+			 return nodeValue[i].value;
+			}
 	}
 	return 0;
 }
+
+function findNodePosition(nodeId){
+  for(var i = 0; i < nodeValue.length; i++){
+    if(nodeValue[i].id == nodeId){
+      return nodeValue[i].position;
+    }
+  }
+  return undefined;
+}
+
 
 var colorValue;
 var imgd;
@@ -153,11 +165,25 @@ function createMap(){
 	//Get all the issue nodes (and fill the array)
 	normSum = normalizationSum();
 	issues = [];
+	/////////////////////////
 	for(var i in overgraph.graph.nodes) {
+    if(overgraph.graph.nodes[i].data.typology == "Issue"){
+      var el = document.getElementById(overgraph.graph.nodes[i].id);
+      
+      issuesId.push(overgraph.graph.nodes[i].id);
+      issuesPosition.push(findPos(el));
+      alert(findPos(el));
+      
+    }
+  }
+  //drawMap();
+  getMetric(issuesId, issuesPosition);
+  /////////////////////////
+	/*for(var i in overgraph.graph.nodes) {
  		if(overgraph.graph.nodes[i].data.typology == "Issue"){
  		  var el = document.getElementById(overgraph.graph.nodes[i].id);
  		  
- 		  issuesId.push(overgraph.graph.nodes[i].id);
+ 		 /* issuesId.push(overgraph.graph.nodes[i].id);
  		  issuesPosition.push(findPos(el));
 			
 			issues.push({
@@ -174,14 +200,39 @@ function createMap(){
 				}
 			}
 		} 
-	}
-	getMetric(issuesId, issuesPosition);
-	setTimeout('drawMap()', 100);
+	}*/
+	//getMetric(issuesId, issuesPosition);
+	//setTimeout('drawMap()', 100);
 }
 function drawMap(){
+  /////////////
+  for(var i in overgraph.graph.nodes) {
+    if(overgraph.graph.nodes[i].data.typology == "Issue"){
+      var ele = document.getElementById(overgraph.graph.nodes[i].id);
+      
+     /* issuesId.push(overgraph.graph.nodes[i].id);
+      issuesPosition.push(findPos(el));*/
+      alert("position: " + findPos(ele));
+      issues.push({
+        //postion: array [x, y]
+        position: findNodePosition(overgraph.graph.nodes[i].id),
+        //id: int
+        id: overgraph.graph.nodes[i].id,
+        //value: int
+        value: findNodeValue(overgraph.graph.nodes[i].id),
+      });
+      alert(findNodePosition(overgraph.graph.nodes[i].id));
+      for(var j = 0; j < nodeValue.length; j++){
+        if(nodeValue[j].id == overgraph.graph.nodes[i].id){
+          nodeValue[j].pos = findPos(ele);
+        }
+      }
+    } 
+  }
+  ////////////
 	
-	for(var i = 0; i < nodeValue.length; i++){
-	  alert(nodeValue[i].id);
+	for(var i = 0; i < issues.length; i++){
+	  //alert(nodeValue[i].id);
 	}
 	//For each pixel then do something
 	// Get a reference to the element.
@@ -205,7 +256,7 @@ function drawMap(){
 	
 	imgd = context.createImageData(width, height);
 	var i,j;
-	var issueLength = nodeValue.length;
+	var issueLength = issues.length;
 	var squareTableLength = squareTable.length;
 	//Loop for each pixel and compute the value
 	//alert(height * 1/denominator);
@@ -219,11 +270,11 @@ function drawMap(){
 		result = 0;
 		
 		for(var k = 0; k < issueLength; k++){
-			thisNode = nodeValue[k].position;
+			thisNode = issues[k].position;
 						
 			if (thisNode == undefined) {
 				finalResult = 0;
-				result += nodeValue[k].value * finalResult;
+				result += issues[k].value * finalResult;
 				continue;
 			}
 			
@@ -244,7 +295,7 @@ function drawMap(){
 			//alert(squaredValue);
 			if (squaredValue > (9800 * 5) * 1/denominator) {
 				finalResult = 0;
-				result += nodeValue[k].value * finalResult;
+				result += issues[k].value * finalResult;
 				continue;
 			}
 			//alert(squaredResult);
@@ -252,7 +303,7 @@ function drawMap(){
 			if (squaredValue == 0) {
 			  //alert("lol");
 				finalResult = 255;
-				result += nodeValue[k].value * finalResult;
+				result += issues[k].value * finalResult;
 				continue;
 			}
 				
@@ -273,7 +324,7 @@ function drawMap(){
 			//alert("inside: distance = " + distance +" pixel = "+ pixel[0] + " " + pixel[1] + " node = " + thisNode[0] + " " + thisNode[1] + " squaredValue");
 			finalResult =  colorTable[distance];
 			//if(distance < 40) alert(distance);
-			result += nodeValue[k].value * finalResult;
+			result += issues[k].value * finalResult;
 			//if(result > 0) alert(result);
 		}
 		

@@ -1027,4 +1027,5 @@ function loadTree(){
      //alert(ids[i] + " and metric " + metrics[ids[i]]);
      addNodeValue(ids[i], metrics[ids[i]], pos[i]);
   }
+  drawMap();
  }
