@@ -43,7 +43,7 @@ function addNodeValue(nodeId, value, position){
   }
   
   value = value === undefined ? 0 : value; //check for the undefineteness of the value
-  
+  if(nodeId === 69) alert("nodeId === 69: pos: " + position);
 	nodeValue.push({id: nodeId, value: value, position: position});
 	//alert(value);
 	return true;
@@ -159,7 +159,7 @@ function callback(json, pop_up) {
 	jsons[index] = json;
 	index++;
 	
-	var nodeFlag = addNodeValue(json.id);
+	//var nodeFlag = addNodeValue(json.id);
 	
     //init canvas
     //Create a new canvas instance.
@@ -303,10 +303,7 @@ function callback(json, pop_up) {
 	//TEST TO CREATE THE MAP
 	createMap();
 	
-	
-	//Change css of the elements
-	changecss('.ui-tabs', 'display', 'position: relative; padding: .2em; zoom: 1; none !important');
-	changecss('.ui-tabs-hide', 'display', 'none !important');
+
 }
 
 //Processes the new json adding it to the previous one with the sum operation
@@ -323,7 +320,8 @@ function processJson(json, rgraph, oldjson){
 	json = eval( '('+ json +')')
 	//If the node clicked is an issue, do the addNodeValue (since only issues will have the heatmap around)
 	if (json.type == "Issue") {
-		var flag = addNodeValue(json.id);
+		//var flag = addNodeValue(json.id);
+		
 	}
 	jsons.push(json);
 	var nodes = nodesToRemove(json, oldjson);
@@ -486,7 +484,7 @@ function modjson(json){
 			json.children[i].data.$type = "square";
 			json.children[i].data.typology = "Alternative";
 			//alert(nodeValue[nodeValue.length - 1].id);
-			nodeValue[nodeValue.length - 1].value = nodeValue[nodeValue.length - 1].value + 1;
+			//nodeValue[nodeValue.length - 1].value = nodeValue[nodeValue.length - 1].value + 1;
 		}
 		else if(json.children[i].type == "Issue"){
 			json.children[i].data.$type = "star";
@@ -1025,6 +1023,7 @@ function loadTree(){
    for(var i = 0; i < ids.length; i++){
      //alert("lol");
      //alert(ids[i] + " and metric " + metrics[ids[i]]);
+     if(ids[i] === 69) alert(pos[i]);
      addNodeValue(ids[i], metrics[ids[i]], pos[i]);
   }
   drawMap();

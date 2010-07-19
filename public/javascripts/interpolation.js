@@ -119,7 +119,7 @@ function normalizationSum(){
  */
 function findNodeValue(nodeId){
 	for(var i = 0; i < nodeValue.length; i++){
-		if(nodeValue[i].id == nodeId){
+		if(nodeValue[i].id === nodeId){
 		    //alert(nodeValue[i].value + " id: "+nodeValue[i].id);
 			 return nodeValue[i].value;
 			}
@@ -129,10 +129,11 @@ function findNodeValue(nodeId){
 
 function findNodePosition(nodeId){
   for(var i = 0; i < nodeValue.length; i++){
-    if(nodeValue[i].id == nodeId){
+    if(nodeValue[i].id === nodeId){
       return nodeValue[i].position;
     }
   }
+  alert("no position found!");
   return undefined;
 }
 
@@ -172,7 +173,7 @@ function createMap(){
       
       issuesId.push(overgraph.graph.nodes[i].id);
       issuesPosition.push(findPos(el));
-      alert(findPos(el));
+      //alert(findPos(el) + " for id: " + overgraph.graph.nodes[i].id);
       
     }
   }
@@ -204,6 +205,11 @@ function createMap(){
 	//getMetric(issuesId, issuesPosition);
 	//setTimeout('drawMap()', 100);
 }
+
+/**
+ * drawMap() is a method that was created to dispatch the real drawings. It is simply divided from 
+ * createMap() because it has to be called once the metrics are retrieved from the server.
+ */
 function drawMap(){
   /////////////
   for(var i in overgraph.graph.nodes) {
@@ -212,7 +218,10 @@ function drawMap(){
       
      /* issuesId.push(overgraph.graph.nodes[i].id);
       issuesPosition.push(findPos(el));*/
-      alert("position: " + findPos(ele));
+      if(findPos(ele)[0] === 0){
+        alert("position 0,0  id = : " + overgraph.graph.nodes[i].id);
+      }
+      //alert("position: " + findPos(ele) + "for id = "+overgraph.graph.nodes[i].id);
       issues.push({
         //postion: array [x, y]
         position: findNodePosition(overgraph.graph.nodes[i].id),
@@ -221,7 +230,7 @@ function drawMap(){
         //value: int
         value: findNodeValue(overgraph.graph.nodes[i].id),
       });
-      alert(findNodePosition(overgraph.graph.nodes[i].id));
+      //alert(findNodePosition(overgraph.graph.nodes[i].id));
       for(var j = 0; j < nodeValue.length; j++){
         if(nodeValue[j].id == overgraph.graph.nodes[i].id){
           nodeValue[j].pos = findPos(ele);
@@ -229,10 +238,15 @@ function drawMap(){
       }
     } 
   }
+  
+  //Change css of the elements
+  changecss('.ui-tabs', 'display', 'position: relative; padding: .2em; zoom: 1; none !important');
+  changecss('.ui-tabs-hide', 'display', 'none !important');
   ////////////
 	
+	alert("Issues in issues array with all the things.");
 	for(var i = 0; i < issues.length; i++){
-	  //alert(nodeValue[i].id);
+	  alert("id: "+issues[i].id + ", postion: "+ issues[i].position + ", value: "+issues[i].value);
 	}
 	//For each pixel then do something
 	// Get a reference to the element.
