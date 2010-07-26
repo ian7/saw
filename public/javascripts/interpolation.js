@@ -219,7 +219,7 @@ function drawMap(){
      /* issuesId.push(overgraph.graph.nodes[i].id);
       issuesPosition.push(findPos(el));*/
       if(findPos(ele)[0] === 0){
-        alert("position 0,0  id = : " + overgraph.graph.nodes[i].id);
+        //alert("position 0,0  id = : " + overgraph.graph.nodes[i].id);
       }
       //alert("position: " + findPos(ele) + "for id = "+overgraph.graph.nodes[i].id);
       issues.push({
@@ -244,9 +244,9 @@ function drawMap(){
   changecss('.ui-tabs-hide', 'display', 'none !important');
   ////////////
 	
-	alert("Issues in issues array with all the things.");
+	//alert("Issues in issues array with all the things.");
 	for(var i = 0; i < issues.length; i++){
-	  alert("id: "+issues[i].id + ", postion: "+ issues[i].position + ", value: "+issues[i].value);
+	  //alert("id: "+issues[i].id + ", postion: "+ issues[i].position + ", value: "+issues[i].value);
 	}
 	//For each pixel then do something
 	// Get a reference to the element.

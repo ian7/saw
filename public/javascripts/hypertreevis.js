@@ -43,7 +43,7 @@ function addNodeValue(nodeId, value, position){
   }
   
   value = value === undefined ? 0 : value; //check for the undefineteness of the value
-  if(nodeId === 69) alert("nodeId === 69: pos: " + position);
+  //if(nodeId === 69) alert("nodeId === 69: pos: " + position);
 	nodeValue.push({id: nodeId, value: value, position: position});
 	//alert(value);
 	return true;
@@ -284,7 +284,7 @@ function callback(json, pop_up) {
 	//document.getElementById('mycanvas').innerHTML += "<canvas id=\"newCanvas\" width=\"1184\" height=\"550\" style=\"position: absolute; top: 0pt; left: 0pt; width: 1184px; height: 550px;\"></canvas>";
 	
 	json = modjson(json);
-    rgraph.loadJSON(json);
+  rgraph.loadJSON(json);
 	center.push(json.id);
 	//center = json.id;
     //compute positions and plot.
@@ -451,12 +451,14 @@ function computePopupVis(rgraph){
  * @returns The modified JSON object.
  */
 function modjson(json){
-	json.adjacencies = new Array();
-	if(json.type == "Issue"){
+	json.adjacencies = [];
+	//alert(json.type);
+	if(json.type === "Issue"){
+	  //alert("inside");
 		json.$type = "star";
 		json.data.typology = "Issue";
 	}
-	else if(json.type == "Alternative"){
+	else if(json.type === "Alternative"){
 		json.$type = "square";
 		json.data.typology = "Alternative";
 		
@@ -946,13 +948,16 @@ function loadTree(){
 	alert('nodeValueLength = ' + nodeValueLength + " and jsonsLength = "+jsonsLength);
 	if(jsonsLength != null && nodeValueLength != null){
 		for(var i = 0; i < jsonsLength; i++){
-			//json = eval('(' + json + ')');
-			//alert("ciao");
-			jsons[i] = eval('('+localStorage.getItem('jsons '+ i +' for ' + center[0])+')');
-			//alert("Json loaded: " + JSON.stringify(jsons[i]));
-			var print;
-			//typeof jsons[i].children === 'string' ? print = "string" : print = "no string"
-			//document.writeln(print);
+		  //alert(localStorage.getItem('jsons '+ i +' for ' + center[0]));
+			var unparsedJson = eval('('+localStorage.getItem('jsons '+ i +' for ' + center[0])+')');
+			var childrens = eval('(' + unparsedJson.children +')');
+			unparsedJson.children = childrens;
+			jsons[i] = unparsedJson;//parseStringFromChildren(unparsedJson);
+			alert(jsons[i].type);
+			//document.writeln(typeof(unparsedJson.children));
+			/*var print;
+			typeof jsons[i].children === 'string' ? print = "string" : print = "no string"
+			document.writeln(print);*/
 		}
 		
 		for(var i = 0; i < nodeValueLength; i++){
@@ -971,6 +976,7 @@ function loadTree(){
 		//for(var jsonObject in jsons){
 		for(var i = 0; i < jsons.length; i++){
 			//alert("jsonObject in iteration of jsons: " + jsons[i]);
+			jsons[i] = modjson(jsons[i]);
 			overgraph.loadJSON(jsons[i]);
 		}
 		
@@ -1023,8 +1029,17 @@ function loadTree(){
    for(var i = 0; i < ids.length; i++){
      //alert("lol");
      //alert(ids[i] + " and metric " + metrics[ids[i]]);
-     if(ids[i] === 69) alert(pos[i]);
+     //if(ids[i] === 69) alert(pos[i]);
      addNodeValue(ids[i], metrics[ids[i]], pos[i]);
   }
   drawMap();
+ }
+ 
+ function parseStringFromChildren(unparsedJson){
+   jQuery.each(unparsedJson, function(entryIndex, entry){
+     if(typeof(entry) === 'string' && (entry.charAt(0) === '[' || entry.charAt(0) === '{')){
+       entry = eval('('+entry+')');
+     }
+   })
+   return unparsedJson;
  }
