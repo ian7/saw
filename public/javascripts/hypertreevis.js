@@ -39,7 +39,13 @@ var popUpVariable = false;
  */
 function addNodeValue(nodeId, value, position){
   for(var i = 0; i<nodeValue.length; i++){
-    if(nodeId === nodeValue[i].id) return; //node is already added
+    if(nodeId === nodeValue[i].id){
+       
+       nodeValue[i].value = value;
+       nodeValue[i].position = position;
+       //alert("node already added: "+nodeId + " === " + nodeValue[i].id + ", refreshing it: position now: " +nodeValue[i].position);
+       return; //refreshed the node
+    }
   }
   
   value = value === undefined ? 0 : value; //check for the undefineteness of the value
@@ -200,16 +206,18 @@ function callback(json, pop_up) {
         //labels. This method is only triggered on label
         //creation
         onCreateLabel: function(domElement, node) {
-			if (node.data.typology == "Issue") {
+			if (node.data.typology === "Issue") {
+			  //alert(node.id);
 				domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\">"+
 				"<img src='../images/issue_cloud.png'></img></span>";
 			}
 			else 
-				if (node.data.typology == "Alternative") {
+				if (node.data.typology === "Alternative") {
 					domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\">"+
 					"<img src='../images/alternative_cloud.png'></img></span>";
 				}
 				else {
+				  //node.id === 69 ? alert("nodeid = 69")
 					domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\">"+
 					"<img src='../images/tag.png'></img></span>";
 				}
@@ -450,11 +458,13 @@ function computePopupVis(rgraph){
  * @param {JSON} json The JSON object to be modified.
  * @returns The modified JSON object.
  */
-function modjson(json){
+function modjson(json, flag){
 	json.adjacencies = [];
 	//alert(json.type);
 	if(json.type === "Issue"){
-	  //alert("inside");
+	  if(flag){
+	    alert("inside");
+	  }
 		json.$type = "star";
 		json.data.typology = "Issue";
 	}
@@ -518,6 +528,9 @@ function modjson(json){
 		json.children[i].adjacencies = obj;*/
 	} 
 	//alert(json.toString());
+	if(flag){
+	 overgraph.loadJSON(json);
+	}
 	return json;
 }
 
@@ -953,7 +966,7 @@ function loadTree(){
 			var childrens = eval('(' + unparsedJson.children +')');
 			unparsedJson.children = childrens;
 			jsons[i] = unparsedJson;//parseStringFromChildren(unparsedJson);
-			alert(jsons[i].type);
+			//alert(jsons[i].type);
 			//document.writeln(typeof(unparsedJson.children));
 			/*var print;
 			typeof jsons[i].children === 'string' ? print = "string" : print = "no string"
@@ -976,8 +989,9 @@ function loadTree(){
 		//for(var jsonObject in jsons){
 		for(var i = 0; i < jsons.length; i++){
 			//alert("jsonObject in iteration of jsons: " + jsons[i]);
-			jsons[i] = modjson(jsons[i]);
-			overgraph.loadJSON(jsons[i]);
+			jsons[i] = modjson(jsons[i], true);
+			//alert("typology = " + jsons[i].data.typology);
+			//overgraph.loadJSON(jsons[i]);
 		}
 		
 		overgraph.refresh();
@@ -1016,13 +1030,22 @@ function loadTree(){
   xmlhttp.send(null);
  }
  
+ function resetNodeValue(){
+  for(var i = 0; i < nodeValue.length; i++){
+    alert("prima");
+     nodeValue[i] = undefined;
+  }
+ }
+ 
  /**
   * Function to make use of the metrics fetched in getMetrics()
   * @param {String} A JSON object still to be evaluated.
   * @param {Array[int]} Array of node ids of the nodes we are interested. 
   */
  function processMetricsResult(metricJson, ids, pos){
-   
+   //resetNodeValue();
+   //alert(nodeValue[0]);
+   //alert(metricJson);
    var metrics = eval('('+metricJson+')');
    //alert(ids.length);
    //alert(metrics[69]);

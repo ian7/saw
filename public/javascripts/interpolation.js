@@ -211,6 +211,10 @@ function createMap(){
  * createMap() because it has to be called once the metrics are retrieved from the server.
  */
 function drawMap(){
+  
+  for(var i = 0; i < nodeValue.length; i++){
+    alert("id: " + nodeValue[i].id + ", value: "+ nodeValue[i].value + ", position: " + nodeValue[i].position);
+  }
   /////////////
   for(var i in overgraph.graph.nodes) {
     if(overgraph.graph.nodes[i].data.typology == "Issue"){
