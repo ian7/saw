@@ -58,7 +58,7 @@ function gauss(x){
  function createSquareTable(){
     var width = generalCanvasWidth;
     var height = generalCanvasHeight;
-	
+	greatestDistance = Math.round(Math.sqrt(generalCanvasWidth*generalCanvasWidth + generalCanvasHeight*generalCanvasHeight));
 	for(var i = 0; i < greatestDistance; i++)
 		squareTable[i] = Math.pow(i, 2);
  }
@@ -178,6 +178,7 @@ function createMap(){
     }
   }
   //drawMap();
+  alert(squareTable.length);
   getMetric(issuesId, issuesPosition);
   /////////////////////////
 	/*for(var i in overgraph.graph.nodes) {
@@ -217,7 +218,7 @@ function drawMap(){
   }
   /////////////
   for(var i in overgraph.graph.nodes) {
-    if(overgraph.graph.nodes[i].data.typology == "Issue"){
+    if(overgraph.graph.nodes[i].data.typology === "Issue"){
       var ele = document.getElementById(overgraph.graph.nodes[i].id);
       
      /* issuesId.push(overgraph.graph.nodes[i].id);
@@ -234,7 +235,7 @@ function drawMap(){
         //value: int
         value: findNodeValue(overgraph.graph.nodes[i].id),
       });
-      //alert(findNodePosition(overgraph.graph.nodes[i].id));
+      //alert(findNodeValue(overgraph.graph.nodes[i].id));
       for(var j = 0; j < nodeValue.length; j++){
         if(nodeValue[j].id == overgraph.graph.nodes[i].id){
           nodeValue[j].pos = findPos(ele);
@@ -319,7 +320,7 @@ function drawMap(){
 			//alert(squaredResult);
 			
 			if (squaredValue == 0) {
-			  //alert("lol");
+			  //alert("255 for pixel " + pixel);
 				finalResult = 255;
 				result += issues[k].value * finalResult;
 				continue;
@@ -347,6 +348,9 @@ function drawMap(){
 		}
 		
 		result = result / normSum;
+    if(result > 200){
+      //alert("result > 200 for pixel " + pixel);
+    }
 		colorValue =  result;
 			
 			

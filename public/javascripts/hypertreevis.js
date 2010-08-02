@@ -1053,6 +1053,7 @@ function loadTree(){
      //alert("lol");
      //alert(ids[i] + " and metric " + metrics[ids[i]]);
      //if(ids[i] === 69) alert(pos[i]);
+     //alert(pos[i]);
      addNodeValue(ids[i], metrics[ids[i]], pos[i]);
   }
   drawMap();
