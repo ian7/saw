@@ -157,6 +157,7 @@ var finalResult;
 var denominator = 1;
 var issuesId = [];
 var issuesPosition = [];
+var issuesValueForTest = [];
 //Creates the heat map each time the graph is redrawn
 /**
  * Big function that computes and draws the map. 
@@ -164,7 +165,6 @@ var issuesPosition = [];
 function createMap(){
 	position = findPos(document.getElementById('mycanvas-canvas'));
 	//Get all the issue nodes (and fill the array)
-	normSum = normalizationSum();
 	issues = [];
 	/////////////////////////
 	for(var i in overgraph.graph.nodes) {
@@ -212,11 +212,12 @@ function createMap(){
  * createMap() because it has to be called once the metrics are retrieved from the server.
  */
 function drawMap(){
-  
+  /*
   for(var i = 0; i < nodeValue.length; i++){
     alert("id: " + nodeValue[i].id + ", value: "+ nodeValue[i].value + ", position: " + nodeValue[i].position);
-  }
+  } */
   /////////////
+  normSum = normalizationSum();
   for(var i in overgraph.graph.nodes) {
     if(overgraph.graph.nodes[i].data.typology === "Issue"){
       var ele = document.getElementById(overgraph.graph.nodes[i].id);
@@ -250,9 +251,9 @@ function drawMap(){
   ////////////
 	
 	//alert("Issues in issues array with all the things.");
-	for(var i = 0; i < issues.length; i++){
-	  //alert("id: "+issues[i].id + ", postion: "+ issues[i].position + ", value: "+issues[i].value);
-	}
+	/*for(var i = 0; i < issues.length; i++){
+	  alert("id: "+issues[i].id + ", postion: "+ issues[i].position + ", value: "+issues[i].value);
+	} */
 	//For each pixel then do something
 	// Get a reference to the element.
 	var canvasElement = document.getElementById('newCanvas');
@@ -345,12 +346,25 @@ function drawMap(){
 			//if(distance < 40) alert(distance);
 			result += issues[k].value * finalResult;
 			//if(result > 0) alert(result);
+			
+			//Testing stuff
+			/*
+			issuesValueForTest.push("current iteration = " +k)
+			issuesValueForTest.push("squaredValue = " +squaredValue);
+			issuesValueForTest.push("distance = " +distance);
+			issuesValueForTest.push("final result = " +finalResult);
+			issuesValueForTest.push("colorTable[result] = " +colorTable[distance]);
+			issuesValueForTest.push("issues[k].value = " + issues[k].value);
+			issuesValueForTest.push("issues[k].value*colorTable[result] = " +issues[k].value*colorTable[distance])
+			issuesValueForTest.push("result now = " +result);
+			*/
 		}
 		
 		result = result / normSum;
-    if(result > 200){
-      //alert("result > 200 for pixel " + pixel);
-    }
+    /*if(result > 200){
+      alert(issuesValueForTest + " THIS IS AFTER: result = " + result + " with normSum = " + normSum);
+    }*/
+    issuesValueForTest = [];
 		colorValue =  result;
 			
 			
