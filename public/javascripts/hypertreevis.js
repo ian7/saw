@@ -224,11 +224,16 @@ function callback(json, pop_up) {
 			//OnDlbClick centers the node
             domElement.ondblclick = function() {
 				//turnBlack();
-				rgraph.onClick(node.id, {
+					rgraph.onClick(node.id, {
 					onAfterCompute: function() {
 						center.push(node.id);
-						if(node.id != 208)
-							getNewJson(node.id, rgraph, json);
+						if(node.id != 208){
+						  jQuery.getJSON("../relations/tree?id="+nodeID+"&degree="+1, function(data) {
+						    //alert(data);
+						    processJson(data, rgraph, json);
+						  });
+						}
+							//getNewJson(node.id, rgraph, json);
 						/*rgraph.op.sum(newjs, {
 							type: 'fade:seq',  
 							duration: 1000,  
@@ -324,8 +329,9 @@ function callback(json, pop_up) {
  * @param {RGraph} rgraph The RGraph structure that represents the current graph.
  * @param {JSON} oldjson Old JSON structure that must be updated.
  */
-function processJson(json, rgraph, oldjson){
-	json = eval( '('+ json +')')
+function processJson(json, rgraph, oldjson, flag){
+  //if(flag)
+	 //json = eval( '('+ json +')')
 	//If the node clicked is an issue, do the addNodeValue (since only issues will have the heatmap around)
 	if (json.type == "Issue") {
 		//var flag = addNodeValue(json.id);
@@ -462,9 +468,6 @@ function modjson(json, flag){
 	json.adjacencies = [];
 	//alert(json.type);
 	if(json.type === "Issue"){
-	  if(flag){
-	    alert("inside");
-	  }
 		json.$type = "star";
 		json.data.typology = "Issue";
 	}
@@ -477,62 +480,42 @@ function modjson(json, flag){
 		json.$type = "circle";
 		json.data.typology = "Tag";
 	}
-	for(i = 0; i < json.children.length; i++){
-		//color of the node
-		if (json.children[i].data.Decision == "Negative") {
-			json.children[i].data.$color = "#f00";
-		}
-		else {
-			if (json.children[i].data.Decision == "Positive") {
-				json.children[i].data.$color = "#0f0";
-			}
-			else {
-				json.children[i].data.$color = "#fff";
-			}
-		}
-		
-		//shape [not useful anymore, we use icons!]
-		if(json.children[i].type == "Alternative"){
-			json.children[i].data.$type = "square";
-			json.children[i].data.typology = "Alternative";
-			//alert(nodeValue[nodeValue.length - 1].id);
-			//nodeValue[nodeValue.length - 1].value = nodeValue[nodeValue.length - 1].value + 1;
-		}
-		else if(json.children[i].type == "Issue"){
-			json.children[i].data.$type = "star";
-			json.children[i].data.typology = "Issue";
-		}
-		else {
-			json.children[i].data.$type = "circle";
-			json.children[i].data.typology = "Tag";
-		}
-		
-		//Changing the color of the edges from center to node
-		/*var obj = new Object();
-		obj = {
-			"nodeTo": json.children[i].id,
-			"data": {
-				"$color": json.children[i].data.relationColor
-			}
-		};
-		json.adjacencies[i] = obj;
-		
-		//Changing the color of the edges from the node to the center
-		obj = new Object();
-		obj = {
-			"nodeTo": json.id,
-			"data": {
-				"$color": json.children[i].data.relationColor
-			}
-		};
-		json.children[i].adjacencies = obj;*/
-	} 
+	
+	json = childrenIteration(json);
+	
 	//alert(json.toString());
 	if(flag){
 	 overgraph.loadJSON(json);
 	}
 	return json;
 }
+
+//Function to iterate through each children of the node
+/**
+ * Iterates through the children of the given node and sets the right data objects.
+ * @param {json} A json object that must be iterated.
+ */
+ function childrenIteration(json){
+   for(var i = 0; i < json.children.length; i++){
+    if(json.children[i].type == "Alternative"){
+      json.children[i].data.$type = "square";
+      json.children[i].data.typology = "Alternative";
+    }
+    else if(json.children[i].type == "Issue"){
+      json.children[i].data.$type = "star";
+      json.children[i].data.typology = "Issue";
+    }
+    else {
+      json.children[i].data.$type = "circle";
+      json.children[i].data.typology = "Tag";
+    }
+    
+    if(json.children[i].children.length > 0){
+      childrenIteration(json.children[i]);
+    }
+  }
+  return json;
+ }
 
 //Function to check all at the beginning of the script
 /**
@@ -680,7 +663,7 @@ function remove(c){
 	var i = 0;
 	for(j = 0; j < jsons.length; j++){
 		for(k = 0; k < jsons[j].children.length; k++){
-			if(jsons[j].children[k].data.typology == c && notCenter(jsons[j].children[k].id)){
+			if(jsons[j].children[k].data.typology === c && notCenter(jsons[j].children[k].id)){
 				removed[i] = jsons[j].children[k].id;
 				i++;
 				removed_elements[c].push({
@@ -1030,13 +1013,6 @@ function loadTree(){
   xmlhttp.send(null);
  }
  
- function resetNodeValue(){
-  for(var i = 0; i < nodeValue.length; i++){
-    alert("prima");
-     nodeValue[i] = undefined;
-  }
- }
- 
  /**
   * Function to make use of the metrics fetched in getMetrics()
   * @param {String} A JSON object still to be evaluated.
@@ -1066,4 +1042,33 @@ function loadTree(){
      }
    })
    return unparsedJson;
+ }
+ 
+ /**
+  * Function to let the user choose the degree on which he wants to visualize the graph.
+  */
+ function degreeChooser(){
+  var url = "http://localhost:3000/relations/tree?id=" + thisID + "&degree=" + (document.chooser.multipleDegree.selectedIndex + 1);
+  //alert(document.chooser.multipleDegree.selectedIndex);
+  jQuery.getJSON(url, function(data){
+     //Reset tree
+     var lbs = overgraph.fx.labels;
+     for (var label in lbs) {
+     if (lbs[label]) {
+        lbs[label].parentNode.removeChild(lbs[label]);
+      }
+    }
+    
+    overgraph.fx.labels = {};
+    
+    //Load new JSON
+    data = modjson(data);
+    overgraph.loadJSON(data);
+    overgraph.refresh();
+    overgraph.refresh();
+    //Sets all the checkbuttons to true
+    checkAll();
+    turnBlack();
+    //createMap();
+  });
  }

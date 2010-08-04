@@ -97,7 +97,7 @@ def tree
     max_degree = params[:degree]
  
     if max_degree == nil
-      max_degree = 3
+      max_degree = 1
     end
 
     # just to hack default parameter for related_from and _to

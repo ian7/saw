@@ -178,7 +178,7 @@ function createMap(){
     }
   }
   //drawMap();
-  alert(squareTable.length);
+  //alert(squareTable.length);
   getMetric(issuesId, issuesPosition);
   /////////////////////////
 	/*for(var i in overgraph.graph.nodes) {
