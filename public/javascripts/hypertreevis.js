@@ -598,45 +598,56 @@ function wasRemoved(id, c){
  * Paints the node that were removed from the view.
  * @param {String} c Type of the nodes that were removed and have to be painted back.
  */
+ var toPaint = [];
 function paint(c){
-	var toPaint = [];
-	var j = 0;
+  toPaint = [];
+	//var j = 0;
 	for(var i = 0; i < jsons.length; i++){
-		var elem = wasRemoved(jsons[i].id, c)
-		if(elem.flag){
-			var node = {id : "", name: "", data: ""};
-			node.id = jsons[i].id;
-			node.name = jsons[i].name;
-			node.data = jsons[i].data;
-			toPaint[j] = {"node": node, "parent": elem.parent};
-			j++;
-		}
-		for(k = 0; k < jsons[i].children.length; k++){
-			var element = wasRemoved(jsons[i].children[k].id, c);
-			if(element.flag){
-				var node = {id : "", name: "", data: ""};
-				node.id = jsons[i].children[k].id;
-				node.name = jsons[i].children[k].name;
-				node.data = jsons[i].children[k].data;
-				toPaint[j] = {
-					"node": node,
-					"parent": element.parent
-				};
-				j++;
-			}
-		}
-		
-		for(m = 0; m < toPaint.length; m++){
-			overgraph.graph.addNode(toPaint[m].node);
-			overgraph.graph.addAdjacence(toPaint[m].node, overgraph.graph.getNode(toPaint[m].parent));
-		}
-		j = 0;	
+	  paintNodes(jsons[i], c);
 	}
+	for(var m = 0; m < toPaint.length; m++){
+      overgraph.graph.addNode(toPaint[m].node);
+      //alert("adding " + toPaint[m].node.id + " with parent " + toPaint[m].parent);
+    }
+  for(var m = 0; m < toPaint.length; m++){
+      overgraph.graph.addAdjacence(toPaint[m].node, overgraph.graph.getNode(toPaint[m].parent));
+  }
 	
 	//Since there is a bug in the library, refresh twice to show the edges correctly.
 	overgraph.refresh();
 	overgraph.refresh();
 	removed_elements[c] = new Array();
+}
+
+
+//Function that handles the tail recursion of the painting nodes
+function paintNodes(json, c){
+  var elem = wasRemoved(json.id, c)
+  if(elem.flag){
+    var node = {id : "", name: "", data: ""};
+    node.id = json.id;
+    node.name = json.name;
+    node.data = json.data;
+    toPaint.push({"node": node, "parent": elem.parent});
+  }
+  for(var k = 0; k < json.children.length; k++){
+      var element = wasRemoved(json.children[k].id, c);
+      if(element.flag){
+        var node = {id : "", name: "", data: ""};
+        node.id = json.children[k].id;
+        node.name = json.children[k].name;
+        node.data = json.children[k].data;
+        toPaint.push({
+          "node": node,
+          "parent": element.parent
+        });
+      }
+      alert("length of " + json.children[k].id + " is " + json.children[k].children.length);
+      if(json.children[k].children.length > 0){
+        //alert(json.children[k].id);
+        paintNodes(json.children[k], c);
+      }
+    }
 }
 
 //Check if the node was not the center
@@ -658,11 +669,12 @@ function notCenter(id){
  * Function that removes certain types of nodes.
  * @param {String} c Type of nodes to be removed.
  */
+ var removed = []; 
 function remove(c){
-	var removed = [];
-	var i = 0;
-	for(j = 0; j < jsons.length; j++){
-		for(k = 0; k < jsons[j].children.length; k++){
+  removed = [];
+	for(var j = 0; j < jsons.length; j++){
+	  removeNodes(jsons[j], c);
+		/*for(k = 0; k < jsons[j].children.length; k++){
 			if(jsons[j].children[k].data.typology === c && notCenter(jsons[j].children[k].id)){
 				removed[i] = jsons[j].children[k].id;
 				i++;
@@ -681,7 +693,7 @@ function remove(c){
 					"parent": jsons[j].id
 				});
 			}
-		}
+		}*/
 	}
 	overgraph.op.removeNode(removed, {
 				type: 'fade:seq',
@@ -689,6 +701,36 @@ function remove(c){
 				hideLabels: true,
 				transition: Trans.Quad.easeInOut
 	});
+}
+
+//This function does the action of removing phisically the nodes from the visualization
+function removeNodes(json, c){
+  for(var k = 0; k < json.children.length; k++){
+    //alert("the son " + json.children[k].id + " has children " + json.children[k].children.length);
+      if(json.children[k].children.length > 0){
+        //alert(json.children[k].id + " has children!");
+        removeNodes(json.children[k], c);
+      }
+      if(json.children[k].data.typology === c && notCenter(json.children[k].id)){
+        //alert(json.children[k].name);
+        removed.push(json.children[k].id);
+        removed_elements[c].push({
+          "id": json.children[k].id,
+          "parent": json.id
+        });
+      }
+      else if(c === "Tag" && json.children[k].data.typology !== 
+          "Alternative" && json.children[k].data.typology !== 
+          "Issue" && notCenter(json.children[k].id)){
+            
+        removed[i].push(json.children[k].id);
+        removed_elements[c].push({
+          "id": json.children[k].id,
+          "parent": json.id
+        });
+      }
+      
+    }
 }
 
 //Removes elements from the json before it is plotted looking at the checkboxes status
@@ -1064,6 +1106,8 @@ function loadTree(){
     //Load new JSON
     data = modjson(data);
     overgraph.loadJSON(data);
+    jsons = [];
+    jsons.push(data);
     overgraph.refresh();
     overgraph.refresh();
     //Sets all the checkbuttons to true
