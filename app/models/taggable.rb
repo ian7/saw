@@ -30,7 +30,6 @@ class Taggable < ActiveRecord::Base
   end
 
   
-  
   def self.make_new( type )
     t = Taggable.new
     t.type = type
@@ -137,6 +136,49 @@ def to_hash
   h["name"]=name
   h["id"]=id
   h["type"]=type
+  return h
+end
+
+def to_graph
+
+  h={}
+  h["adjacencies"]=[];
+  h["adjacencies"] << id.to_s();
+  
+  had={};
+  had["$color"]="#83548B";
+  had["$type"]="circle";
+  had["$dim"]=10;
+  
+  h["data"] = had;
+  
+  h["id"]=id.to_s();
+  h["name"]=name;
+  
+  all_relations_from.each do |relation|
+    rh = {};
+    rh["nodeTo"] = relation.tip.to_s();
+    rh["nodeFrom"] = relation.origin.to_s();
+
+    rhd={};
+    rhd["$color"]="#557EAA";
+    rh["data"] = rhd;
+
+    h["adjacencies"] << rh 
+  end
+
+ all_relations_to.each do |relation|
+    rh = {};
+    rh["nodeTo"] = relation.tip.to_s();
+    rh["nodeFrom"] = relation.origin.to_s();
+
+    rhd={};
+    rhd["$color"]="#557EAA";
+    rh["data"] = rhd;
+
+    h["adjacencies"] << rh 
+  end
+
   return h
 end
 

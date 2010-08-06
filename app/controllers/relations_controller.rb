@@ -119,6 +119,31 @@ def tree
 
   end
 
+def graph
+
+    taggable_instance = Taggable.find(params[:id])
+    
+    max_degree = params[:degree]
+ 
+    if max_degree == nil
+      max_degree = 1
+    end
+  
+    children_taggables = taggable_instance.related
+
+    r = []
+    
+    r << taggable_instance.to_graph()
+    
+    children_taggables.each do |taggable|
+      r << taggable.to_graph()
+    end    
+  
+    respond_to do |format|      
+     format.json { render :json => r }
+    end
+  
+end
 
 
 
