@@ -227,12 +227,11 @@ function callback(json, pop_up) {
 					rgraph.onClick(node.id, {
 					onAfterCompute: function() {
 						center.push(node.id);
-						if(node.id != 208){
-						  jQuery.getJSON("../relations/tree?id="+nodeID+"&degree="+1, function(data) {
-						    //alert(data);
+						getNewJson(node.id, rgraph, json);
+						  /*jQuery.getJSON("http://localhost:3000/relations/tree?id="+nodeID+"&degree="+1, function(data) {
+						    alert(data);
 						    processJson(data, rgraph, json);
-						  });
-						}
+						  });*/
 							//getNewJson(node.id, rgraph, json);
 						/*rgraph.op.sum(newjs, {
 							type: 'fade:seq',  
@@ -334,15 +333,16 @@ function processJson(json, rgraph, oldjson, flag){
 	 //json = eval( '('+ json +')')
 	//If the node clicked is an issue, do the addNodeValue (since only issues will have the heatmap around)
 	if (json.type == "Issue") {
-		//var flag = addNodeValue(json.id);
+		var flag = addNodeValue(json.id);
 		
 	}
 	jsons.push(json);
 	var nodes = nodesToRemove(json, oldjson);
+	json = eval('(' + json + ')');
 	json = modjson(json);
-	
 	//removes the elements looking at the checkboxes status
 	json = removeElementsBeforeVis(json);
+	
 	rgraph.op.sum(json, {
 		type: 'fade:seq',
 		duration: 500,
@@ -466,7 +466,6 @@ function computePopupVis(rgraph){
  */
 function modjson(json, flag){
 	json.adjacencies = [];
-	//alert(json.type);
 	if(json.type === "Issue"){
 		json.$type = "star";
 		json.data.typology = "Issue";
@@ -480,7 +479,6 @@ function modjson(json, flag){
 		json.$type = "circle";
 		json.data.typology = "Tag";
 	}
-	
 	json = childrenIteration(json);
 	
 	//alert(json.toString());
@@ -580,7 +578,7 @@ function controller(c){
  * @returns The node that was removed. It is in the form Node, wich is an object for the visualization.
  */
 function wasRemoved(id, c){
-	for(r = 0; r < removed_elements[c].length; r++){
+	for(var r = 0; r < removed_elements[c].length; r++){
 		if (id == removed_elements[c][r].id) {
 			return {
 				"flag": true,
@@ -605,11 +603,9 @@ function paint(c){
 	for(var i = 0; i < jsons.length; i++){
 	  paintNodes(jsons[i], c);
 	}
-	for(var m = 0; m < toPaint.length; m++){
-      overgraph.graph.addNode(toPaint[m].node);
-      //alert("adding " + toPaint[m].node.id + " with parent " + toPaint[m].parent);
-    }
+	//alert("i added back " + toPaint.length + " nodes");
   for(var m = 0; m < toPaint.length; m++){
+      overgraph.graph.addNode(toPaint[m].node);
       overgraph.graph.addAdjacence(toPaint[m].node, overgraph.graph.getNode(toPaint[m].parent));
   }
 	
@@ -642,7 +638,6 @@ function paintNodes(json, c){
           "parent": element.parent
         });
       }
-      alert("length of " + json.children[k].id + " is " + json.children[k].children.length);
       if(json.children[k].children.length > 0){
         //alert(json.children[k].id);
         paintNodes(json.children[k], c);
@@ -695,6 +690,7 @@ function remove(c){
 			}
 		}*/
 	}
+	//alert("i removed "  +removed_elements[c].length+ "nodes");
 	overgraph.op.removeNode(removed, {
 				type: 'fade:seq',
 				duration: 500,
@@ -714,8 +710,13 @@ function removeNodes(json, c){
       if(json.children[k].data.typology === c && notCenter(json.children[k].id)){
         //alert(json.children[k].name);
         removed.push(json.children[k].id);
+        var node = {id : "", name: "", data: ""};
+        node.id = json.children[k].id;
+        node.name = json.children[k].name;
+        node.data = json.children[k].data;
         removed_elements[c].push({
           "id": json.children[k].id,
+          "node" : node,
           "parent": json.id
         });
       }
