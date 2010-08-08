@@ -620,6 +620,7 @@ div.black h2, div.petrol h2 {
 /*---------------------jquery tools overlay end---------------------*/
 /*---------------------infovis start---------------------*/
 #infovis { 
+    overflow:hidden;
 	  position: relative;
  	  background-color:#000;
 	  height:600px;
@@ -1205,4 +1206,22 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 	list-style: none;
 }
 
+/*--------------------New Vis CSS--------------------*/
+
+/*TOOLTIPS*/
+.tip {
+    color: #111;
+    width: 139px;
+    background-color: white;
+    border:1px solid #ccc;
+    -moz-box-shadow:#555 2px 2px 8px;
+    -webkit-box-shadow:#555 2px 2px 8px;
+    -o-box-shadow:#555 2px 2px 8px;
+    box-shadow:#555 2px 2px 8px;
+    opacity:0.9;
+    filter:alpha(opacity=90);
+    font-size:10px;
+    font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+    padding:7px;
+}
 

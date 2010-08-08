@@ -162,7 +162,7 @@
 <script type="text/javascript" src="/javascripts/hypertreevis.js"></script>
 -->
 <%= javascript_include_tag("jit.js") %>
-<%= javascript_include_tag("hypertreevis.js") %>
+<%= javascript_include_tag("forcedirected.js") %>
 <div id="infovis" class="show">
 	<canvas id="newCanvas" width="1184" height="600" style="position: absolute; top: 0pt; left: 0pt; width: 1184px; height: 600px;"></canvas>
 	<div class="infonode" id="infonode"></div>
@@ -182,7 +182,8 @@
 <%= javascript_include_tag("interpolation.js") %>
 
 
-<script type="text/javascript"> checkAll(); 
+<script type="text/javascript"> 
+
 // perform JavaScript after the document is scriptable. 
 jQuery(function() { 
     // setup ul.tabs to work as tabs for each div directly under div.panes 
