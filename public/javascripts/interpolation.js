@@ -158,24 +158,26 @@ var denominator = 1;
 var issuesId = [];
 var issuesPosition = [];
 var issuesValueForTest = [];
+var deltaValue = 4;
+var beta = deltaValue / 2;
 //Creates the heat map each time the graph is redrawn
 /**
  * Big function that computes and draws the map. 
  */
 function createMap(){
-	//position = findPos(document.getElementById('infovis-canvas'));
+	position = findPos(document.getElementById('mycanvas-canvas'));
 	//Get all the issue nodes (and fill the array)
 	issues = [];
 	/////////////////////////
 	for(var i in overgraph.graph.nodes) {
-    //if(overgraph.graph.nodes[i].data.typology == "Issue"){
+    if(overgraph.graph.nodes[i].data.typology == "Issue"){
       var el = document.getElementById(overgraph.graph.nodes[i].id);
       
       issuesId.push(overgraph.graph.nodes[i].id);
       issuesPosition.push(findPos(el));
       //alert(findPos(el) + " for id: " + overgraph.graph.nodes[i].id);
       
-    //}
+    }
   }
   //drawMap();
   //alert(squareTable.length);
@@ -211,12 +213,17 @@ function createMap(){
  * drawMap() is a method that was created to dispatch the real drawings. It is simply divided from 
  * createMap() because it has to be called once the metrics are retrieved from the server.
  */
+ var colorMap = [];
+ var newColorMap = [];
+ var newColorMapIndex = 0;
 function drawMap(){
   /*
   for(var i = 0; i < nodeValue.length; i++){
     alert("id: " + nodeValue[i].id + ", value: "+ nodeValue[i].value + ", position: " + nodeValue[i].position);
   } */
   /////////////
+  newColorMapIndex = 0;
+  
   normSum = normalizationSum();
   for(var i in overgraph.graph.nodes) {
     if(overgraph.graph.nodes[i].data.typology === "Issue"){
@@ -280,11 +287,11 @@ function drawMap(){
 	var squareTableLength = squareTable.length;
 	//Loop for each pixel and compute the value
 	//alert(height * 1/denominator);
-	for (i = 0; i < height; i++/*(1*denominator)*/) {
-		for (j = 0; j < width; j++) {
+	var maximum = 0;
+	for (i = 0; i < height; i = i+deltaValue/*(1*denominator)*/) {
+		for (j = 0; j < width; j = j+deltaValue) {
+		  
 			/*colorValue = computeColorValue(j, i);*/
-			
-			
 		
 		pixel = [j + position[0] - 35, i + position[1] - 15];
 		result = 0;
@@ -360,7 +367,12 @@ function drawMap(){
 			*/
 		}
 		
-		result = result / normSum;
+		//result = result / normSum;
+		if(result > maximum)
+		  maximum = result;
+		colorMap[i*width + j] = result;
+		newColorMap[newColorMapIndex] = result;
+		newColorMapIndex++;
     /*if(result > 200){
       alert(issuesValueForTest + " THIS IS AFTER: result = " + result + " with normSum = " + normSum);
     }*/
@@ -370,14 +382,63 @@ function drawMap(){
 			
 			
 			 
-			index = (j + i * imgd.width) * 4;
+	/*		index = (j + i * imgd.width) * 4;
   			imgd.data[index+0] = colorValue;
     		imgd.data[index+1] = 0;
     		imgd.data[index+2] = 0;
-    		imgd.data[index+3] = 0xff;
-		}
+    		imgd.data[index+3] = 0xff; */
+		} 
 	}
-	context.putImageData(imgd, 0, 0);
+	var valueLookUpTable = [];
+	for(var i = 0; i < maximum; i++){
+	  valueLookUpTable[i] = i * 255 / maximum;
+	}
+	var j = 0;
+	/*for(var i = 0; i < height; i = i+deltaValue){
+	  for(j = 0; j < width; j = j+deltaValue){
+	    index = (j + i * imgd.width) * 4;
+        imgd.data[index+0] = valueLookUpTable[Math.floor(colorMap[i*width + j])];
+        imgd.data[index+1] = 0;
+        imgd.data[index+2] = 0;
+        imgd.data[index+3] = 0xff;
+	  }
+	}*/
+	
+	/*for(var i = 0; i < height / deltaValue; i++){
+	  for(j = 0; j < width / deltaValue; j++){
+	    index = (j + i * imgd.width) * 4;
+        imgd.data[index+0] = valueLookUpTable[Math.floor(newColorMap[i*width/deltaValue + j])];
+        imgd.data[index+1] = 0;
+        imgd.data[index+2] = 0;
+        imgd.data[index+3] = 0xff;
+	  }
+	} 
+	context.scale(0.7, 0.7);  */
+	var m = 0, n = 0, color;
+	context.fillStyle = "rgb(0, 0, 0)";
+	context.fillRect(0, 0, width, height);
+	for(var i = 0; i < height; i = i + deltaValue){
+	  for(j = 0; j < width; j = j + deltaValue){
+	    color = Math.floor(valueLookUpTable[Math.floor(colorMap[i*width + j])]);
+	    if(color != 0){
+	     context.fillStyle = "rgba("+ color +", 0, 0, 0.9)";
+	     context.fillRect (j - beta, i - beta, deltaValue + 2*beta, deltaValue + 2*beta); 
+	     //context.arc(j, i, deltaValue, 0, Math.PI*2, true);
+	    }
+	   /* for(m = i; m < i + deltaValue; m++){
+	      for(n = j; n < j + deltaValue; n++){
+	        index = (n + m * imgd.width) * 4;
+          imgd.data[index+0] = valueLookUpTable[Math.floor(colorMap[i*width + j])];
+          imgd.data[index+1] = 0;
+          imgd.data[index+2] = 0;
+          imgd.data[index+3] = 0xff;
+	      }
+	    } */
+	  }
+	}
+	context.fill();
+	//context.putImageData(imgd, 0, 0);
+	
 }
 
 //Compute the value of the color in the heatmap

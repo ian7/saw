@@ -1231,4 +1231,9 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
     font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
     padding:7px;
 }
+/*-------------------------Slider---------------------------*/
+#slider { 
+  margin: 10px; 
+}
+
 
