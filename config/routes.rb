@@ -21,7 +21,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'issues/:id/relations/:action', :controller=>'relations'
   
   map.resources :taggables
-  map.resources :projects
+  
+  map.resources :projects, :has_many=> [:issues, :alternatives, :tags ]
   
   # The priority is based upon order of creation: first created -> highest priority.
 
