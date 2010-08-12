@@ -16,6 +16,39 @@ var nodeValue =[];
 var countAlternatives = 0;
 var popUpVariable = false;
 
+jQuery(document).ready(function() {
+    jQuery("#slider-delta").slider();
+    jQuery("#slider-beta").slider();
+    
+    jQuery( "#slider-delta" ).slider({ max: 20 });
+    jQuery( "#slider-beta" ).slider({ max: 20 });
+    
+    jQuery( "#slider-delta" ).slider({ min: 1 });
+    jQuery( "#slider-beta" ).slider({ min: 0 });
+    
+    jQuery( "#slider-delta" ).slider({ value: deltaValue });
+    jQuery( "#slider-beta" ).slider({ value: beta });
+    document.getElementById("deltaValue").innerHTML = deltaValue;
+    document.getElementById("betaValue").innerHTML = beta;
+    
+    //Callbacks
+    jQuery( "#slider-delta" ).slider({
+      change: function(event, ui) {
+        deltaValue = ui.value;
+        document.getElementById("deltaValue").innerHTML = ui.value;
+        drawMap();
+      }
+    });
+    
+    jQuery( "#slider-beta" ).slider({
+      change: function(event, ui) {
+        beta = ui.value;
+        document.getElementById("betaValue").innerHTML = ui.value;
+        drawMap();
+      }
+    });
+  });
+
 
 /**
  * Helper function to find a postion of an object in a page.
