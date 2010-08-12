@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
      tree = {};
      tree["name"]="Projects"
      #tree["id"]=0
+     tree["data"]=[];
      tree["type"]="RootNodeWithoutType"
      tree["children"]=[];
      

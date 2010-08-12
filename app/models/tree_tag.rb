@@ -2,7 +2,8 @@ class TreeTag < Tag
   def to_hash_recursive
     
     tree = to_hash
-    tree["children"]=[]
+    tree["children"]=[];
+    tree["data"]=[];
     
     
     children.each do |childProject|
