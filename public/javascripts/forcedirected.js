@@ -1,4 +1,4 @@
-var labelType, useGradients, nativeTextSupport, animate, d = 2500;
+var labelType, useGradients, nativeTextSupport, animate, d = 100;
 var jsons = [], overgraph, nodeValue = [], popUpVariable = false;
 (function() {
   var ua = navigator.userAgent,
@@ -115,6 +115,7 @@ function init(nodeid){
                   'edge-property:alpha'],
           duration: 500
         });
+        drawMap();
       };
       //Toggle a node selection when clicking
       //its name. This is done by animating some
@@ -134,7 +135,7 @@ function init(nodeid){
               transition: $jit.Trans.Quart.easeOut  
             });
           }
-          
+          drawMap();
         });
         //END ADDED PART
         //set final styles
@@ -203,7 +204,7 @@ function init(nodeid){
       fd.animate({
         modes: ['linear'],
         transition: $jit.Trans.Elastic.easeOut,
-        duration: d
+        duration: 0
       });
       overgraph = fd;
       setTimeout("createMap()", d);
@@ -275,7 +276,7 @@ function checkForDoubleJson(json){
  * Function to add an object that contains a node ID, a value and a position to the nodeValue array.
  * @param {int} ID of the node we want to add.
  */
-function addNodeValue(nodeId, value, position){
+ function addNodeValue(nodeId, value, position){
   for(var i = 0; i<nodeValue.length; i++){
     if(nodeId === nodeValue[i].id){
        
