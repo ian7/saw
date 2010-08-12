@@ -13,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :dynamic_type_scopes
   
   map.resources :tags
+
   
   map.connect 'taggables/search', :controller=>'taggables', :action=>'search'
   
@@ -20,7 +21,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'issues/:id/relations/:action', :controller=>'relations'
   
   map.resources :taggables
-
+  map.resources :projects
+  
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
