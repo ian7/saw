@@ -157,7 +157,7 @@ def related_to_hash( taggable_instance, children_taggables, degree=0, max_degree
 
     degree = degree + 1    
     
-    puts degree.to_s + "/" + max_degree.to_s()
+  #  puts degree.to_s + "/" + max_degree.to_s()
     
     if degree.to_i < max_degree.to_i
       
