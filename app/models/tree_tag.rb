@@ -13,7 +13,7 @@ class TreeTag < Tag
   end
   
   def children
-    allProjects = TreeTag.find :all, :conditions=>{:type=>"Project"}
+    allProjects = TreeTag.find :all, :conditions=>{:type=>type}
     
     childrenProjects = []
     
@@ -23,6 +23,14 @@ class TreeTag < Tag
       end
     end
     return childrenProjects
+  end
+  
+  def parent
+    if ["parent"] != nil  
+      retval = TreeTag.find :first, :conditions=>{:type=>type}
+    else
+      return nil
+    end
   end
   
 end
