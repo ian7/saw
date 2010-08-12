@@ -1,5 +1,5 @@
-var labelType, useGradients, nativeTextSupport, animate;
-var jsons = [];
+var labelType, useGradients, nativeTextSupport, animate, d = 2500;
+var jsons = [], overgraph, nodeValue = [], popUpVariable = false;
 (function() {
   var ua = navigator.userAgent,
       iStuff = ua.match(/iPhone/i) || ua.match(/iPad/i),
@@ -203,15 +203,20 @@ function init(nodeid){
       fd.animate({
         modes: ['linear'],
         transition: $jit.Trans.Elastic.easeOut,
-        duration: 2500
+        duration: d
       });
+      overgraph = fd;
+      setTimeout("createMap()", d);
     }
   });
+  
+  
   });
   //end
   // init ForceDirected
   
   // end
+  
 }
 
 function checkForDoubleJson(json){
@@ -220,5 +225,70 @@ function checkForDoubleJson(json){
       return false;
     }
   }
+  return true;
+}
+
+/**
+ * Method to get the metrics of the nodes. Used (for now) with Issue nodes.
+ * @param {Array[int]} Array of node ids of the nodes we are interested.
+ */
+ function getMetric(ids, pos){
+  //alert(ids.toString());
+  var url = "../metrics/descriptiveness?nodes=["+ids+"]";
+  //alert(url);
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open('GET', url, true);
+  xmlhttp.onreadystatechange = function() {
+    if(xmlhttp.readyState == 3) {
+      
+    }
+    if (xmlhttp.readyState == 4) {
+      processMetricsResult(xmlhttp.responseText, ids, pos);
+    }
+  }
+  xmlhttp.send(null);
+ }
+ 
+ /**
+  * Function to make use of the metrics fetched in getMetrics()
+  * @param {String} A JSON object still to be evaluated.
+  * @param {Array[int]} Array of node ids of the nodes we are interested. 
+  */
+ function processMetricsResult(metricJson, ids, pos){
+   //resetNodeValue();
+   //alert(nodeValue[0]);
+   //alert(metricJson);
+   var metrics = eval('('+metricJson+')');
+   //alert(ids.length);
+   //alert(metrics[69]);
+   for(var i = 0; i < ids.length; i++){
+     //alert("lol");
+     //alert(ids[i] + " and metric " + metrics[ids[i]]);
+     //if(ids[i] === 69) alert(pos[i]);
+     //alert(pos[i]);
+     addNodeValue(ids[i], metrics[ids[i]], pos[i]);
+  }
+  drawMap();
+ }
+ 
+ /**
+ * Function to add an object that contains a node ID, a value and a position to the nodeValue array.
+ * @param {int} ID of the node we want to add.
+ */
+function addNodeValue(nodeId, value, position){
+  for(var i = 0; i<nodeValue.length; i++){
+    if(nodeId === nodeValue[i].id){
+       
+       nodeValue[i].value = value;
+       nodeValue[i].position = position;
+       //alert("node already added: "+nodeId + " === " + nodeValue[i].id + ", refreshing it: position now: " +nodeValue[i].position);
+       return; //refreshed the node
+    }
+  }
+  
+  value = value === undefined ? 0 : value; //check for the undefineteness of the value
+  //if(nodeId === 69) alert("nodeId === 69: pos: " + position);
+  nodeValue.push({id: nodeId, value: value, position: position});
+  //alert(value);
   return true;
 }

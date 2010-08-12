@@ -163,19 +163,19 @@ var issuesValueForTest = [];
  * Big function that computes and draws the map. 
  */
 function createMap(){
-	position = findPos(document.getElementById('mycanvas-canvas'));
+	//position = findPos(document.getElementById('infovis-canvas'));
 	//Get all the issue nodes (and fill the array)
 	issues = [];
 	/////////////////////////
 	for(var i in overgraph.graph.nodes) {
-    if(overgraph.graph.nodes[i].data.typology == "Issue"){
+    //if(overgraph.graph.nodes[i].data.typology == "Issue"){
       var el = document.getElementById(overgraph.graph.nodes[i].id);
       
       issuesId.push(overgraph.graph.nodes[i].id);
       issuesPosition.push(findPos(el));
       //alert(findPos(el) + " for id: " + overgraph.graph.nodes[i].id);
       
-    }
+    //}
   }
   //drawMap();
   //alert(squareTable.length);
