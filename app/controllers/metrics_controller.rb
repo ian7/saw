@@ -37,4 +37,11 @@ class MetricsController < ApplicationController
   def complexity
   end
 
+  def index
+    h=["descriptiveness","complexity"];
+    respond_to do |format|      
+     format.json { render :json => h }
+    end
+
+  end
 end
