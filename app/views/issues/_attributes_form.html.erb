@@ -5,9 +5,9 @@
     </label>
     <br/>
 	<% if @issue[attribute.attribute_name] != nil %>
-    	<textarea cols="70" rows="10" id="taggable_description" name="issue[<%= attribute.attribute_name %>]"><%= @issue[attribute.attribute_name].value %></textarea>
+    	<textarea cols="70" rows="1" id="taggable_description" name="issue[<%= attribute.attribute_name %>]"><%= @issue[attribute.attribute_name].value %></textarea>
 	<% else %>
-		<textarea cols="70" rows="10" id="taggable_description" name="issue[<%= attribute.attribute_name %>]"></textarea>
+		<textarea cols="70" rows="1" id="taggable_description" name="issue[<%= attribute.attribute_name %>]"></textarea>
 	<% end %>		
 	</p>
 <% end %>

@@ -39,9 +39,11 @@ class IssuesController < ApplicationController
    end
 
   def new
+    
+    @onload = "jQuery(\"#taggable_name\").focus();jQuery(\"textarea\").autoGrow()";
+    
     ## this just goes and shows the form to be filled
     ## there is no need in creating new instance so far.
-    
     @issue = DynamicType.find_by_name("Issue").new_instance
     
     if params[:overlay]!=nil
