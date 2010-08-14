@@ -77,11 +77,19 @@ function init(nodeid){
         node.pos.setc(pos.x, pos.y);
         fd.plot();
       },
+      onDragEnd: function(node, eventInfo, e){
+        createMap();
+      },
       //Implement the same handler for touchscreens
       onTouchMove: function(node, eventInfo, e) {
         $jit.util.event.stop(e); //stop default touchmove event
         this.onDragMove(node, eventInfo, e);
+      },
+      
+      onMouseWheel: function(delta, e){
+        //createMap();
       }
+      
     },
     //Number of iterations for the FD algorithm
     iterations: 200,
