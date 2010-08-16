@@ -1,16 +1,18 @@
-class MetricsController < ApplicationController
-  def choice
-	# small change
-  end
+#require "metrics_helper"
 
-  def descriptiveness
-    
-    # in case there is only one node specified, that might render some nice node-centric vis
+
+
+
+class MetricsController < ApplicationController
+
+
+  def queryHandler   
     id = params[:id]  
-    @descriptiveness_level = 0
+    @value = 0
     if id != nil
       t=Taggable.find id
-      @descriptiveness_level = t.tags.length
+      # @value = metric( id )
+      @value = yield id
     end
     
     # in case there is node list, then return json
@@ -25,23 +27,59 @@ class MetricsController < ApplicationController
       nodes_array.each do |node|
         
         if Taggable.exists? node
-          t = Taggable.find node
-          retval[node] = t.tags.length  
+          #t = Taggable.find node
+          retval[node] = yield node   
         end
       end
-      
-      render :json => retval
-      end
+    end
+    return retval  
+  end
+
+  def classification
+    retval = queryHandler { |x| Metrics.classification x }
+
+    respond_to do |format|      
+      format.json { render :json => retval; }
+    end
+  end
+
+  def descriptiveness
+    retval = queryHandler { |x| Metrics.descriptiveness x }
+
+    respond_to do |format|      
+      format.json { render :json => retval; }
+    end
   end
 
   def complexity
+    retval = queryHandler { |x| Metrics.complexity x }
+
+    respond_to do |format|      
+      format.json { render :json => retval; }
+    end
+  end
+    
+  def completeness
+    retval = queryHandler { |x| Metrics.completeness x }
+
+    respond_to do |format|      
+      format.json { render :json => retval; }
+    end  
   end
 
+  def definiteness
+    retval = queryHandler { |x| Metrics.definiteness x }
+
+    respond_to do |format|      
+      format.json { render :json => retval; }
+    end  
+  end
+
+
   def index
-    h=["descriptiveness","complexity"];
+    h=["classification","descriptiveness","complexity","completeness","definiteness"];
     respond_to do |format|      
      format.json { render :json => h }
     end
-
   end
 end
