@@ -33,6 +33,10 @@ class AlternativesController < ApplicationController
   def new
     
     @related_issue_id = params[:id]
+    
+    @onload = "jQuery(\"#taggable_name\").focus();jQuery(\"textarea\").autoGrow();jQuery(\"textarea\").keydown(function(event) { if(event.keyCode==13 && event.ctrlKey == true) {jQuery(\"form\").submit();}})";
+    @alternative = DynamicType.find_by_name("Alternative").new_instance
+    
     if params[:overlay]!=nil
       render :partial => 'new_min'
     end

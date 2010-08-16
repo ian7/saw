@@ -1,2 +1,12 @@
-<h1>Wizards#capture</h1>
-<p>Find me in app/views/wizards/capture.html.erb</p>
+<h1>What would you like to capture</h1>
+
+<div class="wizard-pad">
+   <div class="wizard-block" id="block1" onmouseover="this.style.cursor='pointer';" 
+    onmouseup="window.location='<%= url_for :controller=>"issues", :action=>"new" %>'">Issue</div>
+    
+   <div class="wizard-block" id="block2" onmouseover="this.style.cursor='pointer';" 
+    onmouseup="window.location='<%= url_for :controller=>"alternatives", :action=>"new" %>'">Alternative</div> 
+</div>
+
+
+</table>

@@ -1220,3 +1220,28 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 }
 
 
+/*---------------  Wizzards stuff  -------------------------------*/
+div.wizard-pad {
+  width: 95%;
+  padding: 10px;
+  background-color: red;
+  margin: 2em;
+}
+
+div.wizard-block {
+  padding: 4em;
+  margin: 1em;
+  text-align: center;
+  background-color: #FFAAAA;
+}
+
+
+/*-------- growable textareas ---- */
+  textarea  {
+    overflow:hidden;
+    height:auto;
+    width:326px;
+  }
+
+
+

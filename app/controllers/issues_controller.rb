@@ -40,8 +40,8 @@ class IssuesController < ApplicationController
 
   def new
     
-    @onload = "jQuery(\"#taggable_name\").focus();jQuery(\"textarea\").autoGrow()";
-    
+   @onload = "jQuery(\"#taggable_name\").focus();jQuery(\"textarea\").autoGrow();jQuery(\"textarea\").keydown(function(event) { if(event.keyCode==13 && event.ctrlKey == true) {jQuery(\"form\").submit();}})";
+   
     ## this just goes and shows the form to be filled
     ## there is no need in creating new instance so far.
     @issue = DynamicType.find_by_name("Issue").new_instance
