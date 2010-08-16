@@ -1,5 +1,7 @@
 var labelType, useGradients, nativeTextSupport, animate, d = 100;
 var jsons = [], overgraph, nodeValue = [], popUpVariable = false;
+var  TimeToFade = 500.0;
+
 (function() {
   var ua = navigator.userAgent,
       iStuff = ua.match(/iPhone/i) || ua.match(/iPad/i),
@@ -53,7 +55,7 @@ function init(nodeid){
     // JSON structure.
     Node: {
       overridable: true,
-      dim: 7
+      dim: 0.1
     },
     Edge: {
       overridable: true,
@@ -63,7 +65,7 @@ function init(nodeid){
     // Add node events
     Events: {
       enable: true,
-      type: 'Native',
+      type: 'auto',
       //Change cursor style when hovering a node
       onMouseEnter: function() {
         fd.canvas.getElement().style.cursor = 'move';
@@ -98,9 +100,36 @@ function init(nodeid){
     // This method is only triggered
     // on label creation and only for DOM labels (not native canvas ones).
     onCreateLabel: function(domElement, node){
+      //Icons instead of circles
+      if (node.data.type === "Issue") {
+        //alert(node.id);
+        domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\">"+
+        "<img src='../images/issue_cloud.png' onmousedown='if (event.preventDefault) event.preventDefault()'></img></span>";
+      }
+      else 
+        if (node.data.type === "Alternative") {
+          domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\">"+
+          "<img src='../images/alternative_cloud.png' onmousedown='if (event.preventDefault) event.preventDefault()'></img></span>";
+        }
+        else {
+          //node.id === 69 ? alert("nodeid = 69")
+          domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\">"+
+          "<img src='../images/tag.png' onmousedown='if (event.preventDefault) event.preventDefault()'></img></span>";
+        }
+      
+      //Adjust label position
+      
+      
+      //Table of information about the node
+      domElement.onclick = function(){
+        fade('infonode');
+        //document.getElementById('infonode').style.opacity = 0;
+        var path = '../taggables/'+node.id;
+        setTimeout("getHTML('../taggables/'+"+node.id+")", TimeToFade);
+      }
       // Create a 'name' and 'close' buttons and add them
       // to the main node label
-      var nameContainer = document.createElement('span'),
+      /*var nameContainer = document.createElement('span'),
           closeButton = document.createElement('span'),
           style = nameContainer.style;
       nameContainer.className = 'name';
@@ -110,10 +139,10 @@ function init(nodeid){
       domElement.appendChild(nameContainer);
       domElement.appendChild(closeButton);
       style.fontSize = "0.8em";
-      style.color = "#ddd";
+      style.color = "#ddd"; */
       //Fade the node and its connections when
       //clicking the close button
-      closeButton.onclick = function() {
+      /*closeButton.onclick = function() {
         node.setData('alpha', 0, 'end');
         node.eachAdjacency(function(adj) {
           adj.setData('alpha', 0, 'end');
@@ -124,12 +153,12 @@ function init(nodeid){
           duration: 500
         });
         drawMap();
-      };
+      };*/
       //Toggle a node selection when clicking
       //its name. This is done by animating some
       //node styles like its dimension and the color
       //and lineWidth of its adjacencies.
-      nameContainer.onclick = function() {
+      /*domElement.onclick = function() {
         //ADDED PART
         //sum new json
         jQuery.getJSON("../relations/graph?id=" + node.id + "", function(data){
@@ -184,7 +213,7 @@ function init(nodeid){
         });
         //append connections information
         $jit.id('inner-details').innerHTML = html + list.join("</li><li>") + "</li></ul>";
-      };
+      };*/
     },
     // Change node styles when DOM labels are placed
     // or moved.
@@ -194,10 +223,12 @@ function init(nodeid){
       var top = parseInt(style.top);
       var w = domElement.offsetWidth;
       style.left = (left - w / 2) + 'px';
-      style.top = (top + 10) + 'px';
+      style.top = (top + 10 - 23) + 'px';
       style.display = '';
     }
   });
+  //Reduce size of the canvas
+  //document.getElementById('infovis-canvaswidget').style.width = '800px';
   // load JSON data.
   fd.loadJSON(json);
   // compute positions incrementally and animate.
@@ -300,3 +331,120 @@ function checkForDoubleJson(json){
   //alert(value);
   return true;
 }
+
+/**
+ * Gets the node's information table. It modifies dynamically the div containing the information of hovered nodes. As soon as
+ * the user goes on mouse over the node, this function is called, it does an asynchronous request to the server and gets the information
+ * needed. It's already on the HTML form. It also splits the table if the result is too long.
+ * @param {String} url URL of the node's information. 
+ */
+function getHTML(url) {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open('GET', url, true);
+  xmlhttp.onreadystatechange = function() {
+    if(xmlhttp.readyState == 3) {
+    
+    }
+    if (xmlhttp.readyState == 4) {
+      document.getElementById('infonode').innerHTML = xmlhttp.responseText.replace("<table>", "<table class='infotable'>");///*xmlhttp.responseText*/finalsum.replace("<table>", "<table class='infotable'>");
+      fade('infonode');
+    }
+  }
+  xmlhttp.send(null);
+}
+
+//Function to fade in/out the table with the information about the selected node
+/**
+ * Function to fade in/out the table with the information about the selected node.
+ * @param {String} ID of the element we want to fade in/out.
+ */
+function fade(eid){
+  var element = document.getElementById(eid);
+  if(element == null)
+    return;
+   
+  if(element.FadeState == null)
+  {
+    if(element.style.opacity == null
+        || element.style.opacity == ''
+        || element.style.opacity == '1')
+    {
+      element.FadeState = 2;
+    }
+    else
+    {
+      element.FadeState = -2;
+    }
+  }
+   
+  if(element.FadeState == 1 || element.FadeState == -1)
+  {
+    element.FadeState = element.FadeState == 1 ? -1 : 1;
+    element.FadeTimeLeft = TimeToFade - element.FadeTimeLeft;
+  }
+  else
+  {
+    element.FadeState = element.FadeState == 2 ? -1 : 1;
+    element.FadeTimeLeft = TimeToFade;
+    setTimeout("animateFade(" + new Date().getTime() + ",'" + eid + "')", 33);
+  }  
+}
+
+//Function that animates the fade in/out of the node's table
+/**
+ * Function that animates the fade in/out of the node's table
+ * @param {double} The time it has to fade.
+ * @param {String} ID of the element we want to fade in/out.
+ */
+function  animateFade(lastTick, eid){  
+  var curTick = new Date().getTime();
+  var elapsedTicks = curTick - lastTick;
+ 
+  var element = document.getElementById(eid);
+ 
+  if(element.FadeTimeLeft <= elapsedTicks)
+  {
+    element.style.opacity = element.FadeState == 1 ? '1' : '0';
+    element.style.filter = 'alpha(opacity = '
+        + (element.FadeState == 1 ? '100' : '0') + ')';
+    element.FadeState = element.FadeState == 1 ? 2 : -2;
+    return;
+  }
+ 
+  element.FadeTimeLeft -= elapsedTicks;
+  var newOpVal = element.FadeTimeLeft/TimeToFade;
+  if(element.FadeState == 1)
+    newOpVal = 1 - newOpVal;
+
+  element.style.opacity = newOpVal;
+  element.style.filter = 'alpha(opacity = ' + (newOpVal*100) + ')';
+ 
+  setTimeout("animateFade(" + curTick + ",'" + eid + "')", 33);
+}
+
+/*Utilities for the Balloons javascript library*/
+   var balloon    = new Balloon;
+   //BalloonConfig(balloon,'GBubble');
+
+   // plain balloon tooltip
+   var tooltip  = new Balloon;
+   BalloonConfig(tooltip,'GPlain');
+
+   // fading balloon
+   var fader = new Balloon;
+   BalloonConfig(fader,'GFade');
+
+   // a plainer popup box
+   var box         = new Box;
+   BalloonConfig(box,'GBox');
+
+   // a box that fades in/out
+   var fadeBox         = new Box;
+   BalloonConfig(fadeBox,'GBox');
+   fadeBox.bgColor     = 'black';
+   fadeBox.fontColor   = 'white';
+   fadeBox.borderStyle = 'none';
+   fadeBox.delayTime   = 200;
+   fadeBox.allowFade   = true;
+   fadeBox.fadeIn      = 750;
+   fadeBox.fadeOut     = 200;

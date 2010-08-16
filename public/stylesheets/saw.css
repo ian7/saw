@@ -685,34 +685,47 @@ span.name {
 	top: 10px;
 	left: 10px;
 }
+
 #infonode {
+  top: 460px;
+  position: absolute;
+  width: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 398px;
+  min-width: 0px;
+  /*height: 100%;
 	position: absolute;
-	bottom: 10px;
-	float: right;
-	mid-width: 200px;
-	right: 0px;
+	/*bottom: 10px;*/
+	right: 23px;
+	/*width: 300px;
+	right: 0px;*/
 	/*width: 35%;
 	top: 50%; */
-	z-index = 10;
-	filter:alpha(opacity = 50); 
+	z-index: 10;
+	/*filter:alpha(opacity = 50); 
    -moz-opacity: 0.5; 
-   opacity: 0.5;
-   background-color: rgba(0,0,0,0.25);
+   opacity: 0.5; */
+   background-color: rgba(0,0,0, 0.30);
 }
 
 table.infotable{
-	-webkit-border-radius:6px;
+  z-index: 10;
+  max-width: 400px;
+	/*-webkit-border-radius:6px;
 	-moz-border-radius:6px;
 	border-radius:6px;
 	-webkit-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
 	-moz-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
-	background-color: none;
+	background-color: none; */
 }
 table.infotable th {
 	color: #fff !important ;
+	max-width: 200px;
 	}
 table.infotable td {
 	color: #fff !important ;
+	max-width: 200px;
 	}
 /*---------------------infovis end---------------------*/
 /*---------------------jquery css----------------------*/

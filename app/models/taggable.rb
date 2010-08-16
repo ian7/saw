@@ -148,7 +148,7 @@ def to_graph
   had={};
   had["$color"]="#83548B";
   had["$type"]="circle";
-  had["$dim"]=10;
+  had["$dim"]=0;
   had["type"]=type;
   
   h["data"] = had;

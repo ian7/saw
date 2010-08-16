@@ -166,9 +166,10 @@ Beta Value = <span id="betaValue"></span><div id="slider-beta"></div></p>
 -->
 <%= javascript_include_tag("jit.js") %>
 <%= javascript_include_tag("forcedirected.js") %>
+<div class="infonode" id="infonode"></div>
 <div id="infovis" class="show">
 	<canvas id="newCanvas" width="1184" height="600" style="position: absolute; top: 0pt; left: 0pt; width: 1184px; height: 600px;"></canvas>
-	<div class="infonode" id="infonode"></div>
+	
 	<div id="checkboxes">
 	<form name="check">
 		<input type="checkbox" name="issue" value="no" onClick="controller('issues')"> <font color="white"> Show Issues </font><br>
@@ -191,7 +192,7 @@ Beta Value = <span id="betaValue"></span><div id="slider-beta"></div></p>
 jQuery.getJSON("../metrics", function(data){
   var code = "<ul>";
   for(var i = 0; i < data.length; i++){
-    code += "<li>" + data[i] + "</li> [some color here?]";
+    code += "<li>" + data[i] + " [some color here?] </li>";
   }
   code += "</ul>";
   document.getElementById('metricsPicker').innerHTML = code;
