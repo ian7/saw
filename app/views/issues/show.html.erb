@@ -157,8 +157,9 @@
 Delta Value = <span id="deltaValue"></span><div id="slider-delta"></div><p>
 Beta Value = <span id="betaValue"></span><div id="slider-beta"></div></p>
 
-<div id="container">
+<div id="metricsPicker"></div>
 
+<div id="container">
 <!--
 <script type="text/javascript" src="/javascripts/jit.js"></script>  
 <script type="text/javascript" src="/javascripts/hypertreevis.js"></script>
@@ -186,8 +187,16 @@ Beta Value = <span id="betaValue"></span><div id="slider-beta"></div></p>
 
 
 <script type="text/javascript"> 
-
 // perform JavaScript after the document is scriptable. 
+jQuery.getJSON("../metrics", function(data){
+  var code = "<ul>";
+  for(var i = 0; i < data.length; i++){
+    code += "<li>" + data[i] + "</li> [some color here?]";
+  }
+  code += "</ul>";
+  document.getElementById('metricsPicker').innerHTML = code;
+});
+
 jQuery(function() { 
     // setup ul.tabs to work as tabs for each div directly under div.panes 
     jQuery("ul.tabs").tabs("div.panes > div"); 

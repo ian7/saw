@@ -242,7 +242,6 @@ function checkForDoubleJson(json){
  * @param {Array[int]} Array of node ids of the nodes we are interested.
  */
  function getMetric(ids, pos){
-  //alert(ids.toString());
   var url = "../metrics/descriptiveness?nodes=["+ids+"]";
   //alert(url);
   var xmlhttp = new XMLHttpRequest();

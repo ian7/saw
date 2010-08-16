@@ -1236,4 +1236,12 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
   margin: 10px; 
 }
 
+/*-------------------------Metrics Picker----------------------*/
+#metricsPicker {
+  float: right; 
+}
+
+#metricsPicker ul {
+  list-style: none;
+}
 

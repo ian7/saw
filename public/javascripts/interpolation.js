@@ -132,7 +132,7 @@ function findNodePosition(nodeId){
       return nodeValue[i].position;
     }
   }
-  alert("no position found!");
+  //alert("no position found!");
   return undefined;
 }
 
@@ -167,13 +167,16 @@ function createMap(){
   position = findPos(document.getElementById('infovis-canvas'));
   //Get all the issue nodes (and fill the array)
   issues = [];
+  var indexPos = 0;
+  var indexId = 0;
   /////////////////////////
   for(var i in overgraph.graph.nodes) {
     //if(overgraph.graph.nodes[i].data.typology === "Issue"){
       var el = document.getElementById(overgraph.graph.nodes[i].id);
-      
-      issuesId.push(overgraph.graph.nodes[i].id);
-      issuesPosition.push(findPos(el));
+      issuesId[indexId] = overgraph.graph.nodes[i].id;
+      indexId++;
+      issuesPosition[indexPos] = findPos(el);
+      indexPos++;
       //alert(findPos(el) + " for id: " + overgraph.graph.nodes[i].id);
       
     //}
