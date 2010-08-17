@@ -14,7 +14,7 @@ module Metrics
    
     #and now we count relations   
     #return t.relations_to("SolvedBy","Alternative").count 
-    return t.relations_to("SolvedBy").count 
+    return t.relations_to("SolvedBy").size  
     
   end
 
@@ -70,7 +70,7 @@ module Metrics
     missing_decisions_count = 0
     
     t.relations_to("SolvedBy").each do |r|
-      if r.related("Tagging","Decision").count == 0 
+      if r.related("Tagging","Decision").size  == 0 
         missing_decisions_count = missing_decisions_count + 1
       end
     end
@@ -115,15 +115,15 @@ module Metrics
     relations_to_alternatives.each do |r|
       decisions = r.related("Tagging","Decision") 
 
-      total_decisions_count += decisions.count 
+      total_decisions_count += decisions.size  
            
       # if there is more than one decision over single alternative then issue is in inconsistent state
-      if decisions.count > 1
+      if decisions.size  > 1
         return 3 
       end
      
      # if there are some decisions at all 
-      if decisions.count > 0 
+      if decisions.size  > 0 
      
         # if positive decision was found then add it up
         if decisions.first.name == "Positive"
