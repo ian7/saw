@@ -140,7 +140,7 @@ module Metrics
     if total_decisions_count == 0
         return 1 
     end
-    if total_decisions_count < relations_to_alternatives.count
+    if total_decisions_count < relations_to_alternatives.size  
         return 2
     end
     
