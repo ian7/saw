@@ -108,7 +108,7 @@ module Metrics
     
     
     # if there are no alternatives at all...
-    if relations_to_alternatives.count == 0 
+    if relations_to_alternatives.size == 0 
       return 0
     end
         
