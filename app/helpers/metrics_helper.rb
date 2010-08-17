@@ -51,7 +51,7 @@ module Metrics
    
     #and now we count relations   
     #return t.relations_to("SolvedBy","Alternative").count 
-    return t.tags.count
+    return t.tags.size  
   end
   
   
