@@ -44,6 +44,13 @@
   
 <div id="center">
 
+<div class="overlay" id="overlay"> 
+ 
+    <!-- the external content is loaded inside this tag --> 
+    <div class="contentWrap"></div> 
+ 
+</div>
+
 <%= yield %>
 
 <%= render :partial => "layouts/footer" %>
@@ -53,12 +60,6 @@
 
 
 <!-- overlayed element --> 
-<div class="overlay" id="overlay"> 
- 
-    <!-- the external content is loaded inside this tag --> 
-    <div class="contentWrap"></div> 
- 
-</div>
 
 <!-- make all links with the 'rel' attribute open overlays -->
 
