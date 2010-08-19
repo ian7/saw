@@ -24,13 +24,10 @@ mygrid.init();
 mygrid.enableSmartRendering(true);
 mygrid.load("<%= url_for( :controller=>"issues", :action=>"index", :format=>:xml) %> "); //added !
 </script>
-
+<!--
 <table class="tableOfIssues">
     <thead>
         <tr class="tableOfIssues">
-            <!--<th>
-                Type
-            </th>-->
 
             <th>
                 Id
@@ -57,9 +54,6 @@ mygrid.load("<%= url_for( :controller=>"issues", :action=>"index", :format=>:xml
     </tfoot>
     <% @issues.each do |issue| %>
     <tr class="tableOfIssues">
-        <!--<td>
-            <a href="<%= issue_url(issue.id) %>"><%=h issue.attributes["type"] %></a>
-        </td>-->
         <td>
             <a href="<%= issue_url(issue.id) %>"><%=h issue.id %></a>
         </td>
