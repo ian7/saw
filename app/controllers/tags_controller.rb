@@ -1,4 +1,27 @@
 class TagsController < ApplicationController
+   include TaggablesHelper
+   
+ def list
+    
+    @taggable_id = params[:taggable_id]
+    @scope_name = Taggable.find( @taggable_id ).attributes["type"]
+    @scopes = DynamicTypeScope.find :all, :conditions=>{:type_scope=>@scope_name}
+    @return_taggable_id = params[:return_taggable_id] 
+    
+    @tags=[]
+    
+    @scopes.each do |scope|
+      Taggable.find(:all, :conditions=>{:type=>scope.type_name}).each do |t|
+       @tags << t 
+     end
+   end
+   
+   if params[:overlay]!=nil
+      render :partial => 'list_min'
+    end
+  end
+
+
   def create
     
       @dynamic_type = DynamicType.find_by_name params[:tag_type]

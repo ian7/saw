@@ -5,13 +5,13 @@ class AlternativesController < ApplicationController
 
 
    if( params[:overlay] == nil ) 
-	    respond_to do |format|
-	      format.html # index.html.erb
-	      format.xml  { render :xml => @artifacts }
-	    end
-	 else
-	 	render :partial=>"list_min"
-	 end
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @artifacts }
+      end
+   else
+    render :partial=>"list_min"
+   end
   end
 
   def show
@@ -33,6 +33,10 @@ class AlternativesController < ApplicationController
   def new
     
     @related_issue_id = params[:id]
+    
+    @onload = "jQuery(\"#taggable_name\").focus();jQuery(\"textarea\").autoGrow();jQuery(\"textarea\").keydown(function(event) { if(event.keyCode==13 && event.ctrlKey == true) {jQuery(\"form\").submit();}})";
+    @alternative = DynamicType.find_by_name("Alternative").new_instance
+    
     if params[:overlay]!=nil
       render :partial => 'new_min'
     end
@@ -80,8 +84,8 @@ class AlternativesController < ApplicationController
         @alternative["Description"] = params[:alternative]["description"]
         
         @alternative.dynamic_type.dynamic_type_attributes.each do |attribute|
-        	@alternative[attribute.attribute_name] = params[:alternative][attribute.attribute_name]
-        end	
+          @alternative[attribute.attribute_name] = params[:alternative][attribute.attribute_name]
+        end 
         
         if params[:related_issue_id] != nil
           format.html { redirect_to(issue_url(params[:related_issue_id])) }

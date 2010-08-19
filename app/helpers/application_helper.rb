@@ -13,6 +13,10 @@ module ApplicationHelper
   def taggable_url( taggable )
     return taggable_path( taggable )
   end
+  
+  def image_dir() 
+    retval = image_path("abc.png").to_s()[0..image_path("abc.png").rindex("abc.png")-1]
+  end 
 end
   
 #  def taggable_path( taggable )

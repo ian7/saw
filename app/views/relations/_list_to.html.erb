@@ -1,0 +1,21 @@
+<% @relations = @taggable.relations_to
+
+   relationTypes = [];
+   
+   @relations.each do |r| 
+     if !relationTypes.member?(r.type)
+        relationTypes << r.type
+     end
+   end
+  
+  relationTypes.each do |rt|
+    @taggables = @taggable.related_to( rt ) 
+    %>
+    <%= rt %>:
+    <table>
+
+    <%= render :partial=>"taggables/list" %>
+
+    </table>  
+
+  <% end %>

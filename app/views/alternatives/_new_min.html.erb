@@ -18,8 +18,11 @@
             Description
         </label>
         <br/>
-        <textarea cols="70" rows="10" id="taggable_description" name="alternative[description]"></textarea>
+        <textarea cols="70" rows="1" id="taggable_description" name="alternative[description]" onkeydown="capturekey(event);"></textarea>
     </p>
+    
+      <%= render :partial=>"attributes_form" %>
+    
     <p>
         <input name="commit" type="submit" value="Create" />
     </p>

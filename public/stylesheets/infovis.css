@@ -1,0 +1,81 @@
+/*---------------------infovis start---------------------*/
+#infovis { 
+    position: relative;
+    background-color:#000;
+    height:600px;
+    margin:30px;
+    width:800px;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    border-radius:6px;
+    -webkit-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
+    -moz-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
+    display:block;
+    margin:0 auto;
+    width:100%;
+    margin-top:15px;
+} 
+#infovis.show {
+    float:left;
+} 
+#log{
+  margin:10px 40px 10px 40px;
+  display:none;
+  text-align:center;
+  margin:20px 20px 20px -830px;
+}
+
+.node{
+  cursor:pointer;
+  /*width:170px;*/
+  color:#444;
+  font-size:.5em;
+  /*padding:2px;*/
+
+  /*
+    background-color:rgba(240,240,240,.70);
+  */
+  /*filter:alpha(opacity=80);
+  -moz-opacity:.80;
+  opacity:.80
+  */
+}
+.node:hover{
+  z-index:9;
+  /*background-color:rgba(240,240,240,.90);*/
+  color:#777;
+  font-size:2em;
+  margin-bottom:2px;
+}
+
+/*---------------------infovis end---------------------*/
+
+#checkboxes{
+  position: relative;
+  float: left;
+  text-align: left !important;
+  top: 10px;
+  left: 10px;
+}
+#infonode {
+  position: absolute;
+  bottom: 10px;
+  float: right;
+  mid-width: 200px;
+  right: 0px;
+  /*width: 35%;
+  top: 50%;
+  z-index = 10;
+  filter:alpha(opacity = 50); 
+   -moz-opacity: 0.5; 
+   opacity: 0.5;*/
+}
+table.infotable th {
+  background-color: black !important;
+  color: #fff !important ;
+  }
+table.infotable td {
+  background-color: black !important;
+  color: #fff !important ;
+  }
+/*---------------------infovis end---------------------*/

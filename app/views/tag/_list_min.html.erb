@@ -1,5 +1,32 @@
-<!-- <h1>Taggings list</h1> -->
-<br/>
+  <%= javascript_include_tag 'codebase/dhtmlxcommon.js' %>
+  <%= javascript_include_tag 'codebase/dhtmlxgrid.js' %>
+  <%= javascript_include_tag 'codebase/dhtmlxgridcell.js' %>
+  <%= javascript_include_tag 'codebase/ext/dhtmlxgrid_srnd.js' %>
+  <%= javascript_include_tag 'codebase/ext/dhtmlxgrid_filter.js' %>
+  <%= javascript_include_tag 'codebase/excells/dhtmlxgrid_excell_link.js' %>
+  <%= stylesheet_link_tag 'codebase/dhtmlxgrid.css' %>
+  
+<div id="gridbox" style="height:100%%;width:*;"></div>
+<script>
+mygrid = new dhtmlXGridObject("gridbox");
+mygrid.setImagePath("<%= image_dir %>codebase/imgs/");
+mygrid.setEditable(false);
+mygrid.setSkin("modern");
+//mygrid.setDateFormat("%d/%m/%Y");
+mygrid.setHeader("Name,Type");
+mygrid.attachHeader("#text_filter,#text_filter");
+mygrid.setInitWidths("*,*");
+mygrid.setColTypes("link,link");
+mygrid.setColAlign("left,left");
+mygrid.setColSorting("na,na");
+mygrid.enableResizing("true,true");
+mygrid.init();
+mygrid.enableSmartRendering(true);
+mygrid.load( "<%= url_for( :controller=>"issues", :action=>"show", :id=>@taggable_id ) %>/tag/list.xml" )
+</script>
+
+<!-- 
+  <br/>
 <br/>
 <table class="tagsTable" id="tagsTable">
 	<thead>
@@ -32,12 +59,12 @@
         	<% if @return_taggable_id != nil %>
 				<%= link_to "+", {:controller=>"tag", :action=>"dotag", :from_taggable_id=>t.id, :to_taggable_id=>@taggable_id, :return_taggable_id=>@return_taggable_id} %>
 				
-				<!-- <a href="/tag/dotag?from_taggable_id=<%=h t.id %>&to_taggable_id=<%=h @taggable_id %>&return_taggable_id=<%=@return_taggable_id%>">+</a> -->
 			<% else %>
 				<%= link_to "+", {:controller=>"tag", :action=>"dotag", :from_taggable_id=>t.id, :to_taggable_id=>@taggable_id} %>
-            	<!-- <a href="/tag/dotag?from_taggable_id=<%=h t.id %>&to_taggable_id=<%=h @taggable_id %>">+</a> -->
 			<% end %>
         </td>
     </tr>
     <% end %>
 </table>
+
+-->

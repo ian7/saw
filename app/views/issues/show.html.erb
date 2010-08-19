@@ -6,23 +6,39 @@
 <%= javascript_include_tag("jquery-ui-1.8.custom.min.js") %>
 <%= javascript_include_tag("public_smo_scripts.js") %>
 
+
+   <script type="text/javascript"  src="http://js-hotkeys.googlecode.com/files/jquery.hotkeys-0.7.9.min.js"></script>
+   
 <!-- script for jQuery tabs -->
   <script>
-  jQuery(document).ready(function() {
-    jQuery("#tabs").tabs();
-  });
-  </script>
+            jQuery(document).ready(function(){
+                  //initialize tabs
+                  $tabs = jQuery('#tabs').tabs();
+                  //nothing fancy, just iterate over a number set and generate the shortcuts
+             
+                  jQuery.each([1,2,3,4,5,6,7,8,9], function(index){
+                      jQuery(document).bind('keydown', 'alt+'+index, function(e){
+                           $tabs.tabs('select', (index - 1));
+                           e.preventDefault();
+                       });
+                  });
+                 
+              });
+    </script>
 <!-- end of script -->
 
 <%#= render :partial => "layouts/ribbon" %>
 <div id="tabs">
 <ul> 
     <li><a href="#fragment-1"><%=h @issue.name %> details</a></li> 
-    <li><a href="#fragment-2">Visualization</a></li> 
+    <li><a href="#fragment-2">Visualization</a></li>
+    <li><a href="#fragment-3">Alternatives</a></li> 
+    <li><a href="#fragment-4">Related to</a></li>
+    <li><a href="#fragment-5">Related from</a></li> 
 </ul>  
     <div id="fragment-1">
 
-<h1><%=h @issue.name %> details:</h1>
+<!--<h1><%=h @issue.name %> details:</h1>-->
 <div class="artifactTags" id="alternativeTags">
     <%= render :partial => 'layouts/taggings', :object => @taggings %>
     <%#= link_to_show_overlay 'new', '/taggings/new?applies_to='+@issue.id.to_s %>
@@ -90,6 +106,8 @@
 		<%= link_to image_tag("back.png"), issues_url %> 
 	</div>
 </div>
+</div>
+<div id="fragment-3">
 <h2>Related Alternatives:</h2>
 <table class="artifactDetails">
     <% @alternative_relations.each do |r| %>
@@ -182,6 +200,28 @@ Beta Value = <span id="betaValue"></span><div id="slider-beta"></div></p>
 <input type="button" onclick="loadTree()" value="Load Previously Saved Tree"><br>
 <input type="button" onclick="createMap()" value="Refresh Map">
 </div></div>
+
+
+<div id="fragment-4">
+  <table>
+<!--
+        <tr>
+        <th style="text-align: center;">Name</th>
+        <th style="text-align: center;">Description</th>
+      </tr>
+      
+-->
+    <% @taggable=@issue%>
+    <%= render :partial=>"relations/list_to"  %>
+  </table>
+</div>
+
+<div id="fragment-5">
+    <% @taggable=@issue%>
+    <%= render :partial=>"relations/list_from"  %>
+</div>
+
+
 </div>
 
 <%= javascript_include_tag("interpolation.js") %>

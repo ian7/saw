@@ -1,8 +1,5 @@
 #require "metrics_helper"
 
-
-
-
 class MetricsController < ApplicationController
 
 

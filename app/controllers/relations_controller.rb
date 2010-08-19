@@ -119,6 +119,7 @@ def tree
 
   end
 
+
 def graph
 
     taggable_instance = Taggable.find(params[:id])
@@ -144,7 +145,6 @@ def graph
     end
   
 end
-
 
 
 def related_to_hash( taggable_instance, children_taggables, degree=0, max_degree=0 )
@@ -181,9 +181,7 @@ def related_to_hash( taggable_instance, children_taggables, degree=0, max_degree
     h["data"] = []
 
     degree = degree + 1    
-    
-    #puts degree.to_s + "/" + max_degree.to_s()
-    
+        
     if degree.to_i < max_degree.to_i
       
       h["children"].each do |child|

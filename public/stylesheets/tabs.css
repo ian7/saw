@@ -1,0 +1,8 @@
+a.divlink, a.divlink:link {
+  display:block;
+  width:100%; /*width needs to be specified to work in IE*/
+  height:100%; /*height needs to be specified to work in IE*/
+  /*Other browsers expand the link to full width and height.*/
+  line-height:0;
+  font-size:0;
+}

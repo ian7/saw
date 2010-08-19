@@ -1,11 +1,37 @@
+  <%= javascript_include_tag 'codebase/dhtmlxcommon.js' %>
+  <%= javascript_include_tag 'codebase/dhtmlxgrid.js' %>
+  <%= javascript_include_tag 'codebase/dhtmlxgridcell.js' %>
+  <%= javascript_include_tag 'codebase/ext/dhtmlxgrid_srnd.js' %>
+  <%= javascript_include_tag 'codebase/ext/dhtmlxgrid_filter.js' %>
+  <%= javascript_include_tag 'codebase/excells/dhtmlxgrid_excell_link.js' %>
+  <%= stylesheet_link_tag 'codebase/dhtmlxgrid.css' %>
+<br/><br/>
+  <div id="gridbox" style="height:520px;width:*;"></div>
+<script>
+mygrid = new dhtmlXGridObject("gridbox");
+mygrid.setImagePath("<%= image_dir  %>codebase/imgs/");
+mygrid.setEditable(false);
+mygrid.setSkin("modern");
+//mygrid.setDateFormat("%d/%m/%Y");
+mygrid.setHeader("ID,Name,Description,Altenratives,Decisions");
+mygrid.attachHeader("&nbsp;,#text_filter,#text_filter,&nbsp;,&nbsp;");
+mygrid.setInitWidths("40,*,*,100,100");
+mygrid.setColTypes("link,link,link,ro,ro");
+mygrid.setColAlign("center,left,left,center,center");
+mygrid.setColSorting("int,na,na,int,int");
+mygrid.enableResizing("true,true,true,true,true");
+mygrid.init();
+mygrid.enableSmartRendering(true);
+mygrid.load("<%= url_for( :controller=>"issues", :action=>"index", :format=>:xml) %> "); //added !
+</script>
 
-<h1>Listing of issues</h1>
 <table class="tableOfIssues">
     <thead>
         <tr class="tableOfIssues">
             <!--<th>
                 Type
             </th>-->
+
             <th>
                 Id
             </th>
@@ -82,6 +108,7 @@
     </tr>
     <% end %>
 </table>
+-->
 <br/>
 <div class="link">
 <a href="<%= new_issue_path %>?overlay=true" rel="#overlay">
