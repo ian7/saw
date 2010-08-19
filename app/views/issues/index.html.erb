@@ -4,12 +4,12 @@
   <%= javascript_include_tag 'codebase/ext/dhtmlxgrid_srnd.js' %>
   <%= javascript_include_tag 'codebase/ext/dhtmlxgrid_filter.js' %>
   <%= javascript_include_tag 'codebase/excells/dhtmlxgrid_excell_link.js' %>
-  <%= stylesheet_link_tag '/javascripts/codebase/dhtmlxgrid.css' %>
+  <%= stylesheet_link_tag 'codebase/dhtmlxgrid.css' %>
 <br/><br/>
   <div id="gridbox" style="height:520px;width:*;"></div>
 <script>
 mygrid = new dhtmlXGridObject("gridbox");
-mygrid.setImagePath("codebase/imgs/");
+mygrid.setImagePath("<%= image_dir  %>codebase/imgs/");
 mygrid.setEditable(false);
 mygrid.setSkin("modern");
 //mygrid.setDateFormat("%d/%m/%Y");
@@ -22,7 +22,7 @@ mygrid.setColSorting("int,na,na,int,int");
 mygrid.enableResizing("true,true,true,true,true");
 mygrid.init();
 mygrid.enableSmartRendering(true);
-mygrid.load("/issues.xml"); //added !
+mygrid.load("<%= url_for( :controller=>"issues", :action=>"index", :format=>:xml) %> "); //added !
 </script>
 
 <!--

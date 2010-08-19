@@ -1,10 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
   
-  map.resources :alternatives
-  
-  map.resources :issues  
-  
-  map.resources :issues, :has_many => [:alternatives, :tags]
   
   map.resources :dynamic_types
   
@@ -12,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :dynamic_type_scopes
   
+  #map.connect 'tags/list', :controller=>'tags', :action=>'list'
   map.resources :tags
 
   
@@ -20,9 +16,21 @@ ActionController::Routing::Routes.draw do |map|
   # MN: that rocks !
   map.connect 'issues/:id/relations/:action', :controller=>'relations'
   
+  # that rocks too !
+  map.connect 'issues/:taggable_id/tag/:action.:format', :controller=>'tag'
+  
   map.resources :taggables
   
   map.resources :projects, :has_many=> [:issues, :alternatives, :tags ]
+
+
+
+  map.resources :alternatives
+  
+  map.resources :issues  
+  
+  map.resources :issues, :has_many => [:alternatives, :tags]
+
   
   # The priority is based upon order of creation: first created -> highest priority.
 

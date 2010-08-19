@@ -9,6 +9,13 @@ class TagController < ApplicationController
   def index
     # load infovis tag visualisation
     @onload = 'init("Tag");'
+    
+    @issues = Taggable.find :all, :conditions=>{:type=>"Issue"}
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  #index.xml.builder #{ render :xml => @issues }
+    end
   end
   
   def list
@@ -26,9 +33,15 @@ class TagController < ApplicationController
      end
    end
    
-   if params[:overlay]!=nil
-      render :partial => 'list_min'
+    respond_to do |format|
+      format.html {
+           if params[:overlay]!=nil
+              render :partial => 'list_min'
+            end } # index.html.erb
+      format.xml  #{ render :xml => @issues }
     end
+   
+ 
   end
    
   def dotag   

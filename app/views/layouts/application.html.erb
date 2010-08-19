@@ -5,15 +5,16 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Artifacts: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'saw' %>
-  <%= javascript_include_tag 'jquery.tools.min' %>
-  <%#= javascript_include_tag 'jquery.min' %>
-  <%= javascript_include_tag 'jquery.autogrowtextarea.js' %>
+
+<%= stylesheet_link_tag 'saw', 'jquery', 'infovis' %>
+<%= javascript_include_tag 'jquery.tools.min' %>
+<%= javascript_include_tag 'jquery.autogrowtextarea.js' %>
 
 
   <script>
 
 jQuery(document).ready(function() {
+
   jQuery("a[rel]").overlay({
 
     mask: 'gray',
@@ -29,7 +30,7 @@ jQuery(document).ready(function() {
     }
 
   });
- });
+});
   
   $.noConflict();
   
@@ -45,9 +46,9 @@ jQuery(document).ready(function() {
 
 <%#= image_tag"background.png", :id => 'background' %>
 <%#= image_tag"background_bottom.png", :id => 'background_bottom' %>
-
+<!--
 <p style="color: green"><%= flash[:notice] %></p>
-
+-->
 
 <!-- there we go with theh ribbon -->
 <%= render :partial => "layouts/ribbon", :object=>@issues %>
@@ -64,7 +65,7 @@ jQuery(document).ready(function() {
 
 <div class="wrapper">
   
-<div id="center">
+ <div id="center"> 
 
 <div class="overlay" id="overlay"> 
  
@@ -75,9 +76,9 @@ jQuery(document).ready(function() {
 
 <%= yield %>
 
-<%= render :partial => "layouts/footer" %>
+<%#= render :partial => "layouts/footer" %>
 
-</div>
+ </div>
 </div>
 
 

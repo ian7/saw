@@ -27,7 +27,7 @@
             <%= t.name %>
         </td>
         <td>
-        	<%= link_to "Add", {:controller=>"tag", :action=>"dotag", :from_taggable_id=>t.id, :to_taggable_id=>@taggable.id}%>
+        	<%= link_to "Add", {:controller=>"tag", :action=>"dotag", :from_taggable_id=>t.id, :to_taggable_id=>@taggable_id}%>
             <!-- <a href="/tag/dotag?from_taggable_id=<%=h t.id %>&to_taggable_id=<%=h @taggable_id %>">Add</a> --> 
         </td>
     </tr>
