@@ -203,7 +203,7 @@ Beta Value = <span id="betaValue"></span><div id="slider-beta"></div></p>
 
 
 <div id="fragment-4">
-  <table>
+  <table  class="plain">
 <!--
         <tr>
         <th style="text-align: center;">Name</th>
@@ -230,11 +230,21 @@ Beta Value = <span id="betaValue"></span><div id="slider-beta"></div></p>
 <script type="text/javascript"> 
 // perform JavaScript after the document is scriptable. 
 jQuery.getJSON("../metrics", function(data){
-  var code = "<ul>";
+  var code = "<table><tr> <td><font color='white'>Metric</font></td> <td><font color='white'>Red</font></td> <td><font color='white'>Green</font></td> <td><font color='white'>Blue</font></td></tr>";
+  code += "<tr>";
   for(var i = 0; i < data.length; i++){
-    code += "<li>" + data[i] + " [some color here?] </li>";
+    code += "<td><font color='white'>" + data[i] + " </font></td> ";
+    code += "<td><input type='radio' name='red' value='red_"+data[i]+"' onclick='manageMetricsButton(\"red_"+data[i]+"\")'></td>";
+    code += "<td><input type='radio' name='green' value='green_"+data[i]+"' onclick='manageMetricsButton(\"green_"+data[i]+"\")'></td>";
+    code += "<td><input type='radio' name='blue' value='blue_"+data[i]+"' onclick='manageMetricsButton(\"blue_"+data[i]+"\")'></td></tr>";
   }
-  code += "</ul>";
+  
+  code += "<td><font color='white'>Nothing</font></td> ";
+  code += "<td><input type='radio' name='red' value='red_nothing' onclick='manageMetricsButton(\"red_nothing\")' checked></td>";
+  code += "<td><input type='radio' name='green' value='green_nothing' onclick='manageMetricsButton(\"green_nothing\")' checked></td>";
+  code += "<td><input type='radio' name='blue' value='blue_nothing' onclick='manageMetricsButton(\"blue_nothing\")' checked></td></tr>";
+  
+  code += "</table>";
   document.getElementById('metricsPicker').innerHTML = code;
 });
 

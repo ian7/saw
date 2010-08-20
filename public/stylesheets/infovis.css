@@ -73,10 +73,11 @@ span.name {
   overflow-x: hidden;
   max-height: 370px;
   min-width: 0px;
+  top: 400px;
   /*height: 100%;
   position: absolute;
   /*bottom: 10px;*/
-  right: 0px;
+  right: 20px;
   /*width: 300px;
   right: 0px;*/
   /*width: 35%;
@@ -100,13 +101,24 @@ table.infotable{
   background-color: none; */
 }
 table.infotable th {
+  background: #000 !important;
   color: #fff !important ;
   max-width: 200px;
   }
 table.infotable td {
+  background: #000 !important;
   color: #fff !important ;
   max-width: 200px;
   }
+  
+#center table.infoNode tbody tr:hover th,
+#center table.infoNode tr:hover td,
+#center table.infoNode tr:hover td a,
+#center table.infoNode tr:hover th a{ 
+  background: #fff !important;
+  color: white !important;
+}
+  
 /*---------------------infovis end---------------------*/
 *--------------------New Vis CSS--------------------*/
 
@@ -146,7 +158,9 @@ table.infotable td {
 
   width: 300px;
 
-  right: 10px;
+  right: 20px;
+  
+  top: 170px;
 
   z-index: 10;
 
@@ -154,4 +168,8 @@ table.infotable td {
 
 #metricsPicker ul {
   list-style: none;
+}
+
+#metricsPicker table td{
+  background: #000 !important;
 }

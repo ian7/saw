@@ -222,7 +222,7 @@ function init(nodeid){
       var left = parseInt(style.left);
       var top = parseInt(style.top);
       var w = domElement.offsetWidth;
-      style.left = (left - w / 2) + 'px';
+      style.left = (left - w / 2 - 10) + 'px';
       style.top = (top + 10 - 23) + 'px';
       style.display = '';
     }
@@ -246,7 +246,11 @@ function init(nodeid){
         duration: 0
       });
       overgraph = fd;
-      setTimeout("createMap()", d);
+      
+      //Change css of the elements for the tabs to work
+      changecss('.ui-tabs', 'display', 'position: relative; padding: .2em; zoom: 1; none !important');
+      changecss('.ui-tabs-hide', 'display', 'none !important');
+      //setTimeout("createMap()", d);
     }
   });
   
@@ -259,6 +263,15 @@ function init(nodeid){
   
 }
 
+/**
+ * Function to manage the radio buttons for the heatmap
+ */
+ function manageMetricsButton(buttonClicked){
+   var result = buttonClicked.split("_");
+   //result[0] will be the color, result[1] the metric
+   createMap(result[1], result[0]);
+ }
+
 function checkForDoubleJson(json){
   for(var i = 0; i < jsons.length; i++){
     if(jsons[i].id === json.id){
@@ -267,48 +280,6 @@ function checkForDoubleJson(json){
   }
   return true;
 }
-
-/**
- * Method to get the metrics of the nodes. Used (for now) with Issue nodes.
- * @param {Array[int]} Array of node ids of the nodes we are interested.
- */
- function getMetric(ids, pos){
-  var url = "../metrics/descriptiveness?nodes=["+ids+"]";
-  //alert(url);
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open('GET', url, true);
-  xmlhttp.onreadystatechange = function() {
-    if(xmlhttp.readyState == 3) {
-      
-    }
-    if (xmlhttp.readyState == 4) {
-      processMetricsResult(xmlhttp.responseText, ids, pos);
-    }
-  }
-  xmlhttp.send(null);
- }
- 
- /**
-  * Function to make use of the metrics fetched in getMetrics()
-  * @param {String} A JSON object still to be evaluated.
-  * @param {Array[int]} Array of node ids of the nodes we are interested. 
-  */
- function processMetricsResult(metricJson, ids, pos){
-   //resetNodeValue();
-   //alert(nodeValue[0]);
-   //alert(metricJson);
-   var metrics = eval('('+metricJson+')');
-   //alert(ids.length);
-   //alert(metrics[69]);
-   for(var i = 0; i < ids.length; i++){
-     //alert("lol");
-     //alert(ids[i] + " and metric " + metrics[ids[i]]);
-     //if(ids[i] === 69) alert(pos[i]);
-     //alert(pos[i]);
-     addNodeValue(ids[i], metrics[ids[i]], pos[i]);
-  }
-  drawMap();
- }
  
  /**
  * Function to add an object that contains a node ID, a value and a position to the nodeValue array.
@@ -448,3 +419,42 @@ function  animateFade(lastTick, eid){
    fadeBox.allowFade   = true;
    fadeBox.fadeIn      = 750;
    fadeBox.fadeOut     = 200;
+   
+/**
+ * Slider Stuff
+ */
+ 
+ jQuery(document).ready(function() {
+    jQuery("#slider-delta").slider();
+    jQuery("#slider-beta").slider();
+    
+    jQuery( "#slider-delta" ).slider({ max: 20 });
+    jQuery( "#slider-beta" ).slider({ max: 20 });
+    
+    jQuery( "#slider-delta" ).slider({ min: 1 });
+    jQuery( "#slider-beta" ).slider({ min: 0 });
+    
+    jQuery( "#slider-delta" ).slider({ value: deltaValue });
+    jQuery( "#slider-beta" ).slider({ value: beta });
+    document.getElementById("deltaValue").innerHTML = deltaValue;
+    document.getElementById("betaValue").innerHTML = beta;
+    
+    //Callbacks
+    jQuery( "#slider-delta" ).slider({
+      change: function(event, ui) {
+        deltaValue = ui.value;
+        document.getElementById("deltaValue").innerHTML = ui.value;
+        if(lastMetric != undefined && lastColor != undefined)
+          createMap(lastMetric, lastColor, true);
+      }
+    });
+    
+    jQuery( "#slider-beta" ).slider({
+      change: function(event, ui) {
+        beta = ui.value;
+        document.getElementById("betaValue").innerHTML = ui.value;
+        if(lastMetric != undefined && lastColor != undefined)
+          createMap(lastMetric, lastColor, true);
+      }
+    });
+  });

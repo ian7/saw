@@ -378,7 +378,7 @@ ul{
 
 
 
-#center table{
+#center table .plain{
   border-width: 3px;
   min-width:400px;
   background:#000000;
@@ -391,13 +391,13 @@ ul{
   */
 }
 
-#center table.dynamic td:nth-last-child(-n+1){
+#center table.dynamic .plain td:nth-last-child(-n+1){
   text-align:right;
 }
-#center table.dynamic td:nth-last-child(-n+1) a{
+#center table.dynamic .plain td:nth-last-child(-n+1) a{
   color:#ff0000;
 }
-#center table.dynamic td:nth-of-type(4n) a{
+#center table.dynamic .plain td:nth-of-type(4n) a{
   color:#00aa00;
 }
 #center tfoot{

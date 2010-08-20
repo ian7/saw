@@ -66,7 +66,7 @@
 	</div>
 </div>
 <h2>Related issues</h2> 
-<table>
+<table class="plain">
 	<% @issues.each do |issue| %>
 	<tr>
 		<td><a href="<%= issue_path(issue.id)%>"><%=issue.name%></a></td>

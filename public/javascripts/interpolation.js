@@ -11,6 +11,7 @@
  var position = findPos(document.getElementById('infovis'));
  var imageArray = [];
  var colorTable = [];
+ var firstTime = true;
  
  startHeatMap();
  /**
@@ -159,11 +160,27 @@ var issuesPosition = [];
 var issuesValueForTest = [];
 var deltaValue = 4;
 var beta = deltaValue / 2;
+var lastMetric, lastColor;
+var metricToColors = {
+  'red': undefined,
+  'green': undefined,
+  'blue': undefined
+}
 //Creates the heat map each time the graph is redrawn
 /**
  * Big function that computes and draws the map. 
  */
-function createMap(){
+function createMap(metric, color, slider){
+  //alert(metric+" "+color)
+  lastMetric = metric;
+  lastColor = color;
+  metricToColors[color] = metric;
+  
+  if(metric === "nothing"){
+    drawMapNothing(color);
+  }
+  else{
+    //alert(document.getElementById('infovis-canvas'));
   position = findPos(document.getElementById('infovis-canvas'));
   //Get all the issue nodes (and fill the array)
   issues = [];
@@ -175,6 +192,7 @@ function createMap(){
       var el = document.getElementById(overgraph.graph.nodes[i].id);
       issuesId[indexId] = overgraph.graph.nodes[i].id;
       indexId++;
+      //alert(el);
       issuesPosition[indexPos] = findPos(el);
       indexPos++;
       //alert(findPos(el) + " for id: " + overgraph.graph.nodes[i].id);
@@ -183,42 +201,81 @@ function createMap(){
   }
   //drawMap();
   //alert(squareTable.length);
-  getMetric(issuesId, issuesPosition);
-  /////////////////////////
-  /*for(var i in overgraph.graph.nodes) {
-    if(overgraph.graph.nodes[i].data.typology == "Issue"){
-      var el = document.getElementById(overgraph.graph.nodes[i].id);
-      
-     /* issuesId.push(overgraph.graph.nodes[i].id);
-      issuesPosition.push(findPos(el));
-      
-      issues.push({
-        //postion: array [x, y]
-        position: findPos(el),
-        //id: int
-        id: overgraph.graph.nodes[i].id,
-        //value: int
-        value: findNodeValue(overgraph.graph.nodes[i].id),
-      });
-      for(var j = 0; j < nodeValue.length; j++){
-        if(nodeValue[j].id == overgraph.graph.nodes[i].id){
-          nodeValue[j].pos = findPos(el);
-        }
-      }
-    } 
-  }*/
-  //getMetric(issuesId, issuesPosition);
-  //setTimeout('drawMap()', 100);
+  //getMetric(issuesId, issuesPosition, metric, color);
+  jQuery.getJSON("../metrics/" + metric + "?nodes=["+issuesId+"]", function(data) {
+   for(var i = 0; i < issuesId.length; i++){
+     addNodeValue(issuesId[i], data[issuesId[i]], issuesPosition[i]);
+  }
+  
+  drawMap(color, slider);
+  });
+  }
 }
+
+function drawMapNothing(choosenColor){
+  var canvasElement = document.getElementById('newCanvas');
+   width = parseInt(canvasElement.getAttribute("width"));
+      height = parseInt(canvasElement.getAttribute("height"));
+    for(var i = 0; i < height; i = i + deltaValue){
+      for(j = 0; j < width; j = j + deltaValue){
+      //color = Math.floor(valueLookUpTable[Math.floor(colorMap_red[i*width + j])]);
+      //if(imgd.data[index+0] > 0) alert(imgd.data[index+0]);
+      //if(color != 0){
+        color_red = Math.floor(valueLookUpTable_red[Math.floor(colorMap_red[i*width + j])]);
+        if(isNaN(color_red)){
+            color_red = 0;
+        } 
+        if(choosenColor === 'red'){
+          color_red = 0;
+          colorMap_red[i*width + j] = 0;
+        }
+        
+        color_green = Math.floor(valueLookUpTable_green[Math.floor(colorMap_green[i*width + j])]);
+        if(isNaN(color_green)){
+            color_green = 0;
+        }
+        if(choosenColor === 'green'){
+          color_green = 0;
+          colorMap_green[i*width + j] = 0;
+        }
+        
+        color_blue = Math.floor(valueLookUpTable_blue[Math.floor(colorMap_blue[i*width + j])]);
+        if(isNaN(color_blue)){
+            color_blue = 0;
+        }
+        if(choosenColor === 'blue'){
+          color_blue = 0;
+          colorMap_blue[i*width + j] = 0;
+        }
+          
+        
+        index = (j + i * imgd.width) * 4;
+        //if(choosenColor === 'red'){
+         // alert("" + Math.floor(valueLookUpTable[Math.floor(colorMap_red[i*width + j])]) +", "+Math.floor(valueLookUpTable[Math.floor(colorMap_green[i*width + j])]);+", "+Math.floor(valueLookUpTable[Math.floor(colorMap_blue[i*width + j])]));
+          context.fillStyle = "rgba("+ color_red +", "+color_green+", "+color_blue+", 1)";
+        //}
+       context.fillRect (j - beta, i - beta, deltaValue + 2*beta, deltaValue + 2*beta); 
+      //}
+    }
+  }
+}
+
 
 /**
  * drawMap() is a method that was created to dispatch the real drawings. It is simply divided from 
  * createMap() because it has to be called once the metrics are retrieved from the server.
  */
- var colorMap = [];
+ var colorMap_red = [];
+ var colorMap_green = [];
+ var colorMap_blue = [];
+ 
+ var valueLookUpTable_red = [];
+ var valueLookUpTable_green = [];
+ var valueLookUpTable_blue = [];
+ 
  var newColorMap = [];
  var newColorMapIndex = 0;
-function drawMap(){
+function drawMap(choosenColor, slider){
   //alert(nodeValue.length);
  /* for(var i = 0; i < nodeValue.length; i++){
     alert("id: " + nodeValue[i].id + ", value: "+ nodeValue[i].value + ", position: " + nodeValue[i].position);
@@ -251,10 +308,6 @@ function drawMap(){
       }
     //} 
   }
-  
-  //Change css of the elements
-  changecss('.ui-tabs', 'display', 'position: relative; padding: .2em; zoom: 1; none !important');
-  changecss('.ui-tabs-hide', 'display', 'none !important');
   ////////////
   
   //alert("Issues in issues array with all the things.");
@@ -281,7 +334,15 @@ function drawMap(){
       height = parseInt(canvasElement.getAttribute("height"));
   }
   
-  imgd = context.createImageData(width, height);
+  //ImageData check
+  if(firstTime){
+    imgd = context.createImageData(width, height);
+    firstTime = false;
+  }
+  else{
+    imgd = context.getImageData(0, 0, width, height);
+  }
+  
   var i,j;
   var issueLength = issues.length;
   var squareTableLength = squareTable.length;
@@ -369,7 +430,16 @@ function drawMap(){
     //result = result / normSum;
     if(result > maximum)
       maximum = result;
-    colorMap[i*width + j] = result;
+      
+    if(choosenColor === 'red'){
+      colorMap_red[i*width + j] = result; 
+    }
+    else if(choosenColor === 'green'){
+      colorMap_green[i*width + j] = result;
+    }
+    else{
+      colorMap_blue[i*width + j] = result;
+    }
     newColorMap[newColorMapIndex] = result;
     newColorMapIndex++;
     /*if(result > 200){
@@ -388,10 +458,25 @@ function drawMap(){
         imgd.data[index+3] = 0xff; */
     } 
   }
-  var valueLookUpTable = [];
-  for(var i = 0; i < maximum; i++){
-    valueLookUpTable[i] = i * 255 / maximum;
+
+  if(choosenColor === 'red'){
+    for(var i = 0; i < maximum; i++){
+      valueLookUpTable_red[i] = i * 255 / maximum;
+    }
   }
+  
+  else if(choosenColor === 'green'){
+    for(var i = 0; i < maximum; i++){
+      valueLookUpTable_green[i] = i * 255 / maximum;
+    }
+  }
+  
+  else{
+    for(var i = 0; i < maximum; i++){
+      valueLookUpTable_blue[i] = i * 255 / maximum;
+    }
+  }
+  
   var j = 0;
   /*for(var i = 0; i < height; i = i+deltaValue){
     for(j = 0; j < width; j = j+deltaValue){
@@ -413,29 +498,65 @@ function drawMap(){
     }
   } 
   context.scale(0.7, 0.7);  */
-  var m = 0, n = 0, color;
-  context.fillStyle = "rgb(0, 0, 0)";
-  context.fillRect(0, 0, width, height);
+  var m = 0, n = 0, color_red, color_blue, color_green ,index;
+  //context.fillStyle = "rgb(0, 0, 0)";
+  //context.fillRect(0, 0, width, height);
   for(var i = 0; i < height; i = i + deltaValue){
     for(j = 0; j < width; j = j + deltaValue){
-      color = Math.floor(valueLookUpTable[Math.floor(colorMap[i*width + j])]);
-      if(color != 0){
-       context.fillStyle = "rgba("+ color +", 0, 0, 0.9)";
-       context.fillRect (j - beta, i - beta, deltaValue + 2*beta, deltaValue + 2*beta); 
-       //context.arc(j, i, deltaValue, 0, Math.PI*2, true);
-      }
-     /* for(m = i; m < i + deltaValue; m++){
-        for(n = j; n < j + deltaValue; n++){
-          index = (n + m * imgd.width) * 4;
-          imgd.data[index+0] = valueLookUpTable[Math.floor(colorMap[i*width + j])];
-          imgd.data[index+1] = 0;
-          imgd.data[index+2] = 0;
-          imgd.data[index+3] = 0xff;
+      //color = Math.floor(valueLookUpTable[Math.floor(colorMap_red[i*width + j])]);
+      //if(imgd.data[index+0] > 0) alert(imgd.data[index+0]);
+      //if(color != 0){
+        color_red = Math.floor(valueLookUpTable_red[Math.floor(colorMap_red[i*width + j])]);
+        if(isNaN(color_red)){
+            color_red = 0;
+        } 
+        
+        color_green = Math.floor(valueLookUpTable_green[Math.floor(colorMap_green[i*width + j])]);
+        if(isNaN(color_green)){
+            color_green = 0;
         }
-      } */
+        color_blue = Math.floor(valueLookUpTable_blue[Math.floor(colorMap_blue[i*width + j])]);
+        if(isNaN(color_blue)){
+            color_blue = 0;
+        }
+          
+        
+        index = (j + i * imgd.width) * 4;
+        //if(choosenColor === 'red'){
+         // alert("" + Math.floor(valueLookUpTable[Math.floor(colorMap_red[i*width + j])]) +", "+Math.floor(valueLookUpTable[Math.floor(colorMap_green[i*width + j])]);+", "+Math.floor(valueLookUpTable[Math.floor(colorMap_blue[i*width + j])]));
+          context.fillStyle = "rgba("+ color_red +", "+color_green+", "+color_blue+", 1)";
+        //}
+       context.fillRect (j - beta, i - beta, deltaValue + 2*beta, deltaValue + 2*beta); 
+      //}
     }
   }
+  
+  if(firstTime)
+    firstTime = false;
+  
   context.fill();
+  
+  if(slider){
+    if(choosenColor === 'red'){
+      if(metricToColors['green'] != undefined)
+        createMap(metricToColors['green'], 'green', false);
+      if(metricToColors['blue'] != undefined)
+        createMap(metricToColors['blue'], 'blue', false);
+    }
+    else if(choosenColor === 'green'){
+      if(metricToColors['red'] != undefined)
+        createMap(metricToColors['red'], 'red', false);
+      if(metricToColors['blue'] != undefined)
+        createMap(metricToColors['blue'], 'blue', false);
+    }
+    else{
+      if(metricToColors['red'] != undefined)
+        createMap(metricToColors['red'], 'red', false);
+      if(metricToColors['green'] != undefined)
+        createMap(metricToColors['green'], 'green', false);
+    }
+  }
+  //jQuery('#metricsPicker').hide().show();
   //context.putImageData(imgd, 0, 0);
   
 }
@@ -620,9 +741,9 @@ function turnBlack(flag){
   for (var i = 0; i < canvHeight; i++) {
     for (var j = 0; j < canvWidth; j++) {
       index = (i + j * imgd.width) * 4;
-        imgd.data[index+0] = 0;
-        imgd.data[index+1] = 0;
-        imgd.data[index+2] = 0;
+        imgd.data[index+0] = 0; //r
+        imgd.data[index+1] = 0; //g
+        imgd.data[index+2] = 0; //b
         imgd.data[index+3] = 0xff;
     }
   }
