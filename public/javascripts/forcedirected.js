@@ -222,7 +222,7 @@ function init(nodeid){
       var left = parseInt(style.left);
       var top = parseInt(style.top);
       var w = domElement.offsetWidth;
-      style.left = (left - w / 2 - 10) + 'px';
+      style.left = (left - w / 2 - 0) + 'px';
       style.top = (top + 10 - 23) + 'px';
       style.display = '';
     }

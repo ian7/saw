@@ -67,13 +67,12 @@ span.name {
 }
 
 #infonode {
-  bottom: 0px;
+  bottom: 10px;
   position: absolute;
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 370px;
   min-width: 0px;
-  top: 400px;
   /*height: 100%;
   position: absolute;
   /*bottom: 10px;*/
@@ -84,8 +83,8 @@ span.name {
   top: 50%; */
   z-index: 10;
   /*filter:alpha(opacity = 50); 
-   -moz-opacity: 0.5; 
-   opacity: 0.5; */
+   -moz-opacity: 0.5; */
+   opacity: 0.5; 
    background-color: rgba(0,0,0, 0.9);
 }
 
@@ -101,11 +100,13 @@ table.infotable{
   background-color: none; */
 }
 table.infotable th {
+  opacity: 0.5;
   background: #000 !important;
   color: #fff !important ;
   max-width: 200px;
   }
 table.infotable td {
+  opacity: 0.5;
   background: #000 !important;
   color: #fff !important ;
   max-width: 200px;
@@ -153,6 +154,7 @@ table.infotable td {
 /*-------------------------Metrics Picker----------------------*/
 
 #metricsPicker {
+  opacity: 0.5;
 
   position: absolute;
 

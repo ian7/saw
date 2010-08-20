@@ -45,7 +45,7 @@
  */
 function gauss(x){
   //var a, b, c;
-  return Math.exp(-0.0001*x*x);
+  return Math.exp(-0.001*x*x);
   //return Math.exp(a*x*x + b*x + c);
   //return (1 / Math.sqrt(2*Math.PI)) * Math.exp((-1/2)*Math.pow(x, 2));
   //return a*Math.exp(-((x - b)*(x-b)) / (2*c*c))
@@ -354,7 +354,7 @@ function drawMap(choosenColor, slider){
       
       /*colorValue = computeColorValue(j, i);*/
     
-    pixel = [j + position[0] - 35, i + position[1] - 15];
+    pixel = [j + position[0] - 24, i + position[1] - 12];
     result = 0;
     
     for(var k = 0; k < issueLength; k++){
