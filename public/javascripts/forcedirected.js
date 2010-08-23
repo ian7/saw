@@ -92,7 +92,7 @@ function init(nodeid){
       
       onMouseWheel: function(delta, e){
         timerId = clearTimeout(timerId); 
-        timerId = setTimeout(onMouseWheelCallback, 500); 
+        timerId = setTimeout(onMouseWheelCallback, 1500); 
       }
       
     },
