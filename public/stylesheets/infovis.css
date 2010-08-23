@@ -85,7 +85,6 @@ span.name {
   /*filter:alpha(opacity = 50); 
    -moz-opacity: 0.5; */
    opacity: 0.5; 
-   background-color: rgba(0,0,0, 0.9);
 }
 
 table.infotable{
@@ -112,13 +111,6 @@ table.infotable td {
   max-width: 200px;
   }
   
-#center table.infoNode tbody tr:hover th,
-#center table.infoNode tr:hover td,
-#center table.infoNode tr:hover td a,
-#center table.infoNode tr:hover th a{ 
-  background: #fff !important;
-  color: white !important;
-}
   
 /*---------------------infovis end---------------------*/
 *--------------------New Vis CSS--------------------*/
@@ -162,7 +154,7 @@ table.infotable td {
 
   right: 20px;
   
-  top: 170px;
+  top: 230px;
 
   z-index: 10;
 
