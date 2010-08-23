@@ -124,7 +124,7 @@ def graph
 
     taggable_instance = Taggable.find(params[:id])
     
-    max_degree = params[:degree]
+    max_degree = params[:degree].to_i
  
     if max_degree == nil
       max_degree = 1
@@ -135,7 +135,7 @@ def graph
 
     r = []
     
-    children_taggables = dig_recursively( children_taggables, 1, max_degree)
+    children_taggables = dig_recursively( children_taggables, 1, max_degree )
     
     r << taggable_instance.to_graph()
     
