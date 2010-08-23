@@ -12,6 +12,7 @@
  var imageArray = [];
  var colorTable = [];
  var firstTime = true;
+ var gaussParameter = -0.001;
  
  startHeatMap();
  /**
@@ -21,7 +22,6 @@
   createSquareTable();
   createLUT();
   createColorTable();
-  //createMap();
   
   //Create the 2D array 
   for(var i = 0; i < generalCanvasWidth; i++){
@@ -44,11 +44,7 @@
  * Gaussian function.
  */
 function gauss(x){
-  //var a, b, c;
-  return Math.exp(-0.001*x*x);
-  //return Math.exp(a*x*x + b*x + c);
-  //return (1 / Math.sqrt(2*Math.PI)) * Math.exp((-1/2)*Math.pow(x, 2));
-  //return a*Math.exp(-((x - b)*(x-b)) / (2*c*c))
+  return Math.exp(gaussParameter*x*x);
 }
  
  //Create square table
@@ -501,6 +497,23 @@ function drawMap(choosenColor, slider){
   var m = 0, n = 0, color_red, color_blue, color_green ,index;
   //context.fillStyle = "rgb(0, 0, 0)";
   //context.fillRect(0, 0, width, height);
+  fillMap(choosenColor, slider);
+  //jQuery('#metricsPicker').hide().show();
+  //context.putImageData(imgd, 0, 0);
+  
+}
+
+/**
+ * fillMap fills the map coloring the small squares using the deltaValue as w/h.
+ */
+ function fillMap(choosenColor, slider){
+  var canvasElement = document.getElementById('newCanvas');
+  context = canvasElement.getContext('2d');
+  width = parseInt(canvasElement.getAttribute("width"));
+  height = parseInt(canvasElement.getAttribute("height"));
+  var m = 0, n = 0, color_red, color_blue, color_green ,index;
+  //context.fillStyle = "rgb(0, 0, 0)";
+  //context.fillRect(0, 0, width, height);
   for(var i = 0; i < height; i = i + deltaValue){
     for(j = 0; j < width; j = j + deltaValue){
       //color = Math.floor(valueLookUpTable[Math.floor(colorMap_red[i*width + j])]);
@@ -556,10 +569,7 @@ function drawMap(choosenColor, slider){
         createMap(metricToColors['green'], 'green', false);
     }
   }
-  //jQuery('#metricsPicker').hide().show();
-  //context.putImageData(imgd, 0, 0);
-  
-}
+ }
 
 //Compute the value of the color in the heatmap
 /**
@@ -761,3 +771,15 @@ function turnBlack(flag){
     createMap();
   }
 }
+
+/**
+ * Handler for the text area containing the gauss parameter
+ */
+ function gaussParameterHandler(){
+    var newValue = document.gauss.gaussValue.value;
+    if(newValue != ""){
+      gaussParameter = parseFloat(newValue);
+    }
+    startHeatMap();
+    createMap(lastMetric, lastColor, true);
+ }

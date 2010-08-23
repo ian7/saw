@@ -1,6 +1,7 @@
 var labelType, useGradients, nativeTextSupport, animate, d = 100;
 var jsons = [], overgraph, nodeValue = [], popUpVariable = false;
 var  TimeToFade = 500.0;
+var timerId = null; 
 
 (function() {
   var ua = navigator.userAgent,
@@ -79,8 +80,9 @@ function init(nodeid){
         node.pos.setc(pos.x, pos.y);
         fd.plot();
       },
-      onDragEnd: function(node, eventInfo, e){
-        createMap();
+      onTouchEnd: function(node, eventInfo, e){
+        alert("drag ended!");
+        //createMap();
       },
       //Implement the same handler for touchscreens
       onTouchMove: function(node, eventInfo, e) {
@@ -89,7 +91,8 @@ function init(nodeid){
       },
       
       onMouseWheel: function(delta, e){
-        //createMap();
+        timerId = clearTimeout(timerId); 
+        timerId = setTimeout(onMouseWheelCallback, 500); 
       }
       
     },
@@ -280,6 +283,13 @@ function checkForDoubleJson(json){
   }
   return true;
 }
+
+/**
+ * OnMouseWheelCallback to handle when the mouse wheel stops.
+ */
+ function onMouseWheelCallback(){
+   createMap(lastMetric, lastColor, true);
+ }
  
  /**
  * Function to add an object that contains a node ID, a value and a position to the nodeValue array.
