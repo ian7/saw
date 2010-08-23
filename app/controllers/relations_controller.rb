@@ -130,9 +130,12 @@ def graph
       max_degree = 1
     end
   
-    children_taggables = taggable_instance.related
+    children_taggables = []
+    children_taggables << taggable_instance
 
     r = []
+    
+    children_taggables = dig_recursively( children_taggables, 1, max_degree)
     
     r << taggable_instance.to_graph()
     
@@ -146,6 +149,24 @@ def graph
   
 end
 
+def dig_recursively( parents, degree, max_degree )
+
+  if( degree <= max_degree )
+    parents = dig_children( parents )
+    parents = dig_recursively( parents, degree+1, max_degree )
+  end
+  return parents 
+end
+
+def dig_children( parents )
+  parents_copy = Array.new( parents )
+  
+  parents_copy.each do |parent|
+    parents.concat( parent.related )
+  end
+  
+  return parents
+end
 
 def related_to_hash( taggable_instance, children_taggables, degree=0, max_degree=0 )
   
