@@ -124,11 +124,13 @@ def graph
 
     taggable_instance = Taggable.find(params[:id])
     
-    max_degree = params[:degree].to_i
+    max_degree = params[:degree]
  
     if max_degree == nil
-      max_degree = 1
+      max_degree = 4
     end
+  
+    max_degree = max_degree.to_i
   
     children_taggables = []
     children_taggables << taggable_instance
