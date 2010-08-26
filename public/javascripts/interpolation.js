@@ -40,6 +40,12 @@
     'green': undefined,
     'blue': undefined
   }
+ var colorMap_red = [];
+ var colorMap_green = [];
+ var colorMap_blue = [];
+ var valueLookUpTable_red = [];
+ var valueLookUpTable_green = [];
+ var valueLookUpTable_blue = [];
  
  startHeatMap();
  
@@ -145,35 +151,80 @@ function findNodePosition(nodeId){
  * @param {boolean} A boolean that tells that the function call comes from one of the sliders.
  */
 function createMap(metric, color, slider){
-  lastMetric = metric;
-  lastColor = color;
-  metricToColors[color] = metric;
-  
+  var canvasElement = document.getElementById('newCanvas');
+  /////////////////////
   if(metric === "nothing"){
     drawMapNothing(color);
+    return;
   }
-  else{
-  position = findPos(document.getElementById('infovis-canvas'));
-  
-  //Get all the issue nodes (and fill the array)
-  issues = [];
   var indexPos = 0;
   var indexId = 0;
-  for(var i in overgraph.graph.nodes) {
+   for(var i in overgraph.graph.nodes) {
       var el = document.getElementById(overgraph.graph.nodes[i].id);
       issuesId[indexId] = overgraph.graph.nodes[i].id;
       indexId++;
       issuesPosition[indexPos] = findPos(el);
       indexPos++;
   }
-  jQuery.getJSON("../metrics/" + metric + "?nodes=["+issuesId+"]", function(data) {
-   for(var i = 0; i < issuesId.length; i++){
-     addNodeValue(issuesId[i], data[issuesId[i]], issuesPosition[i]);
+   jQuery.getJSON("../metrics/" + metric + "?nodes=["+issuesId+"]", function(data) {
+    for(var i = 0; i < issuesId.length; i++){
+       addNodeValue(issuesId[i], data[issuesId[i]], issuesPosition[i]);
+    }
+    
+    //drawMap(color, slider);
+    });
+    issues = [];
+     for(var i in overgraph.graph.nodes) {
+      var ele = document.getElementById(overgraph.graph.nodes[i].id);
+      
+      issues.push({
+        //postion: array [x, y]
+        position: findNodePosition(overgraph.graph.nodes[i].id),
+        //id: int
+        id: overgraph.graph.nodes[i].id,
+        //value: int
+        value: findNodeValue(overgraph.graph.nodes[i].id),
+      });
+      for(var j = 0; j < nodeValue.length; j++){
+        if(nodeValue[j].id == overgraph.graph.nodes[i].id){
+          nodeValue[j].pos = findPos(ele);
+        }
+      }
   }
-  
-  drawMap(color, slider);
-  });
-  }
+  var canvasElement = document.getElementById('newCanvas');
+  context = canvasElement.getContext('2d');
+  var imgd = context.getImageData(0, 0, parseInt(canvasElement.getAttribute("width")), parseInt(canvasElement.getAttribute("height")));
+    ///////////////////
+    red_worker.postMessage({
+      metric: metric,
+      color: color,
+      slider: slider,
+      lastMetric: lastMetric,
+      lastColor: lastColor,
+      colorMapRed: colorMap_red,
+      colorMapGreen: colorMap_green,
+      colorMapBlue: colorMap_blue,
+      valueLookUpTableRed: valueLookUpTable_red,
+      valueLookUpTableGreen: valueLookUpTable_green,
+      valueLookUpTableBlue: valueLookUpTable_blue,
+      canvasWidth: parseInt(canvasElement.getAttribute("width")),
+      canvasHeight: parseInt(canvasElement.getAttribute("height")),
+      overgraph: overgraph,
+      metricToColors: metricToColors,
+      position: findPos(document.getElementById('infovis-canvas')),
+      issuesId: issuesId,
+      issuesPosition: issuesPosition,
+      nodeValue: nodeValue,
+      issues: issues,
+      context: context,
+      canvasElement: canvasElement,
+      imgd: imgd,
+      squareTable: squareTable,
+      deltaValue: deltaValue,
+    });
+  lastMetric = metric;
+  lastColor = color;
+  metricToColors[color] = metric;
 }
 
 /**
@@ -220,13 +271,6 @@ function drawMapNothing(choosenColor){
     }
   }
 }
-
- var colorMap_red = [];
- var colorMap_green = [];
- var colorMap_blue = [];
- var valueLookUpTable_red = [];
- var valueLookUpTable_green = [];
- var valueLookUpTable_blue = [];
  
 /**
  * This function gets directly called from createMap. Its work is to create the array of 

@@ -186,17 +186,16 @@ Gauss parameter: <form name="gauss"><textarea name="gaussValue" cols="5" rows="1
 -->
 <%= javascript_include_tag("jit.js") %>
 <%= javascript_include_tag("forcedirected.js") %>
-<div class="infonode" id="infonode"></div>
-<div id="infovis" class="show">
-	<canvas id="newCanvas" width="1184" height="600" style="position: absolute; top: 0pt; left: 0pt; width: 1184px; height: 600px;"></canvas>
-	
-	<div id="checkboxes">
-	<form name="check">
-		<input type="checkbox" name="issue" value="no" onClick="controller('issues')"> <font color="white"> Show Issues </font><br>
-		<input type="checkbox" name="alternative" value="no" onClick="controller('alternatives')"> <font color="white">Show Alternatives </font> <br>
-		<input type="checkbox" name="tag" value="no" onClick="controller('tags')"> <font color="white">Show Tags </font> <br>
-	</form>
+  <div id="checkboxes">
+  <form name="check">
+    <input type="checkbox" name="issue" value="no" onClick="controller('issues')"> <font color="black"> Show Issues </font><br>
+    <input type="checkbox" name="alternative" value="no" onClick="controller('alternatives')"> <font color="black">Show Alternatives </font> <br>
+    <input type="checkbox" name="tag" value="no" onClick="controller('tags')"> <font color="black">Show Tags </font> <br>
+  </form>
 </div>
+<div id="infovis" class="show">
+  <div class="infonode" id="infonode"></div>
+	<canvas id="newCanvas" width="1184" height="600" style="position: absolute; top: 0pt; left: 0pt; width: 1184px; height: 600px;"></canvas>
 </div>
 <input type="button" onclick="resetView()" value="Reset The View"> <input type="button" onclick="saveTree()" value="Save Tree"><br>
 <input type="button" onclick="loadTree()" value="Load Previously Saved Tree"><br>

@@ -1,7 +1,39 @@
 var labelType, useGradients, nativeTextSupport, animate, d = 100;
-var jsons = [], overgraph, nodeValue = [], popUpVariable = false;
+var jsons = [], overgraph, nodeValue = [], popUpVariable = false, thisID, whatIsChecked = [];
 var  TimeToFade = 500.0;
-var timerId = null; 
+var timerId = null;
+var removed = []; 
+var removed_elements = [3];
+removed_elements['Issue'] = [];
+removed_elements['Alternative'] = [];
+removed_elements['Tag'] = [];
+var toPaint = [];
+
+var red_worker = new Worker('/javascripts/testWorker.js');
+var green_worker = new Worker('/javascripts/testWorker.js');
+var blue_worker = new Worker('/javascripts/testWorker.js');
+
+red_worker.onerror = function (event) {
+  alert("Error message: \"" + event.message + "\" at line: " + event.lineno);
+};
+
+red_worker.onmessage = function(event) {
+    event = event.data;
+    
+    /*var choosenColor = event.choosenColor
+    var slider = event.slider;
+    valueLookUpTable_red = event.valueLookUpTableRed;
+    valueLookUpTable_green = event.valueLookUpTableGreen;
+    valueLookUpTable_blue = event.valueLookUpTableBlue;
+    colorMap_red = event.colorMapRed;
+    colorMap_green = event.colorMapGreen;
+    colorMap_blue = event.colorMapBlue;
+    fillMap(choosenColor, slider);*/
+    for(var i = 0; i < event.heigth; i+event.deltaValue)
+      for(var j = 0; j < event.width; j + event.deltaValue)
+        document.write(event.colorMapRed[i * event.width + j]);
+    //document.writeln("i = " + event.i + " j = " + event.j + " width = " + event.width + " height = " + event.height + " deltaValue = " + event.deltaValue + " maximum = " + event.maximum);
+};
 
 (function() {
   var ua = navigator.userAgent,
@@ -33,6 +65,7 @@ var Log = {
  * @param {int} The ID of the node page the user is currently watching.
  */
 function init(nodeid){
+  thisID = nodeid;
   var json;
   jQuery.getJSON("../relations/graph?id=" + nodeid , function(data){
     jsons.push(data);
@@ -122,11 +155,20 @@ function init(nodeid){
         
       //Table of information about the node
       domElement.onclick = function(){
-        
         fade('infonode');
         //document.getElementById('infonode').style.opacity = 0;
         var path = '../taggables/'+node.id;
         setTimeout("getHTML('../taggables/'+"+node.id+")", TimeToFade);
+      }
+      
+      //Expand the node
+      domElement.ondblclick = function(){
+        jQuery.getJSON("../relations/graph?id=" + node.id, function(data){
+          fd.op.sum(data, {
+            type: 'fade:con',  
+            duration: 500  
+          });
+        });
       }
     },
     // Change node styles when DOM labels are placed
@@ -167,6 +209,7 @@ function init(nodeid){
     }
   });
   });
+  checkAll();
 }
 
 /**
@@ -372,3 +415,187 @@ function  animateFade(lastTick, eid){
       }
     });
   });
+  
+   /**
+  * Function to let the user choose the degree on which he wants to visualize the graph.
+  */
+ function degreeChooser(){
+  var url = "http://localhost:3000/relations/tree?id=" + thisID + "&degree=" + (document.chooser.multipleDegree.selectedIndex + 1);
+  //alert(document.chooser.multipleDegree.selectedIndex);
+  jQuery.getJSON(url, function(data){
+     //Reset tree
+     var lbs = overgraph.fx.labels;
+     for (var label in lbs) {
+     if (lbs[label]) {
+        lbs[label].parentNode.removeChild(lbs[label]);
+      }
+    }
+    
+    overgraph.fx.labels = {};
+    
+    //Load new JSON
+    data = modjson(data);
+    overgraph.loadJSON(data);
+    jsons = [];
+    jsons.push(data);
+    overgraph.refresh();
+    overgraph.refresh();
+    //Sets all the checkbuttons to true
+    checkAll();
+    turnBlack();
+    //createMap();
+  });
+ }
+ 
+ /*---------- Filtering Things ----------*/
+ /**
+ * Checks all the checkboxes that works for the view. Might become handy in the future.
+ */
+function checkAll(){
+  document.check.issue.checked = true;
+  document.check.alternative.checked = true;
+  document.check.tag.checked = true;
+  whatIsChecked[0] = true;
+  whatIsChecked[1] = true;
+  whatIsChecked[2] = true;
+}
+
+/**
+ * Controller for the checkboxes.
+ * @param {String} c Type of the node to paint or delete from the graph.
+ */
+function controller(c){
+  //Checks if issue has been clicked
+  if(c == 'issues'){
+    //If it's checked paint the issues
+    if(document.check.issue.checked == true) {
+      paint('Issue');
+      whatIsChecked[0] = true;
+    }
+    else{
+      remove('Issue');
+      whatIsChecked[0] = false;
+    }
+  }
+  
+  if(c == 'alternatives'){
+    if(document.check.alternative.checked == true){
+      paint('Alternative');
+      whatIsChecked[1] = true;
+    }
+    else{
+      remove('Alternative');
+      whatIsChecked[1] = false;
+    }
+  }
+  
+  if(c == 'tags'){
+    if(document.check.tag.checked == true){
+      paint('Tag');
+      whatIsChecked[2] = true;
+    }
+    else{
+      remove('Tag');
+      whatIsChecked[2] = false;
+    }
+  }
+}
+
+/*---------- Remove Stuff ----------*/
+
+/**
+ * Function that removes certain types of nodes.
+ * @param {String} c Type of nodes to be removed.
+ */
+function remove(c){
+  removed = [];
+  for(var j = 0; j < jsons.length; j++){
+    removeNodes(jsons[j], c);
+  }
+  
+  overgraph.op.removeNode(removed, {
+        type: 'fade:seq',
+        duration: 500,
+        hideLabels: true,
+  });
+}
+
+/**
+ * This function does the action of removing phisically the nodes from the visualization. It gathers
+ * them into an array which is lately fed to the op.removeNode of the graph.
+ * @param {Object} A JSON object from which the nodes should be removed.
+ * @param {String} The string that describes the type of nodes that must be removed.
+ */
+function removeNodes(json, c){
+  for(var i = 0; i < json.length; i++){
+    alert(json[i].data.type + " " + json[i].id)
+    if(json[i].data.type === c){
+      removed.push(json[i].id);
+      
+      var node = {id : "", name: "", data: ""};
+      node.id = json[i].id;
+      node.name = json[i].name;
+      node.adjacencies = json[i].adjacencies;
+      node.data = json[i].data;
+      removed_elements[c].push(node);
+    }
+  }
+}
+
+/*---------- Paint stuff ----------*/
+/**
+ * Paints the node that were removed from the view.
+ * @param {String} c Type of the nodes that were removed and have to be painted back.
+ */
+function paint(c){
+  toPaint = [];
+  for(var i = 0; i < jsons.length; i++){
+    paintNodes(jsons[i], c);
+  }
+  for(var m = 0; m < toPaint.length; m++){
+      //Add back the nodes, how to do that with force directed?
+  }
+  
+  //Since there is a bug in the library, refresh twice to show the edges correctly.
+  overgraph.refresh();
+  overgraph.refresh();
+  removed_elements[c] = new Array();
+}
+
+/**
+ * Function that gathers the nodes that have to be painted back on the graph.
+ * @param {Object} A JSON object that contains the information to paint back the nodes.
+ * @param {String} The type of nodes that has to be painted back.
+ */
+function paintNodes(json, c){
+  for(var k = 0; k < json.length; k++){
+      var element = wasRemoved(json[k].id, c);
+      if(element.flag){
+        var node = {id : "", name: "", data: ""};
+        node.id = json[k].id;
+        node.name = json[k].name;
+        node.data = json[k].data;
+        node.adjacencies = json[k].ajacencies;
+        toPaint.push(node);
+      }
+    }
+}
+
+/**
+ * Check what was removed from the graph. Useful for repainting the nodes that were previously deleted.
+ * @param {Int} id ID of the node that is checked if was removed.
+ * @param {String} c Type of the node that was removed.
+ * @returns The node that was removed. It is in the form Node, wich is an object for the visualization.
+ */
+function wasRemoved(id, c){
+  for(var r = 0; r < removed_elements[c].length; r++){
+    if (id == removed_elements[c][r].id) {
+      return {
+        "flag": true
+      };
+    }
+  }
+  return {
+    "flag": false
+  };
+}

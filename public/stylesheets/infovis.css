@@ -62,52 +62,37 @@ span.name {
   position: relative;
   float: left;
   text-align: left !important;
-  top: 10px;
+  top: 0px;
   left: 10px;
 }
 
 #infonode {
-  bottom: 10px;
+  opacity: 0.5 !important;
+  bottom: 0px;
   position: absolute;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 370px;
+  max-height: 380px;
   min-width: 0px;
-  /*height: 100%;
-  position: absolute;
-  /*bottom: 10px;*/
-  right: 20px;
-  /*width: 300px;
-  right: 0px;*/
-  /*width: 35%;
-  top: 50%; */
+  right: 0px;
   z-index: 10;
-  /*filter:alpha(opacity = 50); 
-   -moz-opacity: 0.5; */
-   opacity: 0.5; 
 }
 
-table.infotable{
+.infotable{
   z-index: 10;
   max-width: 400px;
   padding: 10px;
-  /*-webkit-border-radius:6px;
-  -moz-border-radius:6px;
-  border-radius:6px;
-  -webkit-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
-  -moz-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
-  background-color: none; */
+  color: #fff;
+  opacity: 0.7 !important;
 }
-table.infotable th {
-  opacity: 0.5;
+.infotable th {
+  color: #fff !important;
   background: #000 !important;
-  color: #fff !important ;
   max-width: 200px;
   }
-table.infotable td {
-  opacity: 0.5;
+.infotable td {
+  color: #fff;
   background: #000 !important;
-  color: #fff !important ;
   max-width: 200px;
   }
   
@@ -152,9 +137,9 @@ table.infotable td {
 
   width: 300px;
 
-  right: 20px;
+  right: 25px;
   
-  top: 230px;
+  top: 265px;
 
   z-index: 10;
 
