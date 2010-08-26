@@ -22,7 +22,8 @@ function callback(json){
     };
     //end
     var infovis = document.getElementById('infovis');
-    var w = infovis.offsetWidth, h = infovis.offsetHeight;
+    
+    /*var w = infovis.offsetWidth, h = infovis.offsetHeight;
     //init canvas
     //Create a new canvas instance.
     var canvas = new Canvas('mycanvas', {
@@ -32,14 +33,16 @@ function callback(json){
         'backgroundColor': '#1a1a1a'
     });
     //end
-    
+    */
     //init st
     //Create a new ST instance
-    var st = new ST(canvas, {
+    var st = new $jit.ST({
+        // set div object
+        injectInto: 'infovis',
         //set duration for the animation
         duration: 800,
         //set animation transition type
-        transition: Trans.Quart.easeInOut,
+        transition: $jit.Trans.Quart.easeInOut,
         //set distance between node and its children
         levelDistance: 50,
         //set node and edge styles
@@ -63,7 +66,7 @@ function callback(json){
 			
 			var html = "<h2>" + node.name + "</h2>";
 			// if it is a leaf
-			if(Graph.Util.getSubnodes(node).length == 1) {
+			if($jit.Graph.Util.getSubnodes(node).length == 1) {
 				// I'll add a link to create a new TAG
 				html += '<div class="link"><a href="tags/new?overlay=true&type_name='+node.name+'" rel="#overlay"><img alt="new" src="images/new.png"/></a></div>';
 			}
@@ -110,7 +113,7 @@ function callback(json){
             }
             else {
                 delete node.data.$color;
-                var GUtil = Graph.Util;
+                var GUtil = $jit.Graph.Util;
                 //if the node belongs to the last plotted level
                 if(!GUtil.anySubnode(node, "exist")) {
                     //count children number
@@ -146,11 +149,12 @@ function callback(json){
     //compute node positions and layout
     st.compute();
     //optional: make a translation of the tree
-    st.geom.translate(new Complex(-200, 0), "startPos");
+    //st.geom.translate(new $jit.Complex(-200, 0), "startPos");
     //emulate a click on the root node.
     st.onClick(st.root);
     //end
     //Add event handlers to switch spacetree orientation.
+    /*
     var top = get('r-top'), 
     left = get('r-left'), 
     bottom = get('r-bottom'), 
@@ -168,6 +172,7 @@ function callback(json){
     };
     
     top.onchange = left.onchange = bottom.onchange = right.onchange = changeHandler;
+    */
     //end
 }
 function init(tag){
