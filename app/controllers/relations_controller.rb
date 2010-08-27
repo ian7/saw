@@ -180,7 +180,7 @@ def graph
         end
         # in case one of them was not found, then drop it.
         if foundNT == false || foundNF == false
-          puts "deleting f: " + edge["nodeFrom"] + " t:" + edge["nodeTo"] 
+          #puts "deleting f: " + edge["nodeFrom"] + " t:" + edge["nodeTo"] 
           edgesCopy.delete(edge)
           #node["adjacencies"].delete(edge)
 
