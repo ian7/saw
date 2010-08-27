@@ -139,7 +139,7 @@ span.name {
 
   right: 25px;
   
-  top: 265px;
+  top: 105px;
 
   z-index: 10;
 
@@ -152,3 +152,14 @@ span.name {
 #metricsPicker table td{
   background: #000 !important;
 }
+
+#log {
+    position:absolute;
+    top:300px;
+    font-size:1.0em;
+    font-weight:bold;
+    color:#23A4FF;
+    z-index: 20;
+    
+}
+
