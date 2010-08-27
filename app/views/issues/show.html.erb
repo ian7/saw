@@ -19,7 +19,7 @@
           jQuery(this).editable('<%= url_for( :controller=>"issues", :action=>"update", :id=>@issue.id ) %>',{
          name     : jQuery(this).attr('id'),
          type     : 'textarea',
-         width    : '90%',
+         width    : '100%',
          submit   : 'OK',
          method   : 'PUT',
          submitdata  : {inplace: jQuery(this).attr('id') }
