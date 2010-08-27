@@ -127,7 +127,7 @@ def graph
     max_degree = params[:degree]
  
     if max_degree == nil
-      max_degree = 4
+      max_degree = 3
     end
   
     max_degree = max_degree.to_i
@@ -139,11 +139,62 @@ def graph
     
     children_taggables = dig_recursively( children_taggables, 1, max_degree )
     
-    r << taggable_instance.to_graph()
+    #r << taggable_instance.to_graph()
     
     children_taggables.each do |taggable|
       r << taggable.to_graph()
-    end    
+    end
+    
+    # there comes final polish
+    
+ 
+    r.each do |node|
+ 
+      #puts "inspecting: " + node["id"]
+
+      edgesCopy = Array.new(node["adjacencies"])
+
+      node["adjacencies"].each do |edge|
+        
+        # if that's first array entry which is node id, then skip it
+        if edge["nodeFrom"] == nil
+          next
+        end
+        
+        foundNT = false
+        foundNF = false
+        
+        
+        r.each do |nt|
+
+          # search for nodeFrom...
+          if nt["id"]==edge["nodeFrom"]
+            foundNF=true
+            next
+          end
+          # search for NodeTo
+          if nt["id"]==edge["nodeTo"]
+            foundNT=true
+            next
+          end
+        end
+        # in case one of them was not found, then drop it.
+        if foundNT == false || foundNF == false
+          puts "deleting f: " + edge["nodeFrom"] + " t:" + edge["nodeTo"] 
+          edgesCopy.delete(edge)
+          #node["adjacencies"].delete(edge)
+
+          if node["adjacencies"].count < 2
+              puts "deleting " + node["id"]
+              #r.delete( node )
+              break;
+          end
+        end
+      end 
+      node["adjacencies"] = edgesCopy
+    end   
+
+        
   
     respond_to do |format|      
      format.json { render :json => r }
@@ -151,9 +202,18 @@ def graph
   
 end
 
+def findNode( array, id )
+  array.each do |node|
+    if node["id"]==id
+      return true
+    end
+  end
+  return false
+end 
+
 def dig_recursively( parents, degree, max_degree )
 
-  if( degree <= max_degree )
+  if( degree < max_degree )
     parents = dig_children( parents )
     parents = dig_recursively( parents, degree+1, max_degree )
   end
