@@ -5,12 +5,28 @@
 <%= javascript_include_tag("wz_jsgraphics.js") %>
 <%= javascript_include_tag("jquery-ui-1.8.custom.min.js") %>
 <%= javascript_include_tag("public_smo_scripts.js") %>
+<%= javascript_include_tag("jquery.jeditable.mini.js")%>
 
 
    <script type="text/javascript"  src="http://js-hotkeys.googlecode.com/files/jquery.hotkeys-0.7.9.min.js"></script>
    
   <script>
     var issueID = '<%= @issue.id %>';
+
+    jQuery(document).ready(function() {
+       
+       jQuery('.edit').each( function(i){
+          jQuery(this).editable('<%= url_for( :controller=>"issues", :action=>"update", :id=>@issue.id ) %>',{
+         name     : jQuery(this).attr('id'),
+         type     : 'textarea',
+         width    : '90%',
+         submit   : 'OK',
+         method   : 'PUT',
+         submitdata  : {inplace: jQuery(this).attr('id') }
+        });
+       });
+    });
+
   </script>
    
 <!-- script for jQuery tabs -->
@@ -71,7 +87,7 @@
                 Name:
             </th>
             <td>
-                <%=h @issue.name %>
+              <div class="edit" id="name"><%=h @issue.name %></div>
             </td>
         </tr>
         <tr class="artifactDetails">
@@ -79,11 +95,7 @@
                 Description:
             </th>
             <td>
-                <% if @issue["Description"]!=nil %>
-                <%=h @issue["Description"].value %>
-                <% else %>
-                <i>(none)</i>
-                <% end %>
+              <div class="edit" id="Description"><% if @issue["Description"]!=nil %><%=h @issue["Description"].value %><% else %><i>(none)</i><% end %></div>
             </td>
         </tr>
 		
@@ -93,11 +105,7 @@
 				<%= attribute.attribute_name %>:
 			</th>
 			<td>
-				<% if @issue[attribute.attribute_name] != nil %>
-					<%= @issue[attribute.attribute_name].value %>
-				<% else %>
-					<i>(none)</i>
-				<% end %>
+			  <div class="edit" id="<%=attribute.attribute_name%>"><% if @issue[attribute.attribute_name] != nil %><%= @issue[attribute.attribute_name].value %><% else %><i>(none)</i><% end %></div>
 			</td>
 		</tr>
 		<% end %>
