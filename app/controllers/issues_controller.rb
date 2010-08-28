@@ -67,25 +67,38 @@ class IssuesController < ApplicationController
 
   def update
      @issue = Taggable.find(params[:id])
+     @issue_params = params[:issue] 
+    
+     if @issue_params == nil
+       @issue_params = params 
+     end
+
+
+    if @issue_params["name"] != nil
+        @issue.name = @issue_params["name"]
+        @issue.save
+    end
+    
+    if @issue_params["Description"] != nil
+        @issue["Description"] = @issue_params["Description"]
+    end
+           
+        @issue.dynamic_type.dynamic_type_attributes.each do |attribute|
+          if @issue_params[attribute.attribute_name] != nil
+            @issue[attribute.attribute_name] = @issue_params[attribute.attribute_name]
+          end
+        end 
 
 
     respond_to do |format|
      ## this didn't worked as some attributes are implemented as dynamic types attributes
-     
-     #TODO: maybe i should rework it to make update_attributes work again 
-     #@issue.update_attributes(params[:issue])
-     
-        @issue.name = params[:issue]["name"]
-        @issue.save
-        @issue["Description"] = params[:issue]["description"]
-        
-        @issue.dynamic_type.dynamic_type_attributes.each do |attribute|
-        	@issue[attribute.attribute_name] = params[:issue][attribute.attribute_name]
-        end	
-        
-
-        format.html { redirect_to(issue_url(@issue.id)) }
+        if params[:inplace] != nil
+          format.html { render :text => params[params[:inplace]] }
+        else          
+          format.html { redirect_to(issue_url(@issue.id)) }
+        end
         format.xml  { head :ok }
+        format.js  { head :ok }
     end
   end
 

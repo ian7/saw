@@ -69,7 +69,46 @@ var Log = {
 function init(nodeid){
   thisID = nodeid;
   var json;
-  jQuery.getJSON("../relations/graph?id=" + nodeid , function(data){
+   
+
+  /* 
+*/  
+      //Change css of the elements for the tabs to work
+      changecss('.ui-tabs', 'display', 'position: relative; padding: .2em; zoom: 1; none !important');
+      changecss('.ui-tabs-hide', 'display', 'none !important');
+
+  checkAll();
+ 
+}
+
+var visLoaded = false;
+
+jQuery( "#tabs" ).bind( "tabsselect", function(event, ui) {
+  
+  // if that's second tab, then calculate visualization
+  if( ui.index == 1 )
+  {
+  
+  // if that's n-th call... just ignore
+  if( visLoaded == true ) {
+    return;
+  }
+  
+  
+  // if that's first call, then mark that we went through that already.
+  if( visLoaded == false ) {
+   visLoaded = true;
+   }
+
+  // logging done manualy..
+    elem = document.getElementById('log');
+    elem.innerHTML = "loading...";    
+    elem.style.left = (500 - elem.offsetWidth / 2) + 'px';
+
+
+  jQuery.getJSON("../relations/graph?id="+issueID , function(data){
+    
+    
     jsons.push(data);
     var json = data;
     
@@ -189,31 +228,42 @@ function init(nodeid){
   //Reduce size of the canvas
   //document.getElementById('infovis-canvaswidget').style.width = '800px';
   // load JSON data.
-  fd.loadJSON(json);
+
+
+   fd.loadJSON(json);
   // compute positions incrementally and animate.
   fd.computeIncremental({
-    iter: 40,
+    iter: 10,
     property: 'end',
     onStep: function(perc){
       Log.write(perc + '% loaded...');
     },
     onComplete: function(){
-      Log.write('done');
+      Log.write('');
       fd.animate({
         modes: ['linear'],
         transition: $jit.Trans.Elastic.easeOut,
-        duration: 0
+        duration: 10
       });
       overgraph = fd;
       
       //Change css of the elements for the tabs to work
-      changecss('.ui-tabs', 'display', 'position: relative; padding: .2em; zoom: 1; none !important');
-      changecss('.ui-tabs-hide', 'display', 'none !important');
+  //    changecss('.ui-tabs', 'display', 'position: relative; padding: .2em; zoom: 1; none !important');
+  //  changecss('.ui-tabs-hide', 'display', 'none !important');
     }
   });
-  });
-  checkAll();
-}
+  });    
+  }
+});
+
+
+/*
+jQuery( "#fragment-2" ).bind( "tabsselect", function(event, ui) {
+});
+
+*/
+
+
 
 /**
  * Function to manage the radio buttons for the heatmap.
