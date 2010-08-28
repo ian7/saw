@@ -8,34 +8,6 @@ removed_elements['Issue'] = [];
 removed_elements['Alternative'] = [];
 removed_elements['Tag'] = [];
 var toPaint = [];
-/*
-var red_worker = new Worker('/javascripts/testWorker.js');
-var green_worker = new Worker('/javascripts/testWorker.js');
-var blue_worker = new Worker('/javascripts/testWorker.js');
-
-red_worker.onerror = function (event) {
-  alert("Error message: \"" + event.message + "\" at line: " + event.lineno);
-};
-
-red_worker.onmessage = function(event) {
-    event = event.data;
-    
-    /*var choosenColor = event.choosenColor
-    var slider = event.slider;
-    valueLookUpTable_red = event.valueLookUpTableRed;
-    valueLookUpTable_green = event.valueLookUpTableGreen;
-    valueLookUpTable_blue = event.valueLookUpTableBlue;
-    colorMap_red = event.colorMapRed;
-    colorMap_green = event.colorMapGreen;
-    colorMap_blue = event.colorMapBlue;
-    fillMap(choosenColor, slider);*/
-    /*for(var i = 0; i < event.heigth; i+event.deltaValue){
-      for(var j = 0; j < event.width; j + event.deltaValue){
-      }
-    }*/
-        //document.write(event.colorMapRed[i * event.width + j]);
-    //document.writeln("i = " + event.i + " j = " + event.j + " width = " + event.width + " height = " + event.height + " deltaValue = " + event.deltaValue + " maximum = " + event.maximum);
-//};
 
 (function() {
   var ua = navigator.userAgent,
