@@ -8,7 +8,7 @@ removed_elements['Issue'] = [];
 removed_elements['Alternative'] = [];
 removed_elements['Tag'] = [];
 var toPaint = [];
-
+/*
 var red_worker = new Worker('/javascripts/testWorker.js');
 var green_worker = new Worker('/javascripts/testWorker.js');
 var blue_worker = new Worker('/javascripts/testWorker.js');
@@ -29,11 +29,13 @@ red_worker.onmessage = function(event) {
     colorMap_green = event.colorMapGreen;
     colorMap_blue = event.colorMapBlue;
     fillMap(choosenColor, slider);*/
-    for(var i = 0; i < event.heigth; i+event.deltaValue)
-      for(var j = 0; j < event.width; j + event.deltaValue)
-        document.write(event.colorMapRed[i * event.width + j]);
+    /*for(var i = 0; i < event.heigth; i+event.deltaValue){
+      for(var j = 0; j < event.width; j + event.deltaValue){
+      }
+    }*/
+        //document.write(event.colorMapRed[i * event.width + j]);
     //document.writeln("i = " + event.i + " j = " + event.j + " width = " + event.width + " height = " + event.height + " deltaValue = " + event.deltaValue + " maximum = " + event.maximum);
-};
+//};
 
 (function() {
   var ua = navigator.userAgent,
@@ -168,6 +170,7 @@ function init(nodeid){
             type: 'fade:con',  
             duration: 500  
           });
+          jsons.push(data);
         });
       }
     },
@@ -552,13 +555,11 @@ function paint(c){
   for(var i = 0; i < jsons.length; i++){
     paintNodes(jsons[i], c);
   }
-  for(var m = 0; m < toPaint.length; m++){
-      //Add back the nodes, how to do that with force directed?
-  }
   
-  //Since there is a bug in the library, refresh twice to show the edges correctly.
-  overgraph.refresh();
-  overgraph.refresh();
+  overgraph.op.sum(toPaint, {
+            type: 'fade:con',  
+            duration: 500  
+  });
   removed_elements[c] = new Array();
 }
 
