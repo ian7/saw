@@ -448,27 +448,8 @@ function  animateFade(lastTick, eid){
   var url = "http://localhost:3000/relations/tree?id=" + thisID + "&degree=" + (document.chooser.multipleDegree.selectedIndex + 1);
   //alert(document.chooser.multipleDegree.selectedIndex);
   jQuery.getJSON(url, function(data){
-     //Reset tree
-     var lbs = overgraph.fx.labels;
-     for (var label in lbs) {
-     if (lbs[label]) {
-        lbs[label].parentNode.removeChild(lbs[label]);
-      }
-    }
-    
-    overgraph.fx.labels = {};
-    
-    //Load new JSON
-    data = modjson(data);
-    overgraph.loadJSON(data);
-    jsons = [];
-    jsons.push(data);
-    overgraph.refresh();
-    overgraph.refresh();
-    //Sets all the checkbuttons to true
-    checkAll();
-    turnBlack();
-    //createMap();
+     overgraph.loadJSON(data);
+     overgraph.refresh();
   });
  }
  
