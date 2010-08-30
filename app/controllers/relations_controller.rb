@@ -184,7 +184,7 @@ def graph
           edgesCopy.delete(edge)
           #node["adjacencies"].delete(edge)
 
-          if node["adjacencies"].count < 2
+          if node["adjacencies"].size < 2
               puts "deleting " + node["id"]
               #r.delete( node )
               break;
