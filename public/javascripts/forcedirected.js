@@ -445,30 +445,26 @@ function  animateFade(lastTick, eid){
   * Function to let the user choose the degree on which he wants to visualize the graph.
   */
  function degreeChooser(){
-  var url = "http://localhost:3000/relations/tree?id=" + thisID + "&degree=" + (document.chooser.multipleDegree.selectedIndex + 1);
+  var url = "../relations/graph?id=" + thisID + "&degree=" + (document.chooser.multipleDegree.selectedIndex + 1);
   //alert(document.chooser.multipleDegree.selectedIndex);
   jQuery.getJSON(url, function(data){
-     //Reset tree
-     var lbs = overgraph.fx.labels;
-     for (var label in lbs) {
-     if (lbs[label]) {
-        lbs[label].parentNode.removeChild(lbs[label]);
-      }
-    }
-    
-    overgraph.fx.labels = {};
-    
-    //Load new JSON
-    data = modjson(data);
-    overgraph.loadJSON(data);
-    jsons = [];
-    jsons.push(data);
-    overgraph.refresh();
-    overgraph.refresh();
-    //Sets all the checkbuttons to true
-    checkAll();
-    turnBlack();
-    //createMap();
+      overgraph.loadJSON(data);
+
+      overgraph.computeIncremental({
+        iter: 40,
+        property: 'end',
+        onStep: function(perc){
+          Log.write(perc + '% loaded...');
+        },
+        onComplete: function(){
+          Log.write('');
+          overgraph.animate({
+          modes: ['linear'],
+          transition: $jit.Trans.Elastic.easeOut,
+          duration: 2500
+          });
+        }
+      });
   });
  }
  
