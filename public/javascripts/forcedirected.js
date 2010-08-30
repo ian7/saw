@@ -1,3 +1,7 @@
+/**
+ * @author Masiar Babazadeh
+ */
+
 var labelType, useGradients, nativeTextSupport, animate, d = 100;
 var jsons = [], overgraph, nodeValue = [], popUpVariable = false, thisID, whatIsChecked = [];
 var  TimeToFade = 500.0;
@@ -524,6 +528,10 @@ function controller(c){
 
 /*---------- Remove Stuff ----------*/
 
+/**
+ * Checks if the type of the node given is checked or not.
+ * @param {String} The type of nodes wanted to be checked.
+ */
 function checked(type){
    if(type === "Issue" && document.check.issue.checked){
     return true;
@@ -550,11 +558,6 @@ function remove(c){
         newjson.push(jsons[i][j]);
       }
     }
-  }
-  
-  var filteredjson = [];
-  for(var i = 0; i < newjson.length; i++){
-    filteredjson[i] = newjson[i];
   }
   
   var foundNF = false, foundNT = false;
@@ -607,38 +610,6 @@ function reload(newjson){
           });
         }
       });
-}
-
-// Array Remove - By John Resig (MIT Licensed)
-/**
- * Online helper found to remove objects from an array.
- */
-Array.prototype.remove = function(from, to) {
-  var rest = this.slice((to || from) + 1 || this.length);
-  this.length = from < 0 ? this.length + from : from;
-  return this.push.apply(this, rest);
-};
-
-/**
- * This function does the action of removing phisically the nodes from the visualization. It gathers
- * them into an array which is lately fed to the op.removeNode of the graph.
- * @param {Object} A JSON object from which the nodes should be removed.
- * @param {String} The string that describes the type of nodes that must be removed.
- */
-function removeNodes(json, c){
-  for(var i = 0; i < json.length; i++){
-    alert(json[i].data.type + " " + json[i].id)
-    if(json[i].data.type === c){
-      removed.push(json[i].id);
-      
-      var node = {id : "", name: "", data: ""};
-      node.id = json[i].id;
-      node.name = json[i].name;
-      node.adjacencies = json[i].adjacencies;
-      node.data = json[i].data;
-      removed_elements[c].push(node);
-    }
-  }
 }
 
 /*---------- Paint stuff ----------*/

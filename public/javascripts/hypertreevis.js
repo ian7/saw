@@ -1,3 +1,7 @@
+/**
+ * @author Masiar Babazadeh
+ */
+
 //Global useful variables
 var thisID;
 var jsons = [];

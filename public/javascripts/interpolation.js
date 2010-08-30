@@ -1,5 +1,5 @@
 /**
- * @author masiar
+ * @author Masiar Babazadeh
  */
 
  var issues = [];
