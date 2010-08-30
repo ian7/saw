@@ -524,22 +524,100 @@ function controller(c){
 
 /*---------- Remove Stuff ----------*/
 
+function checked(type){
+   if(type === "Issue" && document.check.issue.checked){
+    return true;
+   }
+   else if(type ==="Alternative" && document.check.alternative.checked){
+    return true;
+   }
+   else if(document.check.tag.checked && type !== "Issue" && type !== "Alternative"){
+     return true;
+   }
+   
+   return false;
+}
+
 /**
  * Function that removes certain types of nodes.
  * @param {String} c Type of nodes to be removed.
  */
 function remove(c){
-  removed = [];
-  for(var j = 0; j < jsons.length; j++){
-    removeNodes(jsons[j], c);
+  var newjson = [];
+  for(var i = 0; i < jsons.length; i++){
+    for(var j = 0; j < jsons[i].length; j++){
+      if(checked(jsons[i][j].data.type)|| j == 0){
+        newjson.push(jsons[i][j]);
+      }
+    }
   }
   
-  overgraph.op.removeNode(removed, {
-        type: 'fade:seq',
-        duration: 500,
-        hideLabels: true,
-  });
+  var filteredjson = [];
+  for(var i = 0; i < newjson.length; i++){
+    filteredjson[i] = newjson[i];
+  }
+  
+  var foundNF = false, foundNT = false;
+  for(var i = 0; i < newjson.length; i++){
+    //Starts from 1 because the first element is the id of the node in String type.
+    for(var j = 1; j < newjson[i].adjacencies.length; j++){
+      foundNF = false;
+      foundNT = false;
+      
+      for(var k = 0; k < newjson.length; k++){
+        if(newjson[k].id === newjson[i].adjacencies[j].nodeFrom){
+          foundNF = true;
+        }
+        if(newjson[k].id === newjson[i].adjacencies[j].nodeTo){
+          foundNT = true;
+        }
+      
+      }
+      
+      if(foundNT === false || foundNF === false){
+        //alert("removing " + filteredjson[i].adjacencies[j].nodeFrom + " or " + filteredjson[i].adjacencies[j].nodeTo);
+        newjson[i].adjacencies.splice(j, 1);
+        j=0;
+      }
+      
+    }
+  }
+  reload(newjson);
 }
+
+/**
+ * This function reloads the graph according to the new JSON object provided.
+ * @param {JSON} A JSON object to be loaded in the graph.
+ */
+function reload(newjson){
+  overgraph.loadJSON(newjson);
+
+      overgraph.computeIncremental({
+        iter: 40,
+        property: 'end',
+        onStep: function(perc){
+          Log.write(perc + '% loaded...');
+        },
+        onComplete: function(){
+          Log.write('');
+          overgraph.animate({
+          modes: ['linear'],
+          transition: $jit.Trans.Elastic.easeOut,
+          duration: 2500
+          });
+        }
+      });
+}
+
+// Array Remove - By John Resig (MIT Licensed)
+/**
+ * Online helper found to remove objects from an array.
+ */
+Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};
 
 /**
  * This function does the action of removing phisically the nodes from the visualization. It gathers
