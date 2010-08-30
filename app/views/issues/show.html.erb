@@ -135,12 +135,24 @@
 				<a href="<%= alternative_url(alternative.id)%>"><i>(none)</i></a>
 			<% end %>
 		</td>
-		<td>
 			
 			<% if r.tags("Decision").size == 0 %>
+       <td>
 				<%= link_to "Decide", {:controller=>'tag', :action=>'list', :taggable_id=>r.id, :overlay=>'true', :return_taggable_id=>@issue.id}, :rel=>"#overlay" %>
 				
-			<% else %>
+			<% else 
+			 decision_name = r.tags("Decision").first.name
+			 color = ""
+			 case decision_name
+			 when "Positive"
+			   color = "green"
+			 when "Negative"
+			   color = "red"
+			 when "Neutral"
+			   color = "blue"
+			 end 
+			 %>
+			 <td style="background-color: <%= color %>;">
 				Decided:
 				
 				<%= link_to r.tags("Decision").first.name, {:controller=>'tag', :action=>'tags_list', :taggable_id=>r.id, :return_taggable_id=>@issue.id}, :rel=>"#overlay" %>

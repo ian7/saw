@@ -163,6 +163,23 @@ def to_graph
 
     rhd={};
     rhd["$color"]="#557EAA";
+    
+    if relation.type == "SolvedBy"
+      decisions = relation.tags("Decision") 
+      if decisions.size > 0
+        color = "#DDDDDD"
+         case decisions.first.name
+         when "Positive"
+           color = "green"
+         when "Negative"
+           color = "red"
+         when "Neutral"
+           color = "blue"
+         end      
+         rhd["$color"]=color;
+      end
+    end
+
     rh["data"] = rhd;
 
     h["adjacencies"] << rh 
@@ -175,7 +192,26 @@ def to_graph
 
     rhd={};
     rhd["$color"]="#557EAA";
+
+    if relation.type == "SolvedBy"
+      decisions = relation.tags("Decision") 
+      if decisions.size > 0
+        color = "#DDDDDD"
+         case decisions.first.name
+         when "Positive"
+           color = "green"
+         when "Negative"
+           color = "red"
+         when "Neutral"
+           color = "blue"
+         end      
+         rhd["$color"]=color;
+      end
+    end
+
+
     rh["data"] = rhd;
+
 
     h["adjacencies"] << rh 
   end
