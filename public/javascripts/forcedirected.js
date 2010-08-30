@@ -547,15 +547,31 @@ function checked(type){
 }
 
 /**
+ * Function to clone an object, used to keep the jsons alive.
+ * @param {Object} The object to be cloned.
+ */
+function clone(obj){
+    if(obj == null || typeof(obj) != 'object')
+        return obj;
+
+    var temp = new obj.constructor(); // changed (twice)
+    for(var key in obj)
+        temp[key] = clone(obj[key]);
+
+    return temp;
+}
+
+/**
  * Function that removes certain types of nodes.
  * @param {String} c Type of nodes to be removed.
  */
 function remove(c){
+  var copyjsons = clone(jsons);
   var newjson = [];
-  for(var i = 0; i < jsons.length; i++){
-    for(var j = 0; j < jsons[i].length; j++){
-      if(checked(jsons[i][j].data.type)|| j == 0){
-        newjson.push(jsons[i][j]);
+  for(var i = 0; i < copyjsons.length; i++){
+    for(var j = 0; j < copyjsons[i].length; j++){
+      if(checked(copyjsons[i][j].data.type)|| j == 0){
+        newjson.push(copyjsons[i][j]);
       }
     }
   }
@@ -618,16 +634,21 @@ function reload(newjson){
  * @param {String} c Type of the nodes that were removed and have to be painted back.
  */
 function paint(c){
-  toPaint = [];
-  for(var i = 0; i < jsons.length; i++){
-    paintNodes(jsons[i], c);
+  //Everything checked
+  if(document.check.issue.checked && document.check.alternative.checked &&  document.check.tag.checked){
+    reload(jsons[0]);
   }
   
-  overgraph.op.sum(toPaint, {
-            type: 'fade:con',  
-            duration: 500  
-  });
-  removed_elements[c] = new Array();
+  //If something is still not checked
+  else if(!document.check.issue.checked){
+    remove("Issue");
+  }
+  else if(!document.check.alternative.checked){
+    remove("Alternative");
+  }
+  else if(!document.check.tag.checked){
+    remove("Tag");
+  }
 }
 
 /**
