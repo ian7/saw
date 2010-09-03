@@ -1,5 +1,5 @@
-<!-- header begining -->
- <%= javascript_include_tag("helpers.js") %> 
+<!-- ribbon begining -->
+<%= javascript_include_tag("helpers.js") %> 
 <%= javascript_include_tag :defaults %>  
 <table class="ribbon">
 <tr>
@@ -65,14 +65,14 @@
 		<div id="searchDiv">
 		<input type="text" id="search" name="search" />  	
 		<img id="busy" src="/images/spinner.gif" style="display:none" />   
-		<%= observe_field 'search',	
-    :frequency => 0.5,
-    :update => 'searchResults',	
-    :url => { :controller => 'taggables', :action=> 'search' },	
-    :with => "'criteria=' + escape(value)",	
-    :loading => "document.getElementById('busy').style.display='none'",	
-    :loaded => "document.getElementById('busy').style.display='none'", 
-	:complete => "searchControl();"%>
+		<%  # =# observe_field 'search',
+#    :frequency => 0.5,
+#    :update => 'searchResults',
+#    :url => { :controller => 'taggables', :action=> 'search' },
+#    :with => "'criteria=' + escape(value)",
+#    :loading => "document.getElementById('busy').style.display='none'",
+#    :loaded => "document.getElementById('busy').style.display='none'",
+#	:complete => "searchControl();"%>
 		</div>
 		-->	
 	</td>
@@ -88,4 +88,4 @@
 	//document.getElementById('searchResults').style.left = (divPos[0] + 24) + "px";
 	//document.getElementById('searchResults').style.top = (divPos[1] + 25) + "px";
 </script>
-<!-- end of the header -->
+<!-- end of the ribbon -->

@@ -51,7 +51,7 @@ jQuery(document).ready(function() {
 -->
 
 <!-- there we go with theh ribbon -->
-<%= render :partial => "layouts/ribbon", :object=>@issues %>
+<%= render :partial => "layouts/ribbon" %> <%#, :object=>@issues %>
 
  <div class="tab" id="tab1" onmouseover="this.style.cursor='pointer';" 
     onmouseup="window.location='<%= url_for :controller=>"wizards", :action=>"explore" %>'">Explore</div>

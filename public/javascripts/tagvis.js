@@ -72,7 +72,7 @@ function callback(json){
 			}
 			
 			document.getElementById('right-container').innerHTML = html;
-			getPage("tag/tag_instances?type_name="+node.name, test);
+			getPage("tag_instances?type_name="+node.name, test);
         },
         
         onAfterCompute: function(){
@@ -177,7 +177,7 @@ function callback(json){
 }
 function init(tag){
 	
-    getJSON("tag/tree?tag_name="+tag, callback);
+    getJSON("tree?tag_name="+tag, callback);
 }
 
 function test(text) {

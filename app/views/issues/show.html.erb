@@ -60,7 +60,7 @@
 
 <!--<h1><%=h @issue.name %> details:</h1>-->
 <div class="artifactTags" id="alternativeTags">
-    <%= render :partial => 'layouts/taggings', :object => @taggings %>
+    <%= render :partial => 'layouts/taggings' %><%#, :object => @taggings %>
     <%#= link_to_show_overlay 'new', '/taggings/new?applies_to='+@issue.id.to_s %>
 	
 	<div class="link">
@@ -256,7 +256,7 @@ Gauss parameter: <form name="gauss"><textarea name="gaussValue" cols="5" rows="1
 
 <script type="text/javascript"> 
 // perform JavaScript after the document is scriptable. 
-jQuery.getJSON("../metrics", function(data){
+jQuery.getJSON("../metrics/list", function(data){
   var code = "<table><tr> <td><font color='white'>Metric</font></td> <td><font color='white'>Red</font></td> <td><font color='white'>Green</font></td> <td><font color='white'>Blue</font></td></tr>";
   code += "<tr>";
   for(var i = 0; i < data.length; i++){

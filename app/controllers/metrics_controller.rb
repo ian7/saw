@@ -73,7 +73,7 @@ class MetricsController < ApplicationController
   end
 
 
-  def index
+  def list
     h=["classification","descriptiveness","complexity","completeness","definiteness"];
     respond_to do |format|      
      format.json { render :json => h }

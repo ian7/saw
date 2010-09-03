@@ -1,76 +1,130 @@
-ActionController::Routing::Routes.draw do |map|
-  
-  
-  map.resources :dynamic_types
-  
-  map.resources :dynamic_type_attributes
-  
-  map.resources :dynamic_type_scopes
-  
-  #map.connect 'tags/list', :controller=>'tags', :action=>'list'
-  map.resources :tags
+Saw::Application.routes.draw do
 
+  get "tag/index"
+  get "tag/list"
+  get "tag/dotag"
+  get "tag/untag"
+  get "tag/tree"
+  get "tag/cloud"
+  get "tag/type_cloud"
+  get "tag/taggings_list"
+  get "tag/tags_list"
+  get "tag/tag_instances"
+
+  get "wizards/capture"
+  get "wizards/explore"
+  get "wizards/decide"
+  get "wizards/report"
+
+  get "metrics/list"
+  get "metrics/classification"
+  get "metrics/descriptiveness"
+  get "metrics/complexity"
+  get "metrics/completeness"
+  get "metrics/definiteness"
+
+  get "relations/from"
+  get "relations/to"
+  get "relations/tree_to"
+  get "relations/tree_to"
+  get "relations/tree"
+  get "relations/graph"
+  get "relations/relate"
+  get "relations/view"
+  get "relations/list"
+
+  resources :dynamic_types
+
+  resources :dynamic_type_attributes
   
-  map.connect 'taggables/search', :controller=>'taggables', :action=>'search'
-  
+  resources :dynamic_type_scopes
+
+  #connect 'tags/list', :controller=>'tags', :action=>'list'
+
+  resources :tags
+  get "tags/list"
+
+
+#  connect 'taggables/search', :controller=>'taggables', :action=>'search'
+
   # MN: that rocks !
-  map.connect 'issues/:id/relations/:action', :controller=>'relations'
-  
+ # connect 'issues/:id/relations/:action', :controller=>'relations'
+
   # that rocks too !
-  map.connect 'issues/:taggable_id/tag/:action.:format', :controller=>'tag'
-  
-  map.resources :taggables
-  
-  map.resources :projects, :has_many=> [:issues, :alternatives, :tags ]
+#  connect 'issues/:taggable_id/tag/:action.:format', :controller=>'tag'
+
+  resources :taggables
+
+  resources :projects do
+    resources :issues
+    resources :alternatives
+    resources :tags 
+  end
+
+  resources :alternatives
+
+  resources :issues do
+    resources :alternatives
+    resources :tags
+    resources :tag
+    match ":taggable_id/tag/:action.:format" => "tag#:action.format"
+  end
 
 
-
-  map.resources :alternatives
-  
-  map.resources :issues  
-  
-  map.resources :issues, :has_many => [:alternatives, :tags]
-
-  
-  # The priority is based upon order of creation: first created -> highest priority.
+  # The priority is based upon order of creation:
+  # first created -> highest priority.
 
   # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
+  #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
+  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
+  #   resources :products
 
   # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
 
   # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
+
   # Sample resource route with more complex sub-resources
-  #   map.resources :products do |products|
-  #     products.resources :comments
-  #     products.resources :sales, :collection => { :recent => :get }
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', :on => :collection
+  #     end
   #   end
 
   # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
   #   end
 
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "tag", :action=>"type_cloud"
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+   root :to => "tag#type_cloud"
 
   # See how all your routes lay out with "rake routes"
 
-  # Install the default routes as the lowest priority.
-  # Note: These default routes make all actions in every controller accessible via GET requests. You should
-  # consider removing or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  # This is a legacy wild controller route that's not recommended for RESTful applications.
+  # Note: This route will make all actions in every controller accessible via GET requests.
+  # match ':controller(/:action(/:id(.:format)))'
 end
