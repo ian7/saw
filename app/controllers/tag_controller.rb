@@ -20,7 +20,14 @@ class TagController < ApplicationController
   
   def list
     
-    @taggable_id = params[:taggable_id]
+    if params[:taggable_id] != nil
+      @taggable_id = params[:taggable_id]
+    end
+    
+    if params[:issue_id] != nil
+      @taggable_id = params[:issue_id]
+    end
+    
     @scope_name = Taggable.find( @taggable_id ).attributes["type"]
     @scopes = DynamicTypeScope.find :all, :conditions=>{:type_scope=>@scope_name}
     @return_taggable_id = params[:return_taggable_id] 
@@ -36,9 +43,9 @@ class TagController < ApplicationController
     respond_to do |format|
       format.html {
            if params[:overlay]!=nil
-              render :partial => 'list_min'
+              render :partial => 'list_min', :locals => { :return_taggable_id => @return_taggable_id }
             end } # index.html.erb
-      format.xml  #{ render :xml => @issues }
+      format.xml 
     end
    
  

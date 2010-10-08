@@ -22,7 +22,7 @@ mygrid.setColSorting("na,na");
 mygrid.enableResizing("true,true");
 mygrid.init();
 mygrid.enableSmartRendering(true);
-mygrid.load( "<%= url_for( :controller=>"issues", :action=>"show", :id=>@taggable_id ) %>/tag/list.xml" )
+mygrid.load( "<%= url_for( :controller=>"issues", :action=>"show", :id=>@taggable_id ) %>/tag/list.xml?return_taggable_id=<%= @return_taggable_id %>" )
 </script>
 
 <!-- 
