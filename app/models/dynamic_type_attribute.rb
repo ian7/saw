@@ -1,6 +1,7 @@
 #require 'dynamic_type'
 
-class DynamicTypeAttribute < ActiveRecord::Base
+class DynamicTypeAttribute # < ActiveRecord::Base
+	include Mongoid::Document	
 #  belongs_to :dynamic_type, :primary_key=>"name",  :foreign_key=>"type_name"
   #has_one :dynamic_type, :primary_key=>"name",  :foreign_key=>"type_name"
   def dynamic_type

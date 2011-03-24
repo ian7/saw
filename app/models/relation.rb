@@ -24,7 +24,7 @@ class Relation < Taggable
   end
   
   include  DynamicObject
-  self.inheritance_column ='ruby_type'
+  #self.inheritance_column ='ruby_type'
   
   def taggings_from
     retval = Tagging.find :all, :conditions=>{:type=>"Tagging", :origin=>id}

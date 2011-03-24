@@ -1,6 +1,7 @@
 require 'dynamicObject'
 
-class Taggable < ActiveRecord::Base
+class Taggable # < ActiveRecord::Base
+	include Mongoid::Document
  # this is still to come after type is going to be renamed to dynamic_type
 
  # has_many :taggings_from, :class_name=>"Taggable", :conditions=>"type = \"Tagging\"", :foreign_key=>"origin", :primary_key=>"id"
@@ -11,7 +12,7 @@ class Taggable < ActiveRecord::Base
   include DynamicObject
   include TaggablesHelper
   
-  self.inheritance_column ='ruby_type'
+  #self.inheritance_column ='ruby_type'
   
   def taggings_from
     retval = Tagging.find :all, :conditions=>{:type=>"Tagging", :origin=>id}
