@@ -19,7 +19,7 @@ class TreeTag < Tag
     childrenProjects = []
     
     allProjects.each do |childrenProject|
-      if childrenProject["parent"] != nil && childrenProject["parent"].value == name
+      if childrenProject["parent"] != nil && childrenProject["parent"] == name
         childrenProjects << childrenProject
       end
     end

@@ -17,7 +17,7 @@
     </label>
     <br/>
 	<% if @issue["Description"] != nil %>
-    	<textarea cols="70" rows="10" id="taggable_description" name="issue[description]"><%= @issue["Description"].value %></textarea>
+    	<textarea cols="70" rows="10" id="taggable_description" name="issue[description]"><%= @issue["Description"] %></textarea>
 	<% else %>
 		<textarea cols="70" rows="10" id="taggable_description" name="issue[description]"></textarea>
 	<% end %>

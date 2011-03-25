@@ -8,7 +8,7 @@
 		</th>
 		<td>
 			<% if tagging.tip_taggable["Description"] != nil %>
-				<%= link_to tagging.tip_taggable["Description"].value, taggable_path(tagging.tip_taggable) %>
+				<%= link_to tagging.tip_taggable["Description"], taggable_path(tagging.tip_taggable) %>
 			<% else %>
 				<i>(none)</i>
 			<% end %>

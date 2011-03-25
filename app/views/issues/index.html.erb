@@ -62,7 +62,7 @@ mygrid.load("<%= url_for( :controller=>"issues", :action=>"index", :format=>:xml
         </td>
         <td>
             <a href="<%= issue_url(issue.id) %>"><% if (issue["Description"] != nil) %>
-                <%=h issue["Description"].value %>
+                <%=h issue["Description"] %>
                 <% else %>
                 <i>(none)</i><% end %>
             </a>

@@ -5,7 +5,7 @@
     </th>
     <td>
       <% if taggable["Description"] != nil %>
-        <%= link_to taggable["Description"].value, taggable_path(taggable) %>
+        <%= link_to taggable["Description"], taggable_path(taggable) %>
       <% else %>
         <i>(none)</i>
       <% end %>

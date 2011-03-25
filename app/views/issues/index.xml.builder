@@ -9,7 +9,7 @@
             # description
             
             if i["Description"]!= nil
-              xml.tag!("cell", i["Description"].value + "^" + issue_url(i.id) + "^_top");
+              xml.tag!("cell", i["Description"] + "^" + issue_url(i.id) + "^_top");
             else
               xml.tag!("cell","(none)" + "^" + issue_url(i.id) + "^_top");
             end

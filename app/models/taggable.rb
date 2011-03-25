@@ -125,7 +125,9 @@ def related_to( relation_type = "", taggable_type = "" )
   
   relations_to( relation_type ).each do |relation|
     
-    if( Taggable.exists? relation.origin )
+    
+        
+    if( Taggable.find( :first, :conditions=>{:id=>relation.origin}) != nil )
       related_taggable = Taggable.find relation.origin
     else
       next

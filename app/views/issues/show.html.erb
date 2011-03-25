@@ -95,7 +95,7 @@
                 Description:
             </th>
             <td>
-              <div class="edit" id="Description"><% if @issue["Description"]!=nil %><%=h @issue["Description"].value %><% else %><i>(none)</i><% end %></div>
+              <div class="edit" id="Description"><% if @issue["Description"]!=nil %><%=h @issue["Description"] %><% else %><i>(none)</i><% end %></div>
             </td>
         </tr>
 		
@@ -105,7 +105,7 @@
 				<%= attribute.attribute_name %>:
 			</th>
 			<td>
-			  <div class="edit" id="<%=attribute.attribute_name%>"><% if @issue[attribute.attribute_name] != nil %><%= @issue[attribute.attribute_name].value %><% else %><i>(none)</i><% end %></div>
+			  <div class="edit" id="<%=attribute.attribute_name%>"><% if @issue[attribute.attribute_name] != nil %><%= @issue[attribute.attribute_name] %><% else %><i>(none)</i><% end %></div>
 			</td>
 		</tr>
 		<% end %>
@@ -130,7 +130,7 @@
         </td>
 		<td>
 			<% if alternative["Description"] != nil %>
-				<a href="<%= alternative_url(alternative.id)%>"><%=alternative["Description"].value%></a>
+				<a href="<%= alternative_url(alternative.id)%>"><%=alternative["Description"]%></a>
 			<% else %>
 				<a href="<%= alternative_url(alternative.id)%>"><i>(none)</i></a>
 			<% end %>
