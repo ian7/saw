@@ -4,6 +4,17 @@ class Taggable # < ActiveRecord::Base
 	include Mongoid::Document
  # this is still to come after type is going to be renamed to dynamic_type
 
+        
+#    field :id, :type => Integer
+    field :type, :type => String
+    field :name, :type=> String
+    field :origin, :type => Integer
+    field :tip, :type=> Integer
+    
+
+
+
+
  # has_many :taggings_from, :class_name=>"Taggable", :conditions=>"type = \"Tagging\"", :foreign_key=>"origin", :primary_key=>"id"
  # has_many :taggings_to, :class_name=>"Taggable", :conditions=>"type = \"Tagging\"", :foreign_key=>"tip", :primary_key=>"id"
  # has_many :all_relations_to, :class_name=>"Taggable", :foreign_key=>"tip", :primary_key=>"id"
@@ -13,6 +24,11 @@ class Taggable # < ActiveRecord::Base
   include TaggablesHelper
   
   #self.inheritance_column ='ruby_type'
+  
+  
+  def self.find_by_id( id )
+  	Taggable.find :first, :conditions=>{:id=>id }
+  end
   
   def taggings_from
     retval = Tagging.find :all, :conditions=>{:type=>"Tagging", :origin=>id}

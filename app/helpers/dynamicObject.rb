@@ -2,33 +2,33 @@ require 'attribute'
 require 'dynamic_type'
 
 module DynamicObject
-  def [](attribute_name)
-    #puts id
-    selected_attribute = Attribute.find :first, :conditions=>{:taggable_id=>id, :name=>attribute_name}
-    return selected_attribute
-  end
+#mongo  def [](attribute_name)
+#mongo    #puts id
+#mongo    selected_attribute = Attribute.find :first, :conditions=>{:taggable_id=>id, :name=>attribute_name}
+#mongo    return selected_attribute
+#mongo end
 
-  def []=(attribute_name, attribute_value)
+#mongo  def []=(attribute_name, attribute_value)
 #    puts id
 #    puts attribute_name
 #    puts attribute_value
-    if  attribute_value == nil || attribute_value == ""
-      return ""
-    end
-    
-    selected_attribute = Attribute.find :first, :conditions=>{:taggable_id=>id, :name=>attribute_name}
-    if selected_attribute == nil
-       new_attribute = Attribute.new
-       new_attribute.taggable_id = id
-       new_attribute.name = attribute_name
-       new_attribute.value = attribute_value
-       new_attribute.save
-    else
-      selected_attribute.value = attribute_value
-      selected_attribute.save
-    end
-   return selected_attribute
-  end
+#mongo    if  attribute_value == nil || attribute_value == ""
+#mongo      return ""
+#mongo    end
+#mongo    
+#mongo    selected_attribute = Attribute.find :first, :conditions=>{:taggable_id=>id, :name=>attribute_name}
+#mongo    if selected_attribute == nil
+#mongo       new_attribute = Attribute.new
+#mongo       new_attribute.taggable_id = id
+#mongo       new_attribute.name = attribute_name
+#mongo       new_attribute.value = attribute_value
+#mongo       new_attribute.save
+#mongo    else
+#mongo      selected_attribute.value = attribute_value
+#mongo      selected_attribute.save
+#mongo    end
+#mongo   return selected_attribute
+#mongo  end
   
   def dynamic_type
     if attributes["type"] == nil

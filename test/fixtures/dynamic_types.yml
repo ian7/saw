@@ -32,7 +32,7 @@ TreeTag:
   name: TreeTag
   super_type: Tag
 
-#TODO: implement aditional logics for handling that
+# TODO: implement aditional logics for handling that
 # which should remove the tag together with it's last Tagging.
 WeakTag:
   name: WeakTag
