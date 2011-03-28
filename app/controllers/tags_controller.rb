@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-   include TaggablesHelper
+  include TaggablesHelper
    
  def list
     

@@ -1,5 +1,20 @@
 Saw::Application.routes.draw do
 
+  get "users/new"
+  get "users/edit"
+
+  match '/auth/:provider/callback' => 'authentications#create'  
+  devise_for :users, :controllers => { :registrations =>  'registrations' }  
+  resources :projects  
+  resources :tasks  
+  resources :authentications  
+  root :to => 'projects#index'  
+
+
+  get "authentications/index"
+  get "authentications/create"
+  get "authentications/destroy"
+
   get "tag/index"
   get "tag/list"
   get "tag/dotag"

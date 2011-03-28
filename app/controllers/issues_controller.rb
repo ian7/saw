@@ -1,7 +1,10 @@
 require 'relation'
 
 class IssuesController < ApplicationController
+
+
   def index
+  
    @issues = Taggable.find :all, :conditions=>{:type=>"Issue"}
 
     respond_to do |format|

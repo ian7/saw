@@ -78,8 +78,14 @@
 	</td>
 
 	<td align="right" width="400px">
-		<a href="http://saw.inf.unisi.ch/" class="header">Software Architecture Warehouse</a>
-	</td>	</tr>
+		<a href="http://saw.inf.unisi.ch/" class="header">SAW</a>  
+			<%if user_signed_in?  %> 
+				<%= link_to '('+current_user.email+')', {:action=>"index", :controller=>"authentications"} %> 
+			<%else %> 
+				<%= link_to '(not signed in)', {:action=>"index", :controller=>"authentications"} %> 
+			<%end%>
+	</td>
+		</tr>
 </table>
 <div id="searchResults"></div>
 <script>

@@ -1,14 +1,20 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
+gem 'rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
-gem "mongoid", "2.0.0.rc.7"
+#gem 'sqlite3-ruby', :require => 'sqlite3'
+gem "mongoid", "2.0.0.rc.8"
+# , "2.0.0.rc.7"
+gem "bson"
 gem "bson_ext", "~> 1.2.4"
-gem "devise"
+gem "devise", '1.1.5'
+gem "omniauth"
+gem 'cancan', '1.4.1'
+gem 'mongrel', '1.2.0.pre2'
+#gem 'thin'
 
 # Use unicorn as the web server
 # gem 'unicorn'
