@@ -9,11 +9,13 @@ gem 'rails'
 gem "mongoid", "2.0.0.rc.8"
 # , "2.0.0.rc.7"
 gem "bson"
+gem "json"
 gem "bson_ext", "~> 1.2.4"
 gem "devise", '1.1.5'
 gem "omniauth"
 gem 'cancan', '1.4.1'
 gem 'mongrel', '1.2.0.pre2'
+gem 'juggernaut'
 #gem 'thin'
 
 # Use unicorn as the web server

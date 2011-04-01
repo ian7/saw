@@ -1,0 +1,42 @@
+<!--
+<script src="/javascripts/underscore.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/backbone/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/backbone/backbone.js" type="text/javascript" charset="utf-8"></script>
+	-->
+	
+<script data-main="/javascripts/main.js" src="javascripts/require.js"></script>
+	
+	
+	
+	
+<!--
+<script src="/javascripts/backbone/application.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/backbone/views/index.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/backbone/controllers/items.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/backbone/models/item.js" type="text/javascript" charset="utf-8"></script>
+-->
+
+<h1><a href="#">CloudEdit</a></h1>
+<h2>A Backbone.js Rails Example by James Yu</h2>
+
+<div id="notice"></div>
+<div id="app"></div>
+
+
+
+<script type="text/javascript" charset="utf-8">
+
+	require({
+	    //Load jQuery before any other scripts, since jQuery plugins normally
+	    //assume jQuery is already loaded in the page.
+	    priority: ['jquery.min','underscore','backbone/backbone']
+	});
+
+
+	require(['jquery.min', 'jquery.tools.min','jquery.autogrowtextarea','backbone/backbone','backbone/application','backbone/views/index','backbone/controllers/items','backbone/models/item'], function() {
+		require.ready( function() {
+    	// alert('here !');
+        App.init();
+     });
+    });
+</script>

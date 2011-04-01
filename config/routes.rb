@@ -78,6 +78,9 @@ Saw::Application.routes.draw do
 
   resources :alternatives
 
+  resources :items
+  
+
   resources :issues do
     resources :alternatives
     resources :tags
