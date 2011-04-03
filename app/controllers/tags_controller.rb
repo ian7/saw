@@ -49,6 +49,13 @@ class TagsController < ApplicationController
 
   def index
     @tags = DynamicType.find_by_name("Tag").children_instances_recursive
+    
+    respond_to do |format|
+      format.html {}# index.html.erb
+      format.xml  #{ render :xml => @issues }
+      format.json { render :json => @tags }      
+    end
+    
   end
 
   def new

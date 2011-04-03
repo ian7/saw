@@ -215,13 +215,33 @@ class TagController < ApplicationController
   end
 
   def tags_list
-    @taggable = Taggable.find params[:taggable_id]
+  	if params[:taggable_id]
+    	@taggable = Taggable.find params[:taggable_id]
+   else
+   		@taggable = Taggable.find params[:issue_id]
+   end
     @taggable_id = @taggable.id
     @taggings = @taggable.taggings_to
     
     @return_taggable_id = params[:return_taggable_id]
+
+    respond_to do |format|
+      format.html {    render :partial=>"layouts/taggings" }
+      format.xml  { render :xml => @taggings }
+      format.json {
+      	taggings_json = [];
+      	@taggings.each do |t|
+      			h = {};
+      			h["type"] = t.tag.type;
+      			h["name"] = t.tag.name
+      			h["tag_id"] = t.tag.id;
+      			h["tagging_id"] = t.id;
+      			taggings_json << h
+      	end
+      	render :json => taggings_json 
+      	}      
+    end
     
-    render :partial=>"layouts/taggings"
   end
   
   def tag_instances 
