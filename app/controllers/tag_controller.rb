@@ -217,9 +217,16 @@ class TagController < ApplicationController
   def tags_list
   	if params[:taggable_id]
     	@taggable = Taggable.find params[:taggable_id]
-   else
+   end
+   if params[:issue_id]
    		@taggable = Taggable.find params[:issue_id]
    end
+   
+   if params[:item_id]
+   		@taggable = Taggable.find params[:item_id]
+   end
+
+   		
     @taggable_id = @taggable.id
     @taggings = @taggable.taggings_to
     

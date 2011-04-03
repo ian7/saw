@@ -22,7 +22,7 @@ App.Controllers.Items = Backbone.Controller.extend({
     },
     
     index: function() {
-        jQuery.getJSON('/items.json', function(data) {
+        jQuery.getJSON('/items', function(data) {
             if(data) {
                 var items = _(data).map(function(i) { return new Item(i); });
                 new App.Views.Index({ items: items });

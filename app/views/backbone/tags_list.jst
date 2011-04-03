@@ -1,0 +1,7 @@
+<ul>
+    <% _(tags).each(function(tag) { %>
+    <li>
+    	<b>Type:</b> <%= tag.attributes.type %>, <b>Name:</b> <%= tag.attributes.name %> (tagging: <%=tag.attributes.tagging_id %>) 
+    </li>
+    <% }); %>
+</ul>

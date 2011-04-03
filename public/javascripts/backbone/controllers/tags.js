@@ -10,13 +10,11 @@ App.Controllers.Tags = Backbone.Controller.extend({
     
     list: function(id) {
         var tags = new Tag({ id: id });
-        tags.fetch({
-            success: function(model, resp) {
+
+        jQuery.getJSON('/items/'+id+'/tag/tags_list', function(data) {
+	    if(data) {
+            	var tags = _(data).map(function(i) { return new Tag(i); });
                 new App.Views.Tags.Index({ tags: tags });
-            },
-            error: function() {
-                new Error({ message: 'Could not find that document.' });
-                window.location.hash = '#';
             }
         });
     },
