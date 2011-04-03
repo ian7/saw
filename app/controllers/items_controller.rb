@@ -83,6 +83,8 @@ class ItemsController < ApplicationController
      @issue = Taggable.find(params[:id])
      @issue_params = params[:issue] 
     
+    updated = false
+    
      if @issue_params == nil
        @issue_params = params 
      end
@@ -90,19 +92,25 @@ class ItemsController < ApplicationController
 
     if @issue_params["name"] != nil
         @issue.name = @issue_params["name"]
-        @issue.save
+        updated = true
     end
     
     if @issue_params["Description"] != nil
         @issue["Description"] = @issue_params["Description"]
+        updated = true
     end
            
         @issue.dynamic_type.dynamic_type_attributes.each do |attribute|
           if @issue_params[attribute.attribute_name] != nil
             @issue[attribute.attribute_name] = @issue_params[attribute.attribute_name]
+           	updated = true
           end
         end 
 
+	if updated 
+		@issue.save
+		Juggernaut.publish("/chats", @issue.id)
+	end
 
     respond_to do |format|
      ## this didn't worked as some attributes are implemented as dynamic types attributes

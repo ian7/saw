@@ -38,17 +38,3 @@ App.Controllers.Items = Backbone.Controller.extend({
 });
 
 
-  window.WEB_SOCKET_SWF_LOCATION = "http://localhost:8080/WebSocketMain.swf"
- var options = new Array();
- //options['host']='juggernaut.sonyx.net';
-
-  var jug = new Juggernaut( options );
-  jug.subscribe("/chats", function(data){
-    var li = $("<li />");
-    li.text(data);
-    $("#chats").append(li);
-//	$("#whatever").append(data+"<br/>")alert
-	//store.reload();
-	alert(data);
-  });  
-

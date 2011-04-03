@@ -2,7 +2,8 @@
 	<a href='#'>BACK !</a>	
 </h3>
 
-<%            _(item.attributes).each(function(value, key) {
-                print ("<li> <b>" + key + "</b> : " + value + "</li>");
-            });
-%>
+<% _(item.attributes).each(function(value, key) { %>
+<li>
+<b> <%= key %>: </b><div class="edit" id="<%=key%>"><%= value %></div>
+</li>
+<% });%>

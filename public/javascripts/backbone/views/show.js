@@ -12,6 +12,7 @@ App.Views.Show = Backbone.View.extend({
     
     render: function() {
     	var out = ""
+    	var id = this.item.id;
         if(this.item) {
 			out = JST.items_show({ item: this.item });
 		  
@@ -29,8 +30,20 @@ App.Views.Show = Backbone.View.extend({
         jQuery(this.el).html(out);
                 
         jQuery('#app').html(this.el);
+        
+       jQuery('.edit').each( function(i){
+          jQuery(this).editable('/items/'+id,{
+         name     : jQuery(this).attr('id'),
+         type     : 'textarea',
+         width    : '100%',
+         submit   : 'OK',
+         method   : 'PUT',
+         submitdata  : {inplace: jQuery(this).attr('id') }
+        });
+       });        
     }
 });
 
 
-var knowledgeItemAttribute = _.template("<li> Name: <%= name %>");
+
+
