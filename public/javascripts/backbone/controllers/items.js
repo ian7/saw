@@ -3,16 +3,16 @@
  */
 App.Controllers.Items = Backbone.Controller.extend({
     routes: {
-        "items/:id":            "edit",
+        "/:id":            "show",
         "":                         "index",
         "new":                      "newDoc"
     },
     
-    edit: function(id) {
-        var doc = new Document({ id: id });
-        doc.fetch({
+    show: function(id) {
+        var item = new Item({ id: id });
+        item.fetch({
             success: function(model, resp) {
-                new App.Views.Edit({ model: doc });
+                new App.Views.Show({ item: item });
             },
             error: function() {
                 new Error({ message: 'Could not find that document.' });

@@ -17,11 +17,12 @@ class ItemsController < ApplicationController
   def show
 
 
-	@item = Taggable.find :first, :condition=>{:id=>params[:id]}
+	@item = Taggable.find :first, :conditions=>{:_id=>params[:id]}
 
 
 	respond_to do |format|
-		format.json {}
+		format.json { render :json => @item }
+		format.html {render :layout=> false }
 	end
 
     # load infovis
