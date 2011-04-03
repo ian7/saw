@@ -7,7 +7,7 @@ var App = {
     },
     Controllers: {},
     init: function() {
-        new App.Controllers.Items();
+        this.controller = new App.Controllers.Items();
 //		new App.Controllers.Tags();
         Backbone.history.start();
     }
@@ -34,6 +34,7 @@ var options = new Array();
 
 /// just to show off
 //	alert(data);
+	App.controller.update(data)
 	
   });  
 

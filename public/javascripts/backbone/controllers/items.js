@@ -9,6 +9,7 @@ App.Controllers.Items = Backbone.Controller.extend({
     },
     
     show: function(id) {
+    	this.item_id = id;
         var item = new Item({ id: id });
         item.fetch({
             success: function(model, resp) {
@@ -34,7 +35,13 @@ App.Controllers.Items = Backbone.Controller.extend({
     
     newDoc: function() {
         new App.Views.Edit({ model: new Document() });
+    },
+    update: function(id) {
+    	if( id = this.item_id ) {
+    		this.show( this.item_id );
+    	}
     }
+    
 });
 
 
