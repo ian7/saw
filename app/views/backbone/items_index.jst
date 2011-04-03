@@ -1,0 +1,9 @@
+<ul>
+    <% _(items).each(function(item) { %>
+    <li>
+    	<a href=#/<%= item.escape('_id')%>>
+    		<%= item.escape('name') %>
+    	</a>
+    </li>
+    <% }); %>
+</ul>

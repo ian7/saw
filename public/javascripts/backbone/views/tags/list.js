@@ -2,18 +2,20 @@
  * @author Marcin Nowak
  */
  
-//require('backbone/application');
 
-App.Views.Index = Backbone.View.extend({
+App.Views.Tags.List = Backbone.View.extend({
     initialize: function() {
         this.items = this.options.items;
         this.render();
     },
     
     render: function() {
-    	var out = "";
         if(this.items.length > 0) {
-      		out = JST.items_index( {items: this.items} ); 
+            var out = "<h3><a href='#new'>Create New</a></h3><ul>";
+            _(this.items).each(function(item) {
+                out += "<li><a href='#/" + item.escape('_id') + "'>" + item.escape('name') + "</a></li>";
+            });
+            out += "</ul>";
         } else {
             out = "<h3>No documents! <a href='#new'>Create one</a></h3>";
         }

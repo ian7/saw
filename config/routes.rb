@@ -78,7 +78,9 @@ Saw::Application.routes.draw do
 
   resources :alternatives
 
-  resources :items
+  resources :items do
+    match "tag/:action(.:format)" => "tag#:action"
+  end 
   
 
   resources :issues do
@@ -86,7 +88,8 @@ Saw::Application.routes.draw do
     resources :tags
  #   resources :tag
     #get "tag/list"
-    match "tag/:action(.:format)" => "tag#:action"    
+    match "tag/:action(.:format)" => "tag#:action"
+    
   end
   
   #match "issues/:taggable_id/tag/:action.:format" => "tag#:action.format"

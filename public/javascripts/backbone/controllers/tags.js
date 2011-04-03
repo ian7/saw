@@ -1,18 +1,18 @@
 /**
  * @author Marcin Nowak
  */
-App.Controllers.Items = Backbone.Controller.extend({
+App.Controllers.Tags = Backbone.Controller.extend({
     routes: {
-        "/:id":            "show",
-        "":                         "index",
-        "new":                      "newDoc"
+    //    "add": 	 "add",
+    //  "":      "index",
+    //  "delete":"newDoc"
     },
     
-    show: function(id) {
-        var item = new Item({ id: id });
-        item.fetch({
+    list: function(id) {
+        var tags = new Tag({ id: id });
+        tags.fetch({
             success: function(model, resp) {
-                new App.Views.Show({ item: item });
+                new App.Views.Tags.Index({ tags: tags });
             },
             error: function() {
                 new Error({ message: 'Could not find that document.' });
@@ -36,19 +36,4 @@ App.Controllers.Items = Backbone.Controller.extend({
         new App.Views.Edit({ model: new Document() });
     }
 });
-
-
-  window.WEB_SOCKET_SWF_LOCATION = "http://localhost:8080/WebSocketMain.swf"
- var options = new Array();
- //options['host']='juggernaut.sonyx.net';
-
-  var jug = new Juggernaut( options );
-  jug.subscribe("/chats", function(data){
-    var li = $("<li />");
-    li.text(data);
-    $("#chats").append(li);
-//	$("#whatever").append(data+"<br/>")alert
-	//store.reload();
-	alert(data);
-  });  
 

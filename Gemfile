@@ -16,6 +16,7 @@ gem "omniauth"
 gem 'cancan', '1.4.1'
 gem 'mongrel', '1.2.0.pre2'
 gem 'juggernaut'
+gem 'jammit'
 #gem 'thin'
 
 # Use unicorn as the web server
