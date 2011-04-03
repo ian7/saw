@@ -229,6 +229,9 @@ class TagController < ApplicationController
       format.html {    render :partial=>"layouts/taggings" }
       format.xml  { render :xml => @taggings }
       format.json {
+      	# we're not really interested in all taggings bullshit. 
+      	# for the view it would be more interesting to see information 
+      	
       	taggings_json = [];
       	@taggings.each do |t|
       			h = {};
@@ -238,6 +241,7 @@ class TagController < ApplicationController
       			h["tagging_id"] = t.id;
       			taggings_json << h
       	end
+      	
       	render :json => taggings_json 
       	}      
     end
