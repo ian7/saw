@@ -55,7 +55,7 @@ App.Controllers.Items = Backbone.Controller.extend({
             } else {
                 new Error({ message: "Error loading tags to add." });
             }
-    });
+    	});
     },
     
     tag: function( tag_id ) {
@@ -63,6 +63,12 @@ App.Controllers.Items = Backbone.Controller.extend({
 	    	// so let's update it !'
    	    	App.controller.update();
     		});
+    },
+    unTag: function( tagging_id ) {
+        jQuery.getJSON('/items/'+this.item_id+'/tag/untag?tagging_id='+tagging_id, function(data) {
+	    	// so let's update it !'
+   	    	App.controller.update();
+    		});    		
     }
 });
 

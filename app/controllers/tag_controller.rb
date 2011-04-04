@@ -113,35 +113,45 @@ class TagController < ApplicationController
 
   def untag
 
-  ## fetch params
-    @from_taggable_id = params[:from_taggable_id]
-    @to_taggable_id = params[:to_taggable_id]
-    @relation_name = "Tagging"
- 
-  ## find the taggable
-   @relation_instance = Taggable.find(:first, :conditions=>{:type=>@relation_name, :origin=>@from_taggable_id, :tip=>@to_taggable_id })
+  ## if there is a tagging_id provided, then use it !
+  if params[:tagging_id]
+  	 @relation_instance = Taggable.find params[:tagging_id]
+  else
+  	  ## otherwise from/to params and look it up
+	  @from_taggable_id = params[:from_taggable_id]
+	  @to_taggable_id = params[:to_taggable_id]
+	  @relation_name = "Tagging"
+	 
+	  ## find the tagging
+	  @relation_instance = Taggable.find(:first, :conditions=>{:type=>@relation_name, :origin=>@from_taggable_id, :tip=>@to_taggable_id })  	
+  end
+
+  ## not quite sure on what to do after... some redirect probably
+  @to_taggable=Taggable.find @relation_instance.tip
+
    
   ## kill it
    if @relation_instance != nil
      @relation_instance.destroy
    end
    
-  ## not quite sure on what to do after... some redirect probably
-  @to_taggable=Taggable.find @to_taggable_id
-
+  Juggernaut.publish("/chats", @to_taggable.id)
 
   #redirect_to("/"+@to_taggable.attributes["type"].downcase.pluralize+"/"+@to_taggable.id.to_s )
-     
-  if params[:return_taggable_id]== nil || params[:return_taggable_id]==""
-    redirect_to(  taggable_path(@to_taggable) )
-    #redirect_to("/"+@to_taggable.attributes["type"].downcase.pluralize+"/"+@to_taggable.id.to_s ) 
-  else
-    @return_taggable = Taggable.find params[:return_taggable_id]
-    redirect_to( taggable_path( @return_taggable ) )
-    #redirect_to("/"+@return_taggable.attributes["type"].downcase.pluralize+"/"+@return_taggable.id.to_s ) 
-  end
-  
-      
+
+   respond_to do |format|
+      format.html {      
+		  if params[:return_taggable_id]== nil || params[:return_taggable_id]==""
+		    redirect_to(  taggable_path(@to_taggable) )
+		  else
+		    @return_taggable = Taggable.find params[:return_taggable_id]
+		    redirect_to( taggable_path( @return_taggable ) )
+		  end
+		 }
+      format.xml  { render :xml => @to_taggable }
+      format.json { render :json => @to_taggable }
+      format.js {head :ok}
+     end
   end
   
   def tree
