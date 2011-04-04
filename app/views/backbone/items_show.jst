@@ -2,10 +2,12 @@
 	<a href='#'>BACK !</a>	
 </h3>
 
-<% _(item.attributes).each(function(value, key) { %>
+<% _(item.attributes).each(function(value, key) { 
+	if (key.charAt(0) != '_' ) { %>
 <li>
-<b> <%= key %>: </b><div class="edit" id="<%=key%>"><%= value %></div>
+<b> <%= key %>: </b><i class="edit" id="<%=key%>"><%= value %></i>
 </li>
-<% });%>
+<% }; 
+});%>
 <hr>
 <a href="#<%=item.id%>" onClick="App.controller.addTag();">New tag</a>

@@ -3,11 +3,13 @@
  */
 var App = {
     Views: {
-    	Tags: {}
+    	Tags: {},
+    	Alternatives: {}
     },
     Controllers: {},
+    Components: {},
     init: function() {
-        this.controller = new App.Controllers.Items();
+        this.Components.Items = this.controller = new App.Controllers.Items();
 //		new App.Controllers.Tags();
         Backbone.history.start();
     }
