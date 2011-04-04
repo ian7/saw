@@ -42,6 +42,7 @@ WeakTag:
 Project:
   name: Project
   super_type: TreeTag
+  surrogate_class: Tag
   
 TopicGroup:
   name: TopicGroup

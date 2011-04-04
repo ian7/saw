@@ -1,13 +1,87 @@
 
 class AlternativesController < ApplicationController
+	
+  def decide
+  	if params[:issue_id]
+  		@issue = Taggable.find params[:issue_id]
+  	end  	
+  	
+  	if params[:item_id]
+  		@issue = Taggable.find params[:item_id]
+  	end  	
+	
+	@alternative = Taggable.find params[:alternative_id]
+	
+	@decision = Taggable.find :first, :conditions=>{:type=>"Decision", :name=>params[:decision]}
+	
+	
+	#if everything went well, then let's make a decisison
+	if @issue && @alternative && @decision
+		@relation = Taggable.find :first, :conditions=>{:origin=>@issue.id, :tip=>@alternative.id } 
+		Tagging.new 		
+	end 	
+
+  end	
+
   def index
-   @alternatives = Taggable.find :all, :conditions=>{:type=>"Alternative"}
-
-
+  	
+  	
+  	
+  	
+  
+   if params[:item_id] != nil
+   		@issue = Taggable.find params[:item_id] 
+		a_collection = @issue.related_to("SolvedBy")
+		
+		decision_collection = Taggable.find :all, :conditions=>{:type=>"Decision"}
+		
+		@alternatives = []	
+		
+		
+		a_collection.each do |alternative|
+			relation = Taggable.find(:first, :conditions=>{:origin=>alternative.id, :tip=>@issue.id})
+			taggings = relation.relations_to("Tagging");
+			# TODO: here more logics is required !
+			
+			
+			j_alternative = alternative.to_hash
+			j_alternative["id"]=alternative._id
+			
+			alternative.dynamic_type.dynamic_type_attributes.each do |attribute| 
+				j_alternative[attribute.attribute_name] = alternative.attributes[attribute.attribute_name]
+			end
+			
+			j_decisions = []
+			
+			decision_collection.each do |decision|
+				j_decision = {}
+				j_decision["name"] = decision.name
+				j_decision["count"] = Taggable.find(:all, :conditions=>{:origin=>decision.id, :tip=>relation.id }).count
+				j_decisions << j_decision
+			end
+			
+			j_alternative["decisions"] = j_decisions
+			
+			@relation = Taggable.find :first, :conditions=>{:tip=>@issue.id, :origin=>alternative.id }
+			
+			j_alternative["relation_id"] = @relation.id
+			j_alternative["relation_url"] = taggable_url( @relation )
+			j_alternative["alternative_url"] = alternative_url( alternative )
+			
+			#puts "sucks !"
+			@alternatives << j_alternative
+		end
+		
+   else
+	   @alternatives = Taggable.find :all, :conditions=>{:type=>"Alternative"}   	
+   end	
+  	
+   
    if( params[:overlay] == nil ) 
       respond_to do |format|
         format.html # index.html.erb
-        format.xml  { render :xml => @artifacts }
+        format.xml  { render :xml => @alterantives }
+        format.json { render :json => @alternatives }
       end
    else
     render :partial=>"list_min"

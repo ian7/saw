@@ -3,7 +3,7 @@
 </h3>
 
 <% _(item.attributes).each(function(value, key) { 
-	if (key.charAt(0) != '_' ) { %>
+	if (key.charAt(0) != '_' && key != "url" ) { %>
 <li>
 <b> <%= key %>: </b><i class="edit" id="<%=key%>"><%= value %></i>
 </li>

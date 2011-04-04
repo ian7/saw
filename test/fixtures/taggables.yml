@@ -19,7 +19,7 @@
 
 DecisionPositive:
    type: Decision
-   name: Positive  
+   name: Positive
 DecisionNegative:
    type: Decision
    name: Negative

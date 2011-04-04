@@ -21,14 +21,22 @@ class ItemsController < ApplicationController
 
 
 	respond_to do |format|
-		format.json { render :json => @item }
-		format.html {render :layout=> false }
+		format.json {
+			j = @item.to_hash
+			
+			@item.dynamic_type.dynamic_type_attributes.each do |attribute| 
+				j[attribute.attribute_name] = @item.attributes[attribute.attribute_name]
+			end
+			
+			j["url"] = url_for( @item ); 
+			render :json => j }
+		format.html { render :layout=> false }
 	end
 
     # load infovis
     @onload = 'init('+params[:id]+',"SolvedBy");'
     
-    @issue = Taggable.find params[:id]
+    @issue = Taggable.find :first, :conditions=>{:_id=>params[:id]}
     
     @tags = @issue.tags
     @taggings = @issue.taggings_to

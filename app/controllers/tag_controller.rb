@@ -40,8 +40,14 @@ class TagController < ApplicationController
     
     @tags=[]
     
+    # for array of jsons
+    json_tags=[]
+    
     @scopes.each do |scope|
       Taggable.find(:all, :conditions=>{:type=>scope.type_name}).each do |t|
+       j = t.to_hash
+       j["tagging_count"] = Taggable.find(:all, :conditions=>{:origin=>t.id, :tip=>@taggable.id }).count
+       json_tags << j
        @tags << t 
      end
    end
@@ -52,7 +58,7 @@ class TagController < ApplicationController
               render :partial => 'list_min', :locals => { :return_taggable_id => @return_taggable_id }
             end } # index.html.erb
       format.xml 
-      format.json { render :json => @tags }
+      format.json { render :json => json_tags }
     end
    
   end

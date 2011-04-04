@@ -7,9 +7,12 @@ class IssuesController < ApplicationController
   
    @issues = Taggable.find :all, :conditions=>{:type=>"Issue"}
 
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  #{ render :xml => @issues }
+      format.json { render :json => {:issues => @issues }}      
     end
   end
 

@@ -16,13 +16,20 @@ App.Views.Show = Backbone.View.extend({
         if(this.item) {
 			out = JST.items_show({ item: this.item });
 		  
+	        jQuery.getJSON('/items/'+this.item.id+'/tag/tags_list', function(data) {
+			    if(data) {
+		            	var tags = _(data).map(function(i) { return new Tag(i); });
+		                new App.Views.Tags.List({ el:tata, tags: tags });
+		            }
+		        });
+		        
+  	        jQuery.getJSON('/items/'+this.item.id+'/alternatives', function(data2) {
+			    if(data2) {
+		            	var alternatives = _(data2).map(function(i) { return new Alternative(i); });
+		                new App.Views.Alternatives.List({ el:aa, alternatives: alternatives });
+		            }
+		        });
 
-        jQuery.getJSON('/items/'+this.item.id+'/tag/tags_list', function(data) {
-	    if(data) {
-            	var tags = _(data).map(function(i) { return new Tag(i); });
-                new App.Views.Tags.List({ el:tata, tags: tags });
-            }
-        });
                          
         } else {
             out = "<h3>No document! <a href='#new'>Create one</a></h3>";

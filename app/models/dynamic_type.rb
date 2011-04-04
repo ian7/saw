@@ -53,6 +53,7 @@ class DynamicType # < ActiveRecord::Base
 		instance = surrogate_class.constantize.new
 		instance.type = name
 		instance.name = instance_name
+		instance._type = surrogate_class
 
 		# is this really right there ?
 		#instance.save
