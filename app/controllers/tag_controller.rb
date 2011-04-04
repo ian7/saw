@@ -28,7 +28,13 @@ class TagController < ApplicationController
       @taggable_id = params[:issue_id]
     end
     
-    @scope_name = Taggable.find( @taggable_id ).attributes["type"]
+    if params[:item_id] != nil
+      @taggable_id = params[:item_id]
+    end
+    
+    @taggable = Taggable.find :first, :conditions=>{ :id => @taggable_id }
+    
+    @scope_name = @taggable.attributes["type"]
     @scopes = DynamicTypeScope.find :all, :conditions=>{:type_scope=>@scope_name}
     @return_taggable_id = params[:return_taggable_id] 
     
@@ -46,15 +52,22 @@ class TagController < ApplicationController
               render :partial => 'list_min', :locals => { :return_taggable_id => @return_taggable_id }
             end } # index.html.erb
       format.xml 
+      format.json { render :json => @tags }
     end
    
- 
   end
    
   def dotag   
   ## fetch params
+  
+  
+  
     @from_taggable_id = params[:from_taggable_id]
     @to_taggable_id = params[:to_taggable_id]
+    
+    if params[:item_id] 
+    	@to_taggable_id = params[:item_id]
+    end
  
     @relation_name = "Tagging"
   
@@ -68,22 +81,33 @@ class TagController < ApplicationController
   ## ugly ugly, but works
   @relation_instance = DynamicType.find_by_name(@relation_name).new_instance
   @relation_instance.save
-  @relation_instance.origin = @from_taggable_id
-  @relation_instance.tip = @to_taggable_id
+  @relation_instance.origin = Taggable.find(@from_taggable_id).id
+  @relation_instance.tip = Taggable.find(@to_taggable_id).id
   #@relation_instance.save_with_dirty!
   @relation_instance.save
   
   ## not quite sure on what to do after... some redirect probably
   @to_taggable=Taggable.find @to_taggable_id
   
-  if params[:return_taggable_id]== nil || params[:return_taggable_id]==""
-    #redirect_to("/"+@to_taggable.attributes["type"].downcase.pluralize+"/"+@to_taggable.id.to_s )
-    redirect_to( taggable_path( @to_taggable )) 
-  else
-    @return_taggable = Taggable.find params[:return_taggable_id]
-    #redirect_to("/"+@return_taggable.attributes["type"].downcase.pluralize+"/"+@return_taggable.id.to_s )
-    redirect_to( taggable_path( @return_taggable )) 
-  end
+  Juggernaut.publish("/chats", @to_taggable_id)
+  
+   respond_to do |format|
+      format.html {      
+      	if params[:return_taggable_id]== nil || params[:return_taggable_id]==""
+		    #redirect_to("/"+@to_taggable.attributes["type"].downcase.pluralize+"/"+@to_taggable.id.to_s )
+		    redirect_to( taggable_path( @to_taggable )) 
+		  else
+		    @return_taggable = Taggable.find params[:return_taggable_id]
+		    #redirect_to("/"+@return_taggable.attributes["type"].downcase.pluralize+"/"+@return_taggable.id.to_s )
+		    redirect_to( taggable_path( @return_taggable )) 
+		  end
+		 }
+      format.xml  { render :xml => @taggings }
+      format.json { render :json => @to_taggable }
+      format.js {head :ok}
+    end
+    
+  
   
   end
 

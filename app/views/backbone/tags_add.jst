@@ -1,0 +1,8 @@
+<ul>
+    <% _(tags).each(function(tag) { %>
+    <li>
+    	<b>Type:</b> <%= tag.attributes.type %>, <b>Name:</b> <%= tag.attributes.name %> 
+    		<div onClick="App.controller.tag('<%=tag.attributes._id %>');">Add it babe !</div> 
+    </li>
+    <% }); %>
+</ul>

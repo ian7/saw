@@ -1,0 +1,25 @@
+embed_assets: off
+
+javascripts:
+  workspace:
+    - public/javascripts/jquery.min.js
+    - public/javascripts/underscore.js
+    - public/javascripts/backbone/backbone.js
+    - public/javascripts/jquery.tools.min.js
+    - public/javascripts/jquery.autogrowtextarea.js
+    - public/javascripts/jquery.jeditable.mini.js
+# app comes here
+    - public/javascripts/backbone/application.js
+    - public/javascripts/backbone/models/**/*.js     	
+    - public/javascripts/backbone/controllers/*.js     	
+    - public/javascripts/backbone/views/**/*.js
+    - app/views/backbone/*.jst
+
+stylesheets:
+  common:
+    - public/stylesheets/reset.css
+    - public/stylesheets/widgets/*.css
+  workspace:
+    - public/stylesheets/pages/workspace.css
+  empty:
+    - public/stylesheets/pages/empty.css
