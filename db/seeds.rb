@@ -44,6 +44,6 @@ dynamic_types.each{ |name, values|
 	dt=Taggable.new
 	dt.name = values["name"]
 	dt.type = values["type"]
-	dt.id = values["id"]
+	#dt.id = values["id"]
 	dt.save
 	}
