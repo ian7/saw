@@ -2,9 +2,13 @@
 <table>
     <% _(alternatives).each(function(a) { %> 
 	   	<tr id="<%=a.attributes.id%>">
-	   		<td>	   		
-	    		<b>Name:</b> <%= a.attributes.name %> (id: <%=a.attributes.id%>)
+		    <td>
+	    	 	<%=a.attributes.id%>
 	    	</td>
+	   		<td>	   		
+	    		<b>Name:</b>
+	    		<i id="name" class="alternativeEdit<%=a.attributes.id%>"><% if(a.attributes.name) {%><%= a.attributes.name %><% } else { %>(empty)<% } %></i>
+		    </td>
 	    	<td>
 	    		<b onClick="App.controller.unTag('aa');">UNRELATE</b>,
 	    	</td>
@@ -15,5 +19,5 @@
 	    	</td>
 	    </tr>
     <% }); %>
-
 </table>
+

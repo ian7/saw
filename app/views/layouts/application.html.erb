@@ -7,32 +7,29 @@
   <title>Artifacts: <%= controller.action_name %></title>
 
 <%= stylesheet_link_tag 'saw', 'jquery', 'infovis' %>
-<%= javascript_include_tag 'jquery.tools.min' %>
-<%= javascript_include_tag 'jquery.autogrowtextarea.js' %>
+
+<script data-main="/javascripts/main.js" src="javascripts/require.js"></script>
+
+<%#= javascript_include_tag 'jquery.min' %>
+<%#= javascript_include_tag 'underscore'%>
+<%#= javascript_include_tag 'backbone/backbone'%>
+<%#= javascript_include_tag 'jquery.tools.min' %>
+<%#= javascript_include_tag 'jquery.autogrowtextarea.js' %>
+
+
+
+
+<script src="http://localhost:8080/application.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+
 
 
   <script>
 
-jQuery(document).ready(function() {
 
-  jQuery("a[rel]").overlay({
 
-    mask: 'gray',
-    effect: 'apple',
-
-    onBeforeLoad: function() {
-
-      // grab wrapper element inside content
-      var wrap = this.getOverlay().find(".contentWrap");
-
-      // load the page specified in the trigger
-      wrap.load(this.getTrigger().attr("href"));
-    }
-
-  });
-});
-  
-  $.noConflict();
   
   
   
@@ -73,6 +70,13 @@ jQuery(document).ready(function() {
     <div class="contentWrap"></div> 
  
 </div>
+
+
+
+
+<ul id="chats">
+	
+</ul>
 
 <%= yield %>
 

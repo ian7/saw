@@ -5,47 +5,16 @@ class AlternativesController < ApplicationController
   def index
   
    if params[:item_id] != nil
-   		@issue = Taggable.find params[:item_id] 
-		a_collection = @issue.related_to("SolvedBy")
 		
-		decision_collection = Taggable.find :all, :conditions=>{:type=>"Decision"}
 		
+		@issue = Taggable.find params[:item_id] 
+     	a_collection = @issue.related_to("SolvedBy")
+
 		@alternatives = []	
 		
-		
-		a_collection.each do |alternative|
-			relation = Taggable.find(:first, :conditions=>{:origin=>alternative.id, :tip=>@issue.id})
-			taggings = relation.relations_to("Tagging");
-			# TODO: here more logics is required !
-			
-			
-			j_alternative = alternative.to_hash
-			j_alternative["id"]=alternative._id
-			
-			alternative.dynamic_type.dynamic_type_attributes.each do |attribute| 
-				j_alternative[attribute.attribute_name] = alternative.attributes[attribute.attribute_name]
-			end
-			
-			j_decisions = []
-			
-			decision_collection.each do |decision|
-				j_decision = {}
-				j_decision["name"] = decision.name
-				j_decision["count"] = Taggable.find(:all, :conditions=>{:origin=>decision.id, :tip=>relation.id }).count
-				j_decision["decision_tag_id"] = decision.id
-				j_decisions << j_decision
-			end
-			
-			j_alternative["decisions"] = j_decisions
-			
-			@relation = Taggable.find :first, :conditions=>{:tip=>@issue.id, :origin=>alternative.id }
-			
-			j_alternative["relation_id"] = @relation.id
-			j_alternative["relation_url"] = taggable_url( @relation )
-			j_alternative["alternative_url"] = alternative_url( alternative )
-			
+		a_collection.each do |alternative|			
 			#puts "sucks !"
-			@alternatives << j_alternative
+			@alternatives << to_hash_with_details( alternative )
 		end
 		
    else
@@ -66,17 +35,29 @@ class AlternativesController < ApplicationController
 
   def show
     # load infovis
-    @onload = 'init('+params[:id]+',"SolvedBy");'
     
     @alternative = Taggable.find params[:id]
+
+
+	respond_to do |format|
+	  format.html { 
+	  	    @onload = 'init('+params[:id]+',"SolvedBy");'
     
-    @tags = @alternative.tags
-    @taggings = @alternative.taggings_to
-    
-    ## finds issues related with this alternative by SolvedBy relation
-    @issues = @alternative.related_from("SolvedBy","Issue")
-    @taggable_id = @alternative.id
-    @attributes = @alternative.dynamic_type.dynamic_type_attributes
+		    @tags = @alternative.tags
+		    @taggings = @alternative.taggings_to
+		    
+		    ## finds issues related with this alternative by SolvedBy relation
+		    @issues = @alternative.related_from("SolvedBy","Issue")
+		    @taggable_id = @alternative.id
+		    @attributes = @alternative.dynamic_type.dynamic_type_attributes
+	  }# index.html.erb
+	  format.xml  { 
+	  		render :xml => to_hash_with_details( @alternative)
+	  		}
+	  format.json { render :json =>  to_hash_with_details( @alternative) }
+    end
+
+
     
    end
 
@@ -193,5 +174,46 @@ class AlternativesController < ApplicationController
       format.html { redirect_to(alternatives_url) }
       format.xml  { head :ok }
      end
+ end
+ 
+ def to_hash_with_details( alternative )
+	j_alternative = alternative.to_hash 	
+ 	
+ 	if params[:item_id]
+		@issue = Taggable.find params[:item_id] 
+	
+		decision_collection = Taggable.find :all, :conditions=>{:type=>"Decision"}
+			
+		relation = Taggable.find(:first, :conditions=>{:origin=>alternative.id, :tip=>@issue.id})
+		taggings = relation.relations_to("Tagging");
+
+		j_decisions = []
+		
+		decision_collection.each do |decision|
+			j_decision = {}
+			j_decision["name"] = decision.name
+			j_decision["count"] = Taggable.find(:all, :conditions=>{:origin=>decision.id, :tip=>relation.id }).count
+			j_decision["decision_tag_id"] = decision.id
+			j_decisions << j_decision
+		end
+		
+		j_alternative["decisions"] = j_decisions
+		
+		@relation = Taggable.find :first, :conditions=>{:tip=>@issue.id, :origin=>alternative.id }
+		
+		j_alternative["relation_id"] = @relation.id
+		j_alternative["relation_url"] = taggable_url( @relation )
+	end	
+	
+
+	j_alternative["id"]=alternative._id
+	
+	alternative.dynamic_type.dynamic_type_attributes.each do |attribute| 
+		j_alternative[attribute.attribute_name] = alternative.attributes[attribute.attribute_name]
+	end
+	
+	j_alternative["alternative_url"] = alternative_url( alternative )
+	
+	return j_alternative			
  end
 end

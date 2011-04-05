@@ -5,6 +5,12 @@ var Alternative = Backbone.Model.extend({
     url : function() {
       var base = '/alternatives';
       if (this.isNew()) return base;
-      return(base + '/' + this.id);
+      
+      if( this.item_id ) {
+      	return( '/items/'+this.item_id+base+'/'+this.id)
+      }
+      else {
+      	return(base + '/' + this.id);
+      }
     }
 });

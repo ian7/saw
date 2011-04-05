@@ -15,8 +15,8 @@ App.Controllers.Items = Backbone.Controller.extend({
         var item = new Item({ id: id });
         item.fetch({
             success: function(model, resp) {
-            	App.Components.Items.item_url = item.attributes.url;
-                new App.Views.Show({ item: item });
+            	this.item_url = item.attributes.url;
+                this.view=new App.Views.Show({ item: item });
             },
             error: function() {
                 new Error({ message: 'Could not find that document.' });
@@ -29,7 +29,7 @@ App.Controllers.Items = Backbone.Controller.extend({
         jQuery.getJSON('/items', function(data) {
             if(data) {
                 var items = _(data).map(function(i) { return new Item(i); });
-                new App.Views.Index({ items: items });
+                this.view = new App.Views.Index({ items: items });
             } else {
                 new Error({ message: "Error loading documents." });
             }
@@ -39,10 +39,36 @@ App.Controllers.Items = Backbone.Controller.extend({
     newDoc: function() {
         new App.Views.Edit({ model: new Document() });
     },
-    update: function( broadcasted_id) {	
+    update: function( broadcasted_id ) {	
+	    	//if( App.Components.Items.view ) {
+	    	//	App.Components.Items.view.trigger('update',broadcasted_id);
+	    	//}
+	    	
+	    	var c = App.Components.Items;
+	    	
 	    	if( broadcasted_id == this.item_id ) {
 	    		this.refresh();
-	    	}		    	    	
+	    	}
+	    	
+	    	if( c.alternatives && c.alternatives.alternatives ) {
+	    		//_.each(c.alternatives.alternatives)
+	    		_(c.alternatives.alternatives).each(function(a) {
+	    			if( a.id == broadcasted_id ) {
+	    				//alert( a.id );
+	    				a = new Alternative({id: broadcasted_id });
+	    				a.item_id = c.item_id
+	    				a.fetch({
+	    					success: function( model, resp) {
+		    				o = JST.alternatives_show({ a: a });
+		    				e = jQuery("#"+broadcasted_id);
+		    				e.html( o );	    							
+	    					}
+	    				});
+	    			}
+	    		});
+	    	}
+	    	// if we're displaying something then let's broadcast update !		    	
+	    	    	
     },
     refresh: function() {
     	this.show( this.item_id );
@@ -52,7 +78,7 @@ App.Controllers.Items = Backbone.Controller.extend({
         jQuery.getJSON('/items/'+this.item_id+'/tag/list', function(data) {
             if(data) {
                 var tags = _(data).map(function(i) { return new Tag(i); });
-                new App.Views.Tags.Add({ el: tata, tags: tags });
+                this.tags = new App.Views.Tags.Add({ el: tata, tags: tags });
             } else {
                 new Error({ message: "Error loading tags to add." });
             }
