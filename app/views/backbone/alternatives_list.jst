@@ -1,11 +1,19 @@
-<ul>
+<div class="button orange" onclick="App.Components.Items.newAlternative()">add new</div>
+<table>
     <% _(alternatives).each(function(a) { %> 
-	   	<li id="<%=a.attributes.id%>">	   		
-	    	<b>Name:</b> <%= a.attributes.name %> (id: <%=a.attributes.id%>)<b onClick="App.controller.unTag('aa');">UNRELATE</b>, 
-	    	Decide: <% _(a.attributes.decisions).each(function(decision) { %>
-	    		<b onClick="App.Helpers.Items.decide('<%=a.attributes.relation_url%>','<%=decision.decision_tag_id%>');"><%= decision.name.charAt(1) %>:</b> <%= decision.count %>, 
-	    	<% });%>
-	    </li>
+	   	<tr id="<%=a.attributes.id%>">
+	   		<td>	   		
+	    		<b>Name:</b> <%= a.attributes.name %> (id: <%=a.attributes.id%>)
+	    	</td>
+	    	<td>
+	    		<b onClick="App.controller.unTag('aa');">UNRELATE</b>,
+	    	</td>
+	    	<td> 
+		    	Decide: <% _(a.attributes.decisions).each(function(decision) { %>
+		    		<b onClick="App.Helpers.Items.decide('<%=a.attributes.relation_url%>','<%=decision.decision_tag_id%>');"><%= decision.name.charAt(0) %>:</b> <%= decision.count %>, 
+		    	<% });%>
+	    	</td>
+	    </tr>
     <% }); %>
 
-</ul>
+</table>

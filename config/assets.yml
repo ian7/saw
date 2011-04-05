@@ -21,6 +21,6 @@ stylesheets:
     - public/stylesheets/reset.css
     - public/stylesheets/widgets/*.css
   workspace:
-    - public/stylesheets/pages/workspace.css
+    - public/stylesheets/buttons.css
   empty:
     - public/stylesheets/pages/empty.css

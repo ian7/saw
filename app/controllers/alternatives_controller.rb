@@ -1,33 +1,8 @@
 
 class AlternativesController < ApplicationController
 	
-  def decide
-  	if params[:issue_id]
-  		@issue = Taggable.find params[:issue_id]
-  	end  	
-  	
-  	if params[:item_id]
-  		@issue = Taggable.find params[:item_id]
-  	end  	
-	
-	@alternative = Taggable.find params[:alternative_id]
-	
-	@decision = Taggable.find :first, :conditions=>{:type=>"Decision", :name=>params[:decision]}
-	
-	
-	#if everything went well, then let's make a decisison
-	if @issue && @alternative && @decision
-		@relation = Taggable.find :first, :conditions=>{:origin=>@issue.id, :tip=>@alternative.id } 
-		Tagging.new 		
-	end 	
-
-  end	
 
   def index
-  	
-  	
-  	
-  	
   
    if params[:item_id] != nil
    		@issue = Taggable.find params[:item_id] 
@@ -107,14 +82,45 @@ class AlternativesController < ApplicationController
 
   def new
     
-    @related_issue_id = params[:id]
-    
-    @onload = "jQuery(\"#taggable_name\").focus();jQuery(\"textarea\").autoGrow();jQuery(\"textarea\").keydown(function(event) { if(event.keyCode==13 && event.ctrlKey == true) {jQuery(\"form\").submit();}})";
-    @alternative = DynamicType.find_by_name("Alternative").new_instance
-    
-    if params[:overlay]!=nil
-      render :partial => 'new_min'
+    # check whenever we're in issue or item route
+    if params[:item_id]
+    	@issue_id = params[:item_id]
     end
+    
+    if params[:issue_id]
+    	@issue_id = params[:item_id]
+    end
+
+	if @issue_id
+		 	@issue = Taggable.find @issue_id
+	end
+
+    @onload = "jQuery(\"#taggable_name\").focus();jQuery(\"textarea\").autoGrow();jQuery(\"textarea\").keydown(function(event) { if(event.keyCode==13 && event.ctrlKey == true) {jQuery(\"form\").submit();}})";
+    @alternative = DynamicType.find_by_name("Alternative").new_instance		
+   
+    # if we are really a composite resource then _save_it_ and relate it immediately 
+	if @issue
+		# now it gets a valid ID
+		@alternative.save 
+		# so we can relate it 
+		relation = DynamicType.find_by_name("SolvedBy").new_instance
+		relation.origin = @alternative.id
+		relation.tip = @issue.id
+		relation.save
+		Juggernaut.publish("/chats",@issue.id)
+		Juggernaut.publish("/chats",@alternative.id)
+	end
+    
+     respond_to do |format|
+        format.html {     
+        	if params[:overlay]!=nil
+			     render :partial => 'new_min'
+			end
+			}
+        format.xml  { render :xml => @alterantive }
+        format.json { render :json => @alternative }
+      end
+    
     ## this just goes and shows the form to be filled
     ## there is no need in creating new instance so far.
   end

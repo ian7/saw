@@ -2,7 +2,7 @@
     <% _(tags).each(function(tag) { %>
     <li>
     	<b>Type:</b> <%= tag.attributes.type %>, <b>Name:</b> <%= tag.attributes.name %> 
-    		<b onClick="App.controller.tag('<%=tag.attributes._id %>');">Add it babe !</b> 
+    		<b onClick="App.controller.tag('<%=tag.attributes.id %>');">Add it babe !</b> 
     </li>
     <% }); %>
 </ul>

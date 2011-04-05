@@ -39,8 +39,8 @@ App.Controllers.Items = Backbone.Controller.extend({
     newDoc: function() {
         new App.Views.Edit({ model: new Document() });
     },
-    update: function() {	
-	    	if( this.options.id == this.item_id ) {
+    update: function( broadcasted_id) {	
+	    	if( broadcasted_id == this.item_id ) {
 	    		this.refresh();
 	    	}		    	    	
     },
@@ -60,16 +60,22 @@ App.Controllers.Items = Backbone.Controller.extend({
     },
     
     tag: function( tag_id ) {
-        jQuery.getJSON('/items/'+this.item_id+'/tag/dotag?from_taggable_id='+tag_id, function(data) {
+        jQuery.getJSON(this.item_url+'/tag/dotag?from_taggable_id='+tag_id, function(data) {
 	    	// so let's update it !'
-   	    	App.controller.update();
+   	    	//App.controller.update();
     		});
     },
     unTag: function( tagging_id ) {
-        jQuery.getJSON('/items/'+this.item_id+'/tag/untag?tagging_id='+tagging_id, function(data) {
+        jQuery.getJSON(this.item_url+'/tag/untag?tagging_id='+tagging_id, function(data) {
 	    	// so let's update it !'
-   	    	App.controller.update();
+   	    	//App.controller.update();
     		});    		
+    },
+    newAlternative: function() {
+        jQuery.getJSON('/items/'+this.item_id+'/alternatives/new', function(data) {
+	    	// so let's update it !'
+   	    	//App.controller.update();
+    		});    		    	
     }
 });
 

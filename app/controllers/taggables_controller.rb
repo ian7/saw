@@ -17,7 +17,7 @@ class TaggablesController < ApplicationController
   end
 
   def notify
-  	Juggernaut.publish('/chats',params[:id])
+  	Juggernaut.publish('/chats',params[:taggable_id])
 
     respond_to do |format|
       format.html

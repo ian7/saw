@@ -37,7 +37,7 @@ var options = new Array();
 
 /// just to show off
 //	alert(data);
-	App.controller.update({id: data});
+	App.controller.update(data);
 	
   });  
 
