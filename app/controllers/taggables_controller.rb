@@ -15,6 +15,16 @@ class TaggablesController < ApplicationController
   def index
     
   end
+
+  def notify
+  	Juggernaut.publish('/chats',params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => nil}
+#      format.xml  { render :xml => taggable_instance.relations_from }
+    end
+  end
   
   def search
     if 0 == params['criteria'].length

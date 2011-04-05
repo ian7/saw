@@ -41,9 +41,9 @@ dynamic_type_scopes.each{ |name, values|
 dynamic_types = YAML::load_file("#{Rails.root}/test/fixtures/taggables.yml")
 
 dynamic_types.each{ |name, values|
-	dt=Taggable.new
-	dt.name = values["name"]
-	dt.type = values["type"]
+	dt=DynamicType.find_by_name(values["type"]).new_instance( values["name"] )
+	#dt.name = values["name"]
+	#dt.type = values["type"]
 	#dt.id = values["id"]
 	dt.save
 	}

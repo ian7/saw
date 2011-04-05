@@ -281,6 +281,7 @@ end
 
 
 def relate
+    
     origin_taggable = Taggable.find params[:origin]
     tip_taggable = Taggable.find params[:tip]
     
@@ -294,7 +295,7 @@ def relate
       relation_instnace.tip = tip_taggable.id
       relation_instnace.origin = origin_taggable.id
       relation_instnace.save
-  end
+  	end
   
   redirect_to ( issue_url(tip_taggable.id) )
 end

@@ -65,11 +65,17 @@ class TagController < ApplicationController
    
   def dotag   
   ## fetch params
-  
-  
-  
-    @from_taggable_id = params[:from_taggable_id]
+
+  # tag 
+   @from_taggable_id = params[:from_taggable_id]
+
+  # in case we're a compisite from taggables resource
+  if params[:taggable_id ]
+  	@to_taggable_id = params[:taggable_id]
+  else
     @to_taggable_id = params[:to_taggable_id]
+  end
+  
     
     if params[:item_id] 
     	@to_taggable_id = params[:item_id]

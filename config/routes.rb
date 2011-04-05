@@ -68,7 +68,12 @@ Saw::Application.routes.draw do
   # that rocks too !
 #  connect 'issues/:taggable_id/tag/:action.:format', :controller=>'tag'
 
-  resources :taggables
+  resources :taggables do
+    match "tag/:action(.:format)" => "tag#:action"
+    get "notify"  
+    match "relations/:action(.:format)" => "relations#:aaction"
+  	resources :tags
+  end
 
   resources :projects do
     resources :issues
@@ -80,6 +85,9 @@ Saw::Application.routes.draw do
 
   resources :items do
     match "tag/:action(.:format)" => "tag#:action"
+    resources :alternatives
+    resources :tags
+#    resources :relations
   end 
   
 

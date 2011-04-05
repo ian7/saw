@@ -8,6 +8,7 @@ var App = {
     },
     Controllers: {},
     Components: {},
+    Helpers: {},
     init: function() {
         this.Components.Items = this.controller = new App.Controllers.Items();
 //		new App.Controllers.Tags();
@@ -36,7 +37,7 @@ var options = new Array();
 
 /// just to show off
 //	alert(data);
-	App.controller.update(data)
+	App.controller.update({id: data});
 	
   });  
 

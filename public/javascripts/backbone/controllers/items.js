@@ -15,6 +15,7 @@ App.Controllers.Items = Backbone.Controller.extend({
         var item = new Item({ id: id });
         item.fetch({
             success: function(model, resp) {
+            	App.Components.Items.item_url = item.attributes.url;
                 new App.Views.Show({ item: item });
             },
             error: function() {
@@ -38,8 +39,8 @@ App.Controllers.Items = Backbone.Controller.extend({
     newDoc: function() {
         new App.Views.Edit({ model: new Document() });
     },
-    update: function(id) {	
-	    	if( id = this.item_id ) {
+    update: function() {	
+	    	if( this.options.id == this.item_id ) {
 	    		this.refresh();
 	    	}		    	    	
     },

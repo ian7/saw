@@ -117,8 +117,9 @@ class ItemsController < ApplicationController
 
 	if updated 
 		@issue.save
-		Juggernaut.publish("/chats", @issue.id)
 	end
+
+	Juggernaut.publish("/chats", @issue.id)
 
     respond_to do |format|
      ## this didn't worked as some attributes are implemented as dynamic types attributes

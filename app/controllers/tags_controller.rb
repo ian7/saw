@@ -48,7 +48,14 @@ class TagsController < ApplicationController
   end
 
   def index
-    @tags = DynamicType.find_by_name("Tag").children_instances_recursive
+  	
+  	#if we're in the context of a taggable'
+  	if params[:taggable_id ]
+		@tags = Taggable.find( params[:taggable_id ]).tags
+	else
+		@tags = DynamicType.find_by_name("Tag").children_instances_recursive  		
+  	end
+  	
     
     respond_to do |format|
       format.html {}# index.html.erb

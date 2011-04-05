@@ -1,0 +1,6 @@
+	   	<li id="<%=a.attributes.id%>">
+	    	<b>Name:</b> <%= a.attributes.name %> (id: <%=a.attributes.id%>)<b onClick="App.controller.unTag('aa');">UNRELATE</b>, 
+	    	Decide: <% _(a.attributes.decisions).each(function(decision) { %>
+	    		<b onClick="App.Helpers.Items.tag('<%=a.attributes.relation_url%>','<%=decision.decision_tag_id%>');"><%= decision.name.charAt(1) %>:</b> <%= decision.count %>, 
+	    	<% });%>
+	    </li>

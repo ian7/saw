@@ -57,6 +57,7 @@ class AlternativesController < ApplicationController
 				j_decision = {}
 				j_decision["name"] = decision.name
 				j_decision["count"] = Taggable.find(:all, :conditions=>{:origin=>decision.id, :tip=>relation.id }).count
+				j_decision["decision_tag_id"] = decision.id
 				j_decisions << j_decision
 			end
 			
