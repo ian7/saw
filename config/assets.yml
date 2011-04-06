@@ -8,6 +8,7 @@ javascripts:
     - public/javascripts/jquery.tools.min.js
     - public/javascripts/jquery.autogrowtextarea.js
     - public/javascripts/jquery.jeditable.mini.js
+    - public/javascripts/jquery.timers.js
 # app comes here
     - public/javascripts/backbone/application.js
     - public/javascripts/backbone/models/**/*.js     	

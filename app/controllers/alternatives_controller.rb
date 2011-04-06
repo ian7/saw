@@ -1,6 +1,7 @@
 
 class AlternativesController < ApplicationController
 	
+   @decision_collection = nil;
 
   def index
   
@@ -11,6 +12,8 @@ class AlternativesController < ApplicationController
      	a_collection = @issue.related_to("SolvedBy")
 
 		@alternatives = []	
+
+		@decision_collection = Taggable.find :all, :conditions=>{:type=>"Decision"}
 		
 		a_collection.each do |alternative|			
 			#puts "sucks !"
@@ -37,6 +40,7 @@ class AlternativesController < ApplicationController
     # load infovis
     
     @alternative = Taggable.find params[:id]
+	@decision_collection = Taggable.find :all, :conditions=>{:type=>"Decision"}
 
 
 	respond_to do |format|
@@ -182,14 +186,13 @@ class AlternativesController < ApplicationController
  	if params[:item_id]
 		@issue = Taggable.find params[:item_id] 
 	
-		decision_collection = Taggable.find :all, :conditions=>{:type=>"Decision"}
 			
 		relation = Taggable.find(:first, :conditions=>{:origin=>alternative.id, :tip=>@issue.id})
 		taggings = relation.relations_to("Tagging");
 
 		j_decisions = []
 		
-		decision_collection.each do |decision|
+		@decision_collection.each do |decision|
 			j_decision = {}
 			j_decision["name"] = decision.name
 			j_decision["count"] = Taggable.find(:all, :conditions=>{:origin=>decision.id, :tip=>relation.id }).count

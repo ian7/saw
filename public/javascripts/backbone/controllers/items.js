@@ -15,8 +15,8 @@ App.Controllers.Items = Backbone.Controller.extend({
         var item = new Item({ id: id });
         item.fetch({
             success: function(model, resp) {
-            	this.item_url = item.attributes.url;
-                this.view=new App.Views.Show({ item: item });
+            	App.Components.Items.item_url = item.attributes.url;
+                App.Components.Items.view=new App.Views.Show({ item: item });
             },
             error: function() {
                 new Error({ message: 'Could not find that document.' });
@@ -59,10 +59,25 @@ App.Controllers.Items = Backbone.Controller.extend({
 	    				a.item_id = c.item_id
 	    				a.fetch({
 	    					success: function( model, resp) {
-		    				o = JST.alternatives_show({ a: a });
-		    				e = jQuery("#"+broadcasted_id);
-		    				e.html( o );	    							
-	    					}
+			    				o = JST.alternatives_show({ a: a });
+			    				e = jQuery("#"+broadcasted_id);
+			    				e.html( o );
+
+   					           jQuery('.alternativeEdit'+broadcasted_id).each( function(i){
+						       	  jQuery(this).attr('contenteditable','true');
+						       	  jQuery(this).keypress( function() {
+						       	  	jQuery(this).stopTime("edit5")
+						       	  	jQuery(this).oneTime(1000,"edit5", function() {
+								         jQuery.ajax({
+								         	type: 'PUT',
+								         	url: '/items/'+jQuery(this).parent().parent().attr('id'),
+								         	data: jQuery(this).attr('id')+'='+jQuery(this).html()   	 
+								         });       	  		
+						       	  	});
+						       	  });	               	  	
+						       	 });     
+
+		    					}
 	    				});
 	    			}
 	    		});

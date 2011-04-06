@@ -34,7 +34,7 @@ App.Views.Alternatives.List = Backbone.View.extend({
 			
 			
 			// in-place editing
-			 jQuery('.alternativeEdit'+j).each( function(i){
+/*			 jQuery('.alternativeEdit'+j).each( function(i){
 	          jQuery(this).editable('/items/'+j,{
 	         name     : jQuery(this).attr('id'),
 	         type     : 'textarea',
@@ -42,7 +42,22 @@ App.Views.Alternatives.List = Backbone.View.extend({
 	         method   : 'PUT',
 	         submitdata  : {inplace: jQuery(this).attr('id') }
 	        });
-	       });      
+	*/        
+	        
+	           jQuery('.alternativeEdit'+j).each( function(i){
+		       	  jQuery(this).attr('contenteditable','true');
+		       	  jQuery(this).keypress( function() {
+		       	  	jQuery(this).stopTime("edit5")
+		       	  	jQuery(this).oneTime(1000,"edit5", function() {
+				         jQuery.ajax({
+				         	type: 'PUT',
+				         	url: '/items/'+jQuery(this).parent().parent().attr('id'),
+				         	data: jQuery(this).attr('id')+'='+jQuery(this).html()   	 
+				         });       	  		
+		       	  	});
+		       	  });	               	  	
+		       	 });        
+	             
 	   });  
 		   		   
         //jQuery('#app').html(this.el);

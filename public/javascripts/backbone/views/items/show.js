@@ -24,6 +24,7 @@ App.Views.Show = Backbone.View.extend({
     render: function() {
     	var out = ""
     	var id = this.item.id;
+    	var item_id = id;
         if(this.item) {
 			out = JST.items_show({ item: this.item });
 		  
@@ -49,16 +50,19 @@ App.Views.Show = Backbone.View.extend({
                 
         jQuery('#app').html(this.el);
         
-       jQuery('.edit').each( function(i){
-          jQuery(this).editable('/items/'+id,{
-         name     : jQuery(this).attr('id'),
-         type     : 'textarea',
-         width    : '100%',
-         submit   : 'OK',
-         method   : 'PUT',
-         submitdata  : {inplace: jQuery(this).attr('id') }
-        });
-       });        
+       jQuery('.edit5').each( function(i){
+       	  jQuery(this).attr('contenteditable','true');
+       	  jQuery(this).keypress( function() {
+       	  	jQuery(this).stopTime("edit5")
+       	  	jQuery(this).oneTime(1000,"edit5", function() {
+		         jQuery.ajax({
+		         	type: 'PUT',
+		         	url: '/items/'+item_id,
+		         	data: jQuery(this).attr('id')+'='+jQuery(this).html()   	 
+		         });       	  		
+       	  	});
+       	  });	               	  	
+       	 });        
     }
 });
 

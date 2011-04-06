@@ -7,6 +7,7 @@ App.Views.Tags.List = Backbone.View.extend({
     initialize: function() {
         this.tags = this.options.tags;
         this.render();
+        _.extend( this, Backbone.Events );
     },
     
     render: function() {
