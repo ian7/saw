@@ -12,6 +12,8 @@ var ItemView = Backbone.View.extend({
 
   render : function() {
    this.el.innerHTML = JST.items_index( {item: this.model} );
+   this.isExpanded = false;
+
    return this;
   },
   editedItem : function() {
@@ -33,7 +35,27 @@ var ItemView = Backbone.View.extend({
 		this.model.destroy();
   },
   expand: function(){
-	
+		if( this.isExpanded == false ) {
+			this.isExpanded = true;
+			jQuery(".expand", this.el).html("Collapse");
+			
+			this.alternatives_collection = new Alternatives;
+			// let's see if we'll need it
+			this.alternatives_collection.issueView = this;
+			this.alternatives_collection.url = '/items/'+this.model.get('id')+'/alternatives';
+
+			this.alternatives_collection.fetch({
+				success: function(model, resp) {
+					new App.Views.Alternatives.List({ collection: model, el: model.issueView.el });
+				}
+			});
+		}
+		else {
+			this.isExpanded = false;
+			jQuery("table.alternativeList", this.el).html("<!-- nothing -->");
+			jQuery(".expand", this.el).html("Expand");
+		}
+		
   }
 });
 
@@ -47,8 +69,6 @@ var ItemUpdatingView = ItemView.extend({
 
 
 App.Views.Index = Backbone.View.extend({
-//  tagName: "section",
-//  className: "itemList",
   events : {
 	"click .newItem" : "newItem"
   },
@@ -57,24 +77,14 @@ App.Views.Index = Backbone.View.extend({
       collection           : this.collection,
       childViewConstructor : ItemUpdatingView,
       childViewTagName     : 'li'
-//	  el				   : jQuery('#itemList')
     });
-//	this.el = jQuery("section.itemList");
 	this.render();
-//	this.delegateEvents(events);
   },
  
   render : function() {
 		this._rendered = true;
-//		jQuery(this.el).empty();
-		
-//		out = JST.items_list();
 		this._itemsCollectionView.el = jQuery('#itemList');
 		this._itemsCollectionView.render();
-		
-//		jQuery("#itemList").html = out;
-//		el.append("<li><div class='button green newItem'>New Item</div></li>");
-//		this.delegateEvents(this.events);
   },
   
   newItem : function() {

@@ -1,9 +1,9 @@
     		<td>
-	    	 	<%=a.attributes.id%>
+	    	 	<%=a.get('id')%>
 	    	</td>
 	   		<td>	   		
 	    		<b>Name:</b>
-	    		<i id="name" class="alternativeEdit<%=a.attributes.id%>"><% if(a.name) {%><%= a.attributes.name %><% } else { %>(empty)<% } %></i>
+	    		<i id="name" class="alternativeEdit<%=a.get('id')%>"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></i>
 		    </td>
 	    	<td>
 	    		<b onClick="App.controller.unTag('aa');">UNRELATE</b>,

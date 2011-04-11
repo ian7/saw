@@ -15,8 +15,8 @@ App.Controllers.Items = Backbone.Controller.extend({
         var item = new Item({ id: id });
         item.fetch({
             success: function(model, resp) {
-            	App.Components.Items.item_url = item.attributes.url;
-                App.Components.Items.view=new App.Views.Show({ item: item });
+//				el = jQuery("section.itemList");
+                new App.Views.Show({ item: item, el: 'section.itemList'});
             },
             error: function() {
                 new Error({ message: 'Could not find that document.' });
@@ -31,8 +31,7 @@ App.Controllers.Items = Backbone.Controller.extend({
 			success: function(model, resp) {
 				// this fails because of missing context
 				// let's try it with events
-				el = jQuery("section.itemList");
-				new App.Views.Index({collection: model, el: el});						
+				new App.Views.Index({collection: model, el: 'section.itemList'});						
 			}
 			
 		});

@@ -8,7 +8,9 @@ App.Views.Show = Backbone.View.extend({
     initialize: function(item) {
         this.item = this.options.item;
         this.render();
-        _.extend( this, Backbone.Events );
+
+      /* let's forget about that for a moment
+  		_.extend( this, Backbone.Events );
         
         this.bind('update',function( item_id ){
         	if( App.Components.Items.tags ){
@@ -19,6 +21,7 @@ App.Views.Show = Backbone.View.extend({
         		App.Components.Items.alternativess.trigger('update',item_id);
         	}
         });
+*/
     },
     
     render: function() {
@@ -48,7 +51,7 @@ App.Views.Show = Backbone.View.extend({
         }
         jQuery(this.el).html(out);
                 
-        jQuery('#app').html(this.el);
+        //jQuery('#app').html(this.el);
         
        jQuery('.edit5').each( function(i){
        	  jQuery(this).attr('contenteditable','true');
