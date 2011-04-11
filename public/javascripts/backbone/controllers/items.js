@@ -26,24 +26,36 @@ App.Controllers.Items = Backbone.Controller.extend({
     },
     
     index: function() {
-        jQuery.getJSON('/items', function(data) {
-            if(data) {
-                var items = _(data).map(function(i) { return new Item(i); });
-                this.view = new App.Views.Index({ items: items });
-            } else {
-                new Error({ message: "Error loading documents." });
-            }
-        });
+		this.items_collection = new Items;
+		this.items_collection.fetch({
+			success: function(model, resp) {
+				// this fails because of missing context
+				// let's try it with events
+				el = jQuery("section.itemList");
+				new App.Views.Index({collection: model, el: el});						
+			}
+			
+		});
+		this.items_collection.bind( "refresh", function() {
+			;
+		})
     },
     
     newDoc: function() {
-        new App.Views.Edit({ model: new Document() });
+        //new App.Views.Edit({ model: new Document() });
     },
     update: function( broadcasted_id ) {	
 	    	//if( App.Components.Items.view ) {
 	    	//	App.Components.Items.view.trigger('update',broadcasted_id);
 	    	//}
 	    	
+	
+			this.items_collection.each( function( i ) {
+				if( i.get('id') == broadcasted_id ) {
+					i.fetch();
+				}
+			});
+	
 	    	var c = App.Components.Items;
 	    	
 	    	if( broadcasted_id == this.item_id ) {
@@ -117,6 +129,13 @@ App.Controllers.Items = Backbone.Controller.extend({
 	    	// so let's update it !'
    	    	//App.controller.update();
     		});    		    	
+    },
+    expandAlternatives: function( item_id ){
+        jQuery.getJSON('/items'+item_id+'/alternatives', function(data) {
+        	if(data){
+        		jQuery('#'+item_id).html = JST.alternatives_list_list()
+        	}
+        });
     }
 });
 

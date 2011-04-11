@@ -5,13 +5,14 @@ class Taggable # < ActiveRecord::Base
  # this is still to come after type is going to be renamed to dynamic_type
 
         
-#    field :id, :type => Integer
+#    field :id
     field :type, :type => String
     field :name, :type=> String
     field :origin, :type => Integer
     field :tip, :type=> Integer
     
-
+#    index :origin, :unique => false, :background => false
+#    index :tip, :unique => false, :background => false
 
 
 
@@ -156,6 +157,24 @@ def to_hash
   h["id"]=id
   h["type"]=type
   return h
+end
+
+
+#def to_json
+#	h = to_hash
+#	h["asdfasdf"]="asdfasdfa"
+#	return h.to_json
+#end
+
+def to_json
+  		j = to_hash
+			
+			dynamic_type.dynamic_type_attributes.each do |attribute| 
+				j[attribute.attribute_name] = attributes[attribute.attribute_name]
+			end
+			
+#			j["url"] = url_for( this );
+			return j
 end
 
 def to_graph

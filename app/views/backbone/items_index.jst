@@ -1,9 +1,8 @@
-<ul>
-    <% _(items).each(function(item) { %>
-    <li>
-    	<a href=#/<%= item.escape('_id')%>>
-    		<%= item.escape('name') %>
-    	</a>
-    </li>
-    <% }); %>
-</ul>
+    <li id="<%=item.get('_id')%>" class="knowledge_item">
+    	<span class="e6" contenteditable="true"><%= item.get('name') %></span>
+		<% if( !item.isNew() ) { %>
+			<a href=#/<%= item.get('id')%>>details</a>,
+	    	<div class="button orange expand">Expand</div>,
+	    	<div class="button red deleteItem">Delete</div>.		
+	   <% } %>
+	</li>

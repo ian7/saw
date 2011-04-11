@@ -1,6 +1,9 @@
 /**
  * @author Marcin Nowak
  */
+
+
+
 var Item = Backbone.Model.extend({
     url : function() {
       var base = 'items';
@@ -8,3 +11,10 @@ var Item = Backbone.Model.extend({
       return base + (base.charAt(base.length - 1) == '/' ? '' : '/') + this.id;
     }
 });
+
+
+var Items = Backbone.Collection.extend({
+  model : Item,
+  url : "/items"
+});
+

@@ -1,6 +1,7 @@
 /**
  * @author Marcin Nowak
  */
+
 var Taggable = Backbone.Model.extend({
     url : function() {
       var base = 'items';

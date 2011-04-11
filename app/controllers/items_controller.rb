@@ -10,7 +10,12 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html {render :layout=> false }# index.html.erb
       format.xml  #{ render :xml => @issues }
-      format.json { render :json => @issues }      
+      format.json { 
+        j=[]
+        @issues.each do |i|
+          j << i.to_json
+        end
+        render :json => j }      
     end
   end
 
@@ -21,15 +26,8 @@ class ItemsController < ApplicationController
 
 
 	respond_to do |format|
-		format.json {
-			j = @item.to_hash
-			
-			@item.dynamic_type.dynamic_type_attributes.each do |attribute| 
-				j[attribute.attribute_name] = @item.attributes[attribute.attribute_name]
-			end
-			
-			j["url"] = url_for( @item ); 
-			render :json => j }
+		format.json {	 
+			render :json => @item.to_json }
 		format.html { render :layout=> false }
 	end
 
@@ -88,7 +86,16 @@ class ItemsController < ApplicationController
   end
 
   def update
-     @issue = Taggable.find(params[:id])
+    
+     if params[:id] 
+         @issue = Taggable.find(params[:id])
+     end
+
+     if params[:_id] 
+         @issue = Taggable.find(params[:_id])
+     end
+
+
      @issue_params = params[:issue] 
     
     updated = false
@@ -130,6 +137,7 @@ class ItemsController < ApplicationController
         end
         format.xml  { head :ok }
         format.js  { head :ok }
+        format.json { render :json => @issue.to_json }
     end
   end
 
