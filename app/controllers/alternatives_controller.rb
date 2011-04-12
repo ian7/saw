@@ -127,6 +127,7 @@ class AlternativesController < ApplicationController
       solvedBy_relation.origin = @alternative.id
       solvedBy_relation.tip = Taggable.find(params[:item_id]).id
       solvedBy_relation.save
+      Juggernaut.publish("/chats",params[:item_id])
     end
     
     #TODO: unit test to test related issues.
@@ -200,6 +201,7 @@ class AlternativesController < ApplicationController
      respond_to do |format|
       format.html { redirect_to(alternatives_url) }
       format.xml  { head :ok }
+      format.json { render :json=>{} }
      end
  end
  

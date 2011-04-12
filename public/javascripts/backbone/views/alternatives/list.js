@@ -2,7 +2,9 @@
 
 AlternativeView  = Backbone.View.extend({
     events : {
-		"keypress .name" : "editedName",
+		"keypress .name" 			: "editedName",
+		"click .deleteAlternative"	: "deleteAlternative",
+		"click .unrelateAlternative": "unrelateAlternative",
     },
     initialize: function() {
     },
@@ -22,9 +24,9 @@ AlternativeView  = Backbone.View.extend({
 
 	  	jQuery(this.el).stopTime("edit5");
 	  	jQuery(this.el).oneTime(1000,"edit5", function() {
-			if( lastEditedItem.model.isNew() ) {
-				lastEditedItem.trigger("new");
-			}
+		//	if( lastEditedItem.model.isNew() ) {
+		//		lastEditedItem.trigger("new");
+		//	}
 			lastEditedItem.model.save(
 				{ name: jQuery(".name",this).html() },
 				{ success : function( model, resp)  {
@@ -37,6 +39,12 @@ AlternativeView  = Backbone.View.extend({
 				}
 			});	
 		});
+	},
+	deleteAlternative : function(){
+		this.model.destroy();
+    },
+	unrelateAlternative : function() {
+		;
 	},
 });
 
@@ -67,8 +75,8 @@ App.Views.Alternatives.List = Backbone.View.extend({
   render : function() {
 		this.rendered = true;
 		this.alternativesCollectionView.el = jQuery('table.alternativeList', this.el);
-		this.alternativesCollectionView.render();
 		this.newAlternative();
+		this.alternativesCollectionView.render();
   },
   notify : function( broadcasted_id ) {
 		this.collection.each( function( i ) {	
@@ -90,12 +98,18 @@ App.Views.Alternatives.List = Backbone.View.extend({
 			
 		if( collection.size() == 0 ||
 		    collection.last().isNew() == false ) {
-			a = new Alternative;
+			var a;
+			if( a ) {
+				;
+			}else{
+				a = new Alternative;
+			}
 			a.set({name: 'new alternative'});
 			collection.add( a );
 //			a.bind('change', this.newAlternative );
 		}
   },
+
 });
 
 

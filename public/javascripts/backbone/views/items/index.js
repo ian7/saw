@@ -11,7 +11,14 @@ var ItemView = Backbone.View.extend({
   },
   render : function() {
    this.el.innerHTML = JST.items_index( {item: this.model} );
-   this.isExpanded = false;
+   
+   if(  this.isExpanded == true) {
+		this.isExpanded = false;
+		this.expand();
+	}
+	else {
+		this.isExpanded = false;
+	}
 
    return this;
   },
@@ -38,13 +45,15 @@ var ItemView = Backbone.View.extend({
 			this.isExpanded = true;
 			jQuery(".expand", this.el).html("Collapse");
 			
-			this.alternatives_collection = new Alternatives;
-			// let's see if we'll need it
-			this.alternatives_collection.issueView = this;
-			this.alternatives_collection.item_url = '/items/'+this.model.get('id');
-			this.alternatives_collection.url = '/items/'+this.model.get('id')+'/alternatives';
+			if( this.alternatives_collection == null ) {
+				this.alternatives_collection = new Alternatives;
+				// let's see if we'll need it
+				this.alternatives_collection.issueView = this;
+				this.alternatives_collection.item_url = '/items/'+this.model.get('id');
+				this.alternatives_collection.url = '/items/'+this.model.get('id')+'/alternatives';
+			}
 
-			this.alternatives_collection.fetch({
+			this.alternatives_collection.fetch({ silent: true,
 				success: function(model, resp) {
 					new App.Views.Alternatives.List({ collection: model, el: model.issueView.el });
 				}
@@ -63,7 +72,7 @@ var ItemView = Backbone.View.extend({
 var ItemUpdatingView = ItemView.extend({
   initialize : function(options) {
     this.render = _.bind(this.render, this); 
-    this.model.bind('change', this.render);
+    this.model.bind('change:name', this.render);
   }
 });
 
