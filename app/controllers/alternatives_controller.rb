@@ -196,6 +196,9 @@ class AlternativesController < ApplicationController
       r.destroy
     end
     
+    if params[:item_id]
+      Juggernaut.publish( "/chats", params[:item_id] )
+    end
     #TODO: weak tags handling should be implemented there too
   
      respond_to do |format|

@@ -9,9 +9,19 @@ var ItemView = Backbone.View.extend({
 	"click .deleteItem" : "deleteItem",
 	"keypress .e6" : "editedItem"
   },
+
+  alternativesCollection : null,
+
   render : function() {
+
+	this.alternativesCollection.item_url = '/items/'+this.model.get('id');
+	this.alternativesCollection.url = '/items/'+this.model.get('id')+'/alternatives';
+
+//	this.tempEL = document.createElement("tr");
+//	this.tempEL.innerHTML = JST.items_index( {item: this.model} );
+
    this.el.innerHTML = JST.items_index( {item: this.model} );
-   
+  
    if(  this.isExpanded == true) {
 		this.isExpanded = false;
 		this.expand();
@@ -19,6 +29,9 @@ var ItemView = Backbone.View.extend({
 	else {
 		this.isExpanded = false;
 	}
+	
+	// finally attach it ;)
+//	this.el.innerHTML = this.tempEL.innerHTML;
 
    return this;
   },
@@ -45,16 +58,13 @@ var ItemView = Backbone.View.extend({
 			this.isExpanded = true;
 			jQuery(".expand", this.el).html("Collapse");
 			
-			if( this.alternatives_collection == null ) {
-				this.alternatives_collection = new Alternatives;
-				// let's see if we'll need it
-				this.alternatives_collection.issueView = this;
-				this.alternatives_collection.item_url = '/items/'+this.model.get('id');
-				this.alternatives_collection.url = '/items/'+this.model.get('id')+'/alternatives';
-			}
+		   new App.Views.Alternatives.List({ collection: this.alternativesCollection, el: this.el });
 
-			this.alternatives_collection.fetch({ silent: true,
+			this.alternativesCollection.fetch({ silent: false,
 				success: function(model, resp) {
+//					model.issueView.model.change();
+					model.issueView.alternativesCollection = model;
+// this can be executed somewhere else :)					
 					new App.Views.Alternatives.List({ collection: model, el: model.issueView.el });
 				}
 			});
@@ -72,7 +82,11 @@ var ItemView = Backbone.View.extend({
 var ItemUpdatingView = ItemView.extend({
   initialize : function(options) {
     this.render = _.bind(this.render, this); 
-    this.model.bind('change:name', this.render);
+    this.model.bind('change', this.render);
+
+	this.alternativesCollection = new Alternatives;
+   
+	this.alternativesCollection.issueView = this;
   }
 });
 
@@ -126,6 +140,7 @@ App.Views.Index = Backbone.View.extend({
 		this.collection.each( function( i ) {	
 			if( i.get('id') == broadcasted_id ) {
 				i.fetch();
+				i.change();
 			}
 		});
   },
