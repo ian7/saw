@@ -61,7 +61,7 @@ App.Views.Alternatives.List = Backbone.View.extend({
     });
 	this.render();
 	notifier.register(this);
-	this.collection.bind('refresh', this.newAlternative);
+	this.collection.bind('saved', this.newAlternative);
   },
  
   render : function() {
@@ -71,21 +71,28 @@ App.Views.Alternatives.List = Backbone.View.extend({
 		this.newAlternative();
   },
   notify : function( broadcasted_id ) {
-//		alert( broadcasted_id);
 		this.collection.each( function( i ) {	
 			if( i.get('id') == broadcasted_id ) {
 				i.fetch();
 				i.change();
-				this.newAlternative();
 			}
 		});
   },
   newAlternative : function() {
-		if( this.collection.size() == 0 ||
-		    this.collection.last().isNew() == false ) {
+	    var collection;
+	
+		if( this.collection ) {
+			collection = this.collection;
+		}
+		else {
+			collection = this;
+		}
+			
+		if( collection.size() == 0 ||
+		    collection.last().isNew() == false ) {
 			a = new Alternative;
 			a.set({name: 'new alternative'});
-			this.collection.add( a );
+			collection.add( a );
 //			a.bind('change', this.newAlternative );
 		}
   },

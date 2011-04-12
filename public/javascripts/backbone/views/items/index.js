@@ -81,6 +81,7 @@ App.Views.Index = Backbone.View.extend({
     });
 	this.render();
 	notifier.register(this);
+	this.collection.bind('saved',this.newItem)
   },
  
   render : function() {
@@ -91,9 +92,26 @@ App.Views.Index = Backbone.View.extend({
   },
   
   newItem : function() {
+		var collection;
+
+		if( this.collection ) {
+			// we're called from the render method
+			collection = this.collection; 
+		}
+		else {
+			// we're called because collection element has been saved 
+			collection = this;			
+			var preLastItem = collection.last();
+			if( preLastItem.view ) {
+				preLastItem.view.expand();
+			}
+		}
+        
 		i = new Item;
 		i.set({name: '(unnamed)'});
-		this.collection.add( i );
+		collection.add( i );
+		
+		//alert('asdf')
   },
   notify : function( broadcasted_id ) {
 		this.collection.each( function( i ) {	

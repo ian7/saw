@@ -21,7 +21,8 @@ var UpdatingCollectionView = Backbone.View.extend({
       tagName : this._childViewTagName,
       model : model
     });
- 
+
+ 	model.view = childView;
     this._childViews.push(childView);
  
     if (this._rendered) {
