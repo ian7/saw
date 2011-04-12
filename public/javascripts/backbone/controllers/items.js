@@ -49,11 +49,6 @@ App.Controllers.Items = Backbone.Controller.extend({
 	    	//}
 	    	
 	
-			this.items_collection.each( function( i ) {
-				if( i.get('id') == broadcasted_id ) {
-					i.fetch();
-				}
-			});
 	
 	    	var c = App.Components.Items;
 	    	

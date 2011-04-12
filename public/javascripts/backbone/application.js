@@ -11,6 +11,7 @@ var App = {
     Helpers: {},
     init: function() {
         this.Components.Items = this.controller = new App.Controllers.Items();
+      
 //		new App.Controllers.Tags();
         Backbone.history.start();
     }
@@ -20,24 +21,29 @@ window.WEB_SOCKET_SWF_LOCATION = "http://localhost:8080/WebSocketMain.swf"
  
  // Settin host to external machine
 var options = new Array();
- //options['host']='juggernaut.sonyx.net';
+//options['host']='juggernaut.sonyx.net';
+var jug = new Juggernaut( options );
 
-  var jug = new Juggernaut( options );
-  jug.subscribe("/chats", function(data){
+jug.subscribe("/chats", function(data){
+	notifier.notify(data);
+});  
 
-/// that's crap 
-//    var li = $("<li />");
-//    li.text(data);
-//    $("#chats").append(li);
-//    $("#whatever").append(data+"<br/>")alert
+var notifier = {
+	listeners : [],
+	register : function( o ) {
+		this.listeners.push(o);
+	},
+	notify : function( data ) {
+		_.each( this.listeners, function( l ){
+			if( l.notify ) {
+				l.notify( data );
+			}
+		});
+	},	
+};
 
-/// some functionality
-//store.reload();
 
 
-/// just to show off
-//	alert(data);
-	App.controller.update(data);
-	
-  });  
+
+
 

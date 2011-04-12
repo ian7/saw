@@ -115,7 +115,7 @@ class TagController < ApplicationController
 		  end
 		 }
       format.xml  { render :xml => @taggings }
-      format.json { render :json => @to_taggable }
+      format.json { render :json => @to_taggable.to_json }
       format.js {head :ok}
     end
     

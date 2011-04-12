@@ -121,11 +121,11 @@ class AlternativesController < ApplicationController
     @alternative = DynamicType.find_by_name("Alternative").new_instance
     @alternative.save   
     
-    if params[:related_issue_id] != nil
+    if params[:item_id] != nil
       solvedBy_relation = DynamicType.find_by_name("SolvedBy").new_instance
                        
       solvedBy_relation.origin = @alternative.id
-      solvedBy_relation.tip = params[:related_issue_id]
+      solvedBy_relation.tip = Taggable.find(params[:item_id]).id
       solvedBy_relation.save
     end
     
@@ -136,31 +136,54 @@ class AlternativesController < ApplicationController
   end
 
   def update
-     @alternative = Taggable.find(params[:id])
+    
+      @alternative = Taggable.find(params[:id])
 
+        @alternative_params = params[:issue] 
 
-    respond_to do |format|
-     ## this didn't worked as some attributes are implemented as dynamic types attributes
-     
-     #TODO: maybe i should rework it to make update_attributes work again 
-     #@alternative.update_attributes(params[:alternative])
-     
-        @alternative.name = params[:alternative]["name"]
-        @alternative.save
-        @alternative["Description"] = params[:alternative]["description"]
-        
-        @alternative.dynamic_type.dynamic_type_attributes.each do |attribute|
-          @alternative[attribute.attribute_name] = params[:alternative][attribute.attribute_name]
-        end 
-        
-        if params[:related_issue_id] != nil
-          format.html { redirect_to(issue_url(params[:related_issue_id])) }
-        else      
-          format.html { redirect_to(alternative_url(@alternative.id)) }
+       updated = false
+
+        if @alternative_params == nil
+          @alternative_params = params 
         end
-        
-        format.xml  { head :ok }
-    end
+
+
+       if @alternative_params["name"] != nil
+           @alternative.name = @alternative_params["name"]
+           updated = true
+       end
+
+       if @alternative_params["Description"] != nil
+           @alternative["Description"] = @alternative_params["Description"]
+           updated = true
+       end
+
+           @alternative.dynamic_type.dynamic_type_attributes.each do |attribute|
+             if @alternative_params[attribute.attribute_name] != nil
+               @alternative[attribute.attribute_name] = @alternative_params[attribute.attribute_name]
+              	updated = true
+             end
+           end 
+
+   	if updated 
+   		@alternative.save
+   	end
+
+   	Juggernaut.publish("/chats", @alternative.id)
+
+       respond_to do |format|
+        ## this didn't worked as some attributes are implemented as dynamic types attributes
+           if params[:inplace] != nil
+             format.html { render :text => params[params[:inplace]] }
+           else          
+             format.html { redirect_to(issue_url(@alternative.id)) }
+           end
+           format.xml  { head :ok }
+           format.js  { head :ok }
+           format.json { 
+             	@decision_collection = Taggable.find :all, :conditions=>{:type=>"Decision"}
+             render :json => to_hash_with_details( @alternative ) }
+       end
   end
 
   def destroy
@@ -188,25 +211,29 @@ class AlternativesController < ApplicationController
 	
 			
 		relation = Taggable.find(:first, :conditions=>{:origin=>alternative.id, :tip=>@issue.id})
-		taggings = relation.relations_to("Tagging");
+		
+		# if given alternative is not related to the issue, then skip decisions because there are none
+		if relation 
+  		taggings = relation.relations_to("Tagging");
 
-		j_decisions = []
+  		j_decisions = []
 		
-		@decision_collection.each do |decision|
-			j_decision = {}
-			j_decision["name"] = decision.name
-			j_decision["count"] = Taggable.find(:all, :conditions=>{:origin=>decision.id, :tip=>relation.id }).count
-			j_decision["decision_tag_id"] = decision.id
-			j_decisions << j_decision
-		end
+  		@decision_collection.each do |decision|
+  			j_decision = {}
+  			j_decision["name"] = decision.name
+  			j_decision["count"] = Taggable.find(:all, :conditions=>{:origin=>decision.id, :tip=>relation.id }).count
+  			j_decision["decision_tag_id"] = decision.id
+  			j_decisions << j_decision
+  		end
 		
-		j_alternative["decisions"] = j_decisions
+  		j_alternative["decisions"] = j_decisions
 		
-		@relation = Taggable.find :first, :conditions=>{:tip=>@issue.id, :origin=>alternative.id }
+  		@relation = Taggable.find :first, :conditions=>{:tip=>@issue.id, :origin=>alternative.id }
 		
-		j_alternative["relation_id"] = @relation.id
-		j_alternative["relation_url"] = taggable_url( @relation )
-	end	
+  		j_alternative["relation_id"] = @relation.id
+  		j_alternative["relation_url"] = taggable_url( @relation )
+  	end	
+  end
 	
 
 	j_alternative["id"]=alternative._id

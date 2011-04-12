@@ -3,9 +3,9 @@ App.Helpers.Items = {
 		this.tag(alternativeURL, tagID );
 		
 		if( App.Components.Items ) {
-			jQuery.getJSON( App.Components.Items.item_url+'/notify', function(data) {
+			jQuery.getJSON( alternativeURL+'/notify', function(data) {
 				    if(data) {
-							alert(data);
+							alert(data);F
 			            }
 			        });
 		}

@@ -17,6 +17,10 @@ class TaggablesController < ApplicationController
   end
 
   def notify
+    t=Taggable.find(params[:taggable_id]) 
+    if t && t._type=="Relation"      
+      Juggernaut.publish('/chats',t.origin)
+    end
   	Juggernaut.publish('/chats',params[:taggable_id])
 
     respond_to do |format|
