@@ -1,5 +1,6 @@
 embed_assets: off
-
+compress_assets: on
+package_assets: off
 javascripts:
   workspace:
     - public/javascripts/lib/jquery/jquery.min.js
@@ -17,10 +18,10 @@ javascripts:
 
 stylesheets:
   common:
-    - public/stylesheets/reset.css
-    - public/stylesheets/widgets/*.css
+#    - public/stylesheets/reset.css
+#    - public/stylesheets/widgets/*.css
   workspace:
     - public/stylesheets/buttons.css
     - public/stylesheets/decisions.css
   empty:
-    - public/stylesheets/pages/empty.css
+#    - public/stylesheets/pages/empty.css

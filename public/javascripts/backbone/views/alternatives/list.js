@@ -18,18 +18,20 @@ AlternativeUpdatingView  = Backbone.View.extend({
 
 	   this.el.innerHTML = JST.alternatives_show( {a: this.model} );
 	
-	   var color = "white";
+	   color = "white";
 	   
-	   _.each( this.model.decisions, function( decision ) {
-		    if( decision.count > 0 ) {
-				if( color == 'white' ) {
-					color = decision.color;
+	   if( this.model.attributes.decisions ) {
+		   _.each( this.model.attributes.decisions, function( decision ) {
+			    if( decision.count > 0 ) {
+					if( color == 'white' ) {
+						color = decision.color;
+					}
+					else {
+						color = 'gray';
+					}
 				}
-				else {
-					color = 'gray';
-				}
-			}
-		});
+			});
+		}
 	   jQuery(this.el).addClass(color);
 	
 	   return this;
@@ -50,10 +52,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 			lastEditedItem.model.save(
 				{ name: jQuery(".name",this).html() },
 				{ success : function( model, resp)  {
-//					model.unbind( 'change' );
 					model.parse( resp );
-//					model.bind('change', lastEditedItem.render);
-//					model.change();
 					lastEditedItem.trigger('saved');
 					lastEditedItem = null;
 				}
