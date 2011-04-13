@@ -28,4 +28,8 @@ IssueRecommendation:
     type_name: Issue
     attribute_name: Recommendation
     
+DecisionColors:
+    type_name: Decision
+    attribute_name: Color
+    
 

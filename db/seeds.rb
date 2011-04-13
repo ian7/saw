@@ -42,8 +42,16 @@ dynamic_types = YAML::load_file("#{Rails.root}/test/fixtures/taggables.yml")
 
 dynamic_types.each{ |name, values|
 	dt=DynamicType.find_by_name(values["type"]).new_instance( values["name"] )
-	#dt.name = values["name"]
-	#dt.type = values["type"]
-	#dt.id = values["id"]
 	dt.save
+
+	values.each { |key,value|
+	    # just skip these two
+	    if key=="type" || key == "name"
+	      next
+	    end
+	    puts "key: "+key+ " value: "+value
+#	    dt[key]=value
+    }
+  dt.save
 	}
+

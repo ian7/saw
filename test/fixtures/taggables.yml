@@ -20,12 +20,15 @@
 DecisionPositive:
    type: Decision
    name: Positive
+   color: Green
 DecisionNegative:
    type: Decision
    name: Negative
-DecisionOpen:
+   color: Red
+DecisionOpen: 
    type: Decision
    name: Open
+   color: Blue
 ProjectA:
     type: Project
     name: A

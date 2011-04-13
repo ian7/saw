@@ -1,17 +1,37 @@
 
 
-AlternativeView  = Backbone.View.extend({
+AlternativeUpdatingView  = Backbone.View.extend({
+	className : "decision", 
     events : {
 		"keypress .name" 			: "editedName",
 		"click .deleteAlternative"	: "deleteAlternative",
 		"click .unrelateAlternative": "unrelateAlternative",
+		"click .decide"				: "decide"
     },
     initialize: function() {
+	    this.render = _.bind(this.render, this); 
+	    this.model.bind('change', this.render);
+		notifier.register(this);
     },
     
     render: function() {
 
 	   this.el.innerHTML = JST.alternatives_show( {a: this.model} );
+	
+	   var color = "white";
+	   
+	   _.each( this.model.decisions, function( decision ) {
+		    if( decision.count > 0 ) {
+				if( color == 'white' ) {
+					color = decision.color;
+				}
+				else {
+					color = 'gray';
+				}
+			}
+		});
+	   jQuery(this.el).addClass(color);
+	
 	   return this;
     },
     // this updates single row in the table
@@ -46,15 +66,17 @@ AlternativeView  = Backbone.View.extend({
 	unrelateAlternative : function() {
 		;
 	},
+	decide : function (element) {
+		//alert(element.target.id);
+		jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id, function(data) {});
+	},
+	notify : function( broadcasted_id ) {
+		if( this.model.id == broadcasted_id ) {
+			this.model.fetch();
+		}
+	},
 });
 
-
-var AlternativeUpdatingView = AlternativeView.extend({
-  initialize : function(options) {
-    this.render = _.bind(this.render, this); 
-    this.model.bind('change', this.render);
-  }
-});
 
 
 App.Views.Alternatives.List = Backbone.View.extend({

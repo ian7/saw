@@ -107,7 +107,15 @@ class TagController < ApplicationController
   ## not quite sure on what to do after... some redirect probably
   @to_taggable=Taggable.find @to_taggable_id
   
-  Juggernaut.publish("/chats", @to_taggable_id)
+  puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+@to_taggable._type
+  
+  if( @to_taggable._type == "Relation")
+      Juggernaut.publish("/chats", @to_taggable_id)
+      Juggernaut.publish("/chats", @to_taggable.tip)
+      Juggernaut.publish("/chats", @to_taggable.origin)
+  else
+      Juggernaut.publish("/chats", @to_taggable_id)
+  end
   
    respond_to do |format|
       format.html {      

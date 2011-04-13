@@ -1,0 +1,21 @@
+// colors taken from buttons
+
+.decision.green {
+	background: #64991e;
+}
+
+.decision.blue{
+	background: #0095cd;
+}
+
+.decision.red{
+	background: #d81b21;
+}
+
+.decision.gray{
+	background: #6e6e6e;
+}
+
+.decision.white{
+	background:	#606060;
+}

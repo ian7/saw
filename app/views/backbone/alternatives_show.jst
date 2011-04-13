@@ -8,11 +8,11 @@
 	    	<td>
 				<% if( !a.isNew() ) {  %>
 <!--					<div class="button gray unrelateAlternative">UnRelate</div> -->
-		    		<div class="button gray deleteAlternative">Delete</div>
+		    		<div class="button black deleteAlternative">Delete</div>
 				<% } %>
 	    	</td>
 	    	<td> 
 		    	Decide: <% _(a.attributes.decisions).each(function(decision) { %>
-		    		<b onClick="App.Helpers.Items.decide('<%=a.attributes.relation_url%>','<%=decision.decision_tag_id%>');"><%= decision.name.charAt(0) %>:</b> <%= decision.count %>, 
-		    	<% });%>
+		    <div class="button decide <%= decision.color %>" id="<%= decision.decision_tag_id %>"><%= decision.name %>(<%= decision.count %>)</div>		
+<% });%>
 	    	</td>

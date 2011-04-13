@@ -21,5 +21,6 @@ stylesheets:
     - public/stylesheets/widgets/*.css
   workspace:
     - public/stylesheets/buttons.css
+    - public/stylesheets/decisions.css
   empty:
     - public/stylesheets/pages/empty.css
