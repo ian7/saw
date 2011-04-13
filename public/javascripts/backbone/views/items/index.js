@@ -14,8 +14,8 @@ var ItemView = Backbone.View.extend({
 
   render : function() {
 
-	this.alternativesCollection.item_url = '/items/'+this.model.get('id');
-	this.alternativesCollection.url = '/items/'+this.model.get('id')+'/alternatives';
+	this.alternativesCollection.item_url = window.location.pathname+"/"+this.model.get('id');
+	this.alternativesCollection.url = window.location.pathname+"/"+this.model.get('id')+'/alternatives';
 
 //	this.tempEL = document.createElement("tr");
 //	this.tempEL.innerHTML = JST.items_index( {item: this.model} );
@@ -42,7 +42,7 @@ var ItemView = Backbone.View.extend({
 	  	jQuery(this.el).stopTime("edit5");
 	  	jQuery(this.el).oneTime(1000,"edit5", function() {
 			lastEditedItem.model.save(
-				{ name: jQuery(this).children().children("span.e6").html() },
+				{ name: jQuery("span.e6",this).html() },
 				{ success : function( model, resp)  {
 					model.parse( resp );
 					model.change();

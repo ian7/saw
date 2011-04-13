@@ -6,7 +6,7 @@
 
 var Item = Backbone.Model.extend({
     url : function() {
-      var base = '/items';
+      var base = window.location.pathname;
       if (this.isNew()) return base;
       return base + (base.charAt(base.length - 1) == '/' ? '' : '/') + this.id;
     }
@@ -15,6 +15,6 @@ var Item = Backbone.Model.extend({
 
 var Items = Backbone.Collection.extend({
   model : Item,
-  url : "/items"
+  url : window.location.pathname
 });
 

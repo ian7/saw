@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
    # in case we're sub-resourced with a project
    if params[:project_id]
      @project = TreeTag.find params[:project_id]
-     
+     @issues = @project.related_from("Tagging",'Issue')
    else
      @issues = Taggable.find :all, :conditions=>{:type=>"Issue"}
    end
@@ -20,7 +20,13 @@ class ItemsController < ApplicationController
       format.json { 
         j=[]
         @issues.each do |i|
-          j << i.to_json
+          ii = i.to_json;
+          ii['item_url'] = url_for( i )
+          
+          if params[:project_id]
+            ii['project_id'] = params['project_id'];
+          end
+          j << ii
         end
         render :json => j }      
     end
@@ -91,6 +97,19 @@ class ItemsController < ApplicationController
     @issue = DynamicType.find_by_name("Issue").new_instance
     @issue.save
     params[:id] = @issue.id
+    
+    if params[:project_id] 
+      project = TreeTag.find params[:project_id]
+      if project
+        t = Tagging.new
+        t.type = "Tagging"
+        t.tip = @issue.id
+        t.origin = project.id
+        t.save
+      end
+    end
+    
+    
     update
   end
 

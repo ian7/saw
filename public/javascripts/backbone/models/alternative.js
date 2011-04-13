@@ -28,6 +28,6 @@ var Alternative = Backbone.Model.extend({
 
 var Alternatives = Backbone.Collection.extend({
   model : Alternative,
-  url : "/alternatives",
+  url : window.location.pathname+"/alternatives",
   
 });
