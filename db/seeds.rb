@@ -49,8 +49,8 @@ dynamic_types.each{ |name, values|
 	    if key=="type" || key == "name"
 	      next
 	    end
-	    puts "key: "+key+ " value: "+value
-#	    dt[key]=value
+#	    puts "key: "+key+ " value: "+value
+	    dt[key]=value
     }
   dt.save
 	}
