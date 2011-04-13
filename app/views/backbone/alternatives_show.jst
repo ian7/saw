@@ -13,6 +13,7 @@
 	    	</td>
 	    	<td> 
 		    	Decide: <% _(a.attributes.decisions).each(function(decision) { %>
-		    <div class="button decide <%= decision.color %>" id="<%= decision.decision_tag_id %>"><%= decision.name %>(<%= decision.count %>)</div>		
+		    <div class="button decide <%= decision.color %>" id="<%= decision.decision_tag_id %>"><%= decision.name %>(<%= decision.count %>)</div>
+			<div class="button undecide <%= decision.color %>" id="<%= decision.decision_tag_id %>">X</div>		
 <% });%>
 	    	</td>

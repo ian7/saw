@@ -144,24 +144,37 @@ class TagController < ApplicationController
   	 @relation_instance = Taggable.find params[:tagging_id]
   else
   	  ## otherwise from/to params and look it up
-	  @from_taggable_id = params[:from_taggable_id]
-	  @to_taggable_id = params[:to_taggable_id]
+  	if params[:taggable_id]
+  	  @to_taggable_id = params[:taggable_id]
+  	else
+  	  @to_taggable_id = params[:to_taggable_id]
+	  end
+    @from_taggable_id = params[:from_taggable_id]
 	  @relation_name = "Tagging"
 	 
+	 @from_taggable = Taggable.find @from_taggable_id
+	 @to_taggable = Taggable.find @to_taggable_id
+	 
 	  ## find the tagging
-	  @relation_instance = Taggable.find(:first, :conditions=>{:type=>@relation_name, :origin=>@from_taggable_id, :tip=>@to_taggable_id })  	
+	  @relation_instance = Taggable.find(:first, :conditions=>{:type=>@relation_name, :origin=>@from_taggable.id, :tip=>@to_taggable.id })  	
   end
 
   ## not quite sure on what to do after... some redirect probably
   @to_taggable=Taggable.find @relation_instance.tip
 
-   
   ## kill it
    if @relation_instance != nil
      @relation_instance.destroy
    end
-   
-  Juggernaut.publish("/chats", @to_taggable.id)
+
+
+  if( @to_taggable._type == "Relation")
+       Juggernaut.publish("/chats", @to_taggable_id)
+       Juggernaut.publish("/chats", @to_taggable.tip)
+       Juggernaut.publish("/chats", @to_taggable.origin)
+   else
+       Juggernaut.publish("/chats", @to_taggable_id)
+   end
 
   #redirect_to("/"+@to_taggable.attributes["type"].downcase.pluralize+"/"+@to_taggable.id.to_s )
 

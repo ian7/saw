@@ -6,7 +6,8 @@ AlternativeUpdatingView  = Backbone.View.extend({
 		"keypress .name" 			: "editedName",
 		"click .deleteAlternative"	: "deleteAlternative",
 		"click .unrelateAlternative": "unrelateAlternative",
-		"click .decide"				: "decide"
+		"click .decide"				: "decide",
+		"click .undecide"			: "undecide"
     },
     initialize: function() {
 	    this.render = _.bind(this.render, this); 
@@ -68,6 +69,9 @@ AlternativeUpdatingView  = Backbone.View.extend({
 	decide : function (element) {
 		//alert(element.target.id);
 		jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id, function(data) {});
+	},
+	undecide : function(element) {
+		jQuery.getJSON( this.model.get('relation_url') + '/tag/untag?from_taggable_id='+element.target.id, function(data) {});		
 	},
 	notify : function( broadcasted_id ) {
 		if( this.model.id == broadcasted_id ) {
