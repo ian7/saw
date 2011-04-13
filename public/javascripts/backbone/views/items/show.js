@@ -6,11 +6,12 @@
 
 App.Views.Show = Backbone.View.extend({
 	events: {
-//		".addTag": "addTag", 
+		"click .addTag": "addTag", 
 	},
     initialize: function() {
-		this.tagCollection = new Tags;
-        this.render();
+		//this.tagCollection = new Tags;
+			notifier.register(this);
+	        this.render();
 
       /* let's forget about that for a moment
   		_.extend( this, Backbone.Events );
@@ -28,6 +29,7 @@ App.Views.Show = Backbone.View.extend({
     },
     
     render: function() {
+		this.model.view = this;
     	var out = ""
     	var id = this.model.id;
     	var item_id = id;
@@ -57,10 +59,10 @@ App.Views.Show = Backbone.View.extend({
 */
                          
         } 
-        //jQuery(this.el).html(out);
-                
+        //jQuery(this.el).html(out);                
         //jQuery('#app').html(this.el);
         
+	   // this handles in-place editing
        jQuery('.edit5').each( function(i){
        	  jQuery(this).attr('contenteditable','true');
        	  jQuery(this).keypress( function() {
@@ -76,23 +78,25 @@ App.Views.Show = Backbone.View.extend({
        	 });        
     },
 	addTag: function(){
-/*		this.tagCollection.url = this.model.item_url + "/tags_list";
-
-		new App.Views.Tags.Add({ el: tata, tags: tags });
+		this.tags = new Tags;
+		this.tags.url = this.model.get('item_url')+'/tag/list';
+		this.tags.view = this;
 		
-		this.tagCollection.fetch({
-			success: {
-				;
+		this.tags.fetch({
+			success: function( model, resp ){
+				new App.Views.Tags.AddTag({ collection: model, el: model.view.el })
 			}
 		});
-		 jQuery.getJSON('/items/'+this.item_id+'/tag/list', function(data) {
-	            if(data) {
-	                var tags = _(data).map(function(i) { return new Tag(i); });
-	                this.tags = 
-	            } else {
-	                new Error({ message: "Error loading tags to add." });
-	            }
-	    	});*/
+	},
+	notify: function( broadcasted_id ) {
+		if( this.model.get('id') == broadcasted_id ){
+				this.model.fetch({
+					success : function( model, resp ){
+						model.change();
+						model.view.render();
+					},
+				});
+		}
 	},
 });
 

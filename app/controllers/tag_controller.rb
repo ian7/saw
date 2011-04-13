@@ -47,6 +47,7 @@ class TagController < ApplicationController
       Taggable.find(:all, :conditions=>{:type=>scope.type_name}).each do |t|
        j = t.to_hash
        j["tagging_count"] = Taggable.find(:all, :conditions=>{:origin=>t.id, :tip=>@taggable.id }).count
+       j["item_url"] = url_for( @taggable );
        json_tags << j
        @tags << t 
      end
@@ -80,6 +81,11 @@ class TagController < ApplicationController
     if params[:item_id] 
     	@to_taggable_id = params[:item_id]
     end
+  
+    if params[:issue_id]
+      @to_taggable_id = params[:issue_id]
+    end
+ 
  
     @relation_name = "Tagging"
   

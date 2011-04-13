@@ -109,7 +109,7 @@ App.Views.Index = Backbone.View.extend({
  
   render : function() {
 		this._rendered = true;
-		this._itemsCollectionView.el = jQuery('#itemList');
+		this._itemsCollectionView.el = this.el; //jQuery('#itemList');
 		this._itemsCollectionView.render();
 		this.newItem();
   },
@@ -139,8 +139,11 @@ App.Views.Index = Backbone.View.extend({
   notify : function( broadcasted_id ) {
 		this.collection.each( function( i ) {	
 			if( i.get('id') == broadcasted_id ) {
-				i.fetch();
-				i.change();
+				i.fetch({
+					success: function(model,resp) {
+						model.change();
+					}
+				});
 			}
 		});
   },

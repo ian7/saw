@@ -36,9 +36,6 @@ App.Controllers.Items = Backbone.Controller.extend({
 			}
 			
 		});
-		this.items_collection.bind( "refresh", function() {
-			;
-		})
     },
     
     newDoc: function() {

@@ -24,7 +24,7 @@ TagView = Backbone.View.extend({
 	    	// so let's update it !'
    	    	//App.controller.update();
     		});
-		alert(this.model.get('id'));
+//		alert(this.model.get('id'));
 	}
 });
 

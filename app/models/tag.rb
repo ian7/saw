@@ -39,3 +39,6 @@ class Tag < Taggable
       return "Tag"
     end
 end
+
+class Project < Tag
+end

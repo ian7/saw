@@ -76,6 +76,10 @@ Saw::Application.routes.draw do
   end
 
   resources :projects do
+    resources :items do
+        resources :alternatives
+        match "tag/:action(.:format)" => "tag#:action"
+    end
     resources :issues
     resources :alternatives
     resources :tags 

@@ -1,9 +1,12 @@
 <tr>
+	<td>
+		<%=tag.get('tagging_id') %>
+	</td>
     <td>
 		<b>Type:</b> <%= tag.get('type') %>, 
 	</td>
 	<td>
-		<b>Name:</b> <%= tag.get('name') %> (tagging: <%=tag.get('tagging_id') %>)  
+		<b>Name:</b> <%= tag.get('name') %>   
 	</td>
 	<td>
 		<div class="button gray unTag">unTag</div>
