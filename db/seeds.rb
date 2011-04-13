@@ -54,4 +54,5 @@ dynamic_types.each{ |name, values|
     }
   dt.save
 	}
-
+	
+IBMImportController.load('test/ibm-data/')
