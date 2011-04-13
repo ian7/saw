@@ -161,7 +161,7 @@ class TagController < ApplicationController
 		  end
 		 }
       format.xml  { render :xml => @to_taggable }
-      format.json { render :json => @to_taggable }
+      format.json { render :json => @to_taggable.to_json }
       format.js {head :ok}
      end
   end
@@ -291,7 +291,12 @@ class TagController < ApplicationController
       			h["type"] = t.tag.type;
       			h["name"] = t.tag.name
       			h["tag_id"] = t.tag.id;
+      			h["id"] = t.tag.id;
       			h["tagging_id"] = t.id;
+      			# nasty, but works
+      			h["tagging_url"] = url_for( :controller=>'items', :action=>"show", :id=>t.id );
+      			h["item_id"] = @taggable.id;
+      			h["item_url"] = url_for( @taggable );
       			taggings_json << h
       	end
       	

@@ -1,13 +1,22 @@
 <h3>
 	<a href='#'>BACK !</a>	
 </h3>
-
+<table>
 <% _(item.attributes).each(function(value, key) { 
 	if (key.charAt(0) != '_' && key != "url" ) { %>
-<li>
-<b> <%= key %>: </b><i class="edit5" id="<%=key%>"><% if( value ) { %><%= value %><% } else { %>(empty)<% } %></i>
-</li>
+<tr>
+<td>
+	<i><%= key %>: </i>
+</td>
+<td>
+	<span class="edit5" id="<%=key%>"><% if( value ) { %><%= value %><% } else { %>(empty)<% } %></span>
+</td>
+</tr>
+
 <% }; 
 });%>
-<hr>
-<a href="#<%=item.id%>" onClick="App.controller.addTag();">New tag</a>
+</table>
+<hr/>
+<div class="button gray addTag">Add Tag</div>
+<table class="tagList"/>
+<table class="alternativeList"/>

@@ -4,8 +4,15 @@ class ItemsController < ApplicationController
  
 
   def index
+
+   # in case we're sub-resourced with a project
+   if params[:project_id]
+     @project = TreeTag.find params[:project_id]
+     
+   else
+     @issues = Taggable.find :all, :conditions=>{:type=>"Issue"}
+   end
   
-   @issues = Taggable.find :all, :conditions=>{:type=>"Issue"}
 
     respond_to do |format|
       format.html {render :layout=> false }# index.html.erb
@@ -27,7 +34,9 @@ class ItemsController < ApplicationController
 
 	respond_to do |format|
 		format.json {	 
-			render :json => @item.to_json }
+		  j = @item.to_json;
+		  j['item_url'] = url_for( @item )
+			render :json => j }
 		format.html { render :layout=> false }
 	end
 

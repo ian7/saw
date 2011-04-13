@@ -7,24 +7,25 @@ App.Controllers.Items = Backbone.Controller.extend({
     	//new Regexp('^[^\/]*/([^\/]*)\/.*$': 'show',
         "/:id":            "show",
         "":                         "index",
-        "new":                      "newDoc"
+        "new":                      "newDoc",
+//		"/:id/addTag": "addTag", 
     },
     
     show: function(id) {
-    	this.item_id = id;
         var item = new Item({ id: id });
         item.fetch({
             success: function(model, resp) {
 //				el = jQuery("section.itemList");
-                new App.Views.Show({ item: item, el: 'section.itemList'});
+                new App.Views.Show({ model: item, el: 'section.itemList'});
             },
             error: function() {
                 new Error({ message: 'Could not find that document.' });
                 window.location.hash = '#';
             }
         });
+
     },
-    
+	  
     index: function() {
 		this.items_collection = new Items;
 		this.items_collection.fetch({
@@ -107,7 +108,7 @@ App.Controllers.Items = Backbone.Controller.extend({
     },
     
     tag: function( tag_id ) {
-        jQuery.getJSON(this.item_url+'/tag/dotag?from_taggable_id='+tag_id, function(data) {
+        jQuery.getJSON(this.model.item_url+'/tag/dotag?from_taggable_id='+tag_id, function(data) {
 	    	// so let's update it !'
    	    	//App.controller.update();
     		});

@@ -1,7 +1,11 @@
-<ul>
-    <% _(tags).each(function(tag) { %>
-    <li>
-    	<b>Type:</b> <%= tag.attributes.type %>, <b>Name:</b> <%= tag.attributes.name %> (tagging: <%=tag.attributes.tagging_id %>) <b onClick="App.controller.unTag('<%=tag.attributes.tagging_id%>');">REMOVE</b> 
-    </li>
-    <% }); %>
-</ul>
+<tr>
+    <td>
+		<b>Type:</b> <%= tag.get('type') %>, 
+	</td>
+	<td>
+		<b>Name:</b> <%= tag.get('name') %> (tagging: <%=tag.get('tagging_id') %>)  
+	</td>
+	<td>
+		<div class="button gray unTag">unTag</div>
+	</td>
+</tr>

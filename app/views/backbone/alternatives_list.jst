@@ -14,7 +14,7 @@
 	    	</td>
 	    	<td> 
 		    	Decide: <% _(a.attributes.decisions).each(function(decision) { %>
-		    		<b onClick="App.Helpers.Items.decide('<%=a.attributes.relation_url%>','<%=decision.decision_tag_id%>');"><%= decision.name.charAt(0) %>:</b> <%= decision.count %>, 
+		    		<b onClick="App.Helpers.Items.decide('<%=a.get('relation_url')%>','<%=decision.decision_tag_id%>');"><%= decision.name.charAt(0) %>:</b> <%= decision.count %>, 
 		    	<% });%>
 	    	</td>
 	    </tr>

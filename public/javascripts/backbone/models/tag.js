@@ -8,3 +8,9 @@ var Tag = Backbone.Model.extend({
       return '/items/' + this.id + '/tag/tags_list';
     }
 });
+
+
+var Tags = Backbone.Collection.extend({
+  model : Tag,
+  url : "/tags"
+});
