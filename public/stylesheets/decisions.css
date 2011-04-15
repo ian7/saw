@@ -4,11 +4,17 @@
 }*/
 
 .decision.blue{
+/*
 	background: #0095cd;
+*/
+	background: #99D5EB;
 }
 
 .decision.red{
+	/*
 	background: #d81b21;
+	*/
+	background: #EFA4A6;	
 }
 
 .decision.white{
@@ -16,9 +22,15 @@
 }
 
 .decision.gray{
+/*
 	background:	#606060;
+	*/
+	background:	#BFBFBF;
 }
 
 .decision.green{
+/*
 	background: #64991e;
+	*/
+	background: #C1D6A5;
 }
