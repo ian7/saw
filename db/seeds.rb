@@ -38,11 +38,11 @@ dynamic_type_scopes.each{ |name, values|
 	}
 
 
-dynamic_types = YAML::load_file("#{Rails.root}/test/fixtures/taggables.yml")
+items = YAML::load_file("#{Rails.root}/test/fixtures/taggables.yml")
 
-dynamic_types.each{ |name, values|
-	dt=DynamicType.find_by_name(values["type"]).new_instance( values["name"] )
-	dt.save
+items.each{ |name, values|
+	item=DynamicType.find_by_name(values["type"]).new_instance( values["name"] )
+	item.save
 
 	values.each { |key,value|
 	    # just skip these two
@@ -50,9 +50,17 @@ dynamic_types.each{ |name, values|
 	      next
 	    end
 #	    puts "key: "+key+ " value: "+value
-	    dt[key]=value
+	    item[key]=value
     }
-  dt.save
+  item.save
 	}
-	
+
+users = YAML::load_file("#{Rails.root}/test/fixtures/users.yml")
+
+  users.each{ |name, values|
+  	u = User.new({ :email=> values['email'], :password=>values['password']})
+  	u.save
+  	}
+puts 'total users: ' + User.count.to_s
+
 IBMImportController.load('test/ibm-data/')

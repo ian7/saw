@@ -35,6 +35,24 @@ ProjectA:
 ProjectB:
     type: Project
     name: B
+SOA:
+    type: Project
+    name: SOA
+SAD-exercise1:
+    type: Project
+    name: Exercise1
+SAD-exercise2:
+    type: Project
+    name: Exercise2
+SAD-exercise3:
+    type: Project
+    name: Exercise3
+SAD-exercise4:
+    type: Project
+    name: Exercise4
+SAD-exercise5:
+    type: Project
+    name: Exercise1
     
   
 # scopes go there

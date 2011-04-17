@@ -10,6 +10,8 @@ class IBMImportController < ActionController::Base
 
 
     ## incomplete - taggingging issues with outcomes kind of doesn't make sense. 
+
+    ## that should be represented by the decisions
     def self.load_outcomes( path )
       f = File.open(path+"ad_outcomes.txt")
     
@@ -21,8 +23,6 @@ class IBMImportController < ActionController::Base
          next
        end
        
-       
-
       end     
     end
 
@@ -169,6 +169,9 @@ class IBMImportController < ActionController::Base
    return nil
    end
    
+   
+   # creates tag if needed and tags given taggable
+   
     def self.tag_or_create( taggable, dynamic_type, name )
        
        tag = Tag.find :first, :conditions=>{:type=>dynamic_type, :name=>name}
@@ -231,6 +234,9 @@ class IBMImportController < ActionController::Base
         if split_line[8]!=""
            tag_or_create(issue_instance, "Role",split_line[8])
         end
+        
+        # SOA project assignment
+        tag_or_create(issue_instance,"Project","SOA")
 
         issue_instance["ShortName"]=split_line[4]
         issue_instance["Description"]=split_line[9]
