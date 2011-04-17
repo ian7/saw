@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
      # @onload = 'init("Project");'
      
      # i'm making use of that other way. 
-     @onload = 'getJSON("'+ "projects" + '.json", callback);'
+     #@onload = 'getJSON("'+ "projects" + '.json", callback);'
      
      allProjects = Tag.find( :all, :conditions=>{:type=>"Project"} )
      
@@ -28,6 +28,8 @@ class ProjectsController < ApplicationController
          tree["children"] << someProject.to_hash_recursive
        end
      end
+     
+     @projects = tree
      
      respond_to do |format|
       format.html # index.html.erb

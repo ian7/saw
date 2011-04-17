@@ -3,34 +3,44 @@
 	background: #64991e;
 }*/
 
-.decision.blue{
+tr.decision.blue{
 /*
 	background: #0095cd;
 */
 	background: #99D5EB;
 }
 
-.decision.red{
+tr.decision.red{
 	/*
 	background: #d81b21;
 	*/
 	background: #EFA4A6;	
 }
 
-.decision.white{
+tr.decision.white{
 	background: #eeeeee;
 }
 
-.decision.gray{
+tr.decision.gray{
 /*
 	background:	#606060;
 	*/
 	background:	#BFBFBF;
 }
 
-.decision.green{
+tr.decision.green{
 /*
 	background: #64991e;
 	*/
 	background: #C1D6A5;
+}
+
+p.itemList {
+	width: 100%;
+	background: #EEEEEE;
+	font-size: 10pt;
+	min-height: 2em;
+	margin-bottom: 1px;
+	margin-bottom: 2px;
+	padding: 0.5em;
 }

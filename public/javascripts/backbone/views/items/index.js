@@ -7,7 +7,8 @@ var ItemView = Backbone.View.extend({
   events : {
 	"click .expand" : "expand",
 	"click .deleteItem" : "deleteItem",
-	"keypress .e6" : "editedItem"
+	"keypress .e6" : "editedItem",
+	"click .e6" : "doExpand",
   },
 
   alternativesCollection : null,
@@ -35,12 +36,23 @@ var ItemView = Backbone.View.extend({
 
    return this;
   },
-  editedItem : function() {
+  editedItem : function( e ) {
      	// nasty but works.
-	    var lastEditedItem = this;
 
-	  	jQuery(this.el).stopTime("edit5");
-	  	jQuery(this.el).oneTime(1000,"edit5", function() {
+		if (e.keyCode == 13) {
+			this.model.save(
+				{ name: jQuery("span.e6",this.el).html() },
+				{ success : function( model, resp)  {
+					model.parse( resp );
+					model.change();
+				}
+			});			
+		}
+		/* timed saving has proven to be not so very sexy
+         *
+		 *
+   	  	jQuery(this.el).stopTime("edit5");
+	  	jQuery(this.el).oneTime(000,"edit5", function() {
 			lastEditedItem.model.save(
 				{ name: jQuery("span.e6",this).html() },
 				{ success : function( model, resp)  {
@@ -49,9 +61,15 @@ var ItemView = Backbone.View.extend({
 				}
 			});	
 		});	
+		*/
   },
   deleteItem : function() {
 		this.model.destroy();
+  },
+  doExpand : function() {
+		if( this.isExpanded == false) {
+			this.expand();
+		}
   },
   expand: function(){
 		if( this.isExpanded == false ) {
@@ -94,13 +112,15 @@ var ItemUpdatingView = ItemView.extend({
 App.Views.Index = Backbone.View.extend({
   events : {
 	"click .newItem" : "newItem",
+	"click .expandAll" : "expandAll"
 //	"keypress"		 : "shortcut"
   },
   initialize : function() {
 	this._itemsCollectionView = new UpdatingCollectionView({
       collection           : this.collection,
       childViewConstructor : ItemUpdatingView,
-      childViewTagName     : 'li'
+      childViewTagName     : 'p',
+	  childViewClassName   : 'itemList'
     });
 	this.render();
 	notifier.register(this);
@@ -111,6 +131,7 @@ App.Views.Index = Backbone.View.extend({
 		this._rendered = true;
 		this._itemsCollectionView.el = this.el; //jQuery('#itemList');
 		this._itemsCollectionView.render();
+		jQuery(this.el).prepend("<div class = 'button orange expandAll'>Expand all</div>");
 		this.newItem();
   },
   
@@ -146,6 +167,11 @@ App.Views.Index = Backbone.View.extend({
 				});
 			}
 		});
+  },
+  expandAll : function() {
+	_.each(this._itemsCollectionView._childViews, function( childView ) {
+		childView.expand();
+	});
   },
   shortcut : function() {
 	alert("!");

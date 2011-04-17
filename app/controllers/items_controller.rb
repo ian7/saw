@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   
 
     respond_to do |format|
-      format.html {render :layout=> false }# index.html.erb
+      format.html {render :layout=> true }# index.html.erb
       format.xml  #{ render :xml => @issues }
       format.json { 
         j=[]

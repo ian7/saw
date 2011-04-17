@@ -1,12 +1,22 @@
-<script type="text/javascript" src="<%= javascript_path('jit-yc.js')%>"></script>  
+<!--<script type="text/javascript" src="<%= javascript_path('jit-yc.js')%>"></script>  
 <script type="text/javascript" src="<%= javascript_path('tagvis.js')%>"></script>
-
+-->
+<!--
 <div id="center-container">
     <div id="infovis"></div>    
 </div>
 
 <div id="log">
 </div>
+-->
+<ul>
+	<% Project.all.each do |p| %>
+	<li>
+		<%= link_to( p.name, p )%>
+		<%#= p.name %>
+	</li>
+	<% end %>
+</ul>
 <div id="right-container">
 </div>
 

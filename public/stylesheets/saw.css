@@ -127,7 +127,7 @@ tr.Negative td {
 tr.Irrelevant td{
   background-color: #C9C5F9;
 }
-td {
+td.styled {
   padding-left: 1em;
   padding-right: 1em;
   }
@@ -366,7 +366,7 @@ ul{
 
 
 
-#center table,th,td{
+#center table.styled, table.styled th, table.styled td{
   border:none;
   border-collapse:collapse;
 /*  position:relative;
@@ -400,68 +400,68 @@ ul{
 #center table.dynamic .plain td:nth-of-type(4n) a{
   color:#00aa00;
 }
-#center tfoot{
+#center table.styled tfoot{
   height: 15px;
 }
-#center thead, tfoot{
+#center table.styled thead, tfoot{
   color:white;
 }
-#center thead th{
+#center table.styled thead th{
   padding:0.5em 1em;
   text-transform:uppercase;
   text-align:left;
 }
-#center tbody td,tbody th{
+#center table.styled tbody td,tbody th{
   font-size:100%;
   padding:0.5em 1em;
   vertical-align:top;
 }
-#center tbody th{
+#center table.styled tbody th{
   color:#222;
   text-align:right;
   border-right:1px solid #aaa;
 }
 
-#center tbody tr:nth-child(odd) { background-color:#eeeeee; }
-#center tbody tr:nth-child(even) { background-color:#cccccc; }
+#center table.styled tbody tr:nth-child(odd) { background-color:#eeeeee; }
+#center table.styled tbody tr:nth-child(even) { background-color:#cccccc; }
 
-#center tfoot td, tfoot th{
+#center table.styled tfoot td, table.styled tfoot th{
   border:none;
 }
-#center tfoot th{
+#center table.styled tfoot th{
   text-align:right;
 }
-#center table a:link{
+#center table.styled a:link{
   line-height:1em; 
   color:black;
   display:inline-block;
   padding:3px 7px;
   margin:-3px -7px;
 }
-#center table a:visited{
+#center table.styled a:visited{
   color:#555;
   line-height:1em;
   display:inline-block;
   padding:3px 7px;
   margin:-3px -7px;
   }
-#center table a:hover{
+#center table.styled a:hover{
   text-decoration:none;
   -webkit-border-radius:4px;
   -moz-border-radius:4px;
   border-radius:4px;
   }
 
-#center table tbody tr:hover th,
-#center table tbody tr:hover td,
-#center table tbody tr:hover td a,
-#center table tbody tr:hover th a{ 
+#center table.styled tbody tr:hover th,
+#center table.styled tbody tr:hover td,
+#center table.styled tbody tr:hover td a,
+#center table.styled tbody tr:hover th a{ 
   background: #222222;
   color: white;
 }
 
-#center table tbody td#alternatives,
-#center table tbody td#decisions {
+#center table.styled tbody td#alternatives,
+#center table.styled tbody td#decisions {
   text-align:center;
 }
 

@@ -1,7 +1,9 @@
     	<span class="e6" contenteditable="true"><%= item.get('name') %></span>
 		<% if( !item.isNew() ) { %>
 			<a href=#/<%= item.get('id')%>>details</a>,
-	    	<div class="button gray expand">Expand</div>,
-	    	<div class="button gray deleteItem">Delete</div>.		
+			<div style="float: right">
+		    	<div class="button gray expand">Expand</div> 
+		    	<div class="button gray deleteItem">Delete</div>
+			</div>
 		<table class="alternativeList"></table>
 	   <% } %>

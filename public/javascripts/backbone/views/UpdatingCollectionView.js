@@ -7,7 +7,7 @@ var UpdatingCollectionView = Backbone.View.extend({
  
     this._childViewConstructor = options.childViewConstructor;
     this._childViewTagName = options.childViewTagName;
- 
+    this._childViewClassName = options.childViewClassName;
     this._childViews = [];
  
     this.collection.each(this.add);
@@ -27,6 +27,7 @@ var UpdatingCollectionView = Backbone.View.extend({
 	
     var childView = new this._childViewConstructor({
       tagName : this._childViewTagName,
+      className : this._childViewClassName,
       model : model
     });
 
