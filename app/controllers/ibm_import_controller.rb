@@ -1,5 +1,8 @@
 class IBMImportController < ActionController::Base
     def self.load( path="" )
+      @importer = User.find :first, :conditions=>{:email=>"importer@sonyx.net"}
+      
+      puts "importing user: " + @importer.email
       puts "loading dir: "+path
       ## mind the order of loading
       self.load_topic_groups path
@@ -61,13 +64,13 @@ class IBMImportController < ActionController::Base
 
        if origin_asset != nil && tip_asset != nil
          ## i make this relation without name - should be ok.
-         influences_instance = DynamicType.find_by_name("Influences").new_instance
+         influences_instance = DynamicType.find_by_name("Influences").new_instance(nil,@importer)
          influences_instance.origin = origin_asset.id
-         influences_instance.tip = tip_asset.id
+         influences_instance.tip = tip_asset.id         
          influences_instance.save
          
          ## this relation is going to get an IBM-ID too
-         id_instance = DynamicType.find_by_name("IBM-ID").new_instance(split_line[0])
+         id_instance = DynamicType.find_by_name("IBM-ID").new_instance(split_line[0],@importer)
          id_instance.save
          
          #TODO: that's nasty - rework it !
@@ -75,6 +78,8 @@ class IBMImportController < ActionController::Base
          tagging_instance.type = "Tagging"
          tagging_instance.origin = id_instance.id
          tagging_instance.tip = influences_instance.id
+         tagging_instance.author = @importer;
+         tagging_instance.creator = @importer;
          tagging_instance.save
          
        end      
@@ -104,11 +109,11 @@ class IBMImportController < ActionController::Base
        ## there we have them all on the list.
        lines << split_line
        
-       topicGroup_instance = DynamicType.find_by_name("TopicGroup").new_instance(split_line[0])
+       topicGroup_instance = DynamicType.find_by_name("TopicGroup").new_instance(split_line[0], @importer)
        topicGroup_instance.save
              
        ## add an IBM-ID to it. 
-       id_instance = DynamicType.find_by_name("IBM-ID").new_instance(split_line[4])
+       id_instance = DynamicType.find_by_name("IBM-ID").new_instance(split_line[4],@importer)
        id_instance.save
        
        #TODO: that's nasty
@@ -116,6 +121,8 @@ class IBMImportController < ActionController::Base
        tagging_instance.type = "Tagging"
        tagging_instance.origin=id_instance.id
        tagging_instance.tip=topicGroup_instance.id
+       tagging_instance.author = @importer;
+       tagging_instance.creator = @importer;
        tagging_instance.save
        #puts "ti.id: "+tagging_instance.id.to_s
        
@@ -157,7 +164,7 @@ class IBMImportController < ActionController::Base
              #puts " tag's taggable("+tag.taggable.id.to_s+") type: "+tag.taggable.type
              
              ## fill it up and save
-             relation_instance = DynamicType.find_by_name("ChildOf").new_instance
+             relation_instance = DynamicType.find_by_name("ChildOf").new_instance(nil,@importer)
              relation_instance.origin = tag.taggable.id
              relation_instance.tip = topicGroup_instance.id
              relation_instance.save
@@ -177,13 +184,13 @@ class IBMImportController < ActionController::Base
        tag = Tag.find :first, :conditions=>{:type=>dynamic_type, :name=>name}
           if tag == nil
             # phase not found.
-            tag = DynamicType.find_by_name(dynamic_type).new_instance(name)
+            tag = DynamicType.find_by_name(dynamic_type).new_instance(name, @importer)
             tag.save
             puts dynamic_type+": "+name+" NOT found ! - created with id: "+tag.id.to_s
           end
           
           # phase found             
-          tagging_instance = DynamicType.find_by_name("Tagging").new_instance
+          tagging_instance = DynamicType.find_by_name("Tagging").new_instance(nil,@importer)
           tagging_instance.origin = tag.id
           tagging_instance.tip = taggable.id
           tagging_instance.save
@@ -213,6 +220,8 @@ class IBMImportController < ActionController::Base
         issue_instance = Taggable.new
         issue_instance.type = "Issue"
         issue_instance.name = split_line[0]
+        issue_instance.author = @importer;
+        issue_instance.creator = @importer;
         issue_instance.save
         
         
@@ -278,7 +287,7 @@ class IBMImportController < ActionController::Base
            else
              topicGroup_instance = tag.taggable
              
-             tagging_instance = DynamicType.find_by_name("Tagging").new_instance
+             tagging_instance = DynamicType.find_by_name("Tagging").new_instance(nil,@importer)
              tagging_instance.origin = topicGroup_instance.id
              tagging_instance.tip = issue_instance.id
              tagging_instance.save
@@ -306,7 +315,7 @@ class IBMImportController < ActionController::Base
         end
         #puts "accepted - filling up"
         
-        alternative_instance = DynamicType.find_by_name("Alternative").new_instance(split_line[2])        
+        alternative_instance = DynamicType.find_by_name("Alternative").new_instance(split_line[2],@importer)        
         alternative_instance.save
         
         # 6th field - description
@@ -317,25 +326,29 @@ class IBMImportController < ActionController::Base
         
         # pros
         if split_line[3]!=nil && split_line[3] !=""
-          pro_instance = DynamicType.find_by_name("Pro").new_instance(split_line[3])
+          pro_instance = DynamicType.find_by_name("Pro").new_instance(split_line[3], @importer)
           pro_instance.save
           
           tagging = Tagging.new
           tagging.type = "Tagging"
           tagging.origin = pro_instance.id
           tagging.tip = alternative_instance.id
+          tagging.author = @importer;
+          tagging.creator = @importer;
           tagging.save
           #puts "Tagging: "+tagging.id.to_s
         end
         
         if split_line[4]!=nil && split_line[4] !=""
-          pro_instance = DynamicType.find_by_name("Con").new_instance(split_line[4])
+          pro_instance = DynamicType.find_by_name("Con").new_instance(split_line[4],@importer)
           pro_instance.save
           
           tagging = Tagging.new
           tagging.type = "Tagging"
           tagging.origin = pro_instance.id
           tagging.tip = alternative_instance.id
+          tagging.author = @importer;
+          tagging.creator = @importer;
           tagging.save
           #puts "Tagging: "+tagging.id.to_s      
         end
@@ -347,7 +360,7 @@ class IBMImportController < ActionController::Base
            
            if tag != nil 
               
-             solvedBy_relation = DynamicType.find_by_name("SolvedBy").new_instance
+             solvedBy_relation = DynamicType.find_by_name("SolvedBy").new_instance(nil,@importer)
              
              ## there we can safely assume that there is going to be only single tag.taggable
              

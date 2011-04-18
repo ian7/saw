@@ -4,6 +4,8 @@ class Taggable # < ActiveRecord::Base
 	include Mongoid::Document
  # this is still to come after type is going to be renamed to dynamic_type
 
+ belongs_to :author, :class_name => 'User'
+ belongs_to :creator, :class_name => 'User'
         
 #    field :id
     field :type, :type => String

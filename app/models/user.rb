@@ -6,6 +6,10 @@ class User
          :recoverable, :rememberable, :trackable, :validatable
 
 	has_many :authentications
+	has_many :taggables
+
+	has_and_belongs_to_many :manages, :class_name=>'Project'
+	has_and_belongs_to_many :projects
 	
 	field :email
 	field :role

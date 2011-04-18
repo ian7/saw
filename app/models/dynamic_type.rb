@@ -32,7 +32,7 @@ class DynamicType # < ActiveRecord::Base
 		return types
 	end
 
-	def new_instance( instance_name = nil )
+	def new_instance( instance_name = nil, creator = nil )
 
 		## this will look upwards on the inheritance structure
 		#
@@ -55,7 +55,12 @@ class DynamicType # < ActiveRecord::Base
 		instance.name = instance_name
 		instance._type = surrogate_class
 
-		# is this really right there ?
+		if creator != nil  
+		  instance.creator = creator
+		  instance.author = creator
+		end
+
+		# is this really right there ? - not
 		#instance.save
 
 		return instance

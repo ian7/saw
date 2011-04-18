@@ -8,6 +8,17 @@
 
 require 'yaml'
 
+users = YAML::load_file("#{Rails.root}/test/fixtures/users.yml")
+  users.each{ |name, values|
+  	u = User.new({ :email=> values['email'], :password=>values['password']})
+  	u.save
+  	}
+puts 'total users: ' + User.count.to_s
+
+
+# mark files as imported by this user
+@importer = User.find :first, :conditions=>{:email=>'importer@sonyx.net'}
+@admin = User.find :first, :conditions=>{:email=>'admin@sonyx.net'}
 
 dynamic_types = YAML::load_file("#{Rails.root}/test/fixtures/dynamic_types.yml")
 
@@ -44,6 +55,9 @@ items.each{ |name, values|
 	item=DynamicType.find_by_name(values["type"]).new_instance( values["name"] )
 	item.save
 
+	item.author = @importer
+	item.creator = @importer
+
 	values.each { |key,value|
 	    # just skip these two
 	    if key=="type" || key == "name"
@@ -55,12 +69,11 @@ items.each{ |name, values|
   item.save
 	}
 
-users = YAML::load_file("#{Rails.root}/test/fixtures/users.yml")
+# let's set up project ownership
 
-  users.each{ |name, values|
-  	u = User.new({ :email=> values['email'], :password=>values['password']})
-  	u.save
-  	}
-puts 'total users: ' + User.count.to_s
+Project.all.each do |p|
+  p.managers << @admin
+end
+
 
 IBMImportController.load('test/ibm-data/')
