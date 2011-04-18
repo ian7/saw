@@ -44,3 +44,16 @@ p.itemList {
 	margin-bottom: 2px;
 	padding: 0.5em;
 }
+
+table.alternativeList {
+	width: 100%;
+}
+
+table.alternativeList td.decisions{
+	width: 25%;
+	text-align: center;
+}
+
+table.alternativeList td.delete{
+	width: 4%;
+}

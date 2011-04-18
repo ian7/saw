@@ -2,13 +2,13 @@
 	    		<b>Name:</b>
 	    		<span class="name" contenteditable="true"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></span>
 		    </td>
-	    	<td>
+	    	<td class="delete">
 				<% if( !a.isNew() ) {  %>
 <!--					<div class="button gray unrelateAlternative">UnRelate</div> -->
 		    		<div class="button black deleteAlternative">Delete</div>
 				<% } %>
 	    	</td>
-	    	<td> 
+	    	<td class="decisions"> 
 				<% if( !a.attributes.your_decision ) { %>
 				    	Decide: <% _(a.attributes.decisions).each(function(decision) { %>
 				    	<div class="button decide <%= decision.color.toLowerCase() %>" id="<%= decision.decision_tag_id %>"><%= decision.name %>(<%= decision.count %>)</div>
