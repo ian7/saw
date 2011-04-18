@@ -74,7 +74,18 @@ var ItemView = Backbone.View.extend({
 		*/
   },
   deleteItem : function() {
-		this.model.destroy();
+		var viewObject = this;
+ 		jQuery(".deleteItem",this.el).fastConfirm({
+           position: "left",
+              questionText: "Are you sure ?",
+              onProceed: function(trigger) {
+					viewObject.model.destroy();
+                       $(trigger).fastConfirm('close');
+               },
+               onCancel: function(trigger) {
+                       $(trigger).fastConfirm('close');
+               }
+            });	
   },
   doExpand : function() {
 		if( this.isExpanded == false) {

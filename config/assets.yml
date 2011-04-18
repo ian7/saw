@@ -4,6 +4,8 @@ package_assets: off
 javascripts:
   workspace:
     - public/javascripts/lib/jquery/jquery.min.js
+    - public/javascripts/lib/jquery/jquery-ui-1.8.custom.min.js
+    - public/javascripts/lib/jquery/jquery.fastconfirm.js
     - public/javascripts/backbone/underscore.js
     - public/javascripts/backbone/backbone.js
 #    - public/javascripts/lib/juquery/jquery.min.js
@@ -23,5 +25,6 @@ stylesheets:
   workspace:
     - public/stylesheets/buttons.css
     - public/stylesheets/decisions.css
+    - public/stylesheets/jquery.fastconfirm.css 
   empty:
 #    - public/stylesheets/pages/empty.css
