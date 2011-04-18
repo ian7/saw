@@ -3,6 +3,16 @@
  */
 
 
+jQuery.fn.flash = function( color, duration )
+{
+
+    var current = this.css( 'color' );
+
+    this.animate( { color: 'rgb(' + color + ')' }, duration / 2 );
+    this.animate( { color: current }, duration / 2 );
+
+}
+
 var ItemView = Backbone.View.extend({
   events : {
 	"click .expand" : "expand",
@@ -147,7 +157,7 @@ App.Views.Index = Backbone.View.extend({
 			collection = this;			
 			var preLastItem = collection.last();
 			if( preLastItem.view ) {
-				preLastItem.view.expand();
+				preLastItem.view.doExpand();
 			}
 		}
         
@@ -163,6 +173,7 @@ App.Views.Index = Backbone.View.extend({
 				i.fetch({
 					success: function(model,resp) {
 						model.change();
+						jQuery(model.view.el).effect("highlight", {}, 500);
 					}
 				});
 			}

@@ -33,7 +33,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 				}
 			});
 		}
-	   jQuery(this.el).addClass(color);
+	   jQuery(this.el).addClass(color.toLowerCase());
 	
 	   return this;
     },
@@ -41,10 +41,21 @@ AlternativeUpdatingView  = Backbone.View.extend({
     update: function( item_id ){
     		
     },
-	editedName : function() {
+	editedName : function( e ) {
 		// nasty but works.
-	    var lastEditedItem = this;
+	    //var lastEditedItem = this;
 
+		if (e.keyCode == 13) {
+			this.model.save(
+				{ name: jQuery(".name",this.el).html() },
+				{ success : function( model, resp)  {
+					model.parse( resp );
+					model.change();
+				}
+			});			
+		}
+		/*
+		
 	  	jQuery(this.el).stopTime("edit5");
 	  	jQuery(this.el).oneTime(1000,"edit5", function() {
 		//	if( lastEditedItem.model.isNew() ) {
@@ -59,6 +70,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 				}
 			});	
 		});
+		*/
 	},
 	deleteAlternative : function(){
 		this.model.destroy();
@@ -76,6 +88,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 	notify : function( broadcasted_id ) {
 		if( this.model.id == broadcasted_id ) {
 			this.model.fetch();
+			jQuery(this.el).effect("highlight", {}, 500);	
 		}
 	},
 });
