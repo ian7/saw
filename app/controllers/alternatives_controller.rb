@@ -217,6 +217,9 @@ class AlternativesController < ApplicationController
 			
 		relation = Taggable.find(:first, :conditions=>{:origin=>alternative.id, :tip=>@issue.id})
 		
+		# will store decision made by this user on this given relation
+		@current_users_decision = nil
+		
 		# if given alternative is not related to the issue, then skip decisions because there are none
 		if relation 
   		taggings = relation.relations_to("Tagging");
@@ -224,15 +227,42 @@ class AlternativesController < ApplicationController
   		j_decisions = []
 		
   		@decision_collection.each do |decision|
+  		  related_decisions = Taggable.find(:all, :conditions=>{:origin=>decision.id, :tip=>relation.id })
+  		  
   			j_decision = {}
   			j_decision["name"] = decision.name
-  			j_decision["count"] = Taggable.find(:all, :conditions=>{:origin=>decision.id, :tip=>relation.id }).count
+  			j_decision["count"] = related_decisions.count
   			j_decision["decision_tag_id"] = decision.id
   			j_decision["color"] = decision.color
   			j_decisions << j_decision
+			
+  			if current_user 
+  			  c = related_decisions.where(:author_id=>current_user.id)
+  			  #current_users_decision = related_decisions.where(:author_id=>current_user.id).first
+#          puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + c.count.to_s
+          if c.count > 0  
+#            puts c.first.type
+            @current_users_decision = c.first
+#            puts c.first.origin
+          end
+  			end
   		end
 		
   		j_alternative["decisions"] = j_decisions
+  		
+  		if @current_users_decision
+  		  @your_decision = {}
+
+  		  # that's lame - i should use mongoid relations !
+  		  decision = Taggable.find :first, :conditions=>{ :id=>@current_users_decision.origin }
+   		  @your_decision["name"] = decision.name
+   		  @your_decision["decision_tag_id"] = decision.id   		  
+   		  @your_decision["color"] = decision.color
+   		  @your_decision["tagging_id"] = @current_users_decision.id
+
+   		  j_alternative["your_decision"] = @your_decision
+   		end
+   		
 		
   		@relation = Taggable.find :first, :conditions=>{:tip=>@issue.id, :origin=>alternative.id }
 		

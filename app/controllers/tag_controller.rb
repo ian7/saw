@@ -97,7 +97,7 @@ class TagController < ApplicationController
   ##   but i just skip it for now ;)
   
   ## ugly ugly, but works
-  @relation_instance = DynamicType.find_by_name(@relation_name).new_instance
+  @relation_instance = DynamicType.find_by_name(@relation_name).new_instance(nil, current_user)
   @relation_instance.save
   @relation_instance.origin = Taggable.find(@from_taggable_id).id
   @relation_instance.tip = Taggable.find(@to_taggable_id).id
@@ -155,9 +155,18 @@ class TagController < ApplicationController
 	 @from_taggable = Taggable.find @from_taggable_id
 	 @to_taggable = Taggable.find @to_taggable_id
 	 
-	  ## find the tagging
-	  @relation_instance = Taggable.find(:first, :conditions=>{:type=>@relation_name, :origin=>@from_taggable.id, :tip=>@to_taggable.id })  	
+	 if current_user
+     ## find the tagging for given user
+     @relation_instance = Taggable.find(:first, :conditions=>{:type=>@relation_name, :origin=>@from_taggable.id, :tip=>@to_taggable.id, :author_id=>current_user.id })  		   
+	 else
+     ## find the tagging without current_user - that's quite dangerous - gets random one !
+     @relation_instance = Taggable.find(:first, :conditions=>{:type=>@relation_name, :origin=>@from_taggable.id, :tip=>@to_taggable.id })  	
+    end
   end
+
+  ##############
+  # following code will crash if there is no relation found.
+  # probably i should do something about it.... later
 
   ## not quite sure on what to do after... some redirect probably
   @to_taggable=Taggable.find @relation_instance.tip

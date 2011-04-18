@@ -1,6 +1,3 @@
-<!--    		<td>
-	    	 	<%=a.get('id')%>
-	    	</td>-->
 	   		<td>	   		
 	    		<b>Name:</b>
 	    		<span class="name" contenteditable="true"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></span>
@@ -12,8 +9,11 @@
 				<% } %>
 	    	</td>
 	    	<td> 
-		    	Decide: <% _(a.attributes.decisions).each(function(decision) { %>
-		    <div class="button decide <%= decision.color.toLowerCase() %>" id="<%= decision.decision_tag_id %>"><%= decision.name %>(<%= decision.count %>)</div>
-			<div class="button undecide <%= decision.color.toLowerCase() %>" id="<%= decision.decision_tag_id %>">X</div>		
-<% });%>
+				<% if( !a.attributes.your_decision ) { %>
+				    	Decide: <% _(a.attributes.decisions).each(function(decision) { %>
+				    	<div class="button decide <%= decision.color.toLowerCase() %>" id="<%= decision.decision_tag_id %>"><%= decision.name %>(<%= decision.count %>)</div>
+					<% });%>
+				<% } else { %>
+						<div class="button undecide <%= a.attributes.your_decision.color.toLowerCase() %>" id="<%= a.attributes.your_decision.decision_tag_id %>">Revoke</div>
+				<% } %>
 	    	</td>
