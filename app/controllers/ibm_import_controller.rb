@@ -68,10 +68,17 @@ class IBMImportController < ActionController::Base
          influences_instance.origin = origin_asset.id
          influences_instance.tip = tip_asset.id         
          influences_instance.save
+
+         # SOA project assignment
+         tag_or_create(influences_instance,"Project","SOA")
+         
          
          ## this relation is going to get an IBM-ID too
          id_instance = DynamicType.find_by_name("IBM-ID").new_instance(split_line[0],@importer)
          id_instance.save
+
+         # SOA project assignment
+         tag_or_create(id_instance,"Project","SOA")
          
          #TODO: that's nasty - rework it !
          tagging_instance = Tagging.new
@@ -82,6 +89,8 @@ class IBMImportController < ActionController::Base
          tagging_instance.creator = @importer;
          tagging_instance.save
          
+         # SOA project assignment
+         tag_or_create(tagging_instance,"Project","SOA")
        end      
       end
       f.close
@@ -111,10 +120,16 @@ class IBMImportController < ActionController::Base
        
        topicGroup_instance = DynamicType.find_by_name("TopicGroup").new_instance(split_line[0], @importer)
        topicGroup_instance.save
+
+       # SOA project assignment
+       tag_or_create(topicGroup_instance,"Project","SOA")
              
        ## add an IBM-ID to it. 
        id_instance = DynamicType.find_by_name("IBM-ID").new_instance(split_line[4],@importer)
        id_instance.save
+
+       # SOA project assignment
+       tag_or_create(id_instance,"Project","SOA")
        
        #TODO: that's nasty
        tagging_instance = Tagging.new
@@ -168,6 +183,9 @@ class IBMImportController < ActionController::Base
              relation_instance.origin = tag.taggable.id
              relation_instance.tip = topicGroup_instance.id
              relation_instance.save
+
+             # SOA project assignment
+             tag_or_create(relation_instance,"Project","SOA")
            end
          end
        end
@@ -375,7 +393,12 @@ class IBMImportController < ActionController::Base
            end
            
         end
+
         alternative_instance.save
+
+        # SOA project assignment
+        tag_or_create(alternative_instance,"Project","SOA")
+        
      end
   end
 end

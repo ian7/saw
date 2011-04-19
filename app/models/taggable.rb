@@ -2,6 +2,8 @@ require 'dynamicObject'
 
 class Taggable # < ActiveRecord::Base
 	include Mongoid::Document
+#	include BSON
+	
  # this is still to come after type is going to be renamed to dynamic_type
 
  belongs_to :author, :class_name => 'User'
@@ -10,8 +12,8 @@ class Taggable # < ActiveRecord::Base
 #    field :id
     field :type, :type => String
     field :name, :type=> String
-    field :origin, :type => Integer
-    field :tip, :type=> Integer
+    field :origin, :type=> BSON::ObjectId
+    field :tip, :type=> BSON::ObjectId 
     
 #    index :origin, :unique => false, :background => false
 #    index :tip, :unique => false, :background => false
@@ -27,6 +29,14 @@ class Taggable # < ActiveRecord::Base
   include TaggablesHelper
   
   #self.inheritance_column ='ruby_type'
+  
+  
+#  def origin=( value )
+#    if value.is_a?( String )
+#          value = BSON::ObjectId( value )
+#    end
+#    write_attribute(:origin, value )
+#  end
   
   
   def self.find_by_id( id )

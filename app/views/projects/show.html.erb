@@ -1,2 +1,8 @@
-<h1>Projects#show</h1>
-<p>Find me in app/views/projects/show.html.erb</p>
+<p>
+	This project has:
+	<ul>
+		<li><%= (@project.taggables.select{ |t| t.type=='Issue'}).count %> <%= link_to 'Issues', issues_url( @project ) %>
+		<li><%= (@project.taggables.select{ |t| t.type=='Alternative'}).count %> Alternatives
+		<li><%= (@project.taggables.select{ |t| t.type=='Decision'}).count %> Decisions
+	</ul>
+</p>

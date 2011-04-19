@@ -15,7 +15,8 @@ Alternative:
 
 Tag:
   name: Tag
-  
+  surrogate_class: Tag
+
 Tagging:
   name: Tagging
   surrogate_class: Tagging
@@ -27,10 +28,12 @@ Decision:
 
 Relation:
   name: Relation
+  surrogate_class: Relation
 
 TreeTag:
   name: TreeTag
   super_type: Tag
+  surrogate_class: TreeTag
 
 # TODO: implement aditional logics for handling that
 # which should remove the tag together with it's last Tagging.
