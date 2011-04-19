@@ -41,9 +41,12 @@ SOA:
 SAD-exercise1:
     type: Project
     name: Exercise1
-SAD-exercise2:
+SAD-exercise2-m:
     type: Project
-    name: Exercise2
+    name: Exercise2-m
+SAD-exercise2-f:
+    type: Project
+    name: Exercise2-f
 SAD-exercise3:
     type: Project
     name: Exercise3
@@ -52,7 +55,7 @@ SAD-exercise4:
     name: Exercise4
 SAD-exercise5:
     type: Project
-    name: Exercise1
+    name: Exercise5
     
   
 # scopes go there

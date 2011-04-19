@@ -137,19 +137,28 @@ App.Views.Index = Backbone.View.extend({
 //	"keypress"		 : "shortcut"
   },
   initialize : function() {
-	this._itemsCollectionView = new UpdatingCollectionView({
-      collection           : this.collection,
-      childViewConstructor : ItemUpdatingView,
-      childViewTagName     : 'p',
-	  childViewClassName   : 'itemList'
-    });
+
 	this.render();
 	notifier.register(this);
 	this.collection.bind('saved',this.newItem)
+
+    // simply magic :)
+    if( window.location.pathname.match('projects') ) {
+		this.projectid = window.location.pathname.match('projects\/.*\/items')[0].substring(9,33);
+	}
+
   },
  
-  render : function() {
+  render : function() {			
 		this._rendered = true;
+	
+		this._itemsCollectionView = new UpdatingCollectionView({
+	      collection           : this.collection,
+	      childViewConstructor : ItemUpdatingView,
+	      childViewTagName     : 'p',
+		  childViewClassName   : 'itemList'
+	    });
+	
 		this._itemsCollectionView.el = this.el; //jQuery('#itemList');
 		this._itemsCollectionView.render();
 		jQuery(this.el).prepend("<div class = 'button orange expandAll'>Expand all</div>");
@@ -189,6 +198,18 @@ App.Views.Index = Backbone.View.extend({
 				});
 			}
 		});
+
+		var thisView = this;
+		
+		if( this.projectid == broadcasted_id ) {
+			this.collection.fetch({
+				success: function(model, resp){
+//					thisView.colllection
+					thisView.render();
+				}
+			});
+		}
+		
   },
   expandAll : function() {
 	_.each(this._itemsCollectionView._childViews, function( childView ) {

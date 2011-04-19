@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+  
+  before_filter :authenticate_user!
+    
   def show
     @project = Project.find params[:id]
   end
@@ -10,8 +13,9 @@ class ProjectsController < ApplicationController
      # i'm making use of that other way. 
      #@onload = 'getJSON("'+ "projects" + '.json", callback);'
      
-     allProjects = Tag.find( :all, :conditions=>{:type=>"Project"} )
+     @allProjects = Tag.find( :all, :conditions=>{:type=>"Project"}).asc("name")
      
+#     @allProjects.sort! { |a,b| a.name <=> b.name }
      
      tree = {};
      tree["name"]="Projects"

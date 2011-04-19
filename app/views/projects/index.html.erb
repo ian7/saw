@@ -10,10 +10,10 @@
 </div>
 -->
 <ul>
-	<% Project.all.each do |p| %>
+	<% @allProjects.each do |p| %>
 	<li>
-		<%= link_to( p.name, p )%>
-		<%#= p.name %>
+		
+		<a href="/projects/<%=p.id%>/items"><%= p.name %></a>
 	</li>
 	<% end %>
 </ul>

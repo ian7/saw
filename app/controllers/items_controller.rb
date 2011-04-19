@@ -110,6 +110,10 @@ class ItemsController < ApplicationController
     end
     
     
+    if params[:project_id]
+      Juggernaut.publish("/chats",params[:project_id])
+    end
+    
     update
   end
 
