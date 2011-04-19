@@ -18,7 +18,23 @@ class User
 	ROLES = %w[admin user]
 	
 	def apply_omniauth(omniauth)  
- 	 self.email = omniauth['user_info']['email'] if email.blank?  
-  		authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
-end  
+
+  case omniauth['provider']
+    when 'facebook'
+      if (extra = omniauth['extra']['user_hash'] rescue false)
+          self.email = (extra['email'] rescue '')
+        end
+	  else
+   	 self.email = omniauth['user_info']['email'] 
+    end
+  	 if email.blank?  
+   		authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
+    end
+  end
+
+  def facebook
+    @fb_user ||= FbGraph::User.me(self.authentications.find_by_provider('facebook').token)
+  end
+
+    
 end

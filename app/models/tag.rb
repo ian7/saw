@@ -40,5 +40,5 @@ class Tag < Taggable
     end
 end
 
-class Project < Tag
-end
+#class Project < Tag
+#end

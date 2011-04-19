@@ -5,53 +5,42 @@
 <tr>
 	<td width="400px">
 
+<!--
 		<%= link_to "Tag Cloud", {:controller=>"tag", :action=>"type_cloud"}, :class=>"header" %>
 		
 		<%if @dt != nil%>
 			&nbsp;&gt;&nbsp;	<%= link_to @dt.name, {:controller=>"tag", :action=>"cloud", :type_name=>@dt.name}, :class=>"header" %>
 								
-								<!-- <a href="/tag/cloud?type_name=<%=@dt.name%>" class="header"><%=@dt.name%></a> -->
 		<%end%>
 
 		<%if @tag != nil %>
 			&nbsp;&gt;&nbsp;	<%= link_to @tag.type, {:controller=>"tag", :action=>"cloud", :type_name=>@tag.type}, :class=>"header" %>
-								<!-- <a href="/tag/cloud?type_name=<%=@tag.type%>" class="header"><%=@tag.type%></a> -->
 			&nbsp;&gt;&nbsp;	<%= link_to @tag.name, {:controller=>"tag", :action=>"taggings_list", :tag_id=>@tag.id}, :class=>"header" %>    
-								<!-- <a href="/tag/cloud?type_name=<%=@tag.name%>" class="header"><%=@tag.name%></a> -->
 		<%end%>
 
 		<%# if @issue != nil %>
 		<%# @issue.tags_by_type(TopicGroup).each do |tag| %>
-<!--			<a href="/topic_groups/<%#=tag.id%>" class="header"><%#= tag.name %></a> --> 
 		<%# end %>
 		<%# end %>
 		</td>
-<!--projects -->
 
-<!--	<td id="header-td">
+	<td id="header-td">
 		<a href="/projects/"  class="header">Projects</a>		
 
 		&nbsp;&gt;&nbsp;
 		<a href="/projects/"  class="header">Project XXX</a>
 	
 	</td>
-	-->	
-<!-- issues -->
+-->		
 	<td>
-		<a href="<%= issues_url %>"  class="header">Issues</a>
-		<!-- <% if @issue != nil %>		
-		&nbsp;&gt;&nbsp;<%= link_to @issue.name, @issue, :class=>"header" %>
-		<% end %>	-->	
+		<a href="items" class="items">Issues</a>
 	</td>
-<!-- alterantives -->
+<!-- 
 	<td>
 		<a href="<%= alternatives_url %>"  class="header">Alternatives</a>
 		
-		<!--<% if @issue != nil %>		
-		&nbsp;&gt;&nbsp;<%= link_to @issue.name, @issue, :class=>"header" %>
-		<% end %>-->		
 	</td>
-<!--tags -->
+
 	<td>
 		<a href="<%= dynamic_types_url %>" class="header">Dynamic Types</a>
 	</td>
@@ -61,6 +50,7 @@
 	</td>
 	
 	<td>
+	-->
 	  <!--
 		<div id="searchDiv">
 		<input type="text" id="search" name="search" />  	
