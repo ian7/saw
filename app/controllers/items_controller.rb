@@ -176,6 +176,10 @@ class ItemsController < ApplicationController
   def destroy
      @issue = Taggable.find(params[:id])
      @issue.destroy
+
+     if params[:project_id]
+        Juggernaut.publish("/chats",params[:project_id])
+      end
     
     # clean up taggings and relations
     Relation.find(:all, :conditions=>{:tip=>params[:id]}).each do |r|
