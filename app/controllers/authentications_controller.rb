@@ -17,8 +17,10 @@ class AuthenticationsController < ApplicationController
 	  else  
 	    user = User.new  
 	    user.apply_omniauth( omniauth )
-	    #user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
+#	    user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
 	    user.save!  
+	    user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])  
+
 	    flash[:notice] = "Signed in successfully."  
 	    sign_in_and_redirect(:user, user)  
 	  end  

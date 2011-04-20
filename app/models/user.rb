@@ -23,6 +23,7 @@ class User
     when 'facebook'
       if (extra = omniauth['extra']['user_hash'] rescue false)
           self.email = (extra['email'] rescue '')
+          self.password = Devise.friendly_token[0,20]
         end
 	  else
    	 self.email = omniauth['user_info']['email'] 
@@ -36,5 +37,8 @@ class User
     @fb_user ||= FbGraph::User.me(self.authentications.find_by_provider('facebook').token)
   end
 
+  def password_required?
+    new_record?
+   end
     
 end
