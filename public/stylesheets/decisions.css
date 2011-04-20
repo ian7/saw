@@ -60,16 +60,16 @@ table.alternativeList td.delete{
 	width: 4%;
 }
 
-table.ribbon A:link {
+table.ribbon a:link {
 	color: white;
 }
-table.ribbon A:visited {
+table.ribbon a:visited {
 	color: white;
 }
 
-table.ribbon A:active{
+table.ribbon a:active{
 	color: white;
 }
-table.ribbon A:hover{
+table.ribbon a:hover{
 	color: white;
 }

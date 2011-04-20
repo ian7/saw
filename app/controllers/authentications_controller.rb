@@ -7,6 +7,7 @@ class AuthenticationsController < ApplicationController
   def create
 	  omniauth = request.env["omniauth.auth"]  
 	  authentication = Authentication.find :first, :conditions=>{ :provider=>omniauth["provider"], :uid=>omniauth["uid"]}
+
 	  if authentication  
 	    flash[:notice] = "Signed in successfully."  
 	    sign_in_and_redirect(:user, authentication.user)  
@@ -17,12 +18,20 @@ class AuthenticationsController < ApplicationController
 	  else  
 	    user = User.new  
 	    user.apply_omniauth( omniauth )
-#	    user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
-	    user.save!  
-	    user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])  
-
-	    flash[:notice] = "Signed in successfully."  
-	    sign_in_and_redirect(:user, user)  
+#	    puts '!!!!!!!!!!!!!!!!!!!!!!'
+#	    f=File.new('o.yml','w')
+#	    f.write omniauth.to_yaml
+#	    f.close
+#	    puts omniauth['user_info']['email']
+	    user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
+	    if user.save
+#	      user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])  
+  	    flash[:notice] = "Signed in successfully."  
+  	    sign_in_and_redirect(:user, user)    	    
+	    else
+        session[:omniauth] = omniauth.except('extra')  
+        redirect_to new_user_registration_url  
+	    end  
 	  end  
   end
   

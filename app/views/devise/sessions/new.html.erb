@@ -14,15 +14,19 @@
   <p><%= f.submit "Sign in" %></p>
 <% end %>
 
+
 <p><strong>Sign in through one of these services:</strong></p>
+<!--
 <a href="/auth/twitter" class="auth_provider">
   <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
   Twitter
 </a>
+-->
 <a href="/auth/facebook" class="auth_provider">
   <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
   Facebook
 </a>
+<!--
 <a href="/auth/google_apps" class="auth_provider">
   <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %>
   Google
@@ -31,6 +35,7 @@
   <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>
   OpenID
 </a>
+-->
 </p>
 
 <%= render :partial => "devise/shared/links" %>
