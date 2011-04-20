@@ -15,10 +15,10 @@ jQuery.fn.flash = function( color, duration )
 
 var ItemView = Backbone.View.extend({
   events : {
-	"click .expand" : "expand",
+	"click .expand" : "toggleExpand",
 	"click .deleteItem" : "deleteItem",
 	"keypress .e6" : "editedItem",
-	"click .e6" : "doExpand",
+	"click .e6" : "expand",
   },
 
   alternativesCollection : null,
@@ -33,12 +33,8 @@ var ItemView = Backbone.View.extend({
 
    this.el.innerHTML = JST.items_index( {item: this.model} );
   
-   if(  this.isExpanded == true) {
-		this.isExpanded = false;
+   if(  localStorage.getItem( this.model.get('id')+'expanded' ) == 'true' ) {
 		this.expand();
-	}
-	else {
-		this.isExpanded = false;
 	}
 	
 	// finally attach it ;)
@@ -92,29 +88,37 @@ var ItemView = Backbone.View.extend({
 			this.expand();
 		}
   },
+  toggleExpand: function(){
+		if( this.isExpanded == false) {
+			this.expand();
+		}
+		else {
+			this.collapse();
+		}
+  },
   expand: function(){
-		if( this.isExpanded == false ) {
+			localStorage.setItem( this.model.get('id')+'expanded','true');
+			
 			this.isExpanded = true;
 			jQuery(".expand", this.el).html("Collapse");
 			
-		   new App.Views.Alternatives.List({ collection: this.alternativesCollection, el: this.el });
-
+		   	new App.Views.Alternatives.List({ collection: this.alternativesCollection, el: this.el });
 			this.alternativesCollection.fetch({ silent: false,
 				success: function(model, resp) {
 //					model.issueView.model.change();
 					model.issueView.alternativesCollection = model;
-// this can be executed somewhere else :)					
+					// this can be executed somewhere else :)					
 					new App.Views.Alternatives.List({ collection: model, el: model.issueView.el });
 				}
 			});
-		}
-		else {
-			this.isExpanded = false;
-			jQuery("table.alternativeList", this.el).html("<!-- nothing -->");
-			jQuery(".expand", this.el).html("Expand");
-		}
 		
-  }
+  },
+  collapse: function(){
+		localStorage.removeItem( this.model.get('id')+'expanded');
+		this.isExpanded = false;
+		jQuery("table.alternativeList", this.el).html("<!-- nothing -->");
+		jQuery(".expand", this.el).html("Expand");	
+  },
 });
 
 
@@ -133,8 +137,8 @@ var ItemUpdatingView = ItemView.extend({
 App.Views.Index = Backbone.View.extend({
   events : {
 	"click .newItem" : "newItem",
-	"click .expandAll" : "expandAll"
-//	"keypress"		 : "shortcut"
+	"click .expandAll" : "expandAll",
+	"click .collapseAll" : "collapseAll",
   },
   initialize : function() {
 
@@ -161,6 +165,7 @@ App.Views.Index = Backbone.View.extend({
 	
 		this._itemsCollectionView.el = this.el; //jQuery('#itemList');
 		this._itemsCollectionView.render();
+		jQuery(this.el).prepend("<div class = 'button orange collapseAll'>Collapse all</div>");
 		jQuery(this.el).prepend("<div class = 'button orange expandAll'>Expand all</div>");
 		this.newItem();
   },
@@ -214,6 +219,11 @@ App.Views.Index = Backbone.View.extend({
   expandAll : function() {
 	_.each(this._itemsCollectionView._childViews, function( childView ) {
 		childView.expand();
+	});
+  },
+  collapseAll : function() {
+	_.each(this._itemsCollectionView._childViews, function( childView ) {
+		childView.collapse();
 	});
   },
   shortcut : function() {

@@ -47,11 +47,13 @@ p.itemList {
 
 table.alternativeList {
 	width: 100%;
+	padding-left: 3em;
 }
 
 table.alternativeList td.decisions{
 	width: 25%;
 	text-align: center;
+	min-width: 320px;
 }
 
 table.alternativeList td.delete{
