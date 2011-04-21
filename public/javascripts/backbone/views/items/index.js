@@ -182,7 +182,7 @@ App.Views.Index = Backbone.View.extend({
 			collection = this;			
 			var preLastItem = collection.last();
 			if( preLastItem.view ) {
-				preLastItem.view.doExpand();
+				preLastItem.view.expand();
 			}
 		}
         
