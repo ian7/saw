@@ -11,14 +11,15 @@ gem "mongoid", "2.0.0.rc.8"
 gem "bson", "~> 1.3.0"
 gem "json"
 gem "bson_ext", "~> 1.3.0"
-gem "devise", '1.1.5'
-gem "omniauth"
+gem "omniauth", "~> 0.2.3"
+gem "devise", '~> 1.3.2'
 gem 'cancan', '1.4.1'
 gem 'mongrel', '1.2.0.pre2'
 gem 'juggernaut'
 gem 'jammit'
 gem 'fb_graph'
 #gem 'thin'
+gem 'faraday', '0.6.1'
 
 # Use unicorn as the web server
 # gem 'unicorn'

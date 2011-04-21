@@ -4,7 +4,7 @@ Saw::Application.routes.draw do
   get "users/edit"
 
   match '/auth/:provider/callback' => 'authentications#create'  
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks", :registrations =>  'registrations' }  
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations =>  'registrations' }  
   resources :projects  
   resources :tasks  
   resources :authentications  
