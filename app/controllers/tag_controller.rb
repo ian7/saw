@@ -4,6 +4,8 @@ require 'application_helper'
 class TagController < ApplicationController
 #unloadable
   #helper :taggables
+  before_filter :authenticate_user!
+  
   include TaggablesHelper
   
   def index

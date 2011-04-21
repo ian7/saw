@@ -2,8 +2,12 @@ require 'relation'
 
 class ItemsController < ApplicationController
  
+  before_filter :authenticate_user!
+ 
 
   def index
+
+#    puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!' + current_user.email
 
    # in case we're sub-resourced with a project
    if params[:project_id]
@@ -118,6 +122,9 @@ class ItemsController < ApplicationController
   end
 
   def update
+    
+    
+    puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ' + current_user.email
     
      if params[:id] 
          @issue = Taggable.find(params[:id])

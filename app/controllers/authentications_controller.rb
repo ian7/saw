@@ -23,9 +23,9 @@ class AuthenticationsController < ApplicationController
 #	    f.write omniauth.to_yaml
 #	    f.close
 #	    puts omniauth['user_info']['email']
-	    user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
+#	    user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
 	    if user.save
-#	      user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])  
+	      user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])  
   	    flash[:notice] = "Signed in successfully."  
   	    sign_in_and_redirect(:user, user)    	    
 	    else

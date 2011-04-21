@@ -2,6 +2,7 @@ require 'dynamicObject'
 
 class Taggable # < ActiveRecord::Base
 	include Mongoid::Document
+	include Mongoid::Timestamps
 #	include BSON
 	
  # this is still to come after type is going to be renamed to dynamic_type
