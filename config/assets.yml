@@ -1,8 +1,10 @@
 embed_assets: off
-compress_assets: on
-package_assets: off
+compress_assets: off
+package_assets: always
+gzip_assets: off
+
 javascripts:    
-  common: 
+  common: &common
     - public/javascripts/lib/jquery/jquery.min.js
     - public/javascripts/lib/jquery/jquery-ui-1.8.custom.min.js
     - public/javascripts/lib/jquery/jquery.fastconfirm.js
@@ -10,19 +12,24 @@ javascripts:
     - public/javascripts/backbone/backbone.js
     - public/javascripts/backbone/backbonerailsauthtokenadapter.js
     - public/javascripts/backbone/notifier.js
-    #    - public/javascripts/lib/juquery/jquery.min.js
     - public/javascripts/lib/**/*.js
+
+  backbone: &backbone
+    - public/javascripts/backbone/models/**/*.js        
+    - public/javascripts/backbone/controllers/*.js      
+    - public/javascripts/backbone/views/**/*.js
+    - public/javascripts/backbone/helpers/*.js          
+    - app/views/backbone/*.jst
   workspace:
 # app comes here
+    - *common
     - public/javascripts/backbone/items.js
+    - *backbone
+
   projects:
+    - *common
     - public/javascripts/backbone/projects.js
-  backbone:
-    - public/javascripts/backbone/models/**/*.js     	
-    - public/javascripts/backbone/controllers/*.js     	
-    - public/javascripts/backbone/views/**/*.js
-    - public/javascripts/backbone/helpers/*.js     	
-    - app/views/backbone/*.jst
+    - *backbone
 
 stylesheets:
   common:
