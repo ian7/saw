@@ -20,6 +20,7 @@ gem 'jammit'
 gem 'fb_graph'
 #gem 'thin'
 gem 'faraday', '0.6.1'
+gem 'SystemTimer'
 
 # Use unicorn as the web server
 # gem 'unicorn'
