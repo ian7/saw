@@ -2,7 +2,6 @@
  * @author Marcin Nowak
  */
 
-
 jQuery.fn.flash = function( color, duration )
 {
 
@@ -13,7 +12,7 @@ jQuery.fn.flash = function( color, duration )
 
 }
 
-var ItemView = Backbone.View.extend({
+var ItemUpdatingView = Backbone.View.extend({
   events : {
 	"click .expand" : "toggleExpand",
 	"click .deleteItem" : "deleteItem",
@@ -22,6 +21,16 @@ var ItemView = Backbone.View.extend({
   },
 
   alternativesCollection : null,
+
+  initialize : function(options) {
+    this.render = _.bind(this.render, this); 
+    this.model.bind('change', this.render);
+
+	this.alternativesCollection = new Alternatives;
+   
+	this.alternativesCollection.issueView = this;
+	this.isExpanded = false;
+  },
 
   render : function() {
 
@@ -120,19 +129,6 @@ var ItemView = Backbone.View.extend({
 		jQuery(".expand", this.el).html("Expand");	
   },
 });
-
-
-var ItemUpdatingView = ItemView.extend({
-  initialize : function(options) {
-    this.render = _.bind(this.render, this); 
-    this.model.bind('change', this.render);
-
-	this.alternativesCollection = new Alternatives;
-   
-	this.alternativesCollection.issueView = this;
-  }
-});
-
 
 App.Views.Index = Backbone.View.extend({
   events : {
