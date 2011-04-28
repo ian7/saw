@@ -24,3 +24,5 @@ Saw::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 end
 
+ENV['RAILS_ASSET_ID'] = ""
+
