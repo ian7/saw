@@ -84,8 +84,18 @@ var ItemUpdatingView = Backbone.View.extend({
            position: "left",
               questionText: "Are you sure ?",
               onProceed: function(trigger) {
+					// remove confirmation
+  	                $(trigger).fastConfirm('close');
+
+					if( viewObject.model.collection ) {
+						// remove it from the collection first
+						viewObject.model.collection.remove( viewObject.model );
+					}
+					else {
+						alert( 'not in the collection - fucker: ' + viewObject.model.get('name') );
+					}
+					// and then destroy it.
 					viewObject.model.destroy();
-                       $(trigger).fastConfirm('close');
                },
                onCancel: function(trigger) {
                        $(trigger).fastConfirm('close');
@@ -135,35 +145,57 @@ App.Views.Index = Backbone.View.extend({
 	"click .newItem" : "newItem",
 	"click .expandAll" : "expandAll",
 	"click .collapseAll" : "collapseAll",
+//	"click .newItem" : 'checkNewItem',
   },
+
+  newItemName : '(new item)',
+
   initialize : function() {
 
-	this.render();
-	notifier.register(this);
-	this.collection.bind('saved',this.newItem)
+	_(this).bindAll('newItem','checkNewItem','removeNewItem','newItem');
+
+	this.collection.bind('saved',this.checkNewItem );
+	this.collection.bind('refresh',this.checkNewItem );
+	
+	this.collection.comparator = function( m ) { return m.get('id'); };
 
     // simply magic :)
     if( window.location.pathname.match('projects') ) {
 		this.projectid = window.location.pathname.match('projects\/.*\/items')[0].substring(9,33);
 	}
 
+	this._itemsCollectionView = new UpdatingCollectionView({
+      collection           : this.collection,
+      childViewConstructor : ItemUpdatingView,
+      childViewTagName     : 'p',
+	  childViewClassName   : 'itemList'
+    });
+
+
+
+	this.render();
+	notifier.register(this);
+
   },
  
   render : function() {			
 		this._rendered = true;
-	
-		this._itemsCollectionView = new UpdatingCollectionView({
-	      collection           : this.collection,
-	      childViewConstructor : ItemUpdatingView,
-	      childViewTagName     : 'p',
-		  childViewClassName   : 'itemList'
-	    });
-	
-		this._itemsCollectionView.el = this.el; //jQuery('#itemList');
+		this._itemsCollectionView.el = this.el; 
 		this._itemsCollectionView.render();
 		jQuery(this.el).prepend("<div class = 'button orange collapseAll'>Collapse all</div>");
 		jQuery(this.el).prepend("<div class = 'button orange expandAll'>Expand all</div>");
-		this.newItem();
+//		jQuery(this.el).prepend("<div class = 'button red newItem'>New!</div>");
+		this.checkNewItem();
+
+  },
+  removeNewItem : function() {
+		this.collection.each( function( i ) {
+			if( i.get('name') == '(new item)' ) {
+				this.collection.remove( i );
+				delete i;
+			} 
+		},this);
+	
   },
   
   newItem : function() {
@@ -176,20 +208,23 @@ App.Views.Index = Backbone.View.extend({
 		else {
 			// we're called because collection element has been saved 
 			collection = this;			
-			var preLastItem = collection.last();
-			if( preLastItem.view ) {
-				preLastItem.view.expand();
-			}
 		}
-        
+
+/*		var preLastItem = collection.last();
+		if( preLastItem.view ) {
+			preLastItem.view.expand();
+		}
+*/
+		
 		i = new Item;
-		i.set({name: '(unnamed)'});
+
+		// this.newItemName is unavailable when called by the 'save' event from the collection
+		i.set({name: '(new item)' });
 		collection.add( i );
 		
-		//alert('asdf')
   },
   notify : function( broadcasted_id ) {
-		this.collection.each( function( i ) {	
+/*		this.collection.each( function( i ) {	
 			if( i.get('id') == broadcasted_id ) {
 				i.fetch({
 					success: function(model,resp) {
@@ -199,14 +234,14 @@ App.Views.Index = Backbone.View.extend({
 				});
 			}
 		});
-
+*/
 		var thisView = this;
 		
 		if( this.projectid == broadcasted_id ) {
 			this.collection.fetch({
 				success: function(model, resp){
 //					thisView.colllection
-					thisView.render();
+//					thisView.render();
 				}
 			});
 		}
@@ -223,7 +258,11 @@ App.Views.Index = Backbone.View.extend({
 	});
   },
   shortcut : function() {
-	alert("!");
+	// alert("!");
+  },
+  checkNewItem : function() {
+		this.removeNewItem();
+		this.newItem();
   },
 });
 

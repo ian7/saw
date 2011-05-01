@@ -20,10 +20,11 @@ var UpdatingCollectionView = Backbone.View.extend({
 	
 	// this allows only one view for the given model to be displayed in the widget, so if it finds view with given id
 	// it simply ignores it.
-	var existingViewForModel = _(this._childViews).select(function(cv) { return cv.model.id == model.id; })[0];
+/*	var existingViewForModel = _(this._childViews).select(function(cv) { return cv.model.id == model.id; })[0];
 	if( existingViewForModel ){
 		return;
 	}
+	*/
 	
     var childView = new this._childViewConstructor({
       tagName : this._childViewTagName,
@@ -44,6 +45,11 @@ var UpdatingCollectionView = Backbone.View.extend({
     this._childViews = _(this._childViews).without(viewToRemove);
  
     if (this._rendered) $(viewToRemove.el).remove();
+	// some cleanup !
+	notifier.unregister(viewToRemove);
+	delete viewToRemove;
+//	alert("!");
+
   },
  
   render : function() {

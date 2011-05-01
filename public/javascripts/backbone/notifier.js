@@ -14,6 +14,9 @@ var notifier = {
 	register : function( o ) {
 		this.listeners.push(o);
 	},
+	unregister : function ( o ) {
+		this.listeners = _.without( this.listeners, o );
+	},
 	notify : function( data ) {
 		_.each( this.listeners, function( l ){
 			if( l.notify ) {
