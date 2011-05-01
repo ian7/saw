@@ -6,6 +6,7 @@ var App = {
     	Tags: {},
     	Alternatives: {},
 		Decisions: {},
+		Items: {},
     },
     Controllers: {},
     Components: {},

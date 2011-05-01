@@ -10,9 +10,13 @@ App.Controllers.Items = Backbone.Controller.extend({
         "new":                      "newDoc",
 //		"/:id/addTag": "addTag", 
     },
+	initialize : function() {
+		this.items_collection = new Items;	
+		this.itemsView = new App.Views.Index({collection: this.items_collection, el: 'section.itemList'});						
+	},
     
     show: function(id) {
-        var item = new Item({ id: id });
+        var item = new Item({ id: id, el: 'section.itemList'});
         item.fetch({
             success: function(model, resp) {
 //				el = jQuery("section.itemList");
@@ -27,14 +31,9 @@ App.Controllers.Items = Backbone.Controller.extend({
     },
 	  
     index: function() {
-		this.items_collection = new Items;
 		this.items_collection.fetch({
 			success: function(model, resp) {
-				// this fails because of missing context
-				// let's try it with events
-				new App.Views.Index({collection: model, el: 'section.itemList'});						
 			}
-			
 		});
     },
     
