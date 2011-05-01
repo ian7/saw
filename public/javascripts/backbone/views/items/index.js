@@ -30,6 +30,15 @@ var ItemUpdatingView = Backbone.View.extend({
    
 	this.alternativesCollection.issueView = this;
 	this.isExpanded = false;
+
+	// catch alternatives resource location hack
+	this.alternativesCollection.item_url = window.location.pathname+"/"+this.model.get('id');
+	this.alternativesCollection.url = window.location.pathname+"/"+this.model.get('id')+'/alternatives';
+	
+	this.alternativesCollectionView = new App.Views.Alternatives.List({ collection: this.alternativesCollection, el: this.el });
+	_(this).bindAll('notify');
+		
+	notifier.register( this );
   },
 
   render : function() {
@@ -41,7 +50,9 @@ var ItemUpdatingView = Backbone.View.extend({
 //	this.tempEL.innerHTML = JST.items_index( {item: this.model} );
 
    this.el.innerHTML = JST.items_index( {item: this.model} );
-  
+
+//   this.alternativesCollectionView.render();
+
    if(  localStorage.getItem( this.model.get('id')+'expanded' ) == 'true' ) {
 		this.expand();
 	}
@@ -55,9 +66,15 @@ var ItemUpdatingView = Backbone.View.extend({
      	// nasty but works.
 
 		if (e.keyCode == 13) {
+			var wasNew = this.model.isNew();
 			this.model.save(
 				{ name: jQuery("span.e6",this.el).html() },
 				{ success : function( model, resp)  {
+
+					// make it expand on refresh					
+					if( wasNew ) {
+						localStorage.setItem( model.get('id')+'expanded','true');
+					}
 					model.parse( resp );
 					model.change();
 				}
@@ -120,14 +137,15 @@ var ItemUpdatingView = Backbone.View.extend({
 			
 			this.isExpanded = true;
 			jQuery(".expand", this.el).html("Collapse");
+
+			this.alternativesCollectionView.render();
 			
-		   	new App.Views.Alternatives.List({ collection: this.alternativesCollection, el: this.el });
+		   	// WTF ? new App.Views.Alternatives.List({ collection: this.alternativesCollection, el: this.el });
 			this.alternativesCollection.fetch({ silent: false,
 				success: function(model, resp) {
 //					model.issueView.model.change();
-					model.issueView.alternativesCollection = model;
+					//model.issueView.alternativesCollection = model;
 					// this can be executed somewhere else :)					
-					new App.Views.Alternatives.List({ collection: model, el: model.issueView.el });
 				}
 			});
 		
@@ -138,6 +156,13 @@ var ItemUpdatingView = Backbone.View.extend({
 		jQuery("table.alternativeList", this.el).html("<!-- nothing -->");
 		jQuery(".expand", this.el).html("Expand");	
   },
+  notify : function( broadcasted_id ) {
+		if( this.model.get('id') == broadcasted_id ) {
+			this.alternativesCollection.fetch();
+			jQuery(this.el).effect("highlight", {}, 500);
+		}
+  }  
+
 });
 
 App.Views.Index = Backbone.View.extend({

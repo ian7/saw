@@ -9,7 +9,7 @@
 				<% } %>
 	    	</td>
 	    	<td class="decisions"> 
-				<% if( !a.attributes.your_decision ) { %>
+				<% if( !( a.attributes.your_decision && a.attributes.your_decision.name ) ) { %>
 				    	Decide: <% _(a.attributes.decisions).each(function(decision) { %>
 				    	<div class="button decide <%= decision.color.toLowerCase() %>" id="<%= decision.decision_tag_id %>"><%= decision.name %>(<%= decision.count %>)</div>
 					<% });%>

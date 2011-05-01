@@ -10,7 +10,8 @@ AlternativeUpdatingView  = Backbone.View.extend({
 		"click .undecide"			: "undecide"
     },
     initialize: function() {
-	    this.render = _.bind(this.render, this); 
+// WTF ?	    this.render = _.bind(this.render, this); 
+		_(this).bindAll('render','decide','undecide');
 	    this.model.bind('change', this.render);
 		notifier.register(this);
     },
@@ -18,9 +19,10 @@ AlternativeUpdatingView  = Backbone.View.extend({
     render: function() {
 
 	   this.el.innerHTML = JST.alternatives_show( {a: this.model} );
-	
-	   color = "white";
+
 	   
+	   color = "white";
+
 	   if( this.model.attributes.decisions ) {
 		   _.each( this.model.attributes.decisions, function( decision ) {
 			    if( decision.count > 0 ) {
@@ -33,8 +35,9 @@ AlternativeUpdatingView  = Backbone.View.extend({
 				}
 			});
 		}
-	   jQuery(this.el).addClass(color.toLowerCase());
-	
+	   // hell love chainging !
+	   jQuery(this.el).removeClass().addClass("decision").addClass(color.toLowerCase());
+		
 	   return this;
     },
     // this updates single row in the table
@@ -118,47 +121,47 @@ App.Views.Alternatives.List = Backbone.View.extend({
     });
 	this.render();
 	notifier.register(this);
-	this.collection.bind('saved', this.newAlternative);
+	_(this).bindAll('newAlternative','removeNewAlternative','checkNewAlternative');
+
+	this.collection.bind('saved', this.checkNewAlternative);
+	this.collection.bind('refresh', this.checkNewAlternative);
   },
  
   render : function() {
 		this.rendered = true;
 		this.alternativesCollectionView.el = jQuery('table.alternativeList', this.el);
-		this.newAlternative();
 		this.alternativesCollectionView.render();
+		this.checkNewAlternative();
   },
   notify : function( broadcasted_id ) {
 		this.collection.each( function( i ) {	
-			if( i.get('id') == broadcasted_id ) {
+/*			if( i.get('id') == broadcasted_id ) {
 				i.fetch();
 				i.change();
 			}
+			*/
 		});
   },
-  newAlternative : function() {
-	    var collection;
-	
-		if( this.collection ) {
-			collection = this.collection;
-		}
-		else {
-			collection = this;
-		}
-			
-		if( collection.size() == 0 ||
-		    collection.last().isNew() == false ) {
-			var a;
-			if( a ) {
-				;
-			}else{
-				a = new Alternative;
-			}
-			a.set({name: 'new alternative'});
-			collection.add( a );
-//			a.bind('change', this.newAlternative );
-		}
+  newAlternative : function() {	
+		a = new Alternative;
+		// this.newItemName is unavailable when called by the 'save' event from the collection
+		a.set({name: '(new alternative)' });
+		this.collection.add( a );
   },
 
+ removeNewAlternative : function() {
+		this.collection.each( function( a ) {
+			if( a.get('name') == '(new alternative)' ) {
+				this.collection.remove( a );
+				delete a;
+			} 
+		},this);
+
+  },
+  checkNewAlternative : function () {
+	this.removeNewAlternative();
+	this.newAlternative();
+  },
 });
 
 

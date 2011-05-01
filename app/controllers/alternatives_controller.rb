@@ -246,17 +246,20 @@ class AlternativesController < ApplicationController
   			j_decision["name"] = decision.name
   			j_decision["count"] = related_decisions.count
 
-  			j_users = {}
+  			j_details = []
   			related_decisions.each do |user_decision|
-  			  j_users['timestamp'] = user_decision.created_at
+  			  j_user={}
+  			  j_user['timestamp'] = user_decision.created_at
   			  if user_decision.author 
-  			    j_users['email'] = user_decision.author.email
-  			    j_users['id'] = user_decision.author.id
+  			    j_user['email'] = user_decision.author.email
+  			    j_user['id'] = user_decision.author.id
 # that would be nice to implement....
 #  			    j_users['uri'] = url_for( user_decision.author )
   			  end
+  			  j_details << j_user
   			end
-        j_decision['user_details'] = j_users
+  			j_decision['details'] = j_details
+#        j_decision['user_details'] = j_users
   			j_decision["decision_tag_id"] = decision.id
   			j_decision["color"] = decision.color
   			j_decisions << j_decision
@@ -274,19 +277,24 @@ class AlternativesController < ApplicationController
   		end
 		
   		j_alternative["decisions"] = j_decisions
+		  @your_decision = {}
   		
   		if @current_users_decision
-  		  @your_decision = {}
-
   		  # that's lame - i should use mongoid relations !
   		  decision = Taggable.find :first, :conditions=>{ :id=>@current_users_decision.origin }
    		  @your_decision["name"] = decision.name
    		  @your_decision["decision_tag_id"] = decision.id   		  
    		  @your_decision["color"] = decision.color
    		  @your_decision["tagging_id"] = @current_users_decision.id
-
-   		  j_alternative["your_decision"] = @your_decision
+   		else
+   		  # if no decision was found...
+   		  @your_decision["name"] = nil
+   		  @your_decision["decision_tag_id"] = nil
+   		  @your_decision["color"] = nil
+   		  @your_decision["tagging_id"] = nil
    		end
+
+ 		  j_alternative["your_decision"] = @your_decision
    		
 		
   		@relation = Taggable.find :first, :conditions=>{:tip=>@issue.id, :origin=>alternative.id }
