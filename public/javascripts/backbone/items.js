@@ -16,7 +16,7 @@ var App = {
         Backbone.history.start();
     }
 };
-
+/*
 window.WEB_SOCKET_SWF_LOCATION = "http://localhost:8080/WebSocketMain.swf"
  
  // Settin host to external machine
@@ -42,7 +42,7 @@ var notifier = {
 	},	
 };
 
-
+*/
 
 
 
