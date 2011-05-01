@@ -10,8 +10,8 @@ App.Views.Show = Backbone.View.extend({
 	},
     initialize: function() {
 		//this.tagCollection = new Tags;
+	_(this).bindAll('render');
 			notifier.register(this);
-	        this.render();
 
       /* let's forget about that for a moment
   		_.extend( this, Backbone.Events );
@@ -26,14 +26,21 @@ App.Views.Show = Backbone.View.extend({
         	}
         });
 */
+
+		this.alternativesCollection = new Alternatives;
+		this.alternativesCollection.issueView = this;
+
+		this.alternativesCollection.item_url = window.location.pathname+"/"+this.model.get('id');
+		this.alternativesCollection.url = window.location.pathname+"/"+this.model.get('id')+'/alternatives';
+
+		this.alternativesCollectionView = new App.Views.Alternatives.ListDetails({ collection: this.alternativesCollection, el: this.el });
+		this.alternativesCollection.fetch();
+
+        this.render();
     },
     
     render: function() {
-		this.model.view = this;
-    	var out = ""
-    	var id = this.model.id;
-    	var item_id = id;
-        if(this.model) {
+
 			this.el.innerHTML = JST.items_show({ item: this.model });
 			this.tags = new Tags;
 			this.tags.url = this.model.get('item_url')+'/tag/tags_list';
@@ -43,24 +50,6 @@ App.Views.Show = Backbone.View.extend({
 				  	new App.Views.Tags.List({collection: model, el: model.view.el });
 				},
 			});
-/*	        jQuery.getJSON('/items/'+this.model.id+'/tag/tags_list', function(data) {
-			    if(data) {
-		          		tags = _(data).map(function(i) { return new Tag(i); });
-		                App.Components.Items.tags = new App.Views.Tags.List({ el:tata, tags: tags });
-		            }
-		        });
-		        
-  	        jQuery.getJSON('/items/'+this.model.id+'/alternatives', function(data2) {
-			    if(data2) {
-		            	alternatives = _(data2).map(function(i) { return new Alternative(i); });
-		                App.Components.Items.alternatives =  new App.Views.Alternatives.List({ el:aa, alternatives: alternatives });
-		            }
-		        });
-*/
-                         
-        } 
-        //jQuery(this.el).html(out);                
-        //jQuery('#app').html(this.el);
         
 	   // this handles in-place editing
        jQuery('.edit5').each( function(i){
@@ -76,6 +65,11 @@ App.Views.Show = Backbone.View.extend({
        	  	});
        	  });	               	  	
        	 });        
+		this.alternativesCollectionView.render();
+		return( this );
+
+		// alternatives list
+
     },
 	addTag: function(){
 		this.tags = new Tags;
@@ -92,8 +86,8 @@ App.Views.Show = Backbone.View.extend({
 		if( this.model.get('id') == broadcasted_id ){
 				this.model.fetch({
 					success : function( model, resp ){
-						model.change();
-						model.view.render();
+//						model.change();
+//						model.view.render();
 					},
 				});
 		}

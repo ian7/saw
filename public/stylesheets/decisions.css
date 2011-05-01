@@ -73,3 +73,10 @@ table.ribbon a:active{
 table.ribbon a:hover{
 	color: white;
 }
+
+/* small decision details table */
+table.decisionList {
+	width: 100%;
+}
+
+

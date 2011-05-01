@@ -4,7 +4,8 @@
 var App = {
     Views: {
     	Tags: {},
-    	Alternatives: {}
+    	Alternatives: {},
+		Decisions: {},
     },
     Controllers: {},
     Components: {},

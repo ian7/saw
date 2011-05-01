@@ -1,0 +1,45 @@
+	   		<td>	   		
+	    		<!-- <b>Name:</b> -->
+	    		<span class="name" contenteditable="true"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></span>
+		    </td>
+	    	<td class="delete">
+				<% if( !a.isNew() ) {  %>
+<!--					<div class="button gray unrelateAlternative">UnRelate</div> -->
+		    		<div class="button black deleteAlternative">Delete</div>
+				<% } %>
+	    	</td>
+	    	<td class="decisions"> 
+				<% if( !( a.attributes.your_decision && a.attributes.your_decision.name ) ) { %>
+				    	Decide: <% _(a.attributes.decisions).each(function(decision) { %>
+				    	<div class="button decide <%= decision.color.toLowerCase() %>" id="<%= decision.decision_tag_id %>"><%= decision.name %>(<%= decision.count %>)</div>
+					<% });%>
+				<% } else { %>
+						<div class="button undecide <%= a.attributes.your_decision.color.toLowerCase() %>" id="<%= a.attributes.your_decision.decision_tag_id %>">Revoke</div>
+				<% } %>
+				<!-- here comes the insert -->
+				<table class="decisionList">
+					 <!-- here we go over all decision types-->
+					 <% _(a.attributes.decisions).each( function(decision) { %>
+					
+						<!-- here we enter single decisions -->
+						<% _(decision.details).each( function( detail ) { %>
+							<tr class="decision <%= decision.color.toLowerCase() %>">
+								<!--
+								<td class="id">
+									<%= detail.id %>
+								</td>
+								-->
+								<td class="user">
+									<%= detail.email %>
+								<td>
+								<!--
+								<td class="timestamp">
+									<%= detail.timestamp %>
+								<td>
+								-->
+							</tr>
+						<% }); %>
+						
+					<% }); %>
+				</table>
+	    	</td>
