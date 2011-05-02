@@ -1,6 +1,10 @@
 Saw::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
+  Juggernaut.redis_options[:host]="juggernaut.sonyx.net"
+  Juggernaut.redis_options[:password]="3f8be742734892ec49be818ba75744fb"
+
+
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true
@@ -47,3 +51,4 @@ Saw::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 end
+

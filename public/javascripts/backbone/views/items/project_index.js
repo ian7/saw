@@ -36,7 +36,7 @@ App.Views.Items.ProjectItem = Backbone.View.extend({
 	this.alternativesCollection.fetch();
   },
   addStatus : function( message ) {
-			jQuery("li.status",this.el).append("<li>"+ message+"</li>");
+			jQuery("ul.status",this.el).append("<li>"+ message+"</li>");
   },
   alternativesReady : function() {
 	this.render();

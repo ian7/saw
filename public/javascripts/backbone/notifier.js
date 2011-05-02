@@ -2,7 +2,7 @@ window.WEB_SOCKET_SWF_LOCATION = "http://"+ window.location.hostname +":8080/Web
  
  // Settin host to external machine
 var options = new Array();
-//options['host']='juggernaut.sonyx.net';
+options['host']='juggernaut.sonyx.net';
 var jug = new Juggernaut( options );
 
 jug.subscribe("/chats", function(data){

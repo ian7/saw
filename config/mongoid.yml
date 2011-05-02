@@ -1,5 +1,6 @@
 defaults: &defaults
-    uri: <%= ENV['MONGOHQ_URL'] %>
+    database: saw
+    host: localhost
     
 development:
   <<: *defaults
@@ -7,8 +8,7 @@ development:
 
 test:
   <<: *defaults
-#  database: saw_test
 
 # set these environment variables on your prod server
 production:
-    <<: *defaults    
+    uri: <%= ENV['MONGOHQ_URL'] %>
