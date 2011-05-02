@@ -3,3 +3,5 @@ require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
 Saw::Application.initialize!
+
+Juggernaut.redis_options[:host]="juggernaut.sonyx.net"
