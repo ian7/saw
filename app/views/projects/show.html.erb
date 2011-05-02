@@ -5,4 +5,17 @@
 		<li><%= (@project.taggables.select{ |t| t.type=='Alternative'}).count %> Alternatives
 		<li><%= (@project.taggables.select{ |t| t.type=='Decision'}).count %> Decisions
 	</ul>
+	
+
+	<%= include_javascripts :projects %>
+
+	<section class="itemList">
+	</section>
+
+	<script type="text/javascript" charset="utf-8">
+
+	   App.init();
+
+	</script>
+	
 </p>
