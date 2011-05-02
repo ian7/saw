@@ -4062,7 +4062,7 @@ App.Views.Items.ProjectItem = Backbone.View.extend({
    jQuery(this.el).prepend("<div class = 'button red fetch'>Fetch!</div>");
 */
 	if( this.alternativesCollection.length == 0 )
-		addStatus("no alternatives")
+		this.addStatus("no alternatives")
 
    return this;
   },
