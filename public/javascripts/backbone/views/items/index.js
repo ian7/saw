@@ -18,6 +18,7 @@ var ItemUpdatingView = Backbone.View.extend({
 	"click .deleteItem" : "deleteItem",
 	"keypress .e6" : "editedItem",
 	"click .e6" : "expand",
+	"click .e6" : "selectAll",
   },
 
   alternativesCollection : null,
@@ -62,13 +63,24 @@ var ItemUpdatingView = Backbone.View.extend({
 
    return this;
   },
+  selectAll : function( e ){ 
+	if( e.toElement.innerText == '(new item)') {
+		document.execCommand('selectAll',false,null);
+	}
+	
+  },
   editedItem : function( e ) {
      	// nasty but works.
 
 		if (e.keyCode == 13) {
 			var wasNew = this.model.isNew();
+			var newValue = e.srcElement.innerHTML;
+
+			if(newValue == "<br>") {
+				newValue = '(empty)';
+			}
 			this.model.save(
-				{ name: jQuery("span.e6",this.el).html() },
+				{ name: newValue },
 				{ success : function( model, resp)  {
 
 					// make it expand on refresh					

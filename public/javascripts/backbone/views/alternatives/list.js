@@ -4,6 +4,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 	className : "decision", 
     events : {
 		"keypress .name" 			: "editedName",
+		"click .name"				: 'selectAll',
 		"click .deleteAlternative"	: "deleteAlternative",
 		"click .unrelateAlternative": "unrelateAlternative",
 		"click .decide"				: "decide",
@@ -44,13 +45,23 @@ AlternativeUpdatingView  = Backbone.View.extend({
     update: function( item_id ){
     		
     },
+    selectAll : function( e ){ 
+		if( e.toElement.innerText == '(new alternative)') {
+			document.execCommand('selectAll',false,null);
+		}
+	},
 	editedName : function( e ) {
 		// nasty but works.
 	    //var lastEditedItem = this;
 
 		if (e.keyCode == 13) {
+			var newValue = e.srcElement.innerHTML;
+
+			if(newValue == "<br>") {
+				newValue = '(empty)';
+			}
 			this.model.save(
-				{ name: jQuery(".name",this.el).html() },
+				{ name: newValue },
 				{ success : function( model, resp)  {
 					model.parse( resp );
 					model.change();
