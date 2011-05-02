@@ -43,12 +43,19 @@ class ItemsController < ApplicationController
 
 
 	respond_to do |format|
-		format.json {	 
-		  j = @item.to_json;
-		  j['item_url'] = url_for( @item )
-			render :json => j }
+		format.json {
+		  if @item 	 
+		    j = @item.to_json;
+		    j['item_url'] = url_for( @item )
+  			render :json => j 
+		  else
+		    render :json => {}
+		  end
+      }
 		format.html { render :layout=> false }
 	end
+
+=begin
 
     # load infovis
     @onload = 'init('+params[:id]+',"SolvedBy");'
@@ -74,7 +81,7 @@ class ItemsController < ApplicationController
     
     
     @taggable_id = @issue.id
-    
+=end    
    end
 
   def new
