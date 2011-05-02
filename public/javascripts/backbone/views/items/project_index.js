@@ -35,6 +35,9 @@ App.Views.Items.ProjectItem = Backbone.View.extend({
 	notifier.register( this );
 	this.alternativesCollection.fetch();
   },
+  addStatus : function( message ) {
+			jQuery("li.status",this.el).append("<li>"+ message+"</li>");
+  },
   alternativesReady : function() {
 	this.render();
   },
@@ -46,7 +49,8 @@ App.Views.Items.ProjectItem = Backbone.View.extend({
    jQuery(this.el).prepend("<div class = 'button red render'>Render!</div>");
    jQuery(this.el).prepend("<div class = 'button red fetch'>Fetch!</div>");
 */
-
+	if( this.alternativesCollection.length == 0 )
+		this.addStatus("no alternatives")
 
    return this;
   },
@@ -100,11 +104,11 @@ App.Views.Items.ProjectIndex = Backbone.View.extend({
 		this._rendered = true;
 		this._itemsCollectionView.el = this.el; 
 		this._itemsCollectionView.render();
-//		jQuery(this.el).prepend("<div class = 'button orange collapseAll'>Collapse all</div>");
+		
+	//	jQuery(this.el).prepend("<div class = 'button orange collapseAll'>Collapse all</div>");
 //		jQuery(this.el).prepend("<div class = 'button orange expandAll'>Expand all</div>");
 //		jQuery(this.el).prepend("<div class = 'button red newItem'>New!</div>");
 //		this.checkNewItem();
-
   },
   notify : function( broadcasted_id ) {
 /*		this.collection.each( function( i ) {	
