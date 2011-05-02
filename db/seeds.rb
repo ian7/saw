@@ -76,4 +76,4 @@ Project.all.each do |p|
 end
 
 
-#IBMImportController.load('test/ibm-data/')
+IBMImportController.load('test/ibm-data/')
