@@ -11,16 +11,26 @@ App.Controllers.Items = Backbone.Controller.extend({
 //		"/:id/addTag": "addTag", 
     },
 	initialize : function() {
-		this.items_collection = new Items;	
-		this.itemsView = new App.Views.Index({collection: this.items_collection, el: 'section.itemList'});						
+
 	},
-    
+	cleanUp : function() {
+		if( this.view ) {
+			this.view.el.innerHTML = "";
+			delete this.view;
+			this.view = null;
+		}
+	},
     show: function(id) {
-        var item = new Item({ id: id, el: 'section.itemList'});
-        item.fetch({
+		this.cleanUp();
+		
+		// id for the item 
+		this.item = new Item({ el: 'section.itemList'});
+        this.view = new App.Views.Show({ model: this.item, el: 'section.itemList'});     
+
+		this.item.id = id;
+        this.item.fetch({
             success: function(model, resp) {
 //				el = jQuery("section.itemList");
-                new App.Views.Show({ model: item, el: 'section.itemList'});
             },
             error: function() {
                 new Error({ message: 'Could not find that document.' });
@@ -31,6 +41,10 @@ App.Controllers.Items = Backbone.Controller.extend({
     },
 	  
     index: function() {
+		this.cleanUp();
+		this.items_collection = new Items;	
+		this.view = new App.Views.Index({collection: this.items_collection, el: 'section.itemList'});						
+
 		this.items_collection.fetch({
 			success: function(model, resp) {
 			}

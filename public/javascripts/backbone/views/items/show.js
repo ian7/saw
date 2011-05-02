@@ -30,16 +30,17 @@ App.Views.Show = Backbone.View.extend({
 		this.alternativesCollection = new Alternatives;
 		this.alternativesCollection.issueView = this;
 
-		this.alternativesCollection.item_url = window.location.pathname+"/"+this.model.get('id');
-		this.alternativesCollection.url = window.location.pathname+"/"+this.model.get('id')+'/alternatives';
 
 		this.alternativesCollectionView = new App.Views.Alternatives.ListDetails({ collection: this.alternativesCollection, el: this.el });
-		this.alternativesCollection.fetch();
 
-        this.render();
+		this.model.bind('change',this.render);
     },
     
     render: function() {
+		this.alternativesCollection.item_url = this.model.url();
+		this.alternativesCollection.url = this.model.url()+'/alternatives';
+
+		this.alternativesCollection.fetch();
 
 			this.el.innerHTML = JST.items_show({ item: this.model });
 			this.tags = new Tags;
@@ -66,8 +67,8 @@ App.Views.Show = Backbone.View.extend({
        	  });	               	  	
        	 });        
 		this.alternativesCollectionView.render();
-		return( this );
 
+		return( this );
 		// alternatives list
 
     },
