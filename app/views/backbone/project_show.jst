@@ -1,9 +1,46 @@
-	<span class="e6" contenteditable="true"><%= item.get('name') %></span>
+	<span><b><%= item.get('name') %></b></span>
+	
+	<% if( item.alternatives )  { %>
+		Alternatives count: <%= item.alternatives.length %>,
+		<% var totalDecisions = 0; %>
+		<% var decisions = new Object; %>
+
+		<!-- here we iterate over alternatives -->
+		<% _(item.alternatives.models).each( function( alternative ) { %>
+			<!-- that iterates over decisions inside alternative -->
+			<% if( alternative.attributes.decisions ) { %>
+				<% _(alternative.attributes.decisions).each(function( decision ) { %>
+
+					<% totalDecisions = totalDecisions + decision.count; %>
+					
+					<!-- just pre-set zero.. -->
+					<% if( ! decisions[ decision.name ] ) decisions[ decision.name ] = 0; %>
+					
+					<!-- and now count them -->
+					<% decisions[ decision.name ] = decisions[ decision.name ] + decision.count; %>
+
+				<% }); %>
+			<% } %>
+		<% }); %>
+
+		Total decisions: <%= totalDecisions %>,
+	
+		<% _( decisions ).each( function( count, decisionType ) { %>
+			<b><%= decisionType %></b>
+			<%= count %>
+		<% }); %>
+		
+		<% delete decisions; %>
+
+	<% } %>
+	
 	<% if( !item.isNew() ) { %>
+	<!--
 		<a href=#/<%= item.get('id')%>>details</a>,
-		<div style="float: right">
+			<div style="float: right">
 	    	<div class="button gray expand">Expand</div> 
 	    	<div class="button black deleteItem">Delete</div>
 		</div>
+		-->
 	<table class="alternativeList"></table>
 	<% } %>
