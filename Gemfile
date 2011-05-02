@@ -17,10 +17,10 @@ gem 'cancan', '1.4.1'
 gem 'mongrel', '1.2.0.pre2'
 gem 'juggernaut'
 gem 'jammit'
-gem 'fb_graph'
+#gem 'fb_graph'
 #gem 'thin'
 gem 'faraday', '0.6.1'
-gem 'SystemTimer'
+#gem 'SystemTimer'
 
 # Use unicorn as the web server
 # gem 'unicorn'
