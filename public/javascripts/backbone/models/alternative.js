@@ -22,7 +22,14 @@ var Alternative = Backbone.Model.extend({
       		return(base + '/' + this.id);
 		}
       }
-    }
+    },
+/********** status and metrics stuff comes here ******************/
+	decisionsTotal : function() {
+		
+	},
+	decisionsSummary : function() {
+		
+	},
 });
 
 
