@@ -4,7 +4,7 @@
 
 jQuery.fn.flash = function( color, duration )
 {
-
+	duration = 50000;
     var current = this.css( 'color' );
 
     this.animate( { color: 'rgb(' + color + ')' }, duration / 2 );
@@ -159,7 +159,7 @@ var ItemUpdatingView = Backbone.View.extend({
   notify : function( broadcasted_id ) {
 		if( this.model.get('id') == broadcasted_id ) {
 			this.alternativesCollection.fetch();
-			jQuery(this.el).effect("highlight", {}, 500);
+			jQuery(this.el).effect("highlight", {}, 50000);
 		}
   }  
 
@@ -205,6 +205,7 @@ App.Views.Index = Backbone.View.extend({
  
   render : function() {			
 		this._rendered = true;
+		this.el.innerHTML="";
 		this._itemsCollectionView.el = this.el; 
 		this._itemsCollectionView.render();
 		jQuery(this.el).prepend("<div class = 'button orange collapseAll'>Collapse all</div>");

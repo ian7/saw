@@ -79,4 +79,11 @@ table.decisionList {
 	width: 100%;
 }
 
+div.decide {
+	width: 70px;
+}
+
+div.undecide {
+	width: 70px;
+}
 

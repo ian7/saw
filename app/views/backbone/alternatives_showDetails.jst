@@ -10,11 +10,17 @@
 	    	</td>
 	    	<td class="decisions"> 
 				<% if( !( a.attributes.your_decision && a.attributes.your_decision.name ) ) { %>
-				    	Decide: <% _(a.attributes.decisions).each(function(decision) { %>
+				    	<% _(a.attributes.decisions).each(function(decision) { %>
 				    	<div class="button decide <%= decision.color.toLowerCase() %>" id="<%= decision.decision_tag_id %>"><%= decision.name %>(<%= decision.count %>)</div>
 					<% });%>
 				<% } else { %>
-						<div class="button undecide <%= a.attributes.your_decision.color.toLowerCase() %>" id="<%= a.attributes.your_decision.decision_tag_id %>">Revoke</div>
+		    		<% _(a.attributes.decisions).each(function(decision) { %>
+						<% if( decision.name == a.attributes.your_decision.name ) { %>
+		    				<div class="button undecide <%= decision.color.toLowerCase() %>" id="<%= decision.decision_tag_id %>">Revoke(<%= decision.count %>)</div>
+						<% } else { %>
+				    		<div class="button undecide gray" id="<%= decision.decision_tag_id %>"><%= decision.name %>(<%= decision.count %>)</div>
+						<% } %>
+					<% }); %>
 				<% } %>
 				<!-- here comes the insert -->
 				<table class="decisionList">
