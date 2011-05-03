@@ -19,6 +19,7 @@ var ItemUpdatingView = Backbone.View.extend({
 	"keypress .e6" : "editedItem",
 	"click .e6" : "expand",
 	"click .e6" : "selectAll",
+	"click .details" : "navigateToDetails",
   },
 
   alternativesCollection : null,
@@ -168,6 +169,9 @@ var ItemUpdatingView = Backbone.View.extend({
 		jQuery("table.alternativeList", this.el).html("<!-- nothing -->");
 		jQuery(".expand", this.el).html("Expand");	
   },
+  navigateToDetails : function () {
+		window.location.href = window.location.href+"/"+this.model.get('id');
+  },
   notify : function( broadcasted_id ) {
 		if( this.model.get('id') == broadcasted_id ) {
 			this.alternativesCollection.fetch();
@@ -218,10 +222,11 @@ App.Views.Index = Backbone.View.extend({
   render : function() {			
 		this._rendered = true;
 		this.el.innerHTML="";
-		this._itemsCollectionView.el = this.el; 
+		
+		
+		this._itemsCollectionView.el = this.el; 		
 		this._itemsCollectionView.render();
-		jQuery(this.el).prepend("<div class = 'button orange collapseAll'>Collapse all</div>");
-		jQuery(this.el).prepend("<div class = 'button orange expandAll'>Expand all</div>");
+		jQuery(this.el).prepend("<div class = 'button orange expandAll'>Expand all</div><div class = 'button orange collapseAll'>Collapse all</div>");
 //		jQuery(this.el).prepend("<div class = 'button red newItem'>New!</div>");
 		this.checkNewItem();
 

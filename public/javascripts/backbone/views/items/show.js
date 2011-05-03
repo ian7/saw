@@ -7,6 +7,7 @@
 App.Views.Show = Backbone.View.extend({
 	events: {
 		"click .addTag": "addTag", 
+		"click .toIndex" : "navigateToIndex",
 	},
     initialize: function() {
 		//this.tagCollection = new Tags;
@@ -83,6 +84,9 @@ App.Views.Show = Backbone.View.extend({
 			}
 		});
 	},
+	navigateToIndex : function() {
+		window.location.href = window.location.href.match(".*#")	
+	},
 	notify: function( broadcasted_id ) {
 		if( this.model.get('id') == broadcasted_id ){
 				this.model.fetch({
@@ -91,6 +95,7 @@ App.Views.Show = Backbone.View.extend({
 //						model.view.render();
 					},
 				});
+				this.alternativesCollection.fetch({deepRefresh: true});
 		}
 	},
 });

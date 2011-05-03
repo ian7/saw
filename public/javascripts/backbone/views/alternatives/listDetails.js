@@ -138,6 +138,7 @@ App.Views.Alternatives.ListDetails = Backbone.View.extend({
   render : function() {
 		this.rendered = true;
 		this.alternativesCollectionView.el = jQuery('table.alternativeList', this.el);
+		this.alternativesCollectionView.el.innerHTML="";
 		this.alternativesCollectionView.render();
 		this.checkNewAlternative();
   },
