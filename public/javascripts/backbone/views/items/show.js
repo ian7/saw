@@ -43,7 +43,7 @@ App.Views.Show = Backbone.View.extend({
 		this.alternativesCollection.fetch();
 
 			this.el.innerHTML = JST.items_show({ item: this.model });
-			this.tags = new Tags;
+/*			this.tags = new Tags;
 			this.tags.url = this.model.get('item_url')+'/tag/tags_list';
 			this.tags.view = this;
 			this.tags.fetch({
@@ -51,7 +51,7 @@ App.Views.Show = Backbone.View.extend({
 				  	new App.Views.Tags.List({collection: model, el: model.view.el });
 				},
 			});
-        
+ */      
 	   // this handles in-place editing
        jQuery('.edit5').each( function(i){
        	  jQuery(this).attr('contenteditable','true');
