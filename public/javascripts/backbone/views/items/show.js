@@ -96,8 +96,13 @@ App.Views.Show = Backbone.View.extend({
 //						model.view.render();
 					},
 				});
-				this.alternativesCollection.fetch({deepRefresh: true});
+		this.alternativesCollection.fetch();
+//		{deepRefresh: true}
 		}
+	},
+	refresh : function () {
+		this.model.fetch();
+		this.aternativesCollection.fetch()
 	},
 	editedAttribute : function( e ) {
 			if (e.keyCode == 13) {
