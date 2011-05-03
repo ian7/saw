@@ -4,13 +4,25 @@
 <table class="ribbon">
 <tr>
 	<td width="400px">
+		<a href="/">Projects</a>
+		<% if params[:project_id]
+			p = Project.find(params[:project_id])
+		end
+		if params[:id]
+			p = Project.find(params[:id])
+		end %>
+		<% if p %>
+			&gt;
+			<a href="/projects/<%=p.id%>/items"><%= p.name %></a>
+		<% end %>
+	</td>
+	<!--
 
-<!--
+	<td width="400px">
 		<%= link_to "Tag Cloud", {:controller=>"tag", :action=>"type_cloud"}, :class=>"header" %>
 		
 		<%if @dt != nil%>
-			&nbsp;&gt;&nbsp;	<%= link_to @dt.name, {:controller=>"tag", :action=>"cloud", :type_name=>@dt.name}, :class=>"header" %>
-								
+			&nbsp;&gt;&nbsp;	<%= link_to @dt.name, {:controller=>"tag", :action=>"cloud", :type_name=>@dt.name}, :class=>"header" %>		
 		<%end%>
 
 		<%if @tag != nil %>
@@ -33,7 +45,14 @@
 	</td>
 -->		
 	<td>
-		<a href="./items" class="items">Items</a>
+		<% if p %>
+			<a href="/projects/<%=p.id%>/items">Items</a>
+		<% end %>
+	</td>
+	<td>
+		<% if p %>
+			<a href="/projects/<%=p.id%>">Summary</a>
+		<% end %>
 	</td>
 <!-- 
 	<td>
