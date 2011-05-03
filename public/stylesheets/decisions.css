@@ -86,4 +86,9 @@ div.decide {
 div.undecide {
 	width: 70px;
 }
-
+table.decisions {
+	width: 100%;
+}
+table.decisions td.buttons {
+	width: 75px;
+}
