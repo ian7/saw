@@ -3,13 +3,13 @@
 </div>
 <table>
 <% _(item.attributes).each(function(value, key) { 
-	if (key.charAt(0) != '_' && key != "url" ) { %>
+	if (key.charAt(0) != '_' && key != "url" && key != "el" && key != "id" && key != "item_url" && key != "type") { %>
 <tr>
 <td>
 	<i><%= key %>: </i>
 </td>
 <td>
-	<span class="edit5" id="<%=key%>"><% if( value ) { %><%= value %><% } else { %>(empty)<% } %></span>
+	<div class="editable" id="<%=key%>" contenteditable="true"><% if( value ) { %><%= value %><% } else { %>(empty)<% } %></div>
 </td>
 </tr>
 

@@ -8,6 +8,7 @@ App.Views.Show = Backbone.View.extend({
 	events: {
 		"click .addTag": "addTag", 
 		"click .toIndex" : "navigateToIndex",
+		"keypress .editable" : "editedAttribute",
 	},
     initialize: function() {
 		//this.tagCollection = new Tags;
@@ -97,6 +98,25 @@ App.Views.Show = Backbone.View.extend({
 				});
 				this.alternativesCollection.fetch({deepRefresh: true});
 		}
+	},
+	editedAttribute : function( e ) {
+			if (e.keyCode == 13) {
+				var newValue = e.srcElement.innerHTML;
+
+				if(newValue == "<br>") {
+					newValue = '(empty)';
+				}
+				var changeSet = new Object;
+				
+				changeSet[e.srcElement.id] = newValue;
+				this.model.save(
+					changeSet,
+					{ success : function( model, resp)  {
+						
+					}
+				});			
+			}
+	
 	},
 });
 

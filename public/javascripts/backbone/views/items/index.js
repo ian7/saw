@@ -170,7 +170,7 @@ var ItemUpdatingView = Backbone.View.extend({
 		jQuery(".expand", this.el).html("Expand");	
   },
   navigateToDetails : function () {
-		window.location.href = window.location.href+"/"+this.model.get('id');
+		window.location.href = window.location.href+"#/"+this.model.get('id');
   },
   notify : function( broadcasted_id ) {
 		if( this.model.get('id') == broadcasted_id ) {
