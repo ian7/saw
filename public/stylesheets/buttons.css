@@ -28,7 +28,7 @@
 }
 .button:active {
 	position: relative;
-	top: 1px;
+/*	top: 1px;*/
 }
  
 .bigrounded {
@@ -71,7 +71,7 @@
 }
  
 /* gray */
-.button.gray{
+.button.gray, .button.disabled{
 	color: #e9e9e9;
 	border: solid 1px #555;
 	background: #6e6e6e;

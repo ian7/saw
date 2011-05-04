@@ -37,7 +37,7 @@
 									<% if( decision.name == a.attributes.your_decision.name ) { %>
 					    				<div class="button undecide <%= decision.color.toLowerCase() %>" id="<%= decision.decision_tag_id %>">Revoke(<%= decision.count %>)</div>
 									<% } else { %>
-							    		<div class="button undecide gray" id="<%= decision.decision_tag_id %>"><%= decision.name %>(<%= decision.count %>)</div>
+							    		<div class="button disabled" id="<%= decision.decision_tag_id %>"><%= decision.name %>(<%= decision.count %>)</div>
 									<% } %>																		
 								<% } %>							
 							</td>

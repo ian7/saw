@@ -86,6 +86,9 @@ div.decide {
 div.undecide {
 	width: 70px;
 }
+div.button.disabled {
+	width: 70px;
+}
 table.decisions {
 	width: 100%;
 }
