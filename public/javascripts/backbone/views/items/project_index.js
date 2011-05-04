@@ -29,7 +29,7 @@ App.Views.Items.ProjectItem = Backbone.View.extend({
 	this.isExpanded = false;
 
 	
-//	this.alternativesCollectionView = new App.Views.Alternatives.List({ collection: this.alternativesCollection, el: this.el });
+	this.alternativesCollectionView = new App.Views.Alternatives.ListProject({ collection: this.alternativesCollection, el: this.el });
 	_(this).bindAll('notify');
 		
 	notifier.register( this );
@@ -44,7 +44,7 @@ App.Views.Items.ProjectItem = Backbone.View.extend({
   render : function() {
 
    this.el.innerHTML = JST.project_show( {item: this.model} );
-
+   this.alternativesCollectionView.render();
 /* debug
    jQuery(this.el).prepend("<div class = 'button red render'>Render!</div>");
    jQuery(this.el).prepend("<div class = 'button red fetch'>Fetch!</div>");

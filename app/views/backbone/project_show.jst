@@ -9,17 +9,7 @@
 		<% _(item.alternatives.models).each( function( alternative ) { %>
 			<!-- that iterates over decisions inside alternative -->
 			<% if( alternative.attributes.decisions ) { %>
-				<% _(alternative.attributes.decisions).each(function( decision ) { %>
-
-					<% totalDecisions = totalDecisions + decision.count; %>
-					
-					<!-- just pre-set zero.. -->
-					<% if( ! decisions[ decision.name ] ) decisions[ decision.name ] = 0; %>
-					
-					<!-- and now count them -->
-					<% decisions[ decision.name ] = decisions[ decision.name ] + decision.count; %>
-
-				<% }); %>
+				<% totalDecisions = totalDecisions + alternative.decisionsTotal(); %>
 			<% } %>
 		<% }); %>
 
@@ -44,3 +34,5 @@
 		-->
 	<ul class="status"></ul>
 	<% } %>
+	
+	<table class="alternativeList"></table>

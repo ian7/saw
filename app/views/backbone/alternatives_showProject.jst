@@ -1,0 +1,15 @@
+	   		<td width="150px">
+				<!-- D: <%= a.decisionsTotal() %> -->
+				<% if( a.isDecided() ) { %>
+					<%= a.decision().name %>
+				<% } %>
+				<% if( a.isColliding() ) { %>
+					Colliding !
+				<% } %>
+				
+			</td>
+			<td>	   		
+	    		<!-- <b>Name:</b> -->
+	    		<span class="name"> <% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></span>
+		    </td>
+			
