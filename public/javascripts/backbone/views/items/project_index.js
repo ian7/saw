@@ -49,8 +49,9 @@ App.Views.Items.ProjectItem = Backbone.View.extend({
    jQuery(this.el).prepend("<div class = 'button red render'>Render!</div>");
    jQuery(this.el).prepend("<div class = 'button red fetch'>Fetch!</div>");
 */
-	if( this.alternativesCollection.length == 0 )
-		this.addStatus("no alternatives")
+//	if( this.alternativesCollection.length == 0 )
+//		this.addStatus("no alternatives")
+//	this.addStatus( this.model.decisionState() );
 
    return this;
   },

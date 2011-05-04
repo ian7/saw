@@ -1,7 +1,7 @@
 	<span><b><%= item.get('name') %></b></span>
 	
 	<% if( item.alternatives )  { %>
-		Alternatives count: <%= item.alternatives.length %>,
+		<%= item.alternatives.length %> alternatives,
 		<% var totalDecisions = 0; %>
 		<% var decisions = new Object; %>
 
@@ -13,14 +13,8 @@
 			<% } %>
 		<% }); %>
 
-		Total decisions: <%= totalDecisions %>,
-	
-		<% _( decisions ).each( function( count, decisionType ) { %>
-			<b><%= decisionType %></b>
-			<%= count %>
-		<% }); %>
-		
-		<% delete decisions; %>
+		<%= totalDecisions %> decisions, 
+		State: <b><%= item.decisionState() %></b>
 
 	<% } %>
 	
