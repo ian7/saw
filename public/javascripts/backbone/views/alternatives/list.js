@@ -3,15 +3,14 @@
 AlternativeUpdatingView  = Backbone.View.extend({
 	className : "decision", 
     events : {
-		"keypress .name" 			: "editedName",
-		"click .name"				: 'selectAll',
+		"keypress div.name" 		: "editedName",
+		"click div.name"			: 'selectAll',
 		"click .deleteAlternative"	: "deleteAlternative",
 		"click .unrelateAlternative": "unrelateAlternative",
 		"click .decide"				: "decide",
 		"click .undecide"			: "undecide"
     },
     initialize: function() {
-// WTF ?	    this.render = _.bind(this.render, this); 
 		_(this).bindAll('render','decide','undecide');
 	    this.model.bind('change', this.render);
 		notifier.register(this);
@@ -38,6 +37,50 @@ AlternativeUpdatingView  = Backbone.View.extend({
 		}
 	   // hell love chainging !
 	   jQuery(this.el).removeClass().addClass("decision").addClass(color.toLowerCase());
+
+
+
+
+	   if( this.model.isNew() ) {
+			(function (jQuery) {
+			   var original = jQuery.fn.val;
+			   jQuery.fn.val = function() {
+			      if (jQuery(this).is('[contenteditable]')) {
+			         return jQuery.fn.text.apply(this, arguments);
+			      };
+			      return original.apply(this, arguments);
+			   };
+			})(jQuery);
+			
+			jQuery( "div.name",this.el ).autocomplete({
+				source: function( request, response ) {
+					jQuery.ajax({
+						url: "/search/"+request.term+'?type=Alternative',
+						success: function( data ) {
+							response( jQuery.map( data, function( item ) {
+								return {
+									label: item.name,
+									value: item.name,
+									id: item._id,
+								}
+							}));
+						}
+					});
+				},
+				minLength: 2,
+				select: function( event, ui ) {
+//					alert( ui.item.id );
+					jQuery.getJSON( '/relations/relate?tip='+jQuery(this).parents("p").attr('id')+'&origin='+ui.item.id, function(data) {});
+				},
+				open: function() {
+					jQuery( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+				},
+				close: function() {
+					jQuery( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+				}
+			});
+		}
+
 		
 	   return this;
     },
@@ -68,23 +111,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 				}
 			});			
 		}
-		/*
-		
-	  	jQuery(this.el).stopTime("edit5");
-	  	jQuery(this.el).oneTime(1000,"edit5", function() {
-		//	if( lastEditedItem.model.isNew() ) {
-		//		lastEditedItem.trigger("new");
-		//	}
-			lastEditedItem.model.save(
-				{ name: jQuery(".name",this).html() },
-				{ success : function( model, resp)  {
-					model.parse( resp );
-					lastEditedItem.trigger('saved');
-					lastEditedItem = null;
-				}
-			});	
-		});
-		*/
+	
 	},
 	deleteAlternative : function(){
 		var viewObject = this;
@@ -113,7 +140,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 	notify : function( broadcasted_id ) {
 		if( this.model.id == broadcasted_id ) {
 			this.model.fetch();
-			jQuery(this.el).effect("highlight", {}, 500);	
+		//	jQuery(this.el).effect("highlight", {}, 500);	
 		}
 	},
 });

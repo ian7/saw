@@ -53,14 +53,14 @@ var ItemUpdatingView = Backbone.View.extend({
 
    this.el.innerHTML = JST.items_index( {item: this.model} );
 
-//   this.alternativesCollectionView.render();
 
+   // nice localstorage status save
    if(  localStorage.getItem( this.model.get('id')+'expanded' ) == 'true' ) {
 		this.expand();
 	}
-	
-	// finally attach it ;)
-//	this.el.innerHTML = this.tempEL.innerHTML;
+
+   jQuery(this.el).attr('id',this.model.get('id'));
+   //
 
    return this;
   },
