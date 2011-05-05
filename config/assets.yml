@@ -6,7 +6,7 @@ gzip_assets: off
 javascripts:    
   common: &common
     - public/javascripts/lib/jquery/jquery.min.js
-    - public/javascripts/lib/jquery/jquery-ui-1.8.custom.min.js
+    - public/javascripts/lib/jquery/jquery-ui-1.8.12.custom.min.js
     - public/javascripts/lib/jquery/jquery.fastconfirm.js
 # this one was originally downloaded over the juggernaut static node server...
     - public/javascripts/juggernaut.js
