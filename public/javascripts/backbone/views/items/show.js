@@ -41,7 +41,6 @@ App.Views.Show = Backbone.View.extend({
     render: function() {
 		this.alternativesCollection.item_url = this.model.url();
 		this.alternativesCollection.url = this.model.url()+'/alternatives';
-
 		this.alternativesCollection.fetch();
 
 			this.el.innerHTML = JST.items_show({ item: this.model });
@@ -55,7 +54,7 @@ App.Views.Show = Backbone.View.extend({
 			});
  */      
 	   // this handles in-place editing
-       jQuery('.edit5').each( function(i){
+/*       jQuery('.edit5').each( function(i){
        	  jQuery(this).attr('contenteditable','true');
        	  jQuery(this).keypress( function() {
        	  	jQuery(this).stopTime("edit5")
@@ -67,7 +66,11 @@ App.Views.Show = Backbone.View.extend({
 		         });       	  		
        	  	});
        	  });	               	  	
-       	 });        
+       	 });        */
+
+
+
+		this.alternativesCollectionView.model = this.model;
 		this.alternativesCollectionView.render();
 
 		return( this );

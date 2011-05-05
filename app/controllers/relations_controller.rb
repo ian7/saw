@@ -296,8 +296,15 @@ def relate
       relation_instnace.origin = origin_taggable.id
       relation_instnace.save
   	end
-  
-  redirect_to ( issue_url(tip_taggable.id) )
+  	
+  	Juggernaut.publish("/chats",params[:origin])
+  	Juggernaut.publish("/chats",params[:tip])
+    
+    
+    respond_to do |format|
+  		format.json {	render :json => {} }
+       format.html { redirect_to ( issue_url(tip_taggable.id) ) }
+    end
 end
 
 def view

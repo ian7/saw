@@ -3,7 +3,8 @@
 AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	className : "alternativeList", 
     events : {
-		"keypress .name" 			: "editedName",
+		"keypress div.name" 			: "editedName",
+		"click div.name"				: 'selectAll',
 		"click .deleteAlternative"	: "deleteAlternative",
 		"click .unrelateAlternative": "unrelateAlternative",
 		"click .decide"				: "decide",
@@ -28,6 +29,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	
 	
 	   //this.decisionListView.render();
+	   var thisModelId = this.model.get('id');
 
 	   color = "white";
 
@@ -43,22 +45,67 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 				}
 			});
 		}
+		
+		
 	   // hell love chainging !
 	   jQuery(this.el).removeClass().addClass("decision").addClass(color.toLowerCase());
+	
+	
+	   if( this.model.isNew() ) {
+			(function (jQuery) {
+			   var original = jQuery.fn.val;
+			   jQuery.fn.val = function() {
+			      if (jQuery(this).is('[contenteditable]')) {
+			         return jQuery.fn.text.apply(this, arguments);
+			      };
+			      return original.apply(this, arguments);
+			   };
+			})(jQuery);
+		
+			jQuery( "div.name",this.el ).autocomplete({
+				source: function( request, response ) {
+					jQuery.ajax({
+						url: "/search/"+request.term+'?type=Alternative',
+						success: function( data ) {
+							response( jQuery.map( data, function( item ) {
+								return {
+									label: item.name,
+									value: item.name,
+									id: item._id,
+								}
+							}));
+						}
+					});
+				},
+				minLength: 2,
+				select: function( event, ui ) {
+//					alert( ui.item.id );
+					jQuery.getJSON( '/relations/relate?tip='+jQuery('table.alternativeListDetails').attr('id')+'&origin='+ui.item.id, function(data) {});
+				},
+				open: function() {
+					jQuery( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+				},
+				close: function() {
+					jQuery( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+				}
+			});
+	}
+	
 		
 	   return this;
     },
-    // this updates single row in the table
-    update: function( item_id ){
-    		
-    },
+    selectAll : function( e ){ 
+		if( e.toElement.innerText == '(new alternative)') {
+			document.execCommand('selectAll',false,null);
+		}
+	},
 	editedName : function( e ) {
 		// nasty but works.
 	    //var lastEditedItem = this;
 
 		if (e.keyCode == 13) {
 			this.model.save(
-				{ name: jQuery(".name",this.el).html() },
+				{ name: jQuery("div.name",this.el).html() },
 				{ success : function( model, resp)  {
 					model.parse( resp );
 					model.change();
@@ -137,8 +184,10 @@ App.Views.Alternatives.ListDetails = Backbone.View.extend({
  
   render : function() {
 		this.rendered = true;
-		this.alternativesCollectionView.el = jQuery('table.alternativeList', this.el);
+		this.alternativesCollectionView.el = jQuery('table.alternativeListDetails', this.el);
 		this.alternativesCollectionView.el.innerHTML="";
+		if( this.model )
+			this.alternativesCollectionView.el.attr("id",this.model.get('id'));
 		this.alternativesCollectionView.render();
 		this.checkNewAlternative();
   },

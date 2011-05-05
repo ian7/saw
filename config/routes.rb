@@ -48,6 +48,8 @@ Saw::Application.routes.draw do
   get "relations/view"
   get "relations/list"
 
+  match "/search/:keyword" => "search#search"
+
   resources :dynamic_types
 
   resources :dynamic_type_attributes

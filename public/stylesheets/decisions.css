@@ -45,18 +45,21 @@ p.itemList {
 	padding: 0.5em;
 }
 
-table.alternativeList {
+table.alternativeList, 
+table.alternativeListDetails{
 	width: 100%;
 	padding-left: 3em;
 }
 
-table.alternativeList td.decisions{
+table.alternativeList td.decisions,
+table.alternativeListDetails td.decisions{
 	width: 25%;
 	text-align: center;
 	min-width: 320px;
 }
 
-table.alternativeList td.delete{
+table.alternativeList td.delete,
+table.alternativeListDetails td.delete{
 	width: 4%;
 }
 
@@ -98,4 +101,14 @@ table.decisions td.buttons {
 span.decisionState {
 	font-weight: bold;
 	color: red;
+}
+
+table.alternativeListDetails {
+	width: 100%;
+	padding-left: 2em;
+}
+
+table.alternativeListDetails td.name {
+	vertical-align: top;
+	padding: 1em;
 }
