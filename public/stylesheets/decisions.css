@@ -95,3 +95,7 @@ table.decisions {
 table.decisions td.buttons {
 	width: 75px;
 }
+span.decisionState {
+	font-weight: bold;
+	color: red;
+}
