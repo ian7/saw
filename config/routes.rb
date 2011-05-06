@@ -1,5 +1,7 @@
 Saw::Application.routes.draw do
 
+  resources :feedbacks
+
   get "users/new"
   get "users/edit"
 
