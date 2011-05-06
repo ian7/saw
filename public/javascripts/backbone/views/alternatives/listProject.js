@@ -54,7 +54,7 @@ App.Views.Alternatives.ListProject = Backbone.View.extend({
       childViewClassName   : 'decision',
     });
 	this.render();
-	notifier.register(this);
+//	notifier.register(this);
 
 //	this.collection.bind('refresh', this.checkNewAlternative);
   },
@@ -66,13 +66,6 @@ App.Views.Alternatives.ListProject = Backbone.View.extend({
 		this.alternativesCollectionView.render();
   },
   notify : function( broadcasted_id ) {
-		this.collection.each( function( i ) {	
-/*			if( i.get('id') == broadcasted_id ) {
-				i.fetch();
-				i.change();
-			}
-			*/
-		});
   },
 });
 
