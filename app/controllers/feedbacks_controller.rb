@@ -26,7 +26,7 @@ class FeedbacksController < ApplicationController
       f.author = params[:author]
       f.save
       
-      FeedbackMailer.report().deliver
+#      FeedbackMailer.report().deliver
       
       respond_to do |format|
         format.json  { render :json => f }
