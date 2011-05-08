@@ -26,7 +26,7 @@ App.Helpers.ItemNavigation = {
 		}
 	},
 	navigateToIndex : function() {
-		window.location.href = window.location.href.match(".*#")	
+		window.location.href = window.location.href.match(".*#");
 	},
 	navigateToDetails : function() {
 		window.location.href = window.location.href.match(".*#")+'/'+this.model.id;
@@ -37,4 +37,5 @@ App.Helpers.ItemNavigation = {
 	navigateToAlternatives : function(){
 		window.location.href = window.location.href.match(".*#")+'/'+this.model.id+'/alternatives';			
 	},
-}
+};
+
