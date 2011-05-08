@@ -7,13 +7,15 @@
 App.Views.Show = Backbone.View.extend({
 	events: {
 		"click .addTag": "addTag", 
-		"click .toIndex" : "navigateToIndex",
 		"keypress .editable" : "editedAttribute",
 	},
     initialize: function() {
 		//this.tagCollection = new Tags;
-	_(this).bindAll('render');
-			notifier.register(this);
+		_(this).bindAll('render');
+		notifier.register(this);
+		
+		// load and render navigation helper
+		_.extend( this, App.Helpers.ItemNavigation );
 
       /* let's forget about that for a moment
   		_.extend( this, Backbone.Events );
@@ -33,17 +35,19 @@ App.Views.Show = Backbone.View.extend({
 		this.alternativesCollection.issueView = this;
 
 
-		this.alternativesCollectionView = new App.Views.Alternatives.ListDetails({ collection: this.alternativesCollection, el: this.el });
+//		this.alternativesCollectionView = new App.Views.Alternatives.ListDetails({ collection: this.alternativesCollection, el: this.el });
 
 		this.model.bind('change',this.render);
     },
     
     render: function() {
-		this.alternativesCollection.item_url = this.model.url();
-		this.alternativesCollection.url = this.model.url()+'/alternatives';
-		this.alternativesCollection.fetch();
+		this.renderNavigation();
 
-			this.el.innerHTML = JST.items_show({ item: this.model });
+/*		this.alternativesCollection.item_url = this.model.url();
+		this.alternativesCollection.url = this.model.url()+'/alternatives';
+		this.alternativesCollection.fetch();*/
+
+			jQuery(this.el).append( JST.items_show({ item: this.model }));
 /*			this.tags = new Tags;
 			this.tags.url = this.model.get('item_url')+'/tag/tags_list';
 			this.tags.view = this;
@@ -54,25 +58,22 @@ App.Views.Show = Backbone.View.extend({
 			});
  */      
 	   // this handles in-place editing
-/*       jQuery('.edit5').each( function(i){
-       	  jQuery(this).attr('contenteditable','true');
-       	  jQuery(this).keypress( function() {
-       	  	jQuery(this).stopTime("edit5")
-       	  	jQuery(this).oneTime(1000,"edit5", function() {
-		         jQuery.ajax({
-		         	type: 'PUT',
-		         	url: '/items/'+item_id,
-		         	data: jQuery(this).attr('id')+'='+jQuery(this).html()   	 
-		         });       	  		
-       	  	});
-       	  });	               	  	
-       	 });        */
 
+//		this.alternativesCollectionView.model = this.model;
+//		this.alternativesCollectionView.render();
+		
+		
+		// tabsy
+	/*
+		postRenderInit();
+	
+		
+		
+		
+		init(this.model.id);
 
-
-		this.alternativesCollectionView.model = this.model;
-		this.alternativesCollectionView.render();
-
+		 startHeatMap();
+*/
 		return( this );
 		// alternatives list
 
@@ -87,9 +88,6 @@ App.Views.Show = Backbone.View.extend({
 				new App.Views.Tags.AddTag({ collection: model, el: model.view.el })
 			}
 		});
-	},
-	navigateToIndex : function() {
-		window.location.href = window.location.href.match(".*#")	
 	},
 	notify: function( broadcasted_id ) {
 		if( this.model.get('id') == broadcasted_id ){

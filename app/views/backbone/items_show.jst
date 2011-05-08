@@ -1,30 +1,15 @@
-<div style="float: right">
-	<div class="button orange toIndex">Index</div>
-</div>
-<table>
-<% _(item.attributes).each(function(value, key) { 
-	if (key.charAt(0) != '_' && key != "url" && key != "el" && key != "id" && key != "item_url" && key != "type") { %>
-<tr>
-<td>
-	<i><%= key %>: </i>
-</td>
-<td>
-	<div class="editable" id="<%=key%>" contenteditable="true"><% if( value ) { %><%= value %><% } else { %>(empty)<% } %></div>
-</td>
-</tr>
+	<table>
+		<% _(item.attributes).each(function(value, key) { 
+			if (key.charAt(0) != '_' && key != "url" && key != "el" && key != "id" && key != "item_url" && key != "type") { %>
+		<tr>
+		<td>
+			<i><%= key %>: </i>
+		</td>
+		<td>
+			<div class="editable" id="<%=key%>" contenteditable="true"><% if( value ) { %><%= value %><% } else { %>(empty)<% } %></div>
+		</td>
+		</tr>
 
-<% }; 
-});%>
-</table>
-
-<!-- <hr/><div class="button gray addTag">Add Tag</div> -->
-
-<table class="tagList"/>
-
-<table class="alternativeListDetails"></table>
-
-
-
-	<style>
-	.ui-autocomplete-loading { background: white url('/images/ui-anim_basic_16x16.gif') right center no-repeat; }
-	</style>
+		<% }; 
+		});%>
+	</table>

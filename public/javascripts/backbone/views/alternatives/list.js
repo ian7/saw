@@ -160,7 +160,7 @@ App.Views.Alternatives.List = Backbone.View.extend({
 	this.render();
 	notifier.register(this);
 	_(this).bindAll('newAlternative','removeNewAlternative','checkNewAlternative');
-
+	_.extend( this, App.Helpers.ItemNavigation );
 	this.collection.bind('saved', this.checkNewAlternative);
 	this.collection.bind('refresh', this.checkNewAlternative);
   },

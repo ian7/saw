@@ -17,6 +17,17 @@ javascripts:
     - public/javascripts/backbone/notifier.js
     - public/javascripts/lib/**/*.js
     - public/javascripts/application.js
+# visualization stuff
+    - public/javascripts/yahoo-dom-event.js
+    - public/javascripts/helpers.js
+    - public/javascripts/public_smo_scripts.js
+    - public/javascripts/jit.js
+    - public/javascripts/jit-yc.js
+    - public/javascripts/balloon.js
+    - public/javascripts/balloon.config.js    
+    - public/javascripts/box.js
+    - public/javascripts/forcedirected.js
+    - public/javascripts/interpolation.js
 
   backbone: &backbone
     - public/javascripts/backbone/models/**/*.js        
@@ -43,6 +54,8 @@ stylesheets:
     - public/stylesheets/decisions.css
     - public/stylesheets/jquery.fastconfirm.css 
     - public/stylesheets/jquery-ui-1.8.12.custom.css
+# visualization stuff
+    - public/stylesheets/infovis.css
   workspace:
   empty:
 #    - public/stylesheets/pages/empty.css

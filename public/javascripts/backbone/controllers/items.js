@@ -6,12 +6,15 @@ App.Controllers.Items = Backbone.Controller.extend({
     	//new Regexp('^([^\/]*)/.*$'): 'show',
     	//new Regexp('^[^\/]*/([^\/]*)\/.*$': 'show',
         "/:id":            "show",
+        "/:id/show":            "show",
+        "/:id/alternatives":            "alternatives",
+        "/:id/visualization":            "visualization",
         "":                         "index",
         "new":                      "newDoc",
 //		"/:id/addTag": "addTag", 
     },
 	initialize : function() {
-
+		this.el = jQuery('section.itemList');
 	},
 	cleanUp : function() {
 		if( this.view ) {
@@ -19,6 +22,36 @@ App.Controllers.Items = Backbone.Controller.extend({
 			delete this.view;
 			this.view = null;
 		}
+	},
+	visualization: function( id ){
+		this.cleanUp();
+
+		this.item = new Item({ el: 'section.itemList'});
+		this.item.id = id;
+		this.item.fetch();
+
+		this.view = new App.Views.Items.Visualization({ model: this.item, id: id, el: 'section.itemList' });
+		this.view.render();
+	},
+	alternatives: function( id ) {
+
+		this.cleanUp();
+		this.el.html("<table class='alternativeListDetails'></table>");
+
+		el = jQuery('section.itemList');
+		this.item = new Item({ el: 'section.itemList'});
+		this.item.id = id;
+		this.item.fetch();
+		this.collection = new Alternatives;
+		this.collection.url = this.item.url() + '/alternatives';
+		this.collection.item_url = this.item.url();
+
+		
+		this.view = new App.Views.Alternatives.ListDetails( {collection: this.collection, el: 'section.itemList' });
+		this.view.model = this.item;
+		
+		this.collection.fetch();
+		this.view.render();
 	},
     show: function(id) {
 		this.cleanUp();

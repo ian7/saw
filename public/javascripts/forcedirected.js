@@ -12,6 +12,7 @@ removed_elements['Issue'] = [];
 removed_elements['Alternative'] = [];
 removed_elements['Tag'] = [];
 var toPaint = [];
+var issueID = 0;
 
 (function() {
   var ua = navigator.userAgent,
@@ -44,6 +45,7 @@ var Log = {
  */
 function init(nodeid){
   thisID = nodeid;
+  issueID = nodeid;
   var json;
    
 
@@ -54,183 +56,190 @@ function init(nodeid){
       changecss('.ui-tabs-hide', 'display', 'none !important');
 
   checkAll();
- 
+  InitTabs();
 }
 
 var visLoaded = false;
 
-jQuery( "#tabs" ).bind( "tabsselect", function(event, ui) {
+function InitTabs() {
+	jQuery( "#tabs" ).bind( "tabsselect", function(event, ui) {
   
-  // if that's second tab, then calculate visualization
-  if( ui.index == 1 )
-  {
-  
-  // if that's n-th call... just ignore
-  if( visLoaded == true ) {
-    return;
-  }
-  
-  
-  // if that's first call, then mark that we went through that already.
-  if( visLoaded == false ) {
-   visLoaded = true;
-   }
+	  // if that's third tab, then calculate visualization
+	  if( ui.index == 2 )
+	  {
+		renderGraph();
+	  }
+	});
+}
 
-  // logging done manualy..
-    elem = document.getElementById('log');
-    elem.innerHTML = "loading...";    
-    elem.style.left = (500 - elem.offsetWidth / 2) + 'px';
+function renderGraph() {
+	  // if that's n-th call... just ignore
+	  if( visLoaded == true ) {
+	    return;
+	  }
+  
+  
+	  // if that's first call, then mark that we went through that already.
+	  if( visLoaded == false ) {
+	   visLoaded = true;
+	   }
+
+	  // logging done manualy..
+	    elem = document.getElementById('log');
+	    elem.innerHTML = "loading...";    
+	    elem.style.left = (500 - elem.offsetWidth / 2) + 'px';
 
 
-  jQuery.getJSON("../relations/graph?id="+issueID , function(data){
+	  jQuery.getJSON("/relations/graph?id="+issueID , function(data){
     
     
-    jsons.push(data);
-    var json = data;
+	    jsons.push(data);
+	    var json = data;
     
-    var fd = new $jit.ForceDirected({
-    //id of the visualization container
-    injectInto: 'infovis',
-    //Enable zooming and panning
-    //with scrolling and DnD
-    Navigation: {
-      enable: true,
-      //Enable panning events only if we're dragging the empty
-      //canvas (and not a node).
-      panning: 'avoid nodes',
-      zooming: 10 //zoom speed. higher is more sensible
-    },
-    // Change node and edge styles such as
-    // color and width.
-    // These properties are also set per node
-    // with dollar prefixed data-properties in the
-    // JSON structure.
-    Node: {
-      overridable: true,
-      dim: 0.1
-    },
-    Edge: {
-      overridable: true,
-      color: '#23A4FF',
-      lineWidth: 0.4
-    },
-    // Add node events
-    Events: {
-      enable: true,
-      type: 'auto',
-      //Change cursor style when hovering a node
-      onMouseEnter: function() {
-        fd.canvas.getElement().style.cursor = 'move';
-      },
-      onMouseLeave: function() {
-        fd.canvas.getElement().style.cursor = '';
-      },
-      //Update node positions when dragged
-      onDragMove: function(node, eventInfo, e) {
-        var pos = eventInfo.getPos();
-        node.pos.setc(pos.x, pos.y);
-        fd.plot();
-      },
-      onTouchEnd: function(node, eventInfo, e){
-        alert("drag ended!");
-      },
-      //Implement the same handler for touchscreens
-      onTouchMove: function(node, eventInfo, e) {
-        $jit.util.event.stop(e); //stop default touchmove event
-        this.onDragMove(node, eventInfo, e);
-      },
+	    var fd = new $jit.ForceDirected({
+	    //id of the visualization container
+	    injectInto: 'infovis',
+	    //Enable zooming and panning
+	    //with scrolling and DnD
+	    Navigation: {
+	      enable: true,
+	      //Enable panning events only if we're dragging the empty
+	      //canvas (and not a node).
+	      panning: 'avoid nodes',
+	      zooming: 10 //zoom speed. higher is more sensible
+	    },
+	    // Change node and edge styles such as
+	    // color and width.
+	    // These properties are also set per node
+	    // with dollar prefixed data-properties in the
+	    // JSON structure.
+	    Node: {
+	      overridable: true,
+	      dim: 0.1
+	    },
+	    Edge: {
+	      overridable: true,
+	      color: '#23A4FF',
+	      lineWidth: 0.4
+	    },
+	    // Add node events
+	    Events: {
+	      enable: true,
+	      type: 'auto',
+	      //Change cursor style when hovering a node
+	      onMouseEnter: function() {
+	        fd.canvas.getElement().style.cursor = 'move';
+	      },
+	      onMouseLeave: function() {
+	        fd.canvas.getElement().style.cursor = '';
+	      },
+	      //Update node positions when dragged
+	      onDragMove: function(node, eventInfo, e) {
+	        var pos = eventInfo.getPos();
+	        node.pos.setc(pos.x, pos.y);
+	        fd.plot();
+	      },
+	      onTouchEnd: function(node, eventInfo, e){
+	        alert("drag ended!");
+	      },
+	      //Implement the same handler for touchscreens
+	      onTouchMove: function(node, eventInfo, e) {
+	        $jit.util.event.stop(e); //stop default touchmove event
+	        this.onDragMove(node, eventInfo, e);
+	      },
       
-      onMouseWheel: function(delta, e){
-        timerId = clearTimeout(timerId); 
-        timerId = setTimeout(onMouseWheelCallback, 1500); 
-      }
+	      onMouseWheel: function(delta, e){
+	        timerId = clearTimeout(timerId); 
+	        timerId = setTimeout(onMouseWheelCallback, 1500); 
+	      }
       
-    },
-    //Number of iterations for the FD algorithm
-    iterations: 200,
-    //Edge length
-    levelDistance: 130,
-    // This method is only triggered
-    // on label creation and only for DOM labels (not native canvas ones).
-    onCreateLabel: function(domElement, node){
-      //Icons instead of circles
-      if (node.data.type === "Issue") {
-        //alert(node.id);
-        domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\">"+
-        "<img src='../images/issue_cloud.png' onmousedown='if (event.preventDefault) event.preventDefault()'></img></span>";
-      }
-      else 
-        if (node.data.type === "Alternative") {
-          domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\">"+
-          "<img src='../images/alternative_cloud.png' onmousedown='if (event.preventDefault) event.preventDefault()'></img></span>";
-        }
-        else {
-          //node.id === 69 ? alert("nodeid = 69")
-          domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\">"+
-          "<img src='../images/tag.png' onmousedown='if (event.preventDefault) event.preventDefault()'></img></span>";
-        }
+	    },
+	    //Number of iterations for the FD algorithm
+	    iterations: 200,
+	    //Edge length
+	    levelDistance: 130,
+	    // This method is only triggered
+	    // on label creation and only for DOM labels (not native canvas ones).
+	    onCreateLabel: function(domElement, node){
+	      //Icons instead of circles
+	      if (node.data.type === "Issue") {
+	        //alert(node.id);
+	        domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\">"+
+	        "<img src='/images/issue_cloud.png' onmousedown='if (event.preventDefault) event.preventDefault()'></img></span>";
+	      }
+	      else 
+	        if (node.data.type === "Alternative") {
+	          domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\">"+
+	          "<img src='/images/alternative_cloud.png' onmousedown='if (event.preventDefault) event.preventDefault()'></img></span>";
+	        }
+	        else {
+	          //node.id === 69 ? alert("nodeid = 69")
+	          domElement.innerHTML = "<span onmouseover=\"fadeBox.showTooltip(event,'" + node.name + "')\">"+
+	          "<img src='/images/tag.png' onmousedown='if (event.preventDefault) event.preventDefault()'></img></span>";
+	        }
         
-      //Table of information about the node
-      domElement.onclick = function(){
-        fade('infonode');
-        //document.getElementById('infonode').style.opacity = 0;
-        var path = '../taggables/'+node.id;
-        setTimeout("getHTML('../taggables/'+"+node.id+")", TimeToFade);
-      }
+	      //Table of information about the node
+	      domElement.onclick = function(){
+	        fade('infonode');
+	        //document.getElementById('infonode').style.opacity = 0;
+	        var path = '/taggables/'+node.id;
+	        setTimeout("getHTML('/taggables/'+"+node.id+")", TimeToFade);
+	      }
       
-      //Expand the node
-      domElement.ondblclick = function(){
-        jQuery.getJSON("../relations/graph?id=" + node.id, function(data){
-          fd.op.sum(data, {
-            type: 'fade:con',  
-            duration: 500  
-          });
-          jsons.push(data);
-        });
-      }
-    },
-    // Change node styles when DOM labels are placed
-    // or moved.
-    onPlaceLabel: function(domElement, node){
-      var style = domElement.style;
-      var left = parseInt(style.left);
-      var top = parseInt(style.top);
-      var w = domElement.offsetWidth;
-      style.left = (left - w / 2 - 0) + 'px';
-      style.top = (top + 10 - 23) + 'px';
-      style.display = '';
-    }
-  });
-  //Reduce size of the canvas
-  //document.getElementById('infovis-canvaswidget').style.width = '800px';
-  // load JSON data.
+	      //Expand the node
+	      domElement.ondblclick = function(){
+	        jQuery.getJSON("/relations/graph?id=" + node.id, function(data){
+	          fd.op.sum(data, {
+	            type: 'fade:con',  
+	            duration: 500  
+	          });
+	          jsons.push(data);
+	        });
+	      }
+	    },
+	    // Change node styles when DOM labels are placed
+	    // or moved.
+	    onPlaceLabel: function(domElement, node){
+	      var style = domElement.style;
+	      var left = parseInt(style.left);
+	      var top = parseInt(style.top);
+	      var w = domElement.offsetWidth;
+	      style.left = (left - w / 2 - 0) + 'px';
+	      style.top = (top + 10 - 23) + 'px';
+	      style.display = '';
+	    }
+	  });
+	  //Reduce size of the canvas
+	  //document.getElementById('infovis-canvaswidget').style.width = '800px';
+	  // load JSON data.
 
 
-   fd.loadJSON(json);
-  // compute positions incrementally and animate.
-  fd.computeIncremental({
-    iter: 10,
-    property: 'end',
-    onStep: function(perc){
-      Log.write(perc + '% loaded...');
-    },
-    onComplete: function(){
-      Log.write('');
-      fd.animate({
-        modes: ['linear'],
-        transition: $jit.Trans.Elastic.easeOut,
-        duration: 10
-      });
-      overgraph = fd;
+	   fd.loadJSON(json);
+	  // compute positions incrementally and animate.
+	  fd.computeIncremental({
+	    iter: 10,
+	    property: 'end',
+	    onStep: function(perc){
+	      Log.write(perc + '% loaded...');
+	    },
+	    onComplete: function(){
+	      Log.write('');
+	      fd.animate({
+	        modes: ['linear'],
+	        transition: $jit.Trans.Elastic.easeOut,
+	        duration: 10
+	      });
+	      overgraph = fd;
       
-      //Change css of the elements for the tabs to work
-  //    changecss('.ui-tabs', 'display', 'position: relative; padding: .2em; zoom: 1; none !important');
-  //  changecss('.ui-tabs-hide', 'display', 'none !important');
-    }
-  });
-  });    
-  }
-});
+	      //Change css of the elements for the tabs to work
+	  //    changecss('.ui-tabs', 'display', 'position: relative; padding: .2em; zoom: 1; none !important');
+	  //  changecss('.ui-tabs-hide', 'display', 'none !important');
+	    }
+	  });
+	 });
+	}    
+	  
+	
 
 
 /*
@@ -410,7 +419,8 @@ function  animateFade(lastTick, eid){
  * Slider Stuff
  */
  
- jQuery(document).ready(function() {
+// jQuery(document).ready(function() {
+function InitUI() {
     jQuery("#slider-delta").slider();
     jQuery("#slider-beta").slider();
     
@@ -443,13 +453,13 @@ function  animateFade(lastTick, eid){
           createMap(lastMetric, lastColor, true);
       }
     });
-  });
+  }
   
    /**
   * Function to let the user choose the degree on which he wants to visualize the graph.
   */
  function degreeChooser(){
-  var url = "../relations/graph?id=" + thisID + "&degree=" + (document.chooser.multipleDegree.selectedIndex + 1);
+  var url = "/relations/graph?id=" + thisID + "&degree=" + (document.chooser.multipleDegree.selectedIndex + 1);
   //alert(document.chooser.multipleDegree.selectedIndex);
   jQuery.getJSON(url, function(data){
       overgraph.loadJSON(data);

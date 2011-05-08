@@ -174,20 +174,25 @@ App.Views.Alternatives.ListDetails = Backbone.View.extend({
       childViewConstructor : AlternativeDetailsUpdatingView,
       childViewTagName     : 'tr'
     });
-	this.render();
+//	this.render();
 	notifier.register(this);
-	_(this).bindAll('newAlternative','removeNewAlternative','checkNewAlternative');
+	_(this).bindAll('render','newAlternative','removeNewAlternative','checkNewAlternative');
 
 	this.collection.bind('saved', this.checkNewAlternative);
 	this.collection.bind('refresh', this.checkNewAlternative);
+	// load and render navigation helper
+	_.extend( this, App.Helpers.ItemNavigation );
+
   },
  
   render : function() {
 		this.rendered = true;
+		this.renderNavigation();
+		
 		this.alternativesCollectionView.el = jQuery('table.alternativeListDetails', this.el);
-		this.alternativesCollectionView.el.innerHTML="";
+		//this.alternativesCollectionView.el.innerHTML="";
 		if( this.model )
-			this.alternativesCollectionView.el.attr("id",this.model.get('id'));
+			this.alternativesCollectionView.el.attr("id",this.model.id);
 		this.alternativesCollectionView.render();
 		this.checkNewAlternative();
   },

@@ -2,46 +2,56 @@
  * @author Masiar Babazadeh
  */
 
- var issues = [];
- var LUT = [];
- var squareTable = [];
- var generalCanvasHeight = parseInt(document.getElementById('newCanvas').getAttribute("height"));
- var generalCanvasWidth = parseInt(document.getElementById('newCanvas').getAttribute("width"));
- var greatestDistance = Math.round(Math.sqrt(generalCanvasWidth*generalCanvasWidth + generalCanvasHeight*generalCanvasHeight));
- var position = findPos(document.getElementById('infovis'));
- var imageArray = [];
- var colorTable = [];
- var firstTime = true;
- var gaussParameter = -0.001;
- var colorValue;
-  var imgd;
-  var context;
-  var deltaX;
-  var deltaY;
-  var squaredValue;
-  var distance;
-  var flag;
-  var end;
-  var start;
-  var thisNode;
-  var issueValue;
-  var result;
-  var pixel;
-  var normSum;
-  var finalResult;
-  var denominator = 1;
-  var issuesId = [];
-  var issuesPosition = [];
-  var deltaValue = 4;
-  var beta = deltaValue / 2;
-  var lastMetric, lastColor;
-  var metricToColors = {
-    'red': undefined,
-    'green': undefined,
-    'blue': undefined
-  }
- 
- startHeatMap();
+
+	var issues = [];
+	 var LUT = [];
+	 var squareTable = [];
+	 var generalCanvasHeight; //= parseInt(document.getElementById('newCanvas').getAttribute("height"));
+	 var generalCanvasWidth; //= parseInt(document.getElementById('newCanvas').getAttribute("width"));
+	 var greatestDistance; //= Math.round(Math.sqrt(generalCanvasWidth*generalCanvasWidth + generalCanvasHeight*generalCanvasHeight));
+	 var position;  //= findPos(document.getElementById('infovis'));
+	 var imageArray = [];
+	 var colorTable = [];
+	 var firstTime = true;
+	 var gaussParameter = -0.001;
+	 var colorValue;
+	  var imgd;
+	  var context;
+	  var deltaX;
+	  var deltaY;
+	  var squaredValue;
+	  var distance;
+	  var flag;
+	  var end;
+	  var start;
+	  var thisNode;
+	  var issueValue;
+	  var result;
+	  var pixel;
+	  var normSum;
+	  var finalResult;
+	  var denominator = 1;
+	  var issuesId = [];
+	  var issuesPosition = [];
+	  var deltaValue = 4;
+	  var beta = deltaValue / 2;
+	  var lastMetric, lastColor;
+	  var metricToColors = {
+	    'red': undefined,
+	    'green': undefined,
+	    'blue': undefined
+	  }
+
+function postRenderInit() {
+ 	 /******************************************************************/
+	 generalCanvasHeight = parseInt(document.getElementById('newCanvas').getAttribute("height"));
+	 generalCanvasWidth = parseInt(document.getElementById('newCanvas').getAttribute("width"));
+	 greatestDistance = Math.round(Math.sqrt(generalCanvasWidth*generalCanvasWidth + generalCanvasHeight*generalCanvasHeight));
+	 position = findPos(document.getElementById('infovis'));
+	 InitUI();
+	 /******************************************************************/
+
+}
  
  /**
  * Function to start all the basic functions for the heatmap and fills the basic arrays used to compute it.
@@ -149,7 +159,7 @@ function createMap(metric, color, slider){
   lastColor = color;
   metricToColors[color] = metric;
   
-  if(metric === "nothing"){
+  if( !metric || metric === "nothing"){
     drawMapNothing(color);
   }
   else{
@@ -166,7 +176,7 @@ function createMap(metric, color, slider){
       issuesPosition[indexPos] = findPos(el);
       indexPos++;
   }
-  jQuery.getJSON("../metrics/" + metric + "?nodes=["+issuesId+"]", function(data) {
+  jQuery.getJSON("/metrics/" + metric + "?nodes=["+issuesId+"]", function(data) {
    for(var i = 0; i < issuesId.length; i++){
      addNodeValue(issuesId[i], data[issuesId[i]], issuesPosition[i]);
   }

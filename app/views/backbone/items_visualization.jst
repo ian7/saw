@@ -1,0 +1,44 @@
+
+<div id="log"></div>
+
+
+<div id="metricsPicker"></div>
+<div id="container">
+
+  <div id="checkboxes">
+  <form name="check">
+    <input type="checkbox" name="issue" value="no" onClick="controller('issues')"> <font color="black"> Show Issues </font><br>
+    <input type="checkbox" name="alternative" value="no" onClick="controller('alternatives')"> <font color="black">Show Alternatives </font> <br>
+    <input type="checkbox" name="tag" value="no" onClick="controller('tags')"> <font color="black">Show Tags </font> <br>
+  </form>
+  </div>
+<br>
+<div id="infovis" class="show">
+  <div class="infonode" id="infonode"></div>
+	<canvas id="newCanvas" width="1184" height="600" style="position: absolute; top: 0pt; left: 0pt; width: 1184px; height: 600px;"></canvas>
+</div>
+
+<a href="#" onClick="popup();">Fullscreen</a><br>
+<!-- Combobox for multiple degree tree -->
+
+<form name="chooser">
+<select name="multipleDegree" onchange="degreeChooser()">
+
+        <option value="1">Degree 1</option>
+
+        <option value="2">Degree 2</option>
+        
+        <option value="3">Degree 3</option>
+        
+        <option value="4">Degree 4</option>
+
+</select>
+</form>
+Delta Value = <span id="deltaValue"></span><div id="slider-delta"></div><br>
+Beta Value = <span id="betaValue"></span><div id="slider-beta"></div><br>
+
+Gauss parameter: <form name="gauss"><textarea name="gaussValue" cols="5" rows="1"> -0.001</textarea><input type="button" onclick="gaussParameterHandler()" value="Change"></form>
+
+<input type="button" onclick="resetView()" value="Reset The View"> <input type="button" onclick="saveTree()" value="Save Tree"><br>
+<input type="button" onclick="loadTree()" value="Load Previously Saved Tree"><br>
+<input type="button" onclick="createMap()" value="Refresh Map">

@@ -22,8 +22,8 @@ class MetricsController < ApplicationController
       retval = {}
       
       nodes_array.each do |node|
-        
-        if Taggable.exists? node
+        puts "haha: " + node
+        if Taggable.find node
           #t = Taggable.find node
           retval[node] = yield node   
         end
