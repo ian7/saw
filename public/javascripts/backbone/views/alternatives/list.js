@@ -133,9 +133,11 @@ AlternativeUpdatingView  = Backbone.View.extend({
 	decide : function (element) {
 		//alert(element.target.id);
 		jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id, function(data) {});
+		jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
 	},
 	undecide : function(element) {
 		jQuery.getJSON( this.model.get('relation_url') + '/tag/untag?from_taggable_id='+element.target.id, function(data) {});		
+		jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
 	},
 	notify : function( broadcasted_id ) {
 		if( this.model.id == broadcasted_id ) {

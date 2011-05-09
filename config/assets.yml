@@ -9,6 +9,7 @@ javascripts:
     - public/javascripts/lib/jquery/jquery-ui-1.8.12.custom.min.js
     - public/javascripts/lib/jquery/jquery.fastconfirm.js
     - public/javascripts/lib/jquery/jquery.tabSlideOut.v1.3.js
+    - public/javascripts/lib/jquery/jquery.blockUI.js
 # this one was originally downloaded over the juggernaut static node server...
     - public/javascripts/juggernaut.js
     - public/javascripts/backbone/underscore.js

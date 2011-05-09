@@ -150,9 +150,11 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	decide : function (element) {
 		//alert(element.target.id);
 		jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id, function(data) {});
+		jQuery("table.decisions", this.el).block({ message: null });
 	},
 	undecide : function(element) {
 		jQuery.getJSON( this.model.get('relation_url') + '/tag/untag?from_taggable_id='+element.target.id, function(data) {});		
+		jQuery("table.decisions", this.el).block({ message: null });
 	},
 	notify : function( broadcasted_id ) {
 		if( this.model.id == broadcasted_id ) {
