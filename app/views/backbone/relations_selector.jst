@@ -1,0 +1,11 @@
+<%= relationCounts["xxx"] %>
+<% _(relationTypes).each( function( relationScope, relationType ) { %>
+	<div class="button rosy switchView" id="<%= relationType %>">
+		<%= relationType %> 
+		<% if( relationCounts[relationType] ) { %>
+			(<%= relationCounts[relationType] %>)
+		<% } else { %>
+			(0)
+		<% } %>
+	</div>
+<% },this); %><ul class="relations"></ul>

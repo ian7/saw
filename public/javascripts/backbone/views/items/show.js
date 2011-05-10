@@ -38,6 +38,10 @@ App.Views.Show = Backbone.View.extend({
 //		this.alternativesCollectionView = new App.Views.Alternatives.ListDetails({ collection: this.alternativesCollection, el: this.el });
 
 		this.model.bind('change',this.render);
+
+		this.tags = new Tags;
+		this.tags.view = this;
+	  	this.tagsView = new App.Views.Tags.List({collection: this.tags, el: this.el });
     },
     
     render: function() {
@@ -48,34 +52,12 @@ App.Views.Show = Backbone.View.extend({
 		this.alternativesCollection.fetch();*/
 
 			jQuery(this.el).append( JST.items_show({ item: this.model }));
-/*			this.tags = new Tags;
-			this.tags.url = this.model.get('item_url')+'/tag/tags_list';
-			this.tags.view = this;
-			this.tags.fetch({
-				success: function(model,resp) {
-				  	new App.Views.Tags.List({collection: model, el: model.view.el });
-				},
-			});
- */      
-	   // this handles in-place editing
 
-//		this.alternativesCollectionView.model = this.model;
-//		this.alternativesCollectionView.render();
+		this.tags.url = this.model.url()+'/tag/tags_list';
+		this.tags.fetch();
+		this.tagsView.render();
 		
-		
-		// tabsy
-	/*
-		postRenderInit();
-	
-		
-		
-		
-		init(this.model.id);
-
-		 startHeatMap();
-*/
 		return( this );
-		// alternatives list
 
     },
 	addTag: function(){
@@ -85,7 +67,7 @@ App.Views.Show = Backbone.View.extend({
 		
 		this.tags.fetch({
 			success: function( model, resp ){
-				new App.Views.Tags.AddTag({ collection: model, el: model.view.el })
+				new App.Views.Tags.AddTag({ collection: this.tags, el: 'table.tagsList' })
 			}
 		});
 	},
@@ -97,7 +79,8 @@ App.Views.Show = Backbone.View.extend({
 //						model.view.render();
 					},
 				});
-		this.alternativesCollection.fetch();
+		this.tags.fetch();
+//		this.alternativesCollection.fetch();
 //		{deepRefresh: true}
 		}
 	},

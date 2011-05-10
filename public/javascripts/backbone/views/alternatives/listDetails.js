@@ -19,14 +19,23 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	    //this.decisionListView = new App.Views.Decisions.List( {collection: this.decisionDetails, el: this.el });
 
 		notifier.register(this);
+		
+		
+		
+		
+		
     },
     
     render: function() {
 
 	   this.el.innerHTML = JST.alternatives_showDetails( {a: this.model} );
+
 	    
-	   // here we go with extracting single decisions into new models
-	
+		// let's render selector - it is passive - do it only if item is not new
+		if( !this.model.isNew() ){
+			this.selectorView = new App.Views.Relations.Selector( {model: this.model, el: jQuery('div.relationSelector',this.el) });
+			this.selectorView.render();
+		}
 	
 	   //this.decisionListView.render();
 	   var thisModelId = this.model.get('id');

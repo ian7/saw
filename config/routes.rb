@@ -81,10 +81,14 @@ Saw::Application.routes.draw do
 
   resources :projects do
     resources :items do
-        resources :alternatives
+        resources :alternatives do
+          match "relations/:action(.:format)" => "relations#:action"        
+        end
         match "tag/:action(.:format)" => "tag#:action"
     end
-    resources :issues
+    resources :issues do
+        match "tag/:action(.:format)" => "tag#:action"
+    end
     resources :alternatives
     resources :tags 
   end

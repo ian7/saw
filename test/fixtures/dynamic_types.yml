@@ -67,6 +67,16 @@ Influences:
   name: Influences
   super_type: Relation
   surrogate_class: Relation
+
+Implies:
+  name: Implies
+  super_type: Relation
+  surrogate_class: Relation
+
+Contradicts:
+  name: Contradicts
+  super_type: Relation
+  surrogate_class: Relation
   
 # general purpose tags
 Scope:

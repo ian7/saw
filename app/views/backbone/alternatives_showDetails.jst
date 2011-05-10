@@ -1,8 +1,8 @@
 <tr class="alternativeDetails">
 	   		<td class="name">	   		
 	    		<!-- <b>Name:</b> -->
-	    			<div class="name" contenteditable="true"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></div>
-
+	    			<div class="name" contenteditable="true"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></div><br>
+				<div class="relationSelector"></div>
 		    </td>
 	    	<td class="delete">
 				<% if( !a.isNew() ) {  %>

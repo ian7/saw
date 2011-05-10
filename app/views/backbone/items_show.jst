@@ -1,4 +1,4 @@
-	<table>
+	<table class="itemDetails">
 		<% _(item.attributes).each(function(value, key) { 
 			if (key.charAt(0) != '_' && key != "url" && key != "el" && key != "id" && key != "item_url" && key != "type") { %>
 		<tr>
@@ -13,3 +13,4 @@
 		<% }; 
 		});%>
 	</table>
+	<table class="tagsList"></table>

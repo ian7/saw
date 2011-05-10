@@ -7,6 +7,7 @@ var App = {
     	Alternatives: {},
 		Decisions: {},
 		Items: {},
+		Relations: {},
     },
     Controllers: {},
     Components: {},

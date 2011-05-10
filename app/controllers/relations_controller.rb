@@ -6,26 +6,60 @@ class RelationsController < ApplicationController
   @@max_degree = 2;
   @@degree = 0;
   
+  
+  # analyses the request and decides which id to use
+  # in the embeded resources scenario id prioirites are implemented:
+  def request_taggable
+    
+    id = 0
+
+    if params[:issue_id]
+      id = params[:issue_id]
+    end  
+    
+    if params[:alternative_id]
+      id = params[:alternative_id]
+    end  
+
+    #finally  
+    if params[:id]
+      id = params[:id] 
+    end
+    
+    # look it up
+    t = Taggable.find( id )
+    
+    return t
+  end
+  
   def from
-    taggable_instance = Taggable.find(params[:id])
+    
+    taggable_instance = request_taggable
+
     respond_to do |format|
-      format.json { render :json => taggable_instance.relations_from }
+      format.json { 
+        render :json => taggable_instance.relations_from.to_json
+        }
 #      format.xml  { render :xml => taggable_instance.relations_from }
       format.html { @taggings =  taggable_instance.relations_from; }
     end
   end
 
   def to
-    taggable_instance = Taggable.find(params[:id])
+
+    taggable_instance = request_taggable
+
     respond_to do |format|
-      format.json { render :json => taggable_instance.relations_to }
-#      format.xml  { render :xml => taggable_instance.relations_from }
+      format.json { 
+        render :json => taggable_instance.relations_to.to_json
+        }#      format.xml  { render :xml => taggable_instance.relations_from }
       format.html { @taggings =  taggable_instance.relations_to; }
     end
   end
   
  def tree_to
-    taggable_instance = Taggable.find(params[:id])
+
+   taggable_instance = request_taggable
  
     h=taggable_instance.to_hash
     
@@ -57,7 +91,7 @@ class RelationsController < ApplicationController
   end
 
 def tree_from
-    taggable_instance = Taggable.find(params[:id])
+    taggable_instance = request_taggable
  
     h=taggable_instance.to_hash
     
