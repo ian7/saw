@@ -73,8 +73,10 @@ class RelationsController < ApplicationController
 
    children_taggables.each do |child|
       c = child.to_hash
-      c["data"] = {}
-      c["data"]["relation"] = Relation.find(:first, :conditions=>{:tip=>taggable_instance.id, :origin=>child.id}).type
+      c["relation"] = {}
+      r = Relation.find(:first, :conditions=>{:tip=>taggable_instance.id, :origin=>child.id})
+      c["relation"]["type"] = r.type
+      c["relation"]["id"] = r.id
 
       c["children"] = []
       #children << child.to_hash
@@ -105,11 +107,11 @@ def tree_from
 
    children_taggables.each do |child|
       c = child.to_hash
-      c["data"] = {}
-    
-      #c["data"]["type"] = child.type
-      c["data"]["relation"] = Relation.find(:first, :conditions=>{:origin=>taggable_instance.id, :tip=>child.id}).type
-    
+      c["relation"] = {}
+      r = Relation.find(:first, :conditions=>{:tip=>taggable_instance.id, :origin=>child.id})
+      c["relation"]["type"] = r.type
+      c["relation"]["id"] = r.id
+
       c["children"] = []
       #children << child.to_hash
       children << c.to_hash
@@ -348,6 +350,19 @@ def relate
        format.html { redirect_to ( issue_url(tip_taggable.id) ) }
     end
 end
+
+def unrelate
+    relation = Taggable.find params[:relation_id]
+    
+    if relation
+      Juggernaut.publish("/chats",relation.tip)
+    	Juggernaut.publish("/chats",relation.origin)
+    	
+    	relation.destroy
+    end
+  
+end
+
 
 def view
 end

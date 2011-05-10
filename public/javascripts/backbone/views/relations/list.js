@@ -5,7 +5,7 @@
 
 App.Views.Relations.Show = Backbone.View.extend({
 	events: {
-		"click .unTag"	: 	"unTag", 
+		"click .unRelate"	: 	"unRelate", 
 	},
     initialize: function() {
 	    this.model.bind('change', this.render);
@@ -16,10 +16,20 @@ App.Views.Relations.Show = Backbone.View.extend({
 			
 	return this;
     },
-	unTag : function() {
-	 	jQuery.getJSON(this.model.get('item_url')+'/tag/untag?tagging_id='+this.model.get('tagging_id'), function(data) {
-   		});
-	}
+	unRelate : function( e ) {
+		
+		jQuery(".unRelate",this.el).fastConfirm({
+           position: "left",
+              questionText: "Are you sure ?",
+              onProceed: function(trigger) {
+			 		jQuery.getJSON('/relations/unrelate?relation_id=' + e.srcElement.id, function(data) {});
+                       $(trigger).fastConfirm('close');
+               },
+               onCancel: function(trigger) {
+                       $(trigger).fastConfirm('close');
+               }
+            });
+	} 
 });
 
 

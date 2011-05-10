@@ -61,6 +61,7 @@ table.alternativeListDetails td.decisions{
 table.alternativeList td.delete,
 table.alternativeListDetails td.delete{
 	width: 4%;
+	text-align: right;
 }
 
 table.ribbon a:link {
@@ -142,4 +143,27 @@ table.itemDetails{
 }
 .slide-out-div {
 	height: 200px;
+}
+
+div.deleteAlternative{
+	float: right;
+	margin-right: 0.5em;
+}
+
+td.user {
+	vertical-align: top;
+}
+
+div.relationSelector {
+	background-color:rgba(255,255,255,0.7);
+	padding: 0.8em;
+}
+
+div.searchBox,
+div.newEdit {
+	font-style: italic;
+}
+
+img.unRelate {
+	margin-left: 1em;
 }

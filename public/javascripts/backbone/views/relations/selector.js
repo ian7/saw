@@ -31,18 +31,63 @@ App.Views.Relations.Selector = Backbone.View.extend({
 
     },
 	switchClicked : function( e ){
-		this.switchView( e.srcElement.id );
+		if( e.srcElement.id != this.relativesView.relationType ) {
+			this.switchView( e.srcElement.id );
+		}
+		else
+		{
+			this.switchView( null );
+		}
 	},
   	switchView : function( relationType ) {
-		// button id is set in the relations_selector.jst template, so we can recover it here
-		// e.srcElement.id
-		localStorage.setItem( this.model.get('id')+'showingRelation',relationType);
+	
+		// in case we're changing to other view 
+		if( relationType !=  null ) {		
+			// button id is set in the relations_selector.jst template, so we can recover it here
+			// e.srcElement.id
+			localStorage.setItem( this.model.get('id')+'showingRelation',relationType);
 
-		this.relativesCollection.url = this.model.url()+'/relations/tree_to?type='+relationType;
-		this.relativesCollection.fetch()		
-		this.relativesView.relationType = relationType;
-		jQuery(this.el).attr('id', relationType);
-		this.relativesView.render();
+			this.relativesCollection.url = this.model.url()+'/relations/tree_to?type='+relationType;
+			this.relativesCollection.fetch()		
+			this.relativesView.relationType = relationType;
+			jQuery(this.el).attr('id', relationType);
+			this.relativesView.render();
+		
+			// magic to make buttons go colorful
+		
+			// first remove rosy from all buttons
+			jQuery("div.button.switchView",this.el).removeClass("rosy");
+			// add gray to all
+			jQuery("div.button.switchView",this.el).addClass("gray");
+
+			// now handle the one...
+			jQuery("div.button.switchView#"+relationType,this.el).removeClass("gray");
+			// add gray to all
+			jQuery("div.button.switchView#"+relationType,this.el).addClass("rosy");
+			
+			// show search box
+			jQuery("div.searchBox",this.el).html("(type to add new one)");			
+			jQuery("div.searchBox",this.el).show();			
+			}
+		else // otherwise if same button was clicked for the second time
+			{
+				localStorage.removeItem( this.model.get('id')+'showingRelation' );
+				
+				this.relativesView.relationType = null;
+				this.relativesCollection._reset();
+				this.relativesView.render();
+
+				// first remove rosy from all buttons
+				jQuery("div.button.switchView",this.el).removeClass("rosy");
+				// add gray to all
+				jQuery("div.button.switchView",this.el).addClass("gray");
+				// hide search box
+				
+				jQuery("div.searchBox",this.el).hide();
+				
+			}
+		
+		
     },
     updateCounts : function() {
 
@@ -104,10 +149,7 @@ App.Views.Relations.Selector = Backbone.View.extend({
 
 
 		// show list of related items by relation type...
-		var lastViewedRelationType = localStorage.getItem( this.model.get('id')+'showingRelation' );
-		if( lastViewedRelationType ) {
-			this.switchView( lastViewedRelationType );
-		}
+		this.switchView( localStorage.getItem( this.model.get('id')+'showingRelation' ) );		
 
 		return this;
     },
