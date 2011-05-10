@@ -135,6 +135,11 @@ div.submitFeedback {
 	float: right;
 }
 
+
+table.itemDetails{
+	padding-top: 2em;
+	
+}
 .slide-out-div {
 	height: 200px;
 }

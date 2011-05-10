@@ -2,3 +2,10 @@
 db/*.sqlite3
 log/*.log
 tmp/**/*
+public/assets/backbone.js
+public/assets/common.css
+public/assets/common.js
+public/assets/empty.css
+public/assets/projects.js
+public/assets/workspace.css
+public/assets/workspace.js

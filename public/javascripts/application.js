@@ -39,3 +39,14 @@ jQuery(function(){
 		   });
 	   });	
    });
+
+
+		(function (jQuery) {
+		   var original = jQuery.fn.val;
+		   jQuery.fn.val = function() {
+		      if (jQuery(this).is('[contenteditable]')) {
+		         return jQuery.fn.text.apply(this, arguments);
+		      };
+		      return original.apply(this, arguments);
+		   };
+		})(jQuery);

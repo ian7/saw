@@ -25,23 +25,24 @@ App.Views.Relations.Show = Backbone.View.extend({
 
 App.Views.Relations.List = Backbone.View.extend({
   events : {
-//	"click .newItem" : "newItem",
-//	"keypress"		 : "shortcut"
+//	"click .newRelative" : "newRelative",
+//	"click .searchBox" : "selectAll",
   },
   initialize : function() {
+
 	this.relationsCollectionView = new UpdatingCollectionView({
       collection           : this.collection,
       childViewConstructor : App.Views.Relations.Show,
       childViewTagName     : 'li'
     });
-//	this.render();
-//	notifier.register(this);
-//	this.collection.bind('saved',this.newItem)
+
+	_(this).bindAll('render');
+	this.firstRender = true;
   },
   render : function() {
 		this._rendered = true;
 		this.relationsCollectionView.el = jQuery("ul.relations",this.el);
 		this.relationsCollectionView.render();
-	//	this.newItem();
-  },  
+
+   },  
 });

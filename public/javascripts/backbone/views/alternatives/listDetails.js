@@ -11,16 +11,11 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		"click .undecide"			: "undecide"
     },
     initialize: function() {
-// WTF ?	    this.render = _.bind(this.render, this); 
 		_(this).bindAll('render','decide','undecide');
 	    this.model.bind('change', this.render);
 
-		//this.decisionCollection = new DecisionDetails;
-	    //this.decisionListView = new App.Views.Decisions.List( {collection: this.decisionDetails, el: this.el });
 
 		notifier.register(this);
-		
-		
 		
 		
 		
@@ -58,6 +53,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		
 	   // hell love chainging !
 	   jQuery(this.el).removeClass().addClass("decision").addClass(color.toLowerCase());
+	   jQuery(this.el).attr('id', this.model.get('id'));
 	
 	
 	   if( this.model.isNew() ) {
@@ -168,6 +164,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	notify : function( broadcasted_id ) {
 		if( this.model.id == broadcasted_id ) {
 			this.model.fetch();
+			this.model.change();
 			jQuery(this.el).effect("highlight", {}, 500);	
 		}
 	},

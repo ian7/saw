@@ -154,6 +154,7 @@ class TagController < ApplicationController
     @from_taggable_id = params[:from_taggable_id]
 	  @relation_name = "Tagging"
 	 
+	 
 	 @from_taggable = Taggable.find @from_taggable_id
 	 @to_taggable = Taggable.find @to_taggable_id
 	 
@@ -173,19 +174,25 @@ class TagController < ApplicationController
   ## not quite sure on what to do after... some redirect probably
   @to_taggable=Taggable.find @relation_instance.tip
 
-  ## kill it
+
+  if( @to_taggable._type == "Relation")
+       Juggernaut.publish("/chats", @to_taggable.id)
+       Juggernaut.publish("/chats", @to_taggable.tip)
+       Juggernaut.publish("/chats", @to_taggable.origin)
+       # ring the tag id too..
+       Juggernaut.publish("/chats", @relation_instance.origin)
+   else
+     # ring both tag 
+     Juggernaut.publish("/chats", @relation_instance.origin)
+     # and the (un) taged item
+     Juggernaut.publish("/chats", @relation_instance.tip)
+   end
+
+   ## kill it
    if @relation_instance != nil
      @relation_instance.destroy
    end
 
-
-  if( @to_taggable._type == "Relation")
-       Juggernaut.publish("/chats", @to_taggable_id)
-       Juggernaut.publish("/chats", @to_taggable.tip)
-       Juggernaut.publish("/chats", @to_taggable.origin)
-   else
-       Juggernaut.publish("/chats", @to_taggable_id)
-   end
 
   #redirect_to("/"+@to_taggable.attributes["type"].downcase.pluralize+"/"+@to_taggable.id.to_s )
 

@@ -319,9 +319,17 @@ def relate
     origin_taggable = Taggable.find params[:origin]
     tip_taggable = Taggable.find params[:tip]
     
+    if params[:relation_type]
+      relation_type = DynamicType.find_by_name( params[:relation_type])
+    end
     
-    ## TODO: this is not completly safe in case that find_by_name fails
-    relation_instnace = DynamicType.find_by_name("SolvedBy").new_instance
+    if relation_type 
+      ## TODO: this is not completly safe in case that find_by_name fails
+      relation_instnace = relation_type.new_instance
+    else
+      ## TODO: this is not completly safe in case that find_by_name fails
+      relation_instnace = DynamicType.find_by_name("SolvedBy").new_instance
+    end
     
     #relation_instance 
     

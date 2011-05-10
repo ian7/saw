@@ -42,15 +42,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 
 
 	   if( this.model.isNew() ) {
-			(function (jQuery) {
-			   var original = jQuery.fn.val;
-			   jQuery.fn.val = function() {
-			      if (jQuery(this).is('[contenteditable]')) {
-			         return jQuery.fn.text.apply(this, arguments);
-			      };
-			      return original.apply(this, arguments);
-			   };
-			})(jQuery);
+		
 			
 			jQuery( "div.name",this.el ).autocomplete({
 				source: function( request, response ) {

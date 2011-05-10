@@ -8,9 +8,8 @@ TagView = Backbone.View.extend({
 		"click .unTag"	: 	"unTag", 
 	},
     initialize: function() {
-	    this.render = _.bind(this.render, this); 
+//	    this.render = _.bind(this.render, this); 
 	    this.model.bind('change', this.render);
-//        this.render();
     },
     
     render: function() {
@@ -40,13 +39,13 @@ App.Views.Tags.List = Backbone.View.extend({
       childViewConstructor : TagView,
       childViewTagName     : 'tr'
     });
-	this.render();
+//	this.render();
 //	notifier.register(this);
 //	this.collection.bind('saved',this.newItem)
   },
   render : function() {
 		this._rendered = true;
-		this.tagCollectionView.el = jQuery('table.tagList', this.el);
+		this.tagCollectionView.el = jQuery("table.tagsList",this.el);
 		this.tagCollectionView.render();
 	//	this.newItem();
   },  
