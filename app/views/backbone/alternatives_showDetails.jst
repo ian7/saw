@@ -1,15 +1,20 @@
 <tr class="alternativeDetails" id="<%=a.get('_id') %>">
 	   		<td class="name">	   		
+				<div class="deleteAlternative">
+					<img class="deleteAlternative" src="/images/icons/delete.png"/>
+				</div>
+
 	    		<!-- <b>Name:</b> -->
 	    			<div class="name" contenteditable="true"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></div><br>
 				<div class="relationSelector"></div>
 		    </td>
-	    	<td class="delete">
+<!--	    	<td class="delete">
 				<% if( !a.isNew() ) {  %>
-<!--					<div class="button gray unrelateAlternative">UnRelate</div> -->
+					<div class="button gray unrelateAlternative">UnRelate</div>
 		    		<div class="button black deleteAlternative">Delete</div>
 				<% } %>
 	    	</td>
+-->
 	    	<td class="decisions"> 
 				<table class="decisions">
 
@@ -23,7 +28,7 @@
 										<% _(decision.details).each( function( detail ) { %>
 											<tr class="decision <%= decision.color.toLowerCase() %>">
 												<td class="user">
-													<%= detail.email %>
+													<img src="/images/icons/user.png"/><%= detail.email %>
 												</td>
 											</tr>
 										<% }); %>

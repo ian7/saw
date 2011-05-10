@@ -1,13 +1,16 @@
 	   		<td>	   		
 	    		<!-- <b>Name:</b> -->
-	    		<div class="name" contenteditable="true"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></div>
-		    </td>
-	    	<td class="delete">
-				<% if( !a.isNew() ) {  %>
-<!--					<div class="button gray unrelateAlternative">UnRelate</div> -->
-		    		<div class="button black deleteAlternative">Delete</div>
+				<% if( !a.isNew() ) { %>
+					<div class="deleteAlternative">
+						<img class="deleteAlternative" src="/images/icons/delete.png"/>
+					</div>
+					<div class="name" contenteditable="true"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></div>
+				<% } else { %>
+					<div class="name newEdit" contenteditable="true"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></div>
 				<% } %>
-	    	</td>
+	
+				
+		    </td>
 	    	<td class="decisions"> 
 				<% if( !( a.attributes.your_decision && a.attributes.your_decision.name ) ) { %>
 				    	<% _(a.attributes.decisions).each(function(decision) { %>

@@ -7,6 +7,7 @@ App.Controllers.Items = Backbone.Controller.extend({
     	//new Regexp('^[^\/]*/([^\/]*)\/.*$': 'show',
         "/:id":            "show",
         "/:id/show":            "show",
+        "/:id/details":            "show",
         "/:id/alternatives":            "alternatives",
         "/:id/visualization":            "visualization",
         "":                         "index",

@@ -1,11 +1,10 @@
 App.Helpers.ItemNavigation = {
 	navigationEvents  : {
 		"click .toIndex" : "navigateToIndex",
-		"click .toAlternatives" : "navigateToAlternatives",
-		"click .toVisualization" : "navigateToVisualization",
-		"click .toDetails" : "navigateToDetails",
+		"click .itemShowNavigation" : "navigateItemShow"
 	},
 	firstRender : true,
+	navigatedView : null,
 	
 	renderNavigation : function (){
 		// this is to be called only once !
@@ -20,22 +19,39 @@ App.Helpers.ItemNavigation = {
 			// delegate events
 			this.delegateEvents( mixedEvents );
 			// and bind handlers
-		 	_(this).bindAll('navigateToAlternatives','navigateToVisualization','navigateToDetails');
+		 	_(this).bindAll('navigateToIndex','navigateItemShow','updateButtons');
 			
 			this.firstRender = false;
+			
+			var hash = window.location.href.match("#/.*/.*$");
+			
+			if( hash )	{
+				this.navigatedView = hash[0].match("[a-z]*$")[0];
+				this.updateButtons();
+			}
 		}
 	},
 	navigateToIndex : function() {
 		window.location.href = window.location.href.match(".*#");
 	},
-	navigateToDetails : function() {
-		window.location.href = window.location.href.match(".*#")+'/'+this.model.id;
+	navigateItemShow : function( e ) {
+		this.navigatedView = e.srcElement.id;
+		
+		// destination is encoded in navigation link id attribute
+		window.location.href = window.location.href.match(".*#")+'/'+this.model.id+'/'+this.navigatedView;
+		this.updateButtons();
 	},
-	navigateToVisualization : function(){
-		window.location.href = window.location.href.match(".*#")+'/'+this.model.id+'/visualization';
-	},
-	navigateToAlternatives : function(){
-		window.location.href = window.location.href.match(".*#")+'/'+this.model.id+'/alternatives';			
-	},
+	updateButtons : function() {
+		// first remove rosy from all buttons
+		jQuery("div.button.itemShowNavigation",this.el).removeClass("rosy");
+		// add gray to all
+		jQuery("div.button.itemShowNavigation",this.el).addClass("gray");		
+		
+		// now handle the one...
+		jQuery("div.button.itemShowNavigation#"+this.navigatedView,this.el).removeClass("gray");
+		// add gray to all
+		jQuery("div.button.itemShowNavigation#"+this.navigatedView,this.el).addClass("rosy");
+		
+	}
 };
 
