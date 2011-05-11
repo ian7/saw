@@ -172,3 +172,8 @@ div.tagsList {
 	float:right;
 	margin: 1em;
 }
+
+h2.devise {
+	margin-bottom: 2em;
+	margin-top: 2em;
+}

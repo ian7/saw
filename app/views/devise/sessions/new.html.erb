@@ -1,32 +1,40 @@
-<h2>Sign in</h2>
-
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :email %><br />
-  <%= f.text_field :email %></p>
-
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
-
-  <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
-  <% end -%>
-
-  <p><%= f.submit "Sign in" %></p>
-<% end %>
+<h2 class="devise">Welcome, please sign up</h2> 
+ 
+<form accept-charset="UTF-8" action="/users" class="user_new" id="user_new" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="oikWBo1aXitpLRffeZWZGT24UjfgBxeqFOIDoijDXvE=" /></div> 
+  
+  
+  <p>Your name: <input id="user_email" name="user[email]" size="30" type="text" /> 
+  <input id="user_password" name="user[password]" size="30" type="hidden" value="m"/>
+ 
+  <input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="hidden" value="m"/>
+  <input id="user_submit" name="commit" type="submit" value="Sign up" /></p> 
+</form>
 
 
-<p><strong>Sign in through one of these services:</strong></p>
+<h2 class="devise">or sign in.</h2>
+
+<form accept-charset="UTF-8" action="/users/sign_in" class="user_new" id="user_new" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="oikWBo1aXitpLRffeZWZGT24UjfgBxeqFOIDoijDXvE=" /></div> 
+  
+  
+  <p>Your name: <input id="user_email" name="user[email]" size="30" type="text" /> 
+  <input type="hidden" id="user_password" name="user[password]" size="30" value="m" />
+ 
+  <input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="hidden" value='m'/>
+  <input id="user_submit" name="commit" type="submit" value="Sign up" /></p> 
+</form> 
+
 <!--
+<p><strong>Sign in through one of these services:</strong></p>
+
 <a href="/auth/twitter" class="auth_provider">
   <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
   Twitter
 </a>
--->
+
 <a href="/auth/facebook" class="auth_provider">
   <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
   Facebook
 </a>
-<!--
 <a href="/auth/google_apps" class="auth_provider">
   <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %>
   Google
@@ -38,4 +46,4 @@
 -->
 </p>
 
-<%= render :partial => "devise/shared/links" %>
+<%#= render :partial => "devise/shared/links" %>

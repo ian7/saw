@@ -86,7 +86,7 @@
 	</td>
 
 	<td align="right" width="400px">
-		<a href="http://saw.inf.unisi.ch/" class="header">SAW</a>  
+	<!--	<a href="http://saw.inf.unisi.ch/" class="header">SAW</a>  -->
 			<%if user_signed_in?  %> 
 				<%= link_to '('+current_user.email+')', {:action=>"index", :controller=>"authentications"}, :id=>"current_user" %> 
 			<%else %> 
