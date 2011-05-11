@@ -70,7 +70,7 @@ class IBMImportController < ActionController::Base
          influences_instance.save
 
          # SOA project assignment
-         tag_or_create(influences_instance,"Project","SOA")
+         tag_or_create(influences_instance,"Project","IBM adWiki SOA sample")
          
          
          ## this relation is going to get an IBM-ID too
@@ -78,7 +78,7 @@ class IBMImportController < ActionController::Base
          id_instance.save
 
          # SOA project assignment
-         tag_or_create(id_instance,"Project","SOA")
+         tag_or_create(id_instance,"Project","IBM adWiki SOA sample")
          
          #TODO: that's nasty - rework it !
          tagging_instance = Tagging.new
@@ -90,7 +90,7 @@ class IBMImportController < ActionController::Base
          tagging_instance.save
          
          # SOA project assignment
-         tag_or_create(tagging_instance,"Project","SOA")
+         tag_or_create(tagging_instance,"Project","IBM adWiki SOA sample")
        end      
       end
       f.close
@@ -122,14 +122,14 @@ class IBMImportController < ActionController::Base
        topicGroup_instance.save
 
        # SOA project assignment
-       tag_or_create(topicGroup_instance,"Project","SOA")
+       tag_or_create(topicGroup_instance,"Project","IBM adWiki SOA sample")
              
        ## add an IBM-ID to it. 
        id_instance = DynamicType.find_by_name("IBM-ID").new_instance(split_line[4],@importer)
        id_instance.save
 
        # SOA project assignment
-       tag_or_create(id_instance,"Project","SOA")
+       tag_or_create(id_instance,"Project","IBM adWiki SOA sample")
        
        #TODO: that's nasty
        tagging_instance = Tagging.new
@@ -185,7 +185,7 @@ class IBMImportController < ActionController::Base
              relation_instance.save
 
              # SOA project assignment
-             tag_or_create(relation_instance,"Project","SOA")
+             tag_or_create(relation_instance,"Project","IBM adWiki SOA sample")
            end
          end
        end
@@ -263,7 +263,7 @@ class IBMImportController < ActionController::Base
         end
         
         # SOA project assignment
-        tag_or_create(issue_instance,"Project","SOA")
+        tag_or_create(issue_instance,"Project","IBM adWiki SOA sample")
 
         issue_instance["ShortName"]=split_line[4]
         issue_instance["Description"]=split_line[9]
@@ -397,7 +397,7 @@ class IBMImportController < ActionController::Base
         alternative_instance.save
 
         # SOA project assignment
-        tag_or_create(alternative_instance,"Project","SOA")
+        tag_or_create(alternative_instance,"Project","IBM adWiki SOA sample")
         
      end
   end
