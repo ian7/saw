@@ -51,11 +51,45 @@ App.Views.Show = Backbone.View.extend({
 		this.alternativesCollection.url = this.model.url()+'/alternatives';
 		this.alternativesCollection.fetch();*/
 
-			jQuery(this.el).append( JST.items_show({ item: this.model }));
+		jQuery(this.el).append( JST.items_show({ item: this.model }));
 
 		this.tags.url = this.model.url()+'/tag/tags_list';
 		this.tags.fetch();
 		this.tagsView.render();
+		
+		
+		jQuery( "div.searchBox",this.el ).autocomplete({
+			source: function( request, response ) {
+				jQuery.ajax({
+					url: "/search/"+request.term+'?type=Tag',
+					success: function( data ) {
+						response( jQuery.map( data, function( item ) {
+							return {
+								label: item.name,
+								value: item.name,
+								id: item._id,
+							}
+						}));
+					}
+				});
+			},
+			minLength: 2,
+			select: function( event, ui ) {
+				// TODO: this is supper shitty...
+
+				var alternativeID = jQuery( this ).parents('tr').attr('id');
+				var relationType = jQuery( this ).parents('div.relationSelector').attr('id');
+				//alert( 'adsfasdf' );
+				jQuery.getJSON( '/relations/relate?tip='+alternativeID+'&origin='+ui.item.id+'&relation_type='+relationType, function(data) {});
+			},
+			open: function() {
+				jQuery( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+			},
+			close: function() {
+				jQuery( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+			}
+		});
+	
 		
 		return( this );
 

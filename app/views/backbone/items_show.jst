@@ -1,3 +1,7 @@
+	<div class="tagsList">
+		<table class="tagsList"></table>
+		<div class="searchBox" contenteditable="true">(write to search)</div>
+	</div>
 	<table class="itemDetails">
 		<% _(item.attributes).each(function(value, key) { 
 			if (key.charAt(0) != '_' && key != "url" && key != "el" && key != "id" && key != "item_url" && key != "type") { %>
@@ -13,4 +17,3 @@
 		<% }; 
 		});%>
 	</table>
-	<table class="tagsList"></table>

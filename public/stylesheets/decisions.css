@@ -167,3 +167,8 @@ div.newEdit {
 img.unRelate {
 	margin-left: 1em;
 }
+
+div.tagsList {
+	float:right;
+	margin: 1em;
+}

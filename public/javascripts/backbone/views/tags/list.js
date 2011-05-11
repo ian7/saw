@@ -10,6 +10,7 @@ TagView = Backbone.View.extend({
     initialize: function() {
 //	    this.render = _.bind(this.render, this); 
 	    this.model.bind('change', this.render);
+		_(this).bindAll('render','unTag');
     },
     
     render: function() {
@@ -18,11 +19,21 @@ TagView = Backbone.View.extend({
 //        jQuery(this.el).html(out);
 	return this;
     },
-	unTag : function() {
-	 	jQuery.getJSON(this.model.get('item_url')+'/tag/untag?tagging_id='+this.model.get('tagging_id'), function(data) {
+	unTag : function( e ) {
+		jQuery(".unTag",this.el).fastConfirm({
+           position: "left",
+              questionText: "Are you sure ?",
+              onProceed: function(trigger) {
+			 		jQuery.getJSON('/tag/untag?tagging_id='+e.srcElement.id('tagging_id'), function(data) {});
+                       $(trigger).fastConfirm('close');
+               },
+               onCancel: function(trigger) {
+                       $(trigger).fastConfirm('close');
+               }
+            });
 	    	// so let's update it !'
    	    	//App.controller.update();
-    		});
+//    		});
 //		alert(this.model.get('id'));
 	}
 });

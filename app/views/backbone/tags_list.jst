@@ -1,9 +1,4 @@
 <tr>
-	<!--
-	<td>
-		<%=tag.get('tagging_id') %>
-	</td>
-	-->
     <td>
 		<!--<b>Type:</b>--> <b><%= tag.get('type') %></b>
 	</td>
@@ -11,6 +6,6 @@
 		<!--<b>Name:</b>--> <%= tag.get('name') %>   
 	</td>
 	<td>
-		<div class="button gray unTag">unTag</div>
+		<img class="unTag" src="/images/icons/delete.png"  id="<%= tag.get('tagging_id') %>"/>
 	</td>
 </tr>
