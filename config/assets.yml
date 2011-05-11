@@ -38,12 +38,10 @@ javascripts:
     - app/views/backbone/*.jst
   workspace:
 # app comes here
-    - *common
     - public/javascripts/backbone/items.js
     - *backbone
 
   projects:
-    - *common
     - public/javascripts/backbone/projects.js
     - *backbone
 
