@@ -177,3 +177,9 @@ h2.devise {
 	margin-bottom: 2em;
 	margin-top: 2em;
 }
+
+
+div.slide-out-div {
+	position: absolute;
+	top: -1000px;
+}
