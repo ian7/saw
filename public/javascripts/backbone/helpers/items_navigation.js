@@ -21,7 +21,7 @@ App.Helpers.ItemNavigation = {
 			// and bind handlers
 		 	_(this).bindAll('navigateToIndex','navigateItemShow','updateButtons');
 			
-			this.firstRender = false;
+//			this.firstRender = false;
 			
 			var hash = window.location.href.match("#/.*/.*$");
 			
@@ -54,4 +54,3 @@ App.Helpers.ItemNavigation = {
 		
 	}
 };
-

@@ -1,4 +1,5 @@
 	<div class="tagsList">
+		<div class="header">Tags:</div>
 		<table class="tagsList"></table>
 		<div class="searchBox" contenteditable="true">(write to search)</div>
 	</div>
@@ -6,8 +7,9 @@
 		<% _(item.attributes).each(function(value, key) { 
 			if (key.charAt(0) != '_' && key != "url" && key != "el" && key != "id" && key != "item_url" && key != "type") { %>
 		<tr>
-		<td>
-			<i><%= key %>: </i>
+		<td class="key">
+			<!-- does capitalization -->
+			<%= key.charAt(0).toUpperCase() + key.slice(1) %>: 
 		</td>
 		<td>
 			<div class="editable" id="<%=key%>" contenteditable="true"><% if( value ) { %><%= value %><% } else { %>(empty)<% } %></div>
