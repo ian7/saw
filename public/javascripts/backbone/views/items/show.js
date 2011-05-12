@@ -45,6 +45,7 @@ App.Views.Show = Backbone.View.extend({
     },
     
     render: function() {
+		jQuery( this.el ).html("");
 		this.renderNavigation();
 
 /*		this.alternativesCollection.item_url = this.model.url();

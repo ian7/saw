@@ -183,3 +183,33 @@ div.slide-out-div {
 	position: absolute;
 	top: -1000px;
 }
+
+div.tagsList {
+	border-color: black;
+	border-width: 2px;
+	border-style: solid;
+	margin-top: 2em;
+	padding: 1em;
+}
+div.tagsList div.searchBox {
+	padding-left: 2em;
+	padding-right: 2em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	background: #EEEEEE;
+}
+div.tagsList div.header {
+	width: 100%;
+	background: #EEEEEE;
+	text-align: center;
+	
+}
+
+table.itemDetails td.key {
+	font-weight: bold;
+	vertical-align: top;
+}
+
+table.itemDetails td {
+	padding-bottom: 1em;
+}

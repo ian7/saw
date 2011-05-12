@@ -24,11 +24,11 @@ TagView = Backbone.View.extend({
            position: "left",
               questionText: "Are you sure ?",
               onProceed: function(trigger) {
-			 		jQuery.getJSON('/tag/untag?tagging_id='+e.srcElement.id('tagging_id'), function(data) {});
-                       $(trigger).fastConfirm('close');
+			 		jQuery.getJSON('/tag/untag?tagging_id='+e.srcElement.id, function(data) {});
+                    jQuery(trigger).fastConfirm('close');
                },
                onCancel: function(trigger) {
-                       $(trigger).fastConfirm('close');
+                    jQuery(trigger).fastConfirm('close');
                }
             });
 	    	// so let's update it !'

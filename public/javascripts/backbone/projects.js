@@ -5,9 +5,10 @@ var App = {
     Views: {
     	Tags: {},
     	Alternatives: {},
-		Items: {},
-		Projects: {},
 		Decisions: {},
+		Items: {},
+		Relations: {},
+		Projects: {},
     },
     Controllers: {},
     Components: {},
