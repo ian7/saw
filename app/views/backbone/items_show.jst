@@ -1,9 +1,10 @@
 	<div class="tagsList">
 		<div class="header">Tags:</div>
 		<table class="tagsList"></table>
-		<div class="searchBox" contenteditable="true">(write to search)</div>
+		<div class="searchBox" contenteditable="true">(type to search)</div>
+		<!--<div class="button orange addTag">Add Tag</div>-->
 	</div>
-	<table class="itemDetails">
+	<table class="itemDetails" id="<%= item.get('id') %>">
 		<% _(item.attributes).each(function(value, key) { 
 			if (key.charAt(0) != '_' && key != "url" && key != "el" && key != "id" && key != "item_url" && key != "type") { %>
 		<tr>

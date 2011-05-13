@@ -196,7 +196,7 @@ div.tagsList div.searchBox {
 	padding-right: 2em;
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
-	background: #EEEEEE;
+	background: #EECCCC;
 }
 div.tagsList div.header {
 	width: 100%;
@@ -212,4 +212,9 @@ table.itemDetails td.key {
 
 table.itemDetails td {
 	padding-bottom: 1em;
+}
+
+
+li.ui-autocomplete-category {
+	font-weight: bold;
 }

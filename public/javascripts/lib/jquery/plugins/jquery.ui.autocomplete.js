@@ -12,6 +12,8 @@
  *	jquery.ui.widget.js
  *	jquery.ui.position.js
  */
+
+
 (function( $, undefined ) {
 
 // used to prevent race conditions with remote data sources
@@ -111,6 +113,15 @@ $.widget( "ui.autocomplete", {
 				}
 			})
 			.bind( "focus.autocomplete", function() {
+				if ( self.options.disabled ) {
+					return;
+				}
+
+				self.selectedItem = null;
+				self.previous = self.element.val();
+				self._move( "next", event );
+			})
+			.bind( "click.autocomplete", function() {
 				if ( self.options.disabled ) {
 					return;
 				}

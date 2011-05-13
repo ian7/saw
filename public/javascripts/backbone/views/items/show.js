@@ -58,39 +58,105 @@ App.Views.Show = Backbone.View.extend({
 		this.tags.fetch();
 		this.tagsView.render();
 		
+/*		jQuery("div.searchBox").click( function(e) {
+			//alert('here');
+			jQuery(this).append("<div><table><tr><td>a</td></tr><tr><td>b</td></tr><tr><td>c</td></tr></div>")
+		});
+*/		
+	/*	jQuery("div.searchBox",this.el).click( function() {
+			jQuery( this ).trigger('open');
+			});
+	*/
+		var availableTags = null;
+		var itemUrl = this.model.url();
 		
-		jQuery( "div.searchBox",this.el ).autocomplete({
-			source: function( request, response ) {
-				jQuery.ajax({
-					url: "/search/"+request.term+'?type=Tag',
-					success: function( data ) {
-						response( jQuery.map( data, function( item ) {
-							return {
-								label: item.name,
-								value: item.name,
-								id: item._id,
-							}
-						}));
-					}
-				});
-			},
-			minLength: 2,
-			select: function( event, ui ) {
-				// TODO: this is supper shitty...
+		
+		jQuery("div.searchBox", this.el).click(function(e) {
+			document.execCommand('selectAll',false,null);
+			
+		});
 
-				var alternativeID = jQuery( this ).parents('tr').attr('id');
-				var relationType = jQuery( this ).parents('div.relationSelector').attr('id');
-				//alert( 'adsfasdf' );
-				jQuery.getJSON( '/relations/relate?tip='+alternativeID+'&origin='+ui.item.id+'&relation_type='+relationType, function(data) {});
+
+		jQuery.widget( "custom.catcomplete", jQuery.ui.autocomplete, {
+				_renderMenu: function( ul, items ) {
+					var self = this,
+						currentCategory = "";
+					jQuery.each( items, function( index, item ) {
+						if ( item.type != currentCategory ) {
+							ul.append( "<li class='ui-autocomplete-category'>" + item.type + "</li>" );
+							currentCategory = item.type;
+						}
+						self._renderItem( ul, item );
+					});
+				}
+			});
+					
+		jQuery( "div.searchBox",this.el ).catcomplete({
+			source: function(request, response) {
+				var searchTerm = request.term;
+				
+				if( searchTerm == "(type to search)" ) {
+					searchTerm = "";
+				}
+				
+				var r = new RegExp( searchTerm, "i");
+				if( availableTags ) {
+					response( 
+						jQuery.map( availableTags, function( item ) {
+							if( item.name.match( r ) || item.type.match( r ) ) {							
+								return {
+									label: item.name,
+									value: item.name,
+									type: item.type,
+									id: item.id,
+								};
+							} 
+							else {
+								return null;
+							}
+						}));				
+				}
+				else {
+					jQuery.ajax({
+						url: itemUrl + '/tag/list.json',
+						success: function( data ) {
+							availableTags = data;
+							response( 
+								jQuery.map( data, function( item ) {
+								return {
+									label: item.name,
+									value: item.name,
+									type: item.type,
+									id: item.id,
+								}
+							}));
+						}
+					});
+				}
+			},
+			minLength: 0,
+			delay: 0,
+			select: function( event, ui ) {
+				// TODO: this is supper shitty... but works so sweet !
+				var itemID = jQuery("table.itemDetails").attr('id');
+
+				jQuery.getJSON( '/relations/relate?tip='+itemID+'&origin='+ui.item.id+'&relation_type=Tagging', function(data) {});
+				
+				// clean up the searchBox
+				jQuery("div.searchBox").html("");
 			},
 			open: function() {
 				jQuery( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
 			},
 			close: function() {
 				jQuery( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+				jQuery("div.searchBox").html("(type to search)");
+			},
+			focus: function() {
+//				this.open();
 			}
 		});
-	
+
 		
 		return( this );
 

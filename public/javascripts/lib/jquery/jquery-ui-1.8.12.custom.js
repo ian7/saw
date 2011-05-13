@@ -4946,6 +4946,14 @@ $.widget( "ui.autocomplete", {
 				self.selectedItem = null;
 				self.previous = self.element.val();
 			})
+			.bind( "click.autocomplete", function() {
+				if ( self.options.disabled ) {
+					return;
+				}
+
+				self.selectedItem = null;
+				self.previous = self.element.val();
+			})
 			.bind( "blur.autocomplete", function( event ) {
 				if ( self.options.disabled ) {
 					return;
