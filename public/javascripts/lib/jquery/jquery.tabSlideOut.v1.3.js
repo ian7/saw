@@ -21,7 +21,7 @@
 */
 
 
-(function($){
+;(function($){
     $.fn.tabSlideOut = function(callerSettings) {
         var settings = $.extend({
             tabHandle: '.handle',

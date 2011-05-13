@@ -5,8 +5,10 @@ gzip_assets: off
 
 javascripts:    
   common: &common
-    - public/javascripts/lib/jquery/jquery-1.5.1.min.js
-    - public/javascripts/lib/jquery/jquery-ui-1.8.12.custom.min.js
+    - public/javascripts/lib/jquery/jquery-1.5.1.js
+#    - public/javascripts/lib/jquery/jquery-1.5.1.min.js
+#    - public/javascripts/lib/jquery/jquery-ui-1.8.12.custom.min.js
+    - public/javascripts/lib/jquery/plugins/*.js
     - public/javascripts/lib/jquery/jquery.fastconfirm.js
     - public/javascripts/lib/jquery/jquery.tabSlideOut.v1.3.js
     - public/javascripts/lib/jquery/jquery.blockUI.js
