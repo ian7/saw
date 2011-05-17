@@ -52,10 +52,10 @@ Saw::Application.routes.draw do
 
   match "/search/:keyword" => "search#search"
 
-  resources :dynamic_types
+  resources :rationales
 
+  resources :dynamic_types
   resources :dynamic_type_attributes
-  
   resources :dynamic_type_scopes
 
   #connect 'tags/list', :controller=>'tags', :action=>'list'

@@ -1,0 +1,2 @@
+module RationalesHelper
+end

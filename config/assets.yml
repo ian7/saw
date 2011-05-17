@@ -8,7 +8,9 @@ javascripts:
     - public/javascripts/lib/jquery/jquery-1.5.1.js
 #    - public/javascripts/lib/jquery/jquery-1.5.1.min.js
 #    - public/javascripts/lib/jquery/jquery-ui-1.8.12.custom.js
-# these things need to go first...
+    # this includes tooltips
+    - public/javascripts/lib/jquery/jquery.tools.min.js
+    # these things need to go first...
     - public/javascripts/lib/jquery/plugins/jquery.effects.core.js
     - public/javascripts/lib/jquery/plugins/jquery.ui.core.js
     - public/javascripts/lib/jquery/plugins/jquery.ui.position.js
@@ -62,6 +64,7 @@ stylesheets:
     - public/stylesheets/decisions.css
     - public/stylesheets/jquery.fastconfirm.css 
     - public/stylesheets/jquery-ui-1.8.12.custom.css
+    - public/stylesheets/jquery.cluetip.css
 # visualization stuff
     - public/stylesheets/infovis.css
   workspace:

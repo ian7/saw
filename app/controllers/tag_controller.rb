@@ -109,7 +109,7 @@ class TagController < ApplicationController
   ## not quite sure on what to do after... some redirect probably
   @to_taggable=Taggable.find @to_taggable_id
   
-  puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+@to_taggable._type
+#  puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+@to_taggable._type
   
   if( @to_taggable._type == "Relation")
       Juggernaut.publish("/chats", @to_taggable_id)
@@ -131,7 +131,7 @@ class TagController < ApplicationController
 		  end
 		 }
       format.xml  { render :xml => @taggings }
-      format.json { render :json => @to_taggable.to_json }
+      format.json { render :json => @relation_instance.id }
       format.js {head :ok}
     end
     

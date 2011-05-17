@@ -118,3 +118,8 @@ IBM:
   name: IBM-ID
   super_type: Tag
   surrogate_class: Tag
+
+Rationale: 
+  name: Rationale
+  super_type: Tag
+  surrogate_class: Tag

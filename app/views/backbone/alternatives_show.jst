@@ -1,3 +1,6 @@
+			<td width="17px">
+								<% if( !a.isNew() ) { %> <img src="/images/icons/tick.png" alt="This is a Design Alternative"> <% } %>
+			</td>
 	   		<td>	   		
 	    		<!-- <b>Name:</b> -->
 				<% if( !a.isNew() ) { %>
@@ -12,9 +15,10 @@
 				
 		    </td>
 	    	<td class="decisions"> 
+				<!-- this stays invisible but has some box attached -->
 				<% if( !( a.attributes.your_decision && a.attributes.your_decision.name ) ) { %>
 				    	<% _(a.attributes.decisions).each(function(decision) { %>
-				    	<div class="button decide <%= decision.color.toLowerCase() %>" id="<%= decision.decision_tag_id %>"><%= decision.name %>(<%= decision.count %>)</div>
+				    	<div class="button decide <%= decision.color.toLowerCase() %>" id="<%= decision.decision_tag_id %>" rel="whatever.html"><%= decision.name %>(<%= decision.count %>)</div>
 					<% });%>
 				<% } else { %>
 		    		<% _(a.attributes.decisions).each(function(decision) { %>
