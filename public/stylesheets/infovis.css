@@ -131,15 +131,15 @@ span.name {
 /*-------------------------Metrics Picker----------------------*/
 
 #metricsPicker {
-  opacity: 0.5;
+  opacity: 0.8;
 
   position: absolute;
 
-  width: 300px;
+  width: 250px;
 
-  right: 25px;
+  right: 1px;
   
-  top: 105px;
+  top: 115px;
 
   z-index: 10;
 

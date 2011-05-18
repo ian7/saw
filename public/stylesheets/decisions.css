@@ -259,3 +259,7 @@ div.rationaleTip {
 div.rationaleTip div.content {
 	padding: 0.5em;
 }
+
+.tuning {
+	display: none;
+}
