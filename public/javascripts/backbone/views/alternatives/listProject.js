@@ -3,6 +3,7 @@
 AlternativeProjectUpdatingView  = Backbone.View.extend({
 	className : "alternativeList", 
     events : {
+		'click .showDetails' : 	'showDetails',
     },
     initialize: function() {
 	    this.model.bind('change', this.render);
@@ -38,6 +39,10 @@ AlternativeProjectUpdatingView  = Backbone.View.extend({
 			jQuery(this.el).effect("highlight", {}, 500);	
 		}
 	},
+	showDetails : function() {
+		window.location.href = window.location.href+'items#/'+this.model.id+'/details';
+		
+	}
 });
 
 

@@ -4,6 +4,7 @@
 
 App.Views.Items.ProjectItem = Backbone.View.extend({
   events : {
+		'click .showDetails' : 	'showDetails',
 	},
 
   alternativesCollection : null,
@@ -55,7 +56,10 @@ App.Views.Items.ProjectItem = Backbone.View.extend({
 
    return this;
   },
-
+	showDetails : function() {
+		window.location.href = window.location.href+'/items#/'+this.model.id+'/details';
+		
+	},
   notify : function( broadcasted_id ) {
 		if( this.model.get('id') == broadcasted_id ) {
 
