@@ -172,9 +172,11 @@ A.header:VISITED {
 #issue {
   margin-left: 2em;
 }
-#alternatives {
+
+/* #alternatives {
   margin-left: 6em;
 }
+*/
 div.editArtifact {
   width: 500px;
   background-color: white;

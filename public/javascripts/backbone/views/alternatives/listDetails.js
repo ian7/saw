@@ -140,6 +140,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 					}
 				});
 				jQuery("div.tooltip").removeAttr('id');
+				jQuery( "div.rationaleText" ).autocomplete().close();
 			}
 		}
 
@@ -179,7 +180,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	
 	
 	// enable tooltips for the rationale
-	jQuery('div.rationaleDiv#enabled').tooltip({
+	jQuery('div.rationaleDiv#enabled',this.el).tooltip({
 		position: 'center left',
 		title: 'Rationale:'
 	});
@@ -260,7 +261,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	},
 	notify : function( broadcasted_id ) {
 		if( this.model.id == broadcasted_id ) {
-			this.model.fetch();
+			this.model.fetch({deepRefresh : 'true'});
 			this.model.change();
 			jQuery(this.el).effect("highlight", {}, 500);	
 		}
