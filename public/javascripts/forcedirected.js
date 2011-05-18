@@ -120,7 +120,7 @@ function renderGraph() {
 	    Edge: {
 	      overridable: true,
 	      color: '#23A4FF',
-	      lineWidth: 0.4
+	      lineWidth: 3.0
 	    },
 	    // Add node events
 	    Events: {
