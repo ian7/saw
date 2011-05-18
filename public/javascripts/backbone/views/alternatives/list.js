@@ -19,7 +19,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
     render: function() {
 
 	   this.el.innerHTML = JST.alternatives_show( {a: this.model} );
-
+	   jQuery(this.el).attr('id',this.model.id);
 	   
 	   color = "white";
 
@@ -82,7 +82,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 			positionBy: 'fixed',
 			});
 */
-		jQuery("div.button.decide.red",this.el).tooltip({
+		jQuery("div.button.decide",this.el).tooltip({
 			position: 'bottom center',
 			tip: "div.tooltip",
 			events: {
@@ -148,7 +148,8 @@ AlternativeUpdatingView  = Backbone.View.extend({
 	},
 	decide : function (element) {
 		//alert(element.target.id);
-		rationaleDiv = jQuery("div.button.decide.red",this.el);
+		rationaleDiv = jQuery("div.button.decide",this.el);
+
 		jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
 		
 		this.recordRationale();
@@ -218,8 +219,9 @@ AlternativeUpdatingView  = Backbone.View.extend({
 					},
 					minLength: 0,
 					select: function( event, ui ) {
-						alert( ui.item.id );
-		//				jQuery.getJSON( '/relations/relate?tip='+jQuery(this).parents("p").attr('id')+'&origin='+ui.item.id, function(data) {});
+						//alert( ui.item.id );
+						jQuery.getJSON( '/relations/relate?tip='+jQuery(this).parent().attr('id')+'&origin='+ui.item.id+'&relation_type=Tagging', function(data) {});
+						jQuery("div.tooltip").hide();	
 					},
 					open: function() {
 						jQuery( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );

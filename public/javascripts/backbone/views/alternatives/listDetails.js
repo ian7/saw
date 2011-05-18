@@ -24,7 +24,8 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
     render: function() {
 
 	   this.el.innerHTML = JST.alternatives_showDetails( {a: this.model} );
-
+	
+	   jQuery(this.el).attr('id',this.model.id);
 	    
 		// let's render selector - it is passive - do it only if item is not new
 		if( !this.model.isNew() ){
@@ -94,8 +95,90 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 					jQuery( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
 				}
 			});
+			
+			// rationale stuff
+
+
+			jQuery("div.button.decide",this.el).tooltip({
+				position: 'bottom center',
+				tip: "div.tooltip",
+				events: {
+					def: "click, blur",
+					input: "none, none",
+					widget: "none, none",
+					tooltip: "none, none",
+					} 
+				/*  def:     "click,blur",
+				  input:   "click,blur",
+				  widget:  "click,blur",
+				  tooltip: "click,blur"*/
+
+				});
+			
+			jQuery("div.rationaleText").keydown( function( e ) {
+
+				// if there is still decision id attached to the tooltip div
+				if( jQuery("div.tooltip").attr('id') ) {
+
+					// escape pressed
+					if( e.keyCode == 27 ){
+						jQuery("div.tooltip").hide();				
+					}
+					// enter pressed
+					if( e.keyCode == 13 ) {
+						jQuery("div.tooltip").hide();
+						// save the contents
+						jQuery.ajax({
+							url: "/rationales",
+							type: 'POST',
+							dataType: "json",
+							data: {
+								name: jQuery("div.rationaleText").text(),
+								decision_id: jQuery("div.tooltip").attr('id'),
+							}
+						});
+						jQuery("div.tooltip").removeAttr('id');
+					}
+				}
+
+			});
+
+			jQuery( "div.rationaleText" ).autocomplete({
+				source: function( request, response ) {
+					jQuery.ajax({
+						url: "/search/"+request.term+'?type=Rationale',
+						success: function( data ) {
+							response( jQuery.map( data, function( item ) {
+								return {
+									label: item.name,
+									value: item.name,
+									id: item._id,
+								}
+							}));
+						}
+					});
+				},
+				minLength: 0,
+				select: function( event, ui ) {
+					//alert( ui.item.id );
+					jQuery.getJSON( '/relations/relate?tip='+jQuery(this).parent().attr('id')+'&origin='+ui.item.id+'&relation_type=Tagging', function(data) {});
+					jQuery("div.tooltip").hide();	
+				},
+				open: function() {
+					jQuery( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+				},
+				close: function() {
+					jQuery( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+				}
+			});	
+			
+			
 	}
-	
+	// enable tooltips for the rationale
+	jQuery('div.rationaleDiv#enabled').tooltip({
+		position: 'center left',
+		title: 'Rationale:'
+	});
 		
 	   return this;
     },
@@ -153,8 +236,17 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		;
 	},
 	decide : function (element) {
+
 		//alert(element.target.id);
-		jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id, function(data) {});
+		jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id, function(data) {
+			rationaleDiv.tooltip().show();	
+			jQuery("div.rationaleText").focus();
+
+			// nasty, nasty...
+			jQuery("div.tooltip").attr("id",data.$oid);
+		 	
+		});
+
 		jQuery("table.decisions", this.el).block({ message: null });
 	},
 	undecide : function(element) {
@@ -182,7 +274,7 @@ App.Views.Alternatives.ListDetails = Backbone.View.extend({
       childViewConstructor : AlternativeDetailsUpdatingView,
       childViewTagName     : 'tr'
     });
-//	this.render();
+
 	notifier.register(this);
 	_(this).bindAll('render','newAlternative','removeNewAlternative','checkNewAlternative');
 

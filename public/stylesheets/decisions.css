@@ -249,3 +249,13 @@ div.rationaleText {
 	color:#fff;
 	z-index:1000;
 }
+
+
+div.rationaleTip {
+	display: none;
+	text-align: left;
+}
+
+div.rationaleTip div.content {
+	padding: 0.5em;
+}

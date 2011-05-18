@@ -26,9 +26,20 @@
 								<table class="decisionList">					
 										<!-- here we enter single decisions -->
 										<% _(decision.details).each( function( detail ) { %>
-											<tr class="decision <%= decision.color.toLowerCase() %>">
+												<tr class="decision <%= decision.color.toLowerCase() %>">
 												<td class="user">
-													<img src="/images/icons/user.png"/><%= detail.email %>
+													<% if( detail.rationale) { %>
+														<div class="rationaleDiv" id="enabled">
+													<% } else { %>
+														<div class="rationaleDiv"> 
+													<% } %>
+															<img src="/images/icons/user.png"/><%= detail.email %>
+														</div>
+													<div class="rationaleTip tooltip">
+														<b>Taken:</b><div class="content"> <%= detail.timestamp %></div> <br/>
+														<b>Rationale:</b><br/>
+														<div class="content"><%= detail.rationale %></div>
+													</div>
 												</td>
 											</tr>
 										<% }); %>

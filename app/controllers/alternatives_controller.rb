@@ -252,7 +252,15 @@ class AlternativesController < ApplicationController
   			  j_user['timestamp'] = user_decision.created_at
   			  if user_decision.author 
   			    j_user['email'] = user_decision.author.email
-  			    j_user['id'] = user_decision.author.id
+  			    j_user['user_id'] = user_decision.author.id
+  			    j_user['decision_id'] = user_decision.id
+  			    j_user['timestamp'] = user_decision.created_at.to_s
+  			    
+  			    rationales = user_decision.tags("Rationale")
+  			    
+  			    if rationales.count > 0 
+  			      j_user['rationale'] = rationales[0].name
+  			    end
 # that would be nice to implement....
 #  			    j_users['uri'] = url_for( user_decision.author )
   			  end
