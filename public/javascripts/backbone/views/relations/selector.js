@@ -8,7 +8,7 @@ App.Views.Relations.Selector = Backbone.View.extend({
 		"Implies" : "Alternative",
 		"Contradicts" : "Alternative",
 		"Influences" : "Issue",
-		"Tagging"	: "",
+//		"Tagging"	: "",
 	},
 	relationCounts : {},
 	activeRelationType : null,
