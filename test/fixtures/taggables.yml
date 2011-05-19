@@ -32,7 +32,7 @@ DecisionOpen:
 
 Project-Saturn:
     type: Project
-    name: Simple Web Service
+    name: Saturn Mail
     
   
 # scopes go there

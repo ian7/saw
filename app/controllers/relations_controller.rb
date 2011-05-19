@@ -345,6 +345,44 @@ def relate
   	Juggernaut.publish("/chats",params[:tip])
     
     
+    # seves for adding relations basically
+    ### MN!
+    
+    if tip_taggable.type == "Tagging" 
+    	Juggernaut.publish("/chats",tip_taggable.tip)      
+    	Juggernaut.publish("/chats",tip_taggable.origin)      
+    	
+    	
+    	puts "!!!!!!!!!!!!!!!!!!!!!!! deep "
+    	# if that reaches SolvedBy relation...
+    	tt = Taggable.find(tip_taggable.tip)
+    	if tt.type  ==  "SolvedBy"
+      	puts "!!!!!!!!!!!!!!!!!!!!!!! deeper "
+      	Juggernaut.publish("/chats",tt.tip)      
+      	Juggernaut.publish("/chats",tt.origin)      
+    	  
+    	end
+    end
+      
+    if origin_taggable.type == "Tagging" 
+    	Juggernaut.publish("/chats",origin_taggable.tip)      
+    	Juggernaut.publish("/chats",origin_taggable.origin)      
+
+    	puts "!!!!!!!!!!!!!!!!!!!!!!! deep "
+    	# if that reaches SolvedBy relation...
+    	tt = Taggable.find(tip_taggable.origin)
+    	if tt.type  ==  "SolvedBy"
+      	puts "!!!!!!!!!!!!!!!!!!!!!!! deeper "
+      	Juggernaut.publish("/chats",tt.tip)      
+      	Juggernaut.publish("/chats",tt.origin)      
+    	  
+    	end
+
+
+    end
+
+    
+    
     respond_to do |format|
   		format.json {	render :json => {} }
        format.html { redirect_to ( issue_url(tip_taggable.id) ) }
