@@ -155,9 +155,11 @@ AlternativeUpdatingView  = Backbone.View.extend({
 		this.recordRationale();
 
 		jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id, function(data) {
+				/* removed for the campus branch 
 			 	rationaleDiv.tooltip().show();	
 				jQuery("div.rationaleText").focus();
-
+				*/
+				
 				// nasty, nasty...
 				jQuery("div.tooltip").attr("id",data.$oid);
 		});
