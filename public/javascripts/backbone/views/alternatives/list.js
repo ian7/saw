@@ -82,6 +82,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 			positionBy: 'fixed',
 			});
 */
+/* disabled for the campus branch
 		jQuery("div.button.decide",this.el).tooltip({
 			position: 'bottom center',
 			tip: "div.tooltip",
@@ -90,14 +91,9 @@ AlternativeUpdatingView  = Backbone.View.extend({
 				input: "none, none",
 				widget: "none, none",
 				tooltip: "none, none",
-				} 
-			/*  def:     "click,blur",
-			  input:   "click,blur",
-			  widget:  "click,blur",
-			  tooltip: "click,blur"*/
-			
+				} 			
 			});
-
+*/
 	   return this;
     },
     // this updates single row in the table
@@ -151,19 +147,21 @@ AlternativeUpdatingView  = Backbone.View.extend({
 		rationaleDiv = jQuery("div.button.decide",this.el);
 
 		jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
-		
+	
 		/* removed for the cmapus branch
 			this.recordRationale();
 		*/
 
 		jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id, function(data) {
 				/* removed for the campus branch 
+				alert( 'here !');
+				
 			 	rationaleDiv.tooltip().show();	
 				jQuery("div.rationaleText").focus();
 				*/
 				
 				// nasty, nasty...
-				jQuery("div.tooltip").attr("id",data.$oid);
+				//jQuery("div.tooltip").attr("id",data.$oid);
 		});
 
 	},
@@ -178,6 +176,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 		}
 	},
 	recordRationale : function() {
+				alert('and here!');
 				jQuery("div.rationaleText").keydown( function( e ) {
 
 					// if there is still decision id attached to the tooltip div
