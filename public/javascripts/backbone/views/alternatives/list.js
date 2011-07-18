@@ -152,7 +152,9 @@ AlternativeUpdatingView  = Backbone.View.extend({
 
 		jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
 		
-		this.recordRationale();
+		/* removed for the cmapus branch
+			this.recordRationale();
+		*/
 
 		jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id, function(data) {
 				/* removed for the campus branch 
