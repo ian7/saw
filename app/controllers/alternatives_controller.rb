@@ -241,13 +241,29 @@ class AlternativesController < ApplicationController
 		
   		@decision_collection.each do |decision|
   		  related_decisions = Taggable.find(:all, :conditions=>{:origin=>decision.id, :tip=>relation.id })
-  		  
+  		    		  
   			j_decision = {}
   			j_decision["name"] = decision.name
-  			j_decision["count"] = related_decisions.count
+  			
+  			# this count shows wrong now...
+  			#j_decision["count"] = related_decisions.count
+  			j_decision["count"] = 0
 
   			j_details = []
   			related_decisions.each do |user_decision|
+  			  
+  			  # check if given decision really belongs to the projec we're considering
+  			  if params[:project_id]
+              p = Project.find params[:project_id]
+              puts '!!!!!!!!!!!!!!!! got project'
+              project_tagging = Taggable.find :first, :conditions=>{:origin=>p.id, :tip=>user_decision.id}
+              if project_tagging 
+  			        j_decision["count"] = j_decision["count"] + 1
+              else
+                next
+              end
+    		  end
+    		  
   			  j_user={}
   			  j_user['timestamp'] = user_decision.created_at
   			  if user_decision.author 
@@ -273,14 +289,22 @@ class AlternativesController < ApplicationController
   			j_decisions << j_decision
 			
   			if current_user 
-  			  c = related_decisions.where(:author_id=>current_user.id)
+  			  rds = related_decisions.where(:author_id=>current_user.id)
   			  #current_users_decision = related_decisions.where(:author_id=>current_user.id).first
 #          puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + c.count.to_s
-          if c.count > 0  
-#            puts c.first.type
-            @current_users_decision = c.first
-#            puts c.first.origin
+
+
+          rds.all.each do |rd|
+            if params[:project_id]
+               p = Project.find params[:project_id]  
+               if rd.tags.index { |t| t.type=="Project" && t.id == p.id }  
+                 @current_users_decision = rds.first
+               end
+            else
+              @current_users_decision = rds.first
+            end
           end
+
   			end
   		end
 		
@@ -320,6 +344,10 @@ class AlternativesController < ApplicationController
 	end
 	
 	j_alternative["alternative_url"] = alternative_url( alternative )
+	
+	if params[:project_id]
+  	j_alternative["project_id"] = params[:project_id]
+	end
 	
 	return j_alternative			
  end

@@ -103,8 +103,23 @@ class TagController < ApplicationController
   @relation_instance.save
   @relation_instance.origin = Taggable.find(@from_taggable_id).id
   @relation_instance.tip = Taggable.find(@to_taggable_id).id
-  #@relation_instance.save_with_dirty!
   @relation_instance.save
+  
+  
+  # in case there was a project_id paramter specified, I'll try to tag it with project_id
+  p = Project.find params[:project_id]
+  if p
+    t = Tagging.new
+    t.type = Tagging
+    t.origin = p.id
+    t.tip = @relation_instance.id
+    t.save
+    
+    # i should ring the project id too ;)
+    Juggernaut.publish("/chats", p.id )
+  end
+  
+  
   
   ## not quite sure on what to do after... some redirect probably
   @to_taggable=Taggable.find @to_taggable_id

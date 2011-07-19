@@ -152,7 +152,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 			this.recordRationale();
 		*/
 
-		jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id, function(data) {
+		jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {
 				/* removed for the campus branch 
 				alert( 'here !');
 				
