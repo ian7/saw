@@ -110,7 +110,11 @@ def related_from( relation_type = "", taggable_type = "" )
   related_taggables = []
   
   relations_from( relation_type ).each do |relation|
-    related_taggable = Taggable.find relation.tip
+    related_taggable = Taggable.find_by_id relation.tip
+    
+    if not related_taggable
+      next
+    end
     
     ## check if desired taggable_type was specified and if it matches one that was found. 
     if taggable_type == "" || (taggable_type != "" && related_taggable.attributes["type"] == taggable_type) 
