@@ -9,3 +9,5 @@ public/assets/empty.css
 public/assets/projects.js
 public/assets/workspace.css
 public/assets/workspace.js
+.DS_Store
+Gemfile.lock

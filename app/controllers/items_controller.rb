@@ -2,7 +2,8 @@ require 'relation'
 
 class ItemsController < ApplicationController
  
-  before_filter :authenticate_user!
+  # that's bad
+  #before_filter :authenticate_user!
  
 
   def index
@@ -33,6 +34,9 @@ class ItemsController < ApplicationController
           j << ii
         end
         render :json => j }      
+      format.tex {
+        render :issues => @issues 
+      }
     end
   end
 
