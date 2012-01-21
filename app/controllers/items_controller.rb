@@ -192,15 +192,18 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-     @issue = Taggable.find(params[:id])
-     @issue.destroy
+    # changed behaviour to unkinking
+    # instead of deleting 
+
+    # @issue = Taggable.find(params[:id])
+    # @issue.destroy
 
      if params[:project_id]
         Juggernaut.publish("/chats",params[:project_id])
       end
     
     # clean up taggings and relations
-    Relation.find(:all, :conditions=>{:tip=>params[:id]}).each do |r|
+    Relation.find(:all, :conditions=>{:tip=>params[:id], :origin=>params[:project_id]}).each do |r|
       r.destroy
     end
     
