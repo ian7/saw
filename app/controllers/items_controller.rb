@@ -192,8 +192,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-     @issue = Taggable.find(params[:id])
-     @issue.destroy
+    # changed behaviour to unkinking
+    # instead of deleting 
+
+    # @issue = Taggable.find(params[:id])
+    # @issue.destroy
 
      if params[:project_id]
         Juggernaut.publish("/chats",params[:project_id])
