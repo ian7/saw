@@ -5,7 +5,6 @@ class TreeTag < Tag
     tree["children"]=[];
     tree["data"]=[];
     
-    
     children.each do |childProject|
       tree["children"] << childProject.to_hash_recursive
     end
@@ -15,24 +14,50 @@ class TreeTag < Tag
   
   def children
     allProjects = TreeTag.find :all, :conditions=>{:type=>type}
-    
     childrenProjects = []
     
-    allProjects.each do |childrenProject|
-      if childrenProject["parent"] != nil && childrenProject["parent"] == name
-        childrenProjects << childrenProject
+    allProjects.each do |childProject|
+      if childProject["parent"] != nil && childProject["parent"] == self.name
+        childrenProjects << childProject
       end
     end
+
+    return childrenProjects
+  end
+
+  def childrenRecursive
+    childrenProjects =  children
+
+    childrenProjects.each do |childProject|
+      childrenProjects.concat childProject.children
+    end 
+
     return childrenProjects
   end
   
+
   def parent
-    if ["parent"] != nil  
-      retval = TreeTag.find :first, :conditions=>{:type=>type}
-    else
-      return nil
-    end
+    return Taggable.find :first, :conditions=>{:type=> type, :name=>self["parent"]}
   end
+
+  def parent= (new_parent)
+    self["parent"] = new_parent
+  end
+    
+
+
+  # def parent
+  #   if ["parent"] != nil  
+  #     retval = TreeTag.find :first, :conditions=>{:type=>type, :name=>["parent"] }
+  #   else
+  #     return nil
+  #   end
+  # end
   
+  # def parent= ( t )
+  #   if t.type == ["type"]
+  #     parent = t.name
+  #   end
+  # end
 end
 
