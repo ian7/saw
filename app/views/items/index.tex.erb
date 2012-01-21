@@ -1,11 +1,13 @@
 \begin{table}
+
+	<% projects = Project.find(params[:project_id]).children %>
 	\begin{tabularx}{\textwidth}{l
-		<% Project.all.each do |project| %>
+		<% projects.each do |project| %>
 			|c
 		<% end %>
 	}
 	Name 
-	<% Project.all.each do |project| %>
+	<% projects.each do |project| %>
 		& \begin{sideways}<%= project.name %>\end{sideways} 
 	<% end %>
 	\\
@@ -16,14 +18,14 @@
 		<% @alternatives = issue.related_to("SolvedBy","Alternative") %>
 		
 		<%=issue.name %>  
-			<% Project.all.each do |project| %>
+			<% projects.each do |project| %>
 				& 
 			<% end %>
 			\\
 		<% @alternatives.each do |alternative| %>
 			\hspace{2mm} <%= alternative.name[0..55] %>
 
-			<% Project.all.each do |project| %>
+			<% projects.each do |project| %>
 				&
 				<% if rand(3) > 1 %>
 				 x
