@@ -4,6 +4,7 @@
 	<% negative_decision = Taggable.find :first, :conditions=>{:type=>"Decision", :name=>"Negative"} %>
 	<% open_decision = Taggable.find :first, :conditions=>{:type=>"Decision", :name=>"Open"} %>
 	<% projects = Project.find(params[:project_id]).children %>
+	<% projects.sort! { |x,y| x.name.downcase <=> y.name.downcase } %>
 
 	\begin{tabularx}{\textwidth}{l
 		<% projects.each do |project| %>
