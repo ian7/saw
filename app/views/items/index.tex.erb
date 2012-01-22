@@ -18,8 +18,12 @@
 	\\
 
 	\hline 
-	\hline
-	<% @issues.each  do |issue| %>
+	\hline 
+
+	<% @iss = @issues.to_ary.sort  %>
+
+
+	<% @iss.each  do |issue| %>
 		<% @alternatives = issue.related_to("SolvedBy","Alternative") %>
 		
 		<%=issue.name %>  

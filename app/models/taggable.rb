@@ -296,4 +296,20 @@ def controller
   end
 end
   
+def <=>(o)
+  if attributes["Priority"] == nil
+    if o.attributes["Priority"] == nil
+      return 0
+    else
+      return 1
+    end
+  else
+    if o.attributes["Priority"] == nil
+      return -1
+    else
+      return attributes["Priority"] <=> o.attributes["Priority"]
+    end
+  end
+end
+
 end
