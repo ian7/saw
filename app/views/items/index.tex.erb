@@ -33,21 +33,44 @@
 			% alternative: <%= alternative.id %>
 			<% sb_relation = Taggable.find :first, :conditions=>{:tip=>issue.id, :origin=>alternative.id} %>
 			% sb_relation <%= sb_relation.id %>
-			<% positive_tagging = Taggable.find :first, :conditions=>{:tip=>sb_relation.id, :origin=>positive_decision.id} %>
-			<% negative_tagging = Taggable.find :first, :conditions=>{:tip=>sb_relation.id, :origin=>negative_decision.id} %>
-			<% open_tagging = Taggable.find :first, :conditions=>{:tip=>sb_relation.id, :origin=>open_decision.id} %>
+			<% positive_taggings = Taggable.find :all, :conditions=>{:tip=>sb_relation.id, :origin=>positive_decision.id} %>
+			<% negative_taggings = Taggable.find :all, :conditions=>{:tip=>sb_relation.id, :origin=>negative_decision.id} %>
+			<% open_taggings = Taggable.find :all, :conditions=>{:tip=>sb_relation.id, :origin=>open_decision.id} %>
 
 			<% projects.each do |project| %>
 				&
-				<% if positive_tagging and Taggable.find :first, :conditions=>{:tip=>positive_tagging.id, :origin=> project.id} %>
-					 +				 
+				<% if positive_taggings.size>0 %>
+					% pt exists
 				<% end %>
-				<% if negative_tagging and Taggable.find :first, :conditions=>{:tip=>negative_tagging.id, :origin=> project.id} %>
-					 -		 
+				<% if negative_taggings.size>0 %>
+					% nt exists
 				<% end %>
-				<% if open_tagging and Taggable.find :first, :conditions=>{:tip=>open_tagging.id, :origin=> project.id} %>
-					 n				 
+				<% if open_taggings.size>0 %>
+					% open exists
 				<% end %>
+	
+				<% positive_taggings.each do |tagging| %>
+					<% if Taggable.find :first, :conditions=>{:tip=>tagging.id, :origin=> project.id} %>
+						 +				 
+						 <% break %>
+					<% end %>
+				<% end %>
+
+				<% negative_taggings.each do |tagging| %>
+					<% if Taggable.find :first, :conditions=>{:tip=>tagging.id, :origin=> project.id} %>
+						 -				 
+						 <% break %>
+					<% end %>
+				<% end %>
+
+				<% open_taggings.each do |tagging| %>
+					<% if Taggable.find :first, :conditions=>{:tip=>tagging.id, :origin=> project.id} %>
+						 o				 
+						 <% break %>
+					<% end %>
+				<% end %>
+
+
 
 			<% end %>
 			\\
