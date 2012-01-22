@@ -1,6 +1,10 @@
 \begin{table}
 
+	<% positive_decision = Taggable.find :first, :conditions=>{:type=>"Decision", :name=>"Positive"} %>
+	<% negative_decision = Taggable.find :first, :conditions=>{:type=>"Decision", :name=>"Negative"} %>
+	<% open_decision = Taggable.find :first, :conditions=>{:type=>"Decision", :name=>"Open"} %>
 	<% projects = Project.find(params[:project_id]).children %>
+
 	\begin{tabularx}{\textwidth}{l
 		<% projects.each do |project| %>
 			|c
@@ -24,14 +28,27 @@
 			\\
 		<% @alternatives.each do |alternative| %>
 			\hspace{2mm} <%= alternative.name[0..55] %>
+			
+			% issue: <%= issue.id %> 
+			% alternative: <%= alternative.id %>
+			<% sb_relation = Taggable.find :first, :conditions=>{:tip=>issue.id, :origin=>alternative.id} %>
+			% sb_relation <%= sb_relation.id %>
+			<% positive_tagging = Taggable.find :first, :conditions=>{:tip=>sb_relation.id, :origin=>positive_decision.id} %>
+			<% negative_tagging = Taggable.find :first, :conditions=>{:tip=>sb_relation.id, :origin=>negative_decision.id} %>
+			<% open_tagging = Taggable.find :first, :conditions=>{:tip=>sb_relation.id, :origin=>open_decision.id} %>
 
 			<% projects.each do |project| %>
 				&
-				<% if rand(3) > 1 %>
-				 x
-				<% else %>
-				 o 
+				<% if positive_tagging and Taggable.find :first, :conditions=>{:tip=>positive_tagging.id, :origin=> project.id} %>
+					 +				 
 				<% end %>
+				<% if negative_tagging and Taggable.find :first, :conditions=>{:tip=>negative_tagging.id, :origin=> project.id} %>
+					 -		 
+				<% end %>
+				<% if open_tagging and Taggable.find :first, :conditions=>{:tip=>open_tagging.id, :origin=> project.id} %>
+					 n				 
+				<% end %>
+
 			<% end %>
 			\\
 		<% end %>
