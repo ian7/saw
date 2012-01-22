@@ -14,10 +14,11 @@
 	Name 
 	<% projects.each do |project| %>
 		& \begin{sideways}
+		<%= project.name %>
 		<% if project["year"] %>
 			(<%= project.year %>)
 		<% end %>
-		<%= project.name %>\end{sideways} 
+		\end{sideways} 
 	<% end %>
 	\\
 
