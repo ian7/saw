@@ -175,12 +175,43 @@ class TagController < ApplicationController
 	 
 	 if current_user
      ## find the tagging for given user
-     @relation_instance = Taggable.find(:first, :conditions=>{:type=>@relation_name, :origin=>@from_taggable.id, :tip=>@to_taggable.id, :author_id=>current_user.id })  		   
+     @relation_instances = Taggable.find(:all, :conditions=>{:type=>@relation_name, :origin=>@from_taggable.id, :tip=>@to_taggable.id, :author_id=>current_user.id })  		   
 	 else
      ## find the tagging without current_user - that's quite dangerous - gets random one !
-     @relation_instance = Taggable.find(:first, :conditions=>{:type=>@relation_name, :origin=>@from_taggable.id, :tip=>@to_taggable.id })  	
+     #@relation_instance = Taggable.find(:first, :conditions=>{:type=>@relation_name, :origin=>@from_taggable.id, :tip=>@to_taggable.id })  	
     end
   end
+
+
+  if params[:project_id]
+    @relation_instances.each do |ri|
+      @project_tag = Project.find params[:project_id]
+#      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!! PTID: "+ @project_tag.id.to_s
+#      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!! rID: "+ ri.id.to_s
+#      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!! a: "+ current_user.id.to_s
+
+#TODO:  not checking user is going to make trouble.... 
+      project_relation = Taggable.find(:first, :conditions=>{:origin=>@project_tag.id, :tip=>ri.id }) #, :author_id=>current_user.id})
+      if project_relation != nil
+#              puts "!!!!!!!!!!!!!!!!!!!!!!!!!!! pr: "+ project_relation.id.to_s
+              project_relation.destroy
+              @relation_instance = ri
+              #break
+      end
+    end
+    @to_taggable=Taggable.find @relation_instance.tip
+  else
+   ## kill it
+   @relation_instance = @relation_instances.first
+   @to_taggable=Taggable.find @relation_instance.tip
+   if @relation_instance != nil
+     @relation_instance.destroy
+   end
+  end
+
+
+
+
 
   ##############
   # following code will crash if there is no relation found.
@@ -188,6 +219,9 @@ class TagController < ApplicationController
 
   ## not quite sure on what to do after... some redirect probably
   @to_taggable=Taggable.find @relation_instance.tip
+
+
+
 
 
   if( @to_taggable._type == "Relation")
@@ -203,10 +237,6 @@ class TagController < ApplicationController
      Juggernaut.publish("/chats", @relation_instance.tip)
    end
 
-   ## kill it
-   if @relation_instance != nil
-     @relation_instance.destroy
-   end
 
 
   #redirect_to("/"+@to_taggable.attributes["type"].downcase.pluralize+"/"+@to_taggable.id.to_s )

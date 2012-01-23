@@ -166,7 +166,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 
 	},
 	undecide : function(element) {
-		jQuery.getJSON( this.model.get('relation_url') + '/tag/untag?from_taggable_id='+element.target.id, function(data) {});		
+		jQuery.getJSON( this.model.get('relation_url') + '/tag/untag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {});		
 		jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
 	},
 	notify : function( broadcasted_id ) {
