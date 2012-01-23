@@ -1,3 +1,7 @@
+
+
+\newcolumntype{x}[1]{>{\centering\hspace{0pt}}b{#1}}
+
 \begin{table*}
 
 	<% positive_decision = Taggable.find :first, :conditions=>{:type=>"Decision", :name=>"Positive"} %>
@@ -6,10 +10,15 @@
 	<% projects = Project.find(params[:project_id]).children %>
 	<% projects.sort! { |x,y| x.year <=> y.year } %>
 
-	\begin{tabularx}{\textwidth}{l
+	\definecolor{light-gray}{gray}{0.90}
+	\rowcolors{1}{white}{light-gray}
+	\begin{tabularx}{\textwidth}{b{35mm}
 		<% projects.each do |project| %>
-			|c
+			%|c
+			%|l
+			|x{3mm}
 		<% end %>
+		|
 	}
 	Name 
 	<% projects.each do |project| %>
@@ -20,7 +29,7 @@
 		<% end %>
 		\end{sideways} 
 	<% end %>
-	\\
+	\tabularnewline
 
 	\hline 
 	\hline 
@@ -30,15 +39,13 @@
 
 	<% @iss.each  do |issue| %>
 		<% @alternatives = issue.related_to("SolvedBy","Alternative") %>
-		
 		<%=issue.name %>  
 			<% projects.each do |project| %>
 				& 
 			<% end %>
-			\\
+			\tabularnewline
 		<% @alternatives.each do |alternative| %>
-			\hspace{2mm} <%= alternative.name[0..55] %>
-			
+			\hspace{0.5mm} <%= alternative.name[0..55] %>
 			% issue: <%= issue.id %> 
 			% alternative: <%= alternative.id %>
 			<% sb_relation = Taggable.find :first, :conditions=>{:tip=>issue.id, :origin=>alternative.id} %>
@@ -46,7 +53,6 @@
 			<% positive_taggings = Taggable.find :all, :conditions=>{:tip=>sb_relation.id, :origin=>positive_decision.id} %>
 			<% negative_taggings = Taggable.find :all, :conditions=>{:tip=>sb_relation.id, :origin=>negative_decision.id} %>
 			<% open_taggings = Taggable.find :all, :conditions=>{:tip=>sb_relation.id, :origin=>open_decision.id} %>
-
 			<% projects.each do |project| %>
 				&
 				<% if positive_taggings.size>0 %>
@@ -58,32 +64,23 @@
 				<% if open_taggings.size>0 %>
 					% open exists
 				<% end %>
-	
 				<% positive_taggings.each do |tagging| %>
-					<% if Taggable.find :first, :conditions=>{:tip=>tagging.id, :origin=> project.id} %>
-						 +				 
-						 <% break %>
-					<% end %>
+					<% if Taggable.find :first, :conditions=>{:tip=>tagging.id, :origin=> project.id} %>+<% break %><% end %>
 				<% end %>
-
 				<% negative_taggings.each do |tagging| %>
 					<% if Taggable.find :first, :conditions=>{:tip=>tagging.id, :origin=> project.id} %>
 						 -				 
 						 <% break %>
 					<% end %>
 				<% end %>
-
 				<% open_taggings.each do |tagging| %>
 					<% if Taggable.find :first, :conditions=>{:tip=>tagging.id, :origin=> project.id} %>
 						 o				 
 						 <% break %>
 					<% end %>
 				<% end %>
-
-
-
 			<% end %>
-			\\
+			\tabularnewline
 		<% end %>
 	\hline
 	<% end %>
