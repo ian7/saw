@@ -255,7 +255,7 @@ class AlternativesController < ApplicationController
   			  # check if given decision really belongs to the projec we're considering
   			  if params[:project_id]
               p = Project.find params[:project_id]
-              puts '!!!!!!!!!!!!!!!! got project'
+#              puts '!!!!!!!!!!!!!!!! got project'
               project_tagging = Taggable.find :first, :conditions=>{:origin=>p.id, :tip=>user_decision.id}
               if project_tagging 
   			        j_decision["count"] = j_decision["count"] + 1
