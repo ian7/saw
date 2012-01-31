@@ -3,6 +3,7 @@
 db/*.sqlite3
 log/*.log
 tmp/**/*
+tmp/*
 public/assets/backbone.js
 public/assets/common.css
 public/assets/common.js
