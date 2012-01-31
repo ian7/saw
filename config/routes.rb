@@ -1,5 +1,7 @@
 Saw::Application.routes.draw do
 
+  resources :r
+
   resources :feedbacks
 
   get "users/new"

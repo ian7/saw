@@ -22,7 +22,8 @@ javascripts:
     - public/javascripts/lib/jquery/jquery.tabSlideOut.v1.3.js
     - public/javascripts/lib/jquery/jquery.blockUI.js
 # this one was originally downloaded over the juggernaut static node server...
-    - public/javascripts/juggernaut.js
+## I switched it back to juggernaut becuase of the compatibility issues.
+#   - public/javascripts/juggernaut.js
     - public/javascripts/backbone/underscore.js
     - public/javascripts/backbone/backbone.js
     - public/javascripts/backbone/backbonerailsauthtokenadapter.js
@@ -55,6 +56,10 @@ javascripts:
   projects:
     - public/javascripts/backbone/projects.js
     - *backbone
+ 
+  rs:
+    - public/javascripts/backbone/rs.js
+    - *backbone    
 
 stylesheets:
   common:

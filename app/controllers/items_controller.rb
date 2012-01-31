@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
         end
         render :json => j }      
       format.tex {
-        render :issues => @issues 
+        render :issues => @issues
       }
     end
   end

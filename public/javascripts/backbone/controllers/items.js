@@ -46,8 +46,7 @@ App.Controllers.Items = Backbone.Controller.extend({
 		this.collection = new Alternatives;
 		this.collection.url = this.item.url() + '/alternatives';
 		this.collection.item_url = this.item.url();
-
-		
+ 		
 		this.view = new App.Views.Alternatives.ListDetails( {collection: this.collection, el: 'section.itemList' });
 		this.view.model = this.item;
 		

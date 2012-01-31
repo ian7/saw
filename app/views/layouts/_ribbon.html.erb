@@ -7,8 +7,8 @@
 		<a href="/">Projects</a>
 		<% if params[:project_id]
 			p = Project.find(params[:project_id])
-		elsif params[:id]
-			p = Project.find(params[:id])
+#		elsif params[:id]
+#				p = Project.find(params[:id])
 		end %>
 		<% if p %>
 			&gt;
