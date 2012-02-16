@@ -1,7 +1,7 @@
 /**
  * @author Marcin Nowak
  */
-App.Controllers.Project = Backbone.Controller.extend({
+App.Controllers.Project = Backbone.Router.extend({
     routes: {
         "" : "index",
     },

@@ -2,9 +2,9 @@
  * @author Marcin Nowak
  * I'm going to come back to it later.
  */
-App.Controllers.Alternatives = Backbone.Controller.extend({
+App.Controllers.Alternatives = Backbone.Router.extend({
     routes: {
-    	//new Regexp('^([^\/]*)/.*$'): 'show',
+    	//new Regexp('^([^\/]*)/.*$'): 'shuow',
     	//new Regexp('^[^\/]*/([^\/]*)\/.*$': 'show',
         "/:id":            "show",
         "":                         "index",

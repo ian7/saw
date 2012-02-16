@@ -1,7 +1,7 @@
 /**
  * @author Marcin Nowak
  */
-App.Controllers.Tags = Backbone.Controller.extend({
+App.Controllers.Tags = Backbone.Router.extend({
     routes: {
     //    "add": 	 "add",
     //  "":      "index",

@@ -1,7 +1,7 @@
 /**
  * @author Marcin Nowak
  */
-App.Controllers.Items = Backbone.Controller.extend({
+App.Controllers.Items = Backbone.Router.extend({
     routes: {
     	//new Regexp('^([^\/]*)/.*$'): 'show',
     	//new Regexp('^[^\/]*/([^\/]*)\/.*$': 'show',

@@ -5,6 +5,7 @@
 
 App.Views.Rs.Show = Backbone.View.extend({
 	events: {
+   "click .button": "expand", 
 	},
     initialize: function() {
       _(this).bindAll('render');
@@ -13,8 +14,27 @@ App.Views.Rs.Show = Backbone.View.extend({
     
     render: function() {
 //        this.el.innerHTML = JST.relations_show({relative: this.model });
-        this.el.innerHTML = "Name: " + this.model.attributes.name;			
+        this.el.innerHTML = 
+          "<div class=\"button orange\">expand</div>" +   
+          "Name: " + this.model.attributes.name +
+          "<section class=\"subItem\"></section>";
+        
+        if( r_to_focus == this.model.id ){
+          this.expand();
+        }
+         			
 	      return this;
+    },
+    expand: function(){
+            this.r= new R; 
+            this.r.url = this.model.url();
+            //e = jQuery(this.el).('section.subItem')
+            this.subView = new App.Views.Rs.SubItems({model: this.r, el: jQuery('section.subItem',this.el) });           
+            this.r.fetch({
+              success: function(model, resp) {
+              }
+            });
+            //this.view.render();
     },
 });
 
@@ -86,3 +106,37 @@ removeNewItem : function() {
     this.newItem();
   },
 });
+
+
+
+App.Views.Rs.SubItems = Backbone.View.extend({
+  events: {
+       "click .button": "pivot", 
+  },
+    initialize: function() {
+      _(this).bindAll('render');
+      this.model.bind('change', this.render);
+    },
+    
+    render: function() {
+//        this.el.innerHTML = JST.relations_show({relative: this.model });
+        
+        e="<ul>"
+        for( rel_to in this.model.attributes.related_to ){
+          e+="<li>"+
+            "<b>" +
+            this.model.attributes.related_to[rel_to].type +
+            "</b>: " +          
+            this.model.attributes.related_to[rel_to].name +
+            " <div class=\"button orange\">pivot</div>"
+            "</li>";
+        }
+        e+="<ul>"
+        this.el.innerHTML=e;
+                
+        return this;
+    },
+    pivot: function(){
+        App.Controllers.Rs.navigate("haha/hihi");
+    },
+ });

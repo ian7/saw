@@ -28,8 +28,8 @@ var R = Backbone.Model.extend({
 
 var Rs = Backbone.Collection.extend({
   model : R,
-   url : "http://localhost:3000/r",
- /* url : function() {
+//   url : "http://localhost:3000/r",
+  url : function() {
 	if( !this.urlOverride ) {
 		return window.location.pathname;
 	}
@@ -37,7 +37,6 @@ var Rs = Backbone.Collection.extend({
 		return this.urlOverride;
 	}
 	},
-	*/
   urlOverride : null
 });
 
