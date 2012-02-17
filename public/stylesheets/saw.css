@@ -725,4 +725,15 @@ div.wizard-block {
   }
 
 
+section.subItem {
+  background-color: #EEEEEE;
+  border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
+  margin: 3px;
+}
+div.r {
+  padding: 5px;
+  background-color: #F7F7F7;
+  margin: 3px;
+}
+
 

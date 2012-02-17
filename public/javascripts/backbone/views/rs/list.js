@@ -5,7 +5,8 @@
 
 App.Views.Rs.Show = Backbone.View.extend({
 	events: {
-   "click .button": "expand", 
+   "click div.expand": "expand", 
+   "click div.focus" : "focus",
 	},
     initialize: function() {
       _(this).bindAll('render');
@@ -15,13 +16,17 @@ App.Views.Rs.Show = Backbone.View.extend({
     render: function() {
 //        this.el.innerHTML = JST.relations_show({relative: this.model });
         this.el.innerHTML = 
-          "<div class=\"button orange\">expand</div>" +   
-          "Name: " + this.model.attributes.name +
+          //"<div class=\"button red focus\">focus</div>" +   
+          "<div class=\"button orange expand\">expand</div>" +   
+          //"<b>Id:</b> " + this.model.attributes.id +
+          " <b>Name:</b> " + this.model.attributes.name +
           "<section class=\"subItem\"></section>";
-        
-        if( r_to_focus == this.model.id ){
+        if( r_to_focus != null && r_to_focus == this.model.id ){
           this.expand();
         }
+
+        jQuery(this.el).hide();
+        jQuery(this.el).slideDown(300);
          			
 	      return this;
     },
@@ -36,6 +41,9 @@ App.Views.Rs.Show = Backbone.View.extend({
             });
             //this.view.render();
     },
+    focus: function(){
+        App.Components.Rs.navigate(this.model.attributes.type+"/"+this.model.attributes.id,{trigger: true})
+    }
 });
 
 
@@ -63,7 +71,7 @@ App.Views.Rs.List = Backbone.View.extend({
 	_(this).bindAll('render');
 //	this.firstRender = true;
     this.render();
-    this.checkNewItem();
+  //  this.checkNewItem();
   },
   render : function() {
 		this._rendered = true;
@@ -120,23 +128,46 @@ App.Views.Rs.SubItems = Backbone.View.extend({
     
     render: function() {
 //        this.el.innerHTML = JST.relations_show({relative: this.model });
-        
-        e="<ul>"
+        e="<table width=100%><tr><th with=50%>Related to:</th><th width=50%>Related from:</th><tr>"
+        e+="<td><ul>"
         for( rel_to in this.model.attributes.related_to ){
           e+="<li>"+
+            " <div class=\"button green\" id=\""+
+              this.model.attributes.related_to[rel_to].type +
+              "/" +
+              this.model.attributes.related_to[rel_to]._id +
+              "\">pivot</div>" +
             "<b>" +
             this.model.attributes.related_to[rel_to].type +
             "</b>: " +          
             this.model.attributes.related_to[rel_to].name +
-            " <div class=\"button orange\">pivot</div>"
+            "</li>";            "</li>";
+        }
+        e+="</ul></td>"
+
+        e+="<td><ul>"
+        for( rel_to in this.model.attributes.related_from ){
+          e+="<li>"+
+            " <div class=\"button green\" id=\""+
+              this.model.attributes.related_from[rel_to].type +
+              "/" +
+              this.model.attributes.related_from[rel_to]._id +
+              "\">pivot</div>" +
+            "<b>" +
+            this.model.attributes.related_from[rel_to].type +
+            "</b>: " +          
+            this.model.attributes.related_from[rel_to].name +
             "</li>";
         }
-        e+="<ul>"
+        e+="</ul></td></tr></table>"
+
         this.el.innerHTML=e;
+         jQuery(this.el).hide();
+         jQuery(this.el).slideDown(200);
                 
         return this;
     },
-    pivot: function(){
-        App.Controllers.Rs.navigate("haha/hihi");
+    pivot: function( e ){
+        App.Components.Rs.navigate(e.target.id,{trigger: true});
     },
  });

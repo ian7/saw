@@ -1,5 +1,10 @@
 Saw::Application.routes.draw do
 
+
+# that's kind of highly experimental
+  match "scope/type/:type_name" => 'scope#type'
+  match "scope/type/:type_name/:id" => 'r#show'
+
   resources :r
 
   resources :feedbacks
