@@ -7,15 +7,19 @@ class AuthenticationsController < ApplicationController
   def create
 	  omniauth = request.env["omniauth.auth"]  
 	  authentication = Authentication.find :first, :conditions=>{ :provider=>omniauth["provider"], :uid=>omniauth["uid"]}
-
+	  puts "Authentication:create"
 	  if authentication  
+	  	puts "Authentication found"
 	    flash[:notice] = "Signed in successfully."  
 	    sign_in_and_redirect(:user, authentication.user)  
 	  elsif current_user  
+	  	puts"no authentication but current user exists"
 	    current_user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])  
 	    flash[:notice] = "Authentication successful."  
 	    redirect_to authentications_url  
 	  else  
+	  	puts "no user and no authentication"
+	  	puts omniauth
 	    user = User.new  
 	    user.apply_omniauth( omniauth )
 #	    puts '!!!!!!!!!!!!!!!!!!!!!!'
@@ -25,12 +29,12 @@ class AuthenticationsController < ApplicationController
 #	    puts omniauth['user_info']['email']
 #	    user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
 	    if user.save
-	      user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])  
-  	    flash[:notice] = "Signed in successfully."  
-  	    sign_in_and_redirect(:user, user)    	    
+	     	user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])  
+  	    	flash[:notice] = "Signed in successfully."  
+  	    	sign_in_and_redirect(:user, user)    	    
 	    else
-        session[:omniauth] = omniauth.except('extra')  
-        redirect_to new_user_registration_url  
+        	session[:omniauth] = omniauth.except('extra')  
+        	redirect_to new_user_registration_url  
 	    end  
 	  end  
   end

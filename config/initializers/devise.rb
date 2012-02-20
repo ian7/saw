@@ -73,6 +73,7 @@ Devise.setup do |config|
   config.password_length = 3..20
 
   # Regex to use to validate the email address
+  #config.email_regexp = /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
   config.email_regexp = /.*/i
 
   # ==> Configuration for :timeoutable

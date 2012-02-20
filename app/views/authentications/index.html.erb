@@ -1,22 +1,29 @@
 <% if @authentications %>  
+  
+  Welcome !<br>
+  <b>Your username:</b> <%= current_user.email %><br>
+  <b>Your image:</b> <img src="<%=current_user.image%>"/>
 
+  <br><br>
+  <hr>
 
 
  <% unless @authentications.empty? %>  
-  <p><strong>You can sign in to this account using:</strong></p>  
+  <p><strong>Right now following authentication methods are active for you:</strong></p><br>  
    <div class="authentications">  
     <% for authentication in @authentications %>  
      <div class="authentication">  
       <%= image_tag "#{authentication.provider}_32.png", :size => "32x32" %>  
       <div class="provider"><%= authentication.provider.titleize %></div>  
       <div class="uid"><%= authentication.uid %></div>  
-       <%= link_to "X", authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove" %>  
+       <%= link_to "[remove]", authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove" %>  
      </div>  
      <% end %>  
      <div class="clear"></div>  
     </div>  
    <% end %>  
-   <p><strong>Identify yourself with:</strong></p>  
+   <br><hr><br>
+   <p><strong>You can also add new authentication method:</strong></p>  
   <% else %> 
 
 
@@ -28,10 +35,10 @@
   <input id="user_email" name="user[email]" size="30" type="text" /></p> 
  
   <p><label for="user_password">Password</label><br /> 
-  <input type="hidden" id="user_password" name="user[password]" size="30" type="password"/></p> 
+  <input type="" id="user_password" name="user[password]" size="30" type="password"/></p> 
  
     <p><input name="user[remember_me]" type="hidden" value="0" />
-	<input type="hidden" id="user_remember_me" name="user[remember_me]" type="checkbox" value="1" /> <label for="user_remember_me">Remember me</label></p> 
+	<input type="" id="user_remember_me" name="user[remember_me]" type="checkbox" value="1" /> <label for="user_remember_me">Remember me</label></p> 
  
   <p><input id="user_submit" name="commit" type="submit" value="Sign in" /></p> 
 </form>
@@ -39,18 +46,14 @@
 
   <p><strong>Sign in through one of these services:</strong></p>  
 <% end %>  
-<!--
 <a href="/auth/twitter" class="auth_provider">  
   <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>Twitter</a>  
--->
 <a href="/auth/facebook" class="auth_provider">  
   <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>Facebook</a>  
-<!--
 <a href="/auth/google_apps" class="auth_provider">  
   <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %>Google</a>  
 <a href="/auth/open_id" class="auth_provider">  
   <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>OpenID</a>  
--->
 <div class="clear"></div>  
-  
+  <br><hr><br>
   <p><strong>You can always <%= link_to "sign-out", {:action=>"destroy", :controller=>"devise/sessions"}%> !

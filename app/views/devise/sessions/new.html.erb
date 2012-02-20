@@ -1,29 +1,32 @@
-<h2 class="devise">Welcome, please sign up</h2> 
+<h2 class="devise">Welcome, please sign in/up</h2> 
  
 <form accept-charset="UTF-8" action="/users" class="user_new" id="user_new" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="oikWBo1aXitpLRffeZWZGT24UjfgBxeqFOIDoijDXvE=" /></div> 
   
   
   <p>Your name: <input id="user_email" name="user[email]" size="30" type="text" /> 
-  <input id="user_password" name="user[password]" size="30" type="hidden" value="m"/>
+  Password: <input id="user_password" name="user[password]" size="30" type="password" value="m"/>
  
-  <input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="hidden" value="m"/>
+  <input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="hidden" value=""/>
   <input id="user_submit" name="commit" type="submit" value="Sign up" /></p> 
 </form>
 
-<!--
 <h2 class="devise">or sign in.</h2>
 
-<form accept-charset="UTF-8" action="/users/sign_in" class="user_new" id="user_new" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="oikWBo1aXitpLRffeZWZGT24UjfgBxeqFOIDoijDXvE=" /></div> 
+<form accept-charset="UTF-8" action="/users/sign_in" class="user_new" id="user_new" method="post">
+
+<div style="margin:0;padding:0;display:inline">
+<input name="utf8" type="hidden" value="&#x2713;" />
+<input name="authenticity_token" type="hidden" value="oikWBo1aXitpLRffeZWZGT24UjfgBxeqFOIDoijDXvE=" />
+</div> 
   
   
-  <p>Your name: <input id="user_email" name="user[email]" size="30" type="text" /> 
-  <input type="hidden" id="user_password" name="user[password]" size="30" value="m" />
+  <p>Your name: <input id="user_email" name="user[email]" size="30" type="text" />
+  Password:<input type="password" id="user_password" name="user[password]" size="30" value="" />
  
-  <input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="hidden" value='m'/>
+<!--  <input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="hidden" value='m'/>-->
   <input id="user_submit" name="commit" type="submit" value="Sign in" /></p> 
 </form> 
--->
-<!--
+<br><hr><br>
 <p><strong>Sign in through one of these services:</strong></p>
 
 <a href="/auth/twitter" class="auth_provider">
@@ -43,7 +46,6 @@
   <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>
   OpenID
 </a>
--->
 </p>
 
 <%#= render :partial => "devise/shared/links" %>
