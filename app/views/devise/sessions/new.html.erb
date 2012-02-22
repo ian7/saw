@@ -1,51 +1,85 @@
-<h2 class="devise">Welcome, please sign in/up</h2> 
- 
-<form accept-charset="UTF-8" action="/users" class="user_new" id="user_new" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="oikWBo1aXitpLRffeZWZGT24UjfgBxeqFOIDoijDXvE=" /></div> 
+<h2 class="devise">Welcome to Software Architecture Warehouse </h2> 
   
-  
-  <p>Your name: <input id="user_email" name="user[email]" size="30" type="text" /> 
-  Password: <input id="user_password" name="user[password]" size="30" type="password" value="m"/>
- 
-  <input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="hidden" value=""/>
-  <input id="user_submit" name="commit" type="submit" value="Sign up" /></p> 
-</form>
+  <script>
+  $(function() {
+    $( "#sign-in-up" ).tabs();
+  });
+  </script>
 
-<h2 class="devise">or sign in.</h2>
+<div id="sign-in-up">
+  <ul>
+    <li><a href="#sign-in">Sign in</a></li>
+    <li><a href="#sign-up">Sign up</a></li>
+    </ul> 
+  <div id="sign-in">
 
-<form accept-charset="UTF-8" action="/users/sign_in" class="user_new" id="user_new" method="post">
+    <form accept-charset="UTF-8" action="/users/sign_in" class="user_new" id="user_new" method="post">
 
-<div style="margin:0;padding:0;display:inline">
-<input name="utf8" type="hidden" value="&#x2713;" />
-<input name="authenticity_token" type="hidden" value="oikWBo1aXitpLRffeZWZGT24UjfgBxeqFOIDoijDXvE=" />
-</div> 
-  
-  
-  <p>Your name: <input id="user_email" name="user[email]" size="30" type="text" />
-  Password:<input type="password" id="user_password" name="user[password]" size="30" value="" />
- 
-<!--  <input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="hidden" value='m'/>-->
-  <input id="user_submit" name="commit" type="submit" value="Sign in" /></p> 
-</form> 
-<br><hr><br>
-<p><strong>Sign in through one of these services:</strong></p>
+        <div style="margin:0;padding:0;display:inline">
+        <input name="utf8" type="hidden" value="&#x2713;" />
+        <input name="authenticity_token" type="hidden" value="oikWBo1aXitpLRffeZWZGT24UjfgBxeqFOIDoijDXvE=" />
+        </div> 
+        
+      <p>Your name: <input id="user_email" name="user[email]" size="30" type="text" />
+      Password:<input type="password" id="user_password" name="user[password]" size="30" value="" />
+     
+    <!--  <input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="hidden" value='m'/>-->
+      <input id="user_submit" name="commit" type="submit" value="Sign in" /></p> 
+    </form> 
+    <br><hr><br>
 
-<a href="/auth/twitter" class="auth_provider">
-  <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
-  Twitter
-</a>
+    <p><strong>Sign in through one of these services:</strong></p>
 
-<a href="/auth/facebook" class="auth_provider">
-  <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
-  Facebook
-</a>
-<a href="/auth/google_apps" class="auth_provider">
-  <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %>
-  Google
-</a>
-<a href="/auth/open_id" class="auth_provider">
-  <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>
-  OpenID
-</a>
-</p>
+    <a href="/auth/twitter" class="auth_provider">
+      <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
+      Twitter
+    </a>
 
+    <a href="/auth/facebook" class="auth_provider">
+      <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
+      Facebook
+    </a>
+    <a href="/auth/google_apps" class="auth_provider">
+      <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %>
+      Google
+    </a>
+    <a href="/auth/open_id" class="auth_provider">
+      <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>
+      OpenID
+    </a>
+    </p>
+  </div>
+
+  <div id="sign-up">
+    <form accept-charset="UTF-8" action="/users" class="user_new" id="user_new" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="oikWBo1aXitpLRffeZWZGT24UjfgBxeqFOIDoijDXvE=" /></div> 
+      
+      
+      <p>Your name: <input id="user_email" name="user[email]" size="30" type="text" /> 
+      Password: <input id="user_password" name="user[password]" size="30" type="password" value="m"/>
+     
+      <input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="hidden" value=""/>
+      <input id="user_submit" name="commit" type="submit" value="Sign up" /></p> 
+    </form>
+    <br><hr><br>
+    <p><strong>Sign up through one of these services:</strong></p>
+
+    <a href="/auth/twitter" class="auth_provider">
+      <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
+      Twitter
+    </a>
+
+    <a href="/auth/facebook" class="auth_provider">
+      <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
+      Facebook
+    </a>
+    <a href="/auth/google_apps" class="auth_provider">
+      <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %>
+      Google
+    </a>
+    <a href="/auth/open_id" class="auth_provider">
+      <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>
+      OpenID
+    </a>
+    </p>
+  </div>
 <%#= render :partial => "devise/shared/links" %>
