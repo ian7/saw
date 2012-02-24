@@ -2,6 +2,19 @@ require File.expand_path('../boot', __FILE__)
 
 # require 'rails/all'
 
+# log4r
+
+require 'log4r'
+require 'log4r/yamlconfigurator'
+# we use various outputters, so require them, otherwise config chokes
+require 'log4r/outputter/datefileoutputter'
+require 'log4r/outputter/emailoutputter'
+require 'log4r/formatter/log4jxmlformatter'
+require 'log4r/outputter/udpoutputter'
+#include Log4r
+
+
+
 # mongoid
 require "action_controller/railtie"
 require "action_mailer/railtie"
@@ -14,6 +27,21 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Saw
   class Application < Rails::Application
+
+# log4r
+
+   cfg = Log4r::YamlConfigurator # shorthand
+  # cfg['HOME'] = 'config/'      # the only parameter in the YAML, our HOME directory
+
+   # load the YAML file with this
+   cfg.load_yaml_file('config/log4r.yaml')
+
+   #config.logger = Log4r::Logger[Rails.env]
+   config.logger = Log4r::Logger['saw.default']
+#   devLog = Log4r::Logger['saw.development']
+#   devLog.info "starting up!"
+
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

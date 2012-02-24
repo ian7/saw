@@ -1,0 +1,117 @@
+purpose    : TestA
+description: This is the 1st YAML doc
+say        : Hi
+
+---
+# *** YAML2LOG4R ***
+log4r_config:
+  # define all pre config ...
+  pre_config:
+    custom_levels:
+      - DEB
+      - INF
+      - PRT
+      - WRN
+      - WARN
+      - DEBUG
+      - INFO
+      - ERR
+      - FAT
+    global:
+      level: DEB
+    root  :
+      level: DEB
+    parameters:
+      - name   : x
+        value  : aaa
+      - name   : y
+        value  : bbb
+
+  # define all loggers ...
+  loggers:
+    - name      : 'saw.default'
+      level     : DEB
+      additive  : 'false'
+      trace     : 'false'
+      outputters:
+        - stderr
+        - logfile
+ #       - email
+        - Chainsaw
+
+    - name      : 'saw.development'
+      level     : DEB
+      additive  : 'true'
+      trace     : 'true'
+      thread    : 'localhost'
+      outputters:
+        - stderr
+        - logfile
+ #       - email
+        - Chainsaw
+
+    - name      : 'production'
+      level     : DEB
+      additive  : 'false'
+      trace     : 'false'
+      outputters:
+        - stderr
+        - logfile
+#        - email
+        - Chainsaw
+
+#    - name      :  yourlogger
+#      level     : INF
+#      outputters:
+#        - stderr
+#        - logfile
+#        - Chainsaw
+
+  # define all outputters (incl. formatters)
+  outputters:
+    - type     : StderrOutputter
+      name     : stderr 
+      level    : DEB
+      only_at  :
+        - INFO
+        - WARN
+#        - DEBUG
+      formatter:
+        date_pattern: '%y%m%d %H:%M:%S'
+        pattern     : '%d %l: %m '
+        type        : PatternFormatter
+    - type        : DateFileOutputter
+      name        : logfile
+      level       : DEB
+      date_pattern: '%Y%m%d'
+      trunc       : 'false'
+      dirname     : "log"
+      formatter   :
+        date_pattern: '%y%m%d %H:%M:%S'
+        pattern     : '%d %l: %m'
+        type        : PatternFormatter
+    - type        : EmailOutputter
+      name        : email
+      level       : FAT
+      server      : localhost
+      subject     : 'Message from #{PN}:'
+      from        : test@localhost
+      to          : anhu@localhost
+      immediate_at: FAT
+      formatfirst : 'true'
+      formatter   :
+        date_pattern: '%y%m%d %H:%M:%S'
+        pattern     : '%d %l: %m'
+        type        : PatternFormatter
+    - type        : UDPOutputter
+      name        : Chainsaw
+      level       : DEB
+      hostname    : '172.16.33.226'
+      port        : '6667'
+      formatfirst : 'true'
+      formatter   :
+        type        : Log4jXmlFormatter
+---
+purpose    : TestB
+description: This is the last YAML doc
+say        : Bye
