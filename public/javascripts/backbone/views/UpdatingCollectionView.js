@@ -63,5 +63,22 @@ var UpdatingCollectionView = Backbone.View.extend({
     });
  
     return this;
+  },
+  filter : function( term ){
+    if( term.length == 0 ){
+      _(this._childViews).each( function( childView ){
+          childView.show();
+      });
+    }
+    else{
+      _(this._childViews).each( function( childView ){
+          if( childView.model.attributes.name.search( new RegExp(term, "i") ) > 0){
+            childView.show();
+          }
+          else {
+            childView.hide();
+          }
+      });
+    }
   }
 });

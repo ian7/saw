@@ -18,18 +18,12 @@ App.Controllers.Rs = Backbone.Router.extend({
 	initialize : function() {
 		this.el = jQuery('section.itemList');
         this.items_collection = new Rs; 
+
         this.view = new App.Views.Rs.List({collection: this.items_collection, el: this.el });                       
 	},
 
     index: function() {
-        this.items_collection.reset([]);
-        this.items_collection.urlOverride="/scope/type/Issue";	
-
-		this.items_collection.fetch({
-			success: function(model, resp) {
-			}
-		});
- //       this.view.render();
+        this.listType("Issue",null);
     },
     listType: function(type) {
         //this.items_collection = new Rs; 
@@ -40,7 +34,7 @@ App.Controllers.Rs = Backbone.Router.extend({
             success: function(model, resp) {
             }
         });
-   //     this.view.render();    
+        this.view.render();    
     },
     show: function(type,id){
         r_to_focus = id;

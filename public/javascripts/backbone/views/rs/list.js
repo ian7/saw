@@ -25,7 +25,7 @@ App.Views.Rs.Show = Backbone.View.extend({
           this.expand();
         }
 
-        jQuery(this.el).hide();
+        this.hide();
         jQuery(this.el).slideDown(300);
          			
 	      return this;
@@ -43,21 +43,26 @@ App.Views.Rs.Show = Backbone.View.extend({
     },
     focus: function(){
         App.Components.Rs.navigate(this.model.attributes.type+"/"+this.model.attributes.id,{trigger: true})
-    }
+    }, 
+    hide: function(){
+      jQuery( this.el ).hide();
+    },
+    show: function(){
+      jQuery( this.el ).show();
+    },
 });
 
 
 App.Views.Rs.List = Backbone.View.extend({
   events : {
+    "keyup input.searchBox" : "searchBoxEdited",
   },
   initialize : function() {
-
 
   _(this).bindAll('newItem','checkNewItem','removeNewItem','newItem');
 
   this.collection.bind('saved',this.checkNewItem );
   this.collection.bind('refresh',this.checkNewItem );
-
 
 	this.relationsCollectionView = new UpdatingCollectionView({
       collection           : this.collection,
@@ -65,28 +70,33 @@ App.Views.Rs.List = Backbone.View.extend({
       childViewTagName     : 'div',
       childViewClassName   : 'r'
     });
-
-
-
-	_(this).bindAll('render');
-//	this.firstRender = true;
-    this.render();
-  //  this.checkNewItem();
+  	_(this).bindAll('render');
   },
   render : function() {
+
+    h = "<div class=\"listWidget\">" 
+      + "<div class=\"list\"></div>"
+      + "</div>";
+
+    this.el.innerHTML = h;  
+
 		this._rendered = true;
-    this.relationsCollectionView.el = this.el;
+
+    h = "<input type=\"text\"/ class=\"searchBox\">"
+
+    e = jQuery("div.listWidget", this.el);
+    e.prepend( h );
+    this.relationsCollectionView.el = jQuery("div.list",this.el);
 		this.relationsCollectionView.render();
    },  
 
-removeNewItem : function() {
+  removeNewItem : function() {
     this.collection.each( function( i ) {
       if( i.get('name') == '(new item)' ) {
         this.collection.remove( i );
         delete i;
       } 
     },this);
-  
   },
   
   newItem : function() {
@@ -100,19 +110,21 @@ removeNewItem : function() {
       // we're called because collection element has been saved 
       collection = this;      
     }
-
-    
     i = new Item;
 
     // this.newItemName is unavailable when called by the 'save' event from the collection
     i.set({name: '(new item)' });
-    collection.add( i );
-    
+    collection.add( i );    
   },
+
   checkNewItem : function() {
     this.removeNewItem();
     this.newItem();
   },
+  searchBoxEdited : function() {
+    input = jQuery("input.searchBox",this.el)[0].value;
+    this.relationsCollectionView.filter( input );
+    },
 });
 
 
