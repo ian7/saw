@@ -5,44 +5,78 @@
 
 App.Views.Rs.Show = Backbone.View.extend({
 	events: {
-   "click div.expand": "expand", 
+   "click div.expand": "toggleExpand", 
    "click div.focus" : "focus",
+   "mouseenter"       : "expand",
+   "mouseleave"      : "unexpand",
 	},
     initialize: function() {
       _(this).bindAll('render');
 	    this.model.bind('change', this.render);
+      this.expanded = false;
+
+
     },
-    
     render: function() {
 //        this.el.innerHTML = JST.relations_show({relative: this.model });
+        
         this.el.innerHTML = 
           //"<div class=\"button red focus\">focus</div>" +   
           "<div class=\"button orange expand\">expand</div>" +   
           //"<b>Id:</b> " + this.model.attributes.id +
           " <b>Name:</b> " + this.model.attributes.name +
           "<section class=\"subItem\"></section>";
+
+        this.r= new R; 
+        this.r.url = this.model.url();
+
+        this.subViewEl = jQuery('section.subItem',this.el);
+        this.subView = new App.Views.Rs.SubItems({model: this.r, el: this.subViewEl });           
+
         if( r_to_focus != null && r_to_focus == this.model.id ){
           this.expand();
         }
 
         this.hide();
         jQuery(this.el).slideDown(300);
-         			
+       			
 	      return this;
     },
     expand: function(){
-            this.r= new R; 
-            this.r.url = this.model.url();
-            //e = jQuery(this.el).('section.subItem')
-            this.subView = new App.Views.Rs.SubItems({model: this.r, el: jQuery('section.subItem',this.el) });           
-            this.r.fetch({
-              success: function(model, resp) {
-              }
-            });
-            //this.view.render();
+      jQuery("div.expand",this.el)[0].innerHTML="unExpand";
+
+      this.r.fetch({
+        success: function(model, resp) {
+        }
+      });
+      this.expanded = true;
+      //this.view.render();
+      //this.subViewEl.show();
+      this.subViewEl.hide();
+      this.subViewEl.slideDown(300);
+
+      return this;
+    },
+    unexpand: function(){
+      jQuery("div.expand",this.el)[0].innerHTML="expand";
+
+      this.expanded = false;
+      //this.subViewEl.hide();
+      this.subViewEl.slideUp(500);
+      //jQuery('section.subItem',this.el).empty();
+
+      return this;
+    },
+    toggleExpand : function(){
+      if( this.expanded ){ 
+        this.unexpand();
+      }
+      else {
+        this.expand();
+      }
     },
     focus: function(){
-        App.Components.Rs.navigate(this.model.attributes.type+"/"+this.model.attributes.id,{trigger: true})
+      App.Components.Rs.navigate(this.model.attributes.type+"/"+this.model.attributes.id,{trigger: true})
     }, 
     hide: function(){
       jQuery( this.el ).hide();
