@@ -72,7 +72,7 @@ var UpdatingCollectionView = Backbone.View.extend({
     }
     else{
       _(this._childViews).each( function( childView ){
-          if( childView.model.attributes.name.search( new RegExp(term, "i") ) > 0){
+          if( childView.model.attributes.name.search( new RegExp(term, "i") ) >= 0){
             childView.show();
           }
           else {
