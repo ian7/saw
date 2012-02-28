@@ -15,6 +15,7 @@ log4r_config:
       - WARN
       - DEBUG
       - INFO
+      - FATAL
       - ERR
       - FAT
     global:
