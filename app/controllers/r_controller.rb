@@ -37,7 +37,27 @@ class RController < ApplicationController
     end
   end
 
-  def update
+  def update   
+
+    r = Taggable.find params["id"]
+
+# that doesn't belong to the attributes, so it needs to be adjusted manually
+    r.name = params[:name]
+    r["Description"] = params[:Description]
+         
+    r.dynamic_type.dynamic_type_attributes.each do |attribute|
+      if params[attribute.attribute_name] != nil
+        r[attribute.attribute_name] = params[attribute.attribute_name]
+      end
+    end 
+
+    r.save
+
+  Juggernaut.publish("/chats", r.id)
+
+    respond_to do |format|
+        format.json { render :json => r.to_json }
+    end
   end
 
   def delete

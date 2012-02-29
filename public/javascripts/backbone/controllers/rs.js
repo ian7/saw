@@ -17,9 +17,16 @@ App.Controllers.Rs = Backbone.Router.extend({
     },
 	initialize : function() {
 		this.el = jQuery('section.itemList');
+        this.menuEl = jQuery('section.typeMenu');
         this.items_collection = new Rs; 
+        this.typesCollection = new Ts;
 
         this.view = new App.Views.Rs.List({collection: this.items_collection, el: this.el });                       
+        this.typesView = new App.Views.Ts.RoutingList({collection: this.typesCollection, el: this.menuEl});
+
+        this.typesCollection.urlOverride="/t";
+        this.typesCollection.fetch();
+        this.typesView.render();
 	},
 
     index: function() {

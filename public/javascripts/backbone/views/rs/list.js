@@ -16,8 +16,7 @@ App.Views.Rs.Show = Backbone.View.extend({
       _(this).bindAll('render');
 	    this.model.bind('change', this.render);
       this.expanded = false;
-
-
+      notifier.register(this);
     },
     render: function() {
 //        this.el.innerHTML = JST.relations_show({relative: this.model });
@@ -40,7 +39,7 @@ App.Views.Rs.Show = Backbone.View.extend({
               continue;
               break;
             case null:
-            case 'undefined':
+            case 'undefined':       
               // no idea why this pops up
               continue;
               break;
@@ -61,15 +60,6 @@ App.Views.Rs.Show = Backbone.View.extend({
 
         this.el.innerHTML = h;
 
-/*
-        this.el.innerHTML = 
-          //"<div class=\"button red focus\">focus</div>" +   
-          //"<b>Id:</b> " + this.model.attributes.id +
-          " <b>Name:</b> " + this.model.attributes.name +
-          */
-  
-
-
         this.r= new R; 
         this.r.url = this.model.url();
 
@@ -80,8 +70,8 @@ App.Views.Rs.Show = Backbone.View.extend({
           this.expand();
         }
 
-        this.hide();
-        jQuery(this.el).slideDown(300);
+       // this.hide();
+       // jQuery(this.el).slideDown(300);
         return this;
     },
     expand: function(){
@@ -148,6 +138,11 @@ App.Views.Rs.Show = Backbone.View.extend({
         //});     
       }
     },
+    notify : function( broadcasted_id ){
+      if( broadcasted_id == this.model.id ) {
+        this.model.fetch();
+      }
+    },
 });
 
 
@@ -170,6 +165,9 @@ App.Views.Rs.List = Backbone.View.extend({
       childViewClassName   : 'r'
     });
   	_(this).bindAll('render');
+
+    notifier.register( this );
+    this.recentlyNotified = [];
   },
   render : function() {
 
@@ -224,6 +222,38 @@ App.Views.Rs.List = Backbone.View.extend({
     input = jQuery("input.searchBox",this.el)[0].value;
     this.relationsCollectionView.filter( input );
     },
+  notify : function( broadcasted_id ){
+    notifiedView = null;
+
+
+    // put a new view on the notification list
+    for( view in this.relationsCollectionView._childViews ){
+        if( this.relationsCollectionView._childViews[view].model.id == broadcasted_id ){
+          notifiedView = this.relationsCollectionView._childViews[view];
+          break;
+      }      
+   }
+   if( notifiedView ) {
+      // remove old colorings
+      for( view in this.recentlyNotified ){
+         jQuery( this.recentlyNotified[view].el ).removeClass( "notified"+view );
+      }
+
+      while( this.recentlyNotified > 6 ){
+         this.recentlyNotified.pop();
+      }
+
+      // add the new one at the beginnign of the array
+      this.recentlyNotified.unshift( notifiedView )
+      
+      // check if notification list is too long
+
+      // color it!
+      for( view in this.recentlyNotified ){
+         jQuery( this.recentlyNotified[view].el ).addClass( "notified"+view );
+      }
+  }
+  },
 });
 
 

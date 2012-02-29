@@ -1,6 +1,7 @@
 var App = {
     Views: {
     	Rs: {},
+        Ts: {},
         Tags: {},
         Alternatives: {},
         Decisions: {},

@@ -777,3 +777,27 @@ table.rAttributes td.attributeName {
 
 table.rAttributes td.attributeValue {
 }
+
+
+/* notifications colloring */
+div.notified0 {
+  background-color: #3e88c5;
+}
+div.notified1 {
+  background-color: #9ab6d8;
+}
+div.notified2 {
+  background-color: #abc1dc;
+}
+div.notified3 {
+  background-color: #bbcde1;
+}
+div.notified4 {
+  background-color: #ccd7e5;
+}
+div.notified5 {
+  background-color: #dde4ea;
+}
+
+
+
