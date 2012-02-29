@@ -5,9 +5,10 @@
 
 
 var R = Backbone.Model.extend({
-/* I'm not sure yet what am I going to do with it 
+/* I'm not sure yet what am I going to do with it */
     url : function() {
-		var base = "";
+	
+	/*	var base = "";
 		// in case there is a collection attached to this item
 		// we do some (evil) url arthmetics 
 		if( this.collection ) {
@@ -21,8 +22,10 @@ var R = Backbone.Model.extend({
 			return base;
 
 	    return base + (base.charAt(base.length - 1) == '/' ? '' : '/') + this.id; 
+	    */
+	   return '/r/' + this.id;
 	},
-	*/
+	
 });
 
 

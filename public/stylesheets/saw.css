@@ -759,3 +759,21 @@ div.r {
 .ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
 .ui-tabs .ui-tabs-hide { display: none !important; }
 
+/* routing types table */
+
+table.typeMenu td.name{
+  -webkit-transform: rotate(-40deg); 
+  -moz-transform: rotate(-40deg); 
+  padding-top:    1em;
+  padding-bottom: 1em;
+  text-align:     center;
+}
+
+table.rAttributes td.attributeName {
+  font-weight: bold;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+table.rAttributes td.attributeValue {
+}

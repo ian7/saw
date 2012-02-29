@@ -3,9 +3,18 @@ Saw::Application.routes.draw do
 
 # that's kind of highly experimental
   match "scope/type/:type_name" => 'scope#type'
-  match "scope/type/:type_name/:id" => 'r#show'
+#  match "scope/type/:type_name/:id" => 'r'
+
+  resources :r, :path => 'scope/type/:type_name/r'
+
+#scope "admin", :as => "admin" do
+#  resources :photos, :accounts
+#end
+ 
+
 
   resources :r
+  resources :t
 
   resources :feedbacks
 
