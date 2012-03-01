@@ -33,7 +33,9 @@ App.Controllers.Rs = Backbone.Router.extend({
         this.listType("Issue",null);
     },
     listType: function(type) {
-        //this.items_collection = new Rs; 
+        
+        this.type = type;
+
         this.items_collection.reset([]);
         this.items_collection.urlOverride="/scope/type/"+type;  
 

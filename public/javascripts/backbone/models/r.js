@@ -23,7 +23,13 @@ var R = Backbone.Model.extend({
 
 	    return base + (base.charAt(base.length - 1) == '/' ? '' : '/') + this.id; 
 	    */
-	   return '/r/' + this.id;
+
+	    if( this.id ) {
+			return '/r/' + this.id;
+		}
+		else {
+			return '/r'
+		}
 	},
 	
 });

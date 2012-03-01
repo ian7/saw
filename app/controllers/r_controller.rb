@@ -60,7 +60,37 @@ class RController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    r = Taggable.find params[:id]
+    if r 
+      r.destroy
+    end
+    respond_to do |format|
+        format.json { render :json => {} }
+    end
   end
 
+  def create
+    r = DynamicType.find_by_name(params[:type]).new_instance
+    r.save
+    params[:id] = r.id
+=begin  
+    if params[:project_id] 
+      project = TreeTag.find params[:project_id]
+      if project
+        t = Tagging.new
+        t.type = "Tagging"
+        t.tip = @issue.id
+        t.origin = project.id
+        t.save
+      end
+    end
+    
+    
+    if params[:project_id]
+      Juggernaut.publish("/chats",params[:project_id])
+    end
+=end
+    update    
+  end
 end

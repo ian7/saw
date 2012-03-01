@@ -8,6 +8,7 @@ App.Views.Rs.Show = Backbone.View.extend({
    "click div.expand": "toggleExpand", 
    "click"           : "expand", 
    "click div.focus" : "focus",
+   "click div.delete": "delete",
 //   "mouseenter"       : "expand",
 //   "mouseleave"      : "unexpand",
     "keypress .editable" : "editedAttribute",
@@ -22,6 +23,7 @@ App.Views.Rs.Show = Backbone.View.extend({
 //        this.el.innerHTML = JST.relations_show({relative: this.model });
         
         h = "<div class=\"button orange expand\">expand</div>" ;
+        h +="<div class=\"button black delete\">delete</div>" ;
         h +="<table class=\"rAttributes\">";
 
         for( attribute in this.model.attributes ) {
@@ -75,7 +77,7 @@ App.Views.Rs.Show = Backbone.View.extend({
         return this;
     },
     expand: function(){
-      if( !this.expanded ) {
+      if( !this.isNew() && !this.expanded ) {
         jQuery("div.expand",this.el)[0].innerHTML="unExpand";
 
         this.r.fetch({
@@ -143,20 +145,24 @@ App.Views.Rs.Show = Backbone.View.extend({
         this.model.fetch();
       }
     },
+    delete : function(){
+      this.model.destroy();
+    },
 });
 
 
 App.Views.Rs.List = Backbone.View.extend({
   events : {
     "keyup input.searchBox" : "searchBoxEdited",
+    "click div.newR"        : "checkNewItem",
   },
   initialize : function() {
 
-//  _(this).bindAll('newItem','checkNewItem','removeNewItem','newItem');
+  _(this).bindAll('newItem','checkNewItem','removeNewItem','newItem');
 // _(this).bindAll('newItem','removeNewItem');
 
-  this.collection.bind('saved',this.checkNewItem );
-  this.collection.bind('refresh',this.checkNewItem );
+//  this.collection.bind('saved',this.checkNewItem );
+//  this.collection.bind('refresh',this.checkNewItem );
 
 	this.relationsCollectionView = new UpdatingCollectionView({
       collection           : this.collection,
@@ -178,8 +184,8 @@ App.Views.Rs.List = Backbone.View.extend({
     this.el.innerHTML = h;  
 
 		this._rendered = true;
-
-    h = "<input type=\"text\"/ class=\"searchBox\">";
+    h = "<div class=\"button green newR\">New</div>" ;
+    h += "Search: <input type=\"text\"/ class=\"searchBox\">";
 
     e = jQuery("div.listWidget", this.el);
     e.prepend( h );
@@ -207,7 +213,8 @@ App.Views.Rs.List = Backbone.View.extend({
       // we're called because collection element has been saved 
       collection = this;      
     }
-    i = new Item;
+    i = new R;
+    i.set("type",App.controller.type);
 
     // this.newItemName is unavailable when called by the 'save' event from the collection
     i.set({name: '(new item)' });
@@ -215,8 +222,8 @@ App.Views.Rs.List = Backbone.View.extend({
   },
 
   checkNewItem : function() {
-//    this.removeNewItem();
- //   this.newItem();
+    this.removeNewItem();
+    this.newItem();
   },
   searchBoxEdited : function() {
     input = jQuery("input.searchBox",this.el)[0].value;
