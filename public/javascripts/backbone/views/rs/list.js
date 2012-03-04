@@ -81,7 +81,9 @@ App.Views.Rs.Show = Backbone.View.extend({
         return this;
     },
     expand: function(){
-      if(  !this.expanded ) {
+
+
+      if(  !this.expanded && (! this.model.isNew()) ) {
         jQuery("div.expand",this.el)[0].innerHTML="unExpand";
         //jQuery.scrollTo( '#options-examples', 800, {easing:'elasout'} )
         //jQuery(this.el).animate({"scrollTop": jQuery(this.el).scrollTop() + 100});
@@ -159,10 +161,11 @@ App.Views.Rs.Show = Backbone.View.extend({
       this.model.destroy();
     },
     scroll : function(){
-      element_id = "#" + jQuery(this.el).attr('id');
-      //jQuery(element_id).scrollTop(jQuery(element_id).scrollTop() + 100);
-      //jQuery(element_id).scrollTop(jQuery(element_id).scrollTop() + 100);
-//      jQuery(this.el).scrollTop(jQuery(this.el).scrollTop() + 100);
+      //element_id = "#" + jQuery(this.el).attr('id');
+      
+      // this actually makes sense only for elements which are not new
+      if( this.model.isNew() )
+         return;
 
       jQuery('html, body').animate({
          scrollTop: jQuery("#"+this.model.id).offset().top
@@ -178,7 +181,7 @@ App.Views.Rs.List = Backbone.View.extend({
   },
   initialize : function() {
 
-  _(this).bindAll('newItem','checkNewItem','removeNewItem','newItem');
+  _(this).bindAll('newItem','checkNewItem');
 // _(this).bindAll('newItem','removeNewItem');
 
 //  this.collection.bind('saved',this.checkNewItem );
@@ -247,10 +250,15 @@ App.Views.Rs.List = Backbone.View.extend({
     // this.newItemName is unavailable when called by the 'save' event from the collection
     i.set({name: '(new item)' });
     collection.add( i );    
+    jQuery("body").animate({ scrollTop: jQuery(document).height() }, "slow");
+    //jQuery('html, body').animate({ scrollTop: jQuery('document').height()-jQuery('window').height()}, 1400, "easeOutQuint" );
+    //i.view.scroll();
+    //$('html, body').animate({scrollTop:$(document).height()}, 'slow');
+
   },
 
   checkNewItem : function() {
-    this.removeNewItem();
+   // this.removeNewItem();
     this.newItem();
   },
   searchBoxEdited : function() {
