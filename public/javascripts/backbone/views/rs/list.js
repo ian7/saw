@@ -68,16 +68,12 @@ App.Views.Rs.Show = Backbone.View.extend({
         this.subViewEl = jQuery('section.subItem',this.el);
         this.subView = new App.Views.Rs.SubItems({model: this.r, el: this.subViewEl });           
 
-        //jQuery( this.el ).attr("id",this.model.get("type")+"/"+this.model.get('id'));
         jQuery( this.el ).attr("id",this.model.get('id'));
 
         if( r_to_focus != null && r_to_focus == this.model.id ){
          jQuery(this.el).oneTime(200,this.expand );
-          //this.expand();
         }
 
-       // this.hide();
-       // jQuery(this.el).slideDown(300);
         return this;
     },
     expand: function(){
@@ -85,9 +81,6 @@ App.Views.Rs.Show = Backbone.View.extend({
 
       if(  !this.expanded && (! this.model.isNew()) ) {
         jQuery("div.expand",this.el)[0].innerHTML="unExpand";
-        //jQuery.scrollTo( '#options-examples', 800, {easing:'elasout'} )
-        //jQuery(this.el).animate({"scrollTop": jQuery(this.el).scrollTop() + 100});
-        //jQuery(this.el).scrollTop(jQuery(this.el).scrollTop() + 100);
 
 
         this.r.fetch({
@@ -95,8 +88,6 @@ App.Views.Rs.Show = Backbone.View.extend({
           }
         });
         this.expanded = true;
-        //this.view.render();
-        //this.subViewEl.show();
         this.subViewEl.hide();
         this.subViewEl.slideDown(300);
 
