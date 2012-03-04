@@ -14,7 +14,7 @@ App.Views.Rs.Show = Backbone.View.extend({
     "keypress .editable" : "editedAttribute",
 	},
     initialize: function() {
-      _(this).bindAll('render');
+      _(this).bindAll('render','scroll','expand');
 	    this.model.bind('change', this.render);
       this.expanded = false;
       notifier.register(this);
@@ -68,8 +68,12 @@ App.Views.Rs.Show = Backbone.View.extend({
         this.subViewEl = jQuery('section.subItem',this.el);
         this.subView = new App.Views.Rs.SubItems({model: this.r, el: this.subViewEl });           
 
+        //jQuery( this.el ).attr("id",this.model.get("type")+"/"+this.model.get('id'));
+        jQuery( this.el ).attr("id",this.model.get('id'));
+
         if( r_to_focus != null && r_to_focus == this.model.id ){
-          this.expand();
+         jQuery(this.el).oneTime(200,this.expand );
+          //this.expand();
         }
 
        // this.hide();
@@ -77,8 +81,12 @@ App.Views.Rs.Show = Backbone.View.extend({
         return this;
     },
     expand: function(){
-      if( !this.isNew() && !this.expanded ) {
+      if(  !this.expanded ) {
         jQuery("div.expand",this.el)[0].innerHTML="unExpand";
+        //jQuery.scrollTo( '#options-examples', 800, {easing:'elasout'} )
+        //jQuery(this.el).animate({"scrollTop": jQuery(this.el).scrollTop() + 100});
+        //jQuery(this.el).scrollTop(jQuery(this.el).scrollTop() + 100);
+
 
         this.r.fetch({
           success: function(model, resp) {
@@ -89,6 +97,8 @@ App.Views.Rs.Show = Backbone.View.extend({
         //this.subViewEl.show();
         this.subViewEl.hide();
         this.subViewEl.slideDown(300);
+
+        jQuery( this.el ).oneTime( 200,this.scroll );
       }
       return this;
     },
@@ -148,6 +158,16 @@ App.Views.Rs.Show = Backbone.View.extend({
     delete : function(){
       this.model.destroy();
     },
+    scroll : function(){
+      element_id = "#" + jQuery(this.el).attr('id');
+      //jQuery(element_id).scrollTop(jQuery(element_id).scrollTop() + 100);
+      //jQuery(element_id).scrollTop(jQuery(element_id).scrollTop() + 100);
+//      jQuery(this.el).scrollTop(jQuery(this.el).scrollTop() + 100);
+
+      jQuery('html, body').animate({
+         scrollTop: jQuery("#"+this.model.id).offset().top
+      }, 600);
+   },
 });
 
 
@@ -191,6 +211,14 @@ App.Views.Rs.List = Backbone.View.extend({
     e.prepend( h );
     this.relationsCollectionView.el = jQuery("div.list",this.el);
 		this.relationsCollectionView.render();
+
+/*   jQuery(this.el).oneTime(5000,function(){
+      jQuery('html, body').animate({
+         scrollTop: jQuery("#4f2e9a02e97fa8e3670001ca").offset().top
+      }, 600);
+      });
+
+*/
    },  
 
   removeNewItem : function() {
