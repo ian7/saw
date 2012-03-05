@@ -1,0 +1,10 @@
+[submodule "public/javascripts/lib/morris.js"]
+	path = public/javascripts/lib/morris.js
+	url = git@github.com:ian7/morris.js.git
+[submodule "public/javascripts/lib/underscore"]
+	path = public/javascripts/lib/underscore
+	url = git@github.com:ian7/underscore.git
+
+[submodule "public/javascripts/lib/backbone"]
+	path = public/javascripts/lib/backbone
+	url = git@github.com:ian7/backbone.git
