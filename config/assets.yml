@@ -24,8 +24,8 @@ javascripts:
 # this one was originally downloaded over the juggernaut static node server...
 ## I switched it back to juggernaut becuase of the compatibility issues.
 #   - public/javascripts/juggernaut.js
-    - public/javascripts/backbone/underscore.js
-    - public/javascripts/backbone/backbone.js
+    - public/javascripts/lib/underscore/underscore.js
+    - public/javascripts/lib/backbone/backbone.js
     - public/javascripts/backbone/backbonerailsauthtokenadapter.js
     - public/javascripts/backbone/notifier.js
  #   - public/javascripts/lib/**/*.js
