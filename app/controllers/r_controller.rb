@@ -41,8 +41,9 @@ class RController < ApplicationController
   end
 
   def update   
-
+  
     r = Taggable.find params["id"]
+    Juggernaut.publish("/chats", r.id)
 
 # that doesn't belong to the attributes, so it needs to be adjusted manually
     r.name = params[:name]
@@ -64,19 +65,29 @@ class RController < ApplicationController
   end
 
   def destroy
+
     r = Taggable.find params[:id]
+
     if r 
+      Juggernaut.publish("/chats", r.id)
+      Juggernaut.publish("/chats", r.dynamic_type.id.to_s)
+
       r.destroy
     end
     respond_to do |format|
         format.json { render :json => {} }
     end
+
+
   end
 
   def create
     r = DynamicType.find_by_name(params[:type]).new_instance
     r.save
     params[:id] = r.id
+
+    Juggernaut.publish("/chats", r.dynamic_type.id.to_s)
+
 =begin  
     if params[:project_id] 
       project = TreeTag.find params[:project_id]

@@ -3,8 +3,9 @@ App.Views.Ts.RoutingElement = Backbone.View.extend({
   events: {
   },
     initialize: function() {
-      _(this).bindAll('render');
+      _(this).bindAll('render','notify');
       this.model.bind('change', this.render);
+      notifier.register(this);
     },
     
     render: function() {
@@ -12,6 +13,11 @@ App.Views.Ts.RoutingElement = Backbone.View.extend({
                 "<b>["+this.model.attributes.count+"]</b>"
         return this;
     },
+    notify: function( broadcasted_id ){
+      if( broadcasted_id == this.model.get('_id') ){
+        this.model.collection.fetch({ deepRefresh : true });
+      }
+    }
 });
 
 

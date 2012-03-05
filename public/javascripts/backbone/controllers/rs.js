@@ -39,10 +39,12 @@ App.Controllers.Rs = Backbone.Router.extend({
         this.items_collection.reset([]);
         this.items_collection.urlOverride="/scope/type/"+type;  
 
+
         this.items_collection.fetch({
             success: function(model, resp) {
             }
         });
+        this.view.type = type;
         this.view.render();    
     },
     show: function(type,id){

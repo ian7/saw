@@ -178,6 +178,9 @@ App.Views.Rs.List = Backbone.View.extend({
 //  this.collection.bind('saved',this.checkNewItem );
 //  this.collection.bind('refresh',this.checkNewItem );
 
+
+
+
 	this.relationsCollectionView = new UpdatingCollectionView({
       collection           : this.collection,
       childViewConstructor : App.Views.Rs.Show,
@@ -190,6 +193,13 @@ App.Views.Rs.List = Backbone.View.extend({
     this.recentlyNotified = [];
   },
   render : function() {
+
+  // fetching type information...
+  if( this.type ) {
+    this.t = new T;
+    this.t.url = '/t/name/' + this.type;
+    this.t.fetch();
+    }
 
     h = "<div class=\"listWidget\">" 
       + "<div class=\"list\"></div>"
@@ -257,8 +267,16 @@ App.Views.Rs.List = Backbone.View.extend({
     this.relationsCollectionView.filter( input );
     },
   notify : function( broadcasted_id ){
-    notifiedView = null;
+  
+  // is it a type refresh?
+  if( this.t && this.t.get('_id') === broadcasted_id ) {
+//    debugger;
+    this.collection.fetch();
+  }
 
+
+  // this handles notifications about views which exist already
+    notifiedView = null;
 
     // put a new view on the notification list
     for( view in this.relationsCollectionView._childViews ){
@@ -286,7 +304,7 @@ App.Views.Rs.List = Backbone.View.extend({
       for( view in this.recentlyNotified ){
          jQuery( this.recentlyNotified[view].el ).addClass( "notified"+view );
       }
-  }
+    }
   },
 });
 

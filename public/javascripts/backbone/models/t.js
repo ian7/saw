@@ -27,7 +27,7 @@ var T = Backbone.Model.extend({
 
 
 var Ts = Backbone.Collection.extend({
-  model : R,
+  model : T,
 //   url : "http://localhost:3000/r",
   url : function() {
 	if( !this.urlOverride ) {

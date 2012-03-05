@@ -34,6 +34,15 @@ class TController < ApplicationController
     end
   end
 
+  def name
+    dt = DynamicType.find :first, :conditions=>{:name=>params[:id]}
+    respond_to do |format|
+      format.json {
+        render :json => dt.to_json
+      }
+    end
+  end
+
   def update
   end
 
