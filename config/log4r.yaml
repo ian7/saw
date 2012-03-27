@@ -83,7 +83,7 @@ log4r_config:
         type        : PatternFormatter
     - type        : DateFileOutputter
       name        : logfile
-      level       : DEB
+      level       : ERR
       date_pattern: '%Y%m%d'
       trunc       : 'false'
       dirname     : "log"
@@ -107,7 +107,7 @@ log4r_config:
     - type        : UDPOutputter
       name        : Chainsaw
       level       : DEB
-      hostname    : '172.16.33.226'
+      hostname    : '172.16.222.166'
       port        : '6667'
       formatfirst : 'true'
       formatter   :
