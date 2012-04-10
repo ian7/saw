@@ -11,12 +11,13 @@
 	<% projects.sort! { |x,y| x.year <=> y.year } %>
 
 	\definecolor{light-gray}{gray}{0.90}
-	\rowcolors{1}{light-gray}{white}
+	%\rowcolors{1}{light-gray}{white}
+	\rowcolors{1}{white}{light-gray}
 	\begin{tabularx}{\textwidth}{b{32mm}
 		<% projects.each do |project| %>
 			%|c
 			%|l
-			|x{2.9mm}
+			|x{2.6mm}
 		<% end %>
 		|
 	}
@@ -39,6 +40,7 @@
 
 	<% @iss.each  do |issue| %>
 		<% @alternatives = issue.related_to("SolvedBy","Alternative") %>
+		<% @alternatives.sort! { |x,y| x.name <=> y.name } %>
 		<%=issue.name %>  
 			<% projects.each do |project| %>
 				& 
