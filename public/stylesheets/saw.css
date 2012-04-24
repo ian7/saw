@@ -799,5 +799,7 @@ div.notified5 {
   background-color: #dde4ea;
 }
 
-
+div.pivot{
+  cursor: pointer;
+}
 

@@ -18,6 +18,7 @@ log4r_config:
       - FATAL
       - ERR
       - FAT
+      - ERROR
     global:
       level: DEB
     root  :

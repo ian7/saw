@@ -312,7 +312,7 @@ App.Views.Rs.List = Backbone.View.extend({
 
 App.Views.Rs.SubItems = Backbone.View.extend({
   events: {
-       "click .button": "pivot", 
+       "click .pivot": "pivot", 
   },
     initialize: function() {
       _(this).bindAll('render');
@@ -325,32 +325,34 @@ App.Views.Rs.SubItems = Backbone.View.extend({
         e+="<td><ul>"
         for( rel_to in this.model.attributes.related_to ){
           e+="<li>"+
-            " <div class=\"button green\" id=\""+
+            " <div class=\"pivot\" id=\""+
               this.model.attributes.related_to[rel_to].type +
               "/" +
               this.model.attributes.related_to[rel_to]._id +
-              "\">pivot</div>" +
+              "\">" +
             "<b>" +
             this.model.attributes.related_to[rel_to].type +
             "</b>: " +          
             this.model.attributes.related_to[rel_to].name +
-            "</li>";            "</li>";
+            "</div>" +
+            "</li>";
+
         };
         e+="</ul></td>";
 
         e+="<td><ul>";
         for( rel_to in this.model.attributes.related_from ){
           e+="<li>"+
-            " <div class=\"button green\" id=\""+
+            " <div class=\"pivot\" id=\""+
               this.model.attributes.related_from[rel_to].type +
               "/" +
               this.model.attributes.related_from[rel_to]._id +
-              "\">pivot</div>" +
+              "\">" +
             "<b>" +
             this.model.attributes.related_from[rel_to].type +
             "</b>: " +          
             this.model.attributes.related_from[rel_to].name +
-            "</li>";
+            "</div></li>";
         }
         e+="</ul></td></tr></table>"
 
