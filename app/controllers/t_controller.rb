@@ -5,7 +5,7 @@ class TController < ApplicationController
     dts = DynamicType.all
     dta = dts.sort_by {|x| x.name}
     dta.each do |t|
-        puts "!!!!!!!!!!!" + t.name
+   
         jj=t
        	jj["count"] = Taggable.find(:all,:conditions=>{:type=>t.name}).count
         #.to_json
