@@ -110,7 +110,7 @@ App.Views.Relations.Selector = Backbone.View.extend({
 	   
 		this.updateCounts();
 		
-       	this.el.html( JST.relations_selector({ relationCounts: this.relationCounts, relationTypes: this.relationTypes, ative: this.model } ));
+       	jQuery(this.el).html( JST.relations_selector({ relationCounts: this.relationCounts, relationTypes: this.relationTypes, ative: this.model } ));
 
 		jQuery( "div.searchBox",this.el ).autocomplete({
 			source: function( request, response ) {
@@ -143,10 +143,6 @@ App.Views.Relations.Selector = Backbone.View.extend({
 				jQuery( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
 			}
 		});
-
-
-
-
 
 		// show list of related items by relation type...
 		this.switchView( localStorage.getItem( this.model.get('id')+'showingRelation' ) );		

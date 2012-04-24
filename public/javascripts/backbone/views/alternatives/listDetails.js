@@ -244,7 +244,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		rationaleDiv = jQuery("div.button.decide",this.el);
 
 		//alert(element.target.id);
-		jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id, function(data) {
+		/*jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id, function(data) {
 			rationaleDiv.tooltip().show();	
 			jQuery("div.rationaleText").focus();
 
@@ -252,7 +252,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 			jQuery("div.tooltip").attr("id",data.$oid);
 		 	
 		});
-
+		*/
 		jQuery("table.decisions", this.el).block({ message: null });
 	},
 	undecide : function(element) {
@@ -263,6 +263,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		if( this.model.id == broadcasted_id ) {
 			this.model.fetch({deepRefresh : 'true'});
 			this.model.change();
+			this.selectorView.relationsCollection.fetch();
 			jQuery(this.el).effect("highlight", {}, 500);	
 		}
 	},
