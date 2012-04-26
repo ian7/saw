@@ -100,7 +100,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	
 	// rationale recording stuff
 	
-	
+/*	
 	jQuery("div.button.decide",this.el).tooltip({
 		position: 'center left',
 		tip: "div.tooltip",
@@ -110,11 +110,6 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 			widget: "none, none",
 			tooltip: "none, none",
 			} 
-		/*  def:     "click,blur",
-		  input:   "click,blur",
-		  widget:  "click,blur",
-		  tooltip: "click,blur"*/
-
 		});
 	
 	jQuery("div.rationaleText").keydown( function( e ) {
@@ -184,7 +179,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		position: 'center left',
 		title: 'Rationale:'
 	});
-		
+		*/
 	   return this;
     },
     selectAll : function( e ){ 
@@ -244,19 +239,19 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		rationaleDiv = jQuery("div.button.decide",this.el);
 
 		//alert(element.target.id);
-		/*jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id, function(data) {
-			rationaleDiv.tooltip().show();	
+		jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {
+		/*	rationaleDiv.tooltip().show();	
 			jQuery("div.rationaleText").focus();
 
 			// nasty, nasty...
 			jQuery("div.tooltip").attr("id",data.$oid);
-		 	
+		 */	
 		});
-		*/
+		
 		jQuery("table.decisions", this.el).block({ message: null });
 	},
 	undecide : function(element) {
-		jQuery.getJSON( this.model.get('relation_url') + '/tag/untag?from_taggable_id='+element.target.id, function(data) {});		
+		jQuery.getJSON( this.model.get('relation_url') + '/tag/untag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {});		
 		jQuery("table.decisions", this.el).block({ message: null });
 	},
 	notify : function( broadcasted_id ) {
