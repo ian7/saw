@@ -23,7 +23,6 @@ Saw::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
-  Mime::Type.register 'application/latex', :tex
 end
 
 ENV['RAILS_ASSET_ID'] = ""
