@@ -36,6 +36,7 @@
 				</table>
 
 				<div class="relationSelector"></div>
+				<div class="decisionsDetails"></div>
 		    </td>
 <!--	    	<td class="delete">
 				<% if( !a.isNew() ) {  %>
@@ -45,12 +46,14 @@
 	    	</td>
 -->
 	    	<td class="decisions"> 
+	    		<b>Decisions:</b>
 				<table class="decisions">
 
 				 	<!-- here we go over all decision types-->
 					<% _(a.attributes.decisions).each(function(decision) { %>
 						<tr>
-							<td>
+							<!-- for a moment let's hide it-->
+							<td class="hidden">
 							<!-- here comes the insert -->
 								<table class="decisionList">					
 										<!-- here we enter single decisions -->

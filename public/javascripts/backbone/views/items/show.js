@@ -174,15 +174,11 @@ App.Views.Show = Backbone.View.extend({
 	},
 	notify: function( broadcasted_id ) {
 		if( this.model.get('id') == broadcasted_id ){
-				this.model.fetch({
-					success : function( model, resp ){
-//						model.change();
-//						model.view.render();
-					},
-				});
-		this.tags.fetch();
-//		this.alternativesCollection.fetch();
-//		{deepRefresh: true}
+				this.model.fetch();
+			this.tags.fetch();
+			jQuery(this.el).effect("highlight", {}, 500);	
+	//		this.alternativesCollection.fetch();
+	//		{deepRefresh: true}
 		}
 	},
 	refresh : function () {

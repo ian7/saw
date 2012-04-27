@@ -1,0 +1,14 @@
+<table width="100%" class="decisionList">
+	<% _(model.attributes.decisions).each( function( decisionType ) { %>
+		<% _(decisionType.details).each( function( individualDecision ) { %>
+		<tr id="<%=individualDecision.decision_id %>" class="decision <%=decisionType.color.toLowerCase()%>">
+			<td class="<%=decisionType.color%>"><%= decisionType.name %></td>
+			<td><%= individualDecision.email %></td>
+			<td>
+				<div class="decisionRationale" id="<%=individualDecision.decision_id%>" contenteditable='true'><%= individualDecision.Rationale %></div>
+			</td>
+			<td><%= individualDecision.timestamp.match(/.*(?= \+)/) %></td>
+		</tr>
+		<% },this); %>
+	<% },this); %>
+</table>

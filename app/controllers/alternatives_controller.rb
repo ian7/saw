@@ -270,6 +270,7 @@ class AlternativesController < ApplicationController
   			    j_user['email'] = user_decision.author.email
   			    j_user['user_id'] = user_decision.author.id
   			    j_user['decision_id'] = user_decision.id
+            j_user['Rationale'] = user_decision["Rationale"]
   			    j_user['timestamp'] = user_decision.created_at.to_s
   			    
   			    rationales = user_decision.tags("Rationale")

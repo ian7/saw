@@ -803,3 +803,6 @@ div.pivot{
   cursor: pointer;
 }
 
+.hidden{
+  display: none;
+}

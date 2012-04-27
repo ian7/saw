@@ -107,4 +107,31 @@ class RController < ApplicationController
 =end
     update    
   end
+
+  def attribute
+    r = Taggable.find params[:id]
+    a = r.attributes[ params[:attribute] ]
+    
+#    puts params
+
+    respond_to do |format|
+        format.any { render :text => a }
+    end
+
+  end
+  def setAttribute
+    # this is fairly unbelievable, but this is the method to retrieve payload from the put call
+    value = params.first[0].to_s
+
+    r = Taggable.find params[:id]
+    r[ params[:attribute] ] = value
+    r.save
+
+    # blow notify
+    Juggernaut.publish("/chats",params[:id])
+
+    respond_to do |format|
+        format.json { render :json => value }
+    end
+  end
 end
