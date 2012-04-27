@@ -50,14 +50,17 @@ javascripts:
     - app/views/backbone/*.jst
   workspace:
 # app comes here
+    - public/javascripts/backbone/app.js
     - public/javascripts/backbone/items.js
     - *backbone
 
   projects:
+    - public/javascripts/backbone/app.js
     - public/javascripts/backbone/projects.js
     - *backbone
  
   rs:
+    - public/javascripts/backbone/app.js
     - public/javascripts/backbone/rs.js
     - *backbone    
 
