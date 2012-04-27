@@ -101,7 +101,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
     		
     },
     selectAll : function( e ){ 
-		if( e.toElement.innerText == '(new alternative)') {
+		if( e.toElement.innerText == '(edit to add)') {
 			document.execCommand('selectAll',false,null);
 		}
 	},
@@ -131,8 +131,8 @@ AlternativeUpdatingView  = Backbone.View.extend({
            position: "left",
               questionText: "Are you sure ?",
               onProceed: function(trigger) {
+                    $(trigger).fastConfirm('close');
 					viewObject.model.destroy();
-                       $(trigger).fastConfirm('close');
                },
                onCancel: function(trigger) {
                        $(trigger).fastConfirm('close');
@@ -274,13 +274,13 @@ App.Views.Alternatives.List = Backbone.View.extend({
   newAlternative : function() {	
 		a = new Alternative;
 		// this.newItemName is unavailable when called by the 'save' event from the collection
-		a.set({name: '(new alternative)' });
+		a.set({name: '(edit to add)' });
 		this.collection.add( a );
   },
 
  removeNewAlternative : function() {
 		this.collection.each( function( a ) {
-			if( a.get('name') == '(new alternative)' ) {
+			if( a.get('name') == '(edit to add)' ) {
 				this.collection.remove( a );
 				delete a;
 			} 

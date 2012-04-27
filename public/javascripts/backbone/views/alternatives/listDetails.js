@@ -3,7 +3,8 @@
 AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	className : "alternativeList", 
     events : {
-		"keypress div.name" 			: "editedName",
+//		"keypress div.name" 			: "editedName",
+		"keypress .editable" : "editedAttribute",
 		"click div.name"				: 'selectAll',
 		"click .deleteAlternative"	: "deleteAlternative",
 		"click .unrelateAlternative": "unrelateAlternative",
@@ -183,7 +184,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	   return this;
     },
     selectAll : function( e ){ 
-		if( e.toElement.innerText == '(new alternative)') {
+		if( e.toElement.innerText == '(edit to add)') {
 			document.execCommand('selectAll',false,null);
 		}
 	},
@@ -222,13 +223,13 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		var viewObject = this;
  		jQuery(".deleteAlternative",this.el).fastConfirm({
            position: "left",
-              questionText: "Are you sure ?",
+              questionText: "Are you sure?",
               onProceed: function(trigger) {
+                    $(trigger).fastConfirm('close');
 					viewObject.model.destroy();
-                       $(trigger).fastConfirm('close');
                },
                onCancel: function(trigger) {
-                       $(trigger).fastConfirm('close');
+                    $(trigger).fastConfirm('close');
                }
             });	
 	},
@@ -261,6 +262,24 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 			this.selectorView.relationsCollection.fetch();
 			jQuery(this.el).effect("highlight", {}, 500);	
 		}
+	},
+	editedAttribute : function( e ) {
+			if (e.keyCode == 13) {
+				var newValue = e.srcElement.innerHTML;
+
+				if(newValue == "<br>") {
+					newValue = '(empty)';
+				}
+				var changeSet = new Object;
+				
+				changeSet[e.srcElement.id] = newValue;
+				this.model.save(
+					changeSet,
+					{ success : function( model, resp)  {
+						
+					}
+				});			
+			}
 	},
 });
 
@@ -310,13 +329,13 @@ App.Views.Alternatives.ListDetails = Backbone.View.extend({
   newAlternative : function() {	
 		a = new Alternative;
 		// this.newItemName is unavailable when called by the 'save' event from the collection
-		a.set({name: '(new alternative)' });
+		a.set({name: '(edit to add)' });
 		this.collection.add( a );
   },
 
  removeNewAlternative : function() {
 		this.collection.each( function( a ) {
-			if( a.get('name') == '(new alternative)' ) {
+			if( a.get('name') == '(edit to add)' ) {
 				this.collection.remove( a );
 				delete a;
 			} 

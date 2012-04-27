@@ -65,7 +65,7 @@ var ItemUpdatingView = Backbone.View.extend({
    return this;
   },
   selectAll : function( e ){ 
-	if( e.toElement.innerText == '(new item)') {
+	if( e.toElement.innerText == '(edit to add)') {
 		document.execCommand('selectAll',false,null);
 	}
 	
@@ -112,7 +112,7 @@ var ItemUpdatingView = Backbone.View.extend({
 		var viewObject = this;
  		jQuery(".deleteItem",this.el).fastConfirm({
            position: "left",
-              questionText: "Are you sure ?",
+              questionText: "Are you sure?",
               onProceed: function(trigger) {
 					// remove confirmation
   	                $(trigger).fastConfirm('close');
@@ -233,7 +233,7 @@ App.Views.Index = Backbone.View.extend({
   },
   removeNewItem : function() {
 		this.collection.each( function( i ) {
-			if( i.get('name') == '(new item)' ) {
+			if( i.get('name') == '(edit to add)' ) {
 				this.collection.remove( i );
 				delete i;
 			} 
@@ -262,7 +262,7 @@ App.Views.Index = Backbone.View.extend({
 		i = new Item;
 
 		// this.newItemName is unavailable when called by the 'save' event from the collection
-		i.set({name: '(new item)' });
+		i.set({name: '(edit to add)' });
 		collection.add( i );
 		
   },

@@ -3,9 +3,38 @@
 				<div class="deleteAlternative">
 					<img class="deleteAlternative" src="/images/icons/delete.png"/>
 				</div>
+				<b>Alternative</b>
+	    		<!--<b>Alternative name:</b><div class="name" contenteditable="true"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></div><br>
+				-->
+				<table class="itemDetails" id="<%= a.get('id') %>">
 
-	    		<!-- <b>Name:</b> -->
-	    			<div class="name" contenteditable="true"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></div><br>
+				<% _(a.attributes).each(function(value, key) { 
+					if (key.charAt(0) != '_' && 
+					    key != "alternative_url" && 
+					    key != "decisions" && 
+					    key != "id" && 
+					    key != "relation_id" && 
+					    key != "relation_url" &&
+					    key != "your_decision" &&
+					    key != "project_id" &&
+					    key != "type" &&
+					    key != "undefined") { %>
+				<tr>
+
+				<td class="key">
+					<!-- does capitalization -->
+					<%= key.charAt(0).toUpperCase() + key.slice(1) %>: 
+				</td>
+
+				<td>
+					<div class="editable" id="<%=key%>" contenteditable="true"><% if( value ) { %><%= value %><% } else { %>(empty)<% } %></div>
+				</td>
+				</tr>
+
+				<% }; 
+				});%>
+				</table>
+
 				<div class="relationSelector"></div>
 		    </td>
 <!--	    	<td class="delete">

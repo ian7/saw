@@ -6,7 +6,13 @@
 	</div>
 	<table class="itemDetails" id="<%= item.get('id') %>">
 		<% _(item.attributes).each(function(value, key) { 
-			if (key.charAt(0) != '_' && key != "url" && key != "el" && key != "id" && key != "item_url" && key != "type") { %>
+			if (key.charAt(0) != '_' && 
+				key != "url" && 
+				key != "el" && 
+				key != "id" && 
+				key != "item_url" && 
+				key != "type" &&
+				key != "undefined") { %>
 		<tr>
 		<td class="key">
 			<!-- does capitalization -->
