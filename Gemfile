@@ -5,13 +5,15 @@ gem 'rails', "~> 3.0.11"
 
 
 # debugging stuff
-gem 'linecache19'#, :git => 'git://github.com/mark-moseley/linecache'
+#gem 'linecache19'#, :git => 'git://github.com/mark-moseley/linecache'
 gem 'log4r'
+gem 'ruby-rtf'
+gem 'rtf'
 
 # in oder to make it work I needed to add this:
 # bundle config build.ruby-debug-base19 --with-ruby-include=/home/vagrant/ruby-1.9.3-p125
-gem 'ruby-debug-base19'#,:git => 'git://github.com/mark-moseley/ruby-debug.git'
-gem 'ruby-debug19'#, :require=>'ruby-debug'
+#gem 'ruby-debug-base19'#,:git => 'git://github.com/mark-moseley/ruby-debug.git'
+#gem 'ruby-debug19'#, :require=>'ruby-debug'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 #gem 'sqlite3-ruby', :require => 'sqlite3'
 gem "mongoid", "2.0.0.rc.8"
