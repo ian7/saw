@@ -350,5 +350,12 @@ end
         
         end
   end
+  def do_tag_with( tag )
+    @relation_instance = DynamicType.find_by_name("Tagging").new_instance
+    @relation_instance.save
+    @relation_instance.origin = tag.id
+    @relation_instance.tip = id
+    @relation_instance.save
+  end
 
 end

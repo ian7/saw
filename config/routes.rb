@@ -110,6 +110,8 @@ Saw::Application.routes.draw do
     resources :alternatives
     resources :tags 
   end
+  get "projects/:id/export" => "projects#export"
+  put "projects/:id/import" => "projects#import"
 
   resources :alternatives
 
