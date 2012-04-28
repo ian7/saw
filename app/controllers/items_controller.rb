@@ -1,9 +1,10 @@
 require 'relation'
+require 'rtf'
 
 class ItemsController < ApplicationController
  
   # that's bad
-  #before_filter :authenticate_user!
+  before_filter :authenticate_user!
  
 
   def index
@@ -37,6 +38,29 @@ class ItemsController < ApplicationController
       format.tex {
         render :issues => @issues
       }
+      format.rtf {
+        document = RTF::Document.new(RTF::Font.new(RTF::Font::ROMAN, 'Times New Roman'))
+        ps_alternatives = RTF::ParagraphStyle.new
+        ps_alternatives.left_indent = 1000
+        
+        h = RTF::HeaderNode.new(document)
+
+        @issues.each do |i|
+          i.to_rtf( document )
+          alternatives = i.related_to "SolvedBy"
+          
+          document.paragraph(ps_alternatives) do |p|
+            alternatives.each do |a|
+              a.to_rtf(p)
+            end
+          end
+        
+        end
+  
+        #send_file document.to_rtf, :type=>"text/richtext"
+        render :text => document.to_rtf
+      }
+
     end
   end
 

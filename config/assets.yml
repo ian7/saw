@@ -64,6 +64,11 @@ javascripts:
     - public/javascripts/backbone/rs.js
     - *backbone    
 
+  ts:
+    - public/javascripts/backbone/app.js
+    - public/javascripts/backbone/ts.js
+    - *backbone    
+
 stylesheets:
   common:
 #    - public/stylesheets/reset.css

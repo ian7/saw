@@ -227,7 +227,7 @@ App.Views.Rs.List = Backbone.View.extend({
 
   removeNewItem : function() {
     this.collection.each( function( i ) {
-      if( i.get('name') == '(new item)' ) {
+      if( i.get('name') == '(edit to add)' ) {
         this.collection.remove( i );
         delete i;
       } 
@@ -249,7 +249,7 @@ App.Views.Rs.List = Backbone.View.extend({
     i.set("type",App.controller.type);
 
     // this.newItemName is unavailable when called by the 'save' event from the collection
-    i.set({name: '(new item)' });
+    i.set({name: '(edit to add)' });
     collection.add( i );    
     jQuery("body").animate({ scrollTop: jQuery(document).height() }, "slow");
     //jQuery('html, body').animate({ scrollTop: jQuery('document').height()-jQuery('window').height()}, 1400, "easeOutQuint" );

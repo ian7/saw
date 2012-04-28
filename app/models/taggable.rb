@@ -312,4 +312,43 @@ def <=>(o)
   end
 end
 
+  def to_rtf( document )
+      # all atrributes 
+      dtas = dynamic_type.dynamic_type_attributes
+
+      bold = RTF::CharacterStyle.new
+      bold.bold = true
+      
+      ps = RTF::ParagraphStyle.new
+      ps.left_indent = 300
+      ps.space_before = 100
+      ps.space_after = 100
+
+
+      document.paragraph( ps ) do |p|
+        #p.left_indent = 30
+        #p << "This is an issue with id:" + id.to_s
+        #p.line_break
+
+
+        # +1 for name
+        #table = RTF::TableNode.new(p,2,dtas.count+1)
+        #c = RTF::TableCellNode.new(t)
+
+
+           p.bold { |b| b << "Name: " }
+
+           p << name  
+           p.line_break
+
+          dtas.each do |dta|
+                p.bold { |b| b << dta.attribute_name + ": " }
+                
+                p << attributes[dta.attribute_name].to_s
+                p.line_break
+                end
+        
+        end
+  end
+
 end
