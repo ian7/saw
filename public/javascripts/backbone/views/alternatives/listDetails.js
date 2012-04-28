@@ -5,6 +5,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
     events : {
 //		"keypress div.name" 			: "editedName",
 		"keypress .editable" : "editedAttribute",
+		"keypress .decisionRationale" : "editedRationale",
 		"click div.name"				: 'selectAll',
 		"click .deleteAlternative"	: "deleteAlternative",
 		"click .unrelateAlternative": "unrelateAlternative",
@@ -12,14 +13,11 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		"click .undecide"			: "undecide"
     },
     initialize: function() {
-		_(this).bindAll('render','decide','undecide');
+		_(this).bindAll('render','decide','undecide','notify');
 	    this.model.bind('change', this.render);
 
 
-		notifier.register(this);
-		
-		
-		
+		notifier.register(this);		
     },
     
     render: function() {
@@ -32,6 +30,10 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		if( !this.model.isNew() ){
 			this.selectorView = new App.Views.Relations.Selector( {model: this.model, el: jQuery('div.relationSelector',this.el) });
 			this.selectorView.render();
+
+
+			this.decisionsDetailsEl = jQuery("div.decisionsDetails",this.el);
+			jQuery(this.decisionsDetailsEl).html( JST.decisions_details({ model: this.model } ));
 		}
 	
 	   //this.decisionListView.render();
@@ -256,13 +258,28 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		jQuery("table.decisions", this.el).block({ message: null });
 	},
 	notify : function( broadcasted_id ) {
+
+		// simple model recehck
 		if( this.model.id == broadcasted_id ) {
+			this.refetch();
+		}
+
+		// in case one of decisions changed
+		_(this.model.attributes.decisions).each( function( decisionType ){
+			_(decisionType.details).each( function( individualDecision ){
+				if(individualDecision.decision_id == broadcasted_id)
+					this.refetch();
+			},this);
+		},this);
+
+	},
+	refetch : function(){
 			this.model.fetch({deepRefresh : 'true'});
 			this.model.change();
 			this.selectorView.relationsCollection.fetch();
 			jQuery(this.el).effect("highlight", {}, 500);	
-		}
 	},
+
 	editedAttribute : function( e ) {
 			if (e.keyCode == 13) {
 				var newValue = e.srcElement.innerHTML;
@@ -281,6 +298,26 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 				});			
 			}
 	},
+	editedRationale : function( e ) {
+			if (e.keyCode == 13) {
+				var newValue = e.srcElement.innerHTML;
+
+				if(newValue == "<br>") {
+					newValue = '(empty)';
+				}
+
+				element = jQuery(e.srcElement);
+				// this is actually quite nice
+	            jQuery.ajax({
+		         	type: 'PUT',
+		         	url: '/r/'+element.attr('id')+'/Rationale',
+		         	data: element.html()   	 
+		         });       	  		
+
+				
+			}
+	},
+
 });
 
 

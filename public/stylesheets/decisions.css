@@ -59,7 +59,11 @@ table.alternativeListDetails td{
 }
 
 
-table.alternativeList td.decisions,
+table.alternativeList td.decisions {
+	width: 25%;
+	text-align: center;
+	min-width: 280px; 
+}
 table.alternativeListDetails td.decisions{
 	width: 11%;
 	text-align: center;
@@ -90,6 +94,29 @@ table.ribbon a:hover{
 /* small decision details table */
 table.decisionList {
 	width: 100%;
+	padding: 0.8em;
+	background-color: rgba(255, 255, 255, 0.7);
+	margin-bottom: 0.5em;
+	border-spacing: 0px;
+}
+table.decisionList td{
+		text-align:center;
+}
+table.decisionList td.rationale{
+		text-align:left;
+		padding-left: 1em;
+		padding-right: 1em;	
+}
+
+table.decisionList td.type {
+	width: 70px;
+}
+table.decisionList td.user {
+	width: 100px;
+}
+
+table.decisionList td.timestamp {
+	width: 150px;
 }
 
 div.decide {
@@ -147,7 +174,7 @@ div.submitFeedback {
 
 
 table.itemDetails{
-	padding-top: 2em;
+	padding-top: 0.2em;
 	
 }
 .slide-out-div {
@@ -220,7 +247,7 @@ table.itemDetails td.key {
 }
 
 table.itemDetails td {
-	padding-bottom: 1em;
+	padding-bottom: 0.5em;
 }
 
 

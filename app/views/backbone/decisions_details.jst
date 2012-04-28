@@ -2,12 +2,13 @@
 	<% _(model.attributes.decisions).each( function( decisionType ) { %>
 		<% _(decisionType.details).each( function( individualDecision ) { %>
 		<tr id="<%=individualDecision.decision_id %>" class="decision <%=decisionType.color.toLowerCase()%>">
-			<td class="<%=decisionType.color%>"><%= decisionType.name %></td>
-			<td><%= individualDecision.email %></td>
-			<td>
-				<div class="decisionRationale" id="<%=individualDecision.decision_id%>" contenteditable='true'><%= individualDecision.Rationale %></div>
+			<td class="type"><%= decisionType.name %></td>
+			<td class="rationale">
+				<div class="decisionRationale" id="<%=individualDecision.decision_id%>" contenteditable='true'>
+				<% if(individualDecision.Rationale) {%><%= individualDecision.Rationale %><% } else { %><i>(empty)</i><% } %></div>
 			</td>
-			<td><%= individualDecision.timestamp.match(/.*(?= \+)/) %></td>
+			<td class="user"><%= individualDecision.email %></td>
+			<td class="timestamp"><%= individualDecision.timestamp.match(/.*(?= \+)/) %></td>
 		</tr>
 		<% },this); %>
 	<% },this); %>

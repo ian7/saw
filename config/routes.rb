@@ -11,6 +11,8 @@ Saw::Application.routes.draw do
 #  resources :photos, :accounts
 #end
  
+  get 'r/:id/:attribute' => 'r#attribute'
+  put 'r/:id/:attribute' => 'r#setAttribute'
 
 
   resources :r
