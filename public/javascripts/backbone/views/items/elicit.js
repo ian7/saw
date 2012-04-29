@@ -69,7 +69,7 @@ App.Views.Items.Elicit = Backbone.View.extend({
 
   },
   showElicit : function(){
-  	this.el.innerHTML = "<b>Issue:</b> <span class='name'>" + this.model.attributes.name + "</div> " + 
+  	this.el.innerHTML = "<b>Issue:</b> <span class='name'>" + this.model.attributes.name + "</span> " + 
   		"<div class='button white unelicit' style='float: right'>Remove</div>";
   },
   showUnElicit : function(){
