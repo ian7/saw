@@ -298,6 +298,13 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 					}
 				});			
 			}
+			else {
+				// in case this is not enter and that's first key pressed
+				var newValue = e.srcElement.innerHTML;
+				if( newValue == "(edit to add)" ) {
+					e.srcElement.innerHTML = "";
+				}
+			}
 	},
 	editedRationale : function( e ) {
 			if (e.keyCode == 13) {
