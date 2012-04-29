@@ -107,18 +107,19 @@ class TagController < ApplicationController
   
   
   # in case there was a project_id paramter specified, I'll try to tag it with project_id
-  p = Project.find params[:project_id]
-  if p
-    t = Tagging.new
-    t.type = Tagging
-    t.origin = p.id
-    t.tip = @relation_instance.id
-    t.save
-    
-    # i should ring the project id too ;)
-    Juggernaut.publish("/chats", p.id )
-  end
-  
+  if Project.exists? :conditions=>{:id=>params[:project_id]}
+    p = Project.find params[:project_id]
+    if p
+      t = Tagging.new
+      t.type = Tagging
+      t.origin = p.id
+      t.tip = @relation_instance.id
+      t.save
+      
+      # i should ring the project id too ;)
+      Juggernaut.publish("/chats", p.id )
+    end
+  end  
   
   
   ## not quite sure on what to do after... some redirect probably
@@ -132,6 +133,7 @@ class TagController < ApplicationController
       Juggernaut.publish("/chats", @to_taggable.origin)
   else
       Juggernaut.publish("/chats", @to_taggable_id)
+      Juggernaut.publish("/chats", @from_taggable_id)
   end
   
    respond_to do |format|
