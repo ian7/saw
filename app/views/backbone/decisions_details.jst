@@ -5,7 +5,7 @@
 			<td class="type"><%= decisionType.name %></td>
 			<td class="rationale">
 				<div class="decisionRationale" id="<%=individualDecision.decision_id%>" contenteditable='true'>
-				<% if(individualDecision.Rationale) {%><%= individualDecision.Rationale %><% } else { %><i>(empty)</i><% } %></div>
+				<% if(individualDecision.Rationale) {%><%= individualDecision.Rationale %><% } else { %>(empty)<% } %></div>
 			</td>
 			<td class="user"><%= individualDecision.email %></td>
 			<td class="timestamp"><%= individualDecision.timestamp.match(/.*(?= \+)/) %></td>
