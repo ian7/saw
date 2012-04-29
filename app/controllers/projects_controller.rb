@@ -70,17 +70,35 @@ class ProjectsController < ApplicationController
 
     # dig through issues to alternatives
     p.related_from('Tagging','Issue').each do |issue|
-      
+
+
+      # here we add issue taggings
+      e.concat issue.related_to 'Tagging'
+      e.concat issue.relations_to 'Tagging'
 
       alternatives = issue.related_to 'SolvedBy','Alternative'
 
       e.concat alternatives
-      e.concat issue.relations_to 'SolvedBy'
+
+      # solved by relations
+      sbs = issue.relations_to 'SolvedBy'
+      e.concat sbs
+
+      # decisions on sb relations
+      sbs.each do |sb|
+        e.concat sb.related_to
+        e.concat sb.relations_to
+      end
+
 
       # let's top it up with relations between alternatives. 
-      # and hope that it was enough
       alternatives.each do |a|
         e.concat a.relations_to 
+        # catch solvedBy
+        #arvs = a.relations_from
+        #arvs.each do |arv|
+
+        #end
       end
     end
 
@@ -103,38 +121,81 @@ class ProjectsController < ApplicationController
 
     i_count = 0
     d_count = 0
+    rt_count = 0
+
+
+    # hash map between old and new ids
+    reuse_hash={}
 
     d.each do |i|
 
-    t = nil
-    
-    case i._type
-      when 'Relation'
-       t=Relation.new(i)
-      when 'Tagging'
-       t=Tagging.new(i)
-      else
-       t=Taggable.new( i )
-    end
+      t = nil
 
-     t.save
+      #debugger
+      if i["type"] == "SolvedBy"
+        #debugger
+      end
+
+      t = DynamicType.find_by_name(i["type"]).new_instance
+      
+      #copy all attributes
+      i.each do |a,v|
+        case a
+          when 'tip'
+            t[a] = BSON::ObjectId.from_string v
+          when 'origin'
+            t[a] = BSON::ObjectId.from_string v
+          else
+            t[a] = v
+          end
+      end
+
+
+      case t._type
+        # we should try to reuse tags - create only those which don't already exist
+        when 'Tag'
+          # in case tag with the same name and type already exists, then reuse
+          #debugger
+          if Taggable.exists?(:conditions=>{:_type=>"Tag",:name=>t.name,:type=>t.type})
+            new_t=Taggable.find :first, :conditions=>{:_type=>"Tag",:name=>t.name,:type=>t.type}
+            # keep reused ids in hash
+
+            reuse_hash[t.id]=new_t.id
+
+            rt_count = rt_count + 1
+
+          else
+            # othrerwise just create it
+            t.save
+          end
+        else
+          t.save
+        end
 
       case t.type
-       when 'Issue'
+        when 'Issue'
           t.do_tag_with( p )
           i_count = i_count + 1
         when 'Tagging'
+
+          #in case origin was reused
+          if reuse_hash[t.origin]
+            t.origin = reuse_hash[t.origin]
+            t.save
+          end
+
           t.do_tag_with( p )
           d_count = d_count + 1
         else
-          #do nothing
-      end
-
+          # do nothing
+        end
     end
 
     respond_to do |format|
  #     format.html # index.html.erb
-      format.any  { render :text => "it worked - "+i_count.to_s+" issues, and "+d_count.to_s+" decisions - total: "+d.length.to_s }
+      format.any  { render :text => "it worked - "+i_count.to_s+
+          " issues, and " + d_count.to_s+" taggings - total: "+d.length.to_s +
+          " reused tags: " + rt_count.to_s}
     end
   end
 end
