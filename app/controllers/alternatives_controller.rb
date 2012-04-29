@@ -13,21 +13,26 @@ class AlternativesController < ApplicationController
 		@alternatives = []	
 
   
-   if params[:item_id] != nil && params[:item_id]!='undefined'
+   if params[:item_id] != nil 
 		
+    if params[:item_id]!='undefined'
 		
-		@issue = Taggable.find params[:item_id] 
-		
-		
-    a_collection = @issue.related_to("SolvedBy")
+    		@issue = Taggable.find params[:item_id] 
+    		
+    		
+        a_collection = @issue.related_to("SolvedBy")
 
 
 
-		@decision_collection = Taggable.find :all, :conditions=>{:type=>"Decision"}
-		
-		a_collection.each do |alternative|			
-			#puts "sucks !"
-			@alternatives << to_hash_with_details( alternative )
+    		@decision_collection = Taggable.find :all, :conditions=>{:type=>"Decision"}
+    		
+    		a_collection.each do |alternative|			
+    			#puts "sucks !"
+    			@alternatives << to_hash_with_details( alternative )
+
+        end
+    else # item_id == "undefined"
+      @alternatives = []
 		end
 		
    else
