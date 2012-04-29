@@ -7,7 +7,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		"keypress .editable" : "editedAttribute",
 		"click .editable" : "selectAll",
 		"keypress .decisionRationale" : "editedRationale",
-		"click div.name"				: 'selectAll',
+		//"click div.name"				: 'selectAll',
 		"click .deleteAlternative"	: "deleteAlternative",
 		"click .unrelateAlternative": "unrelateAlternative",
 		"click .decide"				: "decide",
@@ -187,7 +187,8 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	   return this;
     },
     selectAll : function( e ){ 
-		if( e.toElement.innerText == '(edit to add)') {
+		if( e.toElement.innerText == '(edit to add)' ||
+			e.toElement.innerText == '(empty)') {
 			document.execCommand('selectAll',false,null);
 		}
 	},
@@ -301,7 +302,8 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 			else {
 				// in case this is not enter and that's first key pressed
 				var newValue = e.srcElement.innerHTML;
-				if( newValue == "(edit to add)" ) {
+				if( newValue == "(edit to add)"  ||
+					newValue == "(empty)") {
 					e.srcElement.innerHTML = "";
 				}
 			}
@@ -321,8 +323,13 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		         	url: '/r/'+element.attr('id')+'/Rationale',
 		         	data: element.html()   	 
 		         });       	  		
-
-				
+			}
+			else {
+				// in case this is not enter and that's first key pressed
+				var newValue = e.srcElement.innerHTML;
+				if( newValue == "(empty)" ) {
+					e.srcElement.innerHTML = "";
+				}
 			}
 	},
 

@@ -3,7 +3,7 @@
 		<% _(decisionType.details).each( function( individualDecision ) { %>
 		<tr id="<%=individualDecision.decision_id %>" class="decision <%=decisionType.color.toLowerCase()%>">
 			<td class="type"><%= decisionType.name %></td>
-			<td class="rationale">
+			<td class="rationale editable">
 				<div class="decisionRationale" id="<%=individualDecision.decision_id%>" contenteditable='true'>
 				<% if(individualDecision.Rationale) {%><%= individualDecision.Rationale %><% } else { %>(empty)<% } %></div>
 			</td>
