@@ -5,6 +5,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
     events : {
 //		"keypress div.name" 			: "editedName",
 		"keypress .editable" : "editedAttribute",
+		"click .editable" : "selectAll",
 		"keypress .decisionRationale" : "editedRationale",
 		"click div.name"				: 'selectAll',
 		"click .deleteAlternative"	: "deleteAlternative",
@@ -368,6 +369,7 @@ App.Views.Alternatives.ListDetails = Backbone.View.extend({
 		// this.newItemName is unavailable when called by the 'save' event from the collection
 		a.set({name: '(edit to add)' });
 		this.collection.add( a );
+		jQuery("div.nextEdited").focus();
   },
 
  removeNewAlternative : function() {

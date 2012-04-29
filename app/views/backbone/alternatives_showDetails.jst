@@ -27,7 +27,7 @@
 				</td>
 
 				<td>
-					<div class="editable" id="<%=key%>" contenteditable="true"><% if( value ) { %><%= value %><% } else { %>(empty)<% } %></div>
+					<div class="editable <% if(a.isNew()) {%>nextEdited<% }%>" id="<%=key%>" contenteditable="true"><% if( value ) { %><%= value %><% } else { %>(empty)<% } %></div>
 				</td>
 				</tr>
 
