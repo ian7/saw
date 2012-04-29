@@ -186,6 +186,7 @@ App.Views.Index = Backbone.View.extend({
 	"click .newItem" : "newItem",
 	"click .expandAll" : "expandAll",
 	"click .collapseAll" : "collapseAll",
+	"click .elicit" : "elicit",
 //	"click .newItem" : 'checkNewItem',
   },
 
@@ -226,7 +227,23 @@ App.Views.Index = Backbone.View.extend({
 		
 		this._itemsCollectionView.el = this.el; 		
 		this._itemsCollectionView.render();
-		jQuery(this.el).prepend("<div class = 'button orange expandAll'>Expand all</div><div class = 'button orange collapseAll'>Collapse all</div>");
+		//jQuery(this.el).prepend("<div class = 'button orange expandAll'>Expand all</div><div class = 'button orange collapseAll'>Collapse all</div>");
+
+
+		buttons = "<p><b>Design issues in the context of the project:</b>" 
+				+ "<div style='float: right'>"
+			    + "<div class = 'button orange expandAll'>Expand all</div>" 
+				+ "<div class = 'button orange collapseAll'>Collapse all</div>"
+				+ "</div>"
+				+ "<div style='float: left'>" 
+				+ "<div class = 'button orange elicit'>Elicit issues</div>"
+				+ "</div><br/><br/></p>"
+/*				+ "<div class = 'button black export' id='rtf'>Export RTF</div>"
+				+ "<div class = 'button black export' id='rtf'>Export JSON</div>"
+				+ "<div class = 'button black export' id='rtf'>Import JSON</div>";
+				*/
+		jQuery(this.el).prepend(buttons);
+
 //		jQuery(this.el).prepend("<div class = 'button red newItem'>New!</div>");
 		this.checkNewItem();
 
@@ -306,6 +323,9 @@ App.Views.Index = Backbone.View.extend({
   checkNewItem : function() {
 		this.removeNewItem();
 		this.newItem();
+  },
+  elicit : function(){
+		window.location.href = window.location.href +'#elicit';
   },
 });
 

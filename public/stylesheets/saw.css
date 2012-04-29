@@ -806,3 +806,6 @@ div.pivot{
 .hidden{
   display: none;
 }
+div.name{
+    cursor:pointer;
+}

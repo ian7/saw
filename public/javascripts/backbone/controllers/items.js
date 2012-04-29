@@ -12,6 +12,7 @@ App.Controllers.Items = Backbone.Router.extend({
         "/:id/visualization":            "visualization",
         "":                         "index",
         "new":                      "newDoc",
+        "elicit": "elicit", 
 //		"/:id/addTag": "addTag", 
     },
 	initialize : function() {
@@ -174,6 +175,22 @@ App.Controllers.Items = Backbone.Router.extend({
         		jQuery('#'+item_id).html = JST.alternatives_list_list()
         	}
         });
+    },
+    elicit : function(){
+    	this.cleanUp();
+    	// here we load all the fuckers
+		this.all_items_collection = new Items;	
+		this.all_items_collection.urlOverride = "/items";
+		this.all_items_collection.fetch();
+		// here we get only those which belong to the project
+		this.items_collection = new Items;	
+		this.items_collection.fetch();
+		
+
+		this.view = new App.Views.Items.ElicitCollection({
+			 collection: this.items_collection, 
+			 all_collection: this.all_items_collection,
+			 el: 'section.itemList'});						
     }
 });
 
