@@ -379,9 +379,15 @@ class TagController < ApplicationController
       	
       	taggings_json = [];
       	@taggings.each do |t|
+
+            # in case this is just a tagging without a tag...
+            if not Taggable.exists?(:conditions=>{:id=>t.origin})
+              next
+            end
+
       			h = {};
       			h["type"] = t.tag.type;
-      			h["name"] = t.tag.name
+       			h["name"] = t.tag.name
       			h["tag_id"] = t.tag.id;
       			h["id"] = t.tag.id;
       			h["tagging_id"] = t.id;
