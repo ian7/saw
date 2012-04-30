@@ -20,10 +20,10 @@ App.Controllers.Items = Backbone.Router.extend({
 	},
 	cleanUp : function() {
 		if( this.view ) {
-			this.view.el.innerHTML = "";
+			this.view.el = jQuery('section.itemDumpster');
+			//this.view.remove();
 			delete this.view;
 			// this was the magic required to give clean farewell to the view which we don't need any more.
-			this.view.remove();
 			this.view = null;
 		}
 	},

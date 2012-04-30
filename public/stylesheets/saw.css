@@ -809,3 +809,7 @@ div.pivot{
 div.name{
     cursor:pointer;
 }
+
+section.itemDumpster{
+  display:  none;
+}
