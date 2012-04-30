@@ -14,7 +14,7 @@ jQuery.fn.flash = function( color, duration )
 
 App.Views.Items.Elicit = Backbone.View.extend({
   events : {
-  	"click .elicit" : "doElicit",
+  	"click .doelicit" : "doElicit",
   	"click .unelicit" : "doUnElicit",
   	"click .name"	: "navigateToItem"
 	/*"click .expand" : "toggleExpand",
@@ -73,8 +73,8 @@ App.Views.Items.Elicit = Backbone.View.extend({
   		"<div class='button white unelicit' style='float: right'>Remove</div>";
   },
   showUnElicit : function(){
-  	this.el.innerHTML = "<b>Issue: </b> <span class='name'>" + this.model.attributes.name + "</span> " +
-  	  		"<div class='button black elicit' style='float: right'>Elicit</div>";
+  	this.el.innerHTML = "<b>Issue:</b> <span class='name'>" + this.model.attributes.name + "</span> " +
+  	  "<div class='button black doelicit' style='float: right'>Elicit</div>";
   },
   doElicit : function(){
 		jQuery.getJSON( this.model.get('item_url') + '/tag/dotag?from_taggable_id='+this.projectid, function(data) {});
