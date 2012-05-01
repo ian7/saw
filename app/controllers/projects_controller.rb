@@ -2,8 +2,8 @@ require 'json'
 
 class ProjectsController < ApplicationController
   
-  before_filter :authenticate_user!, :except => [:import,:export]
-    
+  before_filter  :authenticate_user! , :except => [:import,:export]
+
   def show
     @project = Project.find params[:id]
   end
@@ -198,4 +198,5 @@ class ProjectsController < ApplicationController
           " reused tags: " + rt_count.to_s}
     end
   end
+  
 end
