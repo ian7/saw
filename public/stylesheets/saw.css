@@ -872,3 +872,12 @@ div.filter{
   padding: 0.5em;
   padding-left: 1em;
 }
+
+li.red{
+  color:  red;
+  font-weight: bold;
+}
+
+li.black{
+  color:  black;
+}

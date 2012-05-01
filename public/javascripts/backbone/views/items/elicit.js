@@ -129,6 +129,7 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
   "click ul.tagName li" : "tagNameSelected",
   "keyup div.filter" : "filter",
   "click div.filter"    : "clickFilter",
+  "click div.clearFilter": "clearFilter",
 
   },
 
@@ -234,6 +235,9 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
     li += "<b>Search for:</b> <div class='filter' contenteditable='true'>(empty)</div>";
     li += "</div>";
 
+    li +="<div class='button white clearFilter' style='float: right'>Clear</div>";
+
+
     li += "<br><b>Select Tag:</b>";
     li += "<ul class='tagSelector tagType'>"
 
@@ -272,6 +276,10 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
 
   tagNameSelected : function( e ){
     id = e.srcElement.id;
+    // mark all other elements black
+    jQuery("li.tagName",this.el).removeClass("red");
+    // mark this one red
+    jQuery(e.srcElement).addClass("red");
 
     _(this.all_collection.models).each( function( itemModel ){
       found = false;
@@ -290,12 +298,22 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
     },this);
   },
   filter : function(e){
+    // mark all other elements black
+    jQuery("li.tagName",this.el).removeClass("red");
+
     newFilter = e.srcElement.innerText;
     this._itemsCollectionView.filter(newFilter);
   },
   clickFilter : function(e){
       document.execCommand('selectAll',false,null);
   },
+  clearFilter : function(){
+    // mark all other elements black
+    jQuery("li.tagName",this.el).removeClass("red");
+    jQuery("div.filter",this.el).innerHTML="(empty)";
+    this._itemsCollectionView.filter("");
+  },
+
   notify : function( broadcasted_id ) {
 /*		this.collection.each( function( i ) {	
 			if( i.get('id') == broadcasted_id ) {
