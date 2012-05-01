@@ -1,4 +1,4 @@
-var UpdatingCollectionView = Backbone.View.extend({
+UpdatingCollectionView = Backbone.View.extend({
   initialize : function(options) {
     _(this).bindAll('add', 'remove');
  
@@ -26,7 +26,7 @@ var UpdatingCollectionView = Backbone.View.extend({
 	}
 	*/
 	
-    var childView = new this._childViewConstructor({
+  childView = new this._childViewConstructor({
       tagName : this._childViewTagName,
       className : this._childViewClassName,
       model : model
@@ -41,7 +41,7 @@ var UpdatingCollectionView = Backbone.View.extend({
   },
  
   remove : function(model) {
-    var viewToRemove = _(this._childViews).select(function(cv) { return cv.model === model; })[0];
+    viewToRemove = _(this._childViews).select(function(cv) { return cv.model === model; })[0];
     this._childViews = _(this._childViews).without(viewToRemove);
  
     if (this._rendered) $(viewToRemove.el).remove();
@@ -53,7 +53,7 @@ var UpdatingCollectionView = Backbone.View.extend({
   },
  
   render : function() {
-    var that = this;
+    that = this;
     this._rendered = true;
  
     $(this.el).empty();

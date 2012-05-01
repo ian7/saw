@@ -295,7 +295,7 @@ App.Views.Index = Backbone.View.extend({
 			}
 		});
 */
-		var thisView = this;
+		//var thisView = this;
 		
 		if( this.projectid == broadcasted_id ) {
 			this.collection.fetch({
