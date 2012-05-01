@@ -38,7 +38,19 @@ App.Controllers.Items = Backbone.Router.extend({
 		// hide all the m-fckers
 		jQuery("section.itemList section").hide();
 
+		if( this.collection ){
+			this.collection.off('add');
+			this.collection.off('remove');
+		}
+
+		if( this.items_collection ){
+			this.items_collection.off('add');
+			this.items_collection.off('remove');			
+		}
+		
+
 		if( this.view ) {
+			this.view._rendered = false;
 			this.view.el = jQuery('section.itemDumpster');
 			//this.view.remove();
 			delete this.view;

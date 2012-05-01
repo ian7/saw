@@ -12,7 +12,7 @@ jQuery.fn.flash = function( color, duration )
 
 }
 
-var ItemUpdatingView = Backbone.View.extend({
+ ItemUpdatingView = Backbone.View.extend({
   events : {
 	"click .expand" : "toggleExpand",
 	"click .deleteItem" : "deleteItem",
@@ -259,7 +259,7 @@ App.Views.Index = Backbone.View.extend({
   },
   
   newItem : function() {
-		var collection;
+		collection = null;
 
 		if( this.collection ) {
 			// we're called from the render method
