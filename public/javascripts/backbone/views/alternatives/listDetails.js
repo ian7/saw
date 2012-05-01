@@ -4,7 +4,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	className : "alternativeList", 
     events : {
 //		"keypress div.name" 			: "editedName",
-		"keypress .editable" : "editedAttribute",
+		"keypress div.editable" : "editedAttribute",
 		"click .editable" : "selectAll",
 		"keypress .decisionRationale" : "editedRationale",
 		//"click div.name"				: 'selectAll',
