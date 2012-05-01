@@ -32,6 +32,17 @@ class ItemsController < ApplicationController
           if params[:project_id]
             ii['project_id'] = params['project_id'];
           end
+
+          # if asked, we should add list of tags
+          if params[:with_tags]
+            it = []
+            i.tags.each do |t|
+              tj = t.to_json
+              it << tj
+            end
+            ii['tags'] = it
+          end
+
           j << ii
         end
         render :json => j }      

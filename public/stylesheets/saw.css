@@ -813,3 +813,11 @@ div.name{
 section.itemDumpster{
   display:  none;
 }
+
+
+td.tags div.tags{
+  position: fixed;
+  top: 110px;
+  right: 50px;
+  width: 35%;
+}

@@ -94,6 +94,7 @@ App.Views.Items.Elicit = Backbone.View.extend({
 
 });
 
+
 App.Views.Items.ElicitCollection = Backbone.View.extend({
   events : {
 //	"click .expandAll" : "expandAll",
@@ -105,6 +106,7 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
 
   initialize : function() {
 
+  _(this).bindAll('renderTagList');
 	/*_(this).bindAll('newItem','checkNewItem','removeNewItem','newItem');
 
 	this.collection.bind('saved',this.checkNewItem );
@@ -112,6 +114,8 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
 	*/
 
 	this.all_collection = this.options.all_collection;
+  this.all_collection.on("all", this.renderTagList,this );
+
 	this.collection.comparator = function( m ) { return m.get('id'); };
 
     // simply magic :)
@@ -125,7 +129,7 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
       collection  			   : this.collection, 
       childViewConstructor : App.Views.Items.Elicit,
       childViewTagName     : 'p',
-	  childViewClassName   : 'itemList'
+	    childViewClassName   : 'itemList'
     });
 
 	this.render();
@@ -135,10 +139,15 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
  
   render : function() {			
 		this._rendered = true;
-		this.el.innerHTML="haha";
+		//this.el.innerHTML="haha";
 		
+    this.el.innerHTML = "<table>"
+            + "<tr><td class='issues'/><td class='tags'><div class='tags'/></td></tr>"
+            + "</table>";
 		
-		this._itemsCollectionView.el = this.el; 		
+		this._itemsCollectionView.el = jQuery("td.issues",this.el); 		
+    this.tagListEl = jQuery("div.tags",this.el);
+
 		this._itemsCollectionView.render();
 		//jQuery(this.el).prepend("<div class = 'button orange expandAll'>Expand all</div><div class = 'button orange collapseAll'>Collapse all</div>");
 
@@ -156,11 +165,35 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
 				*/
 		jQuery(this.el).prepend(buttons);
 
+
+
+
+
 //		jQuery(this.el).prepend("<div class = 'button red newItem'>New!</div>");
 //		this.checkNewItem();
 
   },
+  renderTagList : function(){
 
+    this.tagListEl.empty();
+
+    tagsHash = {}
+
+    this.all_collection.each( function( issue ) {
+      issueTags = issue.get('tags');
+      _(issueTags).each(function( tag ){
+        tagsHash[tag.id] = {"name": tag.name, "type": tag.type};
+      },this);
+    },this);
+
+    // render mf-ckers
+    _(tagsHash).each(function(tag,id){
+      
+      this.tagListEl.append("<li>"+tag.type + " : "+tag.name+"</li>");
+    },this);
+
+    this.tagListEl.append("</ul>");
+  },
   notify : function( broadcasted_id ) {
 /*		this.collection.each( function( i ) {	
 			if( i.get('id') == broadcasted_id ) {

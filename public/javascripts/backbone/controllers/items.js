@@ -182,7 +182,7 @@ App.Controllers.Items = Backbone.Router.extend({
     	this.cleanUp();
     	// here we load all the fuckers
 		this.all_items_collection = new Items;	
-		this.all_items_collection.urlOverride = "/items";
+		this.all_items_collection.urlOverride = "/items?with_tags=true";
 		this.all_items_collection.fetch();
 		// here we get only those which belong to the project
 		this.items_collection = new Items;	
