@@ -127,7 +127,7 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
 	"click .project" : "project",
   "click ul.tagType li" : "tagTypeSelected",
   "click ul.tagName li" : "tagNameSelected",
-  "keypress div.filter" : "filter",
+  "keyup div.filter" : "filter",
   "click div.filter"    : "clickFilter",
 
   },
