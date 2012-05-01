@@ -17,8 +17,27 @@ App.Controllers.Items = Backbone.Router.extend({
     },
 	initialize : function() {
 		this.el = jQuery('section.itemList');
+		h = "";
+		h += "<section class='alternatives'></section>";
+		h += "<section class='visualization'></section>";
+		h += "<section class='index'></section>";
+		h += "<section class='elicit'></section>";
+		h += "<section class='show'></section>";
+		this.el.html(h);
+
+		this.alternativesEl = jQuery("section.alternatives",this.el); 
+		this.visualizationEl = jQuery("section.visualization",this.el);
+		this.indexEl = jQuery("section.index",this.el);
+		this.elicitEl = jQuery("section.elicit",this.el);
+		this.showEl = jQuery("section.show",this.el);
+		this.mode = "";
+
+		_(this).bindAll('cleanUp','visualization','alternatives','show','index','update','refresh','elicit');
 	},
 	cleanUp : function() {
+		// hide all the m-fckers
+		jQuery("section.itemList section").hide();
+
 		if( this.view ) {
 			this.view.el = jQuery('section.itemDumpster');
 			//this.view.remove();
@@ -29,28 +48,31 @@ App.Controllers.Items = Backbone.Router.extend({
 	},
 	visualization: function( id ){
 		this.cleanUp();
+		this.visualizationEl.show();
 
-		this.item = new Item({ el: 'section.itemList'});
+		this.item = new Item({ el: this.visualizationEl });
 		this.item.id = id;
 		this.item.fetch();
 
-		this.view = new App.Views.Items.Visualization({ model: this.item, id: id, el: 'section.itemList' });
+		this.view = new App.Views.Items.Visualization({ model: this.item, id: id, el: this.visualizationEl });
 		this.view.render();
 	},
 	alternatives: function( id ) {
 
 		this.cleanUp();
-		this.el.html("<table class='alternativeListDetails'></table>");
 
-		el = jQuery('section.itemList');
-		this.item = new Item({ el: 'section.itemList'});
+		this.alternativesEl.show();
+		this.alternativesEl.html("<table class='alternativeListDetails'></table>");
+
+
+		this.item = new Item({ el: this.alternativesEl });
 		this.item.id = id;
 		this.item.fetch();
 		this.collection = new Alternatives;
 		this.collection.url = this.item.url() + '/alternatives';
 		this.collection.item_url = this.item.url();
  		
-		this.view = new App.Views.Alternatives.ListDetails( {collection: this.collection, el: 'section.itemList' });
+		this.view = new App.Views.Alternatives.ListDetails( {collection: this.collection, el: this.alternativesEl });
 		this.view.model = this.item;
 		
 		this.collection.fetch();
@@ -58,33 +80,25 @@ App.Controllers.Items = Backbone.Router.extend({
 	},
     show: function(id) {
 		this.cleanUp();
+		this.showEl.show();
 		
 		// id for the item 
-		this.item = new Item({ el: 'section.itemList'});
-        this.view = new App.Views.Show({ model: this.item, el: 'section.itemList'});     
+		this.item = new Item({ el: this.showEl});
+        this.view = new App.Views.Show({ model: this.item, el: this.showEl});     
 
 		this.item.id = id;
-        this.item.fetch({
-            success: function(model, resp) {
-//				el = jQuery("section.itemList");
-            },
-            error: function() {
-                new Error({ message: 'Could not find that document.' });
-                window.location.hash = '#';
-            }
-        });
+        this.item.fetch();
 
     },
 	  
     index: function() {
 		this.cleanUp();
-		this.items_collection = new Items;	
-		this.view = new App.Views.Index({collection: this.items_collection, el: 'section.itemList'});						
+		this.showEl.show();
 
-		this.items_collection.fetch({
-			success: function(model, resp) {
-			}
-		});
+		this.items_collection = new Items;	
+		this.view = new App.Views.Index({collection: this.items_collection, el: this.showEl });						
+
+		this.items_collection.fetch();
     },
     
     newDoc: function() {
@@ -95,8 +109,6 @@ App.Controllers.Items = Backbone.Router.extend({
 	    	//	App.Components.Items.view.trigger('update',broadcasted_id);
 	    	//}
 	    	
-	
-	
 	    	var c = App.Components.Items;
 	    	
 	    	if( broadcasted_id == this.item_id ) {
@@ -180,6 +192,7 @@ App.Controllers.Items = Backbone.Router.extend({
     },
     elicit : function(){
     	this.cleanUp();
+    	this.showEl.show();
     	// here we load all the fuckers
 		this.all_items_collection = new Items;	
 		this.all_items_collection.urlOverride = "/items?with_tags=true";
@@ -192,7 +205,7 @@ App.Controllers.Items = Backbone.Router.extend({
 		this.view = new App.Views.Items.ElicitCollection({
 			 collection: this.items_collection, 
 			 all_collection: this.all_items_collection,
-			 el: 'section.itemList'});						
+			 el: this.showEl });						
     }
 });
 
