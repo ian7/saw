@@ -865,3 +865,10 @@ div.unelicit,
 div.doelicit {
   width: 50px;
 }
+
+div.filter{
+  background: #EEEEEE;
+  margin: 0.5em;
+  padding: 0.5em;
+  padding-left: 1em;
+}

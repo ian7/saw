@@ -18,6 +18,7 @@ App.Views.Items.Elicit = Backbone.View.extend({
   	"click .unelicit" : "doUnElicit",
   	"click .name"	: "navigateToItem",
     "click .expand" : "expand",
+
 	/*"click .expand" : "toggleExpand",
 	"click .deleteItem" : "deleteItem",
 	"keypress .e6" : "editedItem",
@@ -28,88 +29,57 @@ App.Views.Items.Elicit = Backbone.View.extend({
   },
 
   initialize : function(options) {
-/*    this.render = _.bind(this.render, this); 
-    this.model.bind('change', this.render);
-
-	this.alternativesCollection = new Alternatives;
-   
-	this.alternativesCollection.issueView = this;
-	this.isExpanded = false;
-
-	// catch alternatives resource location hack
-	this.alternativesCollection.item_url = window.location.pathname+"/"+this.model.get('id');
-	this.alternativesCollection.url = window.location.pathname+"/"+this.model.get('id')+'/alternatives';
-	
-	this.alternativesCollectionView = new App.Views.Alternatives.List({ collection: this.alternativesCollection, el: this.el });
-*/		
 	_(this).bindAll('notify','showElicit','showUnElicit','doUnElicit','doElicit','expand');
 	notifier.register( this );
   },
 
   render : function() {
-/*
-	this.alternativesCollection.item_url = window.location.pathname+"/"+this.model.get('id');
-	this.alternativesCollection.url = window.location.pathname+"/"+this.model.get('id')+'/alternatives';
 
-//	this.tempEL = document.createElement("tr");
-//	this.tempEL.innerHTML = JST.items_index( {item: this.model} );
+      h = "<b>Issue:</b> <span class='name'>" + this.model.attributes.name + "</span> ";
+      h += "<div class='button orange expand' style='float: right'>Expand</div>";
+      h += "<div class='itemExtendedAttributes'>";
 
-   this.el.innerHTML = JST.items_index( {item: this.model} );
+      h += "<table class='itemAttributes'>";
 
 
-   // nice localstorage status save
-   if(  localStorage.getItem( this.model.get('id')+'expanded' ) == 'true' ) {
-		this.expand();
-	}
+      _(this.model.attributes).each(function(v,a){
+        if( a != "id" &&
+            a != "name" &&
+            a != "item_url" &&
+            a != "type" &&
+            a != "tags"
+            ){
+          h += "<tr>";
+            h += "<td class='attributeName'>" + a + ": </td>"
+            h += "<td class='attributeValue'>";
+            if( v != null){
+              h += v;
+            }
+            else {
+              h += "<i>(empty)</i>";
+            }
+            h += "</td>";   
+          h += "</tr>";
+          }
+      },this);
 
-   jQuery(this.el).attr('id',this.model.get('id'));
-   //
-*/
-  h = "<b>Issue:</b> <span class='name'>" + this.model.attributes.name + "</span> ";
-  h += "<div class='button orange expand' style='float: right'>Expand</div>";
-  h += "<div class='itemExtendedAttributes'>";
+      h += "</table>";
+      h += "<b>Tags:</b>";
 
-  h += "<table class='itemAttributes'>";
-
-
-  _(this.model.attributes).each(function(v,a){
-    if( a != "id" &&
-        a != "name" &&
-        a != "item_url" &&
-        a != "type" &&
-        a != "tags"
-        ){
-      h += "<tr>";
-        h += "<td class='attributeName'>" + a + ": </td>"
-        h += "<td class='attributeValue'>";
-        if( v != null){
-          h += v;
-        }
-        else {
-          h += "<i>(empty)</i>";
-        }
-        h += "</td>";   
-      h += "</tr>";
-      }
-  },this);
-
-  h += "</table>";
-  h += "<b>Tags:</b>";
-
-  h += "<table class='itemAttributes'>";
+      h += "<table class='itemAttributes'>";
 
 
-  _(this.model.attributes.tags).each(function(v,a){
-      h += "<tr>";
-        h += "<td class='attributeName'>" + v.type + ": </td>"
-        h += "<td class='attributeValue'>" + v.name + "</td>";   
-      h += "</tr>";
-  },this);
+      _(this.model.attributes.tags).each(function(v,a){
+          h += "<tr>";
+            h += "<td class='attributeName'>" + v.type + ": </td>"
+            h += "<td class='attributeValue'>" + v.name + "</td>";   
+          h += "</tr>";
+      },this);
 
-  h += "</table>";
+      h += "</table>";
 
-  h += "</div>";
-	this.el.innerHTML = h;
+      h += "</div>";
+    	this.el.innerHTML = h;
    return this;
 
   },
@@ -122,7 +92,6 @@ App.Views.Items.Elicit = Backbone.View.extend({
     else{
       d.show();
     }
-
   },
   showElicit : function(){
     this.render();
@@ -146,7 +115,7 @@ App.Views.Items.Elicit = Backbone.View.extend({
 			this.alternativesCollection.fetch();
 			jQuery(this.el).effect("highlight", {}, 50000);
 		}*/
-  }  
+  },
 
 });
 
@@ -158,6 +127,9 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
 	"click .project" : "project",
   "click ul.tagType li" : "tagTypeSelected",
   "click ul.tagName li" : "tagNameSelected",
+  "keypress div.filter" : "filter",
+  "click div.filter"    : "clickFilter",
+
   },
 
   newItemName : '(new item)',
@@ -234,6 +206,7 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
   renderTagList : function(){
 
     this.tagListEl.empty();
+    li = "";
 
     tagsHash = {}
     typesHash = {};
@@ -257,7 +230,12 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
       },this);
     },this);
 
-    li = "<ul class='tagSelector tagType'>"
+    li += "<div class='textSearch'>";
+    li += "<b>Search for:</b> <div class='filter' contenteditable='true'>(empty)</div>";
+    li += "</div>";
+
+    li += "<br><b>Select Tag:</b>";
+    li += "<ul class='tagSelector tagType'>"
 
     //typesHash = _(typesHash).sortBy( function(c,t){ return t });
 
@@ -311,7 +289,13 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
       }
     },this);
   },
-
+  filter : function(e){
+    newFilter = e.srcElement.innerText;
+    this._itemsCollectionView.filter(newFilter);
+  },
+  clickFilter : function(e){
+      document.execCommand('selectAll',false,null);
+  },
   notify : function( broadcasted_id ) {
 /*		this.collection.each( function( i ) {	
 			if( i.get('id') == broadcasted_id ) {
@@ -449,16 +433,16 @@ App.Views.Items.ElicitUpdatingCollectionView = Backbone.View.extend({
   filter : function( term ){
     if( term.length == 0 ){
       _(this._childViews).each( function( childView ){
-          childView.show();
+          jQuery(childView.el).show();
       });
     }
     else{
       _(this._childViews).each( function( childView ){
           if( childView.model.attributes.name.search( new RegExp(term, "i") ) >= 0){
-            childView.show();
+            jQuery(childView.el).show();
           }
           else {
-            childView.hide();
+            jQuery(childView.el).hide();
           }
       });
     }
