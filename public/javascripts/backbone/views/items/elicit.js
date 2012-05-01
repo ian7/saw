@@ -16,7 +16,8 @@ App.Views.Items.Elicit = Backbone.View.extend({
   events : {
   	"click .doelicit" : "doElicit",
   	"click .unelicit" : "doUnElicit",
-  	"click .name"	: "navigateToItem"
+  	"click .name"	: "navigateToItem",
+    "click .expand" : "expand",
 	/*"click .expand" : "toggleExpand",
 	"click .deleteItem" : "deleteItem",
 	"keypress .e6" : "editedItem",
@@ -41,7 +42,7 @@ App.Views.Items.Elicit = Backbone.View.extend({
 	
 	this.alternativesCollectionView = new App.Views.Alternatives.List({ collection: this.alternativesCollection, el: this.el });
 */		
-	_(this).bindAll('notify','showElicit','showUnElicit','doUnElicit','doElicit');
+	_(this).bindAll('notify','showElicit','showUnElicit','doUnElicit','doElicit','expand');
 	notifier.register( this );
   },
 
@@ -64,17 +65,72 @@ App.Views.Items.Elicit = Backbone.View.extend({
    jQuery(this.el).attr('id',this.model.get('id'));
    //
 */
-	this.el.innerHTML = this.model.attributes.name;
+  h = "<b>Issue:</b> <span class='name'>" + this.model.attributes.name + "</span> ";
+  h += "<div class='button orange expand' style='float: right'>Expand</div>";
+  h += "<div class='itemExtendedAttributes'>";
+
+  h += "<table class='itemAttributes'>";
+
+
+  _(this.model.attributes).each(function(v,a){
+    if( a != "id" &&
+        a != "name" &&
+        a != "item_url" &&
+        a != "type" &&
+        a != "tags"
+        ){
+      h += "<tr>";
+        h += "<td class='attributeName'>" + a + ": </td>"
+        h += "<td class='attributeValue'>";
+        if( v != null){
+          h += v;
+        }
+        else {
+          h += "<i>(empty)</i>";
+        }
+        h += "</td>";   
+      h += "</tr>";
+      }
+  },this);
+
+  h += "</table>";
+  h += "<b>Tags:</b>";
+
+  h += "<table class='itemAttributes'>";
+
+
+  _(this.model.attributes.tags).each(function(v,a){
+      h += "<tr>";
+        h += "<td class='attributeName'>" + v.type + ": </td>"
+        h += "<td class='attributeValue'>" + v.name + "</td>";   
+      h += "</tr>";
+  },this);
+
+  h += "</table>";
+
+  h += "</div>";
+	this.el.innerHTML = h;
    return this;
 
   },
+  expand : function(){
+    d = jQuery("div.itemExtendedAttributes",this.el);
+
+    if( d.is(':visible') ){
+      d.hide();
+    }
+    else{
+      d.show();
+    }
+
+  },
   showElicit : function(){
-  	this.el.innerHTML = "<b>Issue:</b> <span class='name'>" + this.model.attributes.name + "</span> " + 
-  		"<div class='button white unelicit' style='float: right'>Remove</div>";
+    this.render();
+  	jQuery(this.el).prepend("<div class='button white unelicit' style='float: right'>Remove</div>");
   },
   showUnElicit : function(){
-  	this.el.innerHTML = "<b>Issue:</b> <span class='name'>" + this.model.attributes.name + "</span> " +
-  	  "<div class='button black doelicit' style='float: right'>Elicit</div>";
+  	this.render();
+    jQuery(this.el).prepend("<div class='button black doelicit' style='float: right'>Elicit</div>");
   },
   doElicit : function(){
 		jQuery.getJSON( this.model.get('item_url') + '/tag/dotag?from_taggable_id='+this.projectid, function(data) {});
@@ -100,13 +156,15 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
 //	"click .expandAll" : "expandAll",
 //	"click .collapseAll" : "collapseAll",
 	"click .project" : "project",
+  "click ul.tagType li" : "tagTypeSelected",
+  "click ul.tagName li" : "tagNameSelected",
   },
 
   newItemName : '(new item)',
 
   initialize : function() {
 
-  _(this).bindAll('renderTagList');
+  _(this).bindAll('renderTagList','tagTypeSelected','tagNameSelected');
 	/*_(this).bindAll('newItem','checkNewItem','removeNewItem','newItem');
 
 	this.collection.bind('saved',this.checkNewItem );
@@ -129,7 +187,7 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
       collection  			   : this.collection, 
       childViewConstructor : App.Views.Items.Elicit,
       childViewTagName     : 'p',
-	    childViewClassName   : 'itemList'
+	    childViewClassName   : 'elicitItemList'
     });
 
 	this.render();
@@ -141,8 +199,8 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
 		this._rendered = true;
 		//this.el.innerHTML="haha";
 		
-    this.el.innerHTML = "<table>"
-            + "<tr><td class='issues'/><td class='tags'><div class='tags'/></td></tr>"
+    this.el.innerHTML = "<table width='100%'>"
+            + "<tr><td class='issues' width/><td class='tags'><div class='tags'/></td></tr>"
             + "</table>";
 		
 		this._itemsCollectionView.el = jQuery("td.issues",this.el); 		
@@ -178,22 +236,82 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
     this.tagListEl.empty();
 
     tagsHash = {}
+    typesHash = {};
 
     this.all_collection.each( function( issue ) {
       issueTags = issue.get('tags');
       _(issueTags).each(function( tag ){
-        tagsHash[tag.id] = {"name": tag.name, "type": tag.type};
+
+        // we should register new tag only if we don't have one yet.
+        if( tagsHash[tag.id] == null ) {
+
+          tagsHash[tag.id] = {"name": tag.name, "type": tag.type, "id": tag.id };
+          
+          if( typesHash[ tag.type ] == null ){
+            typesHash[tag.type] = 1;
+          }
+          else{
+            typesHash[tag.type] = typesHash[tag.type] + 1;
+          }
+        }
       },this);
     },this);
 
-    // render mf-ckers
-    _(tagsHash).each(function(tag,id){
-      
-      this.tagListEl.append("<li>"+tag.type + " : "+tag.name+"</li>");
+    li = "<ul class='tagSelector tagType'>"
+
+    //typesHash = _(typesHash).sortBy( function(c,t){ return t });
+
+    _(typesHash).each(function(count,type){
+      li += "<li id='"+type+"'>" + type + " ("+count+")";
+
+      li += "<ul class='tagSelector tagName'>"
+
+      tagsHash = _(tagsHash).sortBy(function(t){return t.name});
+
+      _(tagsHash).each(function(tag,id){
+        if( tag.type == type ){
+          li += "<li class='tagName' id='" + tag.id + "'>" + tag.name + "</li>";
+        }
+      },this);
+
+      li += "</ul></li>";
+
     },this);
 
-    this.tagListEl.append("</ul>");
+    li += "</ul>";
+    this.tagListEl.append(li);
   },
+  tagTypeSelected : function( e ){
+    // this toggles visibility of tag-instances
+    subList = jQuery(e.srcElement.children[0]);
+    if( subList.is(':visible') ){
+      subList.hide();
+    }
+    else{
+      subList.show();
+    }
+  },
+
+  tagNameSelected : function( e ){
+    id = e.srcElement.id;
+
+    _(this.all_collection.models).each( function( itemModel ){
+      found = false;
+      // iterate over tags attached
+      _(itemModel.get('tags')).each( function( tag ){
+        if( tag.id == id ){
+          found = true;
+        }
+      },this);
+      if( found ){
+        jQuery(itemModel.view.el).show();
+      }
+      else{
+        jQuery(itemModel.view.el).hide();
+      }
+    },this);
+  },
+
   notify : function( broadcasted_id ) {
 /*		this.collection.each( function( i ) {	
 			if( i.get('id') == broadcasted_id ) {

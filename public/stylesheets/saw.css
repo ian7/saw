@@ -821,3 +821,47 @@ td.tags div.tags{
   right: 50px;
   width: 35%;
 }
+
+div.tags ul.tagSelector li{
+  cursor:pointer;
+}
+
+div.tags ul.tagName {
+  display: none;
+}
+
+
+p.elicitItemList {
+  width: 60%;
+  background: #EEEEEE;
+  font-size: 10pt;
+  min-height: 2em;
+  margin-bottom: 1px;
+  margin-bottom: 2px;
+  padding: 0.5em;
+}
+
+
+table.itemAttributes{
+  width: 100%;
+  background: rgba(255,255,255,0.95);
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-left: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+table.itemAttributes td.attributeName {
+  width: 25%;
+  font-weight: bold;
+}
+
+div.itemExtendedAttributes {
+  display: none;
+}
+
+div.unelicit,
+div.doelicit {
+  width: 50px;
+}
