@@ -42,10 +42,20 @@ class ItemsController < ApplicationController
             end
             ii['tags'] = it
           end
-
           j << ii
         end
-        render :json => j }      
+
+        # this is dependent on the existance of x and y
+        # and will crash if either x or y doesn't exist
+        j_sorted=j.sort {|y,x|
+          begin
+            Taggable.find(x['id']).updated_at <=> Taggable.find(y['id']).updated_at
+          rescue
+            0
+          end
+        }
+
+        render :json => j_sorted }      
       format.tex {
         render :issues => @issues
       }
