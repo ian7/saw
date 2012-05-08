@@ -22,8 +22,10 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
     },
     
     render: function() {
-
-	   this.el.innerHTML = JST.alternatives_showDetails( {a: this.model} );
+       el = jQuery(this.el);
+       el.html("");
+	
+	   el.append(JST.alternatives_showDetails( {a: this.model} ));
 	
 	   jQuery(this.el).attr('id',this.model.id);
 	    
@@ -349,10 +351,11 @@ App.Views.Alternatives.ListDetails = Backbone.View.extend({
     });
 
 	notifier.register(this);
-	_(this).bindAll('render','newAlternative','removeNewAlternative','checkNewAlternative');
+	_(this).bindAll('renderHeader','render','newAlternative','removeNewAlternative','checkNewAlternative');
 
 	this.collection.bind('saved', this.checkNewAlternative);
 	this.collection.bind('refresh', this.checkNewAlternative);
+	this.model.bind('change',this.renderHeader);
 	// load and render navigation helper
 	_.extend( this, App.Helpers.ItemNavigation );
 
@@ -360,6 +363,9 @@ App.Views.Alternatives.ListDetails = Backbone.View.extend({
  
   render : function() {
 		this.rendered = true;
+		el = jQuery(this.el);
+		//el.html("");
+		el.prepend("<div class='header'></div>");
 		this.renderNavigation();
 		
 		this.alternativesCollectionView.el = jQuery('table.alternativeListDetails', this.el);
@@ -368,6 +374,10 @@ App.Views.Alternatives.ListDetails = Backbone.View.extend({
 			this.alternativesCollectionView.el.attr("id",this.model.id);
 		this.alternativesCollectionView.render();
 		this.checkNewAlternative();
+  },
+  renderHeader : function(){
+  		el = jQuery('div.header',this.el);
+  		el.html("Issue: <b>"+this.model.get('name')+"</b>");
   },
   notify : function( broadcasted_id ) {
 		this.collection.each( function( i ) {	

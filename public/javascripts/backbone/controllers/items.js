@@ -82,7 +82,7 @@ App.Controllers.Items = Backbone.Router.extend({
 		this.collection.url = this.item.url() + '/alternatives';
 		this.collection.item_url = this.item.url();
  		
-		this.view = new App.Views.Alternatives.ListDetails( {collection: this.collection, el: this.alternativesEl });
+		this.view = new App.Views.Alternatives.ListDetails( {model: this.item, collection: this.collection, el: this.alternativesEl });
 		this.view.model = this.item;
 		
 		this.collection.fetch();
