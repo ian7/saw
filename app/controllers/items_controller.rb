@@ -62,20 +62,73 @@ class ItemsController < ApplicationController
       format.rtf {
         document = RTF::Document.new(RTF::Font.new(RTF::Font::ROMAN, 'Times New Roman'))
         ps_alternatives = RTF::ParagraphStyle.new
-        ps_alternatives.left_indent = 1000
+#        ps_alternatives.left_indent = 1000
         
         h = RTF::HeaderNode.new(document)
+        styles = {}
+        styles['PS_ISSUE'] = RTF::ParagraphStyle.new
+        styles['PS_ISSUE'].left_indent = 200
+        styles['PS_ALTERNATIVE'] = RTF::ParagraphStyle.new
+        styles['PS_ALTERNATIVE'].left_indent = 400
+        styles['PS_DECISION'] = RTF::ParagraphStyle.new
+        styles['PS_DECISION'].left_indent = 600
 
-        @issues.each do |i|
-          i.to_rtf( document )
-          alternatives = i.related_to "SolvedBy"
-          
-          document.paragraph(ps_alternatives) do |p|
-            alternatives.each do |a|
-              a.to_rtf(p)
+        @decision_collection = Taggable.find :all, :conditions=>{:type=>"Decision"}
+
+        document << "Project report follows"
+        document.line_break
+        document.line_break
+
+        document.paragraph( styles['PS_ISSUE'] ) do |ip|
+
+          @issues.each do |i|
+
+            i.to_rtf( ip )
+            
+            alternatives = i.related_to "SolvedBy"
+            
+            ip.paragraph(styles['PS_ALTERNATIVE']) do |ap|
+              alternatives.each do |a|
+                a.to_rtf(ap)
+
+
+                relation = Taggable.find(:first, :conditions=>{:origin=>a.id, :tip=>i.id})
+                j_decisions = []
+              
+                ap.paragraph( styles['PS_DECISION'] ) do |dp|
+                  @decision_collection.each do |decision|
+                    related_decisions = Taggable.find(:all, :conditions=>{:origin=>decision.id, :tip=>relation.id })
+                            
+                    #p << decision.name.to_s + ":"
+                    related_decisions.each do |user_decision|
+                      
+                      # check if given decision really belongs to the projec we're considering
+                      if params[:project_id]
+                          pp = Project.find params[:project_id]
+                          project_tagging = Taggable.find :first, :conditions=>{:origin=>pp.id, :tip=>user_decision.id}
+                          if project_tagging 
+                             #              j_decision["count"] = j_decision["count"] + 1
+                          else
+                            next
+                          end
+                      end
+                      #debugger
+                      dp.bold { |b| b << "Decision: "}
+                      dp.foreground('red') { |c| c << decision.name.to_s }
+                      dp << ", "
+                      dp.bold { |b| b << "User: " }
+                      dp << user_decision.author.email.to_s + ", "
+                      dp.bold { |b| b << "Rationale: " }
+                      dp << user_decision["Rationale"].to_s + ", "
+                      dp.bold { |b| b << "Time: " }
+                      dp << user_decision.created_at.to_s 
+                      dp.line_break
+                    end
+                  end
+                end
+              end
             end
           end
-        
         end
   
         #send_file document.to_rtf, :type=>"text/richtext"

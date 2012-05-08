@@ -320,7 +320,7 @@ end
       bold.bold = true
       
       ps = RTF::ParagraphStyle.new
-      ps.left_indent = 300
+#      ps.left_indent = 300
       ps.space_before = 100
       ps.space_after = 100
 
@@ -335,9 +335,10 @@ end
         #table = RTF::TableNode.new(p,2,dtas.count+1)
         #c = RTF::TableCellNode.new(t)
 
-
+           p.bold { |b| b << "Type: "}
+           p << type
+           p.line_break
            p.bold { |b| b << "Name: " }
-
            p << name  
            p.line_break
 
