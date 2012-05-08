@@ -39,15 +39,13 @@ App.Controllers.Items = Backbone.Router.extend({
 		jQuery("section.itemList section").hide();
 
 		if( this.collection ){
-			this.collection.off('add');
-			this.collection.off('remove');
+			this.collection.off();
 		}
 
 		if( this.items_collection ){
-			this.items_collection.off('add');
-			this.items_collection.off('remove');			
+			this.items_collection.off();		
 		}
-		
+
 
 		if( this.view ) {
 			this.view._rendered = false;
