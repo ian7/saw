@@ -83,7 +83,8 @@ App.Views.Items.ProjectIndex = Backbone.View.extend({
 
 //	this.collection.bind('saved',this.checkNewItem );
 //	this.collection.bind('refresh',this.checkNewItem );
-	
+	_(this).bindAll('render','renderHeader');
+
 	this.collection.comparator = function( m ) { return m.get('id'); };
 
     // simply magic :)
@@ -99,7 +100,7 @@ App.Views.Items.ProjectIndex = Backbone.View.extend({
     });
 
 
-
+	this.model.bind('change',this.renderHeader);
 	this.render();
 	notifier.register(this);
 
@@ -109,11 +110,16 @@ App.Views.Items.ProjectIndex = Backbone.View.extend({
 		this._rendered = true;
 		this._itemsCollectionView.el = this.el; 
 		this._itemsCollectionView.render();
+
 		
-	//	jQuery(this.el).prepend("<div class = 'button orange collapseAll'>Collapse all</div>");
+		jQuery(this.el).prepend("<div class = 'header'></div>");
 //		jQuery(this.el).prepend("<div class = 'button orange expandAll'>Expand all</div>");
 //		jQuery(this.el).prepend("<div class = 'button red newItem'>New!</div>");
 //		this.checkNewItem();
+  },
+  renderHeader : function(){
+  	e=jQuery("div.header",this.el);
+  	e.html("Project: <b>"+this.model.get('name')+"</b>");
   },
   notify : function( broadcasted_id ) {
 /*		this.collection.each( function( i ) {	

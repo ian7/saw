@@ -11,18 +11,15 @@ App.Controllers.Project = Backbone.Router.extend({
 		if( window.location.pathname.match('projects') ) {
 			this.projectid = window.location.pathname.match('projects\/.*$')[0].substring(9,33);
 		}		
+		this.model = new R;
+		this.model.id = this.projectid;
 		this.items_collection = new Items;
 		this.items_collection.urlOverride = window.location.pathname+'/items';
-		this.itemsView = new App.Views.Items.ProjectIndex({collection: this.items_collection, el: 'section.itemList'});						
+		this.itemsView = new App.Views.Items.ProjectIndex({model: this.model, collection: this.items_collection, el: 'section.itemList'});						
 	},
     index: function() {  		
-		this.items_collection.fetch({
-			success: function(model, resp) {
-				// this fails because of missing context
-				// let's try it with events
-//				alert('yeah');
-			}
-		});
+		this.model.fetch();
+		this.items_collection.fetch();
 		
     },
 
