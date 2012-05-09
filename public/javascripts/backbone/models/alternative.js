@@ -92,7 +92,15 @@ var Alternative = Backbone.Model.extend({
 
 var Alternatives = Backbone.Collection.extend({
   model : Alternative,
-  url : window.location.pathname+"/alternatives",
+  url : function() {
+	if( !this.urlOverride ) {
+		return window.location.pathname+"/alternatives";
+	}
+	else {
+		return this.urlOverride;
+	}
+  },
+  urlOverride : null,
   comparator : function( model ) {
 	return model.get('id');
   },

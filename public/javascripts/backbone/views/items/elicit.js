@@ -29,8 +29,12 @@ App.Views.Items.Elicit = Backbone.View.extend({
   },
 
   initialize : function(options) {
-	_(this).bindAll('notify','showElicit','showUnElicit','doUnElicit','doElicit','expand');
-	notifier.register( this );
+	 _(this).bindAll('renderAlternatives','notify','showElicit','showUnElicit','doUnElicit','doElicit','expand');
+	 notifier.register( this );
+   this.alternatives = new Alternatives;
+   this.alternatives.urlOverride = window.location.pathname + "/" + this.model.get('id') + "/alternatives";
+   this.alternatives.on('add',this.renderAlternatives);
+   this.alternatives.on('remove',this.renderAlternatives);
   },
 
   render : function() {
@@ -78,10 +82,24 @@ App.Views.Items.Elicit = Backbone.View.extend({
 
       h += "</table>";
 
+      h += "<b>Alternatives:</b>";
+      h += "<table class='itemAttributes alternativesAttributes' >";
+      h += "</table>"
+
       h += "</div>";
     	this.el.innerHTML = h;
    return this;
 
+  },
+  renderAlternatives : function(){
+    e = jQuery("table.alternativesAttributes",this.el);
+    e.html("");
+    _(this.alternatives.models).each( function( alternative ){
+      row = "<tr>";
+      row += "<td>"+alternative.get('name')+"</td>";
+      row += "</tr>";
+      e.append(row);
+    },this);
   },
   expand : function(){
     d = jQuery("div.itemExtendedAttributes",this.el);
@@ -91,6 +109,7 @@ App.Views.Items.Elicit = Backbone.View.extend({
     }
     else{
       d.show();
+      this.alternatives.fetch();
     }
   },
   showElicit : function(){
