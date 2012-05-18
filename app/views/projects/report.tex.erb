@@ -1,0 +1,129 @@
+
+
+
+<% positive_decision = Taggable.find :first, :conditions=>{:type=>"Decision", :name=>"Positive"} %>
+<% negative_decision = Taggable.find :first, :conditions=>{:type=>"Decision", :name=>"Negative"} %>
+<% open_decision = Taggable.find :first, :conditions=>{:type=>"Decision", :name=>"Open"} %>
+<%  @decision_collection = Taggable.find :all, :conditions=>{:type=>"Decision"} %>
+
+
+
+	%\definecolor{light-gray}{gray}{0.90}
+	%\rowcolors{1}{light-gray}{white}
+	%\rowcolors{1}{white}{light-gray}
+
+<% project_url = request.url.to_s.match(/.*(?=\/report\.tex\$)/).to_s %>
+
+
+<% puts "********************** "+ project_url %>
+This is the report on project named: \href{<%= project_url %>}{\textbf{<%= @project.name %>}}
+
+<% @issues = @project.related_from "Tagging","Issue" %>
+
+
+\begin{itemize}
+<% @issues.each do |i| %>
+	\item Issue
+	\begin{description}
+    	<%= i.to_tex(true) %>
+	\end{description}
+    <% alternatives = i.related_to "SolvedBy" %>
+    <% if alternatives.size > 0 %>
+	   	Alternatives:
+	   	\begin{itemize}
+	    <% alternatives.each do |a| %> 
+		   	\item
+	    	\begin{description}
+	    		<%= a.to_tex(true) %>
+	    	\end{description}
+		    <% relation = Taggable.find(:first, :conditions=>{:origin=>a.id, :tip=>i.id}) %>
+			<% @decision_collection.each do |decision|  %>
+	           	<% related_decisions = Taggable.find(:all, :conditions=>{:origin=>decision.id, :tip=>relation.id }) %>                  
+
+	           	<% if related_decisions.size > 0 %>
+		           	Decisions:
+	           		\begin{itemize}
+		            <% related_decisions.each do |user_decision| %>
+		            	<%
+			             if params[:project_id]
+	                          pp = Project.find params[:project_id]
+	                          project_tagging = Taggable.find :first, :conditions=>{:origin=>pp.id, :tip=>user_decision.id}
+	                          if project_tagging 
+	                             #              j_decision["count"] = j_decision["count"] + 1
+	                          else
+	                            next
+	                          end
+	                      end
+	                    %>
+		            	\item \textbf{<%= decision.name %>} 
+		            	Author: 
+		            	<% if user_decision.author %>
+		            		<%= user_decision.author.email.to_s %>
+		            	<% else %>
+		            		(?)
+		            	<% end %>
+		            	\textbf{Rationale:}
+		            	<% if user_decision["Rationale"] %>
+		            		<%= user_decision["Rationale"].to_s %>
+		            	<% else %>
+		            		\emph{(none)}	
+		            	<% end %>
+		            	<%# time is shifted by 2h here! %>
+		            	Time: <%= (user_decision.created_at.+2.hours).to_s.match(/^.+(?= \+)/).to_s %>
+		            <% end %>
+		            \end{itemize}
+		        <% end %>
+            <% end %>
+	    <% end %>
+	   	\end{itemize}
+	<% else %>
+		No Alternatives.
+	<% end %>
+<% end %>
+\begin{comment}
+<!--
+                relation = Taggable.find(:first, :conditions=>{:origin=>a.id, :tip=>i.id})
+                j_decisions = []
+              
+                ap.paragraph( styles['PS_DECISION'] ) do |dp|
+                  @decision_collection.each do |decision|
+                    related_decisions = Taggable.find(:all, :conditions=>{:origin=>decision.id, :tip=>relation.id })
+                            
+                    #p << decision.name.to_s + ":"
+                    related_decisions.each do |user_decision|
+                      
+                      # check if given decision really belongs to the projec we're considering
+                      if params[:project_id]
+                          pp = Project.find params[:project_id]
+                          project_tagging = Taggable.find :first, :conditions=>{:origin=>pp.id, :tip=>user_decision.id}
+                          if project_tagging 
+                             #              j_decision["count"] = j_decision["count"] + 1
+                          else
+                            next
+                          end
+                      end
+                      #debugger
+                      dp.bold { |b| b << "Decision: "}
+                      dp.foreground('red') { |c| c << decision.name.to_s }
+                      dp << ", "
+                      dp.bold { |b| b << "User: " }
+                      dp << user_decision.author.email.to_s + ", "
+                      dp.bold { |b| b << "Rationale: " }
+                      dp << user_decision["Rationale"].to_s + ", "
+                      dp.bold { |b| b << "Time: " }
+                      dp << user_decision.created_at.to_s 
+                      dp.line_break
+                    end
+                  end
+                end
+              end
+            end
+          end
+        end
+
+-->
+\end{comment}
+
+\end{itemize}
+
+	

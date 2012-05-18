@@ -1,14 +1,24 @@
+require 'cgi'
 require 'json'
+require 'nokogiri'
 
 class ProjectsController < ApplicationController
   
-  before_filter  :authenticate_user! , :except => [:import,:export]
+  before_filter  :authenticate_user! , :except => [:import,:export,:report]
 
   def show
     @project = Project.find params[:id]
     respond_to do |format|
       format.html
       format.json {render :json=> @project.to_json}
+      format.tex {render :project => @project }
+    end
+  end
+
+  def report
+    @project = Project.find params[:id]
+    respond_to do |format|
+      format.tex {render :project => @project }
     end
   end
 
@@ -45,6 +55,7 @@ class ProjectsController < ApplicationController
      respond_to do |format|
       format.html # index.html.erb
       format.json  { render :json => tree }
+      format.tex { }
     end
   end
 

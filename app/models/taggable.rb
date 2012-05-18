@@ -1,4 +1,6 @@
 require 'dynamicObject'
+require 'cgi'
+require 'nokogiri'
 
 class Taggable # < ActiveRecord::Base
 	include Mongoid::Document
@@ -358,5 +360,23 @@ end
     @relation_instance.tip = id
     @relation_instance.save
   end
+  def to_tex( skip_empty = false )
+    dtas = dynamic_type.dynamic_type_attributes
+    r = ""
+    r += "\\item[Name] " +  Nokogiri.HTML(CGI::unescapeHTML(name)) + "\n"
+    dtas.each do |dta|
+      value = Nokogiri.HTML(CGI::unescapeHTML(attributes[dta.attribute_name].to_s)).text
+      #puts "************" + dta.attribute_name + "   |" + value + "|"
 
+      if not skip_empty
+        if value == ""
+          r += "\\item[" + dta.attribute_name + "] \\emph{(none)}\n"
+        else
+          r += "\\item[" + dta.attribute_name + "]" + value + "\n"
+        end
+      end
+
+    end
+    return r
+  end
 end

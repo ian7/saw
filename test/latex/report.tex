@@ -1,0 +1,38 @@
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{iwona}
+\usepackage{graphicx} 
+\usepackage{graphics}
+\usepackage{verbatim} 
+\usepackage{array}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[hmargin=2.5cm,vmargin=3cm]{geometry}
+
+
+% my stuff here
+\newenvironment{myquote}{\begin{quote}\begin{itshape}}{\end{itshape}\end{quote}}
+
+\newcommand{\annotation}[2]{
+	{
+	\\
+	\fontencoding{OT1}\fontfamily{pbk}\selectfont\colorbox{Yellow}{
+		\begin{minipage}[p]{0.99\textwidth}
+			\color{blue}[#1: #2]
+		\end{minipage}	
+		}
+	}
+}
+
+\newcommand{\mn}[1]{
+	\annotation{MN}{#1}
+}
+
+%\newcommand{\mn}[1]{\begin{minipage}{3cm}asdfasdf a sd fa s dfasdf\end{minipage}}
+\newcommand{\cp}[1]{\fontencoding{OT1}\fontfamily{pbk}\selectfont\colorbox{Yellow}{\color{red}[CP: #1]}}
+
+\begin{document}
+
+\input{project.tex}
+
+\end{document}
