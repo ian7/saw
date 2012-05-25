@@ -20,6 +20,8 @@ jQuery.fn.flash = function( color, duration )
 	"click .e6" : "expand",
 	"click .e6" : "selectAll",
 	"click .details" : "navigateToDetails",
+	"mouseover" : 'mouseover',
+	"mouseout" : 'mouseout',
   },
 
   alternativesCollection : null,
@@ -38,7 +40,7 @@ jQuery.fn.flash = function( color, duration )
 	this.alternativesCollection.url = window.location.pathname+"/"+this.model.get('id')+'/alternatives';
 	
 	this.alternativesCollectionView = new App.Views.Alternatives.List({ collection: this.alternativesCollection, el: this.el });
-	_(this).bindAll('notify');
+	_(this).bindAll('notify','mouseover','mouseout');
 		
 	notifier.register( this );
   },
@@ -177,7 +179,13 @@ jQuery.fn.flash = function( color, duration )
 			this.alternativesCollection.fetch();
 			jQuery(this.el).effect("highlight", {}, 50000);
 		}
-  }  
+  },
+	mouseover : function( e ){
+		jQuery.getJSON( '/notify/' + this.model.get('id') + '/mouseover' , function(data) {});
+	},
+	mouseout : function( e ){
+		jQuery.getJSON( '/notify/' + this.model.get('id') + '/mouseout' , function(data) {});
+	}
 
 });
 

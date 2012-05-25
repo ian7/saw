@@ -8,7 +8,10 @@ AlternativeUpdatingView  = Backbone.View.extend({
 		"click .deleteAlternative"	: "deleteAlternative",
 		"click .unrelateAlternative": "unrelateAlternative",
 		"click .decide"				: "decide",
-		"click .undecide"			: "undecide"
+		"click .undecide"			: "undecide",
+		'mouseover'	: 'mouseover',
+		'mouseout' : 'mouseout',
+
     },
     initialize: function() {
 		_(this).bindAll('render','decide','undecide');
@@ -234,6 +237,12 @@ AlternativeUpdatingView  = Backbone.View.extend({
 					}
 				});	
 	},
+	mouseover : function( e ){
+    	jQuery.getJSON( '/notify/' + this.model.get('id') + '/mouseover' , function(data) {});
+    },
+    mouseout : function( e ){
+    	jQuery.getJSON( '/notify/' + this.model.get('id') + '/mouseout' , function(data) {});
+    }
 });
 
 
