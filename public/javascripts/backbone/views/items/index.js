@@ -40,9 +40,10 @@ jQuery.fn.flash = function( color, duration )
 	this.alternativesCollection.url = window.location.pathname+"/"+this.model.get('id')+'/alternatives';
 	
 	this.alternativesCollectionView = new App.Views.Alternatives.List({ collection: this.alternativesCollection, el: this.el });
-	_(this).bindAll('notify','mouseover','mouseout');
+	_(this).bindAll('notify','mouseover','mouseout','notifyEvent');
 		
 	notifier.register( this );
+	eventer.register( this );
   },
 
   render : function() {
@@ -179,6 +180,18 @@ jQuery.fn.flash = function( color, duration )
 			this.alternativesCollection.fetch();
 			jQuery(this.el).effect("highlight", {}, 50000);
 		}
+  },
+  notifyEvent : function( data ){
+  	//alert('here!');
+  	d = JSON.parse(data)
+  	if( d.id == this.model.get('id') ){
+		if( d.event == "mouseover") {
+	  		jQuery(this.el).addClass("focused");
+	  	}
+	  	if( d.event == "mouseout" ) {
+	  		jQuery(this.el).removeClass("focused");
+	  	}
+  	}
   },
 	mouseover : function( e ){
 		jQuery.getJSON( '/notify/' + this.model.get('id') + '/mouseover' , function(data) {});

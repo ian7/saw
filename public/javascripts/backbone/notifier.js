@@ -9,6 +9,11 @@ jug.subscribe("/chats", function(data){
 	notifier.notify(data);
 });  
 
+jug.subscribe("channel1", function(data){
+	eventer.notify(data);
+});  
+
+
 var notifier = {
 	listeners : [],
 	register : function( o ) {
@@ -26,3 +31,19 @@ var notifier = {
 	},	
 };
 
+var eventer = {
+	listeners : [],
+	register : function( o ) {
+		this.listeners.push(o);
+	},
+	unregister : function ( o ) {
+		this.listeners = _.without( this.listeners, o );
+	},
+	notify : function( data ) {
+		_.each( this.listeners, function( l ){
+			if( l.notifyEvent ) {
+				l.notifyEvent( data );
+			}
+		});
+	},		
+};

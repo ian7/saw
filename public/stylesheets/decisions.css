@@ -291,3 +291,7 @@ div.rationaleTip div.content {
 .tuning {
 	display: none;
 }
+
+.focused{
+  background-color: white ! important;
+}
