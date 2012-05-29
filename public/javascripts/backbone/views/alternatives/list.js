@@ -14,9 +14,10 @@ AlternativeUpdatingView  = Backbone.View.extend({
 
     },
     initialize: function() {
-		_(this).bindAll('render','decide','undecide');
+		_(this).bindAll('render','decide','undecide','notifyEvent','mouseover','mouseout');
 	    this.model.bind('change', this.render);
 		notifier.register(this);
+		eventer.register( this );
     },
     
     render: function() {
@@ -177,6 +178,23 @@ AlternativeUpdatingView  = Backbone.View.extend({
 			this.model.fetch();
 		//	jQuery(this.el).effect("highlight", {}, 500);	
 		}
+	},
+	notifyEvent : function( data ){
+	  	d = JSON.parse(data)
+	  	if( d.id == this.model.get('id') ){
+			if( d.event == "mouseover") {
+		  		jQuery(this.el).addClass("focused");
+		  	}
+		  	if( d.event == "mouseout" ) {
+		  		jQuery(this.el).removeClass("focused");
+		  	}
+	  	}
+	},
+	mouseover : function( e ){
+		jQuery.getJSON( '/notify/' + this.model.get('id') + '/mouseover' , function(data) {});
+	},
+	mouseout : function( e ){
+		jQuery.getJSON( '/notify/' + this.model.get('id') + '/mouseout' , function(data) {});
 	},
 	recordRationale : function() {
 				alert('and here!');
