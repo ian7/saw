@@ -264,12 +264,6 @@ AlternativeUpdatingView  = Backbone.View.extend({
 					}
 				});	
 	},
-	mouseover : function( e ){
-    	jQuery.getJSON( '/notify/' + this.model.get('id') + '/mouseover' , function(data) {});
-    },
-    mouseout : function( e ){
-    	jQuery.getJSON( '/notify/' + this.model.get('id') + '/mouseout' , function(data) {});
-    }
 });
 
 
