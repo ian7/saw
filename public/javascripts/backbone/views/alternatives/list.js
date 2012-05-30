@@ -205,7 +205,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 			clearTimeout( this.mouseout_timer );
 		}
 		this.mouseout_timer = setTimeout(notifyCode,300); 
-	}
+	},
 	recordRationale : function() {
 				alert('and here!');
 				jQuery("div.rationaleText").keydown( function( e ) {
