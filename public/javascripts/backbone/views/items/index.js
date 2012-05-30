@@ -194,10 +194,20 @@ jQuery.fn.flash = function( color, duration )
   	}
   },
 	mouseover : function( e ){
-		jQuery.getJSON( '/notify/' + this.model.get('id') + '/mouseover' , function(data) {});
+		notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseover', function(data) {})"
+		//notifyCode = "alert('123123123');"
+		if( this.mouseover_timer ){
+			clearTimeout( this.mouseover_timer );
+		}
+		this.mouse_timer = setTimeout(notifyCode,300); 
 	},
 	mouseout : function( e ){
-		jQuery.getJSON( '/notify/' + this.model.get('id') + '/mouseout' , function(data) {});
+		notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseout', function(data) {})"
+		//notifyCode = "alert('ababababa');"
+		if( this.mouseout_timer ){
+			clearTimeout( this.mouseout_timer );
+		}
+		this.mouseout_timer = setTimeout(notifyCode,300); 
 	}
 
 });
