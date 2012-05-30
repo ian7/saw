@@ -205,7 +205,7 @@ jQuery.fn.flash = function( color, duration )
 		if( this.mouse_timer ){
 			clearTimeout( this.mouse_timer );
 		}
-		this.mouseout_timer = setTimeout(notifyCode,500); 
+		this.mouse_timer = setTimeout(notifyCode,500); 
 	},
 });
 
