@@ -196,14 +196,14 @@ AlternativeUpdatingView  = Backbone.View.extend({
 		if( this.mouse_timer ){
 			clearTimeout( this.mouse_timer );
 		}
-		this.mouse_timer = setTimeout(notifyCode,500); 
+		this.mouse_timer = setTimeout(notifyCode,900); 
 	},
 	mouseout : function( e ){
 		notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseout', function(data) {})"
 		if( this.mouse_timer ){
 			clearTimeout( this.mouse_timer );
 		}
-		this.mouseout_timer = setTimeout(notifyCode,300); 
+		this.mouseout_timer = setTimeout(notifyCode,500); 
 	},
 	recordRationale : function() {
 				alert('and here!');

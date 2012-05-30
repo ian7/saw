@@ -195,21 +195,18 @@ jQuery.fn.flash = function( color, duration )
   },
 	mouseover : function( e ){
 		notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseover', function(data) {})"
-		//notifyCode = "alert('123123123');"
 		if( this.mouse_timer ){
 			clearTimeout( this.mouse_timer );
 		}
-		this.mouse_timer = setTimeout(notifyCode,500); 
+		this.mouse_timer = setTimeout(notifyCode,900); 
 	},
 	mouseout : function( e ){
 		notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseout', function(data) {})"
-		//notifyCode = "alert('ababababa');"
 		if( this.mouse_timer ){
 			clearTimeout( this.mouse_timer );
 		}
-		this.mouse_timer = setTimeout(notifyCode,300); 
-	}
-
+		this.mouseout_timer = setTimeout(notifyCode,500); 
+	},
 });
 
 App.Views.Index = Backbone.View.extend({
