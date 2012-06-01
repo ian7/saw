@@ -353,7 +353,7 @@ ul{
   font-size:9pt;
   background: white;
   /* rgba(255,255,255,0.7) url(../images/center_back.png) repeat-x bottom; */
-  padding: 30px 30px 10px 30px;
+  padding: 0px 10px 0px 10px;
   /*
   -webkit-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
   -moz-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
@@ -892,7 +892,9 @@ div.header{
 }
 
 
-
+table.elicitTable {
+  width: 95%;
+}
 
 
 

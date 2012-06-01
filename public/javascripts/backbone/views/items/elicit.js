@@ -191,7 +191,7 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
 		this._rendered = true;
 		//this.el.innerHTML="haha";
 		
-    this.el.innerHTML = "<table width='100%'>"
+    this.el.innerHTML = "<table class='elicitTable'>"
             + "<tr><td class='issues' width/><td class='tags'><div class='tags'/></td></tr>"
             + "</table>";
 		
@@ -238,7 +238,7 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
         // we should register new tag only if we don't have one yet.
         if( tagsHash[tag.id] == null ) {
 
-          tagsHash[tag.id] = {"name": tag.name, "type": tag.type, "id": tag.id };
+          tagsHash[tag.id] = {"name": tag.name, "type": tag.type, "id": tag.id, "count" : 1 };
           
           if( typesHash[ tag.type ] == null ){
             typesHash[tag.type] = 1;
@@ -246,6 +246,9 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
           else{
             typesHash[tag.type] = typesHash[tag.type] + 1;
           }
+        }
+        else{
+          tagsHash[tag.id].count += 1;
         }
       },this);
     },this);
@@ -258,20 +261,20 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
 
 
     li += "<br><b>Select Tag:</b>";
-    li += "<ul class='tagSelector tagType'>"
+    li += "<ul class='tagSelector tagType' id='tagList'>"
 
     //typesHash = _(typesHash).sortBy( function(c,t){ return t });
 
     _(typesHash).each(function(count,type){
       li += "<li id='"+type+"'>" + type + " ("+count+")";
 
-      li += "<ul class='tagSelector tagName'>"
+      li += "<ul class='tagSelector tagName' id='"+type+"'>"
 
       tagsHash = _(tagsHash).sortBy(function(t){return t.name});
 
       _(tagsHash).each(function(tag,id){
         if( tag.type == type ){
-          li += "<li class='tagName' id='" + tag.id + "'>" + tag.name + "</li>";
+          li += "<li class='tagName' id='" + tag.id + "'>" + tag.name + " (" + tag.count + ")</li>";
         }
       },this);
 
@@ -280,7 +283,26 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
     },this);
 
     li += "</ul>";
+
+/*
+    li += "<br/><b>Cloud:</b><br/>";
+    li += "<canvas width='300' height='300' id='myCanvas'>"
+    li += "<ul id='sth'>";
+    li += "<li><a href='http://www.google.com'>Google</a></li><li><a href='/fish'>Fish</a></li><li><a href='/chips'>Chips</a></li><li><a href='/salt'>Salt</a></li><li><a href='/vinegar'>Vinegar</a></li>";
+    li += "<li><a href='http://www.google.com'>Google</a></li><li><a href='/fish'>Fish</a></li><li><a href='/chips'>Chips</a></li><li><a href='/salt'>Salt</a></li><li><a href='/vinegar'>Vinegar</a></li>";
+    li += "</ul>";
+    li += "</canvas>"
+    */
     this.tagListEl.append(li);
+    /*TagCanvas.Start('myCanvas','sth',{
+            textColour: '#ff0000',
+            outlineColour: '#ff00ff',
+            reverse: true,
+            depth: 0.8,
+            maxSpeed: 0.05
+    });
+    //TagCanvas.Start('myCanvas','tagList');
+    */
   },
   tagTypeSelected : function( e ){
     // this toggles visibility of tag-instances
@@ -290,6 +312,14 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
     }
     else{
       subList.show();
+      debugger;
+      TagCanvas.Start('myCanvas',e.srcElement.attributes.id.value,{
+            textColour: '#ff0000',
+            outlineColour: '#ff00ff',
+            reverse: true,
+            depth: 0.8,
+            maxSpeed: 0.05
+    });
     }
   },
 
