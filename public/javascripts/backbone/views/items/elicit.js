@@ -106,10 +106,12 @@ App.Views.Items.Elicit = Backbone.View.extend({
 
     if( d.is(':visible') ){
       d.hide();
+      jQuery(".expand",this.el)[0].innerText="Expand";
     }
     else{
       d.show();
       this.alternatives.fetch();
+      jQuery(".expand",this.el)[0].innerText="Collapse";
     }
   },
   showElicit : function(){
