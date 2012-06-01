@@ -312,7 +312,7 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
     }
     else{
       subList.show();
-      debugger;
+/*      debugger;
       TagCanvas.Start('myCanvas',e.srcElement.attributes.id.value,{
             textColour: '#ff0000',
             outlineColour: '#ff00ff',
@@ -320,6 +320,7 @@ App.Views.Items.ElicitCollection = Backbone.View.extend({
             depth: 0.8,
             maxSpeed: 0.05
     });
+*/
     }
   },
 
