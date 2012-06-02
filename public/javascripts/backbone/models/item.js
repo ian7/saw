@@ -11,7 +11,8 @@ var Item = Backbone.Model.extend({
 		missingDecisions : 'Some decisions are missing',
 		notConclusive : 'Decisions are not conclusive (multiple positive)',
 		openNonConclusive : 'Decisions not conclusive (open alternatives)',
-		noSolution : 'There are no Acceptable alternatives',
+		noSolution : 'There are no acceptable alternatives',
+		colliding : 'Alternatives have colliding decisions',
 		decided : 'Decided',
 		unknown : 'That shouldn\'t happen',
 	},
@@ -45,6 +46,7 @@ var Item = Backbone.Model.extend({
 		
 		var decisionsTotal = 0;	
 		var foundNotDecidedAlterantive = false;
+		var foundCollidingAlternative = false;
 		var positiveAlternatives = 0;
 		var openAlternatives = 0;
 		
@@ -54,6 +56,10 @@ var Item = Backbone.Model.extend({
 			if( alternative.decisionsTotal() == 0 )
 				foundNotDecidedAlterantive = true;
 			
+			if( alternative.isColliding() ){
+				foundCollidingAlternative = true;
+			}
+
 			decision = alternative.decision();
 			
 			if( decision ) {
@@ -80,6 +86,9 @@ var Item = Backbone.Model.extend({
 		if( positiveAlternatives == 0  )
 			return this.state.noSolution;
 		
+		if( foundCollidingAlternative )
+			return this.state.colliding;
+
 		if( positiveAlternatives == 1 ) {
 			if( openAlternatives > 0 )
 				return this.state.openNonConclusive;
