@@ -200,7 +200,7 @@ jQuery.fn.flash = function( color, duration )
 	  	//fuEl.innerText = Object.keys(this.focusedUsers).length
 	  	fuEl.innerHTML = "<br/>";
 	  	_(this.focusedUsers).each(function(v,e){
-	  		jQuery(fuEl).append("<img src='http://localhost:3000/images/icons/user.png' alt='"+e+"'><br/>");
+	  		jQuery(fuEl).append("<img src='/images/icons/user.png' alt='"+e+"'><br/>");
 	  	},this);
   	}
   },
