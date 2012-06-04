@@ -11,14 +11,19 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		"click .deleteAlternative"	: "deleteAlternative",
 		"click .unrelateAlternative": "unrelateAlternative",
 		"click .decide"				: "decide",
-		"click .undecide"			: "undecide"
+		"click .undecide"			: "undecide",
+		'mouseover'	: 'mouseover',
+		'mouseout' : 'mouseout',
+
     },
+    focusedUsers : {},
     initialize: function() {
-		_(this).bindAll('render','decide','undecide','notify');
+		_(this).bindAll('render','decide','undecide','notify','notifyEvent');
 	    this.model.bind('change', this.render);
 
-
 		notifier.register(this);		
+		eventer.register( this );
+		
     },
     
     render: function() {
@@ -277,6 +282,44 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		},this);
 
 	},
+	notifyEvent : function( data ){
+	  	d = JSON.parse(data)
+	  	if( d.id == this.model.get('id') ){
+			if( d.event == "mouseover") {
+		  		jQuery(this.el).addClass("focused");
+		  		this.focusedUsers[d.user] = (new Date()).getTime();
+		  	}
+		  	if( d.event == "mouseout" ) {
+		  		jQuery(this.el).removeClass("focused");
+		  		delete this.focusedUsers[d.user];
+		  	}
+	  	fuEl = jQuery("span.altenrnativeFocusedUsers",this.el)[0];
+	  	if( fuEl ){
+		  	fuEl.innerText = "";
+			  	_(this.focusedUsers).each(function(v,e){
+			  		jQuery(fuEl).append("<img src='/images/icons/user.png' alt='"+e+"'>");
+			  		//("+Object.keys(this.focusedUsers).length+")");
+			  	},this);
+	  		}
+
+		}
+	},
+	mouseover : function( e ){
+		notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseover', function(data) {})"
+		
+		if( this.mouse_timer ){
+			clearTimeout( this.mouse_timer );
+		}
+		this.mouse_timer = setTimeout(notifyCode,900); 
+	},
+	mouseout : function( e ){
+		notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseout', function(data) {})"
+		if( this.mouse_timer ){
+			clearTimeout( this.mouse_timer );
+		}
+		this.mouse_timer = setTimeout(notifyCode,500); 
+	},
+
 	refetch : function(){
 			this.model.fetch({deepRefresh : 'true'});
 			this.model.change();

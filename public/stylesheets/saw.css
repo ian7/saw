@@ -905,7 +905,9 @@ span.focusedUsers{
   position: absolute;
 }
 
-
+span.altenrnativeFocusedUsers{
+  margin-right: 1em;
+}
 
 
 
