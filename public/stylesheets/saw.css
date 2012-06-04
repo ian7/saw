@@ -898,7 +898,12 @@ table.elicitTable {
 
 
 
-
+span.focusedUsers{
+  float: left;
+  z-index: 2;
+  display: block;
+  position: absolute;
+}
 
 
 

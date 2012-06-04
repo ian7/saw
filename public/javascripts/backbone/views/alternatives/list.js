@@ -13,6 +13,8 @@ AlternativeUpdatingView  = Backbone.View.extend({
 		'mouseout' : 'mouseout',
 
     },
+    focusedUsers : {},
+
     initialize: function() {
 		_(this).bindAll('render','decide','undecide','notifyEvent','mouseover','mouseout');
 	    this.model.bind('change', this.render);
@@ -184,11 +186,22 @@ AlternativeUpdatingView  = Backbone.View.extend({
 	  	if( d.id == this.model.get('id') ){
 			if( d.event == "mouseover") {
 		  		jQuery(this.el).addClass("focused");
+		  		this.focusedUsers[d.user] = (new Date()).getTime();
 		  	}
 		  	if( d.event == "mouseout" ) {
 		  		jQuery(this.el).removeClass("focused");
+		  		delete this.focusedUsers[d.user];
 		  	}
-	  	}
+	  	fuEl = jQuery("span.altenrnativeFocusedUsers",this.el)[0];
+	  	if( fuEl ){
+		  	fuEl.innerText = "";
+			  	_(this.focusedUsers).each(function(v,e){
+			  		jQuery(fuEl).append("<img src='http://localhost:3000/images/icons/user.png' alt='"+e+"'>");
+			  		//("+Object.keys(this.focusedUsers).length+")");
+			  	},this);
+	  		}
+
+		}
 	},
 	mouseover : function( e ){
 		notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseover', function(data) {})"

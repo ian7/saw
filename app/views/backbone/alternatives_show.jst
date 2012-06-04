@@ -6,6 +6,7 @@
 	    		<!-- <b>Name:</b> -->
 				<% if( !a.isNew() ) { %>
 					<div class="deleteAlternative">
+						<span class="altenrnativeFocusedUsers"></span>
 						<img class="deleteAlternative" src="/images/icons/delete.png"/>
 					</div>
 					<div class="name" contenteditable="true"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></div>

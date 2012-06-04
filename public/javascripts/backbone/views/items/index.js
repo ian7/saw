@@ -25,6 +25,7 @@ jQuery.fn.flash = function( color, duration )
   },
 
   alternativesCollection : null,
+  focusedUsers : {},
 
   initialize : function(options) {
     this.render = _.bind(this.render, this); 
@@ -187,10 +188,20 @@ jQuery.fn.flash = function( color, duration )
   	if( d.id == this.model.get('id') ){
 		if( d.event == "mouseover") {
 	  		jQuery(this.el).addClass("focused");
+	  		this.focusedUsers[d.user] = (new Date()).getTime();
 	  	}
 	  	if( d.event == "mouseout" ) {
 	  		jQuery(this.el).removeClass("focused");
+	  		if( this.focusedUsers[d.user] ){
+	  			delete this.focusedUsers[d.user];
+	  		}
 	  	}
+	  	fuEl = jQuery("span.focusedUsers",this.el)[0];
+	  	//fuEl.innerText = Object.keys(this.focusedUsers).length
+	  	fuEl.innerHTML = "<br/>";
+	  	_(this.focusedUsers).each(function(v,e){
+	  		jQuery(fuEl).append("<img src='http://localhost:3000/images/icons/user.png' alt='"+e+"'><br/>");
+	  	},this);
   	}
   },
 	mouseover : function( e ){
