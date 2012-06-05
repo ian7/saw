@@ -116,7 +116,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 	    //var lastEditedItem = this;
 
 		if (e.keyCode == 13) {
-			var newValue = e.srcElement.innerHTML;
+			var newValue = e.srcElement.innerText;
 
 			if(newValue == "<br>") {
 				newValue = '(empty)';

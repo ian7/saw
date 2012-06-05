@@ -23,7 +23,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 
 		notifier.register(this);		
 		eventer.register( this );
-		
+
     },
     
     render: function() {
@@ -329,7 +329,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 
 	editedAttribute : function( e ) {
 			if (e.keyCode == 13) {
-				var newValue = e.srcElement.innerHTML;
+				var newValue = e.srcElement.innerText;
 
 				if(newValue == "<br>") {
 					newValue = '(empty)';
@@ -346,7 +346,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 			}
 			else {
 				// in case this is not enter and that's first key pressed
-				var newValue = e.srcElement.innerHTML;
+				var newValue = e.srcElement.innerText;
 				if( newValue == "(edit to add)"  ||
 					newValue == "(empty)") {
 					e.srcElement.innerHTML = "";
@@ -355,7 +355,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	},
 	editedRationale : function( e ) {
 			if (e.keyCode == 13) {
-				var newValue = e.srcElement.innerHTML;
+				var newValue = e.srcElement.innerText;
 
 				if(newValue == "<br>") {
 					newValue = '(empty)';
@@ -371,7 +371,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 			}
 			else {
 				// in case this is not enter and that's first key pressed
-				var newValue = e.srcElement.innerHTML;
+				var newValue = e.srcElement.innerText;
 				if( newValue == "(empty)" ) {
 					e.srcElement.innerHTML = "";
 				}

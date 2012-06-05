@@ -79,7 +79,7 @@ jQuery.fn.flash = function( color, duration )
 
 		if (e.keyCode == 13) {
 			var wasNew = this.model.isNew();
-			var newValue = e.srcElement.innerHTML;
+			var newValue = e.srcElement.innerText;
 
 			if(newValue == "<br>") {
 				newValue = '(empty)';
