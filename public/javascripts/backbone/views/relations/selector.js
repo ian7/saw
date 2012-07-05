@@ -131,7 +131,8 @@ App.Views.Relations.Selector = Backbone.View.extend({
 			select: function( event, ui ) {
 				// TODO: this is supper shitty...
 				 
-				var alternativeID = jQuery( this ).parents('tr').attr('id');
+				var alternativeID = jQuery(jQuery(this).parents('tr.decision')[0]).attr('id');
+				//var alternativeID = jQuery( this ).parents('tr').attr('id');
 				var relationType = jQuery( this ).parents('div.relationSelector').attr('id');
 				//alert( 'adsfasdf' );
 				jQuery.getJSON( '/relations/relate?tip='+alternativeID+'&origin='+ui.item.id+'&relation_type='+relationType, function(data) {});
