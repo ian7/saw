@@ -51,7 +51,16 @@ Saw::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  Mime::Type.register 'application/latex', :tex
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'sonyx.net',
+    :user_name            => 'saw@sonyx.net',
+    :password             => 'SawSaw12',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
 
+  Mime::Type.register 'application/latex', :tex
 end
 
