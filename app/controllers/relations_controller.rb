@@ -322,7 +322,7 @@ def relate
     tip_taggable = Taggable.find params[:tip]
     
     if params[:relation_type]
-      relation_type = DynamicType.find_by_name( params[:relation_type])
+      relation_type = DynamicType.find_by_name(params[:relation_type])
     end
     
     if relation_type 
@@ -341,16 +341,17 @@ def relate
       relation_instnace.save
   	end
   	
-  	Juggernaut.publish("/chats",params[:origin])
-  	Juggernaut.publish("/chats",params[:tip])
+    
+  	notify(params[:origin])
+  	notify(params[:tip])
     
     
     # seves for adding relations basically
     ### MN!
     
     if tip_taggable.type == "Tagging" 
-    	Juggernaut.publish("/chats",tip_taggable.tip)      
-    	Juggernaut.publish("/chats",tip_taggable.origin)      
+    	notify(tip_taggable.tip)      
+    	notify(tip_taggable.origin)      
     	
     	
     	puts "!!!!!!!!!!!!!!!!!!!!!!! deep "
@@ -358,23 +359,23 @@ def relate
     	tt = Taggable.find(tip_taggable.tip)
     	if tt.type  ==  "SolvedBy"
       	puts "!!!!!!!!!!!!!!!!!!!!!!! deeper "
-      	Juggernaut.publish("/chats",tt.tip)      
-      	Juggernaut.publish("/chats",tt.origin)      
+      	notify(tt.tip)      
+      	notify(tt.origin)      
     	  
     	end
     end
       
     if origin_taggable.type == "Tagging" 
-    	Juggernaut.publish("/chats",origin_taggable.tip)      
-    	Juggernaut.publish("/chats",origin_taggable.origin)      
+    	notify(origin_taggable.tip)      
+    	notify(origin_taggable.origin)      
 
     	puts "!!!!!!!!!!!!!!!!!!!!!!! deep "
     	# if that reaches SolvedBy relation...
     	tt = Taggable.find(tip_taggable.origin)
     	if tt.type  ==  "SolvedBy"
       	puts "!!!!!!!!!!!!!!!!!!!!!!! deeper "
-      	Juggernaut.publish("/chats",tt.tip)      
-      	Juggernaut.publish("/chats",tt.origin)      
+      	notify(tt.tip)      
+      	notify(tt.origin)      
     	  
     	end
 
@@ -393,8 +394,8 @@ def unrelate
     relation = Taggable.find params[:relation_id]
     
     if relation
-      Juggernaut.publish("/chats",relation.tip)
-    	Juggernaut.publish("/chats",relation.origin)
+      notify(relation.tip)
+    	notify(relation.origin)
     	
     	relation.destroy
     end

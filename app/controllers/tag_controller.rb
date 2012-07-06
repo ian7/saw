@@ -132,12 +132,12 @@ class TagController < ApplicationController
 =begin
   if( @to_taggable._type == "Relation")
   
-      Juggernaut.publish("/chats", @to_taggable_id)
-      Juggernaut.publish("/chats", @to_taggable.tip)
-      Juggernaut.publish("/chats", @to_taggable.origin)
+      notify( @to_taggable_id)
+      notify( @to_taggable.tip)
+      notify( @to_taggable.origin)
   else
-      Juggernaut.publish("/chats", @to_taggable_id)
-      Juggernaut.publish("/chats", @from_taggable_id)
+      notify( @to_taggable_id)
+      notify( @from_taggable_id)
   end
 =end
   

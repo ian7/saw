@@ -50,7 +50,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	   var thisModelId = this.model.get('id');
 
 	   color = "white";
-
+             
 	   if( this.model.attributes.decisions ) {
 		   _.each( this.model.attributes.decisions, function( decision ) {
 			    if( decision.count > 0 ) {
@@ -270,22 +270,25 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	},
 	notify : function( broadcasted_id ) {
 
-		// simple model recehck
-		if( this.model.id == broadcasted_id ) {
-			this.refetch();
-		}
-
-		// in case one of decisions changed
-		_(this.model.attributes.decisions).each( function( decisionType ){
-			_(decisionType.details).each( function( individualDecision ){
-				if(individualDecision.decision_id == broadcasted_id)
-					this.refetch();
-			},this);
-		},this);
 
 	},
 	notifyEvent : function( data ){
 	  	d = JSON.parse(data)
+	  	if( d.event.match('mouse') == null ){
+			// simple model recehck
+			if( this.model.id == d.id ) {
+				this.refetch();
+			}
+
+			// in case one of decisions changed
+			_(this.model.attributes.decisions).each( function( decisionType ){
+				_(decisionType.details).each( function( individualDecision ){
+					if(individualDecision.decision_id == broadcasted_id)
+						this.refetch();
+				},this);
+			},this);
+	  	}
+
 	  	if( d.id == this.model.get('id') ){
 			if( d.event == "mouseover") {
 		  		jQuery(this.el).addClass("focused");
