@@ -339,30 +339,24 @@ ul{
   margin-bottom: 1em;
 }
 /*---------------------center start---------------------*/
+
+
 #center {
-  width: 95%;
-  margin: 0 auto;
+  width: 95%; 
+  /*margin: 0 auto;*/
+  margin-left:auto;
+  margin-right:auto;
   margin-top: 0px;
-  /* margin-bottom: 50px; */
   min-height: 100%;
   right:0px;
   left:0px;
-  position:absolute;
-  horizzontal-allign: center;
+  /*position:absolute;*/
   text-align:left;
   font-size:9pt;
   background: white;
-  /* rgba(255,255,255,0.7) url(../images/center_back.png) repeat-x bottom; */
-  padding: 0px 00px 0px 00px;
-  /*
-  -webkit-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
-  -moz-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
-  -webkit-border-radius:6px;
-  -moz-border-radius:6px;
-  border-radius:6px;
-  border: solid 1px #000000;
-  */
+  padding: 0px 00px 0px 00px;*/
 }
+
 /*---------------------#center table start---------------------*/
 
 
@@ -539,29 +533,23 @@ div.link a{
 
 /*---------------------jquery tools overlay start---------------------*/
 /* the overlayed element */
+
+/*
 div.overlay {
-  /* growing background image */
-  /* MN: background-image:url(../images/white.png); */
-  /* dimensions after the growing animation finishes  */
   width:700px;
   height:70%;   
-  /* initially overlay is hidden */
   display:none;
-  /* some padding to layout nested elements nicely  */
   padding:55px;
 }
-/* use a semi-transparent image for the overlay */
 #overlay {
   background-image:url(../images/transparent.png);
   color:#efefef;
   height:70%;
 }
-/* container for external content. uses vertical scrollbar, if needed */
 div.contentWrap {
   height:100%;
   overflow-y:auto;
 }
-/* default close button positioned on upper right corner */
 div.overlay div.close {
   background-image:url(../images/close.png);
   position:absolute;
@@ -571,12 +559,10 @@ div.overlay div.close {
   height:35px;
   width:35px;
 }
-/* black */
 div.overlay.black {
   background:url(../images/transparent.png) no-repeat !important;
   color:#fff;
 }
-/* petrol */
 div.overlay.petrol {
   background:url(../images/petrol.png) no-repeat !important;
   color:#fff;
@@ -584,7 +570,7 @@ div.overlay.petrol {
 div.black h2, div.petrol h2 {
   color:#ddd;   
 }
-
+*/
 /*
 #overlay table,th,td{
   position:relative;
@@ -909,14 +895,36 @@ span.altenrnativeFocusedUsers{
   margin-right: 1em;
 }
 
+/* sidebar */
 
+div#right-sidebar{
+  position: fixed;
+  /*top:0;*/
+  right:0;
+  width:120px;
+  height:94%;
+  background-color: #D1D1D1;
+  padding-left: 3px;
+  padding-right: 3px;
+  font-size: 6pt;
+ }
 
-
-
-
-
-
-
+div#right-sidebar span.username{
+    text-transform: capitalize;
+}
+/*
+@media screen{
+  body>div#right-sidebar{
+   position:fixed;
+  }
+}
+*/
+ 
+ div#content{
+  /*height:100%;*/
+  margin-right: 120px;
+  overflow:auto;
+ }
 
 
 

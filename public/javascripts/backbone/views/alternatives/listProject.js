@@ -1,13 +1,13 @@
-
-
 AlternativeProjectUpdatingView  = Backbone.View.extend({
 	className : "alternativeList", 
     events : {
 		'click .showDetails' : 	'showDetails',
+		'mouseover'	: 'mouseover',
+		'mouseout' : 'mouseout',
     },
     initialize: function() {
 	    this.model.bind('change', this.render);
-		_(this).bindAll('render','notify');
+		_(this).bindAll('render','notify','mouseover','mouseout');
 		
 		notifier.register(this);
     },
@@ -42,7 +42,14 @@ AlternativeProjectUpdatingView  = Backbone.View.extend({
 	showDetails : function() {
 		window.location.href = window.location.href+'items#/'+this.model.id+'/details';
 		
+	},
+	mouseover : function( e ){
+//		jQuery.getJSON( '/notify/' + this.model.get('id') + '/mouseover' , function(data) {});
+	},
+	mouseout : function( e ){
+//		jQuery.getJSON( '/notify/' + this.model.get('id') + '/mouseout' , function(data) {});
 	}
+
 });
 
 

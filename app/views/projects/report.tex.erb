@@ -12,7 +12,7 @@
 	%\rowcolors{1}{light-gray}{white}
 	%\rowcolors{1}{white}{light-gray}
 
-<% project_url = request.url.to_s.match(/.*(?=\/report\.tex\$)/).to_s %>
+<% project_url = request.url.to_s.match(/.+(?=report\.tex\$)/).to_s %>
 
 
 <% puts "********************** "+ project_url %>

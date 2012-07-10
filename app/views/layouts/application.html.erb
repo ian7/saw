@@ -15,9 +15,17 @@
 </head>
 <body <%= " onload='#{@onload}'"%>>
 
+<%= render :partial => "layouts/ribbon" %> <%#, :object=>@issues %>
 
 
-
+<div id="right-sidebar">
+	 right-sidebar<br/>
+	 right-sidebar<br/>
+	 right-sidebar<br/>
+	 right-sidebar<br/>
+	 right-sidebar<br/>
+ </div>
+<div id="content">
 <%#= image_tag"background.png", :id => 'background' %>
 <%#= image_tag"background_bottom.png", :id => 'background_bottom' %>
 <!--
@@ -25,7 +33,6 @@
 -->
 
 <!-- there we go with theh ribbon -->
-<%= render :partial => "layouts/ribbon" %> <%#, :object=>@issues %>
 
 <!--
  <div class="tab" id="tab1" onmouseover="this.style.cursor='pointer';" 
@@ -38,37 +45,37 @@
     onmouseup="window.location='<%= url_for :controller=>"wizards", :action=>"report" %>'">Report</div>
 -->
 
-<div class="wrapper">
-  
- <div id="center"> 
+			<div class="wrapper">
+			  
+				<div id="center"> 
 
-<div class="overlay" id="overlay"> 
- 
-    <!-- the external content is loaded inside this tag --> 
-    <div class="contentWrap"></div> 
- 
-</div>
-
-
-
-
-<ul id="chats">
-	
-</ul>
-
-<%= yield %>
-
-<%#= render :partial => "layouts/footer" %>
-
- </div>
-</div>
-
-
-<!-- overlayed element --> 
-
-<!-- make all links with the 'rel' attribute open overlays -->
+					<div class="overlay" id="overlay"> 
+					 
+					    <!-- the external content is loaded inside this tag --> 
+					    <div class="contentWrap"></div> 
+					 
+					</div>
 
 
 
-</body>
+
+				<ul id="chats">
+					
+				</ul>
+
+				<%= yield %>
+
+				<%#= render :partial => "layouts/footer" %>
+
+				 </div>
+			</div>
+
+
+			<!-- overlayed element --> 
+
+			<!-- make all links with the 'rel' attribute open overlays -->
+
+
+		</div>
+	</body>
 </html>

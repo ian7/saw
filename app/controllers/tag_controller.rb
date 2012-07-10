@@ -117,7 +117,7 @@ class TagController < ApplicationController
       t.save
       
       # i should ring the project id too ;)
-      Juggernaut.publish("/chats", p.id )
+      notify(p.id,0,'dotag')
     end
   end  
   
@@ -127,7 +127,11 @@ class TagController < ApplicationController
   
 #  puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+@to_taggable._type
   
+  ring( @relation_instance.id,2,'dotag')
+
+=begin
   if( @to_taggable._type == "Relation")
+  
       Juggernaut.publish("/chats", @to_taggable_id)
       Juggernaut.publish("/chats", @to_taggable.tip)
       Juggernaut.publish("/chats", @to_taggable.origin)
@@ -135,6 +139,7 @@ class TagController < ApplicationController
       Juggernaut.publish("/chats", @to_taggable_id)
       Juggernaut.publish("/chats", @from_taggable_id)
   end
+=end
   
    respond_to do |format|
       format.html {      
@@ -223,21 +228,7 @@ class TagController < ApplicationController
   @to_taggable=Taggable.find @relation_instance.tip
 
 
-
-
-
-  if( @to_taggable._type == "Relation")
-       Juggernaut.publish("/chats", @to_taggable.id)
-       Juggernaut.publish("/chats", @to_taggable.tip)
-       Juggernaut.publish("/chats", @to_taggable.origin)
-       # ring the tag id too..
-       Juggernaut.publish("/chats", @relation_instance.origin)
-   else
-     # ring both tag 
-     Juggernaut.publish("/chats", @relation_instance.origin)
-     # and the (un) taged item
-     Juggernaut.publish("/chats", @relation_instance.tip)
-   end
+  ring( @relation_instance.id ,2,'untag')
 
 
 

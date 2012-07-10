@@ -13,6 +13,7 @@ App.Controllers.Items = Backbone.Router.extend({
         "":                         "index",
         "new":                      "newDoc",
         "elicit": "elicit", 
+        "events": "events",
 //		"/:id/addTag": "addTag", 
     },
 	initialize : function() {
@@ -23,6 +24,7 @@ App.Controllers.Items = Backbone.Router.extend({
 		h += "<section class='index'></section>";
 		h += "<section class='elicit'></section>";
 		h += "<section class='show'></section>";
+		h += "<section class='events'></section>";
 		this.el.html(h);
 
 		this.alternativesEl = jQuery("section.alternatives",this.el); 
@@ -31,6 +33,7 @@ App.Controllers.Items = Backbone.Router.extend({
 		this.elicitEl = jQuery("section.elicit",this.el);
 		this.showEl = jQuery("section.show",this.el);
 		this.mode = "";
+		this.sidebarEl = jQuery("#right-sidebar");
 
 		_(this).bindAll('cleanUp','visualization','alternatives','show','index','update','refresh','elicit');
 	},
@@ -98,6 +101,7 @@ App.Controllers.Items = Backbone.Router.extend({
 
 		this.item.id = id;
         this.item.fetch();
+        this.sidebarView = new App.Views.ProjectSidebar({ el: this.sidebarEl });
 
     },
 	  
@@ -109,6 +113,7 @@ App.Controllers.Items = Backbone.Router.extend({
 		this.view = new App.Views.Index({collection: this.items_collection, el: this.showEl });						
 
 		this.items_collection.fetch();
+        this.sidebarView = new App.Views.ProjectSidebar({ el: this.sidebarEl });
     },
     
     newDoc: function() {
@@ -216,6 +221,11 @@ App.Controllers.Items = Backbone.Router.extend({
 			 collection: this.items_collection, 
 			 all_collection: this.all_items_collection,
 			 el: this.showEl });						
+    },
+    events : function(){
+    	this.cleanUp();
+    	this.showEl.show();
+		this.view = new App.Views.EventLog({ el: this.showEl });						
     }
 });
 
