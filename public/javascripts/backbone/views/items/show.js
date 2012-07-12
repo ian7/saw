@@ -195,9 +195,9 @@ App.Views.Show = Backbone.View.extend({
 	   //if( tas.length == 1 ) {
 	   	//'fontSize','bold','italic','underline','strikeThrough','subscript','superscript'
 	   	//buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript']}
-	   	if( this.ne == null ) {
+	//   	if( this.ne == null ) {
 	 	  	this.ne = new nicEditor({iconsPath : '/images/nicEditorIcons.gif', buttonList : ['bold','italic','underline','strikeThrough','ol','ul','link','unlink']}).panelInstance(tas);
-	    }
+	  //  }
 	   //}
 	},
 	editedAttribute : function( e ) {
