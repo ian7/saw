@@ -5,6 +5,8 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
     events : {
 //		"keypress div.name" 			: "editedName",
 		"keypress div.editable" : "editedAttribute",
+		"keydown div.editable"	: "specialKey",
+		"click div.editable" : "edit",
 		"click .editable" : "selectAll",
 		"keypress .decisionRationale" : "editedRationale",
 		//"click div.name"				: 'selectAll',
@@ -22,7 +24,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	    this.model.bind('change', this.render);
 
 		notifier.register(this);		
-		eventer.register( this );
+		eventer.register(this);
 
     },
     
@@ -328,8 +330,8 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	},
 
 	editedAttribute : function( e ) {
-			if (e.keyCode == 13) {
-				var newValue = e.srcElement.innerText;
+			if (e.keyCode == 13 && !e.shiftKey) {
+				var newValue = e.srcElement.innerHTML;
 
 				if(newValue == "<br>") {
 					newValue = '(empty)';
@@ -352,6 +354,25 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 					e.srcElement.innerHTML = "";
 				}
 			}
+	},
+	edit : function( e ){
+	   //tas = jQuery("div.name",this.el);
+	   tas = e.srcElement;
+	   //if( tas.length == 1 ) {
+	   	//'fontSize','bold','italic','underline','strikeThrough','subscript','superscript'
+	   	//buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript']}
+	   	this.ne = new nicEditor({iconsPath : '/images/nicEditorIcons.gif', buttonList : ['bold','italic','underline','strikeThrough','ol','ul','link','unlink']}).panelInstance(tas);
+	   //}
+	},
+	specialKey : function( e ){
+	if( e.keyCode == 27 ){
+		if( this.ne != null ){
+			this.ne.removeInstance( e.srcElement );
+			//jQuery("div.nicEdit-panelContain",this.el).remove();
+			this.ne = null;
+		}
+		this.render();
+		}
 	},
 	editedRationale : function( e ) {
 			if (e.keyCode == 13) {

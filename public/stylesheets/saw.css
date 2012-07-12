@@ -704,12 +704,12 @@ div.wizard-block {
 
 
 /*-------- growable textareas ---- */
-  textarea  {
+/*  textarea  {
     overflow:hidden;
     height:auto;
     width:326px;
   }
-
+*/
 
 section.subItem {
   background-color: #EEEEEE;
@@ -927,5 +927,9 @@ div#right-sidebar span.username{
  }
 
 
+div.editable{
+  width:100%;
+  min-width: 250px;
 
+}
 

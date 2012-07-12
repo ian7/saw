@@ -10,6 +10,10 @@ javascripts:
 #    - public/javascripts/lib/jquery/jquery-ui-1.8.12.custom.js
     # this includes tooltips
     - public/javascripts/lib/jquery/jquery.tools.min.js
+    # tagcloud stuff
+    - public/javascripts/lib/tagcanvas-1.17.js
+    # nice editor
+    - public/javascripts/lib/nicEdit.js
     # these things need to go first...
     - public/javascripts/lib/jquery/plugins/jquery.effects.core.js
     - public/javascripts/lib/jquery/plugins/jquery.ui.core.js

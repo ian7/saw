@@ -8,10 +8,12 @@ App.Views.Show = Backbone.View.extend({
 	events: {
 		"click .addTag": "addTag", 
 		"keypress .editable" : "editedAttribute",
+		"keydown div.editable"	: "specialKey",
+		"click div.editable"	: "edit",
 	},
     initialize: function() {
 		//this.tagCollection = new Tags;
-		_(this).bindAll('render');
+		_(this).bindAll('render','specialKey','edit','editedAttribute');
 		notifier.register(this);
 		
 		// load and render navigation helper
@@ -185,14 +187,26 @@ App.Views.Show = Backbone.View.extend({
 		this.model.fetch();
 		this.aternativesCollection.fetch()
 	},
+	edit : function( e ){
+	   //tas = jQuery("div.name",this.el);
+	   tas = e.srcElement;
+	   //if( tas.length == 1 ) {
+	   	//'fontSize','bold','italic','underline','strikeThrough','subscript','superscript'
+	   	//buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript']}
+	   	this.ne = new nicEditor({iconsPath : '/images/nicEditorIcons.gif', buttonList : ['bold','italic','underline','strikeThrough','ol','ul','link','unlink']}).panelInstance(tas);
+	   //}
+	},
 	editedAttribute : function( e ) {
-			if (e.keyCode == 13) {
+		if (e.keyCode == 13 && !e.shiftKey) {
 				var newValue = e.srcElement.innerHTML;
 
 				if(newValue == "<br>") {
 					newValue = '(empty)';
 				}
-				var changeSet = new Object;
+
+				this.model.set(e.srcElement.id,newValue);
+				this.model.save();
+				/*var changeSet = new Object;
 				
 				changeSet[e.srcElement.id] = newValue;
 				this.model.save(
@@ -200,10 +214,28 @@ App.Views.Show = Backbone.View.extend({
 					{ success : function( model, resp)  {
 						
 					}
-				});			
+				}
+				);*/			
 			}
-	
+			else {
+				// in case this is not enter and that's first key pressed
+				var newValue = e.srcElement.innerText;
+				if( newValue == "(edit to add)"  ||
+					newValue == "(empty)") {
+					e.srcElement.innerHTML = "";
+				}
+			}
 	},
+	specialKey : function( e ){
+		if( e.keyCode == 27 ){
+			if( this.ne != null ){
+				this.ne.removeInstance( e.srcElement );
+				//jQuery("div.nicEdit-panelContain",this.el).remove();
+				this.ne = null;
+			}
+			this.render();
+			}
+		},
 });
 
 

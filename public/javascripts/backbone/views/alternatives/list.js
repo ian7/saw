@@ -4,19 +4,21 @@ AlternativeUpdatingView  = Backbone.View.extend({
 	className : "decision", 
     events : {
 		"keypress div.name" 		: "editedName",
-		"click div.name"			: 'selectAll',
+		"keydown div.name"			: "specialKeyName",
+//		"click div.name"			: 'selectAll',
 		"click .deleteAlternative"	: "deleteAlternative",
 		"click .unrelateAlternative": "unrelateAlternative",
 		"click .decide"				: "decide",
 		"click .undecide"			: "undecide",
 		'mouseover'	: 'mouseover',
 		'mouseout' : 'mouseout',
+		'click div.name'	: 'edit',
 
     },
     focusedUsers : {},
 
     initialize: function() {
-		_(this).bindAll('render','decide','undecide','notifyEvent','mouseover','mouseout');
+		_(this).bindAll('render','decide','undecide','notifyEvent','mouseover','mouseout','edit','specialKeyName');
 	    this.model.bind('change', this.render);
 		notifier.register(this);
 		eventer.register( this );
@@ -24,7 +26,12 @@ AlternativeUpdatingView  = Backbone.View.extend({
     
     render: function() {
 
-	   this.el.innerHTML = JST.alternatives_show( {a: this.model} );
+
+    	/*
+    	<textarea id="<%= a.get('id')%>nameEdit"><%= a.get('name') %></textarea>
+	   e = new nicEditor({buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript','html','image']}).panelInstance('area4');
+		*/
+
 	   jQuery(this.el).attr('id',this.model.id);
 	   
 	   color = "white";
@@ -100,7 +107,25 @@ AlternativeUpdatingView  = Backbone.View.extend({
 				} 			
 			});
 */
+
+	   this.el.innerHTML = JST.alternatives_show( {a: this.model} );
+
 	   return this;
+    },
+
+    edit: function( e ){
+	   taName = this.model.get('id')+"nameEdit";
+	   
+//	   tas = jQuery("textarea#"+taName,this.el);
+	   tas = jQuery("div.name",this.el);
+	   if( tas.length == 1 ) {
+	   	//'fontSize','bold','italic','underline','strikeThrough','subscript','superscript'
+	   	//buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript']}
+	   	this.ne = new nicEditor({iconsPath : '/images/nicEditorIcons.gif', buttonList : ['bold','italic','underline','strikeThrough','ol','ul','link','unlink']}).panelInstance(tas[0]);
+	   }
+
+
+
     },
     // this updates single row in the table
     update: function( item_id ){
@@ -115,8 +140,8 @@ AlternativeUpdatingView  = Backbone.View.extend({
 		// nasty but works.
 	    //var lastEditedItem = this;
 
-		if (e.keyCode == 13) {
-			var newValue = e.srcElement.innerText;
+		if (e.keyCode == 13 && !e.shiftKey) {
+			var newValue = e.srcElement.innerHTML;
 
 			if(newValue == "<br>") {
 				newValue = '(empty)';
@@ -129,7 +154,18 @@ AlternativeUpdatingView  = Backbone.View.extend({
 				}
 			});			
 		}
+
 	
+	},
+	specialKeyName : function( e ){
+		if( e.keyCode == 27 ){
+			if( this.ne != null ){
+				this.ne.removeInstance( jQuery("div.name",this.el)[0] );
+				//jQuery("div.nicEdit-panelContain",this.el).remove();
+				this.ne = null;
+			}
+			this.render();
+		}
 	},
 	deleteAlternative : function(){
 		var viewObject = this;

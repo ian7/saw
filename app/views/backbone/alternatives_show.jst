@@ -4,15 +4,21 @@
 			</td>
 	   		<td>	   		
 	    		<!-- <b>Name:</b> -->
+
+	    		<!--
+	    		<textarea id="<%= a.get('id')%>nameEdit"><%= a.get('name') %></textarea>
+	    						-->
+
 				<% if( !a.isNew() ) { %>
 					<div class="deleteAlternative">
 						<span class="altenrnativeFocusedUsers"></span>
 						<img class="deleteAlternative" src="/images/icons/delete.png"/>
 					</div>
-					<div class="name" contenteditable="true"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></div>
+					<div class="name" contenteditable="true" id="<%= a.get('id')%>nameEdit"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></div>
 				<% } else { %>
-					<div class="name newEdit" contenteditable="true"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></div>
+					<div class="name newEdit" contenteditable="true" id="<%= a.get('id')%>nameEdit"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></div>
 				<% } %>
+
 	
 				
 		    </td>
