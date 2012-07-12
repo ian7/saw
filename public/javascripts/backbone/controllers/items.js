@@ -96,7 +96,7 @@ App.Controllers.Items = Backbone.Router.extend({
 		this.showEl.show();
 		
 		// id for the item 
-		this.item = new Item({ el: this.showEl});
+		this.item = new Item();
         this.view = new App.Views.Show({ model: this.item, el: this.showEl});     
 
 		this.item.id = id;
