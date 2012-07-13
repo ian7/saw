@@ -184,7 +184,7 @@ jQuery.fn.flash = function( color, duration )
   	d = JSON.parse(data)
 
   	if( d.id == this.model.get('id') ){
-  		if( d.event.match('mouse') == null && d.event.distance == 0) {
+  		if( d.event.match('mouse') == null ) {
 			this.alternativesCollection.fetch();
   		}
   	}
@@ -244,7 +244,7 @@ App.Views.Index = Backbone.View.extend({
 
   initialize : function() {
 
-	_(this).bindAll('newItem','checkNewItem','removeNewItem','newItem');
+	_(this).bindAll('newItem','checkNewItem','removeNewItem','newItem','notify','notifyEvent');
 
 	this.collection.bind('saved',this.checkNewItem );
 	this.collection.bind('refresh',this.checkNewItem );
@@ -267,6 +267,7 @@ App.Views.Index = Backbone.View.extend({
 
 	this.render();
 	notifier.register(this);
+	eventer.register(this);
 
   },
  
@@ -335,10 +336,10 @@ App.Views.Index = Backbone.View.extend({
   },
   notify : function( broadcasted_id ) {
   },
-  notifyEvent : function( e ) {
+  notifyEvent : function( data ) {
 	  	d = JSON.parse(data)
 	  	if( d.id == this.projectid ){
-	  		if( d.event.match('mouse') == null && d.event.distance == 0) {
+	  		if( d.event.match('mouse') == null ) {
 	  			this.collection.fetch();
 	  		}
 	  	}

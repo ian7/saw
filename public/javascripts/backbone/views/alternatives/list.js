@@ -18,7 +18,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
     focusedUsers : {},
 
     initialize: function() {
-		_(this).bindAll('render','decide','undecide','notifyEvent','mouseover','mouseout','edit','specialKeyName');
+		_(this).bindAll('render','decide','undecide','notifyEvent','mouseover','mouseout','edit','specialKeyName','notify');
 	    this.model.bind('change', this.render);
 		notifier.register(this);
 		eventer.register( this );
@@ -94,7 +94,10 @@ AlternativeUpdatingView  = Backbone.View.extend({
 			activation: 'click',
 			positionBy: 'fixed',
 			});
-*/
+*/ 
+
+
+
 /* disabled for the campus branch
 		jQuery("div.button.decide",this.el).tooltip({
 			position: 'bottom center',
@@ -222,7 +225,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 	notifyEvent : function( data ){
 	  	d = JSON.parse(data)
 	  	if( d.id == this.model.get('id') ){
-	  		if( d.event.match('mouse') == null && d.event.distance == 0) {
+	  		if( d.event.match('mouse') == null ) {
 	  			this.model.fetch();
 	  		}
 			if( d.event == "mouseover") {

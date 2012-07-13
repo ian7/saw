@@ -191,7 +191,7 @@ App.Views.Show = Backbone.View.extend({
 	notifyEvent : function( e ) {
 	  	d = JSON.parse(data)
 	  	if( d.id == this.model.get('id') ){
-	  		if( d.event.match('mouse') == null && d.event.distance == 0) {
+	  		if( d.event.match('mouse') == null ) {
 	  			this.model.fetch();
 	  		}
 	  	}
