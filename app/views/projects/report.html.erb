@@ -18,7 +18,7 @@
 <% issues = @project.related_from("Tagging",'Issue') %> 
 
 <% issues.each do |i| %>
-	<table width="100%" class="issue">
+	<table class="issue">
 		<tr>
 			<th> Issue ID: </th>
 			<td> <%= i.id %></td>
