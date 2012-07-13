@@ -177,14 +177,19 @@ jQuery.fn.flash = function( color, duration )
 		window.location.href = window.location.href+"#/"+this.model.get('id')+'/alternatives';
   },
   notify : function( broadcasted_id ) {
-		if( this.model.get('id') == broadcasted_id ) {
-			this.alternativesCollection.fetch();
-//			jQuery(this.el).effect("highlight", {}, 50000);
-		}
+
   },
   notifyEvent : function( data ){
   	//alert('here!');
   	d = JSON.parse(data)
+
+  	if( d.id == this.model.get('id') ){
+  		if( d.event.match('mouse') == null && d.event.distance == 0) {
+			this.alternativesCollection.fetch();
+  		}
+  	}
+
+
   	if( d.id == this.model.get('id') ){
 		if( d.event == "mouseover") {
 	  		jQuery(this.el).addClass("focused");
@@ -205,6 +210,9 @@ jQuery.fn.flash = function( color, duration )
   	}
   },
 	mouseover : function( e ){
+		if( this.model.get('id') == null ) {
+			return;
+		}
 		notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseover', function(data) {})"
 		if( this.mouse_timer ){
 			clearTimeout( this.mouse_timer );
@@ -212,6 +220,9 @@ jQuery.fn.flash = function( color, duration )
 		this.mouse_timer = setTimeout(notifyCode,900); 
 	},
 	mouseout : function( e ){
+		if( this.model.get('id') == null ) {
+			return;
+		}
 		notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseout', function(data) {})"
 		if( this.mouse_timer ){
 			clearTimeout( this.mouse_timer );
@@ -323,28 +334,14 @@ App.Views.Index = Backbone.View.extend({
 		
   },
   notify : function( broadcasted_id ) {
-/*		this.collection.each( function( i ) {	
-			if( i.get('id') == broadcasted_id ) {
-				i.fetch({
-					success: function(model,resp) {
-						model.change();
-						jQuery(model.view.el).effect("highlight", {}, 500);
-					}
-				});
-			}
-		});
-*/
-		//var thisView = this;
-		
-		if( this.projectid == broadcasted_id ) {
-			this.collection.fetch({
-				success: function(model, resp){
-//					thisView.colllection
-//					thisView.render();
-				}
-			});
-		}
-		
+  },
+  notifyEvent : function( e ) {
+	  	d = JSON.parse(data)
+	  	if( d.id == this.projectid ){
+	  		if( d.event.match('mouse') == null && d.event.distance == 0) {
+	  			this.collection.fetch();
+	  		}
+	  	}
   },
   expandAll : function() {
 	_.each(this._itemsCollectionView._childViews, function( childView ) {

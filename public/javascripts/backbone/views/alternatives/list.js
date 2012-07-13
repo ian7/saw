@@ -215,13 +215,16 @@ AlternativeUpdatingView  = Backbone.View.extend({
 	},
 	notify : function( broadcasted_id ) {
 		if( this.model.id == broadcasted_id ) {
-			this.model.fetch();
+//			this.model.fetch();
 		//	jQuery(this.el).effect("highlight", {}, 500);	
 		}
 	},
 	notifyEvent : function( data ){
 	  	d = JSON.parse(data)
 	  	if( d.id == this.model.get('id') ){
+	  		if( d.event.match('mouse') == null && d.event.distance == 0) {
+	  			this.model.fetch();
+	  		}
 			if( d.event == "mouseover") {
 		  		jQuery(this.el).addClass("focused");
 		  		this.focusedUsers[d.user] = (new Date()).getTime();
@@ -242,6 +245,9 @@ AlternativeUpdatingView  = Backbone.View.extend({
 		}
 	},
 	mouseover : function( e ){
+		if( this.model.get('id') == null ) {
+			return;
+		}
 		notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseover', function(data) {})"
 		
 		if( this.mouse_timer ){
@@ -250,6 +256,9 @@ AlternativeUpdatingView  = Backbone.View.extend({
 		this.mouse_timer = setTimeout(notifyCode,900); 
 	},
 	mouseout : function( e ){
+		if( this.model.get('id') == null ) {
+			return;
+		}
 		notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseout', function(data) {})"
 		if( this.mouse_timer ){
 			clearTimeout( this.mouse_timer );
@@ -344,13 +353,8 @@ App.Views.Alternatives.List = Backbone.View.extend({
 		this.checkNewAlternative();
   },
   notify : function( broadcasted_id ) {
-		this.collection.each( function( i ) {	
-/*			if( i.get('id') == broadcasted_id ) {
-				i.fetch();
-				i.change();
-			}
-			*/
-		});
+  },
+  notifyEvent : function( e ){
   },
   newAlternative : function() {	
 		a = new Alternative;

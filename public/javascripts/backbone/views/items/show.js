@@ -13,8 +13,9 @@ App.Views.Show = Backbone.View.extend({
 	},
     initialize: function() {
 		//this.tagCollection = new Tags;
-		_(this).bindAll('render','specialKey','edit','editedAttribute');
+		_(this).bindAll('render','specialKey','edit','editedAttribute','notifyEvent');
 		notifier.register(this);
+		eventer.register(this);
 		
 		// load and render navigation helper
 		_.extend( this, App.Helpers.ItemNavigation );
@@ -180,12 +181,20 @@ App.Views.Show = Backbone.View.extend({
 	},
 	notify: function( broadcasted_id ) {
 		if( this.model.get('id') == broadcasted_id ){
-				this.model.fetch();
-			this.tags.fetch();
+				//this.model.fetch();
+			//this.tags.fetch();
 //			jQuery(this.el).effect("highlight", {}, 500);	
 	//		this.alternativesCollection.fetch();
 	//		{deepRefresh: true}
 		}
+	},
+	notifyEvent : function( e ) {
+	  	d = JSON.parse(data)
+	  	if( d.id == this.model.get('id') ){
+	  		if( d.event.match('mouse') == null && d.event.distance == 0) {
+	  			this.model.fetch();
+	  		}
+	  	}
 	},
 	refresh : function () {
 		this.model.fetch();
