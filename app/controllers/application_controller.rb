@@ -46,7 +46,8 @@ class ApplicationController < ActionController::Base
 				end
 			end
 		rescue Exception => e
-
+			puts "Ring - crashed with id: " + id.to_s
+			puts e
 		end
 	end
 
@@ -67,6 +68,8 @@ class ApplicationController < ActionController::Base
 	  	if current_user 
 	  		h[:user] = current_user.email
 	  	end
+
+		puts "Notifying " + t.type + " id: " + id.to_s + " with action: " + action + " distance: " + distance.to_s
 
 	  	# feed the new channel
     	Juggernaut.publish('channel1', h.to_json.to_s )

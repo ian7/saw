@@ -144,7 +144,9 @@ App.Views.Show = Backbone.View.extend({
 				// TODO: this is supper shitty... but works so sweet !
 				var itemID = jQuery("table.itemDetails").attr('id');
 
-				jQuery.getJSON( '/relations/relate?tip='+itemID+'&origin='+ui.item.id+'&relation_type=Tagging', function(data) {});
+				//jQuery.getJSON( '/relations/relate?tip='+itemID+'&origin='+ui.item.id+'&relation_type=Tagging', function(data) {});
+				jQuery.getJSON( '/tag/dotag?from_taggable_id='+ui.item.id+'&to_taggable_id='+itemID, function(data) {});
+		
 				
 				// clean up the searchBox
 				jQuery("div.searchBox").html("");

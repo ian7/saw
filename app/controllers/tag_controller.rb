@@ -190,6 +190,8 @@ class TagController < ApplicationController
   end
 
 
+  ring( @relation_instance.id ,2,'untag')
+
   if params[:project_id]
     @relation_instances.each do |ri|
       @project_tag = Project.find params[:project_id]
@@ -209,12 +211,17 @@ class TagController < ApplicationController
     @to_taggable=Taggable.find @relation_instance.tip
   else
    ## kill it
-   @relation_instance = @relation_instances.first
+   if not @relation_instance 
+    @relation_instance = @relation_instances.first
+   end
+
    @to_taggable=Taggable.find @relation_instance.tip
+   
    if @relation_instance != nil
      @relation_instance.destroy
    end
   end
+
 
 
 
@@ -227,8 +234,6 @@ class TagController < ApplicationController
   ## not quite sure on what to do after... some redirect probably
   @to_taggable=Taggable.find @relation_instance.tip
 
-
-  ring( @relation_instance.id ,2,'untag')
 
 
 
