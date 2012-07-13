@@ -36,7 +36,7 @@ AlternativeProjectUpdatingView  = Backbone.View.extend({
 	notify : function( broadcasted_id ) {
 		if( this.model.id == broadcasted_id ) {
 			this.model.fetch();
-			jQuery(this.el).effect("highlight", {}, 500);	
+//			jQuery(this.el).effect("highlight", {}, 500);	
 		}
 	},
 	showDetails : function() {

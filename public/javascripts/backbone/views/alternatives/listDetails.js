@@ -326,7 +326,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 			this.model.fetch({deepRefresh : 'true'});
 			this.model.change();
 			this.selectorView.relationsCollection.fetch();
-			jQuery(this.el).effect("highlight", {}, 500);	
+//			jQuery(this.el).effect("highlight", {}, 500);	
 	},
 
 	editedAttribute : function( e ) {

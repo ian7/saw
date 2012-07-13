@@ -182,7 +182,7 @@ App.Views.Show = Backbone.View.extend({
 		if( this.model.get('id') == broadcasted_id ){
 				this.model.fetch();
 			this.tags.fetch();
-			jQuery(this.el).effect("highlight", {}, 500);	
+//			jQuery(this.el).effect("highlight", {}, 500);	
 	//		this.alternativesCollection.fetch();
 	//		{deepRefresh: true}
 		}

@@ -4,12 +4,12 @@
 
 jQuery.fn.flash = function( color, duration )
 {
-	duration = 50000;
+/*	duration = 50000;
     var current = this.css( 'color' );
 
     this.animate( { color: 'rgb(' + color + ')' }, duration / 2 );
     this.animate( { color: current }, duration / 2 );
-
+*/
 }
 
  ItemUpdatingView = Backbone.View.extend({
@@ -179,7 +179,7 @@ jQuery.fn.flash = function( color, duration )
   notify : function( broadcasted_id ) {
 		if( this.model.get('id') == broadcasted_id ) {
 			this.alternativesCollection.fetch();
-			jQuery(this.el).effect("highlight", {}, 50000);
+//			jQuery(this.el).effect("highlight", {}, 50000);
 		}
   },
   notifyEvent : function( data ){

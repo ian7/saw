@@ -4,12 +4,12 @@
 
 jQuery.fn.flash = function( color, duration )
 {
-	duration = 50000;
+/*	duration = 50000;
     var current = this.css( 'color' );
 
     this.animate( { color: 'rgb(' + color + ')' }, duration / 2 );
     this.animate( { color: current }, duration / 2 );
-
+*/
 }
 
 App.Views.Items.Elicit = Backbone.View.extend({
