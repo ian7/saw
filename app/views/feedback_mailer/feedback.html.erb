@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <table>
+    	<tr>
+    		<th>Author</th>
+    		<td><%= @f.author %></td>
+    	</tr>
+    	<tr>
+    		<th>URL</th>
+    		<td><a href="<%= @f.url %>"><%= @f.url %></a></td>
+    	</tr>
+    	<tr>
+    		<th>Comment</th>
+    		<td><%= @f.comment %></td>
+    	</tr>
+    </table>
+    <hr>
+    That's it. 
+  </body>
+</html>
