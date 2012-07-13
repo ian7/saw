@@ -142,11 +142,6 @@ AlternativeUpdatingView  = Backbone.View.extend({
 		// nasty but works.
 	    //var lastEditedItem = this;
 
-
-	
-	},
-	specialKeyName : function( e ){
-
 		if (e.keyCode == 13 && !e.shiftKey) {
 			var newValue = e.srcElement.innerHTML;
 
@@ -162,6 +157,9 @@ AlternativeUpdatingView  = Backbone.View.extend({
 			});			
 		}
 
+	
+	},
+	specialKeyName : function( e ){
 		if( e.keyCode == 27 ){
 			if( this.ne != null ){
 				this.ne.removeInstance( jQuery("div.name",this.el)[0] );

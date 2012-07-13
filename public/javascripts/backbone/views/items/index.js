@@ -16,7 +16,7 @@ jQuery.fn.flash = function( color, duration )
   events : {
 	"click .expand" : "toggleExpand",
 	"click .deleteItem" : "deleteItem",
-	"keydown .e6" : "editedItem",
+	"keypress .e6" : "editedItem",
 	"click .e6" : "expand",
 	"click .e6" : "selectAll",
 	"click .details" : "navigateToDetails",
