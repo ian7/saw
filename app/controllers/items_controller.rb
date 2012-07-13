@@ -233,7 +233,7 @@ class ItemsController < ApplicationController
   def update
     
     
-    puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ' + current_user.email
+#    puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ' + current_user.email
     
      if params[:id] 
          @issue = Taggable.find(params[:id])
