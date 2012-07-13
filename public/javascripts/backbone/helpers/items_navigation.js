@@ -1,6 +1,7 @@
 App.Helpers.ItemNavigation = {
 	navigationEvents  : {
 		"click .toIndex" : "navigateToIndex",
+		"click .toReport" : "navigateToReport",
 		"click .itemShowNavigation" : "navigateItemShow"
 	},
 	firstRender : true,
@@ -36,6 +37,12 @@ App.Helpers.ItemNavigation = {
 		// this removes trailing hash 
 		index_url = index_url.splice(0,index_url.length-1);
 		window.location.href = index_url;
+	},
+	navigateToReport : function() {
+		index_url = window.location.href.match(".*#");
+		// this removes trailing hash 
+		index_url = index_url.splice(0,index_url.length-6);
+		window.location.href = index_url+"report";
 	},
 	navigateItemShow : function( e ) {
 		this.navigatedView = e.srcElement.id;

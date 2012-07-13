@@ -53,6 +53,11 @@
 			<a href="/projects/<%=p.id%>">Summary</a>
 		<% end %>
 	</td>
+	<td>
+		<% if p %>
+			<a href="/projects/<%=p.id%>/report">Report</a>
+		<% end %>
+	</td>
 <!-- 
 	<td>
 		<a href="<%= alternatives_url %>"  class="header">Alternatives</a>

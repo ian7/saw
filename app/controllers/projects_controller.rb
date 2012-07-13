@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
     @project = Project.find params[:id]
     respond_to do |format|
       format.tex {render :project => @project }
+      format.html { render :project => @project, :layout=>false }
     end
   end
 
