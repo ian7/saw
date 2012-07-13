@@ -330,6 +330,27 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	},
 
 	editedAttribute : function( e ) {
+		// in case this is not enter and that's first key pressed
+		var newValue = e.srcElement.innerText;
+		if( newValue == "(edit to add)"  ||
+			newValue == "(empty)") {
+			e.srcElement.innerHTML = "";
+		}
+	},
+	edit : function( e ){
+	   //tas = jQuery("div.name",this.el);
+	   tas = e.srcElement;
+	   //if( tas.length == 1 ) {
+	   	//'fontSize','bold','italic','underline','strikeThrough','subscript','superscript'
+	   	//buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript']}
+	   if( tas.localName != "div") {
+	   	tas = jQuery(tas).parents("div.editable")[0];
+	   }
+	   	this.ne = new nicEditor({iconsPath : '/images/nicEditorIcons.gif', buttonList : ['bold','italic','underline','strikeThrough','ol','ul','link','unlink']}).panelInstance(tas);
+	   //}
+	},
+	specialKey : function( e ){
+
 			if (e.keyCode == 13 && !e.shiftKey) {
 				var newValue = e.srcElement.innerHTML;
 
@@ -346,28 +367,8 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 					}
 				});			
 			}
-			else {
-				// in case this is not enter and that's first key pressed
-				var newValue = e.srcElement.innerText;
-				if( newValue == "(edit to add)"  ||
-					newValue == "(empty)") {
-					e.srcElement.innerHTML = "";
-				}
-			}
-	},
-	edit : function( e ){
-	   //tas = jQuery("div.name",this.el);
-	   tas = e.srcElement;
-	   //if( tas.length == 1 ) {
-	   	//'fontSize','bold','italic','underline','strikeThrough','subscript','superscript'
-	   	//buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript']}
-	   if( tas.localName != "div") {
-	   	tas = jQuery(tas).parents("div.editable")[0];
-	   }
-	   	this.ne = new nicEditor({iconsPath : '/images/nicEditorIcons.gif', buttonList : ['bold','italic','underline','strikeThrough','ol','ul','link','unlink']}).panelInstance(tas);
-	   //}
-	},
-	specialKey : function( e ){
+
+
 	if( e.keyCode == 27 ){
 		if( this.ne != null ){
 			this.ne.removeInstance( e.srcElement );
