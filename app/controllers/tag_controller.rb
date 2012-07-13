@@ -190,7 +190,6 @@ class TagController < ApplicationController
   end
 
 
-  ring( @relation_instance.id ,2,'untag')
 
   if params[:project_id]
     @relation_instances.each do |ri|
@@ -203,11 +202,13 @@ class TagController < ApplicationController
       project_relation = Taggable.find(:first, :conditions=>{:origin=>@project_tag.id, :tip=>ri.id }) #, :author_id=>current_user.id})
       if project_relation != nil
 #              puts "!!!!!!!!!!!!!!!!!!!!!!!!!!! pr: "+ project_relation.id.to_s
+
               project_relation.destroy
               @relation_instance = ri
               #break
       end
     end
+    ring( @relation_instance.id ,2,'untag')
     @to_taggable=Taggable.find @relation_instance.tip
   else
    ## kill it
@@ -217,6 +218,9 @@ class TagController < ApplicationController
 
    @to_taggable=Taggable.find @relation_instance.tip
    
+
+    ring( @relation_instance.id ,2,'untag')
+
    if @relation_instance != nil
      @relation_instance.destroy
    end
