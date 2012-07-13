@@ -118,6 +118,8 @@ AlternativeUpdatingView  = Backbone.View.extend({
 	   
 //	   tas = jQuery("textarea#"+taName,this.el);
 	   tas = jQuery("div.name",this.el);
+
+
 	   if( tas.length == 1 ) {
 	   	//'fontSize','bold','italic','underline','strikeThrough','subscript','superscript'
 	   	//buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript']}

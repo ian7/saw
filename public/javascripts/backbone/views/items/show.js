@@ -192,6 +192,10 @@ App.Views.Show = Backbone.View.extend({
 	edit : function( e ){
 	   //tas = jQuery("div.name",this.el);
 	   tas = e.srcElement;
+
+	   if( tas.localName != "div") {
+	   	tas = jQuery(tas).parents("div.editable")[0];
+	   }
 	   //if( tas.length == 1 ) {
 	   	//'fontSize','bold','italic','underline','strikeThrough','subscript','superscript'
 	   	//buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript']}
