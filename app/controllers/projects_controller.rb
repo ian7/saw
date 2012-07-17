@@ -23,6 +23,13 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def report2
+    @project = Project.find params[:id]
+    respond_to do |format|
+      format.html { render :project => @project, :layout=>false }
+    end
+  end
+
   def index
      # this is specific for tag-tree visualization
      # @onload = 'init("Project");'

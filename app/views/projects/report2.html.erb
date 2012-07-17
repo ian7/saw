@@ -1,0 +1,116 @@
+<html>
+<head>
+	<link href="/stylesheets/report.css" media="screen" rel="stylesheet" type="text/css">
+</head>
+<h1>Project status report.</h1>
+<table class="intro">
+	<tr>
+		<th>Name:</th>
+		<td><%= @project.name %> </td>
+	</tr>
+	<tr>
+		<th>Date:</th>
+		<td><%= DateTime.now.to_s %></td>
+	</tr>
+</table>
+<hr>
+
+<% issues = @project.related_from("Tagging",'Issue') %> 
+
+<% issues.each do |i| %>
+	<ul class="issue">
+		<li>
+			<span class="header"> Issue ID: </span>
+			<span class="value"> <%= i.id %></span>
+		</li>
+		<li>
+			<span class="header"> Issue Name: </span>
+			<span class="value"> <%=raw i.name %></span>		
+		</li>
+		<!--<li>
+			<span class="header">Tags</span>
+			<span class="value">
+				<ul class="tags">
+					<li>
+					<span class="header">tag_type</span>
+					<span class="value">tag_value</span>
+					</li>
+				</ul>
+			</span>
+		</li>-->
+		<% i.dynamic_type.dynamic_type_attributes.each do |ia| %>
+			<li>
+				<span class="header"><%= ia.attribute_name %>:</span>
+				<span class="value"><%=raw i[ia.attribute_name] %></span>
+			</li>
+		<% end %>
+		<li>
+			<span class="header"> Alternatives: </span><br>
+			<% alternative_count = 1 %>
+			<span class="value">
+				<% alternatives = i.related_to("SolvedBy") %>
+				<% alternatives.each do  |a| %>
+					Alternative <%= alternative_count %>.
+					<% alternative_count = alternative_count + 1 %>
+					<ul class="alternative">
+						<li>
+							<span class="header"> Name:</span>
+							<span class="value"> <%= a.name %> </span>
+						</li>
+						<% a.dynamic_type.dynamic_type_attributes.each do |aa| %>
+							<li>
+								<span class="header"><%= aa.attribute_name %>:</span>
+								<span class="value"><%=raw a[aa.attribute_name] %></span>
+							</li>
+						<% end %>
+						<li>
+						<span class="header">Decisions</span>
+						<span class="value">
+							<ul class="decisions">
+							   <% relation = Taggable.find(:first, :conditions=>{:origin=>a.id, :tip=>i.id})
+								
+								# will store decision made by this user on this given relation
+								@current_users_decision = nil
+								
+								# if given alternative is not related to the issue, then skip decisions because there are none
+								if relation 
+						  			taggings = relation.relations_to("Tagging");
+
+								
+							  		Taggable.find(:all, :conditions=>{:type=>"Decision"}).each do |decision|
+
+						  				related_decisions = Taggable.find(:all, :conditions=>{:origin=>decision.id, :tip=>relation.id })		  
+							  			related_decisions.each do |user_decision|
+							  			  
+							  			  # check if given decision really belongs to the projec we're considering
+							  			  if params[:id]
+								              p = Project.find params[:id]
+							    	          project_tagging = Taggable.find :first, :conditions=>{:origin=>p.id, :tip=>user_decision.id}
+								              if project_tagging 
+								              	#
+								              else
+								                next
+								              end
+							    		  end
+							    		  %>
+							    		  <li>
+							    		  	<%= decision.name %>,
+							    		  	<%= user_decision.author.email %>,
+							    		  	<%= user_decision["Rationale"] %>,
+							    		  	<%= user_decision.created_at %>,
+							  			  </li>
+										<%	
+									  			end
+									  		end	
+								  		end
+						  				%>
+							</ul>
+						</span>
+						<hr>
+					</ul>
+				<% end %>
+		</li>
+	</ul>
+	<hr>
+<% end %>
+</html>

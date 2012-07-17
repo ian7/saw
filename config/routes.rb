@@ -116,6 +116,7 @@ Saw::Application.routes.draw do
   get "projects/:id/export" => "projects#export"
   put "projects/:id/import" => "projects#import"
   get "projects/:id/report" => "projects#report"
+  get "projects/:id/report2" => "projects#report2"
 
   resources :alternatives
 
