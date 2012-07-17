@@ -933,3 +933,6 @@ div.editable{
 
 }
 
+table.itemDetails tr.issueDetails div.editable:not(#name){
+  min-height: 80px;
+}
