@@ -7,9 +7,9 @@
   </script>
 
 <div id="sign-in-up">
-  <ul>
-    <li><a href="#sign-in">Sign in</a></li>
-    <li><a href="#sign-up">Sign up</a></li>
+  <ul class="tabs">
+    <li class="sign-in"><a href="#sign-in">Log in</a></li>
+    <li class="sign-up"><a href="#sign-up">Create an account</a></li>
     </ul> 
   <div id="sign-in">
 
@@ -20,7 +20,8 @@
         <input name="authenticity_token" type="hidden" value="oikWBo1aXitpLRffeZWZGT24UjfgBxeqFOIDoijDXvE=" />
         </div> 
         
-      <p>Your name: <input id="user_email" name="user[email]" size="30" type="text" />
+      <p><strong>You can use username and password: </strong><br/><br/>
+      User: <input id="user_email" name="user[email]" size="30" type="text" />
       Password:<input type="password" id="user_password" name="user[password]" size="30" value="" />
      
     <!--  <input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="hidden" value='m'/>-->
@@ -28,32 +29,42 @@
     </form> 
     <br><hr><br>
 
-    <p><strong>Sign in through one of these services:</strong></p>
+    <p><strong>alternatively, you can authenticate using one of the following services (requires internet connectivity):</strong></p><br/>
 
-    <a href="/auth/twitter" class="auth_provider">
-      <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
-      Twitter
-    </a>
+    <table class="authentications"><tr>
 
+    <td>
+      <a href="/auth/twitter" class="auth_provider">
+        <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %><br>
+        Twitter
+      </a>
+    </td>
+    <td>
     <a href="/auth/facebook" class="auth_provider">
-      <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
+      <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %><br>
       Facebook
     </a>
+    </td>
+    <td>
     <a href="/auth/google_apps" class="auth_provider">
-      <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %>
+      <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %><br>
       Google
     </a>
+    </td>
+    <td>
     <a href="/auth/open_id" class="auth_provider">
-      <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>
+      <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %><br>
       OpenID
     </a>
+    </td>
+    </tr></table>
     </p>
   </div>
 
   <div id="sign-up">
     <form accept-charset="UTF-8" action="/users" class="user_new" id="user_new" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="oikWBo1aXitpLRffeZWZGT24UjfgBxeqFOIDoijDXvE=" /></div> 
       
-      
+      <p><strong>You can create a simple username and password (does not require internet connectivity)</strong></p><br/>
       <p>Your name: <input id="user_email" name="user[email]" size="30" type="text" /> 
       Password: <input id="user_password" name="user[password]" size="30" type="password" value="m"/>
      
@@ -61,25 +72,35 @@
       <input id="user_submit" name="commit" type="submit" value="Sign up" /></p> 
     </form>
     <br><hr><br>
-    <p><strong>Sign up through one of these services:</strong></p>
+    <p><strong>You can also create new account using authorization from one of the following services (requires internet connectivity):</strong></p>
 
-    <a href="/auth/twitter" class="auth_provider">
-      <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
-      Twitter
-    </a>
+    <table class="authentications"><tr>
 
+    <td>
+      <a href="/auth/twitter" class="auth_provider">
+        <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %><br>
+        Twitter
+      </a>
+    </td>
+    <td>
     <a href="/auth/facebook" class="auth_provider">
-      <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
+      <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %><br>
       Facebook
     </a>
+    </td>
+    <td>
     <a href="/auth/google_apps" class="auth_provider">
-      <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %>
+      <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %><br>
       Google
     </a>
+    </td>
+    <td>
     <a href="/auth/open_id" class="auth_provider">
-      <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>
+      <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %><br>
       OpenID
     </a>
+    </td>
+    </tr></table>
     </p>
   </div>
 <%#= render :partial => "devise/shared/links" %>
