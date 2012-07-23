@@ -10,4 +10,6 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def login_failed
+  end
 end

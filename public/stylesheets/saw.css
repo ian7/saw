@@ -969,3 +969,14 @@ div#sign-in-up ul{
   background: #eeeeee;
   border:1px solid #eeeeee;
 }
+
+div.login_failed {
+  width: 80%;
+  background-color: #EEE;
+  padding-top: 4em;
+  padding-bottom: 4em;
+  padding-left: 5em;
+  padding-right: 5em;
+  margin: 5em auto;
+  text-align: center;
+}
