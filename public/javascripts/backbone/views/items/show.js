@@ -7,13 +7,18 @@
 App.Views.Show = Backbone.View.extend({
 	events: {
 		"click .addTag": "addTag", 
-		"keypress .editable" : "editedAttribute",
-		"keydown div.editable"	: "specialKey",
-		"click div.editable"	: "edit",
+//	"keypress .editable" : "editedAttribute",
+//		"keydown div.editable"	: "specialKey",
+//		"click div.editable"	: "edit",
+		"focus div.editable"	: "focused",
+		"blur div.editable"		: "blured",
+		"focus textarea.editable"	: "focused",
+		"blur textarea.editable"		: "blured",
+		"click div.refresh" : "refresh",
 	},
     initialize: function() {
 		//this.tagCollection = new Tags;
-		_(this).bindAll('render','specialKey','edit','editedAttribute','notifyEvent');
+		_(this).bindAll('render','specialKey','edit','editedAttribute','notifyEvent','refresh','focused','blured');
 		notifier.register(this);
 		eventer.register(this);
 		
@@ -40,15 +45,19 @@ App.Views.Show = Backbone.View.extend({
 
 //		this.alternativesCollectionView = new App.Views.Alternatives.ListDetails({ collection: this.alternativesCollection, el: this.el });
 
-		this.model.bind('change',this.render);
+		this.model.bind('change',this.refresh);
 
 		this.tags = new Tags;
 		this.tags.view = this;
 	  	this.tagsView = new App.Views.Tags.List({collection: this.tags, el: this.el });
+	  	this.rendered = false;
+	  	this.focusedAttribute = null;
+
+	  	this.ne = new nicEditor({iconsPath : '/images/nicEditorIcons.gif', buttonList : ['bold','italic','underline','strikeThrough','ol','ul','link','unlink'],hasPanel:true});
     },
     
     render: function() {
-		this.ne = null;
+	//	this.ne = null;
 
 		jQuery( this.el ).html("");
 		this.renderNavigation();
@@ -164,8 +173,54 @@ App.Views.Show = Backbone.View.extend({
 			}
 		});
 
-		
 		return( this );
+
+    },
+    refresh : function(){
+    	if( !this.el || jQuery("div.editable#name",this.el).length == 0 ){
+    		this.render();
+    		return;
+    	}
+
+    	// it surely has name
+    	jQuery("div.editable#name",this.el)[0].innerHTML = this.model.get('name');
+
+    	_(this.model.attributes).each( function( v,a  ){
+    		el = jQuery("div.editable#"+a,this.el)[0];
+	    	if( el != null && el.id != this.focusedAttributeName){
+	    		el.innerHTML = v;
+	    	}
+    	},this);
+
+    },
+    focused : function( e ){
+    	focusedAttributeName = e.srcElement.id;
+
+    	console.log("focused on " + e.srcElement.nodeName + " " +e.srcElement.id + " target: " + e.target.nodeName + " " + e.target.id);
+
+    	jQuery("span.focus",this.el)[0].innerText = focusedAttributeName;
+
+	  	this.ne.panelInstance(e.srcElement);
+	  	//this.ne.addInstance(e.srcElement);
+    	this.focusedAttribute = focusedAttributeName;
+    },
+    blured : function( e ){
+    	console.log("blured on: " + e.srcElement.nodeName + " " + e.srcElement.id + " target: " + e.target.nodeName + " " + e.target.id);
+
+    	focusedAttributeName = e.srcElement.id;
+    	
+    	jQuery("span.focus",this.el)[0].innerText = "none";
+
+    	this.model.set(focusedAttributeName,e.srcElement.innerHTML);
+    	this.model.save();
+
+    	this.focusedAttribute = null;
+
+		//if( this.ne != null ){
+			//	this.ne.removeInstance( e.srcElement );
+			//jQuery("div.nicEdit-panelContain",this.el).remove();
+//			this.ne = null;
+//		}
 
     },
 	addTag: function(){
@@ -189,16 +244,13 @@ App.Views.Show = Backbone.View.extend({
 		}
 	},
 	notifyEvent : function( e ) {
-	  	d = JSON.parse(data)
+	  	d = JSON.parse(e)
 	  	if( d.id == this.model.get('id') ){
 	  		if( d.event.match('mouse') == null ) {
 	  			this.model.fetch();
+	  			console.log("refreshing model");
 	  		}
 	  	}
-	},
-	refresh : function () {
-		this.model.fetch();
-		this.aternativesCollection.fetch()
 	},
 	edit : function( e ){
 	   //tas = jQuery("div.name",this.el);

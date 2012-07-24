@@ -17,9 +17,14 @@
 		<td class="key"><!-- does capitalization --><%= key.charAt(0).toUpperCase() + key.slice(1) %>: </td>
 		<td>
 			<div class="editable" id="<%=key%>" contenteditable="true"><% if( value ) { %><%= value %><% } else { %>(empty)<% } %></div>
+			<!--<textarea class="editable" id="<%=key%>"><%= value %></textarea>-->
 		</td>
 		</tr>
 
 		<% }; 
 		});%>
 	</table>
+<div class="debug">
+Focus is on: <span class="focus"/> 
+<div class='button red refresh'>Refresh</div>
+</div>

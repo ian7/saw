@@ -224,7 +224,7 @@ class ItemsController < ApplicationController
     
     
     if params[:project_id]
-      Juggernaut.publish("/chats",params[:project_id])
+      notify(params[:project_id])
     end
     
     update
@@ -274,7 +274,7 @@ class ItemsController < ApplicationController
 		@issue.save
 	end
 
-	Juggernaut.publish("/chats", @issue.id)
+	notify(@issue.id,0,'update')
 
     respond_to do |format|
      ## this didn't worked as some attributes are implemented as dynamic types attributes
@@ -297,7 +297,7 @@ class ItemsController < ApplicationController
     # @issue.destroy
 
      if params[:project_id]
-        Juggernaut.publish("/chats",params[:project_id])
+        notify(params[:project_id])
       end
     
     # clean up taggings and relations
