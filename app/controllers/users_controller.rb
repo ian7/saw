@@ -11,5 +11,8 @@ class UsersController < ApplicationController
   end
 
   def login_failed
+    @user_agent = UserAgent.parse(request.env["HTTP_USER_AGENT"]);
+
+
   end
 end

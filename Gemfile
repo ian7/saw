@@ -30,6 +30,7 @@ gem 'cancan', '1.4.1'
 gem 'mongrel', '1.2.0.pre2'
 gem 'juggernaut',"2.1.0"
 gem 'jammit'
+gem 'useragent'
 #gem 'fb_graph'
 #gem 'thin'
 #gem 'faraday' #, '0.6.1'

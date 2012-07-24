@@ -1,0 +1,29 @@
+
+
+<div class="login_failed">
+
+	<% if @user_agent.browser == "Chrome" %>
+
+
+		<script>
+
+		var count = 0;
+		jQuery(document).everyTime( 1000, function(){
+			count++;
+			jQuery("span.seconds").html(10-count);
+			if( count >= 10 ){
+				window.location.href="/users/sign_in";
+			}
+		}, 10);
+
+		</script>
+
+
+	It seems that you are not logged in, or your log-in failed. We are going to redirect you to the <a href="/users/sign_in">log-in page</a> in <span class="seconds">10</span> seconds. 
+
+	<% else %>
+
+	We are sorry, but your browser (<%= @user_agent.browser %>) is not supported. At the moment <a href="http://saw.inf.unisi.ch">Software Architecture Warehouse</a> supports only <a href="https://www.google.com/chrome">Google Chrome</a>. We have taken a lot of care to give you the best experience possible, but due to the limited resources we cannot guarantee cross browser compatibility. Thanks for understanding. 
+
+	<% end %>
+</div>
