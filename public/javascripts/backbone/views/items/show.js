@@ -200,12 +200,29 @@ App.Views.Show = Backbone.View.extend({
 
     	jQuery("span.focus",this.el)[0].innerText = focusedAttributeName;
 
-	  	this.ne.panelInstance(e.srcElement);
+
+    	try{
+	  		this.ne.panelInstance(e.srcElement);
+	  	}
+	  	catch( e ) {
+	  		console.log( "panel instance creation crashed with: " + e );
+	  	}
 	  	//this.ne.addInstance(e.srcElement);
+
+	  	panelEl = jQuery("div.nicEdit-panelContain",jQuery(e.srcElement).parent());
+
+	  	if(panelEl.length > 0) {
+	  		panelEl.show();
+	  	}
+
+
     	this.focusedAttribute = focusedAttributeName;
     },
     blured : function( e ){
     	console.log("blured on: " + e.srcElement.nodeName + " " + e.srcElement.id + " target: " + e.target.nodeName + " " + e.target.id);
+
+		//magically hide the panel
+		jQuery("div.nicEdit-panelContain",jQuery(e.srcElement).parent()).hide();
 
     	focusedAttributeName = e.srcElement.id;
     	
