@@ -2,6 +2,7 @@ Saw::Application.routes.draw do
 
 
 
+  get "notify/:id/:attribute/:event" => 'notify#notify'
   get "notify/:id/:event" => 'notify#notify'
 
 # that's kind of highly experimental

@@ -14,7 +14,7 @@ class NotifyController < ApplicationController
 =end
 
   	#Juggernaut.publish 'channel1', h.to_json.to_s
-    super_notify( params[:id], 0, params[:event] )
+    super_notify( params[:id], 0, params[:event],'notify', params[:attribute] )
   	render :nothing => true
   end
 end

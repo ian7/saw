@@ -936,6 +936,7 @@ div.editable{
 table.itemDetails{
   width:70%;
   margin: 1em auto;
+  border-spacing: 0px;
 }
 
 table.itemDetails tr.issueDetails div.editable:not(#name){
@@ -949,7 +950,8 @@ table.itemDetails td.key {
 }
 
 table.itemDetails td {
-  padding-bottom: 0.5em;
+/*  padding-bottom: 0.5em;*/
+  padding: 1em;
 }
 
 
@@ -999,4 +1001,9 @@ div.login_failed {
 
 div.debug{
   display: none;
+}
+
+
+tr.focused{
+  background-color: #eeeef8;
 }

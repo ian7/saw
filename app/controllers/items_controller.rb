@@ -274,7 +274,7 @@ class ItemsController < ApplicationController
 		@issue.save
 	end
 
-	notify(@issue.id,0,'update')
+	notify(@issue.id,0,'updated')
 
     respond_to do |format|
      ## this didn't worked as some attributes are implemented as dynamic types attributes

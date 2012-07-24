@@ -211,6 +211,10 @@ App.Views.Show = Backbone.View.extend({
 
 	  	panelEl = jQuery("div.nicEdit-panelContain",jQuery(e.srcElement).parent());
 
+
+		jQuery.getJSON('/notify/' + this.model.get('id') + '/' + focusedAttributeName + '/focused', function(data) {});
+
+
 	  	if(panelEl.length > 0) {
 	  		panelEl.show();
 	  	}
@@ -232,6 +236,8 @@ App.Views.Show = Backbone.View.extend({
     	this.model.save();
 
     	this.focusedAttribute = null;
+
+		jQuery.getJSON('/notify/' + this.model.get('id') + '/' + focusedAttributeName + '/blured', function(data) {});
 
 		//if( this.ne != null ){
 			//	this.ne.removeInstance( e.srcElement );
@@ -263,10 +269,19 @@ App.Views.Show = Backbone.View.extend({
 	notifyEvent : function( e ) {
 	  	d = JSON.parse(e)
 	  	if( d.id == this.model.get('id') ){
-	  		if( d.event.match('mouse') == null ) {
-	  			this.model.fetch();
-	  			console.log("refreshing model");
-	  		}
+	  	 	switch( d.event ){
+	  	 		case 'focused':
+	  	 			jQuery("div.editable#"+d.attribute,this.el).parents("tr").addClass("focused");
+	  	 			break;
+	  	 		case 'blured':
+	  	 			jQuery("div.editable#"+d.attribute,this.el).parents("tr").removeClass('focused');
+	  	 			break;
+	  	 		case 'updated':
+		  			this.model.fetch();
+		  			console.log("refreshing model");	  	 		
+	  	 		default:
+	  	 			break;
+	  	 	}
 	  	}
 	},
 	edit : function( e ){

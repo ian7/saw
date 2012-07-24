@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	def notify( id, distance=0,action='', eventClass='notify')
+	def notify( id, distance=0,action='', eventClass='notify',attribute=nil)
 		#feed the old channel. 
     	Juggernaut.publish( "/chats", id )
 
@@ -64,6 +64,9 @@ class ApplicationController < ActionController::Base
 	  	h[:class] = eventClass
 	  	t = Taggable.find id 
 	  	h[:type] = t.type
+	  	if( attribute != nil )
+	  		h[:attribute] = attribute
+	  	end
 
 	  	if current_user 
 	  		h[:user] = current_user.email
