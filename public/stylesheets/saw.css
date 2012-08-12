@@ -100,7 +100,7 @@ div.intro {
   -moz-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
   -webkit-border-radius:6px;
   -moz-border-radius:6px;
-  border-radius:6px;
+    border-radius:6px;
         }
 div.intro a{
   color: #555;
@@ -340,23 +340,21 @@ ul{
 }
 /*---------------------center start---------------------*/
 
-
+/*
 #center {
   width: 95%; 
-  /*margin: 0 auto;*/
   margin-left:auto;
   margin-right:auto;
   margin-top: 0px;
   min-height: 100%;
   right:0px;
   left:0px;
-  /*position:absolute;*/
   text-align:left;
   font-size:9pt;
   background: white;
-  padding: 0px 00px 0px 00px;*/
+  padding: 0px 00px 0px 00px;
 }
-
+*/
 /*---------------------#center table start---------------------*/
 
 
@@ -1000,10 +998,82 @@ div.login_failed {
 }
 
 div.debug{
-  display: none;
+/*  display: none;*/
 }
 
 
 tr.focused{
   background-color: #eeeef8;
+}
+
+div#layout div#leftSidebar{
+  position: fixed;
+  right: 0;
+  width: 120px;
+  height: 94%;
+  background-color: red;
+  padding-left: 3px;
+  padding-right: 3px;
+  font-size: 6pt;
+}
+
+div#layout div#rightSidebar{
+  position: fixed;
+  right: 0;
+  width: 120px;
+  height: 94%;
+  background-color: #D1D1D1;
+  padding-left: 3px;
+  padding-right: 3px;
+  font-size: 6pt;
+}
+
+div#layout div#ribbon{
+  position: fixed;
+  top: 0;
+  height: 20px  ;
+  background-color: black;
+  padding-left: 3px;
+  padding-right: 3px;
+  font-size: 6pt;
+  border: 0px;
+  width: 100%;
+}
+
+div#layout div#center{
+  background-color: white;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-bottom: 30px;
+}
+
+div.subProjects { 
+  padding-left: 3em;
+}
+
+div.project {
+  display: inline;
+}
+
+div.project div.name {
+  display: inline;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+div.project div.moreDetailsButton {
+  display: inline;
+  text-decoration: underline;  
+}
+
+div.project div.moreDetails{
+  padding-left: 3em;
+  color: green;
+}
+.hide{
+  display:none;
+}
+
+img.spinner{
+  padding: 2em;
 }

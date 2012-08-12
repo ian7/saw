@@ -14,13 +14,62 @@
 
 <!--<script src="http://localhost:8080/application.js" type="text/javascript" charset="utf-8"></script>-->
 
-<%= include_javascripts :projects  %>
+<script src="/javascripts/juggernaut.js" type="text/javascript" charset="utf-8"></script>
+
+<%= include_javascripts :common %>
 <%= include_stylesheets :common, :workspace %>
+<%= stylesheet_link_tag 'saw', 'jquery', 'infovis' %>
 
 <section class="app">
 </section>
 
+<div id="main"></div>
 
+<script id="node-template" type="text/template">
+    <div class="project" id="<%%= getId() %>">
+    	<div class="name"><%%= get(name)  %></div> (<%%= getIssueCount() %> issues) 
+    	<div class="moreDetailsButton" id="<%%=getId()%>">[more]</div>
+    	<div class="moreDetails hide">
+    		some more funny details come here!
+    	</div>
+    </div>
+    <br/>
+    <div class="subProjects"/>
+</script>
+
+<script id="my-template" type="text/template">
+	<div id='layout'>
+		<div id='ribbon'/>
+		<div id='leftSidebar'/>
+		<div id='rightSidebar'/>
+		<div id='center'></div>
+		<div id='modal'/>
+	</div>
+</script>
+
+
+<div class="modal hide" id="newProjectModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>New project</h3>
+  </div>
+  <div class="modal-body">
+    <p>Name: </p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-primary">Create</a>
+  </div>
+</div>
+
+
+<script id="projectWidgetTemplate" type="text/template">
+	<div class="projectView"><img class="spinner" src="/images/spinner.gif"/></div>
+	<div class="button green" id="newProjectButton">New Project</div>
+</script>
+
+
+<%= include_javascripts :projects  %>
+<!--
 <ul>
 	<% @allProjects.each do |p| %>
 	<li>
@@ -29,8 +78,12 @@
 	</li>
 	<% end %>
 </ul>
+
 <div id="right-container">
 </div>
+
+-->
+
 
 <script type="text/javascript" charset="utf-8">
 

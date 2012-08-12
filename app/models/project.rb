@@ -33,4 +33,17 @@ class Project < TreeTag
   def self.find_by_name n
   	return Project.find :first, :conditions=>{:name=>n}
   end
+
+  def to_hash_recursive
+    tree = to_hash
+    tree["children"]=[];
+    tree["data"]={}
+    tree["data"]["issueCount"] = issues.count
+    
+    children.each do |childProject|
+      tree["children"] << childProject.to_hash_recursive
+    end
+    
+    return tree
+  end
 end

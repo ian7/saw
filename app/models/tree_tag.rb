@@ -3,7 +3,7 @@ class TreeTag < Tag
     
     tree = to_hash
     tree["children"]=[];
-    tree["data"]=[];
+    tree["data"]={}
     
     children.each do |childProject|
       tree["children"] << childProject.to_hash_recursive
@@ -14,10 +14,12 @@ class TreeTag < Tag
   
   def children
     allProjects = TreeTag.find :all, :conditions=>{:type=>type}
+#    puts allProjects.count.to_s
+
     childrenProjects = []
     
     allProjects.each do |childProject|
-      if childProject["parent"] != nil && childProject["parent"] == self.name
+      if childProject["parent"] != nil && childProject["parent"] == name
         childrenProjects << childProject
       end
     end

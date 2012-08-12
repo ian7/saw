@@ -1,9 +1,151 @@
 /**
  * @author Marcin Nowak
  */
+
+Project = Backbone.Model.extend({
+    initialize : function( model ){
+      //this.attributes.id = 0;
+      if( model ) {
+        this.parse( model );
+      }
+    },
+    parse: function( response ){
+        this.id = response.id;
+        // this converts simple children entry into the collections - 
+        this.subProjects = new ProjectCollection(response.children);
+        return response;
+    }        
+});
+
+ProjectCollection = Backbone.Collection.extend({
+    model: Project,
+});
+
+App.Views.ProjectView = Backbone.Marionette.CompositeView.extend({
+    events :{
+        'click div.moreDetailsButton' :  'moreDetails',
+        'click div.name' : 'navigateProject',
+    },
+    template: "#node-template",
+    templateHelpers: {
+        get: function( variable ){
+            try {
+                if( variable ){
+                    return variable;
+                }
+                else{
+                    return "(empty)";
+                }
+            }
+            catch( e ){
+                return ("(undefined)");
+            }
+
+        },
+        getIssueCount : function(){
+            try {
+                if( this.data && this.data.issueCount ) {
+                    return this.data.issueCount;
+                }
+                else{
+                    return 0;
+                }
+            }
+            catch( e ){
+                return 0;
+            }
+        },
+        getId : function(){
+            try{
+                if( this.id ){
+                    return this.id;
+                }
+                else{
+                    return 0;
+                }
+            }
+            catch( e ){
+                return 0;
+            }
+        }
+    },
+    tagName: "div",
+    
+    initialize: function(){
+        // grab the child collection from the parent model
+        // so that we can render the collection as children
+        // of this parent node
+
+        this.collection = this.model.subProjects;
+        this.model.on('change',this.updateSubs,this);
+        //this.model.on('change',this.render,this);
+        this.model.trigger('change');
+    },
+    updateSubs : function(){
+        this.collection = this.model.subProjects;
+        //this.render();
+    },
+    appendHtml: function(collectionView, itemView){
+        // ensure we nest the child list inside of 
+        // the current list item
+//        collectionView.$("li:first").append(itemView.el);
+        jQuery(collectionView.$("div.subProjects")[0]).append(itemView.el);
+        //jQuery(collectionView.el).append(itemView.el);
+    },
+    moreDetails : function(e){
+        // prevents recursive selctor havoc
+        if( e.srcElement.id != this.model.get('id')){
+            return;
+        }
+        
+        var md = jQuery("div.moreDetails",this.el).eq(0);
+        md.hide();
+        md.slideDown(300);
+        
+    },
+    navigateProject : function(e) {
+
+        // if root element was clicked, then just navigate back to nowhere
+        if( e.srcElement.parentElement.id == 0){
+            window.location.hash="";
+            return;
+        }
+        // prevents recursive selctor havoc
+        if( e.srcElement.parentElement.id != this.model.get('id')){
+            return;
+        }
+        window.location.hash="project/"+this.model.get('id');
+    }
+});
+
+App.Views.ProjectWidget = Backbone.Marionette.ItemView.extend({
+    template: "#projectWidgetTemplate",
+    events: {
+        'click div#newProjectButton' :  'newProject',
+    },
+    initialize : function(){
+        //this.projects = new Backbone.Model();
+        this.projects = new Project();
+        this.projects.url = "/";
+        this.projects.fetch();
+    },
+    // this is executed after template is alreayd rendered
+    onRender: function(){
+        rootView = new App.Views.ProjectView({ model: this.projects,el: jQuery('div.projectView',this.el) });
+        // render after thigs are loaded....
+        rootView.model.on("change",function(){this.render()},rootView);
+    },
+    newProject : function(){
+        jQuery("#newProjectModal").modal('show');
+
+    }
+});
+
+
 App.Controllers.Project = Backbone.Router.extend({
     routes: {
-        "" : "index",
+        "" :            "index",
+        "project/:id" : "projectDetails", 
     },
 
 	initialize : function(){
@@ -11,18 +153,34 @@ App.Controllers.Project = Backbone.Router.extend({
 		if( window.location.pathname.match('projects') ) {
 			this.projectid = window.location.pathname.match('projects\/.*$')[0].substring(9,33);
 		}		
-		this.model = new R;
-		this.model.id = this.projectid;
-		this.items_collection = new Items;
-		this.items_collection.urlOverride = window.location.pathname+'/items';
-		this.itemsView = new App.Views.Items.ProjectIndex({model: this.model, collection: this.items_collection, el: 'section.itemList'});						
+		
 	},
     index: function() {  		
-		this.model.fetch();
-		this.items_collection.fetch();
-		
+        rootView = new App.Views.ProjectWidget();
+        layout.content.reset();
+        layout.content.show( rootView );
     },
+    projectDetails : function() {
+        layout.content.reset();
+    }
 
 });
+
+
+AppLayout = Backbone.Marionette.Layout.extend({
+  template: "#my-template",
+  el: jQuery("div#main"),
+  regions: {
+    ribbon: "#ribbon",
+    content: "#center",
+    leftSidebar: "#leftSidebar",
+    rightSidebar: "#rightSidebar",
+    modal: "#modal",
+  }
+});
+
+var layout = new AppLayout();
+layout.render(); 
+
 
 
