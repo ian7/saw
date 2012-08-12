@@ -118,8 +118,8 @@ App.Views.ProjectView = Backbone.Marionette.CompositeView.extend({
     }
 });
 
-App.Views.ProjectWidget = Backbone.Marionette.ItemView.extend({
-    template: "#projectWidgetTemplate",
+App.Views.ProjectListWidget = Backbone.Marionette.ItemView.extend({
+    template: "#projectListWidgetTemplate",
     events: {
         'click div#newProjectButton' :  'newProject',
     },
@@ -142,6 +142,35 @@ App.Views.ProjectWidget = Backbone.Marionette.ItemView.extend({
 });
 
 
+App.Views.ProjecDetailsWidget = Backbone.Marionette.ItemView.extend({
+    template: "#projectDetailsWidgetTemplate",
+    templateHelpers: {
+        get : function( id ){
+            if( this[id] ){
+                return(this[id]);
+            }
+            else{
+                return("(empty)");
+            }
+        },
+    },
+    events: {
+    },
+    initialize : function(){
+        //this.projects = new Backbone.Model();
+        this.model = new Project();
+        this.model.url = "/projects/"+this.id;
+        this.model.fetch();
+        _(this).bindAll();
+        // render after thigs are loaded....
+        this.model.on("change",function(){this.render()},this);
+    },
+    // this is executed after template is alreayd rendered
+    onRender: function( ){
+    },
+});
+
+
 App.Controllers.Project = Backbone.Router.extend({
     routes: {
         "" :            "index",
@@ -156,15 +185,20 @@ App.Controllers.Project = Backbone.Router.extend({
 		
 	},
     index: function() {  		
-        rootView = new App.Views.ProjectWidget();
+        rootView = new App.Views.ProjectListWidget();
         layout.content.reset();
         layout.content.show( rootView );
     },
-    projectDetails : function() {
+    projectDetails : function(id) {
         layout.content.reset();
-    }
+        detailsView = new App.Views.ProjecDetailsWidget({id:id});
+        layout.content.show( detailsView );        
+    },
 
 });
+
+
+
 
 
 AppLayout = Backbone.Marionette.Layout.extend({
