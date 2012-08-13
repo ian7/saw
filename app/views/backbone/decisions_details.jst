@@ -1,4 +1,13 @@
 <table width="100%" class="decisionList">
+	<theader>
+		<tr>
+			<th>Decision</th>
+			<th>Rationale</th>
+			<th>User</th>
+			<th>Timestamp</th>
+		</tr>
+	</theader>
+	<tbody>
 	<% _(model.attributes.decisions).each( function( decisionType ) { %>
 		<% _(decisionType.details).each( function( individualDecision ) { %>
 		<tr id="<%=individualDecision.decision_id %>" class="decision <%=decisionType.color.toLowerCase()%>">
@@ -12,4 +21,5 @@
 		</tr>
 		<% },this); %>
 	<% },this); %>
+	</tbody>
 </table>

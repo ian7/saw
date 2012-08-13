@@ -7,35 +7,7 @@
 				<b>Alternative</b>
 	    		<!--<b>Alternative name:</b><div class="name" contenteditable="true"><% if(a.get('name')) {%><%= a.get('name') %><% } else { %>(empty)<% } %></div><br>
 				-->
-				<table class="itemDetails" id="<%= a.get('id') %>">
-
-				<% _(a.attributes).each(function(value, key) { 
-					if (key.charAt(0) != '_' && 
-					    key != "alternative_url" && 
-					    key != "decisions" && 
-					    key != "id" && 
-					    key != "relation_id" && 
-					    key != "relation_url" &&
-					    key != "your_decision" &&
-					    key != "project_id" &&
-					    key != "type" &&
-					    key != "undefined") { %>
-				<tr>
-
-				<td class="key">
-					<!-- does capitalization -->
-					<%= key.charAt(0).toUpperCase() + key.slice(1) %>: 
-				</td>
-
-				<td>
-					<div class="editable <% if(a.isNew()) {%>nextEdited<% }%>" id="<%=key%>" contenteditable="true"><% if( value ) { %><%= value %><% } else { %>(empty)<% } %></div>
-				</td>
-				</tr>
-
-				<% }; 
-				});%>
-				</table>
-
+				<div class="itemAttributes"></div>
 				<div class="decisionsDetails"></div>
 				<div class="relationSelector"></div>
 		    </td>
@@ -50,49 +22,6 @@
 	    		<b>Decisions:</b>
 				<table class="decisions">
 
-				 	<!-- here we go over all decision types-->
-					<% _(a.attributes.decisions).each(function(decision) { %>
-						<tr>
-							<!-- for a moment let's hide it-->
-							<td class="hidden">
-							<!-- here comes the insert -->
-								<table class="decisionList">					
-										<!-- here we enter single decisions -->
-										<% _(decision.details).each( function( detail ) { %>
-												<tr class="decision <%= decision.color.toLowerCase() %>">
-												<td class="user">
-													<% if( detail.rationale) { %>
-														<div class="rationaleDiv" id="enabled">
-													<% } else { %>
-														<div class="rationaleDiv"> 
-													<% } %>
-															<img src="/images/icons/user.png"/><%= detail.email %>
-														</div>
-													<div class="rationaleTip tooltip">
-														<b>Taken:</b><div class="content"> <%= detail.timestamp %></div> <br/>
-														<b>Rationale:</b><br/>
-														<div class="content"><%= detail.rationale %></div>
-													</div>
-												</td>
-											</tr>
-										<% }); %>
-								</table>
-							</td>
-							<td class="buttons">
-								<% if( !( a.attributes.your_decision && a.attributes.your_decision.name ) ) { %>
-									<!-- branch in which you don't have your decision -->
-						    		<div class="button decide <%= decision.color.toLowerCase() %>" id="<%= decision.decision_tag_id %>"><%= decision.name %>(<%= decision.count %>)</div>
-								<% } else { %>
-									<!-- branch in which you have your decision -->
-									<% if( decision.name == a.attributes.your_decision.name ) { %>
-					    				<div class="button undecide <%= decision.color.toLowerCase() %>" id="<%= decision.decision_tag_id %>">Revoke(<%= decision.count %>)</div>
-									<% } else { %>
-							    		<div class="button disabled" id="<%= decision.decision_tag_id %>"><%= decision.name %>(<%= decision.count %>)</div>
-									<% } %>																		
-								<% } %>							
-							</td>
-						</tr>
-					<% }); %>
 					</table>
 	    	</td>
 </tr>
