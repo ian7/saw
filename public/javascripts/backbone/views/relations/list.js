@@ -20,7 +20,7 @@ App.Views.Relations.Show = Backbone.View.extend({
 		
 		jQuery(".unRelate",this.el).fastConfirm({
            position: "left",
-              questionText: "Are you sure ?",
+              questionText: "Are you sure you want to remove this relation?",
               onProceed: function(trigger) {
 			 		jQuery.getJSON('/relations/unrelate?relation_id=' + e.srcElement.id, function(data) {});
                        $(trigger).fastConfirm('close');

@@ -22,7 +22,7 @@ TagView = Backbone.View.extend({
 	unTag : function( e ) {
 		jQuery(".unTag",this.el).fastConfirm({
            position: "left",
-              questionText: "Are you sure ?",
+              questionText: "Are you sure you want to remove this tag?",
               onProceed: function(trigger) {
 			 		jQuery.getJSON('/tag/untag?tagging_id='+e.srcElement.id, function(data) {});
                     jQuery(trigger).fastConfirm('close');
