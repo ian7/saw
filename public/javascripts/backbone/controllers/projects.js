@@ -30,8 +30,8 @@ App.Views.ProjectView = Backbone.Marionette.CompositeView.extend({
     templateHelpers: {
         get: function( variable ){
             try {
-                if( variable ){
-                    return variable;
+                if( this[variable] ){
+                    return this[variable];
                 }
                 else{
                     return "(empty)";
@@ -114,7 +114,7 @@ App.Views.ProjectView = Backbone.Marionette.CompositeView.extend({
         if( e.srcElement.parentElement.id != this.model.get('id')){
             return;
         }
-        window.location.hash="project/"+this.model.get('id');
+        window.location.hash="projects/"+this.model.get('id');
     }
 });
 
@@ -162,11 +162,28 @@ App.Views.ProjecDetailsWidget = Backbone.Marionette.ItemView.extend({
         this.model.url = "/projects/"+this.id;
         this.model.fetch();
         _(this).bindAll();
-        // render after thigs are loaded....
+        
+        // (re)render after thigs are loaded....
+        // this needs to be changed into this.refresh()
         this.model.on("change",function(){this.render()},this);
+
+        this.items_collection = new Items;  
+        this.items_collection.urlOverride = this.model.url + "/items";
+        this.items_collection.fetch();
+        this.itemListView = new App.Views.IssueList({collection: this.items_collection });                     
+
     },
     // this is executed after template is alreayd rendered
     onRender: function( ){
+
+        // this we can leave out for later
+        //this.sidebarView = new App.Views.ProjectSidebar({ el: this.sidebarEl });      
+
+        this.itemListView.$el = jQuery( "div.issueListHolder", this.el);
+        this.itemListView.render();
+    },
+    refresh: function(){
+
     },
 });
 
@@ -174,7 +191,8 @@ App.Views.ProjecDetailsWidget = Backbone.Marionette.ItemView.extend({
 App.Controllers.Project = Backbone.Router.extend({
     routes: {
         "" :            "index",
-        "project/:id" : "projectDetails", 
+        "projects/:id" : "projectDetails",
+        "issues/:id" : "issueDetails",
     },
 
 	initialize : function(){
@@ -192,9 +210,13 @@ App.Controllers.Project = Backbone.Router.extend({
     projectDetails : function(id) {
         layout.content.reset();
         detailsView = new App.Views.ProjecDetailsWidget({id:id});
-        layout.content.show( detailsView );        
+        layout.content.show( detailsView );  
     },
-
+    issueDetails : function( id ){
+        layout.content.reset();
+        detailsView = new App.Views.IssueDetails({id:id});
+        layout.content.show( detailsView );  
+    },
 });
 
 

@@ -17,6 +17,10 @@ var Item = Backbone.Model.extend({
 		unknown : 'That shouldn\'t happen',
 	},
     url : function() {
+    	// if override then override
+    	if( this.urlOverride ) {
+    		return( this.urlOverride )
+    	}
 		var base = "";
 		// in case there is a collection attached to this item
 		// we do some (evil) url arthmetics 

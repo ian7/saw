@@ -37,31 +37,35 @@ class ProjectsController < ApplicationController
      # i'm making use of that other way. 
      #@onload = 'getJSON("'+ "projects" + '.json", callback);'
      
-     @allProjects = Tag.find( :all, :conditions=>{:type=>"Project"}).asc("name")
+     @allProjects = TreeTag.find( :all, :conditions=>{:type=>"Project"}).asc("name")
      
-#     @allProjects.sort! { |a,b| a.name <=> b.name }
+    # @allProjects.sort! { |a,b| a.name <=> b.name }
      
      tree = {};
      tree["name"]="Projects"
      #tree["id"]=0
-     tree["data"]=[];
+     tree["data"]={}
      tree["type"]="RootNodeWithoutType"
-     tree["children"]=[];
+     tree["children"]=[]
      
+
+     #t = []
      # first i want to find all root projects (those without parents)
      
-     TreeTag.find(:all,:conditions=>{:type=>"Project"}).each do |someProject|
-       if someProject["parent"] == nil
+     @allProjects.each do |someProject|
+       if someProject["parent"] == nil || someProject["parent"] == "(empty)"
          
          # and then I hash-dump them recursively
-         tree["children"] << someProject.to_hash_recursive
+         p = someProject.to_hash_recursive
+         tree["children"] << p
+         #t << someProject.to_hash_recursive
        end
      end
      
      @projects = tree
      
      respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :layout=>false } # index.html.erb
       format.json  { render :json => tree }
       format.tex { }
     end

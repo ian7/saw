@@ -29,7 +29,7 @@ App.Views.EventLog = Backbone.View.extend({
   initialize : function() {
   	_(this).bindAll('render','notify');
 
-  	this.collection = new Backbone.Collection();
+  	this.collection = new Backbone.Collection(null,{allowDuplicates: true});
 
 	this.collectionView = new UpdatingCollectionView({
       collection           : this.collection,
@@ -60,6 +60,9 @@ App.Views.EventLog = Backbone.View.extend({
   },
   notifyEvent : function( data ) {
     e = JSON.parse(data)
+
+
+    console.log("Event_log caught id:"+e.id);
     //if(e.type != null) {
       this.collection.add(e);
     //}

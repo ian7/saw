@@ -1,6 +1,45 @@
 
 
-AlternativeUpdatingView  = Backbone.View.extend({
+App.Views.AlternativeCompactView  = Backbone.Marionette.ItemView.extend({
+	template: '#alterntaiveCompactViewTemplate',
+	tagName: "tr",
+	templateHelpers: {
+        get: function( variable ){
+            try {
+                if( this[variable] ){
+                    return this[variable];
+                }
+                else{
+                    return "(empty)";
+                }
+            }
+            catch( e ){
+                return ("(undefined)");
+            }
+
+        },
+        renderDecisionButtons : function(){
+        	// we'll return this 
+        	h = "";
+
+			if( !( this.your_decision && this.your_decision.name ) ) { 
+			    _(this.decisions).each(function(decision) { 
+			    	h += "<div class='button decide "+ decision.color.toLowerCase() +"'";
+			    	h += "id='"+ decision.decision_tag_id + "' rel='whatever.html'>" + decision.name + "("+ decision.count + ")</div>";
+				}, this);
+			} else { 
+				_(this.decisions).each(function(decision) {
+					if( decision.name == this.your_decision.name ) { 
+						h += "<div class='button undecide " +  decision.color.toLowerCase() + "' id='" + decision.decision_tag_id + "'>Revoke(" + decision.count + ")</div>";
+					} 
+					else { 
+						h += "<div class='button disabled' id='" + decision.decision_tag_id +"'>" + decision.name +"(" + decision.count +")</div>"
+					}
+				},this); 
+			}
+			return(h);
+        },
+    },
 	className : "decision", 
     events : {
 		"keypress div.name" 		: "editedName",
@@ -24,33 +63,7 @@ AlternativeUpdatingView  = Backbone.View.extend({
 		eventer.register( this );
     },
     
-    render: function() {
-
-
-    	/*
-    	<textarea id="<%= a.get('id')%>nameEdit"><%= a.get('name') %></textarea>
-	   e = new nicEditor({buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript','html','image']}).panelInstance('area4');
-		*/
-
-	   jQuery(this.el).attr('id',this.model.id);
-	   
-	   color = "white";
-
-	   if( this.model.attributes.decisions ) {
-		   _.each( this.model.attributes.decisions, function( decision ) {
-			    if( decision.count > 0 ) {
-					if( color == 'white' ) {
-						color = decision.color;
-					}
-					else {
-						color = 'gray';
-					}
-				}
-			});
-		}
-	   // hell love chainging !
-	   jQuery(this.el).removeClass().addClass("decision").addClass(color.toLowerCase());
-
+  /*  render: function() {
 
 
 		// autocompletition for the alterantives
@@ -86,36 +99,30 @@ AlternativeUpdatingView  = Backbone.View.extend({
 		}
 
 	   // tooltip for decision rationale
-/*	   jQuery("div.rationale#"+this.model.get('id'),this.el).cluetip({
-			cluetipClass: 'rounded', 
-			dropShadow: false, 
-			sticky: true, 
-			ajaxCache: false,
-			activation: 'click',
-			positionBy: 'fixed',
-			});
-*/ 
 
-
-
-/* disabled for the campus branch
-		jQuery("div.button.decide",this.el).tooltip({
-			position: 'bottom center',
-			tip: "div.tooltip",
-			events: {
-				def: "click, blur",
-				input: "none, none",
-				widget: "none, none",
-				tooltip: "none, none",
-				} 			
-			});
-*/
 
 	   this.el.innerHTML = JST.alternatives_show( {a: this.model} );
 
 	   return this;
     },
-
+*/
+	onRender : function(){
+		var color = "white";
+		if( this.model.attributes.decisions ) {
+		_.each( this.model.attributes.decisions, function( decision ) {
+		    if( decision.count > 0 ) {
+				if( color == 'white' ) {
+					color = decision.color;
+				}
+				else {
+					color = 'gray';
+				}
+			}
+		});
+		}
+		// this colors decisions 
+		jQuery(this.el).removeClass().addClass("decision").addClass(color.toLowerCase());
+	},
     edit: function( e ){
 	   taName = this.model.get('id')+"nameEdit";
 	   
@@ -331,29 +338,28 @@ AlternativeUpdatingView  = Backbone.View.extend({
 
 
 
-App.Views.Alternatives.List = Backbone.View.extend({
+App.Views.AlternativeCompactList = Backbone.Marionette.CollectionView.extend({
+  template: '#alternativeCompactListTemplate',
+  itemView: App.Views.AlternativeCompactView,
   events : {
-//	"click .newItem" : "newItem"
   },
   initialize : function() {
-	this.alternativesCollectionView = new UpdatingCollectionView({
-      collection           : this.collection,
-      childViewConstructor : AlternativeUpdatingView,
-      childViewTagName     : 'tr'
-    });
-	this.render();
 	notifier.register(this);
-	_(this).bindAll('newAlternative','removeNewAlternative','checkNewAlternative');
+	_(this).bindAll();
 	_.extend( this, App.Helpers.ItemNavigation );
-	this.collection.bind('saved', this.checkNewAlternative);
-	this.collection.bind('refresh', this.checkNewAlternative);
+	//this.collection.bind('saved', this.checkNewAlternative);
+	//this.collection.bind('refresh', this.checkNewAlternative);
   },
- 
+ /*
   render : function() {
 		this.rendered = true;
 		this.alternativesCollectionView.el = jQuery('table.alternativeList', this.el);
 		this.alternativesCollectionView.render();
 		this.checkNewAlternative();
+  },
+  */
+  onRender : function() {
+		jQuery( "div.spinner", this.el).hide();
   },
   notify : function( broadcasted_id ) {
   },

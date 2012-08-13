@@ -74,49 +74,41 @@ App.Views.Items.ProjectItem = Backbone.View.extend({
 
 });
 
-App.Views.Items.ProjectIndex = Backbone.View.extend({
-  events : {
-  },
+
+App.Views.Items.ProjectIndex = Backbone.Marionette.CompositeView.extend({
+	template: "#leaf-branch-template",
+/*
+
+  	events : {
+  	},
 
   initialize : function() {
 
+	_(this).bindAll();
 
-//	this.collection.bind('saved',this.checkNewItem );
-//	this.collection.bind('refresh',this.checkNewItem );
-	_(this).bindAll('render','renderHeader');
-
-	this.collection.comparator = function( m ) { return m.get('id'); };
-
-    // simply magic :)
-    if( window.location.pathname.match('projects') ) {
-		this.projectid = window.location.pathname.match('projects\/.*$')[0].substring(9,33);
-	}
-
-	this._itemsCollectionView = new UpdatingCollectionView({
-      collection           : this.collection,
-      childViewConstructor : App.Views.Items.ProjectItem,
-      childViewTagName     : 'p',
-	  childViewClassName   : 'itemList'
-    });
+//	this.collection.comparator = function( m ) { return m.get('id'); };
 
 
-	this.model.bind('change',this.renderHeader);
-	this.render();
+//	this.render();
 	notifier.register(this);
 
   },
- 
-  render : function() {			
+ */
+ /* render : function() {			
 		this._rendered = true;
-		this._itemsCollectionView.el = this.el; 
-		this._itemsCollectionView.render();
+
+
+
+//		this._itemsCollectionView.el = this.el; 
+//		this._itemsCollectionView.render();
 
 		
 		jQuery(this.el).prepend("<div class = 'header'></div>");
 //		jQuery(this.el).prepend("<div class = 'button orange expandAll'>Expand all</div>");
 //		jQuery(this.el).prepend("<div class = 'button red newItem'>New!</div>");
 //		this.checkNewItem();
-  },
+
+  },*/
   renderHeader : function(){
   	e=jQuery("div.header",this.el);
   	e.html("Project: <b>"+this.model.get('name')+"</b>");
@@ -146,5 +138,7 @@ App.Views.Items.ProjectIndex = Backbone.View.extend({
 		
   },
 });
+
+
 
 

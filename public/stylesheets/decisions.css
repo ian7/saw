@@ -243,14 +243,6 @@ div.tagsList div.header {
 	
 }
 
-table.itemDetails td.key {
-	font-weight: bold;
-	vertical-align: top;
-}
-
-table.itemDetails td {
-	padding-bottom: 0.5em;
-}
 
 
 li.ui-autocomplete-category {

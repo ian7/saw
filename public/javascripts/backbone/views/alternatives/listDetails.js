@@ -4,38 +4,59 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	className : "alternativeList", 
     events : {
 //		"keypress div.name" 			: "editedName",
-		"keypress div.editable" : "editedAttribute",
-		"keydown div.editable"	: "specialKey",
-		"click div.editable" : "edit",
-		"click .editable" : "selectAll",
-		"keypress .decisionRationale" : "editedRationale",
+//		"keypress div.editable" : "editedAttribute",
+//		"keydown div.editable"	: "specialKey",
+//		"click div.editable" : "edit",
+//		"click .editable" : "selectAll",
+//		"keypress .decisionRationale" : "editedRationale",
 		//"click div.name"				: 'selectAll',
+
+//		"focus div.editable"		: "focused",
+//		"blur div.editable"			: "blured",
 		"click .deleteAlternative"	: "deleteAlternative",
 		"click .unrelateAlternative": "unrelateAlternative",
 		"click .decide"				: "decide",
 		"click .undecide"			: "undecide",
 		'mouseover'	: 'mouseover',
 		'mouseout' : 'mouseout',
-
     },
     focusedUsers : {},
     initialize: function() {
-		_(this).bindAll('render','decide','undecide','notify','notifyEvent');
-	    this.model.bind('change', this.render);
-
+    	// bind them all!
+		_(this).bindAll();
+	    
+	   // this.model.bind('change', this.refresh);
+		this.model.bind('change', this.render);
 		notifier.register(this);		
 		eventer.register(this);
+		//this.el = el;
 
-    },
-    
+		// creating itemAttributes widget, but not setting element value
+		// this.el needs to be set in render function in order to support cascading redering.
+        this.itemAttributesWidget = new App.Views.ItemWidget( {model: this.model });
+    },  
     render: function() {
+
        el = jQuery(this.el);
-       el.html("");
-	
-	   el.append(JST.alternatives_showDetails( {a: this.model} ));
-	
-	   jQuery(this.el).attr('id',this.model.id);
-	    
+       el.html(JST.alternatives_showDetails( {a: this.model} ));
+       
+		// this.el needs to be set in render function in order to support cascading redering.
+       this.itemAttributesWidget.el = jQuery("div.itemAttributes",this.el)[0];
+       this.itemAttributesWidget.render();
+
+
+       // rendering item attributes 
+       //jQuery("div.itemAttributes",this.el).html( JST.)
+
+
+	  	//el.append(JST.alternatives_showDetails( {a: this.model} ));
+		//el.html("<b>here!</b>");
+
+		//this.itemView = new App.Views.ItemWidget({el: jQuery("div.itemAttributes",this.el), model: this.model});
+
+	   jQuery(this.el).attr('id',this.model.id);	    
+/*
+
 		// let's render selector - it is passive - do it only if item is not new
 		if( !this.model.isNew() ){
 			this.selectorView = new App.Views.Relations.Selector( {model: this.model, el: jQuery('div.relationSelector',this.el) });
@@ -45,7 +66,10 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 			this.decisionsDetailsEl = jQuery("div.decisionsDetails",this.el);
 			jQuery(this.decisionsDetailsEl).html( JST.decisions_details({ model: this.model } ));
 		}
-	
+
+*/	
+
+/* 222222222
 	   //this.decisionListView.render();
 	   var thisModelId = this.model.get('id');
 
@@ -110,7 +134,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 			});
 			
 	}
-	
+222222 */	
 	// rationale recording stuff
 	
 /*	
@@ -195,6 +219,12 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		*/
 	   return this;
     },
+    focused : function( e ) {
+
+    },
+    blured : function( e ) {
+
+    },
     selectAll : function( e ){ 
 		if( e.toElement.innerText == '(edit to add)' ||
 			e.toElement.innerText == '(empty)') {
@@ -236,7 +266,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		var viewObject = this;
  		jQuery(".deleteAlternative",this.el).fastConfirm({
            position: "left",
-              questionText: "Are you sure?",
+              questionText: "Are you sure that you want to delete this alternative?",
               onProceed: function(trigger) {
                     $(trigger).fastConfirm('close');
 					viewObject.model.destroy();
@@ -270,6 +300,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 	},
 	notify : function( broadcasted_id ) {
 
+		// simple model recehck
 
 	},
 	notifyEvent : function( data ){
@@ -283,11 +314,11 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 			// in case one of decisions changed
 			_(this.model.attributes.decisions).each( function( decisionType ){
 				_(decisionType.details).each( function( individualDecision ){
-					if(individualDecision.decision_id == broadcasted_id)
+					if(individualDecision.decision_id == d.id)
 						this.refetch();
 				},this);
 			},this);
-	  	}
+  		}
 
 	  	if( d.id == this.model.get('id') ){
 			if( d.event == "mouseover") {
@@ -417,20 +448,22 @@ App.Views.Alternatives.ListDetails = Backbone.View.extend({
 	this.alternativesCollectionView = new UpdatingCollectionView({
       collection           : this.collection,
       childViewConstructor : AlternativeDetailsUpdatingView,
-      childViewTagName     : 'tr'
+      childViewTagName     : 'tr',
+      el : jQuery('table.alternativeListDetails', this.el)[0],
     });
 
 	notifier.register(this);
-	_(this).bindAll('renderHeader','render','newAlternative','removeNewAlternative','checkNewAlternative');
+	_(this).bindAll();
 
-	this.collection.bind('saved', this.checkNewAlternative);
-	this.collection.bind('refresh', this.checkNewAlternative);
+//	this.collection.bind('saved', this.checkNewAlternative);
+//	this.collection.bind('refresh', this.checkNewAlternative);
 	this.model.bind('change',this.renderHeader);
 	// load and render navigation helper
 	_.extend( this, App.Helpers.ItemNavigation );
 
   },
  
+
   render : function() {
 		this.rendered = true;
 		el = jQuery(this.el);
@@ -438,10 +471,12 @@ App.Views.Alternatives.ListDetails = Backbone.View.extend({
 		el.prepend("<div class='header'></div>");
 		this.renderNavigation();
 		
-		this.alternativesCollectionView.el = jQuery('table.alternativeListDetails', this.el);
+//		this.alternativesCollectionView.el = jQuery('table.alternativeListDetails', this.el);
 		//this.alternativesCollectionView.el.innerHTML="";
-		if( this.model )
-			this.alternativesCollectionView.el.attr("id",this.model.id);
+		if( this.model ) {
+			
+			jQuery(this.alternativesCollectionView.el).attr("id",this.model.id);
+		}
 		this.alternativesCollectionView.render();
 		this.checkNewAlternative();
   },

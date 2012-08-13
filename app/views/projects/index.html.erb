@@ -27,7 +27,7 @@
 
 <script id="node-template" type="text/template">
     <div class="project" id="<%%= getId() %>">
-    	<div class="name"><%%= get(name)  %></div> (<%%= getIssueCount() %> issues) 
+    	<div class="name"><%%= get('name')  %></div> (<%%= getIssueCount() %> issues) 
     	<div class="moreDetailsButton" id="<%%=getId()%>">[more]</div>
     	<div class="moreDetails hide">
     		some more funny details come here!
@@ -40,10 +40,13 @@
 <script id="my-template" type="text/template">
 	<div id='layout'>
 		<div id='ribbon'/>
-		<div id='leftSidebar'/>
-		<div id='rightSidebar'/>
-		<div id='center'></div>
+		<div id='trunk'>
+			<div id='leftSidebar'/>
+			<div id='center'></div>
+			<div id='rightSidebar'/>
+		</div>
 		<div id='modal'/>
+		<div id='footer'/>
 	</div>
 </script>
 
@@ -62,9 +65,69 @@
 </div>
 
 
-<script id="projectWidgetTemplate" type="text/template">
+<script id="projectListWidgetTemplate" type="text/template">
 	<div class="projectView"><img class="spinner" src="/images/spinner.gif"/></div>
 	<div class="button green" id="newProjectButton">New Project</div>
+</script>
+
+
+<script id="projectDetailsWidgetTemplate" type="text/template">
+	<div class="projectDetails">
+		Some funny project details come here like name: <b><%%= get('name') %></b> or <b><%%= get('id')%></b>.
+	</div>
+	<div class="issueListHolder">
+	</div>
+</script>
+
+
+<script id="issueListTemplate" type="text/template">
+	<div class="projectView"><img class="spinner" src="/images/spinner.gif"/></div>
+</script>
+
+<script id="issueCompactViewTemplate" type="text/template">
+	<div class="issueCompactView" id ="<%%= get('id') %>">
+	   	<span class="focusedUsers"></span>
+	   	<b>Issue:</b> <span class="e6" contenteditable="true"><%%= get('name') %></span>
+			<div style="float: right">
+	    		<div class="button gray expand">Expand</div> 
+				<div class="button orange details">Details</div>
+		    	<div class="button black deleteItem">Delete</div>
+			</div>
+		<table class="alternativeList"></table>
+	</div>
+</script>
+
+
+<script id="alternativeCompactListTemplate" type="text/template">
+	alternativeCompactListTemplate
+	<div class="alternativeList">
+	</div>
+</script>
+
+<script id="alterntaiveCompactViewTemplate" type="text/template">
+	<!--alterntaiveCompactViewTemplate id: 	<%%= get('id') %> -->
+	<td width="17px">
+		<b>Alternative:</b>
+	</td>
+	<td>	   		
+		<div class="deleteAlternative">
+			<span class="altenrnativeFocusedUsers"></span>
+			<img class="deleteAlternative" src="/images/icons/delete.png"/>
+		</div>
+		<div class="name" contenteditable="true" id="<%%= get('id') %>nameEdit"><%%= get('name') %></div>
+
+		<!-- this piece is for newly created alternative 
+			<div class="name newEdit" contenteditable="true" id="<%%= get('id')%>nameEdit"><%%= get('name') %></div> 
+		-->	
+    </td>
+	 <td class="decisions"> 
+	 	<%%= renderDecisionButtons() %>
+   	</td>
+</script>
+
+
+<script id="issueDetailsTemplate" type="text/template">
+	issueDetailsTemplate
 </script>
 
 

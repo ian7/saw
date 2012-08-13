@@ -12,7 +12,24 @@ jQuery.fn.flash = function( color, duration )
 */
 }
 
- ItemUpdatingView = Backbone.View.extend({
+App.Views.IssueCompactView = Backbone.Marionette.ItemView.extend({
+	template: '#issueCompactViewTemplate',
+	templateHelpers: {
+        get: function( variable ){
+            try {
+                if( this[variable] ){
+                    return this[variable];
+                }
+                else{
+                    return "(empty)";
+                }
+            }
+            catch( e ){
+                return ("(undefined)");
+            }
+
+        },
+    },
   events : {
 	"click .expand" : "toggleExpand",
 	"click .deleteItem" : "deleteItem",
@@ -28,26 +45,23 @@ jQuery.fn.flash = function( color, duration )
   focusedUsers : {},
 
   initialize : function(options) {
-    this.render = _.bind(this.render, this); 
+	_(this).bindAll();
+    
     this.model.bind('change', this.render);
 
-	this.alternativesCollection = new Alternatives;
-   
-	this.alternativesCollection.issueView = this;
 	this.isExpanded = false;
 
-	// catch alternatives resource location hack
-	this.alternativesCollection.item_url = window.location.pathname+"/"+this.model.get('id');
-	this.alternativesCollection.url = window.location.pathname+"/"+this.model.get('id')+'/alternatives';
+	this.id = this.model.get('id');
 	
-	this.alternativesCollectionView = new App.Views.Alternatives.List({ collection: this.alternativesCollection, el: this.el });
-	_(this).bindAll('notify','mouseover','mouseout','notifyEvent');
+	// i skip it for now. 
+	//this.alternativesCollectionView = new App.Views.Alternatives.List({ collection: this.alternativesCollection, el: this.el });
+	_(this).bindAll();
 		
 	notifier.register( this );
 	eventer.register( this );
   },
 
-  render : function() {
+  /*render : function() {
 
 	this.alternativesCollection.item_url = window.location.pathname+"/"+this.model.get('id');
 	this.alternativesCollection.url = window.location.pathname+"/"+this.model.get('id')+'/alternatives';
@@ -68,6 +82,7 @@ jQuery.fn.flash = function( color, duration )
 
    return this;
   },
+  */
   selectAll : function( e ){ 
 	if( e.toElement.innerText == '(edit to add)') {
 		document.execCommand('selectAll',false,null);
@@ -97,26 +112,12 @@ jQuery.fn.flash = function( color, duration )
 				}
 			});			
 		}
-		/* timed saving has proven to be not so very sexy
-         *
-		 *
-   	  	jQuery(this.el).stopTime("edit5");
-	  	jQuery(this.el).oneTime(000,"edit5", function() {
-			lastEditedItem.model.save(
-				{ name: jQuery("span.e6",this).html() },
-				{ success : function( model, resp)  {
-					model.parse( resp );
-					model.change();
-				}
-			});	
-		});	
-		*/
   },
   deleteItem : function() {
 		var viewObject = this;
  		jQuery(".deleteItem",this.el).fastConfirm({
            position: "left",
-              questionText: "Are you sure?",
+              questionText: "Are you sure that you want to delete this issue?",
               onProceed: function(trigger) {
 					// remove confirmation
   	                $(trigger).fastConfirm('close');
@@ -151,30 +152,39 @@ jQuery.fn.flash = function( color, duration )
   },
   expand: function(){
 			localStorage.setItem( this.model.get('id')+'expanded','true');
+
+
+			if( !this.alternativesCollection ){
+				
+				this.alternativesCollection = new Alternatives();
+				this.alternativesCollection.issueView = this;
+				// catch alternatives resource location hack
+				this.alternativesCollection.item_url =this.model.url();
+				this.alternativesCollection.url = this.model.url() + '/alternatives';
+				
+				this.alternativesCollectionView = new App.Views.AlternativeCompactList({ collection: this.alternativesCollection, el: jQuery("table.alternativeList",this.el) });
+
+				// and fetch them...
+				this.alternativesCollection.fetch();
+				jQuery("table.alternativeList",this.el).html("<div class='spinner'><img src='/images/ui-anim_basic_16x16.gif'/></div>");
+			}
 			
 			this.isExpanded = true;
-			jQuery(".expand", this.el).html("Collapse");
+			jQuery(".expand", this.el).html("Collapse");	
+			jQuery("table.alternativeList",this.el).slideDown(300);
 
-			this.alternativesCollectionView.render();
-			
-		   	// WTF ? new App.Views.Alternatives.List({ collection: this.alternativesCollection, el: this.el });
-			this.alternativesCollection.fetch({ silent: false,
-				success: function(model, resp) {
-//					model.issueView.model.change();
-					//model.issueView.alternativesCollection = model;
-					// this can be executed somewhere else :)					
-				}
-			});
 		
   },
   collapse: function(){
 		localStorage.removeItem( this.model.get('id')+'expanded');
+
 		this.isExpanded = false;
-		jQuery("table.alternativeList", this.el).html("<!-- nothing -->");
+		jQuery("table.alternativeList", this.el).slideUp(300);
 		jQuery(".expand", this.el).html("Expand");	
   },
   navigateToDetails : function () {
-		window.location.href = window.location.href+"#/"+this.model.get('id')+'/alternatives';
+		//window.location.href = window.location.href+"#/"+this.model.get('id')+'/alternatives';
+		window.location.hash = "issues/"+this.model.get('id');
   },
   notify : function( broadcasted_id ) {
 
@@ -231,31 +241,32 @@ jQuery.fn.flash = function( color, duration )
 	},
 });
 
-App.Views.Index = Backbone.View.extend({
-  events : {
-	"click .newItem" : "newItem",
-	"click .expandAll" : "expandAll",
-	"click .collapseAll" : "collapseAll",
-	"click .elicit" : "elicit",
-//	"click .newItem" : 'checkNewItem',
-  },
 
-  newItemName : '(new item)',
+App.Views.IssueList = Backbone.Marionette.CollectionView.extend({
+	template: '#issueListTemplate',
+	itemView : App.Views.IssueCompactView,
+	events : {
+		"click .newItem" : "newItem",
+		"click .expandAll" : "expandAll",
+		"click .collapseAll" : "collapseAll",
+		"click .elicit" : "elicit",
+	//	"click .newItem" : 'checkNewItem',
+	},
 
   initialize : function() {
 
-	_(this).bindAll('newItem','checkNewItem','removeNewItem','newItem','notify','notifyEvent');
+	_(this).bindAll();
 
-	this.collection.bind('saved',this.checkNewItem );
-	this.collection.bind('refresh',this.checkNewItem );
+//	this.collection.bind('saved',this.checkNewItem );
+//	this.collection.bind('refresh',this.checkNewItem );
 	
-	this.collection.comparator = function( m ) { return m.get('id'); };
+//	this.collection.on('change',this.render,this);
+	//this.collection.comparator = function( m ) { return m.get('id'); };
 
     // simply magic :)
-    if( window.location.pathname.match('projects') ) {
+    /*if( window.location.pathname.match('projects') ) {
 		this.projectid = window.location.pathname.match('projects\/.*\/items')[0].substring(9,33);
 	}
-
 	this._itemsCollectionView = new UpdatingCollectionView({
       collection           : this.collection,
       childViewConstructor : ItemUpdatingView,
@@ -264,14 +275,15 @@ App.Views.Index = Backbone.View.extend({
     });
 
 
-
 	this.render();
+	*/
+
 	notifier.register(this);
 	eventer.register(this);
 
   },
  
-  render : function() {			
+/*  render : function() {			
 		this._rendered = true;
 		this.el.innerHTML="";
 		
@@ -289,16 +301,13 @@ App.Views.Index = Backbone.View.extend({
 				+ "<div style='float: left'>" 
 				+ "<div class = 'button orange elicit'>Elicit issues</div>"
 				+ "</div><br/><br/></p>"
-/*				+ "<div class = 'button black export' id='rtf'>Export RTF</div>"
-				+ "<div class = 'button black export' id='rtf'>Export JSON</div>"
-				+ "<div class = 'button black export' id='rtf'>Import JSON</div>";
-				*/
 		jQuery(this.el).prepend(buttons);
 
 //		jQuery(this.el).prepend("<div class = 'button red newItem'>New!</div>");
 		this.checkNewItem();
 
   },
+  */
   removeNewItem : function() {
 		this.collection.each( function( i ) {
 			if( i.get('name') == '(edit to add)' ) {
@@ -308,7 +317,9 @@ App.Views.Index = Backbone.View.extend({
 		},this);
 	
   },
-  
+  appendHtml: function(collectionView, itemView, index){
+    collectionView.$el.prepend(itemView.el);
+  },
   newItem : function() {
 		collection = null;
 

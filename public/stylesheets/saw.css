@@ -115,8 +115,9 @@ table.artifactDetails th {
 div.alternativesList {
   width: 100%;
   }
-table.alternativesList {
+table.alternativeList {
   width: 100%;
+  font-size: 9pt;
   }
 tr.Positive td {
   background-color: #AEFF93;
@@ -358,16 +359,11 @@ ul{
 /*---------------------#center table start---------------------*/
 
 
-
+/*
 
 #center table.styled, table.styled th, table.styled td{
   border:none;
   border-collapse:collapse;
-/*  position:relative;
-  font-family:corbel,'helvetica neue','trebuchet ms',arial,helvetica,sans-serif;
-  font-size:1em;
-  line-height:1.5em
-  */
 }
 
 
@@ -380,9 +376,6 @@ ul{
   -moz-border-radius:6px;
   border-radius:6px;
   margin-bottom: 10px;
-  /* -webkit-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
-  -moz-box-shadow:1px 1px 10px rgba(0,0,0,0.8);
-  */
 }
 
 #center table.dynamic .plain td:nth-last-child(-n+1){
@@ -475,13 +468,16 @@ ul{
   background:white;
   color:#202020;
   }
-/*
 
 #center table.dynamic{
   width: 100%;
 }
 
 */
+
+table {
+  font-size: 9pt;
+}
 /*---------------------#center table end---------------------*/
 /*---------------------center end---------------------*/
 
@@ -508,10 +504,8 @@ div.link a{
 }
 /*---------------------link end---------------------*/
 /*---------------------footer start---------------------*/
-#footer{
+/*#footer{
 
-  /*float:left;*/
-  
   bottom: 0;
   width: 100%;
   background: #000000;
@@ -526,7 +520,7 @@ div.link a{
 }
 #footer a{
   color:#555;
-}
+}*/
 /*---------------------footer end---------------------*/
 
 /*---------------------jquery tools overlay start---------------------*/
@@ -998,7 +992,7 @@ div.login_failed {
 }
 
 div.debug{
-/*  display: none;*/
+  display: none;
 }
 
 
@@ -1007,44 +1001,38 @@ tr.focused{
 }
 
 div#layout div#leftSidebar{
-  position: fixed;
-  right: 0;
-  width: 120px;
-  height: 94%;
   background-color: red;
-  padding-left: 3px;
-  padding-right: 3px;
-  font-size: 6pt;
+  display: none;
 }
 
 div#layout div#rightSidebar{
+  background-color: #EEEEEE;
+  width: 8em;
+  height: 100%;
   position: fixed;
-  right: 0;
-  width: 120px;
-  height: 94%;
-  background-color: #D1D1D1;
-  padding-left: 3px;
-  padding-right: 3px;
-  font-size: 6pt;
+  top: 0px;
+  right: 0px;
 }
 
 div#layout div#ribbon{
-  position: fixed;
-  top: 0;
-  height: 20px  ;
   background-color: black;
-  padding-left: 3px;
-  padding-right: 3px;
-  font-size: 6pt;
-  border: 0px;
+  color: white;
+  position: fixed;
   width: 100%;
+  height: 2em;
+  top: 0px;
+  left: 0px;
+}
+
+div#layout div#trunk {
+  background-color: blue;
 }
 
 div#layout div#center{
   background-color: white;
-  padding-top: 30px;
-  padding-left: 30px;
-  padding-bottom: 30px;
+  margin-right: 8em;
+  margin-top: 1em;
+  padding: 2em;
 }
 
 div.subProjects { 
@@ -1076,4 +1064,19 @@ div.project div.moreDetails{
 
 img.spinner{
   padding: 2em;
+}
+
+
+div.projectDetails{
+  background: #EEEEEE;
+  padding: 3em;
+}
+div.spinner {
+  width: 0%;
+  margin: 0 auto;
+}
+
+div.issueCompactView {
+  padding-top: 4px;
+  padding-bottom: 6px;
 }
