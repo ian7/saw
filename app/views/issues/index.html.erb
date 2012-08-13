@@ -96,7 +96,7 @@ mygrid.load("<%= url_for( :controller=>"issues", :action=>"index", :format=>:xml
 		
 		
 		<td>
-            <a href="<%= issue_url(issue.id) %>" onclick="if (confirm('Are you sure?')) { var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'delete'); f.appendChild(m);f.submit(); };return false;" style="color:#ff0000;">x</a>
+            <a href="<%= issue_url(issue.id) %>" onclick="if (confirm('Are you sure that you want to delete this issue?')) { var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'delete'); f.appendChild(m);f.submit(); };return false;" style="color:#ff0000;">x</a>
         </td>
 		
     </tr>
