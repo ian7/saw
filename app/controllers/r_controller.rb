@@ -43,7 +43,7 @@ class RController < ApplicationController
   def update   
   
     r = Taggable.find params["id"]
-    Juggernaut.publish("/chats", r.id)
+    notify( r.id)
 
 # that doesn't belong to the attributes, so it needs to be adjusted manually
     r.name = params[:name]
@@ -57,7 +57,7 @@ class RController < ApplicationController
 
     r.save
 
-  Juggernaut.publish("/chats", r.id)
+  notify( r.id)
 
     respond_to do |format|
         format.json { render :json => r.to_json }
@@ -69,8 +69,8 @@ class RController < ApplicationController
     r = Taggable.find params[:id]
 
     if r 
-      Juggernaut.publish("/chats", r.id)
-      Juggernaut.publish("/chats", r.dynamic_type.id.to_s)
+      notify( r.id)
+      notify( r.dynamic_type.id.to_s)
 
       r.destroy
     end
@@ -86,7 +86,7 @@ class RController < ApplicationController
     r.save
     params[:id] = r.id
 
-    Juggernaut.publish("/chats", r.dynamic_type.id.to_s)
+    notify( r.dynamic_type.id.to_s)
 
 =begin  
     if params[:project_id] 
@@ -102,7 +102,7 @@ class RController < ApplicationController
     
     
     if params[:project_id]
-      Juggernaut.publish("/chats",params[:project_id])
+      notify(params[:project_id])
     end
 =end
     update    
@@ -128,7 +128,7 @@ class RController < ApplicationController
     r.save
 
     # blow notify
-    Juggernaut.publish("/chats",params[:id])
+    notify(params[:id])
 
     respond_to do |format|
         format.json { render :json => value }

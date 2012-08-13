@@ -110,8 +110,8 @@ class AlternativesController < ApplicationController
 		relation.origin = @alternative.id
 		relation.tip = @issue.id
 		relation.save
-		Juggernaut.publish("/chats",@issue.id)
-		Juggernaut.publish("/chats",@alternative.id)
+		notify(@issue.id)
+		notify(@alternative.id)
 	end
     
      respond_to do |format|
@@ -145,7 +145,7 @@ class AlternativesController < ApplicationController
       solvedBy_relation.origin = @alternative.id
       solvedBy_relation.tip = Taggable.find(params[:item_id]).id
       solvedBy_relation.save
-      Juggernaut.publish("/chats",params[:item_id])
+      notify(params[:item_id])
     end
     
     #TODO: unit test to test related issues.
@@ -188,7 +188,7 @@ class AlternativesController < ApplicationController
    		@alternative.save
    	end
 
-   	Juggernaut.publish("/chats", @alternative.id)
+   	notify( @alternative.id)
 
        respond_to do |format|
         ## this didn't worked as some attributes are implemented as dynamic types attributes
