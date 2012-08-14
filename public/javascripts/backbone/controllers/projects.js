@@ -193,6 +193,7 @@ App.Controllers.Project = Backbone.Router.extend({
         "" :            "index",
         "projects/:id" : "projectDetails",
         "issues/:id" : "issueDetails",
+        "projects/:projectId/issues/:issueId/alternatives" : "projectIssueAlternatives",
     },
 
 	initialize : function(){
@@ -217,6 +218,11 @@ App.Controllers.Project = Backbone.Router.extend({
         detailsView = new App.Views.IssueDetails({id:id});
         layout.content.show( detailsView );  
     },
+    projectIssueAlternatives : function( projectId, issueId ){
+        layout.content.reset();
+        detailsView = new App.Views.AlternativeDetailsWidget({projectId:projectId, issueId:issueId});
+        layout.content.show( detailsView );          
+    }
 });
 
 

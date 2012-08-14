@@ -131,21 +131,32 @@
 </script>
 
 
+<script id="alternativeDetailsViewTemplate" type="text/template">
+	alternativeDetailsViewTemplate
+	   		<td class="name">	   		
+				<div class="deleteAlternative">
+					<span class="altenrnativeFocusedUsers"></span>
+					<img class="deleteAlternative" src="/images/icons/delete.png"/>
+				</div>
+				<b>Alternative</b>
+				<div class="itemAttributes"></div>
+				<div class="decisionsDetails"></div>
+				<div class="relationSelector"></div>
+		    </td>
+	    	<td class="decisions"> 
+	    		<b>Decisions:</b>
+				<table class="decisions">
+				</table>
+	    	</td>
+</script>
+
+<script id="alternativeDetailsWidget" type="text/template">
+	alternativeDetailsWidget
+	<table class="alternativeListDetails">
+	</table>
+</script>
+
 <%= include_javascripts :projects  %>
-<!--
-<ul>
-	<% @allProjects.each do |p| %>
-	<li>
-		
-		<a href="/projects/<%=p.id%>/items"><%= p.name %></a>
-	</li>
-	<% end %>
-</ul>
-
-<div id="right-container">
-</div>
-
--->
 
 
 <script type="text/javascript" charset="utf-8">

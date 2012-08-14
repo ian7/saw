@@ -1,18 +1,10 @@
 
 
-AlternativeDetailsUpdatingView  = Backbone.View.extend({
+App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
+	template : "#alternativeDetailsViewTemplate",
 	className : "alternativeList", 
+	tagName : 'tr',
     events : {
-//		"keypress div.name" 			: "editedName",
-//		"keypress div.editable" : "editedAttribute",
-//		"keydown div.editable"	: "specialKey",
-//		"click div.editable" : "edit",
-//		"click .editable" : "selectAll",
-//		"keypress .decisionRationale" : "editedRationale",
-		//"click div.name"				: 'selectAll',
-
-//		"focus div.editable"		: "focused",
-//		"blur div.editable"			: "blured",
 		"click .deleteAlternative"	: "deleteAlternative",
 		"click .unrelateAlternative": "unrelateAlternative",
 		"click .decide"				: "decide",
@@ -34,7 +26,15 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		// creating itemAttributes widget, but not setting element value
 		// this.el needs to be set in render function in order to support cascading redering.
         this.itemAttributesWidget = new App.Views.ItemWidget( {model: this.model });
+
+        // this is just nice. 
+        this.id = this.model.id;
     },  
+    onRender : function(){
+		this.itemAttributesWidget.el = jQuery("div.itemAttributes",this.el);
+		this.itemAttributesWidget.render();
+    },
+ /*44444444
     render: function() {
 
        el = jQuery(this.el);
@@ -55,6 +55,7 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		//this.itemView = new App.Views.ItemWidget({el: jQuery("div.itemAttributes",this.el), model: this.model});
 
 	   jQuery(this.el).attr('id',this.model.id);	    
+444444444*/
 /*
 
 		// let's render selector - it is passive - do it only if item is not new
@@ -217,8 +218,10 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 		title: 'Rationale:'
 	});
 		*/
+		/*44444444444444444
 	   return this;
     },
+    4444444444*/
     focused : function( e ) {
 
     },
@@ -440,18 +443,21 @@ AlternativeDetailsUpdatingView  = Backbone.View.extend({
 
 
 
-App.Views.Alternatives.ListDetails = Backbone.View.extend({
+App.Views.AlternativeListDetails = Backbone.Marionette.CollectionView.extend({
+	itemView : App.Views.AlternativeDetailsView,
   events : {
 //	"click .newItem" : "newItem"
   },
   initialize : function() {
+	
+  	/*
 	this.alternativesCollectionView = new UpdatingCollectionView({
       collection           : this.collection,
       childViewConstructor : AlternativeDetailsUpdatingView,
       childViewTagName     : 'tr',
       el : jQuery('table.alternativeListDetails', this.el)[0],
     });
-
+	
 	notifier.register(this);
 	_(this).bindAll();
 
@@ -460,10 +466,10 @@ App.Views.Alternatives.ListDetails = Backbone.View.extend({
 	this.model.bind('change',this.renderHeader);
 	// load and render navigation helper
 	_.extend( this, App.Helpers.ItemNavigation );
-
+	*/
   },
  
-
+  /*
   render : function() {
 		this.rendered = true;
 		el = jQuery(this.el);
@@ -480,19 +486,11 @@ App.Views.Alternatives.ListDetails = Backbone.View.extend({
 		this.alternativesCollectionView.render();
 		this.checkNewAlternative();
   },
-  renderHeader : function(){
-  		el = jQuery('div.header',this.el);
-  		el.html("Issue: <b>"+this.model.get('name')+"</b>");
-  },
+  */
+
   notify : function( broadcasted_id ) {
-		this.collection.each( function( i ) {	
-/*			if( i.get('id') == broadcasted_id ) {
-				i.fetch();
-				i.change();
-			}
-			*/
-		});
   },
+
   newAlternative : function() {	
 		a = new Alternative;
 		// this.newItemName is unavailable when called by the 'save' event from the collection
@@ -501,7 +499,7 @@ App.Views.Alternatives.ListDetails = Backbone.View.extend({
 		jQuery("div.nextEdited").focus();
   },
 
- removeNewAlternative : function() {
+  removeNewAlternative : function() {
 		this.collection.each( function( a ) {
 			if( a.get('name') == '(edit to add)' ) {
 				this.collection.remove( a );
@@ -517,4 +515,31 @@ App.Views.Alternatives.ListDetails = Backbone.View.extend({
 });
 
 
+App.Views.AlternativeDetailsWidget = Backbone.Marionette.CompositeView.extend({
+	template: "#alternativeDetailsWidget",
+	itemView : App.Views.AlternativeDetailsView,
+	initialize : function(){
+		_(this).bindAll();
+
+		this.collection = new Alternatives();
+		var issueId = arguments[0]['issueId'];
+		var projectId = arguments[0]['projectId'];
+		this.collection.item_url = "/projects/"+projectId+"/items/"+issueId;
+		this.collection.urlOverride = this.collection.item_url+"/alternatives";
+		this.collection.fetch();
+
+	},
+	onRender : function(){
+	/*	this.alternativeList = new App.Views.AlternativeListDetails({
+				el: jQuery("table.alternativeListDetails",this.el), 
+				collection: this.collection,
+			});
+		this.alternativeList.render();
+		*/
+	},
+	appendHtml : function( collectionView, itemView, index ) {
+		//collectionView.$el.prepend(itemView.el);
+		jQuery("table.alternativeListDetails",collectionView.el).prepend(itemView.el);
+	},
+});
 

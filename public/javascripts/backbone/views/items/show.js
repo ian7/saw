@@ -18,7 +18,8 @@ App.Views.ItemWidget = Backbone.View.extend({
 		"id",
 		"decisions",
 		"type",
-		"item_url"
+		"item_url",
+		"undefined",
 	],
 	initialize : function() {
 		_(this).bindAll();
