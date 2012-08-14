@@ -1058,6 +1058,18 @@ div.project div.moreDetails{
   padding-left: 3em;
   color: green;
 }
+
+div.projectView{
+  margin: 1em;
+  padding: 2em;
+  background-color: #EEEEEE;
+}
+
+div#newProjectButton{
+  float: right;
+  margin-right: 2em;
+}
+
 .hide{
   display:none;
 }
@@ -1079,4 +1091,15 @@ div.spinner {
 div.issueCompactView {
   padding-top: 4px;
   padding-bottom: 6px;
+}
+
+div.ribbonWidget {
+  padding-left: 2em;
+  color: white;
+}
+
+div.ribbonWidget a {
+  text-decoration: underline;
+  color: white;
+  font-weight: bold;
 }

@@ -115,6 +115,7 @@ App.Views.ProjectView = Backbone.Marionette.CompositeView.extend({
             return;
         }
         window.location.hash="projects/"+this.model.get('id');
+        //app.navigate("projects/"+this.model.get('id'));
     }
 });
 
@@ -144,6 +145,7 @@ App.Views.ProjectListWidget = Backbone.Marionette.ItemView.extend({
 
 App.Views.ProjecDetailsWidget = Backbone.Marionette.ItemView.extend({
     template: "#projectDetailsWidgetTemplate",
+    className: 'projectDetailsWidget',
     templateHelpers: {
         get : function( id ){
             if( this[id] ){
@@ -187,6 +189,69 @@ App.Views.ProjecDetailsWidget = Backbone.Marionette.ItemView.extend({
     },
 });
 
+App.Views.RibbonWidget = Backbone.View.extend({
+    className : 'ribbonWidget',
+    initialize : function(){
+        // hook up to the routing events
+        Backbone.history.on('route',this.render,this);
+
+        _(this).bindAll();
+    },  
+    render : function(){
+        h = "";
+        h += "<a href='#'>Home</a>";
+
+        try {
+            if( app && app.context && app.context.project ){
+                h += " &gt; <a href='#projects/" + app.context.project.id + "'>";
+
+                // if there is no name defined
+                var projectName = app.context.project.get('name');
+                if( projectName == null ){
+                    h += "(...)";
+                    app.context.project.on('change',this.render,this);
+                    //this.bindRenderChange( app.context.project );
+                }
+                else {
+                    app.context.project.off('change',this.render,this);
+                    h += projectName;
+                }
+                h += "</a>";
+            }
+
+            if( app && app.context && app.context.issue && app.context.project){
+
+                // if there is no name defined
+                var projectName = app.context.project.get('name');
+                if( projectName == null ){
+                    app.context.project.on('change',this.render,this);
+                }
+                else{
+                    app.context.project.off('change',this.render,this);
+                }
+
+                h += " &gt; <a href='#projects/" + app.context.project.id + "/issues/" + app.context.issue.id + "'>";
+                var issueName = app.context.issue.get('name');
+                if( issueName == null ){
+                    h += "(...)";
+                    app.context.issue.on('change',this.render,this);
+                }
+                else {
+                    app.context.issue.off('change',this.render,this);
+                    h += issueName;
+                }
+                h += "</a>";
+            }
+
+        }
+        catch( e ){
+            console.log( "ribbon crashed on project")
+
+        }
+        jQuery(this.el).html( h );
+    },
+});
+
 
 App.Controllers.Project = Backbone.Router.extend({
     routes: {
@@ -201,26 +266,50 @@ App.Controllers.Project = Backbone.Router.extend({
 		if( window.location.pathname.match('projects') ) {
 			this.projectid = window.location.pathname.match('projects\/.*$')[0].substring(9,33);
 		}		
-		
+        ribbonView = new App.Views.RibbonWidget();
+        layout.ribbon.show( ribbonView );
+
 	},
-    index: function() {  		
-        rootView = new App.Views.ProjectListWidget();
+    reset : function(){
         layout.content.reset();
+
+        // here we're going to persist navigation context for now. 
+        this.context = {};
+    },
+    index: function() {  		
+        this.reset();
+        rootView = new App.Views.ProjectListWidget();
+
         layout.content.show( rootView );
     },
     projectDetails : function(id) {
-        layout.content.reset();
+        this.reset();
+
         detailsView = new App.Views.ProjecDetailsWidget({id:id});
+
+        // let's see how this works
+        this.context.project = detailsView.model;
+
         layout.content.show( detailsView );  
     },
     issueDetails : function( id ){
-        layout.content.reset();
+        this.reset();
+
+        this.issueId = id;
         detailsView = new App.Views.IssueDetails({id:id});
+
+        this.context.issue = detailsView.model;
+
         layout.content.show( detailsView );  
     },
     projectIssueAlternatives : function( projectId, issueId ){
-        layout.content.reset();
+        this.reset();
+
         detailsView = new App.Views.AlternativeDetailsWidget({projectId:projectId, issueId:issueId});
+
+        this.context.project = detailsView.project;
+        this.context.issue = detailsView.issue;
+
         layout.content.show( detailsView );          
     }
 });

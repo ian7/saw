@@ -32,6 +32,7 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
     },  
     onRender : function(){
 		this.itemAttributesWidget.el = jQuery("div.itemAttributes",this.el);
+		this.itemAttributesWidget.$el = jQuery("div.itemAttributes",this.el);
 		this.itemAttributesWidget.render();
     },
  /*44444444
@@ -524,6 +525,15 @@ App.Views.AlternativeDetailsWidget = Backbone.Marionette.CompositeView.extend({
 		this.collection = new Alternatives();
 		var issueId = arguments[0]['issueId'];
 		var projectId = arguments[0]['projectId'];
+
+		this.project = new Backbone.Model();
+		this.project.url = "/projects/"+projectId;
+		this.project.fetch();
+
+		this.issue = new Item();
+		this.issue.urlOverride = "/projects/"+projectId+"/items/"+issueId;
+		this.issue.fetch();
+
 		this.collection.item_url = "/projects/"+projectId+"/items/"+issueId;
 		this.collection.urlOverride = this.collection.item_url+"/alternatives";
 		this.collection.fetch();

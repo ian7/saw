@@ -2,6 +2,6 @@
  * @author Marcin Nowak
  */
 App.init = function() {
-        new App.Controllers.Project();      
+        app = new App.Controllers.Project();      
         Backbone.history.start();
     };

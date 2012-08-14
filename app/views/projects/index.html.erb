@@ -66,6 +66,8 @@
 
 
 <script id="projectListWidgetTemplate" type="text/template">
+	Dear user, this is your personal homepage. 
+	Please select a project that you'd like to work within:<br/>
 	<div class="projectView"><img class="spinner" src="/images/spinner.gif"/></div>
 	<div class="button green" id="newProjectButton">New Project</div>
 </script>
@@ -73,7 +75,7 @@
 
 <script id="projectDetailsWidgetTemplate" type="text/template">
 	<div class="projectDetails">
-		Some funny project details come here like name: <b><%%= get('name') %></b> or <b><%%= get('id')%></b>.
+		Project details come here (like name: <b><%%= get('name') %></b>) or ownership come here. Detailed statistics should come handy too.
 	</div>
 	<div class="issueListHolder">
 	</div>

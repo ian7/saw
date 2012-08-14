@@ -183,8 +183,19 @@ App.Views.IssueCompactView = Backbone.Marionette.ItemView.extend({
 		jQuery(".expand", this.el).html("Expand");	
   },
   navigateToDetails : function () {
+  		// this is totally old
 		//window.location.href = window.location.href+"#/"+this.model.get('id')+'/alternatives';
-		window.location.hash = "issues/"+this.model.get('id');
+		// this is too simple
+		//window.location.hash = "issues/"+this.model.get('id');
+		
+		// that's new
+
+		// dirty way of finding the project id
+		projectId = jQuery(this.el).parents("div.projectDetailsWidget").attr('id');
+		issueId = this.model.get('id');
+
+		window.location.hash = 'projects/'+ projectId + '/issues/' + issueId + '/alternatives';
+
   },
   notify : function( broadcasted_id ) {
 
