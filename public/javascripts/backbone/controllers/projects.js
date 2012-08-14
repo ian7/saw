@@ -268,7 +268,8 @@ App.Controllers.Project = Backbone.Router.extend({
 		}		
         ribbonView = new App.Views.RibbonWidget();
         layout.ribbon.show( ribbonView );
-
+        eventsNotifier = new App.Views.NotificationSidebar();
+        layout.notificationSidebar.show( eventsNotifier );
 	},
     reset : function(){
         layout.content.reset();
@@ -315,9 +316,6 @@ App.Controllers.Project = Backbone.Router.extend({
 });
 
 
-
-
-
 AppLayout = Backbone.Marionette.Layout.extend({
   template: "#my-template",
   el: jQuery("div#main"),
@@ -327,6 +325,8 @@ AppLayout = Backbone.Marionette.Layout.extend({
     leftSidebar: "#leftSidebar",
     rightSidebar: "#rightSidebar",
     modal: "#modal",
+    notificationSidebar: '#notificationSidebar',
+    tagSidebar: '#tagSidebar',
   }
 });
 

@@ -1,7 +1,45 @@
-App.Views.UpdateNotification = Backbone.View.extend({
-	initialize : function(){
-		_(this).bindAll('render','translateUser','translateAction');
+
+
+App.Views.UpdateNotification = Backbone.Marionette.ItemView.extend({
+  template: '#UpdateNotificationTemplate',
+  tagName: 'tr',
+  className: 'UpdateNotificationTemplate',
+  templateHelpers: {
+    get : function( id ){
+        if( this[id] ){
+            return(this[id]);
+        }
+        else{
+            return("(empty)");
+        }
+    },
+    translateUser : function(){
+      return this.get('user').match(/^[A-Za-z0-9_]+/);
+    },
+    translateAction : function() {
+      switch( this.get('event') ){
+        case 'dotag':
+          return ' tagged ';
+          break;
+        case 'untag':
+          return ' untagged ';
+          break;
+        case 'mouseover':
+          return ' focused ';
+          break
+        case 'mouseout':
+          return null;
+        default:
+          return this.get('event');
+          break;
+      }
+  },
+
+  initialize : function(){
+		_(this).bindAll();
 	},
+
+  /*
 	render : function(){
     e = "";
 
@@ -15,74 +53,52 @@ App.Views.UpdateNotification = Backbone.View.extend({
     e += this.model.get('type') + "</span> ";
 		this.el.innerHTML = e; 
 
-/*
+
                         this.model.get('id') + "<br/>" 
                       + this.model.get('event') + "<br/>" 
                       + this.model.get('user') + "<br/>"
                       + this.model.get('type') + "<br/>"
                       + this.model.get('distance') + "<br/>"
                       + this.model.get('class');
-*/
     return( this );
 	},
-  translateUser : function(){
-    return this.model.get('user').match(/^[A-Za-z0-9_]+/);
-  },
-  translateAction : function() {
-    switch( this.model.get('event') ){
-      case 'dotag':
-        return ' tagged ';
-        break;
-      case 'untag':
-        return ' untagged ';
-        break;
-      case 'mouseover':
-        return ' focused ';
-        break
-      case 'mouseout':
-        return null;
-      default:
-        return null;
-        break;
-    }
+*/
   },
 });
 
-App.Views.ProjectSidebar = Backbone.View.extend({
+App.Views.NotificationSidebar = Backbone.Marionette.CompositeView.extend({
+  template: '#NotificationSidebarTemplate',
+  itemView: App.Views.UpdateNotification,
+  className: 'NotificationSidebar',
   events : {
-//	"click .newItem" : "newItem"
   },
   initialize : function() {
-  	_(this).bindAll('render','notify','notifyEvent','filter');
+   	_(this).bindAll();
 
-  	this.collection = new Backbone.Collection();
+   	this.collection = new Backbone.Collection();
 
-	this.collectionView = new UpdatingCollectionView({
-      collection           : this.collection,
-      childViewConstructor : App.Views.UpdateNotification,
-      childViewTagName     : 'tr'
-    });
-	this.render();
-	//notifier.register(this);
-  eventer.register(this);
-
+    eventer.register(this);
   },
- 
+
+/* 
   render : function() {
 		this.rendered = true;
     this.el.innerHTML = "<table><tbody/></table>";
 		this.collectionView.el = jQuery('tbody', this.el);
 		this.collectionView.render();
   },
-  notify : function( broadcasted_id ) {
-  	n = {};
-  	n.id = broadcasted_id;
-  	n.text = "tada!";
-  	this.collection.add(n);
+  */
+  appendHtml : function( collectionView, itemView, index ){
+    jQuery("table.NotificationSidebar",collectionView.el).prepend(itemView.el);
   },
   notifyEvent : function( data ) {
     e = JSON.parse(data)
     if( this.filter(e) ) {
+      e.itemId = e.id;
+      
+      // use id+timestamp as id because id's are not unique and this messes up backbone collection
+      e.id = e.id+(new Date().getTime()).toString();
+
       this.collection.add(e);
     }
   },

@@ -43,7 +43,10 @@
 		<div id='trunk'>
 			<div id='leftSidebar'/>
 			<div id='center'></div>
-			<div id='rightSidebar'/>
+			<div id='rightSidebar'>
+				<div id='notificationSidebar'/>
+				<div id='tagSidebar'/>
+			</div>
 		</div>
 		<div id='modal'/>
 		<div id='footer'/>
@@ -67,7 +70,7 @@
 
 <script id="projectListWidgetTemplate" type="text/template">
 	Dear user, this is your personal homepage. 
-	Please select a project that you'd like to work within:<br/>
+	Please select a project that you&rsquo;d like to work within:<br/>
 	<div class="projectView"><img class="spinner" src="/images/spinner.gif"/></div>
 	<div class="button green" id="newProjectButton">New Project</div>
 </script>
@@ -157,6 +160,30 @@
 	<table class="alternativeListDetails">
 	</table>
 </script>
+
+
+<script id="NotificationSidebarTemplate" type="text/template">
+	Recent updates:
+	<table class="NotificationSidebar">
+	</table>
+</script>
+
+<script id="UpdateNotificationTemplate" type="text/template">
+    <span class='username' title='Full username: <%%= get('user') %>'>
+		<%%= translateUser() %> 
+	</span> 
+
+    <span class='action' title='Full action-name <%%= get('event') %>'>
+    	<%%= translateAction() %>
+    </span>
+
+    <span class='id' title='Item ID: <%%= get('id') %>'>
+    	<%%= get('type') %>
+    </span>
+
+
+</script>
+
 
 <%= include_javascripts :projects  %>
 
