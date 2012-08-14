@@ -530,10 +530,12 @@ App.Views.AlternativeDetailsWidget = Backbone.Marionette.CompositeView.extend({
 
 		this.project = new Backbone.Model();
 		this.project.url = "/projects/"+projectId;
+		this.project.id = projectId;
 		this.project.fetch();
 
 		this.issue = new Item();
 		this.issue.urlOverride = "/projects/"+projectId+"/items/"+issueId;
+		this.issue.id = issueId;
 		this.issue.fetch();
 
 		this.collection.item_url = "/projects/"+projectId+"/items/"+issueId;

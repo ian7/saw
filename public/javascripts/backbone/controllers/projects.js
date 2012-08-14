@@ -162,6 +162,7 @@ App.Views.ProjecDetailsWidget = Backbone.Marionette.ItemView.extend({
         //this.projects = new Backbone.Model();
         this.model = new Project();
         this.model.url = "/projects/"+this.id;
+        this.model.id = this.id;
         this.model.fetch();
         _(this).bindAll();
         
@@ -172,12 +173,10 @@ App.Views.ProjecDetailsWidget = Backbone.Marionette.ItemView.extend({
         this.items_collection = new Items;  
         this.items_collection.urlOverride = this.model.url + "/items";
         this.items_collection.fetch();
-        this.itemListView = new App.Views.IssueList({collection: this.items_collection });                     
-
+        this.itemListView = new App.Views.IssueList({collection: this.items_collection });
     },
     // this is executed after template is alreayd rendered
-    onRender: function( ){
-
+    onRender: function(){
         // this we can leave out for later
         //this.sidebarView = new App.Views.ProjectSidebar({ el: this.sidebarEl });      
 
@@ -270,6 +269,8 @@ App.Controllers.Project = Backbone.Router.extend({
         layout.ribbon.show( ribbonView );
         eventsNotifier = new App.Views.NotificationSidebar();
         layout.notificationSidebar.show( eventsNotifier );
+        tagSidebar = new App.Views.TagSidebar();
+        layout.tagSidebar.show( tagSidebar );
 	},
     reset : function(){
         layout.content.reset();
@@ -292,6 +293,7 @@ App.Controllers.Project = Backbone.Router.extend({
         this.context.project = detailsView.model;
 
         layout.content.show( detailsView );  
+        tagSidebar.display(detailsView.model);
     },
     issueDetails : function( id ){
         this.reset();
@@ -302,6 +304,7 @@ App.Controllers.Project = Backbone.Router.extend({
         this.context.issue = detailsView.model;
 
         layout.content.show( detailsView );  
+        tagSidebar.display(detailsView.model);
     },
     projectIssueAlternatives : function( projectId, issueId ){
         this.reset();
@@ -312,6 +315,7 @@ App.Controllers.Project = Backbone.Router.extend({
         this.context.issue = detailsView.issue;
 
         layout.content.show( detailsView );          
+        tagSidebar.display(detailsView.project);
     }
 });
 

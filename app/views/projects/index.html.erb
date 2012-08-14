@@ -180,8 +180,31 @@
     <span class='id' title='Item ID: <%%= get('id') %>'>
     	<%%= get('type') %>
     </span>
+</script>
 
+<script id="TagSidebarTemplate" type="text/template">
+Taggings:
+	<table class='TagList'>
+	<thead>
+		<tr class="head">
+			<th>Type</th>
+			<td>Name</td>
+		</tr>
+	</thead>
+	<tbody/>
+	<tfoot>
+		<tr class="foot">
+			<th>Total:</th>
+			<td>(not rendered)</td>
+		</tr>
+	</tfoot>
+	</table>
+	<div class="button green" id="newTaggingButton">New Tagging</div>
+</script>
 
+<script id="TaggingViewTemplate" type="text/template">
+	<th><%%= get('type') %></th>
+	<td><%%= get('name') %></td>
 </script>
 
 

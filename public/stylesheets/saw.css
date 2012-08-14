@@ -926,24 +926,30 @@ div.editable{
 }
 
 table.itemDetails{
-  width:70%;
-  margin: 1em auto;
+ /*  width:70%;
+  margin: 1em auto;*/
+  min-width: 70%;
   border-spacing: 0px;
+  padding-left: 5em;
+  margin-top: 1em;
 }
 
 table.itemDetails tr.issueDetails div.editable:not(#name){
   min-height: 80px;
 }
 
-table.itemDetails td.key {
+table.itemDetails td.key,
+table.itemDetails th {
   font-weight: bold;
-  vertical-align: top;
+/*  vertical-align: top;*/
   width: 130px;
 }
 
 table.itemDetails td {
 /*  padding-bottom: 0.5em;*/
+/*  vertical-align: top;*/
   padding: 1em;
+  min-width: 450px;
 }
 
 
@@ -1007,7 +1013,7 @@ div#layout div#leftSidebar{
 
 div#layout div#rightSidebar{
   background-color: #EEEEEE;
-  width: 10em;
+  width: 13em;
   height: 100%;
   position: fixed;
   top: 0px;
@@ -1020,8 +1026,41 @@ div#layout div#rightSidebar div#notificationSidebar{
 
 div#layout div#rightSidebar div#tagSidebar{
   height: 50%;
-  background-color: green;
+/*  background-color: #ffffb0; */
+  padding-top: 2px;
+  padding-left: 1px;
 }
+
+div#layout div#rightSidebar div#tagSidebar div#newTaggingButton {
+  float: right;
+  bottom: 0;
+  position: fixed;
+  right: 0px;
+  margin-bottom: 1em;
+  margin-right: 0.5em;
+}
+
+div.TagSidebarTemplate table.TagList{
+  font-size: 80%;
+  padding-left: 2px;
+  padding-top: 2px;
+  width:100%;
+}
+
+div.TagSidebarTemplate table.TagList tr.head,
+div.TagSidebarTemplate table.TagList tr.foot{
+  background-color: black;
+  color: #ffff90;
+}
+
+div.TagSidebarTemplate table.TagList tr.TaggingViewTemplate:nth-child(odd){
+  background-color: #fffff0;
+}
+
+div.TagSidebarTemplate table.TagList tr.TaggingViewTemplate:nth-child(even){
+  background-color: #ffff90;
+}
+
 
 div#layout div#ribbon{
   background-color: black;
@@ -1039,7 +1078,7 @@ div#layout div#trunk {
 
 div#layout div#center{
   background-color: white;
-  margin-right: 10em;
+  margin-right: 13em;
   margin-top: 1em;
   padding: 2em;
 }
