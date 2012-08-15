@@ -1162,3 +1162,28 @@ div#rightSidebar div#notificationSidebar{
 table.NotificationSidebar tr.UpdateNotificationTemplate {
   font-size: 70%;
 }
+
+div.modal div.searchBox{
+  float: left;
+}
+
+div.modal table.tagSelector{
+  padding: 1em;
+  width: 100%;
+}
+
+div.modal table.tagSelector tr.head{
+  background-color: gray;
+  color: white;
+}
+
+div.modal table.tagSelector tr.tag th{
+  padding-left: 5px;
+  padding-right:5px;
+}
+
+div.modal table.tagSelector tr.tag td.addTagging{
+  cursor: pointer;
+  color: green;
+  text-decoration: underline;
+}

@@ -48,10 +48,11 @@
 				<div id='tagSidebar'/>
 			</div>
 		</div>
-		<div id='modal'/>
+		<div class='modal' id='modal'></div>
 		<div id='footer'/>
 	</div>
 </script>
+
 
 
 <div class="modal hide" id="newProjectModal">
@@ -207,10 +208,39 @@ Taggings:
 	<td><%%= get('name') %></td>
 </script>
 
+<script id="TaggingWidgetTemplate" type="text/template">
+	 <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal">×</button>
+	    <h3>Add taggings</h3>
+	  </div>
+	  <div class="modal-body">
+	    <p>An <b><%%= get('type') %></b>, named <b><%%= get('name') %></b> can get be tagged with follwoing tags:
+	    <table class="tagSelector">
+	    	<thead>
+	    		<tr class='head'>
+		    		<th>Type</th>
+		    		<td>Name</td>
+		    		<td></td>
+	    		</tr>
+	    	</thead>
+	    	<tbody>
+	    	</tbody>
+	    </table>
+	    </p>
+	  </div>
+	  <div class="modal-footer">
+	    <div class="searchBox">Filter: <input class="searchBox" type="text"></div><a class="btn btn-primary">Done</a>
+	  </div>
+</script>
+
+<script id="TagSelectorTemplate" type="text/template">
+	<th><%%= get('type') %></th>
+	<td><%%= get('name') %></td>
+	<td class='addTagging'><div class='addTagging'>[add tagging]</div></td>
+</script>
+
 
 <%= include_javascripts :projects  %>
-
-
 <script type="text/javascript" charset="utf-8">
 
    App.init();

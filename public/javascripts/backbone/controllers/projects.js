@@ -320,6 +320,33 @@ App.Controllers.Project = Backbone.Router.extend({
 });
 
 
+ModalRegion = Backbone.Marionette.Region.extend({
+    el: "div#modal",
+
+    constructor: function(){
+      _.bindAll(this);
+      Backbone.Marionette.Region.prototype.constructor.apply(this, arguments);
+      this.on("view:show", this.showModal, this);
+      this.$el = jQuery(this.el);
+    },
+
+    getEl: function(selector){
+      var $el = $(selector);
+      $el.on("hidden", this.close);
+      return $el;
+    },
+
+    showModal: function(view){
+      view.on("close", this.hideModal, this);
+      this.$el.modal('show');
+    },
+
+    hideModal: function(){
+      this.$el.modal('hide');
+    }
+  });
+
+
 AppLayout = Backbone.Marionette.Layout.extend({
   template: "#my-template",
   el: jQuery("div#main"),
@@ -328,13 +355,20 @@ AppLayout = Backbone.Marionette.Layout.extend({
     content: "#center",
     leftSidebar: "#leftSidebar",
     rightSidebar: "#rightSidebar",
-    modal: "#modal",
     notificationSidebar: '#notificationSidebar',
     tagSidebar: '#tagSidebar',
+    modal : {
+        selector: 'div#modal',
+        regionType: ModalRegion,
+    }
   }
 });
 
 var layout = new AppLayout();
+
+//layout.modal = new ModalRegion(),
+//layout.regionManagers['modal'] = layout.regions.modal;
+
 layout.render(); 
 
 
