@@ -48,7 +48,7 @@
 				<div id='tagSidebar'/>
 			</div>
 		</div>
-		<div class='modal' id='modal'></div>
+		<div class='modal hide' id='modal'></div>
 		<div id='footer'/>
 	</div>
 </script>
@@ -150,14 +150,32 @@
 				<div class="relationSelector"></div>
 		    </td>
 	    	<td class="decisions"> 
-	    		<b>Decisions:</b>
 				<table class="decisions">
+				<thead>
+					<tr>
+						<td>
+							<b>Decisions</b>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<%%= decisionTable() %>
+				</tbody>
 				</table>
 	    	</td>
 </script>
 
 <script id="alternativeDetailsWidget" type="text/template">
-	alternativeDetailsWidget
+	This is a detailed list of the alternatives related to the design issue named: <b><%%= get('name') %></b>.<br>
+	Here you can choose to <div class="action" id='newAlternative'>[create new]</div> alternative or <div class="action" id="reuseAlternative">[reuse]</div> existing one. You might also want to filter existing alterantives using following criteria:
+	<div class='filteringCriteria'>
+		Filter: <input type='text' id='filter'></input>
+		Showing decisions wich are: 
+		<input type='checkbox' id='decided' checked='checked'> decided, 
+		<input type='checkbox' id='colliding' checked='colliding'> colliding,
+		<input type='checkbox' id='undecided' checked='checked'> undecided.
+	</div>
+
 	<table class="alternativeListDetails">
 	</table>
 </script>
@@ -196,7 +214,7 @@ Taggings:
 	<tfoot>
 		<tr class="foot">
 			<th>Total:</th>
-			<td>(not rendered)</td>
+			<td>(...)</td>
 		</tr>
 	</tfoot>
 	</table>
@@ -239,6 +257,17 @@ Taggings:
 	<td class='addTagging'><div class='addTagging'>[add tagging]</div></td>
 </script>
 
+<script id="eventLogTemplate" type="text/template">
+	eventLogTemplate
+    <table width='100%' class="eventLog">
+    	<thead><%%= renderAttributes() %></thead>
+    	<tbody></tbody>
+    </table>
+</script>
+
+<script id="eventNotificationTemplate" type="text/template">
+		<%%= renderAttributes() %>
+</script>
 
 <%= include_javascripts :projects  %>
 <script type="text/javascript" charset="utf-8">

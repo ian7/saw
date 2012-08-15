@@ -1,8 +1,42 @@
-App.Views.EventNotification = Backbone.View.extend({
-	initialize : function(){
-		_(this).bindAll('render','renderAttr');
-	},
-	render : function(){
+App.Views.EventNotification = Backbone.Marionette.ItemView.extend({
+  template: '#eventNotificationTemplate',
+  tagName: 'tr',
+  className: 'eventNotification',
+  templateHelpers: {
+    renderAttributes : function(){
+      var attributes = ['itemId','event','user','type','distance','class'];
+      h  = "";
+      for( var attributeId in attributes ){
+        h+= this.renderAttr( attributes[attributeId] );
+      }
+      return(h);
+    },
+    renderAttr : function( attrName ){
+      r = "<td>";
+      r += this.get( attrName );
+      r += "</td>";
+      return r;
+    },
+     get: function( variable ){
+            try {
+                if( this[variable] ){
+                    return this[variable];
+                }
+                else{
+                    return "(empty)";
+                }
+            }
+            catch( e ){
+                return ("(undefined)");
+            }
+
+    },
+  },
+  initialize : function(){
+     _(this).bindAll();
+  },
+  /*
+  render : function(){
     e="";
     // see App.Views.EventLog class for list of the attributes. 
     _(App.Views.EventLog.prototype.attributes).each( function( a ){
@@ -12,62 +46,55 @@ App.Views.EventNotification = Backbone.View.extend({
     this.el.innerHTML = e;
 
     return( this );
-	},
-  renderAttr : function( attrName ){
-    r = "<td>";
-    r += this.model.get( attrName );
-    r += "</td>";
-    return r;
   },
+  */
 });
 
-App.Views.EventLog = Backbone.View.extend({
-  attributes : ['id','event','user','type','distance','class'],
+App.Views.EventLog = Backbone.Marionette.CompositeView.extend({
+  template: '#eventLogTemplate',
+  itemView: App.Views.EventNotification,
+  templateHelpers : {
+    renderAttributes: function(){
+      var attributes = ['itemId','event','user','type','distance','class'];
+      h = "";
+      for( var attributeId in attributes ){
+        h += "<th> "+ attributes[attributeId] + "</th>";
+      }
+      return h;
+    },
+  },
   events : {
-//	"click .newItem" : "newItem"
   },
   initialize : function() {
-  	_(this).bindAll('render','notify');
+    _(this).bindAll();
+  
+    this.collection = new Backbone.Collection();
 
-  	this.collection = new Backbone.Collection(null,{allowDuplicates: true});
-
-	this.collectionView = new UpdatingCollectionView({
-      collection           : this.collection,
-      childViewConstructor : App.Views.EventNotification,
-      childViewTagName     : 'tr'
-    });
-	this.render();
-	//notifier.register(this);
-  eventer.register(this);
+    eventer.register(this);
   },
- 
+/* 
   render : function() {
-		this.rendered = true;
+    this.rendered = true;
     e = "<table width='100%'><thead><tr>"
     _(this.attributes).each(function(a){
       e += "<th>" + a + "</th>";
     },this);
     e+= "</tr></thead><tbody/></table>"
     this.el.innerHTML = e
-		this.collectionView.el = jQuery('tbody', this.el);
-		this.collectionView.render();
+    this.collectionView.el = jQuery('tbody', this.el);
+    this.collectionView.render();
   },
-  notify : function( broadcasted_id ) {
-  	n = {};
-  	n.id = broadcasted_id;
-  	n.text = "tada!";
-  	this.collection.add(n);
-  },
+  */
   notifyEvent : function( data ) {
     e = JSON.parse(data)
+    e.itemId = e.id;
+    e.id = e.id+(new Date().getTime()).toString();
 
-
-    console.log("Event_log caught id:"+e.id);
-    //if(e.type != null) {
+    console.log("Event_log caught id:"+e.itemId);
       this.collection.add(e);
-    //}
+
   },
-  filter : function ( e ){
-    return true;
-  }
+  appendHtml: function(collectionView, itemView){
+    jQuery(collectionView.$("table tbody")[0]).prepend(itemView.el);
+  },
 });

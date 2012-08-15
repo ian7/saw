@@ -57,7 +57,7 @@ App.Views.AlternativeCompactView  = Backbone.Marionette.ItemView.extend({
     focusedUsers : {},
 
     initialize: function() {
-		_(this).bindAll('render','decide','undecide','notifyEvent','mouseover','mouseout','edit','specialKeyName','notify');
+		_(this).bindAll();
 	    this.model.bind('change', this.render);
 		notifier.register(this);
 		eventer.register( this );

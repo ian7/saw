@@ -52,18 +52,26 @@ App.Views.TagSidebar = Backbone.Marionette.CompositeView.extend({
   },
   notifyEvent : function( data ) {
     e = JSON.parse(data)
-    if( e.id == this.model.get('id') ){
+    if( this.model && e.id == this.model.get('id') ){
       this.collection.fetch();
     }
   },
   display : function( item_model ){
+
     this.model = item_model;
-    if( !this.model.id ){
-      console.log("TagSidebar: crashed because model.id == 0");
-      return;
+
+    if( item_model ) {
+      if( !this.model.id ){
+        console.log("TagSidebar: crashed because model.id == 0");
+        return;
+      }
+      this.collection.url = "/items/"+this.model.id + "/tag/tags_list";
+      this.collection.fetch();
     }
-    this.collection.url = "/items/"+this.model.id + "/tag/tags_list";
-    this.collection.fetch();
+    else{
+      this.collection.reset();
+    }
+
   },
   newTagging : function(){
     tw = new App.Views.TaggingWidget({ model: this.model });

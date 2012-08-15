@@ -5,12 +5,69 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 	className : "alternativeList", 
 	tagName : 'tr',
     events : {
-		"click .deleteAlternative"	: "deleteAlternative",
+		"click div.deleteAlternative"	: "deleteAlternative",
 		"click .unrelateAlternative": "unrelateAlternative",
 		"click .decide"				: "decide",
 		"click .undecide"			: "undecide",
 		'mouseover'	: 'mouseover',
 		'mouseout' : 'mouseout',
+    },
+    templateHelpers : {
+    	decisionTable : function(){
+    		h = ""
+			for( var decisionId in this['decisions'] ) { 
+
+				var decision = this['decisions'][decisionId];
+				var your_decision = this['your_decision'];
+				h += "<tr>" 
+				   	+ "<!-- for a moment let's hide it-->";
+
+/*					+ "<td class='hidden'>"
+
+					+ "<!-- here comes the insert -->"
+					+ "<table class='decisionList'>"					
+					+ "<!-- here we enter single decisions -->";
+				for( var detailId in decision.details) { %>
+												<tr class="decision <%= decision.color.toLowerCase() %>">
+												<td class="user">
+													<% if( detail.rationale) { %>
+														<div class="rationaleDiv" id="enabled">
+													<% } else { %>
+														<div class="rationaleDiv"> 
+													<% } %>
+															<img src="/images/icons/user.png"/><%= detail.email %>
+														</div>
+													<div class="rationaleTip tooltip">
+														<b>Taken:</b><div class="content"> <%= detail.timestamp %></div> <br/>
+														<b>Rationale:</b><br/>
+														<div class="content"><%= detail.rationale %></div>
+													</div>
+												</td>
+											</tr>
+										<% }); %>
+								</table>
+							</td>
+							*/
+				h += "<td class='buttons'>";
+					if( !( your_decision && your_decision.name ) ) { 
+						// <!-- branch in which you dont have your decision -->
+						h += "<div class='button decide " +  decision.color.toLowerCase() + "' id='" +  decision.decision_tag_id +"'>"  
+						   + decision.name + "(" + decision.count +")</div>";
+					} 
+					else { 
+						// <!-- branch in which you have your decision -->
+							if( decision.name == your_decision.name ) { 
+						    		h += "<div class='button undecide " + decision.color.toLowerCase() + "' id='" + decision.decision_tag_id + "'>Revoke("
+						    		   + decision.count + ")</div>";
+								} 
+								else { 
+									h += "<div class='button disabled' id='" + decision.decision_tag_id + "'>" + decision.name + "(" + decision.count + ")</div>";
+								}
+					} 							
+					h += "</td></tr>";
+				} 
+			return( h );
+    	},
     },
     focusedUsers : {},
     initialize: function() {
@@ -31,9 +88,36 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
         this.id = this.model.id;
     },  
     onRender : function(){
+
+    	// general item attributes widget:
 		this.itemAttributesWidget.el = jQuery("div.itemAttributes",this.el);
 		this.itemAttributesWidget.$el = jQuery("div.itemAttributes",this.el);
 		this.itemAttributesWidget.render();
+
+		// alternative coloring...
+		var color = "white";
+             
+		if( this.model.attributes.decisions ) {
+		   _.each( this.model.attributes.decisions, function( decision ) {
+			    if( decision.count > 0 ) {
+					if( color == 'white' ) {
+						color = decision.color;
+					}
+					else {
+						color = 'gray';
+					}
+				}
+			});
+		}
+
+
+		// hell love chainging !
+		jQuery(this.el).removeClass().addClass("decision").addClass(color.toLowerCase());
+		jQuery(this.el).attr('id', this.model.get('id'));
+	
+
+
+
     },
  /*44444444
     render: function() {
@@ -75,25 +159,6 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 	   //this.decisionListView.render();
 	   var thisModelId = this.model.get('id');
 
-	   color = "white";
-             
-	   if( this.model.attributes.decisions ) {
-		   _.each( this.model.attributes.decisions, function( decision ) {
-			    if( decision.count > 0 ) {
-					if( color == 'white' ) {
-						color = decision.color;
-					}
-					else {
-						color = 'gray';
-					}
-				}
-			});
-		}
-		
-		
-	   // hell love chainging !
-	   jQuery(this.el).removeClass().addClass("decision").addClass(color.toLowerCase());
-	   jQuery(this.el).attr('id', this.model.get('id'));
 	
 	
 	   if( this.model.isNew() ) {
@@ -267,18 +332,9 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 		*/
 	},
 	deleteAlternative : function(){
-		var viewObject = this;
- 		jQuery(".deleteAlternative",this.el).fastConfirm({
-           position: "left",
-              questionText: "Are you sure that you want to delete this alternative?",
-              onProceed: function(trigger) {
-                    $(trigger).fastConfirm('close');
-					viewObject.model.destroy();
-               },
-               onCancel: function(trigger) {
-                    $(trigger).fastConfirm('close');
-               }
-            });	
+		if( confirm("Are you sure that you want to delete this alternative?")){
+			this.model.destroy();
+		}
 	},
 	unrelateAlternative : function() {
 		;
@@ -521,6 +577,29 @@ App.Views.AlternativeListDetails = Backbone.Marionette.CollectionView.extend({
 App.Views.AlternativeDetailsWidget = Backbone.Marionette.CompositeView.extend({
 	template: "#alternativeDetailsWidget",
 	itemView : App.Views.AlternativeDetailsView,
+	templateHelpers: {
+        get: function( variable ){
+            try {
+                if( this[variable] ){
+                    return this[variable];
+                }
+                else{
+                    return "(empty)";
+                }
+            }
+            catch( e ){
+                return ("(undefined)");
+            }
+
+        },
+    },
+    events: {
+    	'click div#newAlternative' : 'newAlternative',
+    	'click div#reuseAlternative' : 'reuseAlternative',
+    	'keyup input#filter'	: 'filter',
+    	'click input#undecided'	: 'filter',
+    	'click input#decided' : 'filter',
+    },
 	initialize : function(){
 		_(this).bindAll();
 
@@ -534,9 +613,13 @@ App.Views.AlternativeDetailsWidget = Backbone.Marionette.CompositeView.extend({
 		this.project.fetch();
 
 		this.issue = new Item();
+
 		this.issue.urlOverride = "/projects/"+projectId+"/items/"+issueId;
 		this.issue.id = issueId;
 		this.issue.fetch();
+
+		this.model = this.issue;
+		this.model.on('change',this.render,this);
 
 		this.collection.item_url = "/projects/"+projectId+"/items/"+issueId;
 		this.collection.urlOverride = this.collection.item_url+"/alternatives";
@@ -554,6 +637,58 @@ App.Views.AlternativeDetailsWidget = Backbone.Marionette.CompositeView.extend({
 	appendHtml : function( collectionView, itemView, index ) {
 		//collectionView.$el.prepend(itemView.el);
 		jQuery("table.alternativeListDetails",collectionView.el).prepend(itemView.el);
+	},
+	newAlternative : function(){
+		this.collection.create(null,{wait: true});
+	},
+	reuseAlternative : function(){
+		//TBD
+		alert('not implemented yet');
+	},
+	filter : function(){
+		var filter = jQuery("input#filter",this.el)[0].value;
+
+
+		for( var viewId in this.children ) {
+			itemView = this.children[viewId]
+
+			var matchedFilter = false;
+			var matchedDecided = false;
+			var matchedUnDecided = false;
+			var matchedColliding = false;
+
+
+			// if there is something to filter, then filter, empty string matches everything
+			for( var property in itemView.model.attributes ){
+				if( itemView.model.attributes[property] &&
+					typeof(itemView.model.attributes[property]) == "string" &&
+					itemView.model.attributes[property].toLowerCase().match(filter)){
+						matchedFilter = true;
+				}
+			}
+
+			// filter by the state
+			// decided?
+			if( jQuery("input#decided",this.el)[0].checked && itemView.model.isDecided() ){
+				matchedDecided = true;
+			}
+			// colliding?
+			if( jQuery("input#colliding",this.el)[0].checked && itemView.model.isColliding() ){
+				matchedColliding = true;
+			}
+			// undecided?
+			if( jQuery("input#undecided",this.el)[0].checked && !itemView.model.isDecided() ){
+				matchedUnDecided = true;
+			}
+
+			// finally logic
+			if( matchedFilter && (matchedDecided || matchedColliding || matchedUnDecided) ){
+				itemView.$el.show();
+			}
+			else{
+				itemView.$el.hide();				
+			}
+		}
 	},
 });
 

@@ -1187,3 +1187,22 @@ div.modal table.tagSelector tr.tag td.addTagging{
   color: green;
   text-decoration: underline;
 }
+
+
+div.action{
+  color: green;
+  text-decoration: underline;
+  cursor: pointer;
+  display:inline;
+}
+div.filteringCriteria{
+  padding-top: 1em;
+  padding-left: 5em;
+  padding-right: 5em;
+  padding-bottom: 1em;
+  background-color: #EEEEEE;
+}
+
+table.eventLog td {
+  text-align:center;
+}

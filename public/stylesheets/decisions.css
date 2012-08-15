@@ -132,6 +132,9 @@ div.button.disabled {
 table.decisions {
 	width: 100%;
 }
+table.decisions td{
+	text-align: center;
+}
 table.decisions td.buttons {
 	width: 75px;
 }

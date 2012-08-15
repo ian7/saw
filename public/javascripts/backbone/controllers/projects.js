@@ -258,6 +258,7 @@ App.Controllers.Project = Backbone.Router.extend({
         "projects/:id" : "projectDetails",
         "issues/:id" : "issueDetails",
         "projects/:projectId/issues/:issueId/alternatives" : "projectIssueAlternatives",
+        "events"    : 'events'
     },
 
 	initialize : function(){
@@ -283,6 +284,7 @@ App.Controllers.Project = Backbone.Router.extend({
         rootView = new App.Views.ProjectListWidget();
 
         layout.content.show( rootView );
+        tagSidebar.display();
     },
     projectDetails : function(id) {
         this.reset();
@@ -315,7 +317,13 @@ App.Controllers.Project = Backbone.Router.extend({
         this.context.issue = detailsView.issue;
 
         layout.content.show( detailsView );          
-        tagSidebar.display(detailsView.project);
+        tagSidebar.display(detailsView.issue);
+    },
+    events : function(){
+        this.reset()
+        detailsView = new App.Views.EventLog();
+        tagSidebar.display();
+        layout.content.show(detailsView);
     }
 });
 
