@@ -7,6 +7,7 @@ App.Views.ItemWidget = Backbone.View.extend({
 	events: {
 		"focus div.editable"	: "focused",
 		"blur div.editable"		: "blured",
+		"keyup div.editable"	: 'keyup',
 		"click div.refresh" : "refresh",
 	},
 	nonAttributes : [
@@ -82,11 +83,11 @@ App.Views.ItemWidget = Backbone.View.extend({
     	}
 
     	// it surely has name
-    	jQuery("div.editable#name",this.el)[0].innerHTML = this.model.get('name');
+    	//jQuery("div.editable#name",this.el)[0].innerHTML = this.model.get('name');
 
     	_(this.model.attributes).each( function( v,a  ){
     		el = jQuery("div.editable#"+a,this.el)[0];
-	    	if( el != null && el.id != this.focusedAttributeName){
+	    	if( el != null && el.id != this.focusedAttribute){
 	    		if( v == null || v.replace(/<(?:.|\n)*?>/gm, '') == ""){
 	    			el.innerHTML = "(empty)";
 	    		}
@@ -142,8 +143,10 @@ App.Views.ItemWidget = Backbone.View.extend({
 
 		jQuery.getJSON('/notify/' + this.model.get('id') + '/' + focusedAttributeName + '/blured', function(data) {});
     },
-
-
+    keyup : function(e){
+		this.model.set(focusedAttributeName,e.srcElement.innerHTML);
+    	this.model.save();
+    },
     notifyEvent : function( e ) {
 	  	d = JSON.parse(e)
 	  	if( d.id == this.model.get('id') ){
@@ -355,7 +358,7 @@ App.Views.IssueDetails = Backbone.Marionette.ItemView.extend({
 
     },
     focused : function( e ){
-    	focusedAttributeName = e.srcElement.id;
+    	var focusedAttributeName = e.srcElement.id;
 
     	console.log("focused on " + e.srcElement.nodeName + " " +e.srcElement.id + " target: " + e.target.nodeName + " " + e.target.id);
 
