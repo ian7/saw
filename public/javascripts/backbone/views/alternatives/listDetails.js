@@ -102,7 +102,10 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 		this.itemAttributesWidget.el = jQuery("div.itemAttributes",this.el);
 		this.itemAttributesWidget.$el = jQuery("div.itemAttributes",this.el);
 		this.itemAttributesWidget.render();
+		this.fixDecisionColorBackground();
 
+    },
+    fixDecisionColorBackground : function(){
 		// alternative coloring...
 		var color = "white";
              
@@ -124,8 +127,6 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 		jQuery(this.el).removeClass().addClass("decision").addClass(color.toLowerCase());
 		jQuery(this.el).attr('id', this.model.get('id'));
 	
-
-
 
     },
  /*44444444
@@ -301,6 +302,7 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
     	console.log('alternativeDetails.refresh');
     	jQuery("td.decisions table.decisions").unblock();
     	jQuery("td.decisions table.decisions tbody",this.el).html( this.templateHelpers.decisionTable( this.model.attributes ) );
+    	this.fixDecisionColorBackground();
     },
     focused : function( e ) {
 
