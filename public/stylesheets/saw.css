@@ -1206,3 +1206,7 @@ div.filteringCriteria{
 table.eventLog td {
   text-align:center;
 }
+
+div.feedbackBar{
+  display: none;
+}
