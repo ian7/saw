@@ -13,12 +13,21 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 		'mouseout' : 'mouseout',
     },
     templateHelpers : {
-    	decisionTable : function(){
-    		h = ""
-			for( var decisionId in this['decisions'] ) { 
+    	decisionTable : function(param){
 
-				var decision = this['decisions'][decisionId];
-				var your_decision = this['your_decision'];
+    		// for executing out of the template (refreshing)
+    		if( param ){
+    			that = param;
+    		}
+    		else
+    			that = this;
+
+    		h = ""
+
+			for( var decisionId in that['decisions'] ) { 
+
+				var decision = that['decisions'][decisionId];
+				var your_decision = that['your_decision'];
 				h += "<tr>" 
 				   	+ "<!-- for a moment let's hide it-->";
 
@@ -74,8 +83,8 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
     	// bind them all!
 		_(this).bindAll();
 	    
-	   // this.model.bind('change', this.refresh);
-		this.model.bind('change', this.render);
+	    this.model.bind('change', this.refresh);
+		//this.model.bind('change', this.render);
 		notifier.register(this);		
 		eventer.register(this);
 		//this.el = el;
@@ -288,6 +297,11 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 	   return this;
     },
     4444444444*/
+    refresh : function (){
+    	console.log('alternativeDetails.refresh');
+    	jQuery("td.decisions table.decisions").unblock();
+    	jQuery("td.decisions table.decisions tbody",this.el).html( this.templateHelpers.decisionTable( this.model.attributes ) );
+    },
     focused : function( e ) {
 
     },
