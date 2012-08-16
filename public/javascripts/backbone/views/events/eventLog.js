@@ -64,6 +64,7 @@ App.Views.EventLog = Backbone.Marionette.CompositeView.extend({
     },
   },
   events : {
+    'click div#clear': 'clear',
   },
   initialize : function() {
     _(this).bindAll();
@@ -93,6 +94,9 @@ App.Views.EventLog = Backbone.Marionette.CompositeView.extend({
     console.log("Event_log caught id:"+e.itemId);
       this.collection.add(e);
 
+  },
+  clear : function(){
+    this.collection.reset();
   },
   appendHtml: function(collectionView, itemView){
     jQuery(collectionView.$("table tbody")[0]).prepend(itemView.el);
