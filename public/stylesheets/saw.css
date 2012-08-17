@@ -116,8 +116,10 @@ div.alternativesList {
   width: 100%;
   }
 table.alternativeList {
-  width: 100%;
+  width: 97%;
   font-size: 9pt;
+  margin-left: 3em;
+  margin-bottom: 1em;
   }
 tr.Positive td {
   background-color: #AEFF93;
@@ -1021,11 +1023,20 @@ div#layout div#rightSidebar{
 }
 
 div#layout div#rightSidebar div#notificationSidebar{
-  height: 50%;  
+  height: 33%;  
 }
 
+div#layout div#rightSidebar div#speedButtonsSidebar{
+  height: 33%;
+}
+
+div#layout div#rightSidebar div#speedButtonsSidebar div.button{
+  margin-bottom: 0.5em;
+}
+
+
 div#layout div#rightSidebar div#tagSidebar{
-  height: 50%;
+  height: 33%;
 /*  background-color: #ffffb0; */
   padding-top: 2px;
   padding-left: 1px;
@@ -1061,6 +1072,13 @@ div.TagSidebarTemplate table.TagList tr.TaggingViewTemplate:nth-child(even){
   background-color: #ffff90;
 }
 
+
+div#layout div#speedButtonsSidebar{
+  text-align:center;
+  width:100%;
+  padding-top: 3em;
+  background-color: black;
+}
 
 div#layout div#ribbon{
   background-color: black;
@@ -1182,9 +1200,15 @@ div.modal table.tagSelector tr.tag th{
   padding-right:5px;
 }
 
-div.modal table.tagSelector tr.tag td.addTagging{
+div.modal table.tagSelector tr.tag td div.addTagging{
   cursor: pointer;
   color: green;
+  text-decoration: underline;
+}
+
+div.modal table.tagSelector tr.tag td div.removeTagging{
+  cursor: pointer;
+  color: red;
   text-decoration: underline;
 }
 
@@ -1209,4 +1233,9 @@ table.eventLog td {
 
 div.feedbackBar{
   display: none;
+}
+
+div.help{
+  padding: 1em;
+  margin: 0.5em;
 }

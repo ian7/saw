@@ -44,6 +44,7 @@
 			<div id='leftSidebar'/>
 			<div id='center'></div>
 			<div id='rightSidebar'>
+				<div id="speedButtonsSidebar"/>
 				<div id='notificationSidebar'/>
 				<div id='tagSidebar'/>
 			</div>
@@ -118,7 +119,8 @@
 	<td>	   		
 		<div class="deleteAlternative">
 			<span class="altenrnativeFocusedUsers"></span>
-			<img class="deleteAlternative" src="/images/icons/delete.png"/>
+			<!--<img class="deleteAlternative" src="/images/icons/delete.png"/>-->
+			<div class='button black'>Delete</div>
 		</div>
 		<div class="name" contenteditable="true" id="<%%= get('id') %>nameEdit"><%%= get('name') %></div>
 
@@ -142,7 +144,8 @@
 	   		<td class="name">	   		
 				<div class="deleteAlternative">
 					<span class="altenrnativeFocusedUsers"></span>
-					<img class="deleteAlternative" src="/images/icons/delete.png"/>
+					<!--<img class="deleteAlternative" src="/images/icons/delete.png"/>-->
+					<div class='button black'>Delete</div>
 				</div>
 				<b>Alternative</b>
 				<div class="itemAttributes"></div>
@@ -166,8 +169,10 @@
 </script>
 
 <script id="alternativeDetailsWidget" type="text/template">
-	This is a detailed list of the alternatives related to the design issue named: <b><%%= get('name') %></b>.<br>
-	Here you can choose to <div class="action" id='newAlternative'>[create new]</div> alternative or <div class="action" id="reuseAlternative">[reuse]</div> existing one. You might also want to filter existing alterantives using following criteria:
+	<div class="help">
+		This is a detailed list of the alternatives related to the design issue named: <b><%%= get('name') %></b>.<br>
+		Here you can choose to <div class="action" id='newAlternative'>[create new]</div> alternative or <div class="action" id="reuseAlternative">[reuse]</div> existing one. You might also want to filter existing alterantives using following criteria:
+	</div>
 	<div class='filteringCriteria'>
 		Filter: <input type='text' id='filter'></input>
 		Showing decisions wich are: 
@@ -229,7 +234,7 @@ Taggings:
 <script id="TaggingWidgetTemplate" type="text/template">
 	 <div class="modal-header">
 	    <button type="button" class="close" data-dismiss="modal">×</button>
-	    <h3>Add taggings</h3>
+	    <h3>Edit taggings</h3>
 	  </div>
 	  <div class="modal-body">
 	    <p>An <b><%%= get('type') %></b>, named <b><%%= get('name') %></b> can get be tagged with follwoing tags:
@@ -254,7 +259,9 @@ Taggings:
 <script id="TagSelectorTemplate" type="text/template">
 	<th><%%= get('type') %></th>
 	<td><%%= get('name') %></td>
-	<td class='addTagging'><div class='addTagging'>[add tagging]</div></td>
+	<td class="action">
+		<%%= tagUntag() %>
+	</td>
 </script>
 
 <script id="eventLogTemplate" type="text/template">

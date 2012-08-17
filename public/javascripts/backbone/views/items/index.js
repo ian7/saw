@@ -142,6 +142,11 @@ App.Views.IssueCompactView = Backbone.Marionette.ItemView.extend({
 			this.expand();
 		}
   },
+  doCollapse : function() {
+		if( this.isExpanded == true) {
+			this.collapse();
+		}
+  },
   toggleExpand: function(){
 		if( this.isExpanded == false) {
 			this.expand();
@@ -289,7 +294,8 @@ App.Views.IssueList = Backbone.Marionette.CollectionView.extend({
 	this.render();
 	*/
 
-	notifier.register(this);
+	//notifier.register(this);
+	this.on('close',this.onClose,this);
 	eventer.register(this);
 
   },
@@ -386,6 +392,50 @@ App.Views.IssueList = Backbone.Marionette.CollectionView.extend({
   elicit : function(){
 		window.location.href = window.location.href +'#elicit';
   },
+  onRender : function() {
+  	var buttons = new App.Views.IssueListSpeedButtons({mainView: this});
+  	layout.speedButtonsSidebar.show( buttons );
+  },
+  onClose : function(){
+  	layout.speedButtonsSidebar.close();
+  },
 });
+
+App.Views.IssueListSpeedButtons = Backbone.Marionette.View.extend({
+	events : {
+		'click div#newIssue' : 'newIssue',
+		'click div#reuseIssue' : 'reuseIssue',
+		'click div#expandAll' : 'expandAll',
+		'click div#collapseAll' : 'collapseAll',
+	},
+	initialize : function(a){
+		_(this).bindAll();
+		this.mainView = a['mainView'];
+		this.collection = this.mainView.collection;
+	},
+	render : function(){
+		h="";
+		h+="<div class='button green' id='newIssue'>New Issue</div>";
+		h+="<div class='button green' id='reuseIssue'>Reuse Issue</div>";
+		h+="<div class='button gray' id='expandAll'>Expand All</div>";
+		h+="<div class='button gray' id='collapseAll'>Collapse All</div>";
+		this.$el.html(h);
+		//this.delegateEvents();
+	},
+	newIssue : function(){
+		this.collection.create(null,{wait: true});
+		jQuery(this.el).oneTime(1200,'some_focus',function(){jQuery("span.e6")[0].focus()});
+	},
+	reuseIssue: function(){
+		alert('to be implemented');
+	},
+	expandAll: function(){
+		_(this.mainView.children).each( function( v ) { v.doExpand() })
+	},
+	collapseAll: function(){
+		_(this.mainView.children).each( function( v ) { v.doCollapse() })
+	}
+
+})
 
 

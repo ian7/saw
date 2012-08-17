@@ -176,6 +176,10 @@ class TagController < ApplicationController
     @from_taggable_id = params[:from_taggable_id]
 	  @relation_name = "Tagging"
 	 
+    if params[:item_id] 
+      @to_taggable_id = params[:item_id]
+    end
+
 	 
 	 @from_taggable = Taggable.find @from_taggable_id
 	 @to_taggable = Taggable.find @to_taggable_id

@@ -93,18 +93,52 @@ App.Views.TagSelectorItem = Backbone.Marionette.ItemView.extend({
             return("(empty)");
         }
     },
+    tagUntag : function(){
+      }
   },
   events: {
     "click div.addTagging": 'addTagging',
+    "click div.removeTagging": 'removeTagging',
   },
   initialize : function(){
     _(this).bindAll();
+    this.model.collection.existingTags.on('add',this.existingTagsChanged,this);
+    this.model.collection.existingTags.on('remove',this.existingTagsChanged,this);
+  },
+  existingTagsChanged : function(){
+    this.onRender();
   },
   addTagging : function( e ){
         jQuery.getJSON('/items/'+this.model.collection.item.id.toString()+'/tag/dotag?from_taggable_id='+this.model.get('id'),function(){});
+        this.refreshCollections();
+  },
+  removeTagging : function( e ){
+        jQuery.getJSON('/items/'+this.model.collection.item.id.toString()+'/tag/untag?from_taggable_id='+this.model.get('id'),function(){});
+        this.refreshCollections();
+  },
+  refreshCollections : function(){
+        this.model.collection.fetch();
+        this.model.collection.existingTags.fetch();
   },
   onRender : function(){
     this.el.id = this.model.id;
+    var h = ""
+    var found = false;
+      this.model.collection.existingTags.each(function( existingTag ){
+        // if this thing is on the tagging list
+        if( existingTag.id == this.model.id ) {
+          found = true;
+        }
+      },this);
+
+      if( found ){
+        h = "<div class='removeTagging'>[remove tagging]</div>";
+      }
+      else{
+        // otherwise if it wasn't on the list of the existing tags
+        h = "<div class='addTagging'>[add tagging]</div>";
+      }
+      jQuery("td.action",this.el).html(h);
   }
 });
 
@@ -133,6 +167,12 @@ App.Views.TaggingWidget = Backbone.Marionette.CompositeView.extend({
 
     // i'll need it for tagging
     this.collection.item = this.model;
+
+    this.existingTags = new Backbone.Collection();
+    this.existingTags.url = "/items/"+this.model.id + "/tag/tags_list";
+    this.existingTags.fetch();
+
+    this.collection.existingTags = this.existingTags;
   },
   onRender : function(){
     //debugger

@@ -365,6 +365,7 @@ AppLayout = Backbone.Marionette.Layout.extend({
     rightSidebar: "#rightSidebar",
     notificationSidebar: '#notificationSidebar',
     tagSidebar: '#tagSidebar',
+    speedButtonsSidebar: '#speedButtonsSidebar',
     modal : {
         selector: 'div#modal',
         regionType: ModalRegion,

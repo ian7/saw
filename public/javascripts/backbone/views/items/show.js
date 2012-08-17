@@ -99,9 +99,9 @@ App.Views.ItemWidget = Backbone.View.extend({
 	},
 
     focused : function( e ){
-    	focusedAttributeName = e.srcElement.id;
+    	focusedAttributeName = e.target.id;
 
-    	console.log("focused on " + e.srcElement.nodeName + " " +e.srcElement.id + " target: " + e.target.nodeName + " " + e.target.id);
+    	//console.log("focused on " + e.target.nodeName + " " +e.target.id + " target: " + e.target.nodeName + " " + e.target.id);
 
     	jQuery("span.focus",this.el)[0].innerText = focusedAttributeName;
 
@@ -113,7 +113,7 @@ App.Views.ItemWidget = Backbone.View.extend({
 	  	}
 	  	//this.ne.addInstance(e.srcElement);
 
-	  	panelEl = jQuery("div.nicEdit-panelContain",jQuery(e.srcElement).parent());
+	  	panelEl = jQuery("div.nicEdit-panelContain",jQuery(e.target).parent());
 
 
 		jQuery.getJSON('/notify/' + this.model.get('id') + '/' + focusedAttributeName + '/focused', function(data) {});

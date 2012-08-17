@@ -84,6 +84,8 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 		_(this).bindAll();
 	    
 	    this.model.bind('change', this.refresh);
+	    this.on('close',this.onClose,this);
+
 		//this.model.bind('change', this.render);
 		notifier.register(this);		
 		eventer.register(this);
@@ -97,13 +99,14 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
         this.id = this.model.id;
     },  
     onRender : function(){
-
     	// general item attributes widget:
 		this.itemAttributesWidget.el = jQuery("div.itemAttributes",this.el);
 		this.itemAttributesWidget.$el = jQuery("div.itemAttributes",this.el);
 		this.itemAttributesWidget.render();
 		this.fixDecisionColorBackground();
-
+    },
+    onClose : function(){
+    	layout.speedButtonsSidebar.close();
     },
     fixDecisionColorBackground : function(){
 		// alternative coloring...
@@ -640,7 +643,6 @@ App.Views.AlternativeDetailsWidget = Backbone.Marionette.CompositeView.extend({
 		this.collection.item_url = "/projects/"+projectId+"/items/"+issueId;
 		this.collection.urlOverride = this.collection.item_url+"/alternatives";
 		this.collection.fetch();
-
 	},
 	onRender : function(){
 	/*	this.alternativeList = new App.Views.AlternativeListDetails({
@@ -649,6 +651,8 @@ App.Views.AlternativeDetailsWidget = Backbone.Marionette.CompositeView.extend({
 			});
 		this.alternativeList.render();
 		*/
+		buttons = new App.Views.AltenrativeListSpeedButtons({collection: this.collection});
+		layout.speedButtonsSidebar.show( buttons );
 	},
 	appendHtml : function( collectionView, itemView, index ) {
 		//collectionView.$el.prepend(itemView.el);
@@ -708,3 +712,26 @@ App.Views.AlternativeDetailsWidget = Backbone.Marionette.CompositeView.extend({
 	},
 });
 
+App.Views.AltenrativeListSpeedButtons = Backbone.Marionette.View.extend({
+	events : {
+		'click div#newAlternative' : 'newAlternative',
+		'click div#reuseAlternative' : 'reuseAlternative',
+	},
+	initialize : function(){
+		_(this).bindAll();
+	},
+	render : function(){
+		h="";
+		h+="<div class='button green' id='newAlternative'>New Alternative</div>";
+		h+="<div class='button green' id='reuseAlternative'>Reuse Alternative</div>";
+		this.$el.html(h);
+		//this.delegateEvents();
+	},
+	newAlternative : function(){
+		this.collection.create(null,{wait: false});
+		jQuery(this.el).oneTime(1200,'some_focus',function(){jQuery("div.editable#name")[0].focus()});
+	},
+	reuseAlternative: function(){
+		alert('to be implemented');
+	}
+})

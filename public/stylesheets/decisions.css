@@ -69,6 +69,7 @@ table.alternativeListDetails td.decisions{
 	text-align: center;
 /*	min-width: 320px; */
 	min-width: 120px;
+	background-color: #CCCCCC;
 }
 
 table.alternativeList td.delete,
