@@ -16,26 +16,54 @@ App.Views.TaggingView = Backbone.Marionette.ItemView.extend({
   },
 });
 
-App.Views.TagSidebar = Backbone.Marionette.CompositeView.extend({
-  template: '#TagSidebarTemplate',
-  itemView: App.Views.TaggingView,
+App.Views.TagSidebar = Backbone.View.extend({
+  //template: '#TagSidebarTemplate',
+  //itemView: App.Views.TaggingView,
   className: 'TagSidebarTemplate',
   events : {
     "click div#newTaggingButton" : 'newTagging',
   },
   initialize : function() {
    	_(this).bindAll();
-
+    this.model = null;
    	this.collection = new Backbone.Collection();
-    this.collection.on('add',this.updateTagCount,this);
-    this.collection.on('remove',this.updateTagCount,this);
-    this.collection.on('reset',this.updateTagCount,this);
-    this.collection.on('sync',this.updateTagCount,this);
+    this.collection.on('add',this.render,this);
+    this.collection.on('remove',this.render,this);
+    this.collection.on('reset',this.render,this);
+    this.collection.on('sync',this.render,this);
 
     eventer.register(this);
   },
+  /*
   appendHtml : function( collectionView, itemView, index ){
     jQuery("table.TagList tbody",collectionView.el).prepend(itemView.el);
+  },
+  */
+  render : function() {
+    //h =   "<ul class='tagList'>";
+    var h=""
+    var tagTypes = {};
+    //debugger;
+
+    this.collection.each( function( tagging ){
+      if( !tagTypes[tagging.get('type')] ){
+        tagTypes[tagging.get('type')] = {}
+      }
+      tagTypes[tagging.get('type')][tagging.get('name')] = tagging;
+    });
+    _(tagTypes).each( function(tags, tagType){
+      h += ""+ tagType
+      h += "<ul class='tagType'>";
+      
+      var sortedTags = _.sortBy(tags,function(tag){ return( tag.get('name')) });
+      _(sortedTags).each( function( tagging ){
+        h += "<li>"+tagging.get('name') + "</li>";
+      },this);
+      h += "</ul>"
+    },this);
+
+    h+= "<div class='button green' id='newTaggingButton'>New Tagging</div>"
+    jQuery( this.el ).html( h );
   },
   updateTagCount : function(){
     var count = this.collection.length.toString();
@@ -46,9 +74,6 @@ App.Views.TagSidebar = Backbone.Marionette.CompositeView.extend({
     else{
       element.html( count + " tags");
     }
-  },
-  onRender : function(){
-    console.log("TagSidebar: onRender");
   },
   notifyEvent : function( data ) {
     e = JSON.parse(data)
@@ -163,6 +188,10 @@ App.Views.TaggingWidget = Backbone.Marionette.CompositeView.extend({
     _(this).bindAll();
     this.collection = new Backbone.Collection();
     this.collection.url = "/issues/"+this.model.id+'/tag/list.json';
+    this.collection.comparator = function( model ){
+      return( model.get('type')+model.get('name'));
+      //return( model.get('name'));
+    };
     this.collection.fetch();
 
     // i'll need it for tagging
@@ -178,7 +207,7 @@ App.Views.TaggingWidget = Backbone.Marionette.CompositeView.extend({
     //debugger
   },
   appendHtml :  function( collectionView, itemView, index ){
-    jQuery("table.TagSelector tbody",collectionView.el).prepend(itemView.el);
+    jQuery("table.TagSelector tbody",collectionView.el).append(itemView.el);
   },
   doFilter : function( e ){
 

@@ -337,10 +337,10 @@ a.s4{
 a.s5{
   font-size: 3em;
   }
-ul{
+/*ul{
   margin-top: 1em;
   margin-bottom: 1em;
-}
+}*/
 /*---------------------center start---------------------*/
 
 /*
@@ -1238,4 +1238,8 @@ div.feedbackBar{
 div.help{
   padding: 1em;
   margin: 0.5em;
+}
+
+ul.tagType{
+  margin-bottom:0px;
 }
