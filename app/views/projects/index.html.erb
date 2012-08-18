@@ -45,8 +45,8 @@
 			<div id='center'></div>
 			<div id='rightSidebar'>
 				<div id="speedButtonsSidebar"/>
-				<div id='notificationSidebar'/>
 				<div id='tagSidebar'/>
+				<div id='notificationSidebar'/>
 			</div>
 		</div>
 		<div class='modal hide' id='modal'></div>
@@ -140,7 +140,6 @@
 
 
 <script id="alternativeDetailsViewTemplate" type="text/template">
-	alternativeDetailsViewTemplate
 	   		<td class="name">	   		
 				<div class="deleteAlternative">
 					<span class="altenrnativeFocusedUsers"></span>
@@ -164,6 +163,14 @@
 				<tbody>
 					<%%= decisionTable() %>
 				</tbody>
+				<tfoot>
+					<tr class="foot">
+						<td>
+							<div class="button orange" id="editRationale">Edit Rationale</div>
+							<div class="button orange" id="sealDecision">Seal Decision</div>
+						</td>
+					</tr>
+				</tfoot>
 				</table>
 	    	</td>
 </script>
@@ -207,6 +214,9 @@
 </script>
 
 <script id="TagSidebarTemplate" type="text/template">
+	<div class="buttonWrapper>"	
+		<div class="button green" id="newTaggingButton">Edit Taggings</div>
+	</div>
 Taggings:
 	<!--
 	<table class='TagList'>
@@ -227,7 +237,6 @@ Taggings:
 	-->
 	<ul class="tagList">
 	</ul>
-	<div class="button green" id="newTaggingButton">New Tagging</div>
 </script>
 
 <script id="TaggingViewTemplate" type="text/template">
@@ -279,6 +288,64 @@ Taggings:
 <script id="eventNotificationTemplate" type="text/template">
 		<%%= renderAttributes() %>
 </script>
+
+<script id="DecisionListWidgetTemplate" type="text/template">
+	<table class="decisionListWidget">
+		<thead>
+			<tr class="head">
+				<th>Decision</th>
+				<th>Rationale</th>
+				<th>User</th>
+				<th>Timestamp</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+</script>
+
+<script id="DecisionItemViewTemplate" type="text/template">
+		<td class="type">
+			<%%= get('type') %>
+		</td>
+		<td class="rationale">
+			<%%= get('rationale') %>
+		</td>
+		<td class="user">
+			<%%= get('user') %>
+		</td>
+		<td class="timestamp">
+			<%%= get('timestamp').match(/.*(?= \+)/) %>
+		</td>
+</script>
+
+<script id="RationaleWidgetTemplate" type="text/template">
+	 <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal">×</button>
+	    <h3>Decision rationale</h3>
+	  </div>
+	  <div class="modal-body">
+	    Your rationale for the <b><%%= get('your_decision').name.toLowerCase() %></b> decision over the alternative: <b><%%= get('name') %></b> is:
+	    <div id="rationaleText" contenteditable='true'><%%= get('your_decision').rationale %></div>
+	  </div>
+	  <div class="modal-footer">
+	    <a class="btn btn-primary" id="save">Save</a>
+	  </div>
+</script>
+
+<script id="RationaleWidgetTemplateSpinner" type="text/template">
+	 <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal">×</button>
+	    <h3>Decision rationale</h3>
+	  </div>
+	  <div class="spinner">
+	  	<img class="spinner" src="/images/spinner.gif"/>
+	  </div>
+	  <div class="modal-footer">
+	    <!--<a class="btn btn-primary" id="save">Close</a>-->
+	  </div>
+</script>
+
 
 <%= include_javascripts :projects  %>
 <script type="text/javascript" charset="utf-8">

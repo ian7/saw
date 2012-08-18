@@ -45,6 +45,8 @@ App.Views.TagSidebar = Backbone.View.extend({
     var tagTypes = {};
     //debugger;
 
+    h+= "<div class='buttonWrapper'><div class='button green' id='newTaggingButton'>Edit Taggings</div></div>";
+    h+= "<div class='tagTree'>"
     this.collection.each( function( tagging ){
       if( !tagTypes[tagging.get('type')] ){
         tagTypes[tagging.get('type')] = {}
@@ -62,7 +64,8 @@ App.Views.TagSidebar = Backbone.View.extend({
       h += "</ul>"
     },this);
 
-    h+= "<div class='button green' id='newTaggingButton'>New Tagging</div>"
+    h += "</div>";
+
     jQuery( this.el ).html( h );
   },
   updateTagCount : function(){
@@ -129,6 +132,8 @@ App.Views.TagSelectorItem = Backbone.Marionette.ItemView.extend({
     _(this).bindAll();
     this.model.collection.existingTags.on('add',this.existingTagsChanged,this);
     this.model.collection.existingTags.on('remove',this.existingTagsChanged,this);
+    this.model.collection.on('add',this.existingTagsChanged,this);
+    this.model.collection.on('remove',this.existingTagsChanged,this);
   },
   existingTagsChanged : function(){
     this.onRender();

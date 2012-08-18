@@ -324,6 +324,7 @@ class AlternativesController < ApplicationController
    		  @your_decision["decision_tag_id"] = decision.id   		  
    		  @your_decision["color"] = decision.color
    		  @your_decision["tagging_id"] = @current_users_decision.id
+        @your_decision["rationale"] = @current_users_decision["Rationale"]
    		else
    		  # if no decision was found...
    		  @your_decision["name"] = nil

@@ -9,6 +9,7 @@ App.Views.ItemWidget = Backbone.View.extend({
 		"blur div.editable"		: "blured",
 		"keyup div.editable"	: 'keyup',
 		"click div.refresh" : "refresh",
+		"click div.editable" : 'selectAll',
 	},
 	nonAttributes : [
 		"Your_decision",
@@ -97,12 +98,17 @@ App.Views.ItemWidget = Backbone.View.extend({
 	    	}
     	},this);
 	},
-
+	selectAll : function(){
+				document.execCommand('selectAll',false,null);
+	},
     focused : function( e ){
     	focusedAttributeName = e.target.id;
 
     	//console.log("focused on " + e.target.nodeName + " " +e.target.id + " target: " + e.target.nodeName + " " + e.target.id);
 
+    	if( e.target.innerText == "(empty)" ){
+    		e.target.innerText = "";
+    	} 
     	jQuery("span.focus",this.el)[0].innerText = focusedAttributeName;
 
     	try {
@@ -113,7 +119,9 @@ App.Views.ItemWidget = Backbone.View.extend({
 	  	}
 	  	//this.ne.addInstance(e.srcElement);
 
-	  	panelEl = jQuery("div.nicEdit-panelContain",jQuery(e.target).parent());
+	  	var panelEl = jQuery("div.nicEdit-panelContain",jQuery(e.target).parent());
+
+		//document.execCommand('selectAll',false,null);
 
 
 		jQuery.getJSON('/notify/' + this.model.get('id') + '/' + focusedAttributeName + '/focused', function(data) {});

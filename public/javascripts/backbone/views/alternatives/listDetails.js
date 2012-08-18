@@ -9,6 +9,8 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 		"click .unrelateAlternative": "unrelateAlternative",
 		"click .decide"				: "decide",
 		"click .undecide"			: "undecide",
+		'click #editRationale'		: 'editRationale',
+		'click #sealDecision'		: 'sealDecision',
 		'mouseover'	: 'mouseover',
 		'mouseout' : 'mouseout',
     },
@@ -84,7 +86,6 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 		_(this).bindAll();
 	    
 	    this.model.bind('change', this.refresh);
-	    this.on('close',this.onClose,this);
 
 		//this.model.bind('change', this.render);
 		notifier.register(this);		
@@ -95,8 +96,10 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 		// this.el needs to be set in render function in order to support cascading redering.
         this.itemAttributesWidget = new App.Views.ItemWidget( {model: this.model });
 
-        // this is just nice. 
+        // this should set html element id... (should)
         this.id = this.model.id;
+
+
     },  
     onRender : function(){
     	// general item attributes widget:
@@ -104,9 +107,9 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 		this.itemAttributesWidget.$el = jQuery("div.itemAttributes",this.el);
 		this.itemAttributesWidget.render();
 		this.fixDecisionColorBackground();
-    },
-    onClose : function(){
-    	layout.speedButtonsSidebar.close();
+
+        this.decisionListWidget = new App.Views.DecisionListWidget({model: this.model, el: jQuery("div.decisionsDetails",this.el)});
+        this.decisionListWidget.render();
     },
     fixDecisionColorBackground : function(){
 		// alternative coloring...
@@ -132,6 +135,15 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 	
 
     },
+    editRationale : function() {
+    	var rationaleWidget = new App.Views.RationaleWidget({model:this.model});
+    	layout.modal.show( rationaleWidget );
+    },
+    sealDecision : function(){
+	  	//TBD
+	  	alert('to be implemented');
+	},
+
  /*44444444
     render: function() {
 
@@ -362,15 +374,19 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 		rationaleDiv = jQuery("div.button.decide",this.el);
 
 		//alert(element.target.id);
-		jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {
-		/*	rationaleDiv.tooltip().show();	
-			jQuery("div.rationaleText").focus();
 
-			// nasty, nasty...
-			jQuery("div.tooltip").attr("id",data.$oid);
-		 */	
-		});
+	    jQuery.ajax({
+		 	type: 'GET',
+		 	url: this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'),
+		 	data: "",   
+		 	complete: function(){
+				
+		 	}
+		 });
 		
+		//for many reasons this is difficult....
+		this.editRationale(); 		
+
 		jQuery("table.decisions", this.el).block({ message: null });
 	},
 	undecide : function(element) {
@@ -521,76 +537,6 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 
 
 
-App.Views.AlternativeListDetails = Backbone.Marionette.CollectionView.extend({
-	itemView : App.Views.AlternativeDetailsView,
-  events : {
-//	"click .newItem" : "newItem"
-  },
-  initialize : function() {
-	
-  	/*
-	this.alternativesCollectionView = new UpdatingCollectionView({
-      collection           : this.collection,
-      childViewConstructor : AlternativeDetailsUpdatingView,
-      childViewTagName     : 'tr',
-      el : jQuery('table.alternativeListDetails', this.el)[0],
-    });
-	
-	notifier.register(this);
-	_(this).bindAll();
-
-//	this.collection.bind('saved', this.checkNewAlternative);
-//	this.collection.bind('refresh', this.checkNewAlternative);
-	this.model.bind('change',this.renderHeader);
-	// load and render navigation helper
-	_.extend( this, App.Helpers.ItemNavigation );
-	*/
-  },
- 
-  /*
-  render : function() {
-		this.rendered = true;
-		el = jQuery(this.el);
-		//el.html("");
-		el.prepend("<div class='header'></div>");
-		this.renderNavigation();
-		
-//		this.alternativesCollectionView.el = jQuery('table.alternativeListDetails', this.el);
-		//this.alternativesCollectionView.el.innerHTML="";
-		if( this.model ) {
-			
-			jQuery(this.alternativesCollectionView.el).attr("id",this.model.id);
-		}
-		this.alternativesCollectionView.render();
-		this.checkNewAlternative();
-  },
-  */
-
-  notify : function( broadcasted_id ) {
-  },
-
-  newAlternative : function() {	
-		a = new Alternative;
-		// this.newItemName is unavailable when called by the 'save' event from the collection
-		a.set({name: '(edit to add)' });
-		this.collection.add( a );
-		jQuery("div.nextEdited").focus();
-  },
-
-  removeNewAlternative : function() {
-		this.collection.each( function( a ) {
-			if( a.get('name') == '(edit to add)' ) {
-				this.collection.remove( a );
-				delete a;
-			} 
-		},this);
-
-  },
-  checkNewAlternative : function () {
-	this.removeNewAlternative();
-	this.newAlternative();
-  },
-});
 
 
 App.Views.AlternativeDetailsWidget = Backbone.Marionette.CompositeView.extend({
@@ -643,6 +589,12 @@ App.Views.AlternativeDetailsWidget = Backbone.Marionette.CompositeView.extend({
 		this.collection.item_url = "/projects/"+projectId+"/items/"+issueId;
 		this.collection.urlOverride = this.collection.item_url+"/alternatives";
 		this.collection.fetch();
+		
+		this.on('close',this.onClose,this);
+
+	},
+	onClose : function(){
+	    	layout.speedButtonsSidebar.close();
 	},
 	onRender : function(){
 	/*	this.alternativeList = new App.Views.AlternativeListDetails({
@@ -653,6 +605,7 @@ App.Views.AlternativeDetailsWidget = Backbone.Marionette.CompositeView.extend({
 		*/
 		buttons = new App.Views.AltenrativeListSpeedButtons({collection: this.collection});
 		layout.speedButtonsSidebar.show( buttons );
+
 	},
 	appendHtml : function( collectionView, itemView, index ) {
 		//collectionView.$el.prepend(itemView.el);
@@ -735,3 +688,133 @@ App.Views.AltenrativeListSpeedButtons = Backbone.Marionette.View.extend({
 		alert('to be implemented');
 	}
 })
+
+App.Views.DecisionItemView = Backbone.Marionette.CompositeView.extend({
+	template: "#DecisionItemViewTemplate",
+	tagName: 'tr',
+	className : 'decision',
+	templateHelpers: {
+        get: function( variable ){
+            try {
+                if( this[variable] ){
+                    return this[variable];
+                }
+                else{
+                    return "(empty)";
+                }
+            }
+            catch( e ){
+                return ("(undefined)");
+            }
+
+        },
+    },
+    initialize : function(){
+    	_(this).bindAll();
+    	eventer.register(this);
+    },
+    onRender : function(){
+    	jQuery(this.el).addClass(this.model.get('color'));
+    },
+    notifyEvent : function (data){
+	  	d = JSON.parse(data)
+	  	if( d.id == this.model.id){
+	  			this.render();
+	  	}
+    },
+});
+
+App.Views.DecisionListWidget = Backbone.Marionette.CompositeView.extend({
+	template: '#DecisionListWidgetTemplate',
+	itemView: App.Views.DecisionItemView,
+	initialize : function(){
+		_(this).bindAll();
+		// i assume here that it got model as a parameter
+		this.collection = new Backbone.Collection();
+		this.regenerateCollection();
+		this.model.on('change',this.regenerateCollection,this);
+	},
+	regenerateCollection : function(){
+		var newModels = []
+		_(this.model.get('decisions')).each(function(decisionType){
+			_(decisionType.details).each( function( userDecision ){
+				
+				// if this decision already is on the list (rationale changed.)
+				if( this.collection.get( userDecision.decision_id )){
+					var decisionModel = this.collection.get( userDecision.decision_id );
+					decisionModel.set('rationale',userDecision.Rationale);
+				}
+
+				var decisionModel = new Backbone.Model();
+				decisionModel.set('id',userDecision.decision_id);
+				decisionModel.set('user',userDecision.email);
+				decisionModel.set('userId',userDecision.user_id);
+				decisionModel.set('timestamp',userDecision.timestamp);
+				decisionModel.set('type',decisionType.name);
+				decisionModel.set('color',decisionType.color);
+				decisionModel.set('rationale',userDecision.Rationale);
+				newModels.push( decisionModel );
+
+			},this);
+		},this);
+		this.collection.reset( newModels );
+	},
+	appendHtml : function( collectionView, itemView, index ) {
+		//collectionView.$el.prepend(itemView.el);
+		jQuery("table.decisionListWidget",collectionView.el).append(itemView.el);
+	},
+});
+
+App.Views.RationaleWidget = Backbone.Marionette.ItemView.extend({
+  template: '#RationaleWidgetTemplate',
+  templateHelpers: {
+    get : function( id ){
+        if( this[id] ){
+            return(this[id]);
+        }
+        else{
+            return("(empty)");
+        }
+    },
+  },
+  events: {
+  	"click a.btn#save": 	'save',
+  },
+  initialize : function(){
+    _(this).bindAll();
+    this.model.on('change',this.render,this);
+  },
+  beforeRender : function(){
+  	if( this.model.get('your_decision').tagging_id == null ){
+  		this.template = "#RationaleWidgetTemplateSpinner"
+  	}
+  	else{
+  		this.template = '#RationaleWidgetTemplate'
+  	}
+  },
+  onRender : function(){
+
+  	if( jQuery("div#rationaleText",this.el)[0] ) {
+	  	this.ne = new nicEditor({iconsPath : '/images/nicEditorIcons.gif', buttonList : ['bold','italic','underline','strikeThrough','ol','ul','link','unlink'],hasPanel:true});
+		this.ne.panelInstance(jQuery("div#rationaleText",this.el)[0]);
+		
+		// no idea why do I need this...
+		// without it editor renders wrong....
+		jQuery("div",jQuery("div#rationaleText",this.el).parent()).eq(0)[0].style['width']="100%";
+
+		// this sets focus where it should be. 
+		jQuery(this.el).oneTime(300,'some_focus',function(){jQuery("div#rationaleText")[0].focus()});
+	}
+  },
+  save : function(){
+    jQuery.ajax({
+	 	type: 'PUT',
+	 	url: '/r/'+this.model.get('your_decision').tagging_id+'/Rationale',
+	 	data: jQuery("div#rationaleText",this.el).html(),   
+	 	complete: function(){
+			layout.modal.close(); 		
+	 	}
+	 });      	  		
+  },
+});
+

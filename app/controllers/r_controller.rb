@@ -128,7 +128,8 @@ class RController < ApplicationController
     r.save
 
     # blow notify
-    notify(params[:id])
+    #notify(params[:id])
+    ring(params[:id],2,'setAttribute')
 
     respond_to do |format|
         format.json { render :json => value }

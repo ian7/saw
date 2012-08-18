@@ -1027,26 +1027,34 @@ div#layout div#rightSidebar div#notificationSidebar{
 }
 
 div#layout div#rightSidebar div#speedButtonsSidebar{
-  height: 33%;
+  /*height: 33%;*/
 }
 
 div#layout div#rightSidebar div#speedButtonsSidebar div.button{
   margin-bottom: 0.5em;
 }
 
-
 div#layout div#rightSidebar div#tagSidebar{
   height: 33%;
+}
+
+div#layout div#rightSidebar div.tagTree{
 /*  background-color: #ffffb0; */
   padding-top: 2px;
   padding-left: 1px;
 }
 
+div.buttonWrapper {
+  width:100%;
+  text-align:center;
+  background-color: black;
+}
+
 div#layout div#rightSidebar div#tagSidebar div#newTaggingButton {
-  float: right;
+/*  float: right;
   bottom: 0;
   position: fixed;
-  right: 0px;
+  right: 0px;*/
   margin-bottom: 1em;
   margin-right: 0.5em;
 }
@@ -1242,4 +1250,47 @@ div.help{
 
 ul.tagType{
   margin-bottom:0px;
+}
+ul.tagType li {
+  line-height: 1;
+}
+
+
+/* small decision details table */
+table.decisionListWidget {
+  width: 100%;
+  padding: 0.8em;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.5em;
+  border-spacing: 0px;
+}
+table.decisionListWidget td{
+    text-align:center;
+    vertical-align:top;
+}
+table.decisionListWidget td.rationale{
+    text-align:left;
+    padding-left: 1em;
+    padding-right: 1em; 
+}
+
+table.decisionListWidget td.type {
+  width: 70px;
+}
+table.decisionListWidget td.user {
+  width: 100px;
+}
+
+table.decisionListWidget td.timestamp {
+  width: 150px;
+}
+
+table.decisions tr.foot div.button{
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+div#rationaleText{
+  width: 100%;
+  min-height: 300px;
 }
