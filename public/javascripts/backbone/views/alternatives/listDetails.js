@@ -375,6 +375,9 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 
 		//alert(element.target.id);
 
+		jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {});		
+
+		/*
 	    jQuery.ajax({
 		 	type: 'GET',
 		 	url: this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'),
@@ -383,6 +386,7 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 				
 		 	}
 		 });
+		*/
 		
 		//for many reasons this is difficult....
 		this.editRationale(); 		

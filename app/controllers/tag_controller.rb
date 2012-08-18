@@ -214,6 +214,11 @@ class TagController < ApplicationController
     end
     ring( @relation_instance.id ,2,'untag')
     @to_taggable=Taggable.find @relation_instance.tip
+
+    if @relation_instance != nil
+       @relation_instance.destroy
+    end
+
   else
    ## kill it
    if not @relation_instance 
