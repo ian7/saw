@@ -427,7 +427,7 @@ App.Views.IssueListSpeedButtons = Backbone.Marionette.View.extend({
 		jQuery(this.el).oneTime(1200,'some_focus',function(){jQuery("span.e6")[0].focus()});
 	},
 	reuseIssue: function(){
-		alert('to be implemented');
+		location.hash = "/projects/"+layout.content.currentView.model.id + "/reuseIssues"
 	},
 	expandAll: function(){
 		_(this.mainView.children).each( function( v ) { v.doExpand() })

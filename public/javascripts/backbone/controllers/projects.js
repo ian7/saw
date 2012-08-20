@@ -121,6 +121,7 @@ App.Views.ProjectView = Backbone.Marionette.CompositeView.extend({
 
 App.Views.ProjectListWidget = Backbone.Marionette.ItemView.extend({
     template: "#projectListWidgetTemplate",
+    className: "projectListWidgetTemplate",
     events: {
         'click div#newProjectButton' :  'newProject',
     },
@@ -129,6 +130,10 @@ App.Views.ProjectListWidget = Backbone.Marionette.ItemView.extend({
         this.projects = new Project();
         this.projects.url = "/";
         this.projects.fetch();
+        this.projects.on('reset',this.render,this);
+
+        var speedButtonsSidebar = new App.Views.ProjectSpeedButtons({mainView:this});
+        layout.speedButtonsSidebar.show( speedButtonsSidebar );
     },
     // this is executed after template is alreayd rendered
     onRender: function(){
@@ -360,6 +365,62 @@ ModalRegion = Backbone.Marionette.Region.extend({
     }
   });
 
+
+
+App.Views.ProjectSpeedButtons = Backbone.Marionette.View.extend({
+  events : {
+    'click div#newProject' : 'newProject',
+  },
+  initialize : function(a){
+    _(this).bindAll();
+    this.mainView = a['mainView'];
+    this.collection = this.mainView.collection;
+  },
+  render : function(){
+    h="";
+    h+="<div class='button green' id='newProject'>New Project</div>";
+    this.$el.html(h);
+    //this.delegateEvents();
+  },
+  newProject : function(){
+    //mainView.
+    var np = new App.Views.NewProjectWidget({mainView:this.mainView});
+    layout.modal.show( np );
+  },
+
+})
+
+
+App.Views.NewProjectWidget = Backbone.Marionette.ItemView.extend({
+  template: '#NewProjectWidgetTemplate',
+  events: {
+//    "keyup input.searchBox": 'doFilter'
+    "click a#create" :  'createProject'
+  },
+  initialize : function(a){
+    _(this).bindAll();
+    this.mainView = a['mainView'];
+
+  },
+  onRender : function(){
+    //debugger
+    jQuery("input#projectName",this.el).focus();
+  },
+  createProject : function(){
+    var name = jQuery( "input#projectName",this.el)[0].value;
+    debugger
+    jQuery.ajax({
+        type: 'POST',
+        url: '/projects.json',
+        data: { 'name': name },
+        complete: this.refreshProjects
+    });
+    layout.modal.close();
+  },
+  refreshProjects : function() {
+    this.mainView.projects.fetch();
+  },
+ });
 
 AppLayout = Backbone.Marionette.Layout.extend({
   template: "#my-template",

@@ -78,6 +78,16 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    puts params
+    p=Project.new
+    p.type="Project"
+    p.name=params[:name]
+    p.save
+
+    respond_to do |format|
+      format.json  { render :json => p.to_json }
+    end
+
   end
 
   def update

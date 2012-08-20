@@ -95,9 +95,11 @@ App.Views.TagSidebar = Backbone.View.extend({
       }
       this.collection.url = "/items/"+this.model.id + "/tag/tags_list";
       this.collection.fetch();
+      jQuery("div#newTaggingButton",this.el).show();
     }
     else{
       this.collection.reset();
+      jQuery("div#newTaggingButton",this.el).hide();
     }
 
   },

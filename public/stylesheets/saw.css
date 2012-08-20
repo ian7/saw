@@ -952,9 +952,11 @@ table.itemDetails td {
 /*  vertical-align: top;*/
   padding: 1em;
   min-width: 450px;
+  padding: 1em;
+  padding-bottom: 0.5em;
+  min-width: 450px;
+  padding-top: 0.3em;  
 }
-
-
 
 div#sign-in,
 div#sign-up {
@@ -1142,6 +1144,8 @@ div.projectView{
   margin: 1em;
   padding: 2em;
   background-color: #EEEEEE;
+  margin: 0 auto;
+  width: 70%;
 }
 
 div#newProjectButton{
@@ -1170,6 +1174,13 @@ div.spinner {
 div.issueCompactView {
   padding-top: 4px;
   padding-bottom: 6px;
+    width: 100%;
+  background: #EEE;
+  font-size: 10pt;
+  min-height: 2em;
+  margin-bottom: 0.1em;
+  padding: 0.5em;
+  margin-top: 0.3em;
 }
 
 div.ribbonWidget {
@@ -1333,4 +1344,10 @@ table.allIssues tr.reuseItem > td {
   border-bottom-style: solid;
   border-bottom-width: 0.75em;
   border-bottom-left-radius: 10px;
+}
+
+
+div.project div.more{
+  display: inline;
+  float:right;
 }
