@@ -1035,7 +1035,12 @@ div#layout div#rightSidebar div#speedButtonsSidebar div.button{
 }
 
 div#layout div#rightSidebar div#tagSidebar{
-  height: 33%;
+  /*height: 33%;*/
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  padding-bottom: 1em;
+  min-height: 20%;
 }
 
 div#layout div#rightSidebar div.tagTree{
@@ -1293,4 +1298,39 @@ table.decisions tr.foot div.button{
 div#rationaleText{
   width: 100%;
   min-height: 300px;
+}
+
+
+tr.reuseItem div.buttons {
+  float:right;
+}
+
+tr.reuseItem div.expand {
+  width: 55px;
+}
+tr.reuseItem div.elicit{
+  width: 55px;
+}
+table.reuseWidget {
+  width: 60%;
+  margin-left:3em;
+}
+
+table.allIssues {
+  width: 100%;
+}
+
+table.allIssues tr.reuseItem > td {
+  width: 60%;
+  background: #EEE;
+  font-size: 10pt;
+  min-height: 2em;
+  margin-bottom: 1px;
+  margin-bottom: 2px;
+  padding: 0.5em;
+  border-bottom-color: white;
+  margin-bottom: 1em;
+  border-bottom-style: solid;
+  border-bottom-width: 0.75em;
+  border-bottom-left-radius: 10px;
 }

@@ -198,9 +198,6 @@ class TagController < ApplicationController
   if params[:project_id]
     @relation_instances.each do |ri|
       @project_tag = Project.find params[:project_id]
-#      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!! PTID: "+ @project_tag.id.to_s
-#      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!! rID: "+ ri.id.to_s
-#      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!! a: "+ current_user.id.to_s
 
 #TODO:  not checking user is going to make trouble.... 
       project_relation = Taggable.find(:first, :conditions=>{:origin=>@project_tag.id, :tip=>ri.id }) #, :author_id=>current_user.id})

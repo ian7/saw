@@ -256,6 +256,7 @@ App.Controllers.Project = Backbone.Router.extend({
     routes: {
         "" :            "index",
         "projects/:id" : "projectDetails",
+        "projects/:id/reuseIssues": 'projectReuseIssues',
         "issues/:id" : "issueDetails",
         "projects/:projectId/issues/:issueId/alternatives" : "projectIssueAlternatives",
         "events"    : 'events'
@@ -296,6 +297,11 @@ App.Controllers.Project = Backbone.Router.extend({
 
         layout.content.show( detailsView );  
         tagSidebar.display(detailsView.model);
+    },
+    projectReuseIssues : function( projectId ){
+        this.reset();
+        detailsView = new App.Views.Items.ReuseIssuesWidget( {id: projectId });
+        layout.content.show( detailsView );
     },
     issueDetails : function( id ){
         this.reset();

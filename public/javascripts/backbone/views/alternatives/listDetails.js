@@ -387,7 +387,7 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 		 	}
 		 });
 		*/
-		
+
 		//for many reasons this is difficult....
 		this.editRationale(); 		
 
@@ -680,7 +680,7 @@ App.Views.AltenrativeListSpeedButtons = Backbone.Marionette.View.extend({
 	render : function(){
 		h="";
 		h+="<div class='button green' id='newAlternative'>New Alternative</div>";
-		h+="<div class='button green' id='reuseAlternative'>Reuse Alternative</div>";
+		//h+="<div class='button green' id='reuseAlternative'>Reuse Alternative</div>";
 		this.$el.html(h);
 		//this.delegateEvents();
 	},
@@ -689,7 +689,8 @@ App.Views.AltenrativeListSpeedButtons = Backbone.Marionette.View.extend({
 		jQuery(this.el).oneTime(1200,'some_focus',function(){jQuery("div.editable#name")[0].focus()});
 	},
 	reuseAlternative: function(){
-		alert('to be implemented');
+		//alert('to be implemented');
+		location.hash = "/projects"+this.model.id+"/reuseIssues";
 	}
 })
 
