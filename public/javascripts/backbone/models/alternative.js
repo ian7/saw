@@ -6,6 +6,7 @@ var Alternative = Backbone.Model.extend({
       var base = '/alternatives';
       
 
+
       if( this.collection ) {
 	    if (this.isNew())  {
 			return this.collection.item_url+base;
@@ -86,7 +87,7 @@ var Alternative = Backbone.Model.extend({
 		},this);
 		
 		return selectedDecision;
-	}
+	},
 });
 
 

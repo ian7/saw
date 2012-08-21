@@ -421,7 +421,7 @@ App.Views.IssueListSpeedButtons = Backbone.Marionette.View.extend({
 		h+="<div class='button green' id='reuseIssue'>Reuse Issue</div>";
 		h+="<div class='button gray' id='expandAll'>Expand All</div>";
 		h+="<div class='button gray' id='collapseAll'>Collapse All</div>";
-		h+="<div class='button gray' id='liveStatus'>Live Status</div>";
+		h+="<div class='button gray' id='liveStatus'>Live Summary</div>";
 		h+="<div class='button gray' id='exportReport'>Export Report</div>";
 		this.$el.html(h);
 		//this.delegateEvents();
@@ -440,6 +440,7 @@ App.Views.IssueListSpeedButtons = Backbone.Marionette.View.extend({
 		_(this.mainView.children).each( function( v ) { v.doCollapse() })
 	},
 	liveStatus : function(){
+		location.hash = "/projects/"+layout.content.currentView.model.id + "/liveSummary"
 	},
 	exportReport : function(){
 		location.href = "/projects/" + layout.content.currentView.model.id + '/report2';

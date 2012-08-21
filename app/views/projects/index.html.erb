@@ -82,7 +82,7 @@
 
 <script id="projectDetailsWidgetTemplate" type="text/template">
 	<div class="projectDetails">
-		Project details come here (like name: <b><%%= get('name') %></b>) or ownership come here. Detailed statistics should come handy too.
+		This is the summary of issues within the project <b><%%= get('name') %></b>). In this view you can rapidly capture design issues and cast preliminary decisions.
 	</div>
 	<div class="issueListHolder">
 	</div>
@@ -360,6 +360,16 @@ Taggings:
 	  <div class="modal-footer">
 	    <a class="btn btn-primary" id='create'>Create</a>
 	  </div>
+</script>
+
+<script id="LifeProjectIssueTemplate" type="text/template">
+	<td>
+	<span class="name">...</span>
+		<span class="totalDecisions">...</span> decisions, 
+		State: <span class="decisionState">...</span>
+		<!--<div style="float: right"><div class="button orange showDetails">Details</div></div>-->
+	<table class="alternativesList"></table>
+	</td>
 </script>
 
 

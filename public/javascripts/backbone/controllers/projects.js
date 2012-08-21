@@ -262,6 +262,7 @@ App.Controllers.Project = Backbone.Router.extend({
         "" :            "index",
         "projects/:id" : "projectDetails",
         "projects/:id/reuseIssues": 'projectReuseIssues',
+        "projects/:id/liveSummary": 'liveSummary',
         "issues/:id" : "issueDetails",
         "projects/:projectId/issues/:issueId/alternatives" : "projectIssueAlternatives",
         "events"    : 'events'
@@ -291,6 +292,11 @@ App.Controllers.Project = Backbone.Router.extend({
 
         layout.content.show( rootView );
         tagSidebar.display();
+    },
+    liveSummary : function( id ) {
+        this.reset();
+        detailsView = new App.Views.LiveProjectReport({id:id});
+        layout.layout.show( detailsView );
     },
     projectDetails : function(id) {
         this.reset();
@@ -426,6 +432,7 @@ AppLayout = Backbone.Marionette.Layout.extend({
   template: "#my-template",
   el: jQuery("div#main"),
   regions: {
+    layout: '#layout',
     ribbon: "#ribbon",
     content: "#center",
     leftSidebar: "#leftSidebar",

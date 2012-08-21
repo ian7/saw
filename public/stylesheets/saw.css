@@ -478,7 +478,7 @@ a.s5{
 */
 
 table {
-  font-size: 9pt;
+ /* font-size: 9pt;*/
 }
 /*---------------------#center table end---------------------*/
 /*---------------------center end---------------------*/
@@ -863,7 +863,7 @@ li.black{
 }
 
 div.header{
-  padding-top: 0em;
+  padding-top: 2em;
   padding-left: 1em;
   padding-bottom: 1em;
 /*  width: 100%; */
@@ -1351,4 +1351,55 @@ table.allIssues tr.reuseItem > td {
 div.project div.more{
   display: inline;
   float:right;
+}
+
+div.header div#projectName {
+  display: inline;
+  font-weight: bold;
+}
+
+table.issuesList{
+  width: 100%;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 2em;
+  margin-top: 2em;
+  background-color: #eee;
+}
+table.issuesList tr.LifeProjectIssue > td{
+  padding-left: 1em;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+  padding-right: 1em;
+  border-bottom-color: white;
+  border-bottom-style: solid;
+  border-bottom-width: 5px;
+}
+
+table.issuesList tr.LifeProjectIssue > td > span.name{
+  font-weight: bold;
+}
+
+table.issuesList tr.LifeProjectIssue td table.alternativesList{
+  width: 95%;
+  margin-left: 3em;
+  border-spacing: 0px;
+  margin-top: 10px;
+}
+
+table.issuesList tr.LifeProjectIssue td table.alternativesList td{
+  padding-top: 0.2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-bottom: 0.2em;
+}
+
+
+table.issuesList tr.LifeProjectIssue td table.alternativesList td.decisionType{
+  text-align:center;
+  width: 150px;
+}
+
+div.layout div.header{
+  margin-top: 3em;
 }
