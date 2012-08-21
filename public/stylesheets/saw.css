@@ -1146,6 +1146,7 @@ div.projectView{
   background-color: #EEEEEE;
   margin: 0 auto;
   width: 70%;
+  margin-top: 2em;
 }
 
 div#newProjectButton{
