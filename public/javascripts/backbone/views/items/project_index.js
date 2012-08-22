@@ -202,7 +202,14 @@ App.Views.LiveProjectReport = Backbone.Marionette.CompositeView.extend({
 
 	  	this.collection = new Items();
 	  	this.collection.urlOverride = this.model.url + "/items";
-	  	this.collection.comparator = function( model ){ model.get('name').toLowerCase() }
+	  	this.collection.comparator = function( model ){ 
+	  		if( model.get('name') ){
+	  			return model.get('name').toLowerCase() 
+	  		}
+	  		else{
+	  			return null;
+	  		}
+	  	}
 	  	this.collection.fetch();
 
 	  	eventer.register(this)

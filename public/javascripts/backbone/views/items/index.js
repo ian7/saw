@@ -34,8 +34,10 @@ App.Views.IssueCompactView = Backbone.Marionette.ItemView.extend({
 	"click .expand" : "toggleExpand",
 	"click .deleteItem" : "deleteItem",
 	"keypress .e6" : "editedItem",
-	"click .e6" : "expand",
+	//"click .e6" : "doExpand",
+	"focus .e6" : "doExpand",
 	"click .e6" : "selectAll",
+	//"focus .e6" : "selectAll",	
 	"click .details" : "navigateToDetails",
 	"mouseover" : 'mouseover',
 	"mouseout" : 'mouseout',
@@ -84,8 +86,11 @@ App.Views.IssueCompactView = Backbone.Marionette.ItemView.extend({
   },
   */
   selectAll : function( e ){ 
-	if( e.toElement.innerText == '(edit to add)') {
-		document.execCommand('selectAll',false,null);
+	//if( e.toElement.innerText == '(edit to add)') {
+		//e.target.execCommand('selectAll',false,null);
+	//}
+	if( e.target.innerText == "(empty)" ){
+		e.target.innerText = ""
 	}
 	
   },
@@ -421,8 +426,8 @@ App.Views.IssueListSpeedButtons = Backbone.Marionette.View.extend({
 		h+="<div class='button green' id='reuseIssue'>Reuse Issue</div>";
 		h+="<div class='button gray' id='expandAll'>Expand All</div>";
 		h+="<div class='button gray' id='collapseAll'>Collapse All</div>";
-		h+="<div class='button gray' id='liveStatus'>Live Summary</div>";
-		h+="<div class='button gray' id='exportReport'>Export Report</div>";
+		h+="<div class='button orange' id='liveStatus'>Live Summary</div>";
+		h+="<div class='button orange' id='exportReport'>Export Report</div>";
 		this.$el.html(h);
 		//this.delegateEvents();
 	},

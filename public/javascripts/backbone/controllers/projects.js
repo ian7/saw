@@ -414,7 +414,7 @@ App.Views.NewProjectWidget = Backbone.Marionette.ItemView.extend({
   },
   createProject : function(){
     var name = jQuery( "input#projectName",this.el)[0].value;
-    debugger
+    //debugger
     jQuery.ajax({
         type: 'POST',
         url: '/projects.json',

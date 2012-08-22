@@ -29,8 +29,8 @@ App.Views.Ts.RoutingList = Backbone.View.extend({
 
 //  _(this).bindAll('newItem','checkNewItem','removeNewItem','newItem');
 
-  this.collection.bind('saved',this.checkNewItem );
-  this.collection.bind('refresh',this.checkNewItem );
+//  this.collection.bind('saved',this.checkNewItem );
+//  this.collection.bind('refresh',this.checkNewItem );
 
   this.relationsCollectionView = new UpdatingCollectionView({
       collection           : this.collection,
@@ -80,8 +80,8 @@ App.Views.Ts.RoutingList = Backbone.View.extend({
   },
 
   checkNewItem : function() {
-    this.removeNewItem();
-    this.newItem();
+    //this.removeNewItem();
+    //this.newItem();
   },
 
 

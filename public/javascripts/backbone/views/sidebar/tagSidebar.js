@@ -46,6 +46,7 @@ App.Views.TagSidebar = Backbone.View.extend({
     //debugger;
 
     h+= "<div class='buttonWrapper'><div class='button green' id='newTaggingButton'>Edit Taggings</div></div>";
+    h+= "<div class='caption'>Taggings:</div>";
     h+= "<div class='tagTree'>"
     this.collection.each( function( tagging ){
       if( !tagTypes[tagging.get('type')] ){

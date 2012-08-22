@@ -13,6 +13,27 @@ App.Views.UpdateNotification = Backbone.Marionette.ItemView.extend({
             return("(empty)");
         }
     },
+    getType : function(){
+      var type = this.get('type').toLowerCase();
+      var h = ""
+      switch( type ){
+        case 'project':
+          h += "<div class='notification link project' id='" + this.get('id') + "'>";
+          h += this.get('type');
+          h += "</div>";
+          return( h )
+          break;
+/*        case 'issue':
+          h += "<div class='notification link issue' id='" + this.get('id') + "'>";
+          h += this.get('type');
+          h += "</div>";
+          return( h )
+          break;*/
+        default:
+          return(type);
+          break;
+        }
+    },
     translateUser : function(){
       return this.get('user').match(/^[A-Za-z0-9_]+/);
     },
@@ -25,19 +46,43 @@ App.Views.UpdateNotification = Backbone.Marionette.ItemView.extend({
           return ' untagged ';
           break;
         case 'mouseover':
-          return ' focused ';
+          return null;
+          //return ' focused ';
           break
         case 'mouseout':
           return null;
         default:
-          return this.get('event');
+          return null;
+          //return this.get('event');
           break;
       }
   },
-
+  events:{
+    'click div.project' : 'navigateProject',
+    'click div.issue'  : 'navigateIssue',
+  },
+  navigateProject : function( e ){
+    location.hash = "/projects/"+e.target.id;
+  },
+  navigateIssue : function( e ){
+    location.hash = "/issues/"+e.target.id;
+  },
   initialize : function(){
 		_(this).bindAll();
 	},
+  onRender : function(){
+    switch( this.get('event') ){
+      case 'mouseover':
+      case 'mouseout':
+      case null:
+        jQuery(this.el).hide();
+        break;
+      default:
+        // do nothing
+        break;
+
+    }
+  }
 
   /*
 	render : function(){

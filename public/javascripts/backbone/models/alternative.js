@@ -67,10 +67,20 @@ var Alternative = Backbone.Model.extend({
 	},
 	
 	isColliding : function() {
-		if( this.decisionsTotal() > 0 && !this.isDecided() )
-			return true;
-		else
-			return false;
+		var isIt = false;
+		var existingDec = null;
+
+		_(this.attributes.decisions).each( function( decisionType ) {
+			if( decisionType.count > 0 ){
+				if( existingDec == null ) {
+					existingDec = decisionType;
+				}
+				else
+					isIt = true;
+			}
+		},this);
+		
+		return(isIt);
 	},
 	
 	decision : function() {

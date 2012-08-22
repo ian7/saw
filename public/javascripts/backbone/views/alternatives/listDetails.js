@@ -110,6 +110,7 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 
         this.decisionListWidget = new App.Views.DecisionListWidget({model: this.model, el: jQuery("div.decisionsDetails",this.el)});
         this.decisionListWidget.render();
+        this.refresh();
     },
     fixDecisionColorBackground : function(){
 		// alternative coloring...
@@ -136,8 +137,14 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
 
     },
     editRationale : function() {
-    	var rationaleWidget = new App.Views.RationaleWidget({model:this.model});
-    	layout.modal.show( rationaleWidget );
+    	//debugger
+
+    	if( this.model &&
+    		this.model.attributes.your_decision &&
+    		this.model.attributes.your_decision.decision_tag_id ) {
+	    	var rationaleWidget = new App.Views.RationaleWidget({model:this.model});
+	    	layout.modal.show( rationaleWidget );
+    	}
     },
     sealDecision : function(){
 	  	//TBD
@@ -317,6 +324,15 @@ App.Views.AlternativeDetailsView  = Backbone.Marionette.ItemView.extend({
     	console.log('alternativeDetails.refresh');
     	jQuery("td.decisions table.decisions").unblock();
     	jQuery("td.decisions table.decisions tbody",this.el).html( this.templateHelpers.decisionTable( this.model.attributes ) );
+
+    	if( this.model &&
+    		this.model.attributes.your_decision &&
+    		this.model.attributes.your_decision.decision_tag_id ){
+    		jQuery("div.button#editRationale",this.el).removeClass("white").addClass("orange");    		
+    	}
+    	else{
+    		jQuery("div.button#editRationale",this.el).removeClass("orange").addClass("white");
+    	}
     	this.fixDecisionColorBackground();
     },
     focused : function( e ) {
@@ -607,7 +623,7 @@ App.Views.AlternativeDetailsWidget = Backbone.Marionette.CompositeView.extend({
 			});
 		this.alternativeList.render();
 		*/
-		buttons = new App.Views.AltenrativeListSpeedButtons({collection: this.collection});
+		buttons = new App.Views.AltenrativeListSpeedButtons({collection: this.collection, mainView: this});
 		layout.speedButtonsSidebar.show( buttons );
 
 		issueDetails = new App.Views.IssueDetails({id:this.issue.id,el:jQuery("div#issueAttributes",this.el)});
@@ -676,20 +692,25 @@ App.Views.AltenrativeListSpeedButtons = Backbone.Marionette.View.extend({
 	events : {
 		'click div#newAlternative' : 'newAlternative',
 		'click div#reuseAlternative' : 'reuseAlternative',
+		'click div#issueList' : 'issueList',
 	},
-	initialize : function(){
+	initialize : function(a){
+		this.mainView = a['mainView'];
 		_(this).bindAll();
 	},
 	render : function(){
 		h="";
 		h+="<div class='button green' id='newAlternative'>New Alternative</div>";
-		//h+="<div class='button green' id='reuseAlternative'>Reuse Alternative</div>";
+		h+="<div class='button orange' id='issueList'>Issue List</div>";
 		this.$el.html(h);
 		//this.delegateEvents();
 	},
+	issueList : function(){
+		location.hash = "/projects/"+this.mainView.project.id;
+	},
 	newAlternative : function(){
 		this.collection.create(null,{wait: false});
-		jQuery(this.el).oneTime(1200,'some_focus',function(){jQuery("div.editable#name")[0].focus()});
+		jQuery(this.el).oneTime(1200,'some_focus',function(){jQuery("div.editable#name")[1].focus()});
 	},
 	reuseAlternative: function(){
 		//alert('to be implemented');

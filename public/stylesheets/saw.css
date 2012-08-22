@@ -971,6 +971,11 @@ table.authentications{
   text-align:center;
 }
 
+
+div#sign-in-up{
+  width: 80%;
+  margin: 0 auto;
+}
 /*
 div#sign-in-up li.ui-tabs-selected{
   
@@ -1166,6 +1171,7 @@ img.spinner{
 div.projectDetails{
   background: #EEEEEE;
   padding: 3em;
+  margin-top: 2em;
 }
 div.spinner {
   width: 0%;
@@ -1187,6 +1193,17 @@ div.issueCompactView {
 div.ribbonWidget {
   padding-left: 2em;
   color: white;
+  background-color: black;
+  color: white;
+  position: fixed;
+  width: 100%;
+  height: 2em;
+  top: 0px;
+  left: 0px;
+  font-size: 120%;
+  height: 2.5em;
+  padding-top: 1em;
+
 }
 
 div.ribbonWidget a {
@@ -1402,4 +1419,20 @@ table.issuesList tr.LifeProjectIssue td table.alternativesList td.decisionType{
 
 div.layout div.header{
   margin-top: 3em;
+}
+
+div.TagSidebarTemplate div.caption{
+  width: 100%;
+  background: gray;
+  color: white;
+  text-align: center;
+}
+
+div.notification.link{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+table.alternativeList tr.decision td{
+  vertical-align: bottom;
 }
