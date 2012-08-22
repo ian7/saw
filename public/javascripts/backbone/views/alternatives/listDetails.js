@@ -610,6 +610,9 @@ App.Views.AlternativeDetailsWidget = Backbone.Marionette.CompositeView.extend({
 		buttons = new App.Views.AltenrativeListSpeedButtons({collection: this.collection});
 		layout.speedButtonsSidebar.show( buttons );
 
+		issueDetails = new App.Views.IssueDetails({id:this.issue.id,el:jQuery("div#issueAttributes",this.el)});
+		issueDetails.render();
+
 	},
 	appendHtml : function( collectionView, itemView, index ) {
 		//collectionView.$el.prepend(itemView.el);
