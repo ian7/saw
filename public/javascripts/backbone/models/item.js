@@ -3,122 +3,104 @@
  */
 
 
-
 var Item = Backbone.Model.extend({
-	state : {
-		noAlternatives : 'No alternatives',
-		noDecisions : 'No decisions were made yet',
-		missingDecisions : 'Some decisions are missing',
-		notConclusive : 'Decisions are not conclusive (multiple positive)',
-		openNonConclusive : 'Decisions not conclusive (open alternatives)',
-		noSolution : 'There are no acceptable alternatives',
-		colliding : 'Alternatives have colliding decisions',
-		decided : 'Decided',
-		unknown : 'That shouldn\'t happen',
+	state: {
+		noAlternatives: 'No alternatives',
+		noDecisions: 'No decisions were made yet',
+		missingDecisions: 'Some decisions are missing',
+		notConclusive: 'Decisions are not conclusive (multiple positive)',
+		openNonConclusive: 'Decisions not conclusive (open alternatives)',
+		noSolution: 'There are no acceptable alternatives',
+		colliding: 'Alternatives have colliding decisions',
+		decided: 'Decided',
+		unknown: 'That shouldn\'t happen',
 	},
-    url : function() {
-    	// if override then override
-    	if( this.urlOverride ) {
-    		return( this.urlOverride )
-    	}
+	url: function() {
+		// if override then override
+		if (this.urlOverride) {
+			return (this.urlOverride)
+		}
 		var base = "";
 		// in case there is a collection attached to this item
 		// we do some (evil) url arthmetics 
-		if( this.collection ) {
+		if (this.collection) {
 			base = this.collection.url();
+		} else {
+			// otherwise we do even more evil location arthmetics
+			base = window.location.pathname;
 		}
-		else {
-		  // otherwise we do even more evil location arthmetics
-	      base = window.location.pathname;
-		}
-		if (this.isNew()) 
-			return base;
+		if (this.isNew()) return base;
 
-	    return base + (base.charAt(base.length - 1) == '/' ? '' : '/') + this.id; 
+		return base + (base.charAt(base.length - 1) == '/' ? '' : '/') + this.id;
 	},
-	
-	alternatives : null,
+
+	alternatives: null,
 	/************* metrics come here ********************/
 	/* they assume that there is an .alternatives field here */
-	decisionState : function() {
-		
-		if( !this.alternatives )
-			return this.state.unknown;
-		
-		if( this.alternatives.length == 0)
-			return this.state.noAlternatives;
-		
-		var decisionsTotal = 0;	
+	decisionState: function() {
+
+		if (!this.alternatives) return this.state.unknown;
+
+		if (this.alternatives.length == 0) return this.state.noAlternatives;
+
+		var decisionsTotal = 0;
 		var foundNotDecidedAlterantive = false;
 		var foundCollidingAlternative = false;
 		var positiveAlternatives = 0;
 		var openAlternatives = 0;
-		
-		_(this.alternatives.models).each( function( alternative ) {
+
+		_(this.alternatives.models).each(function(alternative) {
 			decisionsTotal = decisionsTotal + alternative.decisionsTotal();
 
-			if( alternative.decisionsTotal() == 0 )
-				foundNotDecidedAlterantive = true;
-			
-			if( alternative.isColliding() ){
+			if (alternative.decisionsTotal() == 0) foundNotDecidedAlterantive = true;
+
+			if (alternative.isColliding()) {
 				foundCollidingAlternative = true;
 			}
 
 			decision = alternative.decision();
-			
-			if( decision ) {
-				if( decision.name == 'Positive' ) {
+
+			if (decision) {
+				if (decision.name == 'Positive') {
 					positiveAlternatives = positiveAlternatives + 1;
 				}
-				if( decision.name == 'Open' ) {
+				if (decision.name == 'Open') {
 					openAlternatives = openAlternatives + 1;
 				}
 			}
-			
-			
-		},this);
-		
-		if( decisionsTotal == 0 )
-			return this.state.noDecisions;
-			
-		if( foundNotDecidedAlterantive )
-			return this.state.missingDecisions;
-			
-		if( positiveAlternatives > 1 )
-			return this.state.notConclusive;
 
-		if( positiveAlternatives == 0  )
-			return this.state.noSolution;
-		
-		if( foundCollidingAlternative )
-			return this.state.colliding;
 
-		if( positiveAlternatives == 1 ) {
-			if( openAlternatives > 0 )
-				return this.state.openNonConclusive;
-			else
-				return this.state.decided;
+		}, this);
+
+		if (decisionsTotal == 0) return this.state.noDecisions;
+
+		if (foundNotDecidedAlterantive) return this.state.missingDecisions;
+
+		if (positiveAlternatives > 1) return this.state.notConclusive;
+
+		if (positiveAlternatives == 0) return this.state.noSolution;
+
+		if (foundCollidingAlternative) return this.state.colliding;
+
+		if (positiveAlternatives == 1) {
+			if (openAlternatives > 0) return this.state.openNonConclusive;
+			else return this.state.decided;
 		}
-			
+
 		// that shouldn't happen
 		return this.state.unknown;
-	},
-	
-	
-	
+	}
 });
 
 
 var Items = Backbone.Collection.extend({
-  model : Item,
-  url : function() {
-	if( !this.urlOverride ) {
-		return window.location.pathname;
-	}
-	else {
-		return this.urlOverride;
-	}
+	model: Item,
+	url: function() {
+		if (!this.urlOverride) {
+			return window.location.pathname;
+		} else {
+			return this.urlOverride;
+		}
 	},
-  urlOverride : null
+	urlOverride: null
 });
-
