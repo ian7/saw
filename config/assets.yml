@@ -20,19 +20,19 @@ javascripts:
     - public/javascripts/lib/bootstrap-modal.js
 # and then rest of jquery.ui can go
     - public/javascripts/lib/jquery/plugins/*.js
-
 # other stuff.. order is not so critical
     - public/javascripts/lib/jquery/jquery.fastconfirm.js
     - public/javascripts/lib/jquery/jquery.tabSlideOut.v1.3.js
     - public/javascripts/lib/jquery/jquery.blockUI.js
     - public/javascripts/juggernaut.js 
+#libs
     - public/javascripts/lib/underscore/underscore.js
     - public/javascripts/lib/backbone/backbone.js
     - public/javascripts/lib/backbone.marionette/lib/backbone.marionette.js
     - public/javascripts/lib/backbone.geppetto/backbone.geppetto.js
-    - public/javascripts/backbone/backbonerailsauthtokenadapter.js
-    - public/javascripts/backbone/notifier.js
- #   - public/javascripts/lib/**/*.js
+# not sure if this one is needed
+#    - public/javascripts/lib/backbonerailsauthtokenadapter.js
+    - public/javascripts/lib/notifier.js
 # visualization stuff
 #    - public/javascripts/yahoo-dom-event.js
 #    - public/javascripts/helpers.js
