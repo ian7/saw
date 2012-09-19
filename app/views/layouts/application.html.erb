@@ -2,82 +2,14 @@
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<head>
+	  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	  <%= include_stylesheets :common %>
+	</head>
 
-
-<%= stylesheet_link_tag 'saw', 'jquery', 'infovis' %>
-
-<script src="/javascripts/juggernaut.js" type="text/javascript" charset="utf-8"></script>
-<%= include_stylesheets :common, :workspace %>
-<%= include_javascripts :common %>
-  
-</head>
-<body <%= " onload='#{@onload}'"%>>
-
-<%= render :partial => "layouts/ribbon" %> <%#, :object=>@issues %>
-
-
-<div id="right-sidebar">
-<!-- that used to be some place-holder
-	 right-sidebar<br/>
-	 right-sidebar<br/>
-	 right-sidebar<br/>
-	 right-sidebar<br/>
-	 right-sidebar<br/>
--->
- </div>
-<div id="content">
-<%#= image_tag"background.png", :id => 'background' %>
-<%#= image_tag"background_bottom.png", :id => 'background_bottom' %>
-<!--
-<p style="color: green"><%= flash[:notice] %></p>
--->
-
-<!-- there we go with theh ribbon -->
-
-<!--
- <div class="tab" id="tab1" onmouseover="this.style.cursor='pointer';" 
-    onmouseup="window.location='<%= url_for :controller=>"wizards", :action=>"explore" %>'">Explore</div>
- <div class="tab" id="tab2" onmouseover="this.style.cursor='pointer';"
-    onmouseup="window.location='<%= url_for :controller=>"wizards", :action=>"capture" %>'">Capture</div>
- <div class="tab" id="tab3" onmouseover="this.style.cursor='pointer';" 
-    onmouseup="window.location='<%= url_for :controller=>"wizards", :action=>"decide" %>'">Decide</div>
- <div class="tab" id="tab4" onmouseover="this.style.cursor='pointer';"
-    onmouseup="window.location='<%= url_for :controller=>"wizards", :action=>"report" %>'">Report</div>
--->
-
-			<div class="wrapper">
-			  
-				<div id="center"> 
-
-					<div class="overlay" id="overlay"> 
-					 
-					    <!-- the external content is loaded inside this tag --> 
-					    <div class="contentWrap"></div> 
-					 
-					</div>
-
-
-
-
-				<ul id="chats">
-					
-				</ul>
-
-				<%= yield %>
-
-				<%#= render :partial => "layouts/footer" %>
-
-				 </div>
-			</div>
-
-
-			<!-- overlayed element --> 
-
-			<!-- make all links with the 'rel' attribute open overlays -->
-
-
-		</div>
+	<body>
+      <%= yield %>
+      <!-- that's the end of content, javascripts start here! -->
+	  <%= include_javascripts :common, :app %> 
 	</body>
 </html>

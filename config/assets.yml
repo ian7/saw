@@ -5,10 +5,7 @@ gzip_assets: off
 
 javascripts:    
   common: &common
-#    - public/javascripts/lib/jquery/jquery-1.5.1.js
     - public/javascripts/lib/jquery/jquery-1.8.0.js
-#    - public/javascripts/lib/jquery/jquery-1.5.1.min.js
-#    - public/javascripts/lib/jquery/jquery-ui-1.8.12.custom.js
     # this includes tooltips
     - public/javascripts/lib/jquery/jquery.tools.min.js
     # tagcloud stuff
@@ -23,63 +20,51 @@ javascripts:
     - public/javascripts/lib/bootstrap-modal.js
 # and then rest of jquery.ui can go
     - public/javascripts/lib/jquery/plugins/*.js
+
 # other stuff.. order is not so critical
     - public/javascripts/lib/jquery/jquery.fastconfirm.js
     - public/javascripts/lib/jquery/jquery.tabSlideOut.v1.3.js
     - public/javascripts/lib/jquery/jquery.blockUI.js
-# this one was originally downloaded over the juggernaut static node server...
-## I switched it back to juggernaut becuase of the compatibility issues.
-#   - public/javascripts/juggernaut.js
+    - public/javascripts/juggernaut.js 
     - public/javascripts/lib/underscore/underscore.js
     - public/javascripts/lib/backbone/backbone.js
     - public/javascripts/lib/backbone.marionette/lib/backbone.marionette.js
+    - public/javascripts/lib/backbone.geppetto/backbone.geppetto.js
     - public/javascripts/backbone/backbonerailsauthtokenadapter.js
     - public/javascripts/backbone/notifier.js
  #   - public/javascripts/lib/**/*.js
-    - public/javascripts/application.js
 # visualization stuff
-    - public/javascripts/yahoo-dom-event.js
-    - public/javascripts/helpers.js
-    - public/javascripts/public_smo_scripts.js
-    - public/javascripts/jit.js
-    - public/javascripts/jit-yc.js
-    - public/javascripts/balloon.js
-    - public/javascripts/balloon.config.js    
-    - public/javascripts/box.js
-    - public/javascripts/forcedirected.js
-    - public/javascripts/interpolation.js
+#    - public/javascripts/yahoo-dom-event.js
+#    - public/javascripts/helpers.js
+#    - public/javascripts/public_smo_scripts.js
+#    - public/javascripts/jit.js
+#    - public/javascripts/jit-yc.js
+#    - public/javascripts/balloon.js
+#    - public/javascripts/balloon.config.js    
+#    - public/javascripts/box.js
+#    - public/javascripts/forcedirected.js
+#    - public/javascripts/interpolation.js
 
   backbone: &backbone
+# this contains App object declaration
+    - public/javascripts/application.js
+# we'll see if we're going to need this guys
     - public/javascripts/backbone/models/**/*.js        
     - public/javascripts/backbone/controllers/*.js      
     - public/javascripts/backbone/views/**/*.js
     - public/javascripts/backbone/helpers/*.js          
-    - app/views/backbone/*.jst
-  workspace:
-# app comes here
-    - public/javascripts/backbone/app.js
-    - public/javascripts/backbone/items.js
-    - *backbone
-
-  projects:
-    - public/javascripts/backbone/app.js
-    - public/javascripts/backbone/projects.js
-    - *backbone
  
-  rs:
-    - public/javascripts/backbone/app.js
-    - public/javascripts/backbone/rs.js
-    - *backbone    
+  templates: &templates
+#   - app/views/backbone/*.jst
+    - public/javascripts/backbone/**/*.jst
 
-  ts:
-    - public/javascripts/backbone/app.js
-    - public/javascripts/backbone/ts.js
-    - *backbone    
+  app: &app
+    - *backbone 
+    - *templates
+    - public/javascripts/run_init.js
 
 stylesheets:
   common:
-#    - public/stylesheets/reset.css
-#    - public/stylesheets/widgets/*.css
     - public/stylesheets/buttons.css
     - public/stylesheets/decisions.css
     - public/stylesheets/jquery.fastconfirm.css 
@@ -87,8 +72,6 @@ stylesheets:
     - public/stylesheets/jquery.cluetip.css
     - public/stylesheets/bootstrap.css
     - public/stylesheets/bootstrap-responsive.css
-# visualization stuff
-    - public/stylesheets/infovis.css
   workspace:
   empty:
 #    - public/stylesheets/pages/empty.css

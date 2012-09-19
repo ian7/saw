@@ -2,6 +2,8 @@ Saw::Application.routes.draw do
 
 
 
+  get "welcome/index"
+
   get "notify/:id/:attribute/:event" => 'notify#notify'
   get "notify/:id/:event" => 'notify#notify'
 
@@ -33,7 +35,8 @@ Saw::Application.routes.draw do
   resources :projects  
   resources :tasks  
   resources :authentications  
-  root :to => 'projects#index'  
+#  root :to => 'projects#index'  
+  root :to => 'welcome#index'
 
 
   get "authentications/index"
@@ -192,7 +195,7 @@ Saw::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => "tag#type_cloud"
+  # root :to => "tag#type_cloud"
 
   # See how all your routes lay out with "rake routes"
 
