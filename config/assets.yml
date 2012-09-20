@@ -2,6 +2,7 @@ embed_assets: off
 compress_assets: off
 package_assets: on
 gzip_assets: off
+template_function: off
 
 javascripts:    
   common: &common
@@ -49,18 +50,19 @@ javascripts:
 # this contains App object declaration
     - public/javascripts/application.js
 # we'll see if we're going to need this guys
-    - public/javascripts/backbone/models/**/*.js        
-    - public/javascripts/backbone/controllers/*.js      
-    - public/javascripts/backbone/views/**/*.js
-    - public/javascripts/backbone/helpers/*.js          
- 
+#    - public/javascripts/backbone/models/**/*.js        
+#    - public/javascripts/backbone/controllers/*.js      
+#    - public/javascripts/backbone/views/**/*.js
+#    - public/javascripts/backbone/helpers/*.js          
+    - public/javascripts/backbone/**/*.js
+
   templates: &templates
 #   - app/views/backbone/*.jst
     - public/javascripts/backbone/**/*.jst
 
   app: &app
-    - *backbone 
     - *templates
+    - *backbone 
     - public/javascripts/run_init.js
 
 stylesheets:
@@ -72,6 +74,7 @@ stylesheets:
     - public/stylesheets/jquery.cluetip.css
     - public/stylesheets/bootstrap.css
     - public/stylesheets/bootstrap-responsive.css
+    - public/stylesheets/saw.css
   workspace:
   empty:
 #    - public/stylesheets/pages/empty.css

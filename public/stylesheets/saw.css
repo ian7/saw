@@ -741,9 +741,13 @@ div.r {
 
 /* routing types table */
 
-table.typeMenu td.name{
-  -webkit-transform: rotate(-40deg); 
-  -moz-transform: rotate(-40deg); 
+table.typeMenu {
+  height: 10em;
+}
+
+table.typeMenu td.typeName{
+  -webkit-transform: rotate(-90deg); 
+  -moz-transform: rotate(-90deg); 
   padding-top:    1em;
   padding-bottom: 1em;
   text-align:     center;
