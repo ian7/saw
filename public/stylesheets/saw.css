@@ -746,12 +746,22 @@ table.typeMenu {
 }
 
 table.typeMenu td.typeName{
-  -webkit-transform: rotate(-90deg); 
+/*  -webkit-transform: rotate(-90deg); 
   -moz-transform: rotate(-90deg); 
   padding-top:    1em;
   padding-bottom: 1em;
   text-align:     center;
+  width: 20px;
+  height: 20px;*/
 }
+
+table.typeMenu td.typeName div.typeName{
+  -webkit-transform: rotate(-90deg); 
+  -moz-transform: rotate(-90deg); 
+  text-align:     center;
+  width: 30px;
+}
+
 
 table.rAttributes td.attributeName {
   font-weight: bold;
@@ -1439,4 +1449,9 @@ div.notification.link{
 
 table.alternativeList tr.decision td{
   vertical-align: bottom;
+}
+
+
+.bold {
+  font-weight: bold;
 }
