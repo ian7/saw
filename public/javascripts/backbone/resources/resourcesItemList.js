@@ -8,14 +8,35 @@ App.module('resources',function(){
     events: {
     //  'click div.typeName' : 'onClicked'
     },
+    templateHelpers : {
+      renderAttributes : function(){
+        var attribtue = "";
+        var h="";
+        _(this.attributes).each( function(value,attribute){
+          // some attributes aren't really worth mentioning...
+          var lameAttributes = ['renderAttributes','url','type','id','related_from','related_to','undefined'];
+
+          if( _(lameAttributes).indexOf( attribute ) === -1 ){
+            h +="<tr>";
+              h += "<td class=\"attributeName\">" + attribute +"</td>";
+              h += "<td class=\"attributeValue editable\" contenteditable=\"true\" id=\""+ attribute +"\">" 
+                + value
+                + "</td>";
+            h+="</tr>";            
+          }
+        },this);
+      return h;
+      }
+    },
     initialize : function(){
       _(this).bindAll();
     }
   });
+
   this.Views.ItemList = Backbone.Marionette.CompositeView.extend({
     template: JST.resourcesItemList,
     itemView: this.Views.Item,
-    itemViewContainer: 'table tr#types',
+    itemViewContainer: 'div.list',
     collection : new App.Models.Items(),
     events : {
     },
