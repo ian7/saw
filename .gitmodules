@@ -13,3 +13,6 @@
 [submodule "public/javascripts/lib/backbone.gepetto"]
 	path = public/javascripts/lib/backbone.gepetto
 	url = git@github.com:ian7/backbone.geppetto.git
+[submodule "public/javascripts/lib/backbone.subroute"]
+	path = public/javascripts/lib/backbone.subroute
+	url = git@github.com:ian7/backbone.subroute.git

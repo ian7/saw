@@ -2,7 +2,7 @@
 
 App.module('resources',function(){
   this.Views.Item = Backbone.Marionette.ItemView.extend({
-    template: JST.resourcesItem,
+    template: JST['resources/resourcesItem'],
     tagName: 'tr',
     className: 'item',
     events: {
@@ -48,7 +48,7 @@ App.module('resources',function(){
 
   this.Views.RelatedItems = Backbone.Marionette.CompositeView.extend({
   events: {
-       "click .pivot": "pivot", 
+       "click .pivot": "pivot"
   },
     initialize: function() {
       _(this).bindAll('render');
@@ -102,11 +102,18 @@ App.module('resources',function(){
      //   App.Components.Rs.navigate(e.target.id,{trigger: true});
     }
  });
+  /* for some reason emptyView property doesn't work as it should... no patience do debug it now */
+  this.Views.EmptyItem = Backbone.Marionette.ItemView.extend({
+    tagName: 'tr',
+    className: 'item',
+    template: '<center>(empty list)</center>'
+  });
 
   this.Views.ItemList = Backbone.Marionette.CompositeView.extend({
-    template: JST.resourcesItemList,
+    template: JST['resources/resourcesItemList'],
     itemView: this.Views.Item,
-    itemViewContainer: 'div.list',
+    emptyView: this.Views.EmptyItem,
+    itemViewContainer: 'table.list',
     collection : new App.Models.Items(),
     events : {
     },
@@ -117,9 +124,18 @@ App.module('resources',function(){
     },
     onTypeClicked : function(args){
       // this could be done in the model actually....
+      this.collection.reset();
+      this.showSpinner();
       this.collection.url  = "/scope/type/"+args.model.get('name');
       this.collection.fetch();
+    },
+    showSpinner : function(){
+      jQuery("div.spinner",this.el).show();
+    },
+    onRender : function(){
+      jQuery("div.spinner",this.el).hide();      
     }
   });
+
 
 });

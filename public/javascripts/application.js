@@ -8,11 +8,12 @@ var SoftwareArchitectureWarehouse = Backbone.Marionette.Application.extend({
         //this.addInitializer( this.startHistory );
         // that's slightly akward, but does the job.
         this.addRegions({mainRegion: 'body'});
+        this.router = new this.main.Router();
         this.start();
+        Backbone.history.start({silent: true});        
         //this.resources.start();
     },
     startHistory : function(){
-        Backbone.history.start();        
     }    
 });
 

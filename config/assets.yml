@@ -29,6 +29,7 @@ javascripts:
 #libs
     - public/javascripts/lib/underscore/underscore.js
     - public/javascripts/lib/backbone/backbone.js
+    - public/javascripts/lib/backbone.subroute/backbone.subroute.js
     - public/javascripts/lib/backbone.marionette/lib/backbone.marionette.js
     - public/javascripts/lib/backbone.geppetto/backbone.geppetto.js
 # not sure if this one is needed

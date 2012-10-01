@@ -8,8 +8,8 @@ App.module('resources',function(){
             context: App.resources.context
             });
         },
-        template : JST.resourcesLayout,
-        el: 'body',
+        template : JST['resources/resourcesLayout'],
+        el: "div#layout div#trunk div#center",
         regions : {
             types:{
                 selector: "div#types"
@@ -26,7 +26,7 @@ App.module('resources',function(){
             this.items.show( il );
             //tl.collection.fetch();
             
-            this.context.dispatch("types:fetch");
+            //this.context.dispatch("types:fetch");
             //this.context.listen("type:clicked",this.onTypeClicked);
         },
         onTypeClicked : function(){
