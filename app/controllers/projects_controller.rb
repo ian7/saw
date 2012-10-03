@@ -4,7 +4,7 @@ require 'nokogiri'
 
 class ProjectsController < ApplicationController
   
-  before_filter  :authenticate_user! , :except => [:import,:export,:report]
+#  before_filter  :authenticate_user! , :except => [:import,:export,:report]
 
   def show
     @project = Project.find params[:id]
