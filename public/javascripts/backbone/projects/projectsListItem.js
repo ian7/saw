@@ -100,7 +100,9 @@ App.module("projects",function(){
             window.location.hash="projects/"+this.model.get('id');
             //app.navigate("projects/"+this.model.get('id'));
             */
-            this.context.dispatchToParent("project:selected",{id: this.model.get('id')});
+            if( this.model.get('id') ) {
+                this.context.dispatchToParent("project:selected",{id: this.model.get('id')});
+            }
         }
     });
     this.Views.ProjecDetailsWidget = Backbone.Marionette.ItemView.extend({

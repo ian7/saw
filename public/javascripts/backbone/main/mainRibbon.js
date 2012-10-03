@@ -1,4 +1,4 @@
-/*global App,Backbone,JST,_ */
+/*global App,Backbone,JST,_,jQuery */
  
 App.module('main',function(){
     this.Views.Ribbon = Backbone.Marionette.ItemView.extend({
@@ -8,6 +8,7 @@ App.module('main',function(){
             // hook up to the routing events
             Backbone.history.on('route',this.render,this);
             this.context.listen('project:selected',this.projectSelected);
+            this.context.project.on('change',this.projectChanged,this);
             _(this).bindAll();
         },  
         render : function(){
@@ -17,9 +18,10 @@ App.module('main',function(){
             jQuery(this.el).html( h );
         },
         projectSelected : function( options ){
-
-            jQuery("div#projectID",this.el).html(options.id);
-
-        }   
+           jQuery("div#projectID",this.el).html(options.id);
+        },
+        projectChanged : function(){
+           jQuery("div#projectID",this.el).html(this.context.project.get('name'));
+        }
     });
 });
