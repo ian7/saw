@@ -7,6 +7,7 @@ App.module("main",function(){
     this.Regions = {};
     this.start = function(){
         this.layout = new this.Views.Layout();
+        this.context = this.layout.context;
         this.layout.start();
     };
 });

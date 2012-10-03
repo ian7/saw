@@ -3,10 +3,11 @@
 App.module('resources',function(){
     this.Views.Layout = Backbone.Marionette.Layout.extend({
         initialize : function(){           
-        Backbone.Marionette.Geppetto.bindContext({
-            view: this,
-            context: App.resources.context
-            });
+            Backbone.Marionette.Geppetto.bindContext({
+                view: this,
+                context: App.resources.context,
+                parentContext: App.main.context
+                });
         },
         template : JST['resources/resourcesLayout'],
         el: "div#layout div#trunk div#center",

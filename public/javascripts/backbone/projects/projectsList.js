@@ -1,4 +1,4 @@
-/*global App, Backbone,_,jQuery,JST*/
+ /*global App, Backbone,_,jQuery,JST*/
 
 App.module("projects",function(){
     // this needs to be turned into a layout
@@ -12,17 +12,19 @@ App.module("projects",function(){
         initialize : function(){
             Backbone.Marionette.Geppetto.bindContext({
                 view: this,
-                context: App.projects.context
+                context: App.projects.context,
+                parentContext: App.main.context
                 });
+            this.itemViewOptions = {context: this.context};
 //            this.context.projects.on('change',this.render,this);
-
+            
             //var speedButtonsSidebar = new App.Views.ProjectSpeedButtons({mainView:this});   
             //layout.speedButtonsSidebar.show( speedButtonsSidebar );
         },
 
         // this is executed after template is alreayd rendered
         onRender: function(){
-            this.rootView = new App.projects.Views.ProjectItem({ model: this.context.projects,el: jQuery('div.projectView',this.el) });
+            this.rootView = new App.projects.Views.ProjectItem({ model: this.context.projects,el: jQuery('div.projectView',this.el), context:this.context });
             // render after thigs are loaded....
             this.rootView.model.on("change",function(){
                 this.render();

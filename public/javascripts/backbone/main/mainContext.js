@@ -1,7 +1,7 @@
 /*global App, Backbone,_*/
 
-App.module("resources",function(){
-    this.context = Backbone.Marionette.Geppetto.Context.extend({
+App.module("main",function(){
+    this.Context = Backbone.Marionette.Geppetto.Context.extend({
         initialize : function(){
             _(this).bindAll();
         },

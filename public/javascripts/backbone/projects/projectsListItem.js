@@ -61,6 +61,7 @@ App.module("projects",function(){
             this.model.on('change',this.updateSubs,this);
             //this.model.on('change',this.render,this);
             this.model.trigger('change');
+            this.itemViewOptions = {context: this.context};
         },
         updateSubs : function(){
             this.collection = this.model.subProjects;
@@ -86,6 +87,7 @@ App.module("projects",function(){
         },
         navigateProject : function(e) {
 
+            /* that's old and lame...
             // if root element was clicked, then just navigate back to nowhere
             if( e.srcElement.parentElement.id === 0){
                 window.location.hash="";
@@ -97,6 +99,8 @@ App.module("projects",function(){
             }
             window.location.hash="projects/"+this.model.get('id');
             //app.navigate("projects/"+this.model.get('id'));
+            */
+            this.context.dispatchToParent("project:selected",{id: this.model.get('id')});
         }
     });
     this.Views.ProjecDetailsWidget = Backbone.Marionette.ItemView.extend({

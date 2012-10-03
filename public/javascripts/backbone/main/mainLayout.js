@@ -5,8 +5,13 @@ App.module('main',function(){
         initialize : function(){           
         Backbone.Marionette.Geppetto.bindContext({
             view: this,
-            context: App.resources.context
+            context: App.main.Context
             });
+        },
+        /* after layout is rendered, we could furnish it with some widgets: */
+        onRender : function(){
+            this.ribbonView = new App.main.Views.Ribbon({context:this.context});
+            this.ribbon.show( this.ribbonView );
         },
         template : JST['main/mainLayout'],
         el: 'body',
