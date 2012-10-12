@@ -1,6 +1,6 @@
 /*global App,Backbone */
 
-App.Models.Type = Backbone.Model.extend({
+App.Data.Type = Backbone.Model.extend({
 });
 
 App.Models.Types = Backbone.Collection.extend({

@@ -1,6 +1,6 @@
 /*global Backbone,App*/
 
-App.Models.Project = Backbone.Model.extend({
+App.Models.Project = App.Data.Model.extend({
     initialize : function( model ){
       //this.attributes.id = 0;
       if( model ) {
@@ -15,6 +15,8 @@ App.Models.Project = Backbone.Model.extend({
     }        
 });
 
-App.Models.Projects = Backbone.Collection.extend({
-    model: App.Models.Project
+App.Models.Projects = App.Data.Collection.extend({
+    model: App.Models.Project,
+    /* default url is set to "projects" root - sub-projects are to be loaded recursively */
+    url: "/projects"
 });

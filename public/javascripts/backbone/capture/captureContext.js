@@ -10,11 +10,11 @@ App.module("main.capture",function(){
             this.parentContext.listen("project:selected",this.projectSelected);
             this.listen("capture:issues:list",this.issueList);
 
-            this.issues = new App.Models.Items();
+            this.issues = new App.Models.Issues();
         },
         // this is going to store actual project reference
         projectSelected : function( args ){
-            this.issues.url = "/projects/"+args.id+"/items";
+            this.issues.setProjectURL( args.id );
             this.fetchIssues();
         },
         issueList: function(){

@@ -24,12 +24,18 @@ App.module("main.capture",function(){
     initialize : function(options) {
       _(this).bindAll();
       
-      this.model.bind('change', this.render);
+      //this.model.bind('change', this.render);
       this.isExpanded = false;
       this.id = this.model.get('id');
       
-      _(this).bindAll();
-          
+
+      this.nameEdit = new App.main.capture.Views.RichEdit({
+          model: this.model, 
+          attribute: "name"
+        });
+    },
+    onRender : function() {
+      this.nameEdit.render(jQuery("span.editable",this.el));
     },
     selectAll : function( e ){ 
       //if( e.toElement.innerText == '(edit to add)') {

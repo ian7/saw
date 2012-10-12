@@ -114,7 +114,7 @@ App.module('resources',function(){
     itemView: this.Views.Item,
     emptyView: this.Views.EmptyItem,
     itemViewContainer: 'table.list',
-    collection : new App.Models.Items(),
+    collection : new App.Models.Issues(),
     events : {
     },
     initialize : function(){
