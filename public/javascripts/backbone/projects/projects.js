@@ -18,16 +18,18 @@ App.module("projects",function(){
             execute : function(){
                 console.log('rendering projects index');
                 this.context.options.view.render();
-                this.context.projects.fetch()
+                this.context.projects.clear();
+                this.context.projects.fetch();
             }
         }),
         fetch : Backbone.Marionette.Geppetto.Command({
             execute : function(){
                 console.log('fetching projects');
+                this.context.projects.clear();
                 this.context.projects.fetch();
 
             }
-        }),
+        })
         
     });
     this.start = function(){

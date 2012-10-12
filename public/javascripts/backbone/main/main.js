@@ -5,9 +5,9 @@ App.module("main",function(){
     this.Views = {};
     this.Commands = {};
     this.Regions = {};
-    this.start = function(){
+    this.addInitializer( function(){
         this.layout = new this.Views.Layout();
         this.context = this.layout.context;
         this.layout.start();
-    };
+    });
 });

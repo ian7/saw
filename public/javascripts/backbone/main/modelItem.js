@@ -13,15 +13,7 @@ App.Models.Item = Backbone.Model.extend({
 
 
 App.Models.Items = Backbone.Collection.extend({
-  model : App.Models.Item,
-  url : function() {
-    if( !this.urlOverride ) {
-        return window.location.pathname;
-    }
-    else {
-        return this.urlOverride;
-    }
-    },
-  urlOverride : null
+  url: '/items',
+  model : App.Models.Item
 });
 

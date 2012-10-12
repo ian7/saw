@@ -4,7 +4,7 @@ require 'rtf'
 class ItemsController < ApplicationController
  
   # that's bad
-  before_filter :authenticate_user!
+#  before_filter :authenticate_user!
  
 
   def index
