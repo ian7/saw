@@ -21,4 +21,4 @@
 	url = git@github.com:ian7/backbone-shortcuts.git
 [submodule "public/javascripts/lib/keymaster"]
 	path = public/javascripts/lib/keymaster
-	url = git://github.com/madrobby/keymaster.git
+	url = https://github.com/madrobby/keymaster.git 
