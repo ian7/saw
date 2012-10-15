@@ -9,7 +9,7 @@
 	url = git@github.com:ian7/backbone.git
 [submodule "public/javascripts/lib/backbone.marionette"]
 	path = public/javascripts/lib/backbone.marionette
-	url = https://github.com/derickbailey/backbone.marionette.git
+	url = git@github.com:ian7/backbone.marionette.git
 [submodule "public/javascripts/lib/backbone.gepetto"]
 	path = public/javascripts/lib/backbone.gepetto
 	url = git@github.com:ian7/backbone.geppetto.git
