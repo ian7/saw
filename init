@@ -1,0 +1,12 @@
+#rm -rf saw
+#git clone ssh://nowakm@saw.inf.unisi.ch/var/git/devel/
+#mv devel saw
+#cd saw
+git checkout -t origin/pure
+git submodule init
+git submodule foreach --recursive git checkout master
+git submodule update
+mkdir tmp
+mkdir log
+bundle install
+./deploy

@@ -1,0 +1,4 @@
+rm -rf saw
+git clone ssh://nowakm@saw.inf.unisi.ch/var/git/devel/
+mv devel saw
+cd saw
