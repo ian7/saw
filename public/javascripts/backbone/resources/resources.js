@@ -5,7 +5,7 @@ App.module("resources",function(){
     this.startWithApp = true;
     this.Views = {};
     this.Commands = {};
-
+ 
     this.context = Backbone.Marionette.Geppetto.Context.extend({
         initialize : function(){
             //this.mapCommand("do_something", commandAlert  );

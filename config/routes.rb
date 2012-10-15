@@ -20,6 +20,9 @@ Saw::Application.routes.draw do
   get 'r/:id/:attribute' => 'r#attribute'
   put 'r/:id/:attribute' => 'r#setAttribute'
 
+  get 'r/:item_id/dotag' => 'tag#dotag'
+  get 'r/:item_id/untag' => 'tag#untag'
+
 
   resources :r
   resources :t

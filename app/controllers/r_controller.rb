@@ -69,8 +69,9 @@ class RController < ApplicationController
     r = Taggable.find params[:id]
 
     if r 
-      notify( r.id)
-      notify( r.dynamic_type.id.to_s)
+      notify( r.id )
+## somehow this fails too...
+#      notify( r.dynamic_type.id.to_s)
 
       r.destroy
     end
@@ -86,7 +87,22 @@ class RController < ApplicationController
     r.save
     params[:id] = r.id
 
-    notify( r.dynamic_type.id.to_s)
+
+
+    if params[:project_id] 
+      project = TreeTag.find params[:project_id]
+      if project
+        t = Tagging.new
+        t.type = "Tagging"
+        t.tip = r.id
+        t.origin = project.id
+        t.save
+      end
+    end
+
+   ######## this fails because types are not taggables.
+
+   # notify( r.dynamic_type.id.to_s)
 
 =begin  
     if params[:project_id] 

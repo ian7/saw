@@ -9,6 +9,7 @@ App.module("main.capture",function(){
 
             this.parentContext.listen("project:selected",this.projectSelected);
             this.listen("capture:issues:list",this.issueList);
+            this.mapCommand("capture:issues:new", this.newIssue );
 
             this.issues = new App.Models.Issues();
         },
@@ -26,6 +27,12 @@ App.module("main.capture",function(){
         },
         fetchIssues : function(){
             this.issues.fetch();
-        }
+        },
+        newIssue : Backbone.Marionette.Geppetto.Command({
+            execute : function(){
+                console.log('create issue'); 
+                this.context.issues.create({ project_id: this.context.parentContext.project.get('id') });
+            }
+        })
     });
 });

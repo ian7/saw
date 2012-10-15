@@ -1,52 +1,36 @@
 /*global App, Backbone,_,jQuery,JST*/
 
-/*
-
-    this, 
-      this.config.app, 
-      Backbone, 
-      Marionette, 
-      $, _, 
-      this.config.customArgs
-*/
-
 
 App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customArgs){
 
-  this.Views.IssueList = Backbone.Marionette.CollectionView.extend({
+  this.Views.IssueList = Backbone.Marionette.CompositeView.extend({
       template: JST['capture/captureIssueList'],
       itemViewContainer: 'div.issueList',
       events : {
-/*          "click .newItem" : "newItem",
-          "click .expandAll" : "expandAll",
+          "click div#newIssueButton" : "newItem",
+     /*     "click .expandAll" : "expandAll",
           "click .collapseAll" : "collapseAll",
-          "click .elicit" : "elicit"*/
+          "click .elicit" : "elicit" */
       },
-
+      shortcuts : {
+        'ctrl+n': 'newItem'
+      },
     initialize : function() {
       this.itemView = App.main.capture.Views.IssueListItem;
+
+      // keyboard shortcuts handling
+      _.extend(this, new Backbone.Shortcuts() );
+      this.delegateShortcuts();
+
+      this.collection.on('add',this.onIssueAdded,this);
 
       _(this).bindAll();
     },   
     newItem : function() {
-/*          collection = null;
-
-          if( this.collection ) {
-              // we're called from the render method
-              collection = this.collection; 
-          }
-          else {
-              // we're called because collection element has been saved 
-              collection = this;          
-          }
-
-          
-          i = new Item;
-
-          // this.newItemName is unavailable when called by the 'save' event from the collection
-          i.set({name: '(edit to add)' });
-          collection.add( i );
-  */        
+      this.context.dispatch("capture:issues:new");
+    },  
+    onIssueAdded : function(){
+     // this.collection.last().view.focus();
     },
     notify : function( broadcasted_id ) {
     },
@@ -76,6 +60,7 @@ App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customA
           this.newItem();
     },   
     onRender : function() {
+      jQuery( "img.spinner",this.el).hide();
       //debugger;
     }
   });

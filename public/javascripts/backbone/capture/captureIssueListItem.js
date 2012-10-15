@@ -17,18 +17,16 @@ App.module("main.capture",function(){
       "mouseover" : 'mouseover',
       "mouseout" : 'mouseout'
     },
-
     alternativesCollection : null,
     focusedUsers : {},
-
     initialize : function(options) {
       _(this).bindAll();
       
       //this.model.bind('change', this.render);
       this.isExpanded = false;
       this.id = this.model.get('id');
+      this.model.view = this;
       
-
       this.nameEdit = new App.main.capture.Views.RichEdit({
           model: this.model, 
           attribute: "name"
@@ -36,6 +34,14 @@ App.module("main.capture",function(){
     },
     onRender : function() {
       this.nameEdit.render(jQuery("span.editable",this.el));
+      if( this.model.isNew() ){
+        this.focus();
+        console.log("focusing");
+      }
+    },
+    focus: function(){
+//      jQuery("div.editable#name",this.el)[0].focus();
+      jQuery(this.el).oneTime(600,'some_focus',function(){jQuery("div.editable#name").last().focus()});
     },
     selectAll : function( e ){ 
       //if( e.toElement.innerText == '(edit to add)') {
@@ -71,28 +77,19 @@ App.module("main.capture",function(){
           }
     },
     deleteItem : function() {
-          var viewObject = this;
-          jQuery(".deleteItem",this.el).fastConfirm({
-             position: "left",
-                questionText: "Are you sure that you want to delete this issue?",
-                onProceed: function(trigger) {
-                      // remove confirmation
-                      jQuery(trigger).fastConfirm('close');
+    
+    if( confirm("Are you sure that you want to delete design issue named:\n"+this.model.get('name') ) ) {
 
-                      if( viewObject.model.collection ) {
-                          // remove it from the collection first
-                          viewObject.model.collection.remove( viewObject.model );
-                      }
-                      else {
-                          alert( 'not in the collection - fucker: ' + viewObject.model.get('name') );
-                      }
-                      // and then destroy it.
-                      viewObject.model.destroy();
-                 },
-                 onCancel: function(trigger) {
-                         jQuery(trigger).fastConfirm('close');
-                 }
-              }); 
+      if( this.model.collection ) {
+        // remove it from the collection first
+        this.model.collection.remove( this.model );
+        }
+      else {
+        alert( 'not in the collection - fucker: ' + this.model.get('name') );
+        }
+        // and then destroy it.
+        this.model.destroy();
+      }
     },
     doExpand : function() {
           if( this.isExpanded === false) {
