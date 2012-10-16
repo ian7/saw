@@ -24,7 +24,7 @@ App.Models.Issue = App.Data.Item.extend({
     },
     updateAlternatives : function() {
      var  as = this.getAlternatives();
-      this.alternatives.reset( as );
+      this.alternatives.reset( as , {silent: true});
     }
 });
 

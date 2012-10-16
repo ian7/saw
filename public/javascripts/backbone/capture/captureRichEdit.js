@@ -8,19 +8,21 @@ App.module("main.capture",function(){
         "keyup div.editable" : "keyup"
     },
     attribute : "",
+    isFocused : null,
     initialize : function(options){
         _(this).bindAll();
         this.attribute = options.attribute;
         this.ne = new nicEditor({iconsPath : '/images/nicEditorIcons.gif', buttonList : ['bold','italic','underline','strikeThrough','ol','ul','link','unlink'],hasPanel:true});
         
         this.model.on("change:"+this.attribute,this.refresh);
+        this.throttledSave =  _.throttle(this.simpleSave, 500);
     },
     render : function( element ){
         this.el = this.$el = element;
         var h = "<div>";
         var v = this.model.get(this.attribute);
         h += "<div class='editable' id='" +this.attribute+ "' contenteditable='true'>";
-            if (v == null || v.replace(/<(?:.|\n)*?>/gm, '') === "") {
+            if (v === null || v.replace(/<(?:.|\n)*?>/gm, '') === "") {
                 h += "(empty)";
             }
             else {
@@ -32,7 +34,14 @@ App.module("main.capture",function(){
         this.delegateEvents();
     },
     refresh : function(){
-        jQuery("div.editable",this.el).html( this.model.get('attribute') );
+        //debugger;
+        if( this.isFocused ){
+            // log and ignore
+            console.log( "got refresh on focused element: "+this.model.get('name') + " attribute " + this.attribute);
+        }
+        else{
+            jQuery("div.editable",this.el)[0].innerHTML = this.model.get(this.attribute);
+        }
     },
     focused: function( e ){
         //console.log("focused on " + e.target.nodeName + " " +e.target.id + " target: " + e.target.nodeName + " " + e.target.id);
@@ -53,6 +62,7 @@ App.module("main.capture",function(){
         if(panelEl.length > 0) {
             panelEl.show();
         }
+        this.isFocused = true;
     },
     blured : function( e ){
         //console.log("blured on: " + e.srcElement.nodeName + " " + e.srcElement.id + " target: " + e.target.nodeName + " " + e.target.id);
@@ -61,11 +71,21 @@ App.module("main.capture",function(){
         jQuery("div.nicEdit-panelContain",jQuery(e.srcElement).parent()).hide();
 
         this.model.set(this.attribute,e.srcElement.innerHTML);
-        this.model.save();  
+        //this.model.save();  
+
+        this.focused = false;
         },
-    keyup : function(e){
-        this.model.set(this.attribute,e.srcElement.innerHTML);
-        this.model.save();
-        }
+    keyup : function(){
+        this.throttledSave();
+        },
+    simpleSave : function(){
+        var oldValue = this.model.get(this.attribute);
+        var newValue = jQuery("div.editable",this.el)[0].innerHTML;
+
+        if( oldValue != newValue ) {
+            this.model.set(this.attribute,newValue);
+            this.model.save();
+            }        
+    }
     });
 });
