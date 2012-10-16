@@ -23,9 +23,8 @@ App.Models.Issue = App.Data.Item.extend({
       return _.where( this.get('related_to'), {type:'Alternative'} );
     },
     updateAlternatives : function() {
-     var  as = this.getAlternatives()
+     var  as = this.getAlternatives();
       this.alternatives.reset( as );
-      debugger;
     }
 });
 
