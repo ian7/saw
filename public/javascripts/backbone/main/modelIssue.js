@@ -1,8 +1,15 @@
-/*global Backbone,App*/
+/*global Backbone,App,_*/
 
 App.Models.Issue = App.Data.Item.extend({
   initialize : function(){
+    _(this).bindAll();
+    
     this.set('type', "Issue");
+    this.on( 'sync', this.updateAlternatives, this );
+
+    this.alternatives = new App.Models.Alternatives();
+    //this.updateAlternatives();
+    this.fetch();
   },
     url : function() {
         if( this.id ) {
@@ -11,6 +18,14 @@ App.Models.Issue = App.Data.Item.extend({
         else {
             return '/r';
         }
+    },
+    getAlternatives : function(){
+      return _.where( this.get('related_to'), {type:'Alternative'} );
+    },
+    updateAlternatives : function() {
+     var  as = this.getAlternatives()
+      this.alternatives.reset( as );
+      debugger;
     }
 });
 

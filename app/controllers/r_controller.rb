@@ -33,8 +33,18 @@ class RController < ApplicationController
     respond_to do |format|
       format.json { 
         j=item.to_json
-        j["related_from"] = item.related_from.sort_by {|x| x.type}
-        j["related_to"] = item.related_to.sort_by {|x| x.type}
+        j["related_from"] = []
+        sorted_rf = item.related_from.sort_by {|x| x.type}
+        sorted_rf.each { |x| j["related_from"] << x.to_json }
+
+        j["related_to"] = []
+        sorted_rt = item.related_to.sort_by {|x| x.type}
+        sorted_rt.each { |x| j["related_to"] << x.to_json }
+
+        #j["related_from"] = 
+        #j["related_from"] = item.related_from.to_json
+        #j["related_to"] = item.related_to.sort_by {|x| x.type}
+        #j["related_to"] = item.related_to.to_json
         render :json => j
       }
     end

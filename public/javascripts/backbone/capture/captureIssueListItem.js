@@ -1,21 +1,17 @@
 /*global App, Backbone,_,jQuery,JST*/
 
 App.module("main.capture",function(){
-  this.Views.IssueListItem = Backbone.Marionette.ItemView.extend({
-      template: JST['capture/captureIssueListItem'],
-      templateHelpers: {
+  this.Views.IssueListItem = Backbone.Marionette.CompositeView.extend({
+    itemViewContainer : "table.alternativeList",
+    itemView : App.main.capture.Views.AlternativeCompact,
+    template: JST['capture/captureIssueListItem'],
+    templateHelpers: {
       },
     events : {
       "click .expand" : "toggleExpand",
+      "click div.issueCompactView" : "doExpand",
       "click .deleteItem" : "deleteItem",
-      "keypress .e6" : "editedItem",
-      //"click .e6" : "doExpand",
-      "focus .e6" : "doExpand",
-      "click .e6" : "selectAll",
-      //"focus .e6" : "selectAll",    
-      "click .details" : "navigateToDetails",
-//      "mouseover" : 'mouseover',
-//      "mouseout" : 'mouseout'
+      "click .details" : "navigateToDetails"
     },
     alternativesCollection : null,
     focusedUsers : {},
@@ -27,6 +23,8 @@ App.module("main.capture",function(){
       this.id = this.model.get('id');
       this.model.view = this;
       
+      this.collection = this.model.alternatives;
+
       this.nameEdit = new App.main.capture.Views.RichEdit({
           model: this.model, 
           attribute: "name"
@@ -111,27 +109,6 @@ App.module("main.capture",function(){
     expand: function(){
               localStorage.setItem( this.model.get('id')+'expanded','true');
 
-
-              if( !this.alternativesCollection ){
-                  
-                  this.alternativesCollection = new Alternatives();
-                  this.alternativesCollection.issueView = this;
-                  // catch alternatives resource location hack
-                  this.alternativesCollection.item_url =this.model.url();
-                  this.alternativesCollection.url = this.model.url() + '/alternatives';
-                  
-                  this.alternativesCollectionView = new App.Views.AlternativeCompactList({ collection: this.alternativesCollection, el: jQuery("table.alternativeList",this.el) });
-
-                  // and fetch them...
-                  this.alternativesCollection.fetch();
-                  jQuery("table.alternativeList",this.el).html("<div class='spinner'><img src='/images/ui-anim_basic_16x16.gif'/></div>");
-              }
-              
-              this.isExpanded = true;
-              jQuery(".expand", this.el).html("Collapse");    
-              jQuery("table.alternativeList",this.el).slideDown(300);
-
-          
     },
     collapse: function(){
           localStorage.removeItem( this.model.get('id')+'expanded');

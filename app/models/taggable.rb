@@ -191,7 +191,8 @@ def to_json
 			dynamic_type.dynamic_type_attributes.each do |attribute| 
 				j[attribute.attribute_name] = attributes[attribute.attribute_name]
 			end
-			
+			j["id"]=id
+      j["asdfasdfs"]="asdfasdfasd"
 #			j["url"] = url_for( this );
 			return j
 end
