@@ -14,9 +14,11 @@ App.module("main.capture",function(){
         });
     },
     onRender : function() {
+      this.nameEdit.render(jQuery("span.editable#name",this.el));
     },
     focus: function(){
-      jQuery(this.el).oneTime(600,'some_focus',function(){jQuery("div.editable#name").last().focus();});
+ 
+     // jQuery(this.el).oneTime(600,'some_focus',function(){jQuery("div.editable#name").last().focus();});
     },
     selectAll : function( e ){ 
       //if( e.toElement.innerText == '(edit to add)') {
@@ -26,26 +28,6 @@ App.module("main.capture",function(){
           e.target.innerText = "";
       }
       
-    },
-    mouseover : function( e ){
-        if( this.model.get('id') === null ) {
-            return;
-        }
-        var notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseover', function(data) {})";
-        if( this.mouse_timer ){
-            clearTimeout( this.mouse_timer );
-        }
-        this.mouse_timer = setTimeout(notifyCode,900); 
-    },
-    mouseout : function( e ){
-        if( this.model.get('id') === null ) {
-            return;
-        }
-        var notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseout', function(data) {})";
-        if( this.mouse_timer ){
-            clearTimeout( this.mouse_timer );
-        }
-        this.mouse_timer = setTimeout(notifyCode,500); 
     }
   });
 });
