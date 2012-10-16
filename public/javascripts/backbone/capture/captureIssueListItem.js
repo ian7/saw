@@ -14,8 +14,8 @@ App.module("main.capture",function(){
       "click .e6" : "selectAll",
       //"focus .e6" : "selectAll",    
       "click .details" : "navigateToDetails",
-      "mouseover" : 'mouseover',
-      "mouseout" : 'mouseout'
+//      "mouseover" : 'mouseover',
+//      "mouseout" : 'mouseout'
     },
     alternativesCollection : null,
     focusedUsers : {},
@@ -40,7 +40,6 @@ App.module("main.capture",function(){
       }
     },
     focus: function(){
-//      jQuery("div.editable#name",this.el)[0].focus();
       jQuery(this.el).oneTime(600,'some_focus',function(){jQuery("div.editable#name").last().focus()});
     },
     selectAll : function( e ){ 

@@ -1,5 +1,5 @@
 /*global App,Backbone,JST,_,jQuery */
-App.module('projects',function(){
+App.module('main.projects',function(){
     this.Router = Backbone.SubRoute.extend({
        routes: {
             "" :            "index",

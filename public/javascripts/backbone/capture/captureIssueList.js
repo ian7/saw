@@ -7,13 +7,20 @@ App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customA
       template: JST['capture/captureIssueList'],
       itemViewContainer: 'div.issueList',
       events : {
-          "click div#newIssueButton" : "newItem",
+          "click div#newIssueButton" : "newItem"
      /*     "click .expandAll" : "expandAll",
           "click .collapseAll" : "collapseAll",
           "click .elicit" : "elicit" */
       },
       shortcuts : {
-        'ctrl+n': 'newItem'
+//        'ctrl+n': 'newItem'
+      },
+      speedButtons : {
+        "New Issue" : {
+          color: "green",
+          event: "capture:issues:new",
+          shortcut: "ctrl+n"
+        }
       },
     initialize : function() {
       this.itemView = App.main.capture.Views.IssueListItem;

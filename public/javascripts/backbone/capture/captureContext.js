@@ -6,8 +6,8 @@ App.module("main.capture",function(){
             _(this).bindAll();
 
             // project is related to the mainContext, thus it needs to be bound there.
-
             this.parentContext.listen("project:selected",this.projectSelected);
+
             this.listen("capture:issues:list",this.issueList);
             this.mapCommand("capture:issues:new", this.newIssue );
 
@@ -21,8 +21,10 @@ App.module("main.capture",function(){
         issueList: function(){
             // create the view
             var view = new App.main.capture.Views.IssueList({collection: this.issues, context: this });
+            
             // show it!
-            this.region.show(view);
+            App.main.layout.central.show(view);
+            //this.region.show(view);
             //this.fetchIssues();
         },
         fetchIssues : function(){

@@ -1,6 +1,6 @@
  /*global App, Backbone,_,jQuery,JST*/
 
-App.module("projects",function(){
+App.module("main.projects",function(){
     // this needs to be turned into a layout
     this.Views.ProjectList = Backbone.Marionette.ItemView.extend({
         template: JST['projects/projectsList'],
@@ -8,13 +8,12 @@ App.module("projects",function(){
         events: {
             'click div#newProjectButton' :  'newProject'
         },
-        el: "div#layout div#trunk div#center",
         initialize : function(){
-            Backbone.Marionette.Geppetto.bindContext({
+           /* Backbone.Marionette.Geppetto.bindContext({
                 view: this,
-                context: App.projects.context,
+                context: App.main.projects.context,
                 parentContext: App.main.context
-                });
+                });*/
             this.itemViewOptions = {context: this.context};
 //            this.context.projects.on('change',this.render,this);
             
@@ -24,7 +23,7 @@ App.module("projects",function(){
 
         // this is executed after template is alreayd rendered
         onRender: function(){
-            this.rootView = new App.projects.Views.ProjectItem({ model: this.context.projects,el: jQuery('div.projectView',this.el), context:this.context });
+            this.rootView = new App.main.projects.Views.ProjectItem({ model: this.context.projects,el: jQuery('div.projectView',this.el), context:this.context });
             // render after thigs are loaded....
             this.rootView.model.on("change",function(){
                 this.render();

@@ -1,6 +1,6 @@
 /*global App, Backbone,_,jQuery,JST*/
 
-App.module("projects",function(){
+App.module("main.projects",function(){
 
  this.Views.ProjectItem = Backbone.Marionette.CompositeView.extend({
         events :{
