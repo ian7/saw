@@ -22,7 +22,7 @@ App.module("main.capture",function(){
         var h = "<div>";
         var v = this.model.get(this.attribute);
         h += "<div class='editable' id='" +this.attribute+ "' contenteditable='true'>";
-            if (v == null || v.replace(/<(?:.|\n)*?>/gm, '') === "") {
+            if (v == null || v.replace(/<(?:.|\n)*?>/gm, '') == "") {
                 h += "(empty)";
             }
             else {

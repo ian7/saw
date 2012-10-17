@@ -1,10 +1,12 @@
 <div class="issueCompactView" id ="<%= get('id') %>">
-    <span class="focusedUsers"></span>
-    <b>Issue:</b> <span class="editable"></span>
-        <div style="float: right">
+    <div style="float: right" class="buttons">
 <!--            <div class="button gray expand">Expand</div> -->
-            <div class="button orange details">Details</div>
-            <div class="button black deleteItem">Delete</div>
-        </div>
+        <div class="button orange details">Details</div>
+        <div class="button black deleteItem">Delete</div>
+    </div>
+    <span class="focusedUsers"></span>
+    <b>Issue:</b> <span class="editable issueName"></span>
+    <!--<br>-->
+    <div class="alternativesLabel">Alternatives:<img src="/images/icons/add.png" class="addAlternativeButton"></div>
     <table class="alternativeList"></table>
 </div>

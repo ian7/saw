@@ -15,10 +15,15 @@ App.module("main.capture",function(){
     },
     onRender : function() {
       this.nameEdit.render(jQuery("span.editable#name",this.el));
-    },
+       if( this.model.isNew() ){
+        this.focus();
+        console.log("focusing");
+      }   },
     focus: function(){
- 
-     // jQuery(this.el).oneTime(600,'some_focus',function(){jQuery("div.editable#name").last().focus();});
+      jQuery(this.el).oneTime(100,'some_focus',this.doFocus);
+    },
+    doFocus : function(){
+          jQuery("div.editable#name",this.el).focus();
     },
     selectAll : function( e ){ 
       //if( e.toElement.innerText == '(edit to add)') {

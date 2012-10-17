@@ -11,20 +11,25 @@ App.module("main.capture",function(){
       "click .expand" : "toggleExpand",
       "click div.issueCompactView" : "doExpand",
       "click .deleteItem" : "deleteItem",
-      "click .details" : "navigateToDetails"
+      "click .details" : "navigateToDetails",
+      "mouseover" : "mouseOver",
+      "mouseout" : "mouseOut",
+      "click img.addAlternativeButton" : "newAlternative"
+    },
+    shortcuts : {
+      "ctrl+l" : "newAlternative"
     },
     alternativesCollection : null,
     focusedUsers : {},
     initialize : function(options) {
       _(this).bindAll();
       
-      //this.model.bind('change', this.render);
-      this.isExpanded = false;
-      this.id = this.model.get('id');
-      this.model.view = this;
-      
-      this.collection = this.model.alternatives;
+      _.extend(this, new Backbone.Shortcuts() );
+      this.delegateShortcuts();
 
+
+      this.isExpanded = false;
+      this.collection = this.model.alternatives;
       this.nameEdit = new App.main.capture.Views.RichEdit({
           model: this.model, 
           attribute: "name"
@@ -38,7 +43,12 @@ App.module("main.capture",function(){
       }
     },
     focus: function(){
-      jQuery(this.el).oneTime(600,'some_focus',function(){jQuery("div.editable#name").last().focus()});
+      jQuery(this.el).oneTime(100,'some_focus',function(){jQuery("div.editable#name").last().focus();});
+    },
+    newAlternative : function(){
+      if( this.isFocused ){
+        this.model.alternatives.create();
+      }
     },
     selectAll : function( e ){ 
       //if( e.toElement.innerText == '(edit to add)') {
@@ -165,25 +175,33 @@ App.module("main.capture",function(){
           },this);
       }
     },
-      mouseover : function( e ){
+      mouseOver : function( e ){
+        this.isFocused = true;
+        jQuery("div.issueCompactView",this.el).addClass("focused");
           if( this.model.get('id') === null ) {
               return;
           }
+          /*
           var notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseover', function(data) {})";
           if( this.mouse_timer ){
               clearTimeout( this.mouse_timer );
           }
           this.mouse_timer = setTimeout(notifyCode,900); 
+          */
       },
-      mouseout : function( e ){
+      mouseOut : function( e ){
+        this.isFocused = false;
+        jQuery("div.issueCompactView",this.el).removeClass("focused");
           if( this.model.get('id') === null ) {
               return;
           }
-          var notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseout', function(data) {})";
+          
+          /*var notifyCode = "jQuery.getJSON('/notify/" + this.model.get('id') + "/mouseout', function(data) {})";
           if( this.mouse_timer ){
               clearTimeout( this.mouse_timer );
           }
           this.mouse_timer = setTimeout(notifyCode,500); 
+          */
       }
   });
 });
