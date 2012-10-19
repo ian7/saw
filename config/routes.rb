@@ -16,13 +16,18 @@ Saw::Application.routes.draw do
 #scope "admin", :as => "admin" do
 #  resources :photos, :accounts
 #end
+
+  get 'r/:id/related_to' => 'r#related_to'
+  get 'r/:id/related_from' => 'r#related_from'
  
-  get 'r/:id/:attribute' => 'r#attribute'
-  put 'r/:id/:attribute' => 'r#setAttribute'
+  get 'r/:id/related_to/:type' => 'r#related_to'
+  get 'r/:id/related_from/:type' => 'r#related_from'
 
   get 'r/:item_id/dotag' => 'tag#dotag'
   get 'r/:item_id/untag' => 'tag#untag'
 
+  get 'r/:id/:attribute' => 'r#attribute'
+  put 'r/:id/:attribute' => 'r#setAttribute'
 
   resources :r
   resources :t

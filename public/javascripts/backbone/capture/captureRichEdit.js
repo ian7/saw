@@ -73,7 +73,7 @@ App.module("main.capture",function(){
         this.model.set(this.attribute,e.srcElement.innerHTML);
         //this.model.save();  
 
-        this.focused = false;
+        this.isFocused = false;
         },
     keyup : function(){
         this.throttledSave();
@@ -83,8 +83,10 @@ App.module("main.capture",function(){
         var newValue = jQuery("div.editable",this.el)[0].innerHTML;
 
         if( oldValue != newValue ) {
-            this.model.set(this.attribute,newValue);
-            this.model.save();
+            //var options = {};
+            //options[this.attribute] = newValue;
+            this.model.save(this.attribute,newValue);
+            //this.model.save([this.attribute]);
             }        
     }
     });

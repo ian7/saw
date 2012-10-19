@@ -4,7 +4,7 @@ App.Data.Type = Backbone.Model.extend({
 });
 
 App.Models.Types = Backbone.Collection.extend({
-  model : App.Models.Type,
+  model : App.Data.Type,
   url : function() {
     if( !this.urlOverride ) {
         return "/t";

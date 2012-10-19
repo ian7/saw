@@ -14,7 +14,7 @@ App.module("main.capture",function(){
       "click .details" : "navigateToDetails",
       "mouseover" : "mouseOver",
       "mouseout" : "mouseOut",
-      "click img.addAlternativeButton" : "newAlternative"
+      "click div.addAlternativeButton" : "newAlternative"
     },
     shortcuts : {
       "ctrl+l" : "newAlternative"
@@ -34,9 +34,10 @@ App.module("main.capture",function(){
           model: this.model, 
           attribute: "name"
         });
+      this.on('composite:rendered',this.onCompositeRendered,this);
     },
-    onRender : function() {
-      this.nameEdit.render(jQuery("span.editable",this.el));
+    onCompositeRendered : function() {
+      this.nameEdit.render(jQuery("span.editable",this.el).first());
       if( this.model.isNew() ){
         this.focus();
         console.log("focusing");
@@ -47,7 +48,8 @@ App.module("main.capture",function(){
     },
     newAlternative : function(){
       if( this.isFocused ){
-        this.model.alternatives.create();
+        //this.model.alternatives.create();
+        this.context.dispatch("capture:alternatives:create",{model: this.model} );
       }
     },
     selectAll : function( e ){ 

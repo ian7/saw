@@ -14,7 +14,7 @@ App.module("main.capture",function(){
         });
     },
     onRender : function() {
-      this.nameEdit.render(jQuery("span.editable#name",this.el));
+      this.nameEdit.render(jQuery("span.editable#name",this.el).first());
        if( this.model.isNew() ){
         this.focus();
         console.log("focusing");

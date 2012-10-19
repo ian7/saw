@@ -1,12 +1,15 @@
 <div class="issueCompactView" id ="<%= get('id') %>">
     <div style="float: right" class="buttons">
 <!--            <div class="button gray expand">Expand</div> -->
+        <div class="button green addAlternativeButton">Add Alternative</div>
         <div class="button orange details">Details</div>
         <div class="button black deleteItem">Delete</div>
     </div>
     <span class="focusedUsers"></span>
     <b>Issue:</b> <span class="editable issueName"></span>
     <!--<br>-->
-    <div class="alternativesLabel">Alternatives:<img src="/images/icons/add.png" class="addAlternativeButton"></div>
+    <div class="alternativesLabel">Alternatives:<!--<img src="/images/icons/add.png" class="addAlternativeButton">--></div>
     <table class="alternativeList"></table>
+    <div class="tablefooter" contenteditable="true">Type here</div>
+
 </div>

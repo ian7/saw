@@ -5,11 +5,12 @@ App.Models.Issue = App.Data.Item.extend({
     _(this).bindAll();
     
     this.set('type', "Issue");
-    this.on( 'sync', this.updateAlternatives, this );
+    this.on( 'change', this.updateAlternatives, this );
 
     this.alternatives = new App.Models.Alternatives();
-    //this.updateAlternatives();
-    this.fetch();
+    //this.alternatives.setIssue( this );
+    this.updateAlternatives();
+    //this.fetch();
   },
     url : function() {
         if( this.id ) {
@@ -23,17 +24,23 @@ App.Models.Issue = App.Data.Item.extend({
       return _.where( this.get('related_to'), {type:'Alternative'} );
     },
     updateAlternatives : function() {
-     var  as = this.getAlternatives();
-      this.alternatives.reset( as , {silent: true});
+        if( this.get('id') ){
+            this.alternatives.setIssue( this );
+            this.alternatives.fetch();
+        }
     }
 });
 
   
 App.Models.Issues = App.Data.Collection.extend({
+    initialize : function(){
+        _(this).bindAll();
+    },
   url: '/items',
   model : App.Models.Issue,
   setProjectURL : function( projectId ){
-        this.url = "/projects/"+projectId+"/items";    
+        //this.url = "/projects/"+projectId+"/items";    
+        this.url = "/r/"+projectId+"/related_from/Issue";
   }
 });
 

@@ -7,6 +7,12 @@ App.Data.Model = Backbone.Model.extend({
 });
 
 
+App.Data.Collection = Backbone.Collection.extend({
+    model: App.Data.Model
+});
+
+
+
 App.Data.Item = App.Data.Model.extend({
     url : function() {
         if( this.id ) {
@@ -37,6 +43,49 @@ App.Data.Item = App.Data.Model.extend({
             });
         }
         jQuery.getJSON( url , function(data) {});
+    },
+    relate : function( options ){
+        /* expected are:
+            options.relation
+            options.item
+            */
+        if( ! options.relation ){
+            throw new Error("Relation type specifier missing");
+        }
+        if( ! options.item ){
+            throw new Error("relation tip specifier missing");
+        }
+        var url = "/relation/relate"
+                + "?from_taggable_id=" + this.get('id')
+                + "&to_taggable_id=" + options.item.get('id')
+                + "&relation_name=" + options.relation;
+
+        jQuery.getJSON( url , this.related );
+
+    },
+    related : function( data ){
+        this.trigger('related',this,data);
+    },
+    unrelate : function( options ){
+        /* expected are:
+            options.relation
+            options.item
+            */
+        if( ! options.relation ){
+            throw new Error("Relation type specifier missing");
+        }
+        if( ! options.item ){
+            throw new Error("relation tip specifier missing");
+        }
+        var url = "/relation/relate"
+                + "?from_taggable_id=" + this.get('id')
+                + "&to_taggable_id=" + options.item.get('id')
+                + "&relation_name=" + options.relation;
+
+        jQuery.getJSON( url , this.related );
+    },
+    unrelated : function ( data ){
+        this.trigger('unrelated',this,data);    
     }
 });
 

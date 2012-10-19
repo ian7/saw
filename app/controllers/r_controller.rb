@@ -33,6 +33,7 @@ class RController < ApplicationController
     respond_to do |format|
       format.json { 
         j=item.to_json
+=begin
         j["related_from"] = []
         sorted_rf = item.related_from.sort_by {|x| x.type}
         sorted_rf.each { |x| j["related_from"] << x.to_json }
@@ -45,7 +46,42 @@ class RController < ApplicationController
         #j["related_from"] = item.related_from.to_json
         #j["related_to"] = item.related_to.sort_by {|x| x.type}
         #j["related_to"] = item.related_to.to_json
+=end
         render :json => j
+      }
+    end
+  end
+
+  def related_from
+    item = Taggable.find params[:id]
+    respond_to do |format|
+      format.json { 
+        j={}
+        j["related_from"] = []
+        if params[:type]
+          sorted_rf = item.related_from.select{ |x| x.type == params[:type]}
+        else
+          sorted_rf = item.related_from.sort_by {|x| x.type}
+        end
+        sorted_rf.each { |x| j["related_from"] << x.to_json }
+        render :json => j["related_from"]
+      }
+    end
+  end
+
+  def related_to
+    item = Taggable.find params[:id]
+    respond_to do |format|
+      format.json { 
+        j={}
+        j["related_to"] = []
+        if params[:type]
+          sorted_rt = item.related_to.select {|x| x.type == params[:type]}
+        else
+          sorted_rt = item.related_to.sort_by {|x| x.type}
+        end
+        sorted_rt.each { |x| j["related_to"] << x.to_json }
+        render :json => j["related_to"]
       }
     end
   end

@@ -25,9 +25,13 @@ App.Models.Alternatives = App.Data.Collection.extend({
   url: '',
   model : App.Models.Alternative,
   initialize : function( options ){
+    _(this).bindAll();
     if( options && options.model ){
       this.url = this.model.url
     }
+  },
+  setIssue : function( issue ){
+      this.url = issue.url() + "/related_to/Alternative";
   }
 });
 

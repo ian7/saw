@@ -24,7 +24,7 @@ App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customA
       },
     initialize : function() {
       this.itemView = App.main.capture.Views.IssueListItem;
-
+      this.itemViewOptions = {context: this.context};
       // keyboard shortcuts handling
       _.extend(this, new Backbone.Shortcuts() );
       this.delegateShortcuts();

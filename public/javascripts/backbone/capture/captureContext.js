@@ -10,7 +10,7 @@ App.module("main.capture",function(){
 
             this.listen("capture:issues:list",this.issueList);
             this.mapCommand("capture:issues:new", this.newIssue );
-
+            this.mapCommand("capture:alternatives:create",this.newAlternative);
             this.issues = new App.Models.Issues();
         },
         // this is going to store actual project reference
@@ -32,9 +32,31 @@ App.module("main.capture",function(){
         },
         newIssue : Backbone.Marionette.Geppetto.Command({
             execute : function(){
+                _(this).bindAll();
                 console.log('create issue'); 
                 this.context.issues.create({ project_id: this.context.parentContext.project.get('id') });
             }
+        }),
+        newAlternative : Backbone.Marionette.Geppetto.Command({
+            execute : function(){
+                _(this).bindAll();
+
+                console.log('create alternative'); 
+
+                this.issue = this.eventData.model;
+                // create new alternative
+                this.newAlternative = this.issue.alternatives.create();
+                // wait until it gets saved 
+                this.newAlternative.on('sync',this.synced,this);
+            },
+            synced : function(){
+                // after it got saved, relate it to the issue, and remove trigger
+                this.newAlternative.off('sync');
+                // and relate it with the issue
+                //debugger;
+                this.newAlternative.relate( {item: this.issue, relation: "SolvedBy"});
+            }
         })
+
     });
 });
