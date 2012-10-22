@@ -105,7 +105,7 @@ App.module("main.projects",function(){
             }
         }
     });
-    this.Views.ProjecDetailsWidget = Backbone.Marionette.ItemView.extend({
+/*    this.Views.ProjecDetailsWidget = Backbone.Marionette.ItemView.extend({
         template: JST['projects/projectsList'],
         className: 'projectDetailsWidget',
         templateHelpers: {
@@ -149,4 +149,5 @@ App.module("main.projects",function(){
 
         }
     });
+*/
 });

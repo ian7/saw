@@ -4,7 +4,8 @@ App.module('main.capture',function(){
     this.Router = Backbone.SubRoute.extend({
     routes: {
         "" :            "index",
-        "project/:id" : "withProject"
+        "project/:id" : "withProject",
+        "project/:project_id/issue/:issue_id" : "showIssue"
     },
     initialize : function(options){
         this.context = options.context;
@@ -15,6 +16,11 @@ App.module('main.capture',function(){
     withProject : function( id ){
         this.context.dispatchToParent("project:selected",{id:id});
         this.index();
-       }
+        },
+    showIssue : function( project_id, issue_id ){
+        this.context.dispatchToParent("project:selected",{id:project_id});        
+        this.context.dispatch("issue:selected",{id:issue_id});
+        this.context.dispatch("capture:issues:details");
+        }
     });
 });

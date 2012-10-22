@@ -86,6 +86,27 @@ App.Data.Item = App.Data.Model.extend({
     },
     unrelated : function ( data ){
         this.trigger('unrelated',this,data);    
+    },
+    getAttributes : function() {
+        var nonAttributes = [
+            "Your_decision",
+            "Relation_id",
+            "Relation_url",
+            "Alternative_url",
+            "Project_id",
+            "id",
+            "decisions",
+            "type",
+            "item_url",
+            "undefined"
+        ];
+        var attributes = [];
+
+        _(this.attributes).each(function(value, key){
+            attributes.push( key );
+        },this);
+
+        return( _.difference( attributes, nonAttributes ));
     }
 });
 

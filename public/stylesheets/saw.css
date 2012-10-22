@@ -806,7 +806,7 @@ div.editable{
 
 }
 
-table.itemDetails{
+table.itemAttributes{
  /*  width:70%;
   margin: 1em auto;*/
   min-width: 70%;
@@ -815,18 +815,18 @@ table.itemDetails{
   margin-top: 1em;
 }
 
-table.itemDetails tr.issueDetails div.editable:not(#name){
+table.itemAttributes tr.issueDetails div.editable:not(#name){
   min-height: 80px;
 }
 
-table.itemDetails td.key,
-table.itemDetails th {
+table.itemAttributes td.key,
+table.itemAttributes th {
   font-weight: bold;
 /*  vertical-align: top;*/
   width: 130px;
 }
 
-table.itemDetails td {
+table.itemAttributes td {
 /*  padding-bottom: 0.5em;*/
 /*  vertical-align: top;*/
   padding: 1em;

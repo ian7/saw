@@ -8,9 +8,7 @@ App.Models.Issue = App.Data.Item.extend({
     this.on( 'change', this.updateAlternatives, this );
 
     this.alternatives = new App.Models.Alternatives();
-    //this.alternatives.setIssue( this );
     this.updateAlternatives();
-    //this.fetch();
   },
     url : function() {
         if( this.id ) {
@@ -20,9 +18,7 @@ App.Models.Issue = App.Data.Item.extend({
             return '/r';
         }
     },
-    getAlternatives : function(){
-      return _.where( this.get('related_to'), {type:'Alternative'} );
-    },
+
     updateAlternatives : function() {
         if( this.get('id') ){
             this.alternatives.setIssue( this );
