@@ -130,19 +130,8 @@ App.module("main.capture",function(){
           jQuery(".expand", this.el).html("Expand");  
     },
     navigateToDetails : function () {
-          // this is totally old
-          //window.location.href = window.location.href+"#/"+this.model.get('id')+'/alternatives';
-          // this is too simple
-          //window.location.hash = "issues/"+this.model.get('id');
-          
-          // that's new
-
-          // dirty way of finding the project id
-          var projectId = jQuery(this.el).parents("div.projectDetailsWidget").attr('id');
-          var issueId = this.model.get('id');
-
-          window.location.hash = 'projects/'+ projectId + '/issues/' + issueId + '/alternatives';
-
+        this.context.dispatch("issue:selected",{id:this.model.id});
+        this.context.dispatch("capture:issues:details");
     },
     notify : function( broadcasted_id ) {
 
