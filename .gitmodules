@@ -22,3 +22,6 @@
 [submodule "public/javascripts/lib/keymaster"]
 	path = public/javascripts/lib/keymaster
 	url = https://github.com/madrobby/keymaster.git 
+[submodule "public/javascripts/lib/bootstrap"]
+	path = public/javascripts/lib/bootstrap
+	url = git@github.com:ian7/bootstrap.git
