@@ -18,13 +18,13 @@ javascripts:
     - public/javascripts/lib/jquery/plugins/jquery.ui.core.js
     - public/javascripts/lib/jquery/plugins/jquery.ui.position.js
     - public/javascripts/lib/jquery/plugins/jquery.ui.widget.js
-    - public/javascripts/lib/bootstrap/js/*.js
 # and then rest of jquery.ui can go
     - public/javascripts/lib/jquery/plugins/*.js
 # other stuff.. order is not so critical
     - public/javascripts/lib/jquery/jquery.fastconfirm.js
     - public/javascripts/lib/jquery/jquery.tabSlideOut.v1.3.js
     - public/javascripts/lib/jquery/jquery.blockUI.js
+    - public/javascripts/lib/bootstrap/js/*.js
     - public/javascripts/juggernaut.js 
 #libs
     - public/javascripts/lib/underscore/underscore.js

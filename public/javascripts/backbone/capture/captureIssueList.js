@@ -7,7 +7,8 @@ App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customA
       template: JST['capture/captureIssueList'],
       itemViewContainer: 'div.issueList',
       events : {
-          "click div#newIssueButton" : "newItem"
+          "click div#newIssueButton" : "newItem",
+          "click image.anchor" : "copyAnchor"
      /*     "click .expandAll" : "expandAll",
           "click .collapseAll" : "collapseAll",
           "click .elicit" : "elicit" */
@@ -35,6 +36,8 @@ App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customA
     },   
     newItem : function() {
       this.context.dispatch("capture:issues:new");
+    },
+    copyAnchor : function(){
     },  
     onIssueAdded : function(){
      // this.collection.last().view.focus();

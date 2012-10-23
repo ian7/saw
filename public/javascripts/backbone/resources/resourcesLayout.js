@@ -21,8 +21,8 @@ App.module('main.resources',function(){
         },
         start : function(){
             this.render();
-            var tl = new App.resources.Views.TypeList({context: this.context});
-            var il = new App.resources.Views.ItemList({context: this.context});
+            var tl = new App.main.resources.Views.TypeList({context: this.context});
+            var il = new App.main.resources.Views.ItemList({context: this.context});
             this.types.show( tl );
             this.items.show( il );
             //tl.collection.fetch();
