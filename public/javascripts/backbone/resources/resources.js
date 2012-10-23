@@ -1,7 +1,7 @@
 /*global App, Backbone,_,jQuery*/
 
 
-App.module("resources",function(){
+App.module("main.resources",function(){
     this.startWithApp = true;
     this.Views = {};
     this.Commands = {};
@@ -12,6 +12,9 @@ App.module("resources",function(){
 //            this.mapCommand( "router:index", this.showIndex );
             this.mapCommand( "types:fetch", this.fetchTypes );
             this.mapCommand( "router:index", this.index );
+
+            this.listen( "resources:events",this.events );
+
             _(this).bindAll();
         },
         types : new App.Models.Types(),
@@ -26,7 +29,11 @@ App.module("resources",function(){
                 console.log('been here!');
                 this.context.options.view.start();
             }
-        })
+        }),
+        events : function(){
+            var view = new App.main.resources.Views.Events( {context:this} );
+            App.main.layout.central.show( view );
+        }
     });
 
     this.start = function(){

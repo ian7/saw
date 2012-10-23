@@ -1,11 +1,11 @@
 /*global App,Backbone,JST */
 
-App.module('resources',function(){
+App.module('main.resources',function(){
     this.Views.Layout = Backbone.Marionette.Layout.extend({
         initialize : function(){           
             Backbone.Marionette.Geppetto.bindContext({
                 view: this,
-                context: App.resources.context,
+                context: App.main.resources.context,
                 parentContext: App.main.context
                 });
         },

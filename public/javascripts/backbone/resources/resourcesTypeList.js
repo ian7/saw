@@ -1,6 +1,6 @@
 /*global App,Backbone,JST,_,jQuery */
 
-App.module('resources',function(){
+App.module('main.resources',function(){
   this.Views.Type = Backbone.Marionette.ItemView.extend({
     template: JST['resources/resourcesType'],
     tagName: 'td',
