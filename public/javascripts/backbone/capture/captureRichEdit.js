@@ -59,6 +59,8 @@ App.module("main.capture",function(){
 
         var panelEl = jQuery("div.nicEdit-panelContain",jQuery(e.target).parent());
 
+        this.model.notifyFocused(this.attribute);
+
         if(panelEl.length > 0) {
             panelEl.show();
         }
@@ -72,6 +74,8 @@ App.module("main.capture",function(){
 
         this.model.set(this.attribute,e.srcElement.innerHTML);
         //this.model.save();  
+
+        this.model.notifyBlured(this.attribute);
 
         this.isFocused = false;
         },

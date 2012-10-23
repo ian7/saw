@@ -7,6 +7,8 @@ App.module("main.capture",function(){
 
         this.editorObjects = {};
         this.model.on('change',this.refresh,this);
+        this.model.on('focused',this.focused,this);
+        this.model.on('blured',this.blured,this);
 
         this.numberOfRenderedAttributes = 0;
     },
@@ -15,7 +17,8 @@ App.module("main.capture",function(){
 
         // first I render divs
         _(this.model.getAttributes()).each( function(attribute){
-            h += "<tr><th>" + attribute + "</th>";
+            h += "<tr id='"+attribute+"'>";
+            h += "<th>" + attribute + "</th>";
             h += "<td>";
             h += "<div class='editable' id='" + attribute + "'>";
             h += "</div>";
@@ -46,6 +49,12 @@ App.module("main.capture",function(){
             return;
         }
 
+    },
+    focused : function(attribute){
+        jQuery("tr#"+attribute,this.el).addClass("focused");
+    },
+    blured : function(attribute){
+        jQuery("tr#"+attribute,this.el).removeClass("focused");
     }
   });
 });

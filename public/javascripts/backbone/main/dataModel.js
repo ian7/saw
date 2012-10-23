@@ -1,6 +1,6 @@
 /* this model is to be coupled with juggernaut notification mechanism  */
 
-/*global App, Backbone,_,jQuery */
+/*global App, Backbone,_,jQuery,eventer */
 
 App.Data.Model = Backbone.Model.extend({
 
@@ -14,6 +14,40 @@ App.Data.Collection = Backbone.Collection.extend({
 
 
 App.Data.Item = App.Data.Model.extend({
+    initialize : function(){
+        _(this).bindAll();
+        eventer.register(this);
+    },
+    notifyEvent : function( data ) {
+        var e = JSON.parse(data);
+        e.itemId = e.id;
+
+        // if item id is not matching, then kill it fast
+        if( e.id !== this.id ){
+            return;
+        }
+
+        if( e.class === 'notify' && e.distance === 0 && (e.event === null || e.event === "") ){
+            this.fetch();
+        }
+        if( e.class === 'notify' && e.event === "focused" ){
+            this.trigger('focused',e.attribute); 
+        }
+        if( e.class === 'notify' && e.event === "blured" ){
+            this.trigger('blured',e.attribute); 
+        }
+        
+        
+        /*
+        switch( e.class ){
+            case 'notify':
+                break;
+            default:
+                break;
+        }
+        */
+
+    },
     url : function() {
         if( this.id ) {
             return '/r/' + this.id;
@@ -107,6 +141,12 @@ App.Data.Item = App.Data.Model.extend({
         },this);
 
         return( _.difference( attributes, nonAttributes ));
+    },
+    notifyFocused : function( attribute ){
+        jQuery.getJSON('/notify/' + this.get('id') + '/' + attribute + '/focused', function(data) {});
+    },
+    notifyBlured : function( attribute ){
+        jQuery.getJSON('/notify/' + this.get('id') + '/' + attribute + '/blured', function(data) {});
     }
 });
 

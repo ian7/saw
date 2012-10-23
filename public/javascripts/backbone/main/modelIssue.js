@@ -3,6 +3,12 @@
 App.Models.Issue = App.Data.Item.extend({
   initialize : function(){
     _(this).bindAll();
+
+    // calling prototype constructor
+   // debugger
+    //App.Models.Issue.prototype.initialize.apply(this);
+    //App.Data.Item.initialize.apply(this);
+    App.Models.Issue.__super__.initialize.apply(this)
     
     this.set('type', "Issue");
     this.on( 'change', this.updateAlternatives, this );
