@@ -27,9 +27,13 @@ App.module("main.capture",function(){
       _.extend(this, new Backbone.Shortcuts() );
       this.delegateShortcuts();
 
-
       this.isExpanded = false;
+
+
       this.collection = this.model.alternatives;
+      // in order to get alternatives collection, one needs to stimulate issue to fetch it :)
+      this.model.updateAlternatives();
+
       this.nameEdit = new App.main.capture.Views.RichEdit({
           model: this.model, 
           attribute: "name"

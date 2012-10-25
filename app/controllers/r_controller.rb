@@ -86,6 +86,41 @@ class RController < ApplicationController
     end
   end
 
+  def relations_from
+    item = Taggable.find params[:id]
+    respond_to do |format|
+      format.json { 
+        j={}
+        j["related_from"] = []
+        if params[:type]
+          sorted_rf = item.relations_from.select{ |x| x.type == params[:type]}
+        else
+          sorted_rf = item.relations_from.sort_by {|x| x.type}
+        end
+        sorted_rf.each { |x| j["related_from"] << x.to_json }
+        render :json => j["related_from"]
+      }
+    end
+  end
+
+  def relations_to
+    item = Taggable.find params[:id]
+    respond_to do |format|
+      format.json { 
+        j={}
+        j["related_to"] = []
+        if params[:type]
+          sorted_rt = item.relations_to.select {|x| x.type == params[:type]}
+        else
+          sorted_rt = item.relations_to.sort_by {|x| x.type}
+        end
+        sorted_rt.each { |x| j["related_to"] << x.to_json }
+        render :json => j["related_to"]
+      }
+    end
+  end
+
+
   def update   
   
     r = Taggable.find params["id"]

@@ -1,20 +1,24 @@
 /*global Backbone,App,_*/
 
 App.Models.Issue = App.Data.Item.extend({
+  
+  alternatives : null,
+
   initialize : function(){
     _(this).bindAll();
 
     // calling prototype constructor
-   // debugger
-    //App.Models.Issue.prototype.initialize.apply(this);
-    //App.Data.Item.initialize.apply(this);
-    App.Models.Issue.__super__.initialize.apply(this)
+    App.Models.Issue.__super__.initialize.apply(this);
     
     this.set('type', "Issue");
     this.on( 'change', this.updateAlternatives, this );
 
+    // this needs to be instantiated late because of the late-loading issues. 
     this.alternatives = new App.Models.Alternatives();
-    this.updateAlternatives();
+
+    // alternatives don't need to be fetched during the object creation
+    // we can afford loading them later - for example from the view initializer
+    //this.updateAlternatives();
   },
     url : function() {
         if( this.id ) {

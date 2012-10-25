@@ -11,12 +11,51 @@ App.Data.Collection = Backbone.Collection.extend({
     model: App.Data.Model
 });
 
+App.Data.SuperCollection = Backbone.Collection.extend({
+    collections : [],
+    initialize : function( options ){
+        _(this).bindAll();
+        App.Data.SuperCollection.__super__.initialize.apply(this,options);
+    },
+    addCollection : function( collection ){
+        // push it on the list of collections
+        this.collections.push( collection );
+        // add all its models 
+        this.add( collection.models );
+        // hook on
+        collection.on('add',this.modelAdded, this );
+        collection.on('removed',this.modelRemoved, this);
+    },
+    modelAdded : function( options ){
+        this.add( options );
+    },
+    removeCollection : function( collection ){
+        // remove it from the list of collections
+        this.collections.splice( this.collection.indexOf( collection ),1 );
+        // remove its models
+        this.remove( collection.models );
+        // hook off
+        this.collection.off(null,null,this);
+    },
+    modelRemoved : function( options ){
+        // i should test it one day...
+        this.remove( options );
+    }
+});
 
 
 App.Data.Item = App.Data.Model.extend({
+    
+    relationsTo : null,
+    relationsFrom : null,
+
     initialize : function(){
         _(this).bindAll();
         eventer.register(this);
+
+        // initialization of the relations needs to happen here due to the late type declarations
+        this.relationsTo = new App.Data.Relations();
+        this.relationsFrom = new App.Data.Relations();
     },
     notifyEvent : function( data ) {
         var e = JSON.parse(data);
@@ -147,7 +186,36 @@ App.Data.Item = App.Data.Model.extend({
     },
     notifyBlured : function( attribute ){
         jQuery.getJSON('/notify/' + this.get('id') + '/' + attribute + '/blured', function(data) {});
+    },
+    getRelationsTo : function( relationType ){
+        this.relationsTo.setItem( this,'to', relationType );
+        this.relationsTo.fetch();
+    },
+    getRelationsFrom : function( relationType ){
+        this.relationsFrom.setItem( this,'from', relationType );
+        this.relationsFrom.fetch();
+    },
+    getRelatedTo : function( collectionType, itemType ){
+        var newCollection = new collectionType();
+        if( itemType ){
+            newCollection.url = this.url() + "/related_to/" + itemType;
+        }
+        else{
+            newCollection.url = this.url() + "/related_to";
+        }
+        return newCollection;
+    },
+    getRelatedFrom : function( collectionType, itemType ){
+        var newCollection = new collectionType();
+        if( itemType ){
+            newCollection.url = this.url() + "/related_from/" + itemType;
+        }
+        else{
+            newCollection.url = this.url() + "/related_from";
+        }
+        return newCollection;
     }
+
 });
 
 

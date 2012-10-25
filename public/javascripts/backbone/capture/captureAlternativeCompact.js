@@ -12,6 +12,7 @@ App.module("main.capture",function(){
           model: this.model, 
           attribute: "name"
         });
+      this.model.updateDecisions();
     },
     onRender : function() {
       this.nameEdit.render(jQuery("span.editable#name",this.el).first());

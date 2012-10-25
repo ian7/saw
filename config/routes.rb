@@ -16,6 +16,11 @@ Saw::Application.routes.draw do
 #scope "admin", :as => "admin" do
 #  resources :photos, :accounts
 #end
+  get 'r/:id/relations_to' => 'r#relations_to'
+  get 'r/:id/relations_from' => 'r#relations_from'
+ 
+  get 'r/:id/relations_to/:type' => 'r#relations_to'
+  get 'r/:id/relations_from/:type' => 'r#relations_from'
 
   get 'r/:id/related_to' => 'r#related_to'
   get 'r/:id/related_from' => 'r#related_from'

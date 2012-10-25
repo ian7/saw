@@ -56,6 +56,7 @@ def to_hash()
       c["relation"] = type
       # c["data"]["direction"]="to"
       
+=begin
       # this kind of sucks.....
       if type == 'Influences'
         c["relationColor"] = "#0000ff"
@@ -68,12 +69,15 @@ def to_hash()
       if type == 'Tagging'
         c["relationColor"] = "#ffff00"
       end
+=end
+      c['tip'] = tip.to_s
+      c['origin'] = origin.to_s
       
      tags.each do |tag_instance|
         c[tag_instance.type]=tag_instance.name
       end
 
-      c["children"] = [];
+      #c["children"] = [];
       
       return c.to_hash;
 end  

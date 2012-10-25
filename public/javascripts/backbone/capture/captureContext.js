@@ -70,7 +70,32 @@ App.module("main.capture",function(){
                 //debugger;
                 this.newAlternative.relate( {item: this.issue, relation: "SolvedBy"});
             }
-        })
+        }),
+        loadDecisions : Backbone.Marionette.Geppetto.Command({
+            solvedByRelations : new Backbone.Collection(),
+            decisions : new Backbone.Collection(),
 
+            execute : function(){
+                _(this).bindAll();
+
+                // snatch alternative reference from the 
+                this.alternative = this.eventData.alternative;
+
+                if( this.eventData.issue ){
+                    this.issue = this.eventData.issue;
+                }
+                else{
+                    this.issue = this.context.issue;
+                }
+
+                // fetching SBs
+                this.solvedByRelations.url = this.alternative.url() + "/relations_from/SolvedBy";
+                this.solvedByRelations.on('reset',this.onSolvedByRelationsReady,this);
+                this.solvedByRelations.fetch();
+            },
+            onSolvedByRelationsReady : function(){
+                debugger;
+            }
+        })
     });
 });
