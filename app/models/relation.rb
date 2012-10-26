@@ -72,9 +72,11 @@ def to_hash()
 =end
       c['tip'] = tip.to_s
       c['origin'] = origin.to_s
-    c["created_at"]=created_at
-    c["updated_at"]=updated_at
-    c["author"]=author.to_s
+      c["created_at"]=created_at
+      c["updated_at"]=updated_at
+      if author
+        c["author"]=author.id.to_s
+      end
       
      tags.each do |tag_instance|
         c[tag_instance.type]=tag_instance.name

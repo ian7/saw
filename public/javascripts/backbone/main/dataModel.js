@@ -206,13 +206,35 @@ App.Data.Item = App.Data.Model.extend({
     notifyBlured : function( attribute ){
         jQuery.getJSON('/notify/' + this.get('id') + '/' + attribute + '/blured', function(data) {});
     },
-    getRelationsTo : function( relationType ){
-        this.relationsTo.setItem( this,'to', relationType );
-        this.relationsTo.fetch();
+    getRelationsTo : function( relationType, collectionType ){
+        var collection = null;
+
+        if( collectionType ){
+            // this assumes that collectionType is derrived from App.Data.Relations
+            collection = new collectionType();
+        }
+        else{
+            collection = this.relationsTo;
+        }
+        collection.setItem( this,'to', relationType );
+        collection.fetch();   
+
+        return collection;
     },
-    getRelationsFrom : function( relationType ){
-        this.relationsFrom.setItem( this,'from', relationType );
-        this.relationsFrom.fetch();
+    getRelationsFrom : function( relationType, collectionType ){
+        var collection = null;
+
+        if( collectionType ){
+            // this assumes that collectionType is derrived from App.Data.Relations
+            collection = new collectionType();
+        }
+        else{
+            collection = this.relationsFrom;
+        }
+        collection.setItem( this,'from',relationType );
+        collection.fetch();            
+        
+        return collection;
     },
     getRelatedTo : function( collectionType, itemType ){
         var newCollection = new collectionType();

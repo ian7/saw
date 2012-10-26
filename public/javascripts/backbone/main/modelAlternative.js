@@ -56,10 +56,12 @@ App.Models.Alternative = App.Data.Item.extend({
     gotSolvedByRelations : function(){
       this.decisions.reset();
       _(this.relationsFrom.models).each( function( model ){
-        model.getRelationsTo("Tagging");
-        //model.relationsTo.on('reset',this.gotDecisions,this);
+        // taggings on the SolvedBy relation are decisions, so let's fetch them!
 
-        this.decisions.addCollection( model.relationsTo );
+        var decisions = model.getRelationsTo("Tagging",App.Models.Decisions);
+        
+        this.decisions.addCollection( decisions );
+        
       },this);
       this.areDecisionsUpdated = true;
     }

@@ -19,8 +19,19 @@ App.module("main.capture",function(){
     },
     initialize : function(options) {
       _(this).bindAll();
+      this.model.on('gotProjects',this.gotProjects,this);
       },
     onRender : function() {
+      this.model.updateProject( this.context );
+      },
+    gotProjects : function(){
+      if( this.model.project ) {
+        jQuery("td.projectName",this.el).html( this.model.project.get('name') );
       }
+      else{
+        jQuery("td.projectName",this.el).html("(none!)");
+      }
+
+    }
   });
 });
