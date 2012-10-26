@@ -20,14 +20,31 @@ App.Data.SuperCollection = Backbone.Collection.extend({
     addCollection : function( collection ){
         // push it on the list of collections
         this.collections.push( collection );
-        // add all its models 
-        this.add( collection.models );
+
+        // puhs all models of the incoming collection through the filter :)
+        _(collection.models).each( function( model ){
+            this.modelAdded(model);
+        },this);
+
         // hook on
         collection.on('add',this.modelAdded, this );
         collection.on('removed',this.modelRemoved, this);
     },
-    modelAdded : function( options ){
-        this.add( options );
+    modelAdded : function( model ){
+
+        // respecting filter-if exists
+        if( this.addFilter ) {
+            // if filter says true, then add it, otherwise ignore.
+            if( this.addFilter( model )){
+                this.add( model );
+            }
+            else{
+                // do nothing.
+            }
+        }
+        else{
+            this.add( model );
+        }   
     },
     removeCollection : function( collection ){
         // remove it from the list of collections
@@ -171,7 +188,9 @@ App.Data.Item = App.Data.Model.extend({
             "decisions",
             "type",
             "item_url",
-            "undefined"
+            "undefined",
+            "created_at",
+            "updated_at"
         ];
         var attributes = [];
 

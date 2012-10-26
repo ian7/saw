@@ -16,10 +16,13 @@ App.module("main.capture",function(){
     initialize: function() {
         _(this).bindAll();
         this.attributesView = new App.main.capture.Views.ItemAttributes({model: this.model });
+        
         this.collection = this.model.alternatives;
         if( ! this.model.areAlternativesUpdated ){
             this.model.updateAlternatives();
         }
+
+        this.itemViewOptions = {context: this.context};
     },
     onRender : function() {
         this.attributesView.el = this.attributesView.$el = jQuery("div.itemAttributes",this.el);

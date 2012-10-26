@@ -1,9 +1,12 @@
 /*global App, Backbone,_,jQuery,JST*/
 
 App.module("main.capture",function(){
-  this.Views.AlternativeDetails = Backbone.Marionette.ItemView.extend({
+  this.Views.AlternativeDetails = Backbone.Marionette.CompositeView.extend({
+    itemView: App.main.capture.Views.DecisionDetails,
+    itemViewOptions: null, 
+    itemViewContainer: "table.decisionDetails tbody",
     template: JST['capture/captureAlternativeDetails'],
-    tagName: "tr",
+    tagName: "div",
     templateHelpers: {
         renderDecisionButtons : function(){
             // we'll return this 
@@ -42,12 +45,21 @@ App.module("main.capture",function(){
 
     initialize: function() {
         _(this).bindAll();
+        
+        // set-up superCollection of decisions around this alternative...
         this.collection = this.model.decisions;
+        
         if( !this.model.areDecisionsUpdated ){
-            this.model.updateDecisions();
+            // here we pass mainContext reference. 
+            this.model.updateDecisions(this.context.parentContext);
         }
+        
         this.collection.on('add',this.updateDecisionCount,this);
         this.collection.on('remove',this.updateDecisionCount,this);
+
+        // set-up itemViews
+        this.itemView = App.main.capture.Views.DecisionDetails;
+        this.itemViewOptions = {context: this.context.parentContext};
     },
     updateDecisionCount : function(){
         jQuery("span.decisionCount",this.el).html(this.collection.length);

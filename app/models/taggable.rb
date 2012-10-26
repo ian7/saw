@@ -175,6 +175,9 @@ def to_hash
   h["name"]=name
   h["id"]=id
   h["type"]=type
+  h["created_at"]=created_at
+  h["updated_at"]=updated_at
+  h["author"]=author.to_s
   return h
 end
 

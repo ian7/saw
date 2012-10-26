@@ -40,7 +40,13 @@ App.module("main.capture",function(){
             console.log( "got refresh on focused element: "+this.model.get('name') + " attribute " + this.attribute);
         }
         else{
-            jQuery("div.editable",this.el)[0].innerHTML = this.model.get(this.attribute);
+            var element = jQuery("div.editable",this.el)[0];
+            if( element ) {
+                element.innerHTML = this.model.get(this.attribute);
+            }
+            else {
+                console.log('Caputre.Views.RichEdit: called refresh, without being rendered!');
+            }
         }
     },
     focused: function( e ){

@@ -2,8 +2,11 @@
 
 App.Models.Alternative = App.Data.Item.extend({
 
+  // this is supposed to hold reference to the main context (project and decision stuff)
+  context : null,
   decisions : null,
   areDecisionsUpdated : false,
+
 
   initialize : function(){
     _(this).bindAll();
@@ -22,15 +25,40 @@ App.Models.Alternative = App.Data.Item.extend({
             return '/r';
         }
     },
-    updateDecisions : function( issue, project ){
+    updateDecisions : function( context ){
+      // we'll need context to get decisions, project, etc. 
+      this.context = context;
+
+      // set filter for superCollection 
+      this.decisions.addFilter = this.addFilter;
+
       this.getRelationsFrom("SolvedBy");
       this.relationsFrom.on('reset',this.gotSolvedByRelations,this);
+    },
+    // this is to be passed as filter to the SuperCollection so that it can fish-out decision taggings from others
+    addFilter : function( relationModel ){
+     var gotIt = false;
+      // here we go over all the decisions stored in the context
+      _(this.context.decisions.models).each(function( decision ){
+        // if decision 
+        if( relationModel.get('origin') === decision.get('id') ){
+          gotIt = true;
+        }
+      },this);
+      if( gotIt ) {
+          return true;
+      }
+      else{
+
+         return false;
+      }
     },
     gotSolvedByRelations : function(){
       this.decisions.reset();
       _(this.relationsFrom.models).each( function( model ){
         model.getRelationsTo("Tagging");
         //model.relationsTo.on('reset',this.gotDecisions,this);
+
         this.decisions.addCollection( model.relationsTo );
       },this);
       this.areDecisionsUpdated = true;
