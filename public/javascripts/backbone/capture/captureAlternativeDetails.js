@@ -29,11 +29,11 @@ App.module("main.capture",function(){
     },
     className : "decision", 
     events : {
+/*        'mouseover' : 'mouseover',
         "click .deleteAlternative"  : "deleteAlternative",
         "click .unrelateAlternative": "unrelateAlternative",
         "click .decide"             : "decide",
         "click .undecide"           : "undecide"
-/*        'mouseover' : 'mouseover',
         'mouseout' : 'mouseout',
         'click div.name'    : 'edit',
 */
@@ -42,9 +42,16 @@ App.module("main.capture",function(){
 
     initialize: function() {
         _(this).bindAll();
+        this.collection = this.model.decisions;
+        if( !this.model.areDecisionsUpdated ){
+            this.model.updateDecisions();
+        }
+        this.collection.on('add',this.updateDecisionCount,this);
+        this.collection.on('remove',this.updateDecisionCount,this);
     },
-    
-  
+    updateDecisionCount : function(){
+        jQuery("span.decisionCount",this.el).html(this.collection.length);
+    },
     onRender : function(){
   /*      var color = "white";
         if( this.model.attributes.decisions ) {

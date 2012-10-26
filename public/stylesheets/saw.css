@@ -1356,3 +1356,6 @@ img.anchor {
     float: right;
   
 }
+span.decisionCount {
+    font-weight: bold;
+}

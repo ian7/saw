@@ -1,9 +1,10 @@
 /*global App, Backbone,_,jQuery,JST*/
 
 App.module("main.capture",function(){
-  this.Views.IssueDetails = Backbone.Marionette.ItemView.extend({
+  this.Views.IssueDetails = Backbone.Marionette.CompositeView.extend({
     template: JST['capture/captureIssueDetails'],
-    tagName: "div",
+    tagName: "div", 
+    itemView: App.main.capture.Views.AlternativeDetails,
     events: {
         "click  img.anchor" : "anchorClicked"
     },
@@ -15,6 +16,10 @@ App.module("main.capture",function(){
     initialize: function() {
         _(this).bindAll();
         this.attributesView = new App.main.capture.Views.ItemAttributes({model: this.model });
+        this.collection = this.model.alternatives;
+        if( ! this.model.areAlternativesUpdated ){
+            this.model.updateAlternatives();
+        }
     },
     onRender : function() {
         this.attributesView.el = this.attributesView.$el = jQuery("div.itemAttributes",this.el);

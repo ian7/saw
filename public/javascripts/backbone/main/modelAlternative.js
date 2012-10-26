@@ -2,7 +2,8 @@
 
 App.Models.Alternative = App.Data.Item.extend({
 
-  decisions : new App.Data.SuperCollection(),
+  decisions : null,
+  areDecisionsUpdated : false,
 
   initialize : function(){
     _(this).bindAll();
@@ -10,10 +11,8 @@ App.Models.Alternative = App.Data.Item.extend({
     App.Models.Alternative.__super__.initialize.apply(this);
     this.set('type', "Alternative");
 
-    // in case id is empty...
-    if( !this.get('id') && this.get("_id")) {
-      this.set('id',this.get('_id'));
-    }
+    this.decisions = new App.Data.SuperCollection();
+
   },
     url : function() {
         if( this.id ) {
@@ -34,11 +33,7 @@ App.Models.Alternative = App.Data.Item.extend({
         //model.relationsTo.on('reset',this.gotDecisions,this);
         this.decisions.addCollection( model.relationsTo );
       },this);
-    },
-    gotDecisions : function( options ){
-      this.decisions.add( options );
-      debugger;
-
+      this.areDecisionsUpdated = true;
     }
 });
 

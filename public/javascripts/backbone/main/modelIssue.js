@@ -3,6 +3,7 @@
 App.Models.Issue = App.Data.Item.extend({
   
   alternatives : null,
+  areAlternativesUpdated : false,
 
   initialize : function(){
     _(this).bindAll();
@@ -33,6 +34,7 @@ App.Models.Issue = App.Data.Item.extend({
         if( this.get('id') ){
             this.alternatives.setIssue( this );
             this.alternatives.fetch();
+            this.areAlternativesUpdated = true;
         }
     }
 });
