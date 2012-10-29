@@ -27,7 +27,7 @@ App.module("main.capture",function(){
         //
     },
     onItemRendered : function() {
-        this.attributesView.el = this.attributesView.$el = jQuery("div.itemAttributes",this.el);
+        this.attributesView.el = this.attributesView.$el = jQuery("div.itemAttributes",this.el).first();
         this.attributesView.render();
         this.model.updateAlternatives();
     },

@@ -68,7 +68,7 @@ App.module("main.capture",function(){
         this.on('composite:model:rendered',this.onItemRendered,this);
         },
     onItemRendered : function(){
-        this.attributesView.el = jQuery("div.itemAttributes",this.el);
+        this.attributesView.el = jQuery("div.itemAttributes",this.el).first();
         this.attributesView.render();
     },
     projectComparator : function( decision ){

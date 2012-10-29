@@ -64,7 +64,7 @@ App.module("main.capture",function(){
             console.log( "panel instance creation crashed with: " + exception );
         }
 
-        var panelEl = jQuery("div.nicEdit-panelContain",jQuery(e.target).parent());
+        var panelEl = jQuery("div.nicEdit-panelContain",jQuery(e.target).parent()).first();
 
         this.model.notifyFocused(this.attribute);
 

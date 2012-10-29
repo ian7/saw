@@ -34,7 +34,7 @@ App.module("main.capture",function(){
                 model: this.model, 
                 attribute: attribute
                 });
-            newEditor.render(jQuery("div.editable#"+attribute),this.el);
+            newEditor.render(jQuery("div.editable#"+attribute,this.el));
 
             this.editorObjects[attribute] = newEditor;
             },this);
