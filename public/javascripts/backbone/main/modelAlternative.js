@@ -15,8 +15,25 @@ App.Models.Alternative = App.Data.Item.extend({
     this.set('type', "Alternative");
 
     this.decisions = new App.Data.SuperCollection();
+    this.decisions.comparator = this.decisionComparator;
 
-  },
+   },
+   decisionComparator : function( decision ){
+      var comparable = "";
+      
+      if( decision.project ){
+         comparable += decision.project.get('name');
+      }
+      /*
+      if( this.context ){
+        }
+        comparable += decision.findDecisionName( this.context );
+      }
+      else{
+        comparable += decision.get('origin');
+      }
+      */
+   },
     url : function() {
         if( this.id ) {
             return '/r/' + this.id;
@@ -61,7 +78,7 @@ App.Models.Alternative = App.Data.Item.extend({
         var decisions = model.getRelationsTo("Tagging",App.Models.Decisions);
         
         this.decisions.addCollection( decisions );
-        
+
       },this);
       this.areDecisionsUpdated = true;
     }

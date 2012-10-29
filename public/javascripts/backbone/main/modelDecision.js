@@ -23,6 +23,16 @@ App.Models.Decision = App.Data.Relation.extend({
       }
     },this);
     this.trigger('gotProjects');
+    this.trigger('change');
+  },
+  findDecisionName : function( context ){
+    var name = "unknown";
+    _(context.decisions.models).each( function( decision ){
+      if( decision.get('id') === this.get('origin')){
+        name = decision.get('name');
+      }
+    },this);
+    return name;
   }
 });
 

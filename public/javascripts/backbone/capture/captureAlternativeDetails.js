@@ -32,6 +32,9 @@ App.module("main.capture",function(){
     },
     className : "decision", 
     events : {
+        "click div.button#id" : "sortByID",
+        "click div.button#project" : "sortByProject",        
+
 /*        'mouseover' : 'mouseover',
         "click .deleteAlternative"  : "deleteAlternative",
         "click .unrelateAlternative": "unrelateAlternative",
@@ -61,7 +64,28 @@ App.module("main.capture",function(){
         this.itemView = App.main.capture.Views.DecisionDetails;
         this.itemViewOptions = {context: this.context.parentContext};
     },
+    sortByID : function(){
+        this.collection.comparator = this.idComparator;
+        this.collection.sort();
+    },
+    idComparator : function( decision ){
+            //return decision.get('id');        
+            //return decision.findDecisionName( this.context.parentContext );
+            if( decision.project ){
+                return decision.project.get('name');
+            }
+            else{
+                return "";
+            }
+    },
+    sortByProject : function(){
+        this.collection.comparator = function( decision ){
+            return decision.get('created_at');
+        };
+        this.collection.sort();
+    },
     updateDecisionCount : function(){
+      //  this.collection.sort();
         jQuery("span.decisionCount",this.el).html(this.collection.length);
     },
     onRender : function(){

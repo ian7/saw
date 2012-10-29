@@ -29,6 +29,7 @@ App.Data.SuperCollection = Backbone.Collection.extend({
         // hook on
         collection.on('add',this.modelAdded, this );
         collection.on('removed',this.modelRemoved, this);
+        collection.on('change',this.modelChanged,this);
     },
     modelAdded : function( model ){
 
@@ -57,7 +58,13 @@ App.Data.SuperCollection = Backbone.Collection.extend({
     modelRemoved : function( options ){
         // i should test it one day...
         this.remove( options );
+    },
+    modelChanged : function(){
+     /*   if( this.comparator ){
+            this.sort();
+        }*/
     }
+
 });
 
 
