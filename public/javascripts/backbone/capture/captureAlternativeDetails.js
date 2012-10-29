@@ -32,9 +32,6 @@ App.module("main.capture",function(){
     },
     className : "decision", 
     events : {
-        "click div.button#id" : "sortByID",
-        "click div.button#project" : "sortByProject",        
-
 /*        'mouseover' : 'mouseover',
         "click .deleteAlternative"  : "deleteAlternative",
         "click .unrelateAlternative": "unrelateAlternative",
@@ -51,6 +48,7 @@ App.module("main.capture",function(){
         
         // set-up superCollection of decisions around this alternative...
         this.collection = this.model.decisions;
+        this.collection.comparator = this.projectComparator;
         
         if( !this.model.areDecisionsUpdated ){
             // here we pass mainContext reference. 
@@ -64,11 +62,7 @@ App.module("main.capture",function(){
         this.itemView = App.main.capture.Views.DecisionDetails;
         this.itemViewOptions = {context: this.context.parentContext};
     },
-    sortByID : function(){
-        this.collection.comparator = this.idComparator;
-        this.collection.sort();
-    },
-    idComparator : function( decision ){
+    projectComparator : function( decision ){
             //return decision.get('id');        
             //return decision.findDecisionName( this.context.parentContext );
             if( decision.project ){
@@ -77,12 +71,6 @@ App.module("main.capture",function(){
             else{
                 return "";
             }
-    },
-    sortByProject : function(){
-        this.collection.comparator = function( decision ){
-            return decision.get('created_at');
-        };
-        this.collection.sort();
     },
     updateDecisionCount : function(){
       //  this.collection.sort();

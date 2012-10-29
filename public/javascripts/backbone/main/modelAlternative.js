@@ -54,7 +54,11 @@ App.Models.Alternative = App.Data.Item.extend({
     },
     // this is to be passed as filter to the SuperCollection so that it can fish-out decision taggings from others
     addFilter : function( relationModel ){
+        if( !this.context ){
+            return false;
+        }
      var gotIt = false;
+
       // here we go over all the decisions stored in the context
       _(this.context.decisions.models).each(function( decision ){
         // if decision 

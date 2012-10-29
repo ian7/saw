@@ -20,9 +20,11 @@ App.module("main.capture",function(){
     initialize : function(options) {
       _(this).bindAll();
       this.model.on('gotProjects',this.gotProjects,this);
+      this.model.on('gotProjects',this.projectChanged,this);
       },
     onRender : function() {
       this.model.updateProject( this.context );
+      this.hide();
       },
     gotProjects : function(){
       if( this.model.project ) {
@@ -31,7 +33,20 @@ App.module("main.capture",function(){
       else{
         jQuery("td.projectName",this.el).html("(none!)");
       }
-
+    },
+    projectChanged : function(){
+      if( this.model.project && (this.model.project.get('id') === this.context.project.get('id') )){
+        this.show();
+      }
+      else{
+        this.hide();
+      }
+    },
+    hide : function(){
+      jQuery( this.el ).hide();
+    },
+    show : function(){
+      jQuery( this.el ).show();
     }
   });
 });
