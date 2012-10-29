@@ -32,6 +32,7 @@ App.module("main.capture",function(){
         jQuery(this.el).html(h);
         this.rendered = true;
         this.delegateEvents();
+        this.isFocused = false;
     },
     refresh : function(){
         //debugger;

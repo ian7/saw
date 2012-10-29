@@ -18,15 +18,18 @@ App.module("main.capture",function(){
         this.attributesView = new App.main.capture.Views.ItemAttributes({model: this.model });
         
         this.collection = this.model.alternatives;
-        if( ! this.model.areAlternativesUpdated ){
-            this.model.updateAlternatives();
-        }
 
         this.itemViewOptions = {context: this.context};
+
+        this.on('composite:model:rendered',this.onItemRendered,this);
     },
-    onRender : function() {
+    onRender: function(){
+        //
+    },
+    onItemRendered : function() {
         this.attributesView.el = this.attributesView.$el = jQuery("div.itemAttributes",this.el);
         this.attributesView.render();
+        this.model.updateAlternatives();
     },
     anchorClicked : function() {
         jQuery("img.anchor",this.el).popover({
