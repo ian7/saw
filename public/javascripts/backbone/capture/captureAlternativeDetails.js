@@ -6,7 +6,7 @@ App.module("main.capture",function(){
     itemViewOptions: null, 
     itemViewContainer: "table.decisionDetails tbody",
     template: JST['capture/captureAlternativeDetails'],
-    tagName: "div",
+    tagName: "tr",
     templateHelpers: {
         renderDecisionButtons : function(){
             // we'll return this 
@@ -61,6 +61,15 @@ App.module("main.capture",function(){
         // set-up itemViews
         this.itemView = App.main.capture.Views.DecisionDetails;
         this.itemViewOptions = {context: this.context.parentContext};
+
+        // set-up alternative attribtues editing:
+        this.attributesView = new App.main.capture.Views.ItemAttributes({ model: this.model });
+        // and hook up rendering it
+        this.on('composite:model:rendered',this.onItemRendered,this);
+        },
+    onItemRendered : function(){
+        this.attributesView.el = jQuery("div.itemAttributes",this.el);
+        this.attributesView.render();
     },
     projectComparator : function( decision ){
             //return decision.get('id');        

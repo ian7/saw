@@ -1,21 +1,57 @@
-<div> Name: <%= get('name') %>(<span class="decisionCount">0</span> Decisions)</div>
-<table class="decisionDetails">
-    <thead>
-        <tr>
-            <td>
-                Decision
-            </td>
-            <td>
-                Rationale
-            </td>
-            <td>
-                Author
-            </td>
-            <td>
-                Timestamp
-            </td>
-        </tr>
-    </thead>
-    <tbody></tbody>
-    <tfoot></tfoot>
-</table>
+<td class="name">           
+
+    <div class="deleteAlternative">
+        <span class="altenrnativeFocusedUsers"></span>
+        <div class='button black'>Delete</div>
+    </div>
+
+    <b>Alternative</b>  Name: <%= get('name') %>(<span class="decisionCount">0</span> Decisions)
+    <div class="itemAttributes"></div>
+    <div class="decisionsDetails">
+        <table class="decisionDetails">
+        <thead>
+            <tr>
+                <td>
+                    Decision
+                </td>
+                <td>
+                    Rationale
+                </td>
+                <td>
+                    Author
+                </td>
+                <td>
+                    Timestamp
+                </td>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+    </table>
+    </div>
+    <div class="relationSelector"></div>
+
+
+</td>
+<td class="decisions"> 
+                <table class="decisions">
+                <thead>
+                    <tr>
+                        <td>
+                            <b>Decisions</b>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    Decision table comes here!
+                </tbody>
+                <tfoot>
+                    <tr class="foot">
+                        <td>
+                            <div class="button orange" id="editRationale">Edit Rationale</div>
+                            <div class="button orange hide" id="sealDecision">Seal Decision</div>
+                        </td>
+                    </tr>
+                </tfoot>
+                </table>
+</td>
