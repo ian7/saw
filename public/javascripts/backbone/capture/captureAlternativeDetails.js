@@ -7,11 +7,13 @@ App.module("main.capture",function(){
     itemViewContainer: "table.decisionDetails tbody",
     template: JST['capture/captureAlternativeDetails'],
     tagName: "tr",
+    className : "alternative", 
     templateHelpers: {
         renderDecisionButtons : function(){
             // we'll return this 
             var h = "";
 
+            /* that's old code 
             if( !( this.your_decision && this.your_decision.name ) ) { 
                 _(this.decisions).each(function(decision) { 
                     h += "<div class='button decide "+ decision.color.toLowerCase() +"'";
@@ -27,10 +29,18 @@ App.module("main.capture",function(){
                     }
                 },this); 
             }
+            */
+            if( !this.context || !this.context.parentContext ){
+                return "";
+            }
+
+            _(this.context.parentContext.decisions.models).each( function( decision ){
+                h += "<div class='button decide "+ decision.get('Color') +"'";
+                h += "id='"+ decision.get('id') + "' rel='whatever.html'>" + decision.get('name') /*+ "("+ decision.count + ")*/ + "</div><br>";
+            },this);
             return(h);
         }
     },
-    className : "decision", 
     events : {
 /*        'mouseover' : 'mouseover',
         "click .deleteAlternative"  : "deleteAlternative",

@@ -77,4 +77,7 @@ class ApplicationController < ActionController::Base
 	  	# feed the new channel
     	Juggernaut.publish('channel1', h.to_json.to_s )
   	end
+  	def after_sign_in_path_for(resource)
+		return "/welcome/logged_in"
+	end
 end

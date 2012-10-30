@@ -68,6 +68,9 @@ javascripts:
     - *backbone 
     - public/javascripts/run_init.js
 
+  logged_in: 
+    - public/javascripts/logged_in.js
+
 stylesheets:
   common:
     - public/stylesheets/buttons.css

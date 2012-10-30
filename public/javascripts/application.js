@@ -1,4 +1,14 @@
-/*global Backbone */
+/*global Backbone,jQuery */
+
+jQuery(function() {
+   jQuery("body").ajaxError(function(event, request, settings){
+    if( request.status === 401 ) {
+        localStorage.setItem('SAWurl',window.location.href);
+        alert( "You are not logged in!" );
+        window.location.href="/users/sign_in";
+        }
+   });
+});
 
 var SoftwareArchitectureWarehouse = Backbone.Marionette.Application.extend({
     Views: {},
