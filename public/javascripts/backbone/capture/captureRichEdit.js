@@ -22,17 +22,28 @@ App.module("main.capture",function(){
         var h = "<div>";
         var v = this.model.get(this.attribute);
         h += "<div class='editable' id='" +this.attribute+ "' contenteditable='true'>";
-            if (v == null || v.replace(/<(?:.|\n)*?>/gm, '') == "") {
-                h += "(empty)";
-            }
-            else {
-                h += v;     
-            }
+            h += this.unEmpty( v );
             h += "</div>";
         jQuery(this.el).html(h);
         this.rendered = true;
         this.delegateEvents();
         this.isFocused = false;
+    },
+    unEmpty : function( value ){
+        if( this.isEmpty( value )){
+            return '(empty)';
+        }
+        else {
+            return value;
+        }
+    },
+    isEmpty : function( value ){
+        if (value == null || value.replace(/<(?:.|\n)*?>/gm, '').replace(/\s+/g, ' ') == "") {
+            return true;
+        }
+        else {
+            return false;     
+        }
     },
     refresh : function(){
         //debugger;
@@ -81,6 +92,7 @@ App.module("main.capture",function(){
 
         this.model.set(this.attribute,e.srcElement.innerHTML);
         //this.model.save();  
+        e.srcElement.innerHTML = this.unEmpty( e.srcElement.innerHTML );
 
         this.model.notifyBlured(this.attribute);
 
