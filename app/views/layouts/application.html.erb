@@ -6,6 +6,13 @@
 	  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 	  <%= include_stylesheets :common %>
       <%= include_javascripts :common %> 
+      <script type="text/javascript">
+      <% if current_user %>
+        var userName = "<%= current_user.email %>";
+      <% else %>
+        var userName = null;
+      <% end %>
+      </script>
     </head>
 
 	<body>

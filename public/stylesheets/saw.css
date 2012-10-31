@@ -1359,3 +1359,11 @@ img.anchor {
 span.decisionCount {
     font-weight: bold;
 }
+
+div.userName{
+  padding-right: 13em;
+  float: right;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
