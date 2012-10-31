@@ -5,6 +5,7 @@ App.module("main.capture",function(){
     template: JST['capture/captureIssueDetails'],
     tagName: "div", 
     itemView: App.main.capture.Views.AlternativeDetails,
+    itemViewContainer: "table.alternativeListDetails tbody",
     events: {
         "click  img.anchor" : "anchorClicked"
     },
