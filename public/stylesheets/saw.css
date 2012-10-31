@@ -1170,31 +1170,31 @@ ul.tagType li {
 
 
 /* small decision details table */
-table.decisionListWidget {
+table.decisionDetails {
   width: 100%;
   padding: 0.8em;
   background-color: rgba(255, 255, 255, 0.7);
   margin-bottom: 0.5em;
   border-spacing: 0px;
 }
-table.decisionListWidget td{
+table.decisionDetails td{
     text-align:center;
     vertical-align:top;
 }
-table.decisionListWidget td.rationale{
+table.decisionDetails td.rationale{
     text-align:left;
     padding-left: 1em;
     padding-right: 1em; 
 }
 
-table.decisionListWidget td.type {
+table.decisionDetails td.type {
   width: 70px;
 }
-table.decisionListWidget td.user {
+table.decisionDetails td.user {
   width: 100px;
 }
 
-table.decisionListWidget td.timestamp {
+table.decisionDetails td.timestamp {
   width: 150px;
 }
 
@@ -1366,4 +1366,9 @@ div.userName{
   position: absolute;
   top: 5px;
   right: 10px;
+}
+
+table.alternativelistdetails {
+  width: 100%;
+  padding-left: 2em;
 }
