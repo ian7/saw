@@ -32,6 +32,7 @@ App.Models.Decision = App.Data.Relation.extend({
         name = decision.get('name');
       }
     },this);
+    
     return name;
   }
 });

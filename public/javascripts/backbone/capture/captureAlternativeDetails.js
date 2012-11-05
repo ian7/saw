@@ -36,7 +36,7 @@ App.module("main.capture",function(){
 
             _(this.context.parentContext.decisions.models).each( function( decision ){
                 h += "<div class='button decide "+ decision.get('Color') +"'";
-                h += "id='"+ decision.get('id') + "' rel='whatever.html'>" + decision.get('name') /*+ "("+ decision.count + ")*/ + "</div><br>";
+                h += "id='"+ decision.get('name') + "' rel='whatever.html'>" + decision.get('name') /*+ "("+ decision.count + ")*/ + "</div><br>";
             },this);
             return(h);
         }
@@ -45,9 +45,10 @@ App.module("main.capture",function(){
 /*        'mouseover' : 'mouseover',
         "click .deleteAlternative"  : "deleteAlternative",
         "click .unrelateAlternative": "unrelateAlternative",
+        */
         "click .decide"             : "decide",
         "click .undecide"           : "undecide"
-        'mouseout' : 'mouseout',
+/*        'mouseout' : 'mouseout',
         'click div.name'    : 'edit',
 */
     },
@@ -68,6 +69,10 @@ App.module("main.capture",function(){
         this.collection.on('add',this.updateDecisionCount,this);
         this.collection.on('remove',this.updateDecisionCount,this);
 
+        this.model.on('notify',this.notified,this);
+
+        // hook up for the notifications. 
+
         // set-up itemViews
         this.itemView = App.main.capture.Views.DecisionDetails;
         this.itemViewOptions = {context: this.context.parentContext};
@@ -77,6 +82,13 @@ App.module("main.capture",function(){
         // and hook up rendering it
         this.on('composite:model:rendered',this.onItemRendered,this);
         },
+    notified : function( notification ){
+
+        // this catches notification of decision made
+        if( notification.event == "dotag" && notification.distance == 2){
+            this.collection.fetch();
+        }
+    },
     onItemRendered : function(){
         this.attributesView.el = jQuery("div.itemAttributes",this.el).first();
         this.attributesView.render();
@@ -134,28 +146,29 @@ App.module("main.capture",function(){
     },
     unrelateAlternative : function() {
     },
-    decide : function (element) {
-        //alert(element.target.id);
-        var rationaleDiv = jQuery("div.button.decide",this.el);
+    decide : function( event ) {
+        var decisionName = event.target.id;
 
-        jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
-    
-        /* removed for the cmapus branch
-            this.recordRationale();
-        */
+      //  jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
+
+        this.context.dispatch( "capture:alternative:decided",{ decisionName : decisionName, alternative: this.model });
+        // let's find object for it..
+
+        /*
+        var decisionObject = null;
+
+        _(this.context.parentContext.decisions.models).each( function( decision ) {
+            if( decisionName === decision.get('name')) {
+                decisionObject = decision;
+            }
+        },this);
 
         jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {
-                /* removed for the campus branch 
-                alert( 'here !');
-                
-                rationaleDiv.tooltip().show();  
-                jQuery("div.rationaleText").focus();
-                */
                 
                 // nasty, nasty...
                 //jQuery("div.tooltip").attr("id",data.$oid);
         });
-
+            */
     },
     undecide : function(element) {
         jQuery.getJSON( this.model.get('relation_url') + '/tag/untag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {});      

@@ -13,6 +13,7 @@ App.Models.Issue = App.Data.Item.extend({
     
     this.set('type', "Issue");
     this.on( 'change', this.updateAlternatives, this );
+    this.on( 'change', this.updateRelationsTo, this );
 
     // this needs to be instantiated late because of the late-loading issues. 
     this.alternatives = new App.Models.Alternatives();
@@ -36,6 +37,9 @@ App.Models.Issue = App.Data.Item.extend({
             this.alternatives.fetch();
             this.areAlternativesUpdated = true;
         }
+    },
+    updateRelationsTo : function() {
+        this.getRelationsTo();
     }
 });
 

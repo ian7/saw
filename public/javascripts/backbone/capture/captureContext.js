@@ -14,6 +14,9 @@ App.module("main.capture",function(){
             
             this.mapCommand("capture:issues:new", this.newIssue );
             this.mapCommand("capture:alternatives:create",this.newAlternative);
+
+            this.mapCommand("capture:alternative:decided",this.decided);
+
             this.issues = new App.Models.Issues();
             this.issue = new App.Models.Issue();
         },
@@ -47,7 +50,9 @@ App.module("main.capture",function(){
         newIssue : Backbone.Marionette.Geppetto.Command({
             execute : function(){
                 _(this).bindAll();
+
                 console.log('create issue'); 
+
                 this.context.issues.create({ project_id: this.context.parentContext.project.get('id') });
             }
         }),
@@ -71,7 +76,7 @@ App.module("main.capture",function(){
                 this.newAlternative.relate( {item: this.issue, relation: "SolvedBy"});
             }
         }),
-        loadDecisions : Backbone.Marionette.Geppetto.Command({
+/*        loadDecisions : Backbone.Marionette.Geppetto.Command({
             solvedByRelations : new Backbone.Collection(),
             decisions : new Backbone.Collection(),
 
@@ -96,6 +101,36 @@ App.module("main.capture",function(){
             onSolvedByRelationsReady : function(){
                 debugger;
             }
-        })
-    });
+        })*/
+    decided : Backbone.Marionette.Geppetto.Command({
+        execute : function(){
+            var decisionTag = null;
+
+            // let's find the decision
+            _(this.context.parentContext.decisions.models).each( function( decision ){
+                if( decision.get('name') === this.eventData.decisionName ){
+                    decisionTag = decision;
+                }
+            },this);
+
+            var relationTaggable = null;
+            // let's find the right SolvedBy relation
+            _(this.context.issue.relationsTo.models).each( function( relation ){
+                if( relation.get('origin') === this.eventData.alternative.get('id') ){
+                    relationTaggable = relation;
+                }
+            },this);
+
+            // if we found both, then let's make the tagging
+            if( decisionTag && relationTaggable ){
+                relationTaggable.tag( decisionTag, { project_id: this.context.parentContext.project.get('id') });
+            }
+            else { // something went really bad.
+                console.log("");
+            }
+        }
+    })
+// end of class
+});
+// end 
 });

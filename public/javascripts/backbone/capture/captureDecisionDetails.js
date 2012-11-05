@@ -13,9 +13,16 @@ App.module("main.capture",function(){
           }
         },this);
         return name;
+      },
+      printTimestamp : function(){
+       var time = this.attributes['updated_at'].match("[0-9]{1,2}:[0-9]{2}")[0];
+       var date = this.attributes['updated_at'].match("[0-9]{4}-[0-9]{2}-[0-9]{2}")[0];
+       
+       return( time + " " + date );       
       }
     },
     events : {
+      "click div.button#delete" :  "deleteDecision"
     },
     initialize : function(options) {
       _(this).bindAll();
@@ -26,6 +33,9 @@ App.module("main.capture",function(){
       this.model.updateProject( this.context );
       this.hide();
       },
+    deleteDecision : function(){
+      this.model.destroy();
+    },
     gotProjects : function(){
       if( this.model.project ) {
         jQuery("td.projectName",this.el).html( this.model.project.get('name') );

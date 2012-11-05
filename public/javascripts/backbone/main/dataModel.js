@@ -17,6 +17,12 @@ App.Data.SuperCollection = Backbone.Collection.extend({
         _(this).bindAll();
         App.Data.SuperCollection.__super__.initialize.apply(this,options);
     },
+    // overrides default collection's fetch
+    fetch : function(){
+        _(this.collections).each( function( collection ){
+            collection.fetch();
+        },this);
+    },
     addCollection : function( collection ){
         // push it on the list of collections
         this.collections.push( collection );
@@ -109,7 +115,7 @@ App.Data.Item = App.Data.Model.extend({
                 break;
         }
         */
-
+        this.trigger('notify', e );
     },
     url : function() {
         if( this.id ) {
@@ -117,7 +123,7 @@ App.Data.Item = App.Data.Model.extend({
         }
         else {
             return '/r';
-        }
+        } 
     },
     tag : function( item, options ){
         

@@ -5,11 +5,14 @@
     <%= get('rationale') %>
 </td>
 <td>
-    <%= get('user') %>
+    <%= get('author_name') %>
 </td>
 <td>
-    <%= get('updated_at') %>
+    <%= printTimestamp() %>
 </td>
-<td class="projectName">
+<td class="projectName debug">
     ...
+</td>
+<td>
+    <div class="button black" id="delete">Delete Decision</div>
 </td>

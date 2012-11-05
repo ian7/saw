@@ -179,6 +179,7 @@ def to_hash
   h["updated_at"]=updated_at
   if author
     h["author"]=author.id.to_s
+    h["author_name"] = author.email
   end
   return h
 end

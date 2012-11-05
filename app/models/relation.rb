@@ -1,6 +1,9 @@
 #require 'taggable'
 
 class Relation < Taggable
+
+  belongs_to :author, :class_name => 'User'
+  belongs_to :creator, :class_name => 'User'
   
   # for some unknown reason this doesn't do the job.
   def relate( taggable1, taggable2 )
@@ -76,6 +79,7 @@ def to_hash()
       c["updated_at"]=updated_at
       if author
         c["author"]=author.id.to_s
+        c["author_name"] = author.email
       end
       
      tags.each do |tag_instance|
