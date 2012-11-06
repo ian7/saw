@@ -7,6 +7,9 @@ App.module("main.capture",function(){
 
             // project is related to the mainContext, thus it needs to be bound there.
             this.parentContext.listen("project:selected",this.projectSelected);
+            // project notification came 
+            this.parentContext.project.on('notify',this.projectNotified,this);
+
             this.listen("issue:selected",this.issueSelected);
 
             this.listen("capture:issues:list",this.issueList);
@@ -24,6 +27,11 @@ App.module("main.capture",function(){
         projectSelected : function( args ){
             this.issues.setProjectURL( args.id );
             this.fetchIssues();
+        },
+        projectNotified : function( notification ){
+            if( notification.distance === 1 ){
+                this.fetchIssues();
+            }
         },
         issueSelected : function( args ){
             this.issue.id = args.id;
@@ -52,8 +60,14 @@ App.module("main.capture",function(){
                 _(this).bindAll();
 
                 console.log('create issue'); 
+                // { project_id: this.context.parentContext.project.get('id') }
 
-                this.context.issues.create({ project_id: this.context.parentContext.project.get('id') });
+                this.newIssue = this.context.issues.create();
+                this.newIssue.on('sync',this.synced,this);
+            },
+            synced : function() {
+                this.newIssue.off('sync');
+                this.context.parentContext.project.addItem( this.newIssue );
             }
         }),
         newAlternative : Backbone.Marionette.Geppetto.Command({

@@ -92,7 +92,7 @@ App.Data.Item = App.Data.Model.extend({
         e.itemId = e.id;
 
         // if item id is not matching, then kill it fast
-        if( e.id !== this.id ){
+        if( e.id !== this.get('id') ){
             return;
         }
 
@@ -159,7 +159,7 @@ App.Data.Item = App.Data.Model.extend({
             options.item
             */
         if( ! options.relation ){
-            throw new Error("Relation type specifier missing");
+            options.relation = "Tagging";
         }
         if( ! options.item ){
             throw new Error("relation tip specifier missing");

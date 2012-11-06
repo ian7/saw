@@ -3,6 +3,9 @@
 App.Models.Project = App.Data.Item.extend({
     initialize : function( model ){
       _(this).bindAll();
+
+      App.Models.Project.__super__.initialize.apply(this);
+      
       this.set('type','Project');
       if( model ) {
         this.parse( model );
@@ -15,10 +18,10 @@ App.Models.Project = App.Data.Item.extend({
         return response;
     },     
     addItem : function( item ){
-        item.tag(this.id);
+        item.tag(this);
     },
     removeItem : function( item ){
-        item.untag(this.id);
+        item.untag(this);
     }
 });
 

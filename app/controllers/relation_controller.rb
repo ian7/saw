@@ -26,8 +26,11 @@ class RelationController < ApplicationController
   @relation_instance.origin = Taggable.find(params[:from_taggable_id]).id
   @relation_instance.tip = Taggable.find(params[:to_taggable_id]).id
   @relation_instance.save
-  puts "!!!!!!!!!!!!!!!!!!!" + @relation_instance.id.to_s
-  
+  #puts "!!!!!!!!!!!!!!!!!!!" + @relation_instance.id.to_s
+
+  # ring it
+  ring( @relation_instance.id,1,'relate')
+
   ## not quite sure on what to do after... some redirect probably
   render :nothing => true
   end
@@ -41,11 +44,17 @@ class RelationController < ApplicationController
  
   ## find the taggable
    @relation_instance = Taggable.find :first, :conditions=>{:type=>@relation_name, :origin=>@from_taggable_id, :tip=>@to_taggable_id }
+
+   #ring it
+   ring( @relation_instance.id,1,'unrelate')
    
   ## kill it
    if @relation_instance != nil
      @relation_instance.destroy
    end
+
+
+
    render :nothing => true
   end
 
