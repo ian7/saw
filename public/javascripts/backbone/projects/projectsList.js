@@ -8,6 +8,14 @@ App.module("main.projects",function(){
         events: {
             'click div#newProjectButton' :  'newProject'
         },
+        speedButtons : {
+            "New Project" : {
+              color: "green",
+              event: "projects:new",
+              shortcut: "ctrl+n"
+            }
+        },
+
         initialize : function(){
            /* Backbone.Marionette.Geppetto.bindContext({
                 view: this,

@@ -124,7 +124,7 @@ class RController < ApplicationController
   def update   
   
     r = Taggable.find params["id"]
-    notify( r.id)
+    #notify( r.id)
 
 # that doesn't belong to the attributes, so it needs to be adjusted manually
     r.name = params[:name]
@@ -138,7 +138,8 @@ class RController < ApplicationController
 
     r.save
 
-  notify( r.id)
+    #notify( r.id)
+    ring( r.id,1,'update')
 
     respond_to do |format|
         format.json { render :json => r.to_json }
@@ -174,8 +175,10 @@ class RController < ApplicationController
     r.save
     params[:id] = r.id
 
+    ring( r.id,1,'create')
 
-
+=begin
+  # this is wrong for many reasons
     if params[:project_id] 
       project = TreeTag.find params[:project_id]
       if project
@@ -186,6 +189,7 @@ class RController < ApplicationController
         t.save
       end
     end
+=end
 
    ######## this fails because types are not taggables.
 

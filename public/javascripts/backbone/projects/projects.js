@@ -1,4 +1,4 @@
-/*global App, Backbone,_,jQuery*/
+/*global App, Backbone,_,jQuery, eventer*/
 
 App.module("main.projects",function(){
     this.startWithApp = true;
@@ -10,10 +10,23 @@ App.module("main.projects",function(){
             this.projects = new App.Models.Project();
             this.projects.url = "/projects";
 
-        //    this.mapCommand( "projects:fetch", this.index );
-           // this.mapCommand( "projects:index", this.showIndex );
-             this.listen("projects:index",this.showIndex );
+            this.listen("projects:index",this.showIndex );
+            this.listen("projects:new",this.newProject );
 
+            // this context is specific, becuase I would like it to reload list of projects if new one is created or deleted
+            eventer.register(this);
+
+        },
+        notifyEvent : function( data ) {
+            var e = JSON.parse(data);
+            
+
+            if( e.type === 'Project' ) {
+                if( e.event === 'create' || e.event === 'destroy'){
+                    this.projects.clear();
+                    this.projects.fetch();
+                }
+            }
         },
         showIndex : function() {
           console.log('rendering projects index');
@@ -21,27 +34,21 @@ App.module("main.projects",function(){
         
             this.mainView = new App.main.projects.Views.ProjectList( {context: this } );
         
-            App.main.layout.central.show( this.mainView )
+            App.main.layout.central.show( this.mainView );
             this.projects.clear();
             this.projects.fetch();
         },
-/*        showIndex : Backbone.Marionette.Geppetto.Command({
-            execute : function(){
-              console.log('rendering projects index');
-                //this.context.options.view.render();
-                App.main.layout.central.show( this.context.options.view )
-                this.context.projects.clear();
-                this.context.projects.fetch();
-            }
-        }),*/
         fetch : Backbone.Marionette.Geppetto.Command({
             execute : function(){
                 console.log('fetching projects');
                 this.context.projects.clear();
                 this.context.projects.fetch();
-
             }
-        })
+        }),
+        newProject : function() {
+            this.newProjectView = new App.main.projects.Views.NewProject( {context: this} );
+            App.main.layout.modal.show( this.newProjectView );
+        }
         
     });
     this.start = function(){

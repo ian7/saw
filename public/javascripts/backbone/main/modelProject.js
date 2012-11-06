@@ -22,6 +22,9 @@ App.Models.Project = App.Data.Item.extend({
     },
     removeItem : function( item ){
         item.untag(this);
+    },
+    create : function( attributes ){
+        return this.subProjects.create( attributes );
     }
 });
 
