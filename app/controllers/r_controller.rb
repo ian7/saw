@@ -150,7 +150,13 @@ class RController < ApplicationController
     r = Taggable.find params[:id]
 
     if r 
-      notify( r.id )
+
+      if r.class == Relation 
+        ring( r.id,2,'destroy')
+      else
+        ring( r.id,2,'destroy')
+      end
+
 ## somehow this fails too...
 #      notify( r.dynamic_type.id.to_s)
 

@@ -84,9 +84,12 @@ App.module("main.capture",function(){
         },
     notified : function( notification ){
 
-        // this catches notification of decision made
-        if( notification.event == "dotag" && notification.distance == 2){
-            this.collection.fetch();
+        // this catches notification of decision made - it is in distance of 2 hops!
+        if( notification.distance == 2 ){
+            if( notification.event == "dotag" || notification.event == 'destroy' ){            
+            
+                this.collection.fetch();
+            }
         }
     },
     onItemRendered : function(){

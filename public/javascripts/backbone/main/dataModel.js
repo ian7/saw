@@ -34,7 +34,7 @@ App.Data.SuperCollection = Backbone.Collection.extend({
 
         // hook on
         collection.on('add',this.modelAdded, this );
-        collection.on('removed',this.modelRemoved, this);
+        collection.on('remove',this.modelRemoved, this);
         collection.on('change',this.modelChanged,this);
     },
     modelAdded : function( model ){
