@@ -15,14 +15,14 @@ App.module("main.capture",function(){
         return name;
       },
       printTimestamp : function(){
-       var time = this.attributes['updated_at'].match("[0-9]{1,2}:[0-9]{2}")[0];
-       var date = this.attributes['updated_at'].match("[0-9]{4}-[0-9]{2}-[0-9]{2}")[0];
+       var time = this.attributes.updated_at.match("[0-9]{1,2}:[0-9]{2}")[0];
+       var date = this.attributes.updated_at.match("[0-9]{4}-[0-9]{2}-[0-9]{2}")[0];
        
        return( time + " " + date );       
       }
     },
     events : {
-      "click div.button#delete" :  "deleteDecision"
+      "click div.button#deleteDecision" :  "deleteDecision"
     },
     initialize : function(options) {
       _(this).bindAll();

@@ -10,7 +10,7 @@ App.module("main.capture",function(){
     events : {
       "click .expand" : "toggleExpand",
       "click div.issueCompactView" : "doExpand",
-      "click .deleteItem" : "deleteItem",
+      "click .deleteIssue" : "deleteItem",
       "click .details" : "navigateToDetails",
       "mouseover" : "mouseOver",
       "mouseout" : "mouseOut",

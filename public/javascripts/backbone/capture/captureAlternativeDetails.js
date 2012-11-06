@@ -47,7 +47,8 @@ App.module("main.capture",function(){
         "click .unrelateAlternative": "unrelateAlternative",
         */
         "click .decide"             : "decide",
-        "click .undecide"           : "undecide"
+        "click .undecide"           : "undecide",
+        "click div.button#deleteAlternative"   : "deleteAlternative"
 /*        'mouseout' : 'mouseout',
         'click div.name'    : 'edit',
 */
@@ -85,8 +86,8 @@ App.module("main.capture",function(){
     notified : function( notification ){
 
         // this catches notification of decision made - it is in distance of 2 hops!
-        if( notification.distance == 2 ){
-            if( notification.event == "dotag" || notification.event == 'destroy' ){            
+        if( notification.distance === 2 ){
+            if( notification.event === "dotag" || notification.event === 'destroy' ){            
             
                 this.collection.fetch();
             }
@@ -129,23 +130,15 @@ App.module("main.capture",function(){
         */
     },
     selectAll : function( e ){ 
-        if( e.toElement.innerText == '(edit to add)') {
+        if( e.toElement.innerText === '(edit to add)') {
             document.execCommand('selectAll',false,null);
         }
     },
     deleteAlternative : function(){
-        var viewObject = this;
-        jQuery(".deleteAlternative",this.el).fastConfirm({
-           position: "left",
-              questionText: "Are you sure ?",
-              onProceed: function(trigger) {
-                    jQuery(trigger).fastConfirm('close');
-                    viewObject.model.destroy();
-               },
-               onCancel: function(trigger) {
-                       jQuery(trigger).fastConfirm('close');
-               }
-            }); 
+      if( confirm("Are you sure that you want to delete design alternaitve named:\n"+this.model.get('name') ) ) {
+        // and then destroy it.
+        this.model.destroy();
+        }
     },
     unrelateAlternative : function() {
     },
@@ -177,7 +170,7 @@ App.module("main.capture",function(){
         jQuery.getJSON( this.model.get('relation_url') + '/tag/untag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {});      
         jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
     },
-    recordRationale : function() {
+  /*  recordRationale : function() {
                 alert('and here!');
                 jQuery("div.rationaleText").keydown( function( e ) {
 
@@ -235,6 +228,6 @@ App.module("main.capture",function(){
                         jQuery( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
                     }
                 }); 
-    },
+    },*/
 });
 });
