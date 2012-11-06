@@ -14,6 +14,18 @@ App.module("main.capture",function(){
 
         }
     },
+    speedButtons : {
+        "New Alternative" : {
+          color: "green",
+          event: "capture:alternatives:create",
+          shortcut: "ctrl+n"
+        },
+        "Issue List" : {
+          color: "orange",
+          event: "capture:issues:list",
+          shortcut: "ctrl+i"
+        }
+    },
     initialize: function() {
         _(this).bindAll();
         this.attributesView = new App.main.capture.Views.ItemAttributes({model: this.model });

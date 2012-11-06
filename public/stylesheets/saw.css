@@ -1372,3 +1372,40 @@ table.alternativelistdetails {
   width: 100%;
   padding-left: 2em;
 }
+
+
+tr.alternaitve.blue{
+/*
+  background: #0095cd;
+*/
+  background: #99D5EB;
+}
+
+tr.alternaitve.red{
+  /*
+  background: #d81b21;
+  */
+  background: #EFA4A6;  
+}
+
+tr.alternaitve.white{
+  background: #eeeeee;
+}
+
+tr.alternaitve.gray{
+/*
+  background: #606060;
+  */
+  background: #BFBFBF;
+}
+
+tr.alternaitve.green{
+/*
+  background: #64991e;
+  */
+  background: #C1D6A5;
+}
+
+div.issueList{
+  padding-top: 2em;
+}
