@@ -106,7 +106,13 @@ App.Data.Item = App.Data.Model.extend({
             this.trigger('blured',e.attribute); 
         }
         
-        
+        if( e.event === 'destroy' && e.distance === 0 ){
+            if( this.collection) {
+                this.collection.remove(this);
+            }
+            this.off();
+
+        }
         /*
         switch( e.class ){
             case 'notify':
