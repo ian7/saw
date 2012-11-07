@@ -6,20 +6,21 @@ template_function: off
 
 javascripts:    
   common: &common
-    - public/javascripts/lib/jquery/jquery-1.8.0.js
+    - public/javascripts/lib/jquery/jquery-1.8.2.js
     # this includes tooltips
     - public/javascripts/lib/jquery/jquery.tools.min.js
     # tagcloud stuff
     - public/javascripts/lib/tagcanvas-1.17.js
     # nice editor
     - public/javascripts/lib/nicEdit.js
+    - public/javascripts/lib/jquery/jquery-ui-1.9.1.custom.js
     # these things need to go first...
-    - public/javascripts/lib/jquery/plugins/jquery.effects.core.js
-    - public/javascripts/lib/jquery/plugins/jquery.ui.core.js
-    - public/javascripts/lib/jquery/plugins/jquery.ui.position.js
-    - public/javascripts/lib/jquery/plugins/jquery.ui.widget.js
+#    - public/javascripts/lib/jquery/plugins/jquery.effects.core.js    
+#    - public/javascripts/lib/jquery/plugins/jquery.ui.core.js
+#    - public/javascripts/lib/jquery/plugins/jquery.ui.position.js
+#    - public/javascripts/lib/jquery/plugins/jquery.ui.widget.js
 # and then rest of jquery.ui can go
-    - public/javascripts/lib/jquery/plugins/*.js
+#    - public/javascripts/lib/jquery/plugins/*.js
 # other stuff.. order is not so critical
     - public/javascripts/lib/jquery/jquery.fastconfirm.js
     - public/javascripts/lib/jquery/jquery.tabSlideOut.v1.3.js
