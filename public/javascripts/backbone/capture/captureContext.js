@@ -76,9 +76,20 @@ App.module("main.capture",function(){
 
                 console.log('create alternative'); 
 
-                this.issue = this.eventData.model;
+                if( this.eventData && this.eventData.model ) {
+                    this.issue = this.eventData.model;
+                }
+                else{ 
+                    this.issue = this.context.issue;
+                }
+
+                var alternativePresets = null;
+                if( this.eventData && this.eventData.alternative ){
+                    alternativePresets = this.eventData.alternative;
+                }
+
                 // create new alternative
-                this.newAlternative = this.issue.alternatives.create( this.eventData.alternative );
+                this.newAlternative = this.issue.alternatives.create( alternativePresets );
                 // wait until it gets saved 
                 this.newAlternative.on('sync',this.synced,this);
             },
