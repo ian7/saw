@@ -78,7 +78,7 @@ App.module("main.capture",function(){
 
                 this.issue = this.eventData.model;
                 // create new alternative
-                this.newAlternative = this.issue.alternatives.create();
+                this.newAlternative = this.issue.alternatives.create( this.eventData.alternative );
                 // wait until it gets saved 
                 this.newAlternative.on('sync',this.synced,this);
             },
@@ -87,7 +87,7 @@ App.module("main.capture",function(){
                 this.newAlternative.off('sync');
                 // and relate it with the issue
                 //debugger;
-                this.newAlternative.relate( {item: this.issue, relation: "SolvedBy"});
+                this.issue.relate( {item: this.newAlternative, relation: "SolvedBy"});
             }
         }),
 /*        loadDecisions : Backbone.Marionette.Geppetto.Command({

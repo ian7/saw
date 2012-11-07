@@ -164,9 +164,20 @@ App.Data.Item = App.Data.Model.extend({
         if( ! options.item ){
             throw new Error("relation tip specifier missing");
         }
+
+        var item_id = null;
+
+        if( typeof( options.item ) === "object" ){
+            item_id = options.item.get('id');
+        }
+
+        if( typeof( options.item ) === "string" ){
+            item_id = options.item;
+        }
+
         var url = "/relation/relate"
-                + "?from_taggable_id=" + this.get('id')
-                + "&to_taggable_id=" + options.item.get('id')
+                + "?to_taggable_id=" + this.get('id')
+                + "&from_taggable_id=" + item_id
                 + "&relation_name=" + options.relation;
 
         jQuery.getJSON( url , this.related );
@@ -186,9 +197,21 @@ App.Data.Item = App.Data.Model.extend({
         if( ! options.item ){
             throw new Error("relation tip specifier missing");
         }
+
+        var item_id = null;
+
+        if( typeof( options.item ) === "object" ){
+            item_id = options.item.get('id');
+        }
+
+        if( typeof( options.item ) === "string" ){
+            item_id = options.item;
+        }
+
+
         var url = "/relation/relate"
-                + "?from_taggable_id=" + this.get('id')
-                + "&to_taggable_id=" + options.item.get('id')
+                + "?to_taggable_id=" + this.get('id')
+                + "&from_taggable_id=" + item_id
                 + "&relation_name=" + options.relation;
 
         jQuery.getJSON( url , this.related );
