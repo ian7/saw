@@ -2,7 +2,7 @@
 
 App.module("main.capture",function(){
   this.Views.IssueListItem = Backbone.Marionette.CompositeView.extend({
-    itemViewContainer : "table.alternativeList",
+    itemViewContainer : "table.alternativeList tbody",
     itemView : App.main.capture.Views.AlternativeCompact,
     template: JST['capture/captureIssueListItem'],
     templateHelpers: {
@@ -38,14 +38,38 @@ App.module("main.capture",function(){
           model: this.model, 
           attribute: "name"
         });
+
+      this.searchEdit = new App.main.capture.Views.SearchEdit();
+      this.searchEdit.on('selected', this.relateWithAlternative,this );
+      this.searchEdit.on('entered', this.createNewAlternative,this );
+
       this.on('composite:rendered',this.onCompositeRendered,this);
     },
     onCompositeRendered : function() {
+
+      // let's render editor for the name of the issue
       this.nameEdit.render(jQuery("span.editable",this.el).first());
+
+      // and search/edit box to elicit and create new alternatives 
+      this.searchEdit.render( jQuery("div#searchEdit",this.el));
+
       if( this.model.isNew() ){
         this.focus();
         console.log("focusing");
       }
+    },
+    relateWithAlternative : function( alternative ){
+      
+      this.model.relate( {relation: "SolvedBy", item: alternative.item.id });
+    },
+    createNewAlternative : function( alternativeName ){
+      this.context.dispatch("capture:alternatives:create", 
+        {
+          model: this.model,
+          alternative: {
+           name : alternativeName
+          }
+        });
     },
     focus: function(){
       jQuery(this.el).oneTime(100,'some_focus',function(){jQuery("div.editable#name").last().focus();});
@@ -137,21 +161,21 @@ App.module("main.capture",function(){
         this.context.dispatch("issue:selected",{id:this.model.id});
         this.context.dispatch("capture:issues:details");
     },
-    notify : function( broadcasted_id ) {
 
-    },
     notifyEvent : function( data ){
       //alert('here!');
       var d = JSON.parse(data);
 
+
+    /*
       if( d.id === this.model.get('id') ){
           if( d.event.match('mouse') === null ) {
               this.alternativesCollection.fetch();
           }
       }
+    */
 
-
-      if( d.id === this.model.get('id') ){
+      /*if( d.id === this.model.get('id') ){
           if( d.event === "mouseover") {
               jQuery(this.el).addClass("focused");
               this.focusedUsers[d.user] = (new Date()).getTime();
@@ -168,7 +192,8 @@ App.module("main.capture",function(){
           _(this.focusedUsers).each(function(v,e){
               jQuery(fuEl).append("<img src='/images/icons/user.png' alt='"+e+"'><br/>");
           },this);
-      }
+          
+      }*/
     },
       mouseOver : function( e ){
         this.isFocused = true;

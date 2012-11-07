@@ -1409,3 +1409,7 @@ tr.alternaitve.green{
 div.issueList{
   padding-top: 2em;
 }
+
+.italic {
+  font-style: italic;
+}

@@ -15,12 +15,17 @@ App.Models.Issue = App.Data.Item.extend({
     this.on( 'change', this.updateAlternatives, this );
     this.on( 'change', this.updateRelationsTo, this );
 
+
     // this needs to be instantiated late because of the late-loading issues. 
     this.alternatives = new App.Models.Alternatives();
 
     // alternatives don't need to be fetched during the object creation
     // we can afford loading them later - for example from the view initializer
     //this.updateAlternatives();
+
+    // in case alternative gets related to this issue, we should updateAlternatives
+    // this goes through the notification
+    this.on('notify',this.notified, this);
   },
     url : function() {
         if( this.id ) {
@@ -40,6 +45,15 @@ App.Models.Issue = App.Data.Item.extend({
     },
     updateRelationsTo : function() {
         this.getRelationsTo();
+    },
+    notified : function( notification ) {
+      if( notification.distance ===  1 ) {
+        if( notification.event === "relate" ||
+            notification.event === "unrelate") {
+
+            this.updateAlternatives();
+        }
+      }
     }
 });
 

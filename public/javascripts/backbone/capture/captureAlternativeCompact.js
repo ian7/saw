@@ -3,6 +3,7 @@
 App.module("main.capture",function(){
   this.Views.AlternativeCompact = Backbone.Marionette.ItemView.extend({
     template: JST['capture/captureAlternativeCompact'],
+    tagName: 'tr',
     events : {
     },
     initialize : function(options) {
@@ -21,7 +22,12 @@ App.module("main.capture",function(){
         console.log("focusing");
       }   },
     focus: function(){
-      jQuery(this.el).oneTime(100,'some_focus',this.doFocus);
+      try{
+          jQuery(this.el).oneTime(100,'some_focus',this.doFocus);
+      }
+      catch( e ){
+          console.log( "AlternaitveCompact crashed on focusing");
+      }
     },
     doFocus : function(){
           jQuery("div.editable#name",this.el).focus();
