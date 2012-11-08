@@ -6,12 +6,12 @@ template_function: off
 
 javascripts:    
   common: &common
+    - public/javascripts/lib/jquery.tools.min.js
     - public/javascripts/lib/jquery/dist/jquery.js
     # this includes tooltips
     #- public/javascripts/lib/jquery-tools/src/**/*.js
     # jquery-ui    
     # I failed to figure out how to build jquery-tools (ant fails), so I need to use this:
-    - public/javascripts/lib/jquery.tools.min.js
     - public/javascripts/lib/jquery-ui/dist/jquery-ui.js
     # tagcloud stuff
     - public/javascripts/lib/tagcanvas-1.17.js
