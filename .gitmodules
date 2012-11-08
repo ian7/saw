@@ -25,3 +25,12 @@
 [submodule "public/javascripts/lib/bootstrap"]
 	path = public/javascripts/lib/bootstrap
 	url = git@github.com:ian7/bootstrap.git
+[submodule "public/javascripts/lib/jquery"]
+	path = public/javascripts/lib/jquery
+	url = git@github.com:ian7/jquery.git
+[submodule "public/javascripts/lib/jquery-ui"]
+	path = public/javascripts/lib/jquery-ui
+	url = git@github.com:ian7/jquery-ui.git
+[submodule "public/javascripts/lib/jquery-tools"]
+	path = public/javascripts/lib/jquery-tools
+	url = git@github.com:ian7/jquerytools.git
