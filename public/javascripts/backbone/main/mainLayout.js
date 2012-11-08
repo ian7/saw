@@ -38,6 +38,8 @@ App.module('main',function(){
             this.ribbon.show( this.ribbonView );
             this.speedButtonsView = new App.main.Views.SpeedButtons({context:this.context});
             this.speedButtonsSidebar.show( this.speedButtonsView );
+            this.landingView = new App.main.Views.Landing({context:this.context});
+            this.central.show( this.landingView );
         },
         template : JST['main/mainLayout'],
         el: 'body',
