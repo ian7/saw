@@ -96,7 +96,7 @@ App.Data.Item = App.Data.Model.extend({
             return;
         }
 
-        if( e.class === 'notify' && e.distance === 0 && (e.event === null || e.event === "") ){
+        if( e.class === 'notify' && e.distance === 0 && (e.event === null || e.event === "" || e.event === "update") ){
             this.fetch();
         }
         if( e.class === 'notify' && e.event === "focused" ){
