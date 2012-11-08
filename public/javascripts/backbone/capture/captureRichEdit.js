@@ -22,15 +22,19 @@ App.module("main.capture",function(){
         var h = "<div>";
         var v = this.model.get(this.attribute);
         h += "<div class='editable' id='" +this.attribute+ "' contenteditable='true'>";
-            h += this.unEmpty( v );
+            // this actually can be done by this.refresh()
+            // h += this.unEmpty( v );
             h += "</div>";
         jQuery(this.el).html(h);
+
+        this.refresh();
         this.rendered = true;
         this.delegateEvents();
         this.isFocused = false;
     },
     unEmpty : function( value ){
         if( this.isEmpty( value )){
+            jQuery("div.editable",this.el).addClass("italic");
             return '(empty)';
         }
         else {
@@ -38,7 +42,7 @@ App.module("main.capture",function(){
         }
     },
     isEmpty : function( value ){
-        if (value == null || value.replace(/<(?:.|\n)*?>/gm, '').replace(/\s+/g, ' ') == "") {
+        if (value === null || value.replace(/<(?:.|\n)*?>/gm, '').replace(/\s+/g, ' ') === "") {
             return true;
         }
         else {
@@ -54,7 +58,7 @@ App.module("main.capture",function(){
         else{
             var element = jQuery("div.editable",this.el)[0];
             if( element ) {
-                element.innerHTML = this.model.get(this.attribute);
+                element.innerHTML = this.unEmpty( this.model.get(this.attribute) );
             }
             else {
                 console.log('Caputre.Views.RichEdit: called refresh, without being rendered!');
@@ -99,13 +103,15 @@ App.module("main.capture",function(){
         this.isFocused = false;
         },
     keyup : function(){
+        jQuery("div.editable",this.el).removeClass("italic");
+
         this.throttledSave();
         },
     simpleSave : function(){
         var oldValue = this.model.get(this.attribute);
         var newValue = jQuery("div.editable",this.el)[0].innerHTML;
 
-        if( oldValue != newValue ) {
+        if( oldValue !== newValue ) {
             //var options = {};
             //options[this.attribute] = newValue;
             this.model.save(this.attribute,newValue);
