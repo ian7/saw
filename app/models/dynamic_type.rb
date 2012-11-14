@@ -121,7 +121,16 @@ class DynamicType # < ActiveRecord::Base
 		h={}
 		h["name"]=name
 		h["id"]=id
-		h["data"]=[]
+		##h["data"]=[]
+		h["attributes"]=[]
+        DynamicTypeAttribute.find(:all, :conditions=>{:type_name=>name}).each do |a|
+          h["attributes"] << a.attribute_name
+        end
+
+		h["scopes"]=[]
+        DynamicTypeScope.find( :all, :conditions=>{:type_name=>name} ).each do |a|
+          h["scopes"] << a.type_name
+        end
 		return h
 	end
 
