@@ -1413,3 +1413,7 @@ div.issueList{
 .italic {
   font-style: italic;
 }
+
+div#projectID {
+  display: inline;
+}
