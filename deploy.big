@@ -1,0 +1,25 @@
+export rootPath=`pwd`
+
+git pull
+git submodule init
+git submodule update
+
+# build jquery
+cd public/javascripts/lib/jquery
+npm install
+grunt
+cd "$rootPath"
+
+# build jquery-tools
+#cd public/javascripts/lib/jquery-tools
+#ant
+#cd "$rootPath"
+
+# build jquery-ui
+cd public/javascripts/lib/jquery-ui
+npm install
+grunt build
+cd "$rootPath"
+
+jammit
+touch tmp/restart.txt
