@@ -1,0 +1,18 @@
+{
+    "toFile" : [
+        {"from": "/javascripts/(.+\\.js)",
+            "to": "/javascripts/$1"},
+        {"from": "/stylesheets/(.+\\.css)",
+            "to": "/stylesheets/$1"}
+    ],
+    "fromFile" : [
+        {"from": "http://localhost:3030/javascripts/(.+\\.js)",
+            "to": "/javascripts/$1"},
+        {"from": "http://localhost:3030/stylesheets/(.+\\.css)",
+            "to": "/stylesheets/$1"},
+        {"from": "http://localhost:8888/javascripts/(.+\\.js)",
+            "to": "/javascripts/$1"},
+        {"from": "http://localhost:8888/stylesheets/(.+\\.css)",
+            "to": "/stylesheets/$1"}
+    ]    
+}
