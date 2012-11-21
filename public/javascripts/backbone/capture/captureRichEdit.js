@@ -42,7 +42,7 @@ App.module("main.capture",function(){
         }
     },
     isEmpty : function( value ){
-        if (value === null || value.replace(/<(?:.|\n)*?>/gm, '').replace(/\s+/g, ' ') === "") {
+        if (value == null || value.replace(/<(?:.|\n)*?>/gm, '').replace(/\s+/g, ' ') === "") {
             return true;
         }
         else {
