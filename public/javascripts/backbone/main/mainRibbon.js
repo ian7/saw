@@ -10,6 +10,7 @@ App.module('main',function(){
          //   Backbone.history.on('route',this.render,this);
             this.context.listen('project:selected',this.projectSelected);
             this.context.project.on('change',this.projectChanged,this);
+            this.context.on('status',this.statusChanged, this);
             _(this).bindAll();
         },  
         onRender : function(){
@@ -20,6 +21,9 @@ App.module('main',function(){
         },
         projectChanged : function(){
            jQuery("div#projectID",this.el).html(this.context.project.get('name'));
+        },
+        statusChanged : function(){
+          jQuery("span.status",this.el).html(this.context.status.name);  
         }
     });
 });

@@ -1359,11 +1359,11 @@ span.decisionCount {
 }
 
 div.userName{
-  padding-right: 13em;
+/*  padding-right: 13em;
   float: right;
   position: absolute;
   top: 5px;
-  right: 10px;
+  right: 10px;*/
 }
 
 table.alternativelistdetails {
@@ -1414,4 +1414,18 @@ div.issueList{
 
 div#projectID {
   display: inline;
+}
+
+.floatRight {
+  float: right;
+  padding-right: 13em;
+  position:  absolute;
+  top: 10px;
+  right:  5px;
+}
+
+div.ribbonStatus{
+  padding-right: 13em;
+  float: right;
+  text-align: right;
 }
