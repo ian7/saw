@@ -1,9 +1,10 @@
-/*global App, Backbone,_*/
+/*global App, Backbone,_,jug*/
 
 App.module("main",function(){
     
     this.Status = {
         loading :       { name: "Loading", ready : false },
+        connecting :    { name: "Connecting", ready: false},
         ready :         { name: "Ready", ready: true },
         disconnected :  { name: "Dosconnected", ready: false},
         closing :       { name: "Closing", ready: false},
@@ -45,6 +46,10 @@ App.module("main",function(){
             this.tags.fetch();
             this.tags.on('reset', this.updateStatus, this);
 
+            // checking juggernaut connectivity
+            jug.on("connect",this.updateStatus);
+            jug.on("disconnect",this.updateStatus);
+
             this.setStatus( App.main.Status.loading );
         },
         setStatus : function( newStatus ){
@@ -55,6 +60,11 @@ App.module("main",function(){
         updateStatus : function(){
             if( this.tags.size() === 0 || this.types.size() === 0 ){
                 this.setStatus(App.main.Status.loading);
+                return;
+            }
+
+            if( jug.io.socket.connected == false ){
+                this.setStatus(App.main.Status.connecting);
                 return;
             }
 
