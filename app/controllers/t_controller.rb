@@ -9,7 +9,7 @@ before_filter :authenticate_user!
     dta = dts.sort_by {|x| x.name}
     dta.each do |t|
    
-        jj=t.to_hash_recursive
+        jj=t.to_hash#_recursive
        	jj["count"] = Taggable.find(:all,:conditions=>{:type=>t.name}).count
        
         j << jj

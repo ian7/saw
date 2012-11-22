@@ -1,18 +1,23 @@
-/*global App,Backbone */
+/*global App,Backbone,_ */
 
-App.Data.Type = Backbone.Model.extend({
-});
+App.Data.Type = Backbone.Model.extend({});
 
 App.Models.Types = Backbone.Collection.extend({
-  model : App.Data.Type,
-  url : function() {
-    if( !this.urlOverride ) {
-        return "/t";
-    }
-    else {
-        return this.urlOverride;
+  initialize: function() {
+    _(this).bindAll();
+  },
+  model: App.Data.Type,
+  url: function() {
+    if(!this.urlOverride) {
+      return "/t";
+    } else {
+      return this.urlOverride;
     }
   },
-  urlOverride : null
+  urlOverride: null,
+  getByName: function(name) {
+    var foundItems = this.where({
+      name: name
+    });
+  }
 });
-

@@ -10,11 +10,11 @@ App.module("main.mockups",function(){
     },
     initialize : function(options) {
       _(this).bindAll();
-      this.widgetInstance = new options.widget({context: this.context});
+      this.widget = options.widget;
       },
     onRender : function() {
-      this.widgetInstance.setElement(jQuery("div.widget",this.el));
-      this.widgetInstance.render();
+      this.widget.setElement(jQuery("div.widget",this.el));
+      this.widget.render();
       }
   });
 });

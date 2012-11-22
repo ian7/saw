@@ -1429,3 +1429,7 @@ div.ribbonStatus{
   float: right;
   text-align: right;
 }
+
+div#subItems{
+  padding-left: 3em;
+}
