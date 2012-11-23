@@ -21,7 +21,7 @@ App.module('main.mockups',function(){
     },
     typeSelector : function(){
 
-        var types = new Backbone.CollectionFilter( { collection: this.context.types, filter: { super_type: null }  });
+        var types = new Backbone.CollectionFilter( { collection: this.context.types, filter: { super_type: "Tag" }  });
         var widget = new App.main.Views.TypeSelector( { context: this.context, collection: types});
         var sandbox = new App.main.mockups.Views.MockupSandbox({ context: this.context, widget: widget });
         
