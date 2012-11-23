@@ -13,6 +13,10 @@
         {"from": "http://localhost:8888/javascripts/(.+\\.js)",
             "to": "/javascripts/$1"},
         {"from": "http://localhost:8888/stylesheets/(.+\\.css)",
+            "to": "/stylesheets/$1"},
+        {"from": "http://local.sonyx.net:8888/javascripts/(.+\\.js)",
+            "to": "/javascripts/$1"},
+        {"from": "http://local.sonyx.net:8888/stylesheets/(.+\\.css)",
             "to": "/stylesheets/$1"}
     ]    
 }
