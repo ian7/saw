@@ -1412,10 +1412,6 @@ div.issueList{
   font-style: italic;
 }
 
-div#projectID {
-  display: inline;
-}
-
 .floatRight {
   float: right;
   padding-right: 13em;
@@ -1436,4 +1432,8 @@ div#subItems{
 
 .padLeft{
   padding-left: 3em;
+}
+
+.hyperlink { 
+  text-decoration: underline;
 }
