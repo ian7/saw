@@ -54,6 +54,7 @@ _.extend(Backbone.CollectionFilter.prototype, Backbone.Events, {
      */
     updateModels: function() {
         this.models = this.collection.filter(this.filter);
+        this.length = this.models.length;
     },
     /**
      * This should be subsittuted by the customized filtering function, otherwise uses this.filter
