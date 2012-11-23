@@ -23,7 +23,7 @@ javascripts:
 #    - public/javascripts/lib/jquery/plugins/jquery.ui.position.js
 #    - public/javascripts/lib/jquery/plugins/jquery.ui.widget.js
 # and then rest of jquery.ui can go
-    - public/javascripts/lib/jquery/plugins/jquery.timers.js
+    - public/javascripts/lib/jquery.timers.js
 # other stuff.. order is not so critical
 #    - public/javascripts/lib/jquery/jquery.fastconfirm.js
 #    - public/javascripts/lib/jquery/jquery.tabSlideOut.v1.3.js
