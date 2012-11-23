@@ -35,15 +35,22 @@ App.module("main.capture",function(){
         this.itemViewOptions = {context: this.context};
 
         this.on('composite:model:rendered',this.onItemRendered,this);
+        this.model.on('change',this.pushState,this);
+    },
+    pushState : function() {
+        window.history.pushState("issue details", "issue details", window.location.origin 
+                + "/#capture/project/" + this.context.parentContext.project.get('id')
+                + "/issue/" + this.context.issue.get('id'));
     },
     onRender: function(){
-        //
+        
     },
     onItemRendered : function() {
         this.attributesView.el = this.attributesView.$el = jQuery("div.itemAttributes",this.el).first();
         this.attributesView.render();
         this.model.updateAlternatives();
-    },
+
+        },
     anchorClicked : function() {
         jQuery("img.anchor",this.el).popover({
            content: "<textarea>"+ window.location.origin 

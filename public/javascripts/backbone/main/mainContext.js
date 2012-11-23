@@ -63,7 +63,7 @@ App.module("main",function(){
                 return;
             }
 
-            if( jug.io.socket.connected == false ){
+            if( jug.io.socket.connected === false ){
                 this.setStatus(App.main.Status.connecting);
                 return;
             }
@@ -71,8 +71,14 @@ App.module("main",function(){
             this.setStatus( App.main.Status.ready );
         },
         projectSelected : function( args ){
+            if( !args || !args.id ){
+                return;
+            }
             this.project.url = "/projects/"+args.id;
             this.project.fetch();
+
+            window.history.pushState("project","project",window.location.origin + "/#project/" + args.id);
+            localStorage.setItem("project.lastId",args.id);
         },
         getTypes : function( rootType, collection  ){
 //            this.types.where( {name = rootName });
