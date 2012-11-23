@@ -2,7 +2,7 @@
 
 App.module('main.resources',function(){
   this.Views.EventsItem= Backbone.Marionette.ItemView.extend({
-  template: JST['resources/resourcesEventsItem'],
+  template: JST['resources/eventsItem'],
   tagName: 'tr',
   className: 'eventNotification',
   templateHelpers: {

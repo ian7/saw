@@ -41,7 +41,7 @@ App.module('main',function(){
             this.landingView = new App.main.Views.Landing({context:this.context});
             this.central.show( this.landingView );
         },
-        template : JST['main/mainLayout'],
+        template : JST['main/layout'],
         el: 'body',
         // regions needed to be moved to the initializer
         regions: null,

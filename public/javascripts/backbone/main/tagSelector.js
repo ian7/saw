@@ -2,7 +2,7 @@
 
 App.module("main",function(that,App,Backbone,Marionette,jQuery,_,customArgs){
   this.Views.TagSelector = Backbone.Marionette.CompositeView.extend({
-    template: JST['main/mainTagSelector'],
+    template: JST['main/tagSelector'],
     itemViewContainer: 'div#tagList',
     events : {
     },

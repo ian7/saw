@@ -2,7 +2,7 @@
 
 App.module('main.resources',function(){
   this.Views.Type = Backbone.Marionette.ItemView.extend({
-    template: JST['resources/resourcesType'],
+    template: JST['resources/type'],
     tagName: 'td',
     className: 'typeName',
     events: {
@@ -31,7 +31,7 @@ App.module('main.resources',function(){
     }
   });
   this.Views.TypeList = Backbone.Marionette.CompositeView.extend({
-    template: JST['resources/resourcesTypeList'],
+    template: JST['resources/typeList'],
     itemView: this.Views.Type,
     itemViewContainer: 'table tr#types',
     events : {

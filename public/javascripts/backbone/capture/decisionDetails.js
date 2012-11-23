@@ -3,7 +3,7 @@
 App.module("main.capture",function(){
   this.Views.DecisionDetails = Backbone.Marionette.ItemView.extend({
     tagName : "tr",
-    template: JST['capture/captureDecisionDetails'],
+    template: JST['capture/decisionDetails'],
     templateHelpers : {
       findDecisionName : function(){
         var name = "unknown";

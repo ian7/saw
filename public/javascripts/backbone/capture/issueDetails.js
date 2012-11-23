@@ -2,7 +2,7 @@
 
 App.module("main.capture",function(){
   this.Views.IssueDetails = Backbone.Marionette.CompositeView.extend({
-    template: JST['capture/captureIssueDetails'],
+    template: JST['capture/issueDetails'],
     tagName: "div", 
     itemView: App.main.capture.Views.AlternativeDetails,
     itemViewContainer: "table.alternativeListDetails tbody",

@@ -7,7 +7,7 @@ App.module("main.projects",function(){
             'click div.moreDetailsButton' :  'moreDetails',
             'click div.name' : 'navigateProject'
         },
-        template: JST['projects/projectsListItem'],
+        template: JST['projects/listItem'],
         templateHelpers: {
        /*     get: function( variable ){
                 try {

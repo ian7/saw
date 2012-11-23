@@ -4,7 +4,7 @@
 App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customArgs){
 
   this.Views.IssueList = Backbone.Marionette.CompositeView.extend({
-      template: JST['capture/captureIssueList'],
+      template: JST['capture/issueList'],
       itemViewContainer: 'div.issueList',
       events : {
           "click div#newIssueButton" : "newItem",

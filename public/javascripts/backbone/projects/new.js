@@ -1,7 +1,7 @@
 /*global App,Backbone,JST,_,jQuery */
 App.module('main.projects',function(){
     this.Views.NewProject = Backbone.Marionette.ItemView.extend({
-      template: JST['projects/projectsNew'],
+      template: JST['projects/new'],
       events: {
     //    "keyup input.searchBox": 'doFilter'
         "click a#create" :  'createProject'

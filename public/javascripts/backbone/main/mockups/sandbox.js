@@ -3,7 +3,7 @@
 App.module("main.mockups",function(){
   this.Views.MockupSandbox = Backbone.Marionette.ItemView.extend({
     tagName : "div",
-    template: JST['main/mockups/mockupsSandbox'],
+    template: JST['main/mockups/sandbox'],
     templateHelpers : {
     },
     events : {

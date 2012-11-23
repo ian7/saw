@@ -5,7 +5,7 @@ App.module("main.capture",function(){
     itemView: App.main.capture.Views.DecisionDetails,
     itemViewOptions: null, 
     itemViewContainer: "table.decisionDetails tbody",
-    template: JST['capture/captureAlternativeDetails'],
+    template: JST['capture/alternativeDetails'],
     tagName: "tr",
     className : "alternative", 
     templateHelpers: {

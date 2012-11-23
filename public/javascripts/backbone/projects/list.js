@@ -3,7 +3,7 @@
 App.module("main.projects",function(){
     // this needs to be turned into a layout
     this.Views.ProjectList = Backbone.Marionette.ItemView.extend({
-        template: JST['projects/projectsList'],
+        template: JST['projects/list'],
         className: "projectListWidgetTemplate",
         events: {
             'click div#newProjectButton' :  'newProject'

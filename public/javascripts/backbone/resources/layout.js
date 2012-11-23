@@ -9,7 +9,7 @@ App.module('main.resources',function(){
                 parentContext: App.main.context
                 });
         },
-        template : JST['resources/resourcesLayout'],
+        template : JST['resources/layout'],
         el: "div#layout div#trunk div#center",
         regions : {
             types:{

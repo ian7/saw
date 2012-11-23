@@ -2,7 +2,7 @@
 
 App.module('main.resources',function(){
   this.Views.Item = Backbone.Marionette.ItemView.extend({
-    template: JST['resources/resourcesItem'],
+    template: JST['resources/item'],
     tagName: 'tr',
     className: 'item',
     events: {
@@ -110,7 +110,7 @@ App.module('main.resources',function(){
   });
 
   this.Views.ItemList = Backbone.Marionette.CompositeView.extend({
-    template: JST['resources/resourcesItemList'],
+    template: JST['resources/itemList'],
     itemView: this.Views.Item,
     emptyView: this.Views.EmptyItem,
     itemViewContainer: 'table.list',

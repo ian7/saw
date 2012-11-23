@@ -17,7 +17,7 @@ App.module("main",function(){
         project : null,
 
         // this should be later replaced by the DynamicType equivalent
-        decisions : new App.Data.Collection(),
+        decisions : null, //new App.Data.Collection(),
 
         // all data types go here:
         types : null, //new App.Data.Types(),
@@ -34,6 +34,7 @@ App.module("main",function(){
             this.project = new App.Models.Project();
 
             // having a list of decision tags within the main scope appears to be reasonable.
+            this.decisions = new App.Data.Collection();
             this.decisions.url = "/scope/type/Decision";
             this.decisions.fetch();
 

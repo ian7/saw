@@ -4,7 +4,7 @@ App.module("main.capture",function(){
   this.Views.IssueListItem = Backbone.Marionette.CompositeView.extend({
     itemViewContainer : "table.alternativeList tbody",
     itemView : App.main.capture.Views.AlternativeCompact,
-    template: JST['capture/captureIssueListItem'],
+    template: JST['capture/issueListItem'],
     templateHelpers: {
       },
     events : {

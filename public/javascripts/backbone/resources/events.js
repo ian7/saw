@@ -2,7 +2,7 @@
 
 App.module('main.resources',function(){
   this.Views.Events = Backbone.Marionette.CompositeView.extend({
-  template: JST['resources/resourcesEvents'],
+  template: JST['resources/events'],
   itemView: App.main.resources.Views.EventsItem,
   templateHelpers : {
     renderAttributes: function(){

@@ -4,7 +4,7 @@ App.module('main',function(){
     this.Views.Ribbon = Backbone.Marionette.ItemView.extend({
         className : 'ribbonWidget',
         tagName : 'div',
-        template : JST['main/mainRibbon'],
+        template : JST['main/ribbon'],
         events : {
             'click span#capture' : 'onCapture',
             'click span#projects' : 'onProjects'

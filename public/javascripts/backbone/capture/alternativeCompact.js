@@ -2,7 +2,7 @@
 
 App.module("main.capture",function(){
   this.Views.AlternativeCompact = Backbone.Marionette.ItemView.extend({
-    template: JST['capture/captureAlternativeCompact'],
+    template: JST['capture/alternativeCompact'],
     tagName: 'tr',
     events : {
     },
