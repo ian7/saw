@@ -18,11 +18,13 @@ App.module("main.projects", function() {
 
             // find if there was some active project from previous session
             var lastProjectId = localStorage.getItem("project.lastId");
-            if(lastProjectId && lastProjectId !== 'undefined') {
+           /* if(lastProjectId && lastProjectId !== 'undefined') {
                 this.dispatchGlobally("project:selected", {
                     id: lastProjectId
                 });
+
             }
+            */
 
         },
         notifyEvent: function(data) {
