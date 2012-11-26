@@ -2,7 +2,7 @@
 
 App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customArgs) {
   this.Views.TypeSelectorItem = Backbone.Marionette.CompositeView.extend({
-    template: JST['main/mainTypeSelectorItem'],
+    template: JST['main/typeSelectorItem'],
     events: {
       'click span#name': 'onClick'
     },

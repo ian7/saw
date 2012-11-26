@@ -22,7 +22,7 @@ App.module("main",function(that,App,Backbone,Marionette,jQuery,_,customArgs){
         //this.renderCollection();
     },
     added : function() {
-        console.log('added');
+//        console.log('added');
     }
   });
 });
