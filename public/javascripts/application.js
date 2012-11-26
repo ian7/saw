@@ -2,7 +2,12 @@
 
 jQuery(function() {
    jQuery("body").ajaxError(function(event, request, settings){
-    if( request.status === 401 ) {
+
+    // unauthorizedCaught prevents multiple authorization notifications
+    if( request.status === 401 && typeof( unauthorizedCaught ) === 'undefined' ) {
+        // this is intentionally global 
+        unauthorizedCaught = true;
+
         localStorage.setItem('SAWurl',window.location.href);
         alert( "You are not logged in!" );
         window.location.href="/users/sign_in";
