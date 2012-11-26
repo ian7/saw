@@ -20,7 +20,8 @@ App.module("main.capture",function(){
 
             this.mapCommand("capture:alternative:decided",this.decided);
 
-            this.issues = new App.Models.Issues();
+            // it used to be instantiated here, but was moved to the main module
+            this.issues = this.parentContext.issues;
             this.issue = new App.Models.Issue();
         },
         // this is going to store actual project reference

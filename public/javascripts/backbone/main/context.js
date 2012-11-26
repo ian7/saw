@@ -27,6 +27,9 @@ App.module("main",function(){
 
         // application loading status
         status : null,
+
+        // this used to be in the capture module... it needed to come here. 
+        issues : null,
                         
         initialize : function(){
             _(this).bindAll();
@@ -46,6 +49,8 @@ App.module("main",function(){
             this.tags = new App.Models.Tags();
             this.tags.fetch();
             this.tags.on('reset', this.updateStatus, this);
+
+            this.issues = new App.Models.Issues();
 
             // checking juggernaut connectivity
             jug.on("connect",this.updateStatus);
