@@ -6,6 +6,7 @@ App.module('main',function(){
         className : 'ribbonWidget',
         tagName : 'div',
         template : JST['main/ribbon'],
+        connectionCount : 0,
         events : {
             'click span#capture' : 'onCapture',
             'click span#projects' : 'onProjects'
@@ -19,12 +20,12 @@ App.module('main',function(){
             _(this).bindAll();
 
             // that's tricky :)
-            jQuery("body").ajaxStart( this.updateAjaxStatus );
-            jQuery("body").ajaxStop( this.updateAjaxStatus );
-            jQuery("body").ajaxComplete( this.onUpdateAjaxStatus );
-            jQuery("body").ajaxError( this.onUpdateAjaxStatus );
-            jQuery("body").ajaxSend( this.onUpdateAjaxStatus );
-            jQuery("body").ajaxSuccess( this.onUpdateAjaxStatus );
+            //jQuery("body").ajaxStart( this.updateAjaxStatus );
+            jQuery("body").ajaxStop( this.onAjaxStop );
+            jQuery("body").ajaxComplete( this.onAjaxComplete );
+            //jQuery("body").ajaxError( this.onAjaxCompleteOrError );
+            jQuery("body").ajaxSend( this.onAjaxSend );
+            //jQuery("body").ajaxSuccess( this.onUpdateAjaxStatus );
         },  
         onRender : function(){
             //debugger;
@@ -45,7 +46,19 @@ App.module('main',function(){
             this.context.dispatchGlobally("projects:index");
         },
         onUpdateAjaxStatus : function(){
-            jQuery("span#connectionCount",this.el).html(jQuery.active);
+            jQuery("span#connectionCount",this.el).html(this.connectionCount);
+        },
+        onAjaxComplete : function(){
+            this.connectionCount = this.connectionCount-1;
+            this.onUpdateAjaxStatus();
+        },
+        onAjaxSend : function(){
+            this.connectionCount = this.connectionCount+1;
+            this.onUpdateAjaxStatus();
+        },
+        onAjaxStop : function(){
+            this.connectionCount = 0;
+            this.onUpdateAjaxStatus();
         }
     });
 });
