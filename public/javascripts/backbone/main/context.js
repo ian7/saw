@@ -83,7 +83,7 @@ App.module("main",function(){
             this.project.url = "/projects/"+args.id;
             this.project.fetch();
 
-            window.history.pushState("project","project",window.location.origin + "/#project/" + args.id);
+           // window.history.pushState("project","project",window.location.origin + "/#project/" + args.id);
             localStorage.setItem("project.lastId",args.id);
         },
         getTypes : function( rootType, collection  ){
