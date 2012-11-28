@@ -5,7 +5,8 @@ App.module('main.mockups',function(){
     routes: {
         "" : "index",
         "tagSelector" : "tagSelector",
-        "typeSelector" : "typeSelector"
+        "typeSelector" : "typeSelector",
+        "itemSelector" : "itemSelector"
     },
     initialize : function(options){
         this.context = options.context;
@@ -26,6 +27,15 @@ App.module('main.mockups',function(){
         var sandbox = new App.main.mockups.Views.MockupSandbox({ context: this.context, widget: widget });
         
         App.main.layout.central.show(sandbox);
+    },
+    itemSelector : function(){
+
+        var types = new Backbone.CollectionFilter( { collection: this.context.types, filter: { super_type: "Tag" }  });
+        var widget = new App.main.Views.ItemSelector( { context: this.context, collection: this.context.issues });
+        var sandbox = new App.main.mockups.Views.MockupSandbox({ context: this.context, widget: widget });
+        
+        App.main.layout.central.show(sandbox);
     }
+
     });
 });

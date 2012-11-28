@@ -1437,3 +1437,39 @@ div#subItems{
 .hyperlink { 
   text-decoration: underline;
 }
+
+.floatLeft{ 
+  float: left;
+}
+
+.floatRight{
+  float:right;
+}
+
+.halfWidth{
+  width: 50%;
+}
+
+.fullWidth{
+  width: 100%;
+}
+
+.headerPadding{
+  padding: 3em;
+  margin: 1em;
+}
+
+.red{
+  color: red;
+}
+
+div.columns p {
+    -webkit-column-count: 2;
+    -webkit-column-rule: 1em solid black;
+}
+
+div.columnts br {
+    -webkit-column-span: all;
+}
+
+
