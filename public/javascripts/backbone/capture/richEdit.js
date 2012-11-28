@@ -68,18 +68,20 @@ App.module("main.capture",function(){
     focused: function( e ){
         //console.log("focused on " + e.target.nodeName + " " +e.target.id + " target: " + e.target.nodeName + " " + e.target.id);
 
-        if( e.target.innerText === "(empty)" ){
-            e.target.innerText = "";
+        var element = e.target;
+
+        if( element.innerText === "(empty)" ){
+            element.innerText = "";
         } 
 
         try {
-            this.ne.panelInstance(e.srcElement);
+            this.ne.panelInstance(element);
         }
         catch( exception ) {
             console.log( "panel instance creation crashed with: " + exception );
         }
 
-        var panelEl = jQuery("div.nicEdit-panelContain",jQuery(e.target).parent()).first();
+        var panelEl = jQuery("div.nicEdit-panelContain",jQuery(element).parent()).first();
 
         this.model.notifyFocused(this.attribute);
 
@@ -90,13 +92,14 @@ App.module("main.capture",function(){
     },
     blured : function( e ){
         //console.log("blured on: " + e.srcElement.nodeName + " " + e.srcElement.id + " target: " + e.target.nodeName + " " + e.target.id);
+        var element = e.target;
 
         //magically hide the panel
-        jQuery("div.nicEdit-panelContain",jQuery(e.srcElement).parent()).hide();
+        jQuery("div.nicEdit-panelContain",jQuery(element).parent()).hide();
 
-        this.model.set(this.attribute,e.srcElement.innerHTML);
+        this.model.set(this.attribute,element.innerHTML);
         //this.model.save();  
-        e.srcElement.innerHTML = this.unEmpty( e.srcElement.innerHTML );
+        element.innerHTML = this.unEmpty( element.innerHTML );
 
         this.model.notifyBlured(this.attribute);
 
