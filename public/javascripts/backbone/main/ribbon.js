@@ -1,4 +1,5 @@
 /*global App,Backbone,JST,_,jQuery */
+
  
 App.module('main',function(){
     this.Views.Ribbon = Backbone.Marionette.ItemView.extend({
@@ -16,6 +17,14 @@ App.module('main',function(){
             this.context.project.on('sync',this.projectChanged,this);
             this.context.on('status',this.statusChanged, this);
             _(this).bindAll();
+
+            // that's tricky :)
+            jQuery("body").ajaxStart( this.updateAjaxStatus );
+            jQuery("body").ajaxStop( this.updateAjaxStatus );
+            jQuery("body").ajaxComplete( this.onUpdateAjaxStatus );
+            jQuery("body").ajaxError( this.onUpdateAjaxStatus );
+            jQuery("body").ajaxSend( this.onUpdateAjaxStatus );
+            jQuery("body").ajaxSuccess( this.onUpdateAjaxStatus );
         },  
         onRender : function(){
             //debugger;
@@ -34,6 +43,9 @@ App.module('main',function(){
         },
         onProjects : function(){
             this.context.dispatchGlobally("projects:index");
+        },
+        onUpdateAjaxStatus : function(){
+            jQuery("span#connectionCount",this.el).html(jQuery.active);
         }
     });
 });

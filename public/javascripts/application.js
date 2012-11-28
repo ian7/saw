@@ -1,6 +1,9 @@
 /*global Backbone,jQuery */
 
 jQuery(function() {
+   jQuery.ajaxSetup({
+    global: true
+   });
    jQuery("body").ajaxError(function(event, request, settings){
 
     // unauthorizedCaught prevents multiple authorization notifications
