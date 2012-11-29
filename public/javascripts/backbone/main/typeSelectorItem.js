@@ -33,7 +33,7 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       this.itemCollection.on('remove', this.updateSubCount, this);
 
       this.tagFilterCollection = new Backbone.CollectionFilter({
-        collection: this.context.tags,
+        collection: App.main.context.tags,
         filter: {
           type: this.model.get('name')
         }

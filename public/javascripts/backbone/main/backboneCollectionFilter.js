@@ -20,6 +20,7 @@ _.each(methods, function(method) {
 _.extend(Backbone.CollectionFilter.prototype, Backbone.Events, {
     models: [],
     /**
+     * @constructor
      * it hooks up to the add/remove events of the original Backbone.Collection and refilters itself every time
      * new element is added or removed. 
      * @param  {hash} accepts collection and filter -> it should be hash of attributes and values to be matched in original collection
@@ -27,7 +28,12 @@ _.extend(Backbone.CollectionFilter.prototype, Backbone.Events, {
      */
     initialize: function(options) {
         _(this).bindAll();
-        this.collection = options.collection;
+        if( options.collection ){
+            this.collection = options.collection;
+        } else {
+            throw new Error("Collection is undefined - filtering undefined makes no sense");
+        }
+
         if( options.filter ){
             this.setFilter( options.filter );
         }

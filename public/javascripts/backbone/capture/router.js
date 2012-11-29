@@ -5,7 +5,8 @@ App.module('main.capture',function(){
     routes: {
         "" :            "index",
         "project/:id" : "withProject",
-        "project/:project_id/issue/:issue_id" : "showIssue"
+        "project/:project_id/issue/:issue_id" : "showIssue",
+        "issueReuse" :   "issueReuse"
     },
     initialize : function(options){
         this.context = options.context;
@@ -21,6 +22,9 @@ App.module('main.capture',function(){
         this.context.dispatchToParent("project:selected",{id:project_id});        
         this.context.dispatch("issue:selected",{id:issue_id});
         this.context.dispatch("capture:issues:details");
+        },
+    issueReuse : function(){
+        this.context.dispatch("capture:issues:reuse");
         }
     });
 });

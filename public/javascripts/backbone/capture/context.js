@@ -14,6 +14,7 @@ App.module("main.capture",function(){
 
             this.listen("capture:issues:list",this.issueList);
             this.listen("capture:issues:details",this.issueDetails);
+            this.listen("capture:issues:reuse",this.issueReuse);
             
             this.mapCommand("capture:issues:new", this.newIssue );
             this.mapCommand("capture:alternatives:create",this.newAlternative);
@@ -22,7 +23,11 @@ App.module("main.capture",function(){
 
             // it used to be instantiated here, but was moved to the main module
             this.issues = this.parentContext.issues;
+            // focused issue
             this.issue = new App.Models.Issue();
+            // all issues in the repository
+            this.allIssues = new App.Models.Issues();
+            this.allIssues.url = "/scope/type/Issue";
         },
         // this is going to store actual project reference
         projectSelected : function( args ){
@@ -52,6 +57,12 @@ App.module("main.capture",function(){
             var view = new App.main.capture.Views.IssueDetails({model: this.issue, context: this});
            
             App.main.layout.central.show(view); 
+        },
+        issueReuse : function(){
+            var view = new App.main.capture.Views.IssueReuse({collection: this.allIssues, context: this});
+            this.allIssues.fetch();
+           
+            App.main.layout.central.show(view);             
         },
         fetchIssues : function(){
             this.issues.fetch();
