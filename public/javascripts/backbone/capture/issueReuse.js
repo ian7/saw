@@ -8,7 +8,18 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       'click div#clearSelection' : 'onClearSelection'
     },
     shortcuts: {},
-    speedButtons: {},
+    speedButtons: {
+        "Issue List" : {
+              color: "orange",
+              event: "capture:issues:list",
+              shortcut: "ctrl+l"
+            },
+        "Clear Filter" : {
+              color: "red",
+              event: "filter:clear",
+              shortcut: "esc"
+            }
+    },
     initialize: function() {
       _(this).bindAll();
 
@@ -31,23 +42,44 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
           hideEmpty: true
         }
       });
-      //      this.collection = this.context.allIssues;
-      /*    this.context.on('itemSelector:selectedItem',this.onItemSelected,this);
-      this.context.on('typeSelector:selectedTag',this.onTagSelected,this);
-     */
+
+      this.filterWidget = new App.main.Views.FilterWidget({
+        context: this.context
+      });
+    
+      this.context.on('typeSelector:selectedTag',this.updateItemCount,this);
+      this.context.on('filterWidget:filter',this.updateItemCount,this);
+      this.context.on('filter:clear',this.onFilterClear,this);
+
+      this.collection.on('add',this.updateItemCount,this);
+      this.collection.on('remove',this.updateItemCount,this);
+
     },
     onRender: function() {
       this.typeSelector.setElement(jQuery("div#typeSelector", this.el));
       this.typeSelector.render();
+      this.filterWidget.setElement(jQuery('div#filterWidget',this.el));
+      this.filterWidget.render();
+      this.updateItemCount();
     },
-    onItemSelected: function(item) {
-      jQuery("span#itemName", this.el).html(item.get('name'));
+    updateItemCount : function(){
+      jQuery(this.el).oneTime(100,'updatedItemCount',this.delayedUpdateItemCount);
     },
-    onTagSelected: function(item) {
-      jQuery("span#tagName", this.el).html(item.get('name'));
+    delayedUpdateItemCount : function(){
+      var count = 0;
+      _(this.children).each( function( childView ){
+        if( jQuery(childView.el).is(':visible')) {
+          count = count + 1;
+          }
+      },this);
+      jQuery( "span#matchedItemCount",this.el).html(count);      
     },
     onClearSelection : function(){
       this.context.dispatch('typeSelector:selectedTag',null);
+      this.context.dispatch('filterWidget:filter',null);
+    },
+    onFilterClear : function(){
+      this.onClearSelection();
     }
   });
 });
