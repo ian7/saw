@@ -46,7 +46,6 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       this.filterWidget = new App.main.Views.FilterWidget({
         context: this.context
       });
-    
       this.context.on('typeSelector:selectedTag',this.updateItemCount,this);
       this.context.on('filterWidget:filter',this.updateItemCount,this);
       this.context.on('filter:clear',this.onFilterClear,this);
