@@ -9,12 +9,12 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
     events: {},
     shortcuts: {},
     speedButtons: {},
-    initialize: function() {
+    initialize: function(options) {
       _(this).bindAll();
       this.itemView = App.main.Views.TypeSelectorItem;
 
       this.itemViewOptions = {
-        context: this.context
+        context: this.context,
       };
     },
     onRender: function() {}

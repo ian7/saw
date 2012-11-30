@@ -8,16 +8,32 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
     events: {
       'click span#tag': 'onClick'
     },
-    initialize: function() {
+    initialize: function( options ) {
       _(this).bindAll();
       this.context.on("capture:item:gotTagReferences", this.updateItems,this);
       this.itemReferences = [];
+
+      this.options = {};
+      this.options.hideEmpty = true;
+
+      this.context.on("typeSelector:selectedTag",this.setHighlight,this);
     },
     onRender: function() {
-
+      if( this.options.hideEmpty ){
+        jQuery( this.el ).hide();
+      }
     },
     onClick: function() {
       this.context.dispatch("typeSelector:selectedTag", this.model);
+    },
+    setHighlight : function( tagModel ){
+      if( tagModel && tagModel.get('_id') === this.model.get('_id')){
+        jQuery(this.el).first().addClass('red');
+      }
+      else{
+        jQuery(this.el).first().removeClass('red');
+      }
+      return false;
     },
     updateItems: function(model) {
       // get count of the given tag in the issue
@@ -28,17 +44,13 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
 
       if( count > 0 ){
           this.itemReferences.push(model.get('id')) ;
-             // zero the co  
         }
       this.itemReferenceCount = this.itemReferences.length;
 
-    /*
-      // go over all the issues accumulated so far
-      _(this.itemReferences).each(function(value, key) {
-        this.itemReferenceCount = this.itemReferenceCount + value;
-      }, this);
-*/
-      // set it up!
+      if( this.itemReferenceCount > 0 && this.options.hideEmpty ){
+        jQuery( this.el ).show();
+      }
+
       jQuery("span#itemCount",this.el).first().html(this.itemReferenceCount);
       }
   });

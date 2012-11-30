@@ -886,7 +886,9 @@ div.login_failed {
 }
 
 .debug{
+  
   display: none;
+  
 }
 
 
@@ -1461,6 +1463,10 @@ div#subItems{
 
 .red{
   color: red;
+}
+
+.link {
+    cursor: pointer;
 }
 
 div.columns p {

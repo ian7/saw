@@ -8,7 +8,7 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
     },
     shortcuts: {},
     speedButtons: {},
-    initialize: function() {
+    initialize: function( options ) {
       _(this).bindAll();
       // set itemView to itself
       this.itemView = App.main.Views.TypeSelectorItem;
@@ -42,6 +42,8 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
         context: this.context,
         collection: this.tagFilterCollection
       });
+      
+      this.context.on("capture:item:gotTagReferences", this.updateTagItemCounts,this);
 
       this.on('composite:rendered', this.modelRendered, this);
 
@@ -58,9 +60,20 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       // render tags
       this.tagSelector.setElement( jQuery( "div#items",this.el ).first() );
       this.tagSelector.render();  
+
+      // hide tag list...
+      jQuery( "div#items",this.el).hide();
     },
     updateSubCount: function() {
       jQuery("span#subCount", this.el).first().html("subtypes: " + this.collection.models.length + ", items: " + this.itemCollection.models.length);
+    },
+    updateTagItemCounts : function(){
+      var relatedItemsCount = this.tagSelector.getRelatedItemsCount();
+      if( relatedItemsCount > 0 ){
+        jQuery(this.el).show();
+      }else{
+        jQuery(this.el).hide();
+      }
     },
     appendHtml: function(cv, iv) {
       var e = jQuery(this.itemViewContainer, cv.$el).first();
@@ -68,6 +81,13 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
     },
     onClick: function() {
       this.context.dispatch('type:selected', this.model);
+      // toggle show items
+      if( jQuery( "div#items",this.el).is(':visible')) {
+          jQuery("div#items",this.el).hide();
+      } else {
+          jQuery("div#items",this.el).show();
+      }
+
       // this stops propagation :)
       return false;
     }
