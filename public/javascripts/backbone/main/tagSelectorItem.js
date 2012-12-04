@@ -44,14 +44,14 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
 
       if( count > 0 ){
           this.itemReferences.push(model.get('id')) ;
+        this.itemReferenceCount = this.itemReferences.length;
+
+        if( this.itemReferenceCount > 0 && this.options.hideEmpty ){
+          jQuery( this.el ).show();
         }
-      this.itemReferenceCount = this.itemReferences.length;
 
-      if( this.itemReferenceCount > 0 && this.options.hideEmpty ){
-        jQuery( this.el ).show();
-      }
-
-      jQuery("span#itemCount",this.el).first().html(this.itemReferenceCount);
+        jQuery("span#itemCount",this.el).first().html(this.itemReferenceCount);
+        }
       }
   });
 });

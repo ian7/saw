@@ -11,9 +11,9 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
     initialize: function() {
       _(this).bindAll();
       this.updateStatus();
-      /*this.context.issue.alternatives.on('add', this.updateStatus, this);
+      this.context.issue.alternatives.on('add', this.updateStatus, this);
       this.context.issue.alternatives.on('remove', this.updateStatus, this);
-      this.context.issue.alternatives.on('reset', this.updateStatus, this);*/
+      this.context.issue.alternatives.on('reset', this.updateStatus, this);
       this.model.relationsTo.on('reset', this.gotRelationsTo, this);
 
       this.context.on("typeSelector:selectedTag", this.onSelectedTag, this);
@@ -87,6 +87,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       jQuery("span#counts", this.el).html(taggingCount);
       this.context.dispatch("capture:item:gotTagReferences", this.model);
       this.updateVisibility();
+
     },
     onItemClick: function(argument) {
       this.context.dispatch("itemSelector:selectedItem", this.model);
