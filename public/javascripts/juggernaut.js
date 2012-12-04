@@ -81,7 +81,7 @@
 
     var options = {
         host: uri.host
-      , secure: 'https' == uri.protocol
+      , secure: false                   
       , port: uri.port || ('https' == uri.protocol ? 443 : 80)
       , query: uri.query || ''
     };
