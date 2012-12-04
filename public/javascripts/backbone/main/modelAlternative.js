@@ -16,7 +16,7 @@ App.Models.Alternative = App.Data.Item.extend({
 
     this.decisions = new App.Data.SuperCollection();
     this.decisions.comparator = this.decisionComparator;
-
+    this.on('notify',this.notified, this);
    },
    decisionComparator : function( decision ){
       var comparable = "";
@@ -85,6 +85,15 @@ App.Models.Alternative = App.Data.Item.extend({
 
       },this);
       this.areDecisionsUpdated = true;
+    },
+    notified : function( notification ) {
+      if( notification.distance ===  1 ) {
+        if( notification.event === "relate" ||
+            notification.event === "unrelate") {
+
+            this.getRelationsTo();
+        }
+      }
     }
 });
 

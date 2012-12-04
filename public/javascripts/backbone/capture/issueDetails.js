@@ -20,6 +20,11 @@ App.module("main.capture",function(){
           event: "capture:alternatives:create",
           shortcut: "ctrl+n"
         },
+        "Reuse Alternative" : {
+          color: "orange",
+          event: "capture:alternatives:reuse",
+          shortcut: "ctrl+r"
+        },
         "Issue List" : {
           color: "orange",
           event: "capture:issues:list",

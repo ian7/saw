@@ -18,6 +18,7 @@ App.module("main.capture",function(){
             
             this.mapCommand("capture:issues:new", this.newIssue );
             this.mapCommand("capture:alternatives:create",this.newAlternative);
+            this.listen("capture:alternatives:reuse",this.alternativeReuse);
 
             this.mapCommand("capture:alternative:decided",this.decided);
 
@@ -28,6 +29,9 @@ App.module("main.capture",function(){
             // all issues in the repository
             this.allIssues = new App.Models.Issues();
             this.allIssues.url = "/scope/type/Issue";
+
+            this.allAlternatives = new App.Models.Alternatives();
+            this.allAlternatives.url = '/scope/type/Alternative';
         },
         // this is going to store actual project reference
         projectSelected : function( args ){
@@ -63,6 +67,12 @@ App.module("main.capture",function(){
             this.allIssues.fetch();
            
             App.main.layout.central.show(view);             
+        },
+        alternativeReuse : function(){
+            var view = new App.main.capture.Views.AlternativeReuse({collection: this.allAlternatives, context: this});
+            this.allAlternatives.fetch();
+
+            App.main.layout.central.show( view );
         },
         fetchIssues : function(){
             this.issues.fetch();
