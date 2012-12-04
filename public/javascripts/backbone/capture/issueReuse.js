@@ -53,8 +53,9 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       this.collection.on('add',this.updateItemCount,this);
       this.collection.on('remove',this.updateItemCount,this);
 
+      this.on('composite:model:rendered', this.onModelRendered, this);
     },
-    onRender: function() {
+    onModelRendered: function() {
       this.typeSelector.setElement(jQuery("div#typeSelector", this.el));
       this.typeSelector.render();
       this.filterWidget.setElement(jQuery('div#filterWidget',this.el));

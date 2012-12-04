@@ -19,7 +19,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       this.context.on('filterWidget:filter', this.onFilterChange, this);
     },
     onRender: function() {
-      this.model.updateRelationsTo();
+      this.model.getRelationsTo();
       this.updateStatus();
     },
     updateStatus: function() {
