@@ -233,8 +233,8 @@ App.Data.Item = App.Data.Model.extend({
             "undefined",
             "created_at",
             "updated_at",
-            "Author_Name",
-            "Author"
+            "author_name",
+            "author"
         ];
         var attributes = [];
 
