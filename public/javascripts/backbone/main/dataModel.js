@@ -209,7 +209,7 @@ App.Data.Item = App.Data.Model.extend({
         }
 
 
-        var url = "/relation/relate"
+        var url = "/relation/unrelate"
                 + "?to_taggable_id=" + this.get('id')
                 + "&from_taggable_id=" + item_id
                 + "&relation_name=" + options.relation;

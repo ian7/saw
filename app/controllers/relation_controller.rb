@@ -40,16 +40,17 @@ class RelationController < ApplicationController
   ## fetch params
     @from_taggable_id = params[:from_taggable_id]
     @to_taggable_id = params[:to_taggable_id]
-    @reation_name = params[:relation_name]
+    @relation_name = params[:relation_name]
  
   ## find the taggable
    @relation_instance = Taggable.find :first, :conditions=>{:type=>@relation_name, :origin=>@from_taggable_id, :tip=>@to_taggable_id }
 
-   #ring it
-   ring( @relation_instance.id,1,'unrelate')
    
   ## kill it
    if @relation_instance != nil
+     #ring it
+     ring( @relation_instance.id,1,'unrelate')
+  
      @relation_instance.destroy
    end
 
