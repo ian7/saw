@@ -5,15 +5,17 @@ App.module("main.capture",function(){
     events: {
         "focus div.editable" : "focused",
         "blur div.editable" : "blured",
-        "keyup div.editable" : "keyup"
+        "keyup div.editable" : "keyup",
+        "click a"   : "onAnchorClicked"
     },
     attribute : "",
     isFocused : null,
     initialize : function(options){
         _(this).bindAll();
         this.attribute = options.attribute;
-        this.ne = new nicEditor({iconsPath : '/images/nicEditorIcons.gif', buttonList : ['bold','italic','underline','strikeThrough','ol','ul','link','unlink'],hasPanel:true});
-        
+//        this.ne = new nicEditor({iconsPath : '/images/nicEditorIcons.gif', buttonList : ['bold','italic','underline','strikeThrough','ol','ul','link','unlink'],hasPanel:true});
+        this.ne = new nicEditor({iconsPath : '/images/nicEditorIcons.gif', buttonList : ['bold','italic','underline','strikeThrough','ol','ul'],hasPanel:true});
+
         this.model.on("change:"+this.attribute,this.refresh);
         this.throttledSave =  _.throttle(this.simpleSave, 500);
     },
@@ -33,12 +35,17 @@ App.module("main.capture",function(){
         this.isFocused = false;
     },
     unEmpty : function( value ){
+
+
         if( this.isEmpty( value )){
             jQuery("div.editable",this.el).addClass("italic");
             return '(empty)';
         }
         else {
-            return value;
+            var regexpURL =  /([-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\:[0-9]+)?(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?)/igm;;
+
+            newValue = value.replace( regexpURL, "<a href='$1'>$1</a>");
+            return newValue;
         }
     },
     isEmpty : function( value ){
@@ -97,8 +104,12 @@ App.module("main.capture",function(){
         //magically hide the panel
         jQuery("div.nicEdit-panelContain",jQuery(element).parent()).hide();
 
+
+
         this.model.set(this.attribute,element.innerHTML);
-        //this.model.save();  
+
+
+        //this.model.save();
         element.innerHTML = this.unEmpty( element.innerHTML );
 
         this.model.notifyBlured(this.attribute);
@@ -114,12 +125,22 @@ App.module("main.capture",function(){
         var oldValue = this.model.get(this.attribute);
         var newValue = jQuery("div.editable",this.el)[0].innerHTML;
 
+        //regexp to match <a tags>
+        var anchorStartRegex = /<a href=.*?>/igm;
+        var anchorStopRegex = /<\/a>/igm;
+
+        // this will strip all the nonsense
+        newValue = newValue.replace(anchorStartRegex,"").replace(anchorStopRegex,"");
+
         if( oldValue !== newValue ) {
             //var options = {};
             //options[this.attribute] = newValue;
             this.model.save(this.attribute,newValue);
             //this.model.save([this.attribute]);
-            }        
+            }
+    },
+    onAnchorClicked : function(e){
+        window.open(e.target.innerText,'pop-up');
     }
     });
 });
