@@ -11,29 +11,50 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
     initialize: function() {
       _(this).bindAll();
       this.updateStatus();
-      this.context.issue.alternatives.on('add', this.updateStatus, this);
+      /*this.context.issue.alternatives.on('add', this.updateStatus, this);
       this.context.issue.alternatives.on('remove', this.updateStatus, this);
-      this.context.issue.alternatives.on('reset', this.updateStatus, this);
+      this.context.issue.alternatives.on('reset', this.updateStatus, this);*/
       this.model.relationsTo.on('reset', this.gotRelationsTo, this);
 
       this.context.on("typeSelector:selectedTag", this.onSelectedTag, this);
       this.context.on('filterWidget:filter', this.onFilterChange, this);
     },
     onRender: function() {
+      // let's try to spare some selectors
+      this.statusEl = jQuery("span#status", this.el);
+      this.reuseButtonEl  = jQuery("div#toggleReuse", this.el);
+
       this.model.getRelationsTo();
       this.updateStatus();
+
     },
     updateStatus: function() {
+      if( !this.statusEl || !this.reuseButtonEl){
+        // we are too early
+        return;
+      }
+
       if(!this.context.issue.alternatives) {
         throw new Error("Issue has no loaded alternatives");
       }
 
       if(this.context.issue.alternatives.get(this.model.get('id'))) {
-        jQuery("span#status", this.el).html("found");
-        jQuery("div#toggleReuse", this.el).removeClass('gray green').addClass('red').html('Exclude');
+        /*if( this.found ){
+          return;
+        }*/
+
+        this.statusEl.html("found");
+        this.reuseButtonEl.removeClass('gray green').addClass('red').html('Exclude');
+        this.found = true;
+
       } else {
-        jQuery("span#status", this.el).html("absent");
-        jQuery("div#toggleReuse", this.el).removeClass('gray red').addClass('green').html('Reuse');
+        /*if( !this.found ){
+          return;
+        }*/
+        this.statusEl.html("absent");
+        this.reuseButtonEl.removeClass('gray red').addClass('green').html('Reuse');
+
+        this.found = false;
       }
     },
     onToggleReuse: function() {
