@@ -1,0 +1,9 @@
+{ "_id" : { "$oid" : "4f9d67e2e90a3e18b900001d" }, "type_name" : "Alternative", "attribute_name" : "KnownUses" }
+{ "_id" : { "$oid" : "4f9d67e2e90a3e18b900001e" }, "type_name" : "Alternative", "attribute_name" : "Background" }
+{ "_id" : { "$oid" : "4f9d67e2e90a3e18b900001f" }, "type_name" : "Issue", "attribute_name" : "Background" }
+{ "_id" : { "$oid" : "4f9d67e2e90a3e18b9000020" }, "type_name" : "Issue", "attribute_name" : "Drivers" }
+{ "_id" : { "$oid" : "4f9d67e2e90a3e18b9000021" }, "type_name" : "Issue", "attribute_name" : "Status" }
+{ "_id" : { "$oid" : "4f9d67e2e90a3e18b9000022" }, "type_name" : "Issue", "attribute_name" : "Recommendation" }
+{ "_id" : { "$oid" : "4f9d67e2e90a3e18b9000023" }, "type_name" : "Decision", "attribute_name" : "Color" }
+{ "_id" : { "$oid" : "4f9d8692e90a3e21c6000001" }, "type_name" : "Alternative", "attribute_name" : "Pros" }
+{ "_id" : { "$oid" : "4f9d86b4e90a3e21c6000002" }, "type_name" : "Alternative", "attribute_name" : "Cons" }
