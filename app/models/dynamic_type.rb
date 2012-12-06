@@ -130,7 +130,12 @@ class DynamicType # < ActiveRecord::Base
 
 		h["scopes"]=[]
         DynamicTypeScope.find( :all, :conditions=>{:type_name=>name} ).each do |a|
-          h["scopes"] << a.type_name
+			s = {}
+			s["scope"] = a.type_scope
+			if a['type_domain']
+				s["domain"] = a.type_domain
+			end
+         	h["scopes"] << s.to_hash
         end
 
         h["children"] = []
