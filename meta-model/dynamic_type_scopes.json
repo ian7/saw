@@ -1,9 +1,55 @@
-{ "_id" : { "$oid" : "4f9d67e2e90a3e18b9000024" }, "type_name" : "Project", "type_scope" : "Issue" }
-{ "_id" : { "$oid" : "4f9d67e2e90a3e18b9000025" }, "type_name" : "Scope", "type_scope" : "Issue" }
-{ "_id" : { "$oid" : "4f9d67e2e90a3e18b9000026" }, "type_name" : "Phase", "type_scope" : "Issue" }
-{ "_id" : { "$oid" : "4f9d67e2e90a3e18b9000027" }, "type_name" : "SubjectArea", "type_scope" : "Issue" }
-{ "_id" : { "$oid" : "4f9d67e2e90a3e18b9000028" }, "type_name" : "Role", "type_scope" : "Issue" }
-{ "_id" : { "$oid" : "4f9d67e2e90a3e18b9000029" }, "type_name" : "Pro", "type_scope" : "Alternative" }
-{ "_id" : { "$oid" : "4f9d67e2e90a3e18b900002a" }, "type_name" : "Con", "type_scope" : "Alternative" }
-{ "_id" : { "$oid" : "4f9d67e2e90a3e18b900002b" }, "type_name" : "Decision", "type_scope" : "SolvedBy" }
-{ "_id" : { "$oid" : "4f9e505fe90a3e4ddf000002" }, "type_name" : "View", "type_scope" : "Issue" }
+[{
+    "_id": {
+        "$oid": "4f9d67e2e90a3e18b9000024"
+    },
+    "type_name": "Project",
+    "type_scope": "Issue"
+}, {
+    "_id": {
+        "$oid": "4f9d67e2e90a3e18b9000025"
+    },
+    "type_name": "Scope",
+    "type_scope": "Issue"
+}, {
+    "_id": {
+        "$oid": "4f9d67e2e90a3e18b9000026"
+    },
+    "type_name": "Phase",
+    "type_scope": "Issue"
+}, {
+    "_id": {
+        "$oid": "4f9d67e2e90a3e18b9000027"
+    },
+    "type_name": "SubjectArea",
+    "type_scope": "Issue"
+}, {
+    "_id": {
+        "$oid": "4f9d67e2e90a3e18b9000028"
+    },
+    "type_name": "Role",
+    "type_scope": "Issue"
+}, {
+    "_id": {
+        "$oid": "4f9d67e2e90a3e18b9000029"
+    },
+    "type_name": "Pro",
+    "type_scope": "Alternative"
+}, {
+    "_id": {
+        "$oid": "4f9d67e2e90a3e18b900002a"
+    },
+    "type_name": "Con",
+    "type_scope": "Alternative"
+}, {
+    "_id": {
+        "$oid": "4f9d67e2e90a3e18b900002b"
+    },
+    "type_name": "Decision",
+    "type_scope": "SolvedBy"
+}, {
+    "_id": {
+        "$oid": "4f9e505fe90a3e4ddf000002"
+    },
+    "type_name": "View",
+    "type_scope": "Issue"
+}]

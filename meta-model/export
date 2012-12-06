@@ -1,0 +1,7 @@
+
+COLLECTIONS="dynamic_types dynamic_type_attributes dynamic_type_scopes"
+
+for COLLECTION in $COLLECTIONS
+do
+    mongoexport --db saw --collection $COLLECTION --jsonArray > $COLLECTION.json
+done
