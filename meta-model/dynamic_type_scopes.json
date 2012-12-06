@@ -52,4 +52,39 @@
     },
     "type_name": "View",
     "type_scope": "Issue"
+}, {
+    "_id": {
+        "$oid": "50c0e01f120ef6ab5e96b0f6"
+    },
+    "type_name": "SolvedBy",
+    "type_scope": "Alternative",
+    "type_domain": "Issue"
+}, {
+    "_id": {
+        "$oid": "50c0e01f120ef6ab5e96b0f7"
+    },
+    "type_name": "Implies",
+    "type_scope": "Issue",
+    "type_domain": "Issue"
+}, {
+    "_id": {
+        "$oid": "50c0e01f120ef6ab5e96b0f8"
+    },
+    "type_name": "Implies",
+    "type_scope": "Alternative",
+    "type_domain": "Alternative"
+}, {
+    "_id": {
+        "$oid": "50c0e01f120ef6ab5e96b0f9"
+    },
+    "type_name": "Implies",
+    "type_scope": "Alternative",
+    "type_domain": "Issue"
+}, {
+    "_id": {
+        "$oid": "50c0e01f120ef6ab5e96b0fa"
+    },
+    "type_name": "Contradicts",
+    "type_scope": "Alternative",
+    "type_domain": "Alternative"
 }]

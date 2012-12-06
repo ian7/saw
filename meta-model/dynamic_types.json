@@ -170,7 +170,6 @@
     "_id": {
         "$oid": "4f9e4f22e90a3e4ddf000001"
     },
-    "_type": null,
     "name": "View",
     "super_type": "Tag",
     "surrogate_class": "Tag"
