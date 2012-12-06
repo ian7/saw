@@ -57,6 +57,7 @@ App.module("main",function(){
             jug.on("disconnect",this.updateStatus);
 
             this.setStatus( App.main.Status.loading );
+            this.on("status:ready",this.onStatusReady,this);
         },
         setStatus : function( newStatus ){
             this.status = newStatus;
@@ -75,6 +76,9 @@ App.module("main",function(){
             }
 
             this.setStatus( App.main.Status.ready );
+        },
+        onStatusReady : function(){
+            Backbone.history.start(/*{silent: true}*/);        
         },
         projectSelected : function( args ){
             if( !args || !args.id ){

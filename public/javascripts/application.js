@@ -29,7 +29,7 @@ var SoftwareArchitectureWarehouse = Backbone.Marionette.Application.extend({
         this.addRegions({mainRegion: 'body'});
         this.router = new this.main.Router();
         this.start();
-        Backbone.history.start(/*{silent: true}*/);        
+        //Backbone.history.start(/*{silent: true}*/);        
         //this.resources.start();
     },
     startHistory : function(){
