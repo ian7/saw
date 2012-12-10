@@ -15,6 +15,8 @@ App.module("main.capture",function(){
             this.listen("capture:issues:list",this.issueList);
             this.listen("capture:issues:details",this.issueDetails);
             this.listen("capture:issues:reuse",this.issueReuse);
+
+            this.listen("capture:project:export",this.projectExport);
             
             this.mapCommand("capture:issues:new", this.newIssue );
             this.mapCommand("capture:alternatives:create",this.newAlternative);
@@ -32,6 +34,12 @@ App.module("main.capture",function(){
 
             this.allAlternatives = new App.Models.Alternatives();
             this.allAlternatives.url = '/scope/type/Alternative';
+
+            // this is supposed to be used as generic artifact reference. 
+            // for tagging purposes for example
+            this.item = null;
+
+            this.listen( "capture:item:relate",this.itemRelate );
         },
         // this is going to store actual project reference
         projectSelected : function( args ){
@@ -176,7 +184,45 @@ App.module("main.capture",function(){
                 console.log("");
             }
         }
-    })
+    }),
+    itemRelate : function(){
+
+        var artifactCollection = new App.Data.SuperCollection();
+        artifactCollection.addCollection( this.allIssues );
+        artifactCollection.addCollection( this.allAlternatives );
+
+        this.issue.id="4faa276e924ff85a6d000001";
+        this.issue.fetch();
+
+        this.item = this.issue;
+        this.item.set('type','Alternative');
+
+        var acceptableTypes = _(this.parentContext.types.models).filter( function( type ){
+            var found = false;
+
+            if( !type.isA("Relation") ){
+                return false;
+            }
+
+            _(type.get('scopes')).each(function( scope ){
+                if( this.item.get('type') === scope.scope ) {
+                    found = true;
+                }
+            },this);
+            return found;
+        },this);
+
+     //   debugger;
+
+        var view = new App.main.capture.Views.ItemRelate({ collection: artifactCollection, context: this});
+        this.allIssues.fetch();
+        this.allAlternatives.fetch();
+
+        App.main.layout.central.show( view );        
+    },
+    projectExport : function(){
+        window.open(window.location.origin+"/projects/"+this.parentContext.project.get('id')+"/export.json" ,'export pop-up');
+    }
 // end of class
 });
 // end 

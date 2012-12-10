@@ -22,11 +22,16 @@ App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customA
           event: "capture:issues:new",
           shortcut: "ctrl+n"
         },
+      "Export Project" : {
+          color: "orange",
+          event: "capture:project:export",
+          shortcut: "ctrl+e"
+        },
       "Reuse Issue" : {
           color: "orange",
           event: "capture:issues:reuse",
           shortcut: "ctrl+r"
-        },
+        }
       },
     initialize : function() {
       this.itemView = App.main.capture.Views.IssueListItem;
