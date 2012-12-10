@@ -17,6 +17,10 @@ App.module("main.capture",function(){
             this.listen("capture:issues:reuse",this.issueReuse);
 
             this.listen("capture:project:export",this.projectExport);
+            this.listen("capture:project:reportTabular",this.projectReportTabular);
+            this.listen("capture:project:reportBullets",this.projectReportBullets);
+
+
             
             this.mapCommand("capture:issues:new", this.newIssue );
             this.mapCommand("capture:alternatives:create",this.newAlternative);
@@ -222,6 +226,12 @@ App.module("main.capture",function(){
     },
     projectExport : function(){
         window.open(window.location.origin+"/projects/"+this.parentContext.project.get('id')+"/export.json" ,'export pop-up');
+    },
+    projectReportTabular : function(){
+        window.open(window.location.origin+"/projects/"+this.parentContext.project.get('id')+"/report" ,'export pop-up');
+    },
+    projectReportBullets : function(){
+        window.open(window.location.origin+"/projects/"+this.parentContext.project.get('id')+"/report2" ,'export pop-up');
     }
 // end of class
 });

@@ -27,6 +27,16 @@ App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customA
           event: "capture:project:export",
           shortcut: "ctrl+e"
         },
+      "Report (Tabular)" : {
+          color: "orange",
+          event: "capture:project:reportTabular",
+          shortcut: "ctrl+e"
+      },
+       "Report (Bullets)" : {
+          color: "orange",
+          event: "capture:project:reportBullets",
+          shortcut: "ctrl+e"
+      },
       "Reuse Issue" : {
           color: "orange",
           event: "capture:issues:reuse",
