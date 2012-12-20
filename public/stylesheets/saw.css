@@ -989,16 +989,21 @@ div#layout div#ribbon{
   height: 2em;
   top: 0px;
   left: 0px;
+  z-index: 10;
 }
 
 div#layout div#trunk {
-  background-color: blue;
+  /*background-color: blue;*/
+
+  position: absolute;
+  top: 2em;
+  width: 100%;
 }
 
 div#layout div#central{
   background-color: white;
   margin-right: 13em;
-  margin-top: 3em;
+  margin-top: 1em;
   padding: 2em;
 }
 
@@ -1494,4 +1499,8 @@ div.columnts br {
 
 .width70px{
   width: 70px;
+}
+
+div#speedButtonsSidebar div.button {
+  width: 68%;
 }
