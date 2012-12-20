@@ -908,6 +908,7 @@ div#layout div#rightSidebar{
   position: fixed;
   top: 0px;
   right: 0px;
+  z-index: 1999;
 }
 
 div#layout div#rightSidebar div#notificationSidebar{
