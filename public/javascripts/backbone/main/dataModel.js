@@ -85,7 +85,9 @@ App.Data.Item = App.Data.Model.extend({
 
         // initialization of the relations needs to happen here due to the late type declarations
         this.relationsTo = new App.Data.Relations();
+        this.updateRelationsTo = false;
         this.relationsFrom = new App.Data.Relations();
+        this.updateRelationsFrom = false;
     },
     notifyEvent : function( data ) {
         var e = JSON.parse(data);
@@ -121,6 +123,16 @@ App.Data.Item = App.Data.Model.extend({
                 break;
         }
         */
+       
+        if( e.distance === 1 && ( e.event === 'relate' || e.event === 'unrelate' ) )
+        {
+         if( this.updateRelationsFrom ) {
+            this.getRelationsFrom();
+         }
+         if( this.updateRelationsTo ){
+            this.getRelationsTo();
+         }
+        }
         this.trigger('notify', e );
     },
     url : function() {
