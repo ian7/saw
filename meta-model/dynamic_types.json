@@ -80,6 +80,7 @@
         "$oid": "4f9d67e2e90a3e18b9000010"
     },
     "name": "SolvedBy",
+    "reverse_name": "Solves",
     "super_type": "Relation",
     "surrogate_class": "Relation"
 }, {
@@ -94,6 +95,7 @@
         "$oid": "4f9d67e2e90a3e18b9000012"
     },
     "name": "Influences",
+    "reverse_name": "Influenced",
     "super_type": "Relation",
     "surrogate_class": "Relation"
 }, {
@@ -101,6 +103,7 @@
         "$oid": "4f9d67e2e90a3e18b9000013"
     },
     "name": "Implies",
+    "reverse_name": "Implied",
     "super_type": "Relation",
     "surrogate_class": "Relation"
 }, {
