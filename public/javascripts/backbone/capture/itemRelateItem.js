@@ -7,13 +7,15 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
     events: {
       'click div#item': 'onItemClick',
       'click div#toggleReuse': 'onToggleReuse',
-      'click div#buttons button' : 'onRelateClicked'
+      'click div#buttonsTo button' : 'onRelateToClicked',
+      'click div#buttonsFrom button' : 'onRelateFromClicked'
     },
     initialize: function() {
       _(this).bindAll();
       this.model.relationsTo.on('reset', this.gotRelationsTo, this);
 
       this.context.item.relationsFrom.on('reset',this.updateStatus,this);
+      this.context.item.relationsTo.on('reset',this.updateStatus,this);
 
       this.context.on("typeSelector:selectedTag", this.onSelectedTag, this);
       this.context.on('filterWidget:filter', this.onFilterChange, this);
@@ -21,7 +23,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
 
 
 
-      this.acceptableRelations = _(this.context.parentContext.types.models).filter(function(type) {
+      this.acceptableRelationsFrom = _(this.context.parentContext.types.models).filter(function(type) {
         var found = false;
 
         if(!type.isA("Relation")) {
@@ -38,11 +40,31 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
           }
         }, this);
 
-        if( !found ){
-          //console.log("not found for: "+type.get('name') );
-        }
         return found;
       }, this);
+
+      this.acceptableRelationsTo = _(this.context.parentContext.types.models).filter(function(type) {
+        var found = false;
+
+        if(!type.isA("Relation")) {
+          return false;
+        }
+
+        _(type.get('scopes')).each(function(scope) {
+          if( (this.context.item.get('type') === scope.scope )
+              && scope.domain
+              && (this.model.get('type') === scope.domain )
+              ) {
+            //console.log("Found s:" + scope.scope + " d:" + scope.domain);
+            found = true;
+          }
+        }, this);
+
+        return found;
+      }, this);
+
+
+
 
     },
     onRender: function() {
@@ -57,34 +79,61 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
 
         var h="";
 
-        _(this.acceptableRelations).each(function(relation) {
-          h += "<button class='btn' id='" + relation.get('name') + "'>" + relation.get('name') + "</button>";
-        }, this);
-        h += "";
+        if( this.acceptableRelationsTo.length > 0 ){
+          _(this.acceptableRelationsTo).each(function(relation) {
+            h += "<button class='btn' id='" + relation.get('name') + "'>" + relation.get('name') + "</button>";
+          }, this);
 
-        jQuery( "div#makeRelationButtons",this.el).html(h);
+          jQuery( "div#makeRelationToButtons",this.el).html(h);
+        }
+        else{
+          jQuery("div#buttonsTo",this.el).hide();
+        }
 
+        h="";
+        if( this.acceptableRelationsFrom.length > 0 ){
+          _(this.acceptableRelationsFrom).each(function(relation) {
+            h += "<button class='btn' id='" + relation.get('name') + "'>" + relation.get('name') + "</button>";
+          }, this);
+
+          jQuery( "div#makeRelationFromButtons",this.el).html(h);
+        }
+        else{
+          jQuery("div#buttonsFrom",this.el).hide(); 
+        }
+        
         this.updateVisibility();
         this.updateStatus();
 
     },
     updateStatus: function() {
 
-
-      jQuery( "div#makeRelationButtons button",this.el).removeClass("btn-success");
+      jQuery( "div#makeRelationToButtons button",this.el).removeClass("btn-success");
 
       // we need to go throught the "relations from", but it makes no sense to go all over them
       // bcasuse it is easier to just browse relations of the main item
 
       this.context.item.relationsFrom.each( function( relation ){
         if( relation.get('tip') === this.model.get('id') ){
-          jQuery( "div#makeRelationButtons button#"+relation.get('relation'),this.el).addClass("btn-success");
-//           jQuery(this.el).hide();
+          jQuery( "div#makeRelationToButtons button#"+relation.get('relation'),this.el).addClass("btn-success");
+        }
+      },this);
+
+
+
+      jQuery( "div#makeRelationFromButtons button",this.el).removeClass("btn-success");
+
+      // we need to go throught the "relations from", but it makes no sense to go all over them
+      // bcasuse it is easier to just browse relations of the main item
+
+      this.context.item.relationsTo.each( function( relation ){
+        if( relation.get('origin') === this.model.get('id') ){
+          jQuery( "div#makeRelationFromButtons button#"+relation.get('relation'),this.el).addClass("btn-success");
         }
       },this);
 
     },
-    onRelateClicked : function( e ){
+    onRelateToClicked : function( e ){
 
       // nasty, but works
       var relationName = e.target.id;
@@ -105,6 +154,28 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
         this.model.relate({item: this.context.item, relation: relationName});
         }
     },
+    onRelateFromClicked : function( e ){
+
+      // nasty, but works
+      var relationName = e.target.id;
+
+      // let's find out if we're tagged already
+      if( this.context.item.relationsFrom.find( function( relation ){
+        return (relation.get('origin') === this.model.get('id') &&
+          relation.get('relation') === relationName);
+      },this) ){
+        //this.model.unrelate({item: this.context.item, relation: relationName});
+        this.context.item.unrelate({item: this.model, relation: relationName});
+      }
+      else {
+
+        // I would need to figure out if this way of making relations is good.
+        // Right now it just works. 
+        
+         this.context.item.relate({item: this.model, relation: relationName });
+        //this.model.relate({item: this.context.item, relation: relationName});
+        }
+    },    
     onToggleReuse: function() {
       if(jQuery("div#toggleReuse", this.el).hasClass("gray")) {
         return;
@@ -156,7 +227,8 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
     updateVisibility: function() {
       var show = true;
 
-      if( this.acceptableRelations.length === 0 ){
+      if( this.acceptableRelationsTo.length === 0 &&
+          this.acceptableRelationsFrom.length === 0){
         show = false;
       }
 

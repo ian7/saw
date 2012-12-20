@@ -74,6 +74,9 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       this.context.item.updateRelationsFrom = true;
       this.context.item.getRelationsFrom();
 
+      this.context.item.updateRelationsTo = true;
+      this.context.item.getRelationsTo();
+
     },
     onModelRendered: function() {
       this.typeSelector.setElement(jQuery("div#typeSelector", this.el));
