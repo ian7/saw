@@ -20,8 +20,6 @@ App.module("main.capture",function(){
             this.listen("capture:project:reportTabular",this.projectReportTabular);
             this.listen("capture:project:reportBullets",this.projectReportBullets);
 
-
-            
             this.mapCommand("capture:issues:new", this.newIssue );
             this.mapCommand("capture:alternatives:create",this.newAlternative);
             this.listen("capture:alternatives:reuse",this.alternativeReuse);
@@ -195,11 +193,16 @@ App.module("main.capture",function(){
         artifactCollection.addCollection( this.allIssues );
         artifactCollection.addCollection( this.allAlternatives );
 
-        this.issue.id="4faa276e924ff85a6d000001";
-        this.issue.fetch();
+        //this.issue.id="4faa276e924ff85a6d000001";
+        //this.issue.fetch();
 
-        this.item = this.issue;
-        this.item.set('type','Alternative');
+        /* 
+        this.item = new App.Models.Issue(); //= this.issue;
+        this.item.set('type','Issue');
+        */
+        //this.item = new App.Models.Alternative(); //= this.issue;
+        //this.item.set('type','Alternative');
+       
 
         var acceptableTypes = _(this.parentContext.types.models).filter( function( type ){
             var found = false;

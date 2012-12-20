@@ -38,6 +38,8 @@ App.module("main.capture",function(){
                 h += "<div class='button decide "+ decision.get('Color') +"'";
                 h += "id='"+ decision.get('name') + "' rel='whatever.html'>" + decision.get('name') /*+ "("+ decision.count + ")*/ + "</div><br>";
             },this);
+
+            h += "<div class='button black' id='relate'>Relate</div>";
             return(h);
         }
     },
@@ -48,7 +50,8 @@ App.module("main.capture",function(){
         */
         "click .decide"             : "decide",
         "click .undecide"           : "undecide",
-        "click div.button#deleteAlternative"   : "deleteAlternative"
+        "click div.button#deleteAlternative"   : "deleteAlternative",
+        "click #relate" : "relate"
 /*        'mouseout' : 'mouseout',
         'click div.name'    : 'edit',
 */
@@ -229,5 +232,9 @@ App.module("main.capture",function(){
                     }
                 }); 
     },*/
+    relate : function(){
+        this.context.item = this.model;
+        this.context.dispatch("capture:item:relate");
+    }
 });
 });

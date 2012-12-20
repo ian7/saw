@@ -7,7 +7,8 @@ App.module('main.capture',function(){
         "project/:id" : "withProject",
         "project/:project_id/issue/:issue_id" : "showIssue",
         "issueReuse" :   "issueReuse",
-        "alternativeReuse" : "alternativeReuse"
+        "alternativeReuse" : "alternativeReuse",
+        "itemRelate" : "itemRelate"
     },
     initialize : function(options){
         this.context = options.context;
@@ -31,6 +32,9 @@ App.module('main.capture',function(){
         this.context.dispatchToParent("project:selected",{id:'4faa2716924ff85a52000001'});        
         this.context.dispatch("issue:selected",{id:'4faa69f7924ff85c1200000b'});
         this.context.dispatch("capture:alternatives:reuse");
+    },
+    itemRelate : function(){
+        this.context.dispatch("capture:item:relate");        
     }
     });
 });
