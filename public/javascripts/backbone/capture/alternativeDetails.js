@@ -85,6 +85,23 @@ App.module("main.capture",function(){
         this.attributesView = new App.main.capture.Views.ItemAttributes({ model: this.model });
         // and hook up rendering it
         this.on('composite:model:rendered',this.onItemRendered,this);
+
+
+       this.relatedToList = new App.main.capture.Views.ItemRelationList({
+           context: this.context,
+           collection: this.model.relationsTo,
+           relationEnd: 'origin'
+       });
+       this.model.updateRelationsTo = true;
+       this.model.getRelationsTo();
+
+       this.relatedFromList = new App.main.capture.Views.ItemRelationList({
+           context: this.context,
+           collection: this.model.relationsFrom,
+           relationEnd: 'tip'
+       });
+       this.model.updateRelationsFrom = true;
+       this.model.getRelationsFrom();
         },
     notified : function( notification ){
 
@@ -99,6 +116,13 @@ App.module("main.capture",function(){
     onItemRendered : function(){
         this.attributesView.el = jQuery("div.itemAttributes",this.el).first();
         this.attributesView.render();
+
+
+        this.relatedToList.setElement(jQuery("div#relationsTo",this.el));
+        this.relatedToList.render();
+
+        this.relatedFromList.setElement(jQuery("div#relationsFrom",this.el));
+        this.relatedFromList.render();
     },
     projectComparator : function( decision ){
             //return decision.get('id');        
@@ -131,6 +155,8 @@ App.module("main.capture",function(){
         // this colors decisions 
         jQuery(this.el).removeClass().addClass("decision").addClass(color.toLowerCase());
         */
+       
+       // let's render all the relations lists:
     },
     selectAll : function( e ){ 
         if( e.toElement.innerText === '(edit to add)') {
