@@ -80,7 +80,8 @@
         "$oid": "4f9d67e2e90a3e18b9000010"
     },
     "name": "SolvedBy",
-    "reverse_name": "Solves",
+    "forward_name": "Solves",
+    "reverse_name": "is solved by",
     "super_type": "Relation",
     "surrogate_class": "Relation"
 }, {
