@@ -81,7 +81,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
 
         if( this.acceptableRelationsTo.length > 0 ){
           _(this.acceptableRelationsTo).each(function(relation) {
-            h += "<button class='btn' id='" + relation.get('name') + "'>" + relation.get('name') + "</button>";
+            h += "<button class='btn' id='" + relation.get('name') + "'>" + relation.get('reverse_name') + "</button>";
           }, this);
 
           jQuery( "div#makeRelationToButtons",this.el).html(h);
