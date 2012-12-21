@@ -111,6 +111,7 @@
         "$oid": "4f9d67e2e90a3e18b9000014"
     },
     "name": "Contradicts",
+    "reverse_name": "Is contradicted",
     "super_type": "Relation",
     "surrogate_class": "Relation"
 }, {

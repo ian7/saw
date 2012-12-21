@@ -22,6 +22,17 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       });  
     },
     onRender: function() {
+
+      var relationNameEl = jQuery("span#relationName",this.el);
+      var relationType = App.main.context.types.findByName( this.model.get('relation') );
+
+      if( this.relationEnd === 'origin' ){
+        relationNameEl.html( relationType.get('reverse_name') + " by");
+      }
+      else{
+        relationNameEl.html( relationType.get('name'));
+      }
+
       this.subView.setElement( jQuery( "td#subItem",this.el ));
       this.subView.render();
     }
