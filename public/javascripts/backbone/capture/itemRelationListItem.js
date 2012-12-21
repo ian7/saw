@@ -27,7 +27,12 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       var relationType = App.main.context.types.findByName( this.model.get('relation') );
 
       if( this.relationEnd === 'origin' ){
-        relationNameEl.html( relationType.get('reverse_name') + " by");
+        if( relationType.get('reverse_name') ) {
+          relationNameEl.html( relationType.get('reverse_name') + " by");
+        }
+        else{
+          relationNameEl.html( "(reverse) " +relationType.get('name') + " by");          
+        }
       }
       else{
         relationNameEl.html( relationType.get('name'));
