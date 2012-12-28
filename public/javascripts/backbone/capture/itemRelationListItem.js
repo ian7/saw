@@ -6,6 +6,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
     className: '',
     tagName: 'tr',
     events: {
+      'click i#deleteRelation' : 'onRelationDelete'
     },
     initialize: function( options ) {
       _(this).bindAll();
@@ -49,6 +50,22 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
 
       this.subView.setElement( jQuery( "td#subItem",this.el ));
       this.subView.render();
+    },
+    onRelationDelete : function(){
+    var promptText = "Are you sure that you want to delete relation: " + this.model.get('relation') 
+            + " with: " + this.itemModel.get('type') 
+            + " named: " + this.itemModel.get('name');
+    if( confirm( promptText ) ) {
+      if( this.model.collection ) {
+        // remove it from the collection first
+        this.model.collection.remove( this.model );
+        }
+      else {
+        alert( 'not in the collection - fucker: ' + this.model.get('name') );
+        }
+        // and then destroy it.
+        this.model.destroy();
+      }
     }
   });
 });
