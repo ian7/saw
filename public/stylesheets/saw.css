@@ -1505,3 +1505,11 @@ div.columnts br {
 div#speedButtonsSidebar div.button {
   width: 68%;
 }
+
+.opaqueHover {
+  opacity: 0.1;
+}
+
+.opaqueHover:hover {
+  opacity: 1.0;
+}

@@ -125,6 +125,9 @@ class DynamicType # < ActiveRecord::Base
 		if attributes['reverse_name']
 			h['reverse_name'] = attributes['reverse_name']
 		end
+		if attributes['forward_name']
+			h['forward_name'] = attributes['forward_name']
+		end
 		##h["data"]=[]
 		h["attributes"]=[]
         DynamicTypeAttribute.find(:all, :conditions=>{:type_name=>name}).each do |a|

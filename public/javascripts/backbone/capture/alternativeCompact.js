@@ -5,6 +5,7 @@ App.module("main.capture",function(){
     template: JST['capture/alternativeCompact'],
     tagName: 'tr',
     events : {
+      'click i#deleteAlternative' : 'onDeleteAlternaitve'
     },
     initialize : function(options) {
       _(this).bindAll();
@@ -39,7 +40,21 @@ App.module("main.capture",function(){
       if( e.target.innerText === "(empty)" ){
           e.target.innerText = "";
       }
-      
+    },
+    onDeleteAlternaitve : function(){
+
+    if( confirm("Are you sure that you want to delete design alternaitve named:\n"+this.model.get('name') ) ) {
+
+      if( this.model.collection ) {
+        // remove it from the collection first
+        this.model.collection.remove( this.model );
+        }
+      else {
+        alert( 'not in the collection - fucker: ' + this.model.get('name') );
+        }
+        // and then destroy it.
+        this.model.destroy();
+      }
     }
   });
 });
