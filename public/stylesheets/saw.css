@@ -1380,32 +1380,32 @@ table.alternativelistdetails {
 }
 
 
-tr.alternaitve.blue{
+tr.alternative.open{
 /*
   background: #0095cd;
 */
   background: #99D5EB;
 }
 
-tr.alternaitve.red{
+tr.alternative.negative{
   /*
   background: #d81b21;
   */
   background: #EFA4A6;  
 }
 
-tr.alternaitve.white{
+tr.alternative.white{
   background: #eeeeee;
 }
 
-tr.alternaitve.gray{
+tr.alternative.colliding{
 /*
   background: #606060;
   */
   background: #BFBFBF;
 }
 
-tr.alternaitve.green{
+tr.alternative.positive{
 /*
   background: #64991e;
   */

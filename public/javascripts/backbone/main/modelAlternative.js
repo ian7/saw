@@ -94,6 +94,78 @@ App.Models.Alternative = App.Data.Item.extend({
             this.getRelationsTo();
         }
       }
+    },
+    getProjectDecisions : function( options ){
+      if( !options.project ) {
+        throw new Error("decision context requires valid Project");
+      }
+
+      var projectDecisions = _(this.decisions.models).where({ project: options.project});
+
+      return projectDecisions;
+    },
+    /* */
+    getStatus : function( options ){
+
+    },
+    isDecided : function( options ) {
+
+      var projectDecisions = this.getProjectDecisions( options );
+     
+      // if there are no decisions then it is not decided
+      if( projectDecisions.length === 0){
+        return false;
+      }
+
+      // if there are decisions and they're not colliding, then we're decided
+      if( this.isColliding( options ) ){
+        return false;
+      }
+      else{
+        return true;
+      }
+    },
+    isColliding : function( options ) {
+
+      var projectDecisions = this.getProjectDecisions( options );
+     
+      // if there are no decisions then it is not decided
+      if( projectDecisions.length === 0){
+        return false;
+      }
+
+      // if we have some decisions then they should point to some decision tag
+      var firstDecisionID = projectDecisions[0].get('origin');
+
+      // this basically checks if given alternative has decisions spread over various decisions
+      var colliding = false;
+      
+      // hack hack
+      _(projectDecisions).each( function( decisionTagging ) {
+        if( decisionTagging.get('origin') !== firstDecisionID ){
+          colliding = true;
+        }
+      },this);
+      
+      if( colliding ){
+        return true;
+      }
+      else{
+        return false;
+      }
+
+    },   
+    decision : function( options ) {
+
+      // if given alternative is not decided upon, then give up
+      if( !this.isDecided( options ) ){
+        return null;
+      }
+
+      var projectDecisions = this.getProjectDecisions( options );
+      // otherwise just take first decision pointer and return the ID
+      return projectDecisions[0].get('origin');
+      
     }
 });
 

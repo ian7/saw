@@ -72,7 +72,8 @@ App.module("main.capture",function(){
         
         this.collection.on('add',this.updateDecisionCount,this);
         this.collection.on('remove',this.updateDecisionCount,this);
-
+        this.collection.on('gotProjects',this.updateDecisionCount,this);
+        
         this.model.on('notify',this.notified,this);
 
         // hook up for the notifications. 
@@ -137,6 +138,26 @@ App.module("main.capture",function(){
     updateDecisionCount : function(){
       //  this.collection.sort();
         jQuery("span.decisionCount",this.el).html(this.collection.length);
+
+        // first I remove all coloring classes
+        jQuery( this.el ).removeClass('colliding');
+        _(this.context.parentContext.decisions.models).each(function( decision ){
+            jQuery( this.el ).removeClass( decision.get('name').toLowerCase() );
+        },this);
+        // and then I add some
+        if( this.model.isColliding( {project: this.context.parentContext.project }) ){
+            jQuery( this.el ).addClass("colliding");
+        }
+        if( this.model.isDecided( {project: this.context.parentContext.project } ) ){
+
+            var decisionID = this.model.decision( { project: this.context.parentContext.project } );
+            var decisionTag = _(this.context.parentContext.decisions.models).where({id:decisionID})[0];
+
+            // and then we just add name of the decision tag as a class
+            jQuery( this.el ).addClass( decisionTag.get('name').toLowerCase() );
+        }
+
+
     },
     onRender : function(){
   /*      var color = "white";
@@ -174,26 +195,8 @@ App.module("main.capture",function(){
     decide : function( event ) {
         var decisionName = event.target.id;
 
-      //  jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
-
         this.context.dispatch( "capture:alternative:decided",{ decisionName : decisionName, alternative: this.model });
-        // let's find object for it..
-
-        /*
-        var decisionObject = null;
-
-        _(this.context.parentContext.decisions.models).each( function( decision ) {
-            if( decisionName === decision.get('name')) {
-                decisionObject = decision;
-            }
-        },this);
-
-        jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {
-                
-                // nasty, nasty...
-                //jQuery("div.tooltip").attr("id",data.$oid);
-        });
-            */
+     
     },
     undecide : function(element) {
         jQuery.getJSON( this.model.get('relation_url') + '/tag/untag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {});      
