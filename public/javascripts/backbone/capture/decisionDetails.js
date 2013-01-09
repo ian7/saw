@@ -28,10 +28,11 @@ App.module("main.capture",function(){
       _(this).bindAll();
       this.model.on('gotProjects',this.gotProjects,this);
       this.model.on('gotProjects',this.projectChanged,this);
+      this.model.on('change',this.render,this);
+      this.model.updateProject( this.context );
       },
     onRender : function() {
-      this.model.updateProject( this.context );
-      this.hide();
+      this.projectChanged();
       },
     deleteDecision : function(){
       this.model.destroy();

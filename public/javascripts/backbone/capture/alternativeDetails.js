@@ -8,41 +8,6 @@ App.module("main.capture",function(){
     template: JST['capture/alternativeDetails'],
     tagName: "tr",
     className : "alternative", 
-    templateHelpers: {
-        renderDecisionButtons : function(){
-            // we'll return this 
-            var h = "";
-
-            /* that's old code 
-            if( !( this.your_decision && this.your_decision.name ) ) { 
-                _(this.decisions).each(function(decision) { 
-                    h += "<div class='button decide "+ decision.color.toLowerCase() +"'";
-                    h += "id='"+ decision.decision_tag_id + "' rel='whatever.html'>" + decision.name + "("+ decision.count + ")</div>";
-                }, this);
-            } else { 
-                _(this.decisions).each(function(decision) {
-                    if( decision.name == this.your_decision.name ) { 
-                        h += "<div class='button undecide " +  decision.color.toLowerCase() + "' id='" + decision.decision_tag_id + "'>Revoke(" + decision.count + ")</div>";
-                    } 
-                    else { 
-                        h += "<div class='button disabled' id='" + decision.decision_tag_id +"'>" + decision.name +"(" + decision.count +")</div>";
-                    }
-                },this); 
-            }
-            */
-            if( !this.context || !this.context.parentContext ){
-                return "";
-            }
-
-            _(this.context.parentContext.decisions.models).each( function( decision ){
-                h += "<div class='button decide "+ decision.get('Color') +"'";
-                h += "id='"+ decision.get('name') + "' rel='whatever.html'>" + decision.get('name') /*+ "("+ decision.count + ")*/ + "</div><br>";
-            },this);
-
-            h += "<div class='button black' id='relate'>Relate</div>";
-            return(h);
-        }
-    },
     events : {
 /*        'mouseover' : 'mouseover',
         "click .deleteAlternative"  : "deleteAlternative",
@@ -51,6 +16,7 @@ App.module("main.capture",function(){
         "click .decide"             : "decide",
         "click .undecide"           : "undecide",
         "click div.button#deleteAlternative"   : "deleteAlternative",
+        "click div#editRationale"   : "editRationale",
         "click #relate" : "relate"
 /*        'mouseout' : 'mouseout',
         'click div.name'    : 'edit',
@@ -237,6 +203,21 @@ App.module("main.capture",function(){
 
         //
 //        jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
+    },
+    editRationale : function(){
+        var projectDecisions = this.model.getProjectDecisions({project: this.context.parentContext.project });
+
+        // in case there are no 'our' decisions
+        var myDecisions = _(projectDecisions).filter( function( decision ) {
+                return ( decision.get('author_name') === userName );
+            },this);
+        
+        if( myDecisions.length === 0 ){
+            return;
+        }
+
+        var rationaleWidget = new App.main.capture.Views.RationaleWidget( { context: this.context, model: myDecisions[0] } );
+        App.main.layout.modal.show( rationaleWidget );
     },
   /*  recordRationale : function() {
                 alert('and here!');

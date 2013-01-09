@@ -82,10 +82,15 @@ def to_hash()
         c["author_name"] = author.email
       end
       
+      if attributes['rationale']
+        c["rationale"]=rationale
+      end
+
+=begin      
      tags.each do |tag_instance|
         c[tag_instance.type]=tag_instance.name
       end
-
+=end
       #c["children"] = [];
       
       return c.to_hash;
