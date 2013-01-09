@@ -124,6 +124,8 @@ App.module("main.capture",function(){
 
         this.relatedFromList.setElement(jQuery("div#relationsFrom",this.el));
         this.relatedFromList.render();
+
+        this.updateDecisionCount();
     },
     projectComparator : function( decision ){
             //return decision.get('id');        
@@ -160,28 +162,44 @@ App.module("main.capture",function(){
             // and then we just add name of the decision tag as a class
             jQuery( this.el ).addClass( decisionTag.get('name').toLowerCase() );
         }
-
-
+        this.renderDecisionButtons();
     },
-    onRender : function(){
-  /*      var color = "white";
-        if( this.model.attributes.decisions ) {
-        _.each( this.model.attributes.decisions, function( decision ) {
-            if( decision.count > 0 ) {
-                if( color == 'white' ) {
-                    color = decision.color;
-                }
-                else {
-                    color = 'gray';
-                }
+    
+    renderDecisionButtons : function(){
+            // we'll return this 
+            
+            var h = "";
+
+
+            var projectDecisions = this.model.getProjectDecisions({project: this.context.parentContext.project });
+
+            // in case there are no 'our' decisions
+            var myDecisions = _(projectDecisions).filter( function( decision ) {
+                    return ( decision.get('author_name') === userName );
+                },this);
+            
+            if( myDecisions.length === 0 ){
+                _(this.context.parentContext.decisions.models).each( function( decision ){
+                    h += "<div class='button decide "+ decision.get('name').toLowerCase() +"'";
+                    h += "id='"+ decision.get('name') + "' rel='whatever.html'>" + decision.get('name') /*+ "("+ decision.count + ")*/ + "</div><br/>";
+                },this);
             }
-        });
-        }
-        // this colors decisions 
-        jQuery(this.el).removeClass().addClass("decision").addClass(color.toLowerCase());
-        */
-       
-       // let's render all the relations lists:
+            // in case that there already are 'our' decisions
+            else{
+                _(this.context.parentContext.decisions.models).each(function(decision) {
+                    if( myDecisions[0].get('origin') === decision.get('id') ) { 
+                        h += "<div class='button undecide " +  decision.get('name').toLowerCase() + "' id='" + decision.get('id') + "'>Revoke</div><br/>";
+                    } 
+                    else { 
+                        h += "<div class='button disabled' id='" + decision.get('name') +"'>" + decision.get('name') + "</div><br/>";
+                    }
+                },this); 
+            }
+
+            h += "<div class='button black' id='relate'>Relate</div>";
+            jQuery("div#decisionButtons",this.el).html( h );
+        },
+    onRender : function(){
     },
     selectAll : function( e ){ 
         if( e.toElement.innerText === '(edit to add)') {
@@ -202,9 +220,23 @@ App.module("main.capture",function(){
         this.context.dispatch( "capture:alternative:decided",{ decisionName : decisionName, alternative: this.model });
      
     },
-    undecide : function(element) {
-        jQuery.getJSON( this.model.get('relation_url') + '/tag/untag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {});      
-        jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
+    undecide : function( event ) {
+        //jQuery.getJSON( this.model.get('relation_url') + '/tag/untag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {});      
+        //
+        var projectDecisions = this.model.getProjectDecisions({project: this.context.parentContext.project });
+
+        // in case there are no 'our' decisions
+        var myDecisions = _(projectDecisions).filter( function( decision ) {
+                return ( decision.get('author_name') === userName && 
+                         decision.get('origin') === event.target.id );
+            },this);
+
+        _(myDecisions).each( function( decision ){
+            decision.destroy();
+        },this);
+
+        //
+//        jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
     },
   /*  recordRationale : function() {
                 alert('and here!');
