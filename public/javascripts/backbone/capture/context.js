@@ -172,7 +172,7 @@ App.module("main.capture",function(){
 
             var relationTaggable = null;
             // let's find the right SolvedBy relation
-            _(this.context.issue.relationsTo.models).each( function( relation ){
+            _(this.eventData.alternative.relationsFrom.models).each( function( relation ){
                 if( relation.get('origin') === this.eventData.alternative.get('id') ){
                     relationTaggable = relation;
                 }
