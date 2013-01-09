@@ -137,7 +137,11 @@ App.module("main.capture",function(){
     },
     updateDecisionCount : function(){
       //  this.collection.sort();
-        jQuery("span.decisionCount",this.el).html(this.collection.length);
+        var projectDecisions = this.model.getProjectDecisions({project: this.context.parentContext.project });
+    
+        jQuery("span#projectDecisionCount",this.el).html( projectDecisions.length);
+
+        jQuery("span#otherDecisionCount",this.el).html(this.collection.length - projectDecisions.length);
 
         // first I remove all coloring classes
         jQuery( this.el ).removeClass('colliding');
