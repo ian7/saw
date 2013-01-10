@@ -151,7 +151,11 @@ table.alternativeListDetails {
 
 table.alternativeListDetails td.name {
 	vertical-align: top;
-	padding: 1em;
+	padding: 10px;
+	border-width: 3px;
+	border-color: white;
+	border-style: solid;
+	border-radius: 15px;
 }
 
 

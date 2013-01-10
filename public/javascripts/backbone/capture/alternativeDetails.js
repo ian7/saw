@@ -18,7 +18,8 @@ App.module("main.capture",function(){
         "click div.button#deleteAlternative"   : "deleteAlternative",
         "click div#editRationale"   : "editRationale",
         "click #relate" : "relate",
-        "click i#expand" : "expandClicked"
+        "click i#expand" : "expandClicked",
+        "click span#header" : "expandClicked"
 /*        'mouseout' : 'mouseout',
         'click div.name'    : 'edit',
 */
@@ -130,6 +131,13 @@ App.module("main.capture",function(){
         var projectDecisions = this.model.getProjectDecisions({project: this.context.parentContext.project });
     
         jQuery("span#projectDecisionCount",this.el).html( projectDecisions.length);
+
+        if( projectDecisions.length === 0){
+            jQuery("table.decisionDetails",this.el).hide();
+        }
+        else{
+            jQuery("table.decisionDetails",this.el).show();            
+        }
 
         jQuery("span#otherDecisionCount",this.el).html(this.collection.length - projectDecisions.length);
 
