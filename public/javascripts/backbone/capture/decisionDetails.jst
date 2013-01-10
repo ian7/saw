@@ -1,18 +1,23 @@
-<td id="<%= get('id') %>">
+<td class="iconWidth">
+     <i class="icon-remove floatLeft opaqueHover" id="deleteDecision"></i> 
+</td>
+<td id="<%= get('id') %>" class="decisionNameWidth">
     <%= findDecisionName() %>
 </td>
 <td>
     <%= get('rationale') %>
 </td>
-<td>
+<td class="authorNameWidth">
     <%= get('author_name') %>
 </td>
-<td>
+<td class="timeStampWidth">
     <%= printTimestamp() %>
 </td>
 <td class="projectName debug">
     ...
 </td>
+<!--
 <td>
     <div class="button black" id="deleteDecision">Delete Decision</div>
 </td>
+-->

@@ -1507,9 +1507,21 @@ div#speedButtonsSidebar div.button {
 }
 
 .opaqueHover {
-  opacity: 0.1;
+  opacity: 0.2;
 }
 
 .opaqueHover:hover {
   opacity: 1.0;
+}
+.iconWidth{
+  width: 16px;
+}
+.authorNameWidth{
+  width: 150px;
+}
+.decisionNameWidth{
+  width: 80px;
+}
+.timeStampWidth{
+  width:150px;
 }

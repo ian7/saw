@@ -17,7 +17,8 @@ App.module("main.capture",function(){
         "click .undecide"           : "undecide",
         "click div.button#deleteAlternative"   : "deleteAlternative",
         "click div#editRationale"   : "editRationale",
-        "click #relate" : "relate"
+        "click #relate" : "relate",
+        "click i#expand" : "expandClicked"
 /*        'mouseout' : 'mouseout',
         'click div.name'    : 'edit',
 */
@@ -49,7 +50,7 @@ App.module("main.capture",function(){
         this.itemViewOptions = {context: this.context.parentContext};
 
         // set-up alternative attribtues editing:
-        this.attributesView = new App.main.capture.Views.ItemAttributes({ model: this.model });
+        this.attributesView = new App.main.capture.Views.ItemAttributes({ model: this.model, startUnExpanded: true });
         // and hook up rendering it
         this.on('composite:model:rendered',this.onItemRendered,this);
 
@@ -70,6 +71,24 @@ App.module("main.capture",function(){
        this.model.updateRelationsFrom = true;
        this.model.getRelationsFrom();
         },
+    expandClicked : function(){
+        var expandEl = jQuery("i#expand",this.el);
+        // to be expanded
+        if( expandEl.hasClass("icon-plus-sign") ){
+            expandEl.removeClass("icon-plus-sign");
+            expandEl.addClass("icon-minus-sign");
+
+            jQuery(".expanded",this.el).slideDown();
+        }
+        // to be shrunk
+        else{
+            expandEl.removeClass("icon-minus-sign");
+            expandEl.addClass("icon-plus-sign");
+
+            jQuery(".expanded",this.el).slideUp();
+        }
+        
+    },
     notified : function( notification ){
 
         // this catches notification of decision made - it is in distance of 2 hops!
@@ -81,6 +100,9 @@ App.module("main.capture",function(){
         }
     },
     onItemRendered : function(){
+        // this way we start in unExpanded state
+        jQuery(".expanded",this.el).hide();
+
         this.attributesView.el = jQuery("div.itemAttributes",this.el).first();
         this.attributesView.render();
 
@@ -162,7 +184,7 @@ App.module("main.capture",function(){
                 },this); 
             }
 
-            h += "<div class='button black' id='relate'>Relate</div>";
+            h += "<div class='button black expanded' id='relate'>Relate</div>";
             jQuery("div#decisionButtons",this.el).html( h );
         },
     onRender : function(){
