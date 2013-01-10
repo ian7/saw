@@ -8,7 +8,13 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
     },
     initialize: function() {
         _(this).bindAll();
-        this.model.on('change', this.render, this);
+        //this.model.on('change', this.render, this);
+        this.editBox = new App.main.capture.Views.RichEdit({
+            context: this.context,
+            attribute: 'rationale',
+            model: this.model,
+            buttonsOn : true
+         });
     },
     beforeRender: function() {
 /*        if (this.model.get('your_decision').tagging_id === null) {
@@ -18,8 +24,11 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
         }*/
     },
     onRender: function() {
-    var rtEl = jQuery("div#rationaleText", this.el)[0];
-        if( rtEl ) {
+    var rtEl = jQuery("div#rationaleText",this.el);
+
+    this.editBox.setElement( rtEl,this.el );
+    this.editBox.render(rtEl);
+    /*    if( rtEl ) {
             
             rtEl.innerHTML = this.model.get('rationale');
             
@@ -42,9 +51,10 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
                 }
             });
         }
+    */
     },
     save: function() {
-        this.model.set('rationale',jQuery("div#rationaleText", this.el).html());
+     //   this.model.set('rationale',jQuery("div#rationaleText", this.el).html());
         this.model.save();
         App.main.layout.modal.close();
     }
