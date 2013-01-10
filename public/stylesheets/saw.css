@@ -1380,32 +1380,32 @@ table.alternativelistdetails {
 }
 
 
-tr.alternative.open{
+table.alternativeListDetails tr.alternative.open{
 /*
   background: #0095cd;
 */
   background: #99D5EB;
 }
 
-tr.alternative.negative{
+table.alternativeListDetails tr.alternative.negative{
   /*
   background: #d81b21;
   */
   background: #EFA4A6;  
 }
 
-tr.alternative.white{
+table.alternativeListDetails tr.alternative.white{
   background: #eeeeee;
 }
 
-tr.alternative.colliding{
+table.alternativeListDetails tr.alternative.colliding{
 /*
   background: #606060;
   */
   background: #BFBFBF;
 }
 
-tr.alternative.positive{
+table.alternativeListDetails tr.alternative.positive{
 /*
   background: #64991e;
   */
@@ -1524,4 +1524,20 @@ div#speedButtonsSidebar div.button {
 }
 .timeStampWidth{
   width:150px;
+}
+
+table.alternativeListDetails tr.alternative{
+  background: #dddddd;
+  margin: 1em;
+  padding-top: 1em;
+  border-width: 10px;
+  border-color: black;
+}
+
+*{
+  cursor: default;
+}
+
+div.editable{
+  cursor: text;
 }
