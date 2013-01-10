@@ -22,7 +22,7 @@ App.module("main.capture",function(){
       }
     },
     events : {
-      "click div.button#deleteDecision" :  "deleteDecision"
+      "click #deleteDecision" :  "deleteDecision"
     },
     initialize : function(options) {
       _(this).bindAll();
@@ -35,7 +35,19 @@ App.module("main.capture",function(){
       this.projectChanged();
       },
     deleteDecision : function(){
-      this.model.destroy();
+      var promptText = "Are you sure that you want to delete selected decision?";
+      if( confirm( promptText ) ) {
+        if( this.model.collection ) {
+          // remove it from the collection first
+          this.model.collection.remove( this.model );
+          }
+        else {
+          alert( 'not in the collection - fucker: ' + this.model.get('name') );
+          }
+          // and then destroy it.
+          this.model.destroy();
+        }
+
     },
     gotProjects : function(){
       if( this.model.project ) {
