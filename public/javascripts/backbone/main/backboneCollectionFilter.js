@@ -38,6 +38,11 @@ _.extend(Backbone.CollectionFilter.prototype, Backbone.Events, {
             this.setFilter( options.filter );
         }
 
+        if( options.filterFunction ){
+            this.filter = options.filterFunction;
+            this.setFilter();
+        }
+
         // backbone uses the same kind of magic...
         // Underscore methods that we want to implement on the Collection.
     },
@@ -84,6 +89,11 @@ _.extend(Backbone.CollectionFilter.prototype, Backbone.Events, {
      * @return {boolean} matched or not ;)
      */
     filter: function(model) {
+        
+        if(this.filterFunction){
+            return( this.filterFunction(model) );
+        }
+        
         if(this.filterSet) {
             var matched = true;
             _(this.filterSet).each(function(value, key) {

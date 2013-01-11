@@ -6,7 +6,9 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
     itemViewContainer: 'div#tagTypesList',
     tagName: "div",
     className: "tagListWidget",
-    events: {},
+    events: {
+      'click' : 'onClick'
+    },
     shortcuts: {},
     speedButtons: {},
     initialize: function(options) {
@@ -33,6 +35,11 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       jQuery("div#tagTypesList",this.el).append( h );
       jQuery("div.tagType",this.el).hide();      
       
+    },
+    onClick : function(){
+      // opens tagging widget
+      var widget = new App.main.Views.TaggingWidget({context:this.context, model: this.model });
+      App.main.layout.modal.show( widget );
     }
   });
 });

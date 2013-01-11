@@ -124,7 +124,12 @@ App.Data.Item = App.Data.Model.extend({
         }
         */
        
-        if( e.distance === 1 && ( e.event === 'relate' || e.event === 'unrelate' ) )
+        if( e.distance === 1 && ( 
+                e.event === 'relate' || 
+                e.event === 'unrelate' ||
+                e.event === 'dotag' ||
+                e.event === 'untag' ) 
+           )
         {
          if( this.updateRelationsFrom ) {
             this.getRelationsFrom();
