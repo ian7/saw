@@ -71,6 +71,8 @@ App.module("main.capture",function(){
             var view = new App.main.capture.Views.IssueDetails({model: this.issue, context: this});
            
             App.main.layout.central.show(view); 
+
+            this.parentContext.trigger("item:selected",this.issue);
         },
         issueReuse : function(){
             var view = new App.main.capture.Views.IssueReuse({collection: this.allIssues, context: this});

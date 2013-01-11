@@ -58,6 +58,9 @@ App.module("main",function(){
 
             this.setStatus( App.main.Status.loading );
             this.on("status:ready",this.onStatusReady,this);
+
+            this.on("item:selected",this.itemSelected,this);
+
         },
         setStatus : function( newStatus ){
             this.status = newStatus;
@@ -93,6 +96,12 @@ App.module("main",function(){
         getTypes : function( rootType, collection  ){
 //            this.types.where( {name = rootName });
 
+        },
+        itemSelected : function( item ){
+            var relationsToItem = item.getRelationsTo();
+
+            this.tagListWidget = new App.main.Views.TagListWidget({context:this, collection : relationsToItem });
+            App.main.layout.tagSidebar.show( this.tagListWidget );            
         }
     });
 });
