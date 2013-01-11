@@ -27,7 +27,7 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       this.context.dispatch("typeSelector:selectedTag", this.model);
     },
     setHighlight : function( tagModel ){
-      if( tagModel && tagModel.get('_id') === this.model.get('_id')){
+      if( tagModel && tagModel.get('id') === this.model.get('id')){
         jQuery(this.el).first().addClass('red');
       }
       else{
@@ -39,7 +39,7 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       // get count of the given tag in the issue
       var count = model.relationsTo.where({
           relation: 'Tagging',
-          origin: this.model.get('_id')
+          origin: this.model.get('id')
         }).length;
 
       if( count > 0 ){

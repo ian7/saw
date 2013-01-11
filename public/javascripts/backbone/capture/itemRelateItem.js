@@ -251,7 +251,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       if(this.lastSelectedTag) {
         var matches = this.model.relationsTo.where({
           relation: 'Tagging',
-          origin: this.lastSelectedTag.get('_id')
+          origin: this.lastSelectedTag.get('id')
         });
 
         if(matches.length === 0) {

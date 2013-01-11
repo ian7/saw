@@ -56,11 +56,19 @@ class TagsController < ApplicationController
 		@tags = DynamicType.find_by_name("Tag").children_instances_recursive  		
   	end
   	
+
+    t = []
+
+    @tags.each do |tag|
+      tt = tag.to_hash
+      #tt['id'] = tt['_id']
+      t << tt 
+    end
     
     respond_to do |format|
       format.html {}# index.html.erb
       format.xml  #{ render :xml => @issues }
-      format.json { render :json => @tags }      
+      format.json { render :json => t }      
     end
     
   end

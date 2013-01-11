@@ -14,7 +14,7 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
     },
     render : function(){
       this.tag = this.context.tags.find( function( tag ){
-        return( this.model.get('origin') === tag.get('_id') );
+        return( this.model.get('origin') === tag.get('id') );
       },this);
 
       if( this.tag ){
