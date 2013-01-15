@@ -34,13 +34,19 @@ _.extend(Backbone.CollectionFilter.prototype, Backbone.Events, {
             throw new Error("Collection is undefined - filtering undefined makes no sense");
         }
 
-        if( options.filter ){
-            this.setFilter( options.filter );
-        }
+
+        // this might be used by filterFunction
+        this.filterParams = options.filterParams;
 
         if( options.filterFunction ){
             this.filter = options.filterFunction;
             this.setFilter();
+        }
+
+
+
+        if( options.filter ){
+            this.setFilter( options.filter );
         }
 
         // backbone uses the same kind of magic...
@@ -80,7 +86,7 @@ _.extend(Backbone.CollectionFilter.prototype, Backbone.Events, {
      * @return {nothing}
      */
     updateModels: function() {
-        this.models = this.collection.filter(this.filter);
+        this.models = this.collection.filter(this.filter,this);
         this.length = this.models.length;
     },
     /**
@@ -91,7 +97,9 @@ _.extend(Backbone.CollectionFilter.prototype, Backbone.Events, {
     filter: function(model) {
         
         if(this.filterFunction){
-            return( this.filterFunction(model) );
+
+            return( this.filterFunction.apply(this,model) );
+            //return( this.filterFunction(model) );
         }
         
         if(this.filterSet) {
@@ -102,6 +110,7 @@ _.extend(Backbone.CollectionFilter.prototype, Backbone.Events, {
                 if( (value === null && model.get(key) !== null) || 
                     (value !== null && model.get(key) === null) ||
                     (model.get(key) !== null && model.get(key).match(value) === null) ){
+                    //(model.get(key) !== null && (model.get(key) === value) ) ){
                     matched = false;
                 }
             }, this);
