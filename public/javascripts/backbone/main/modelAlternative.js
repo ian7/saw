@@ -16,7 +16,12 @@ App.Models.Alternative = App.Data.Item.extend({
 
     this.decisions = new App.Data.SuperCollection();
     this.decisions.comparator = this.decisionComparator;
+    this.decisions.on('add',this.gotDecisionsUpdate,this );
+    this.decisions.on('remove',this.gotDecisionsUpdate,this );
+    this.decisions.on('gotProjects',this.gotDecisionsUpdate,this );
+
     this.on('notify',this.notified, this);
+    this.relationsFrom.on('reset',this.gotSolvedByRelations,this);
    },
    decisionComparator : function( decision ){
       var comparable = "";
@@ -50,7 +55,7 @@ App.Models.Alternative = App.Data.Item.extend({
       this.decisions.addFilter = this.addFilter;
 
       this.getRelationsFrom("SolvedBy");
-      this.relationsFrom.on('reset',this.gotSolvedByRelations,this);
+    
     },
     // this is to be passed as filter to the SuperCollection so that it can fish-out decision taggings from others
     addFilter : function( relationModel ){
@@ -94,6 +99,17 @@ App.Models.Alternative = App.Data.Item.extend({
             this.getRelationsTo();
         }
       }
+
+       if( notification.distance === 2 ){
+            if( notification.event === "dotag" || notification.event === 'destroy' ){            
+            
+                this.decisions.fetch();
+            }
+        }
+
+    },
+    gotDecisionsUpdate : function(){
+      this.trigger('decisionsChanged',this );
     },
     getProjectDecisions : function( options ){
       if( !options.project ) {

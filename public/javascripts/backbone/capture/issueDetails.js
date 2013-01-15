@@ -37,6 +37,8 @@ App.module("main.capture",function(){
         
         this.collection = this.model.alternatives;
 
+        this.collection.on('decisionsChanged',this.onDecisionsChanged,this );
+
         this.itemViewOptions = {context: this.context};
 
         this.on('composite:model:rendered',this.onItemRendered,this);
@@ -71,6 +73,10 @@ App.module("main.capture",function(){
         document.execCommand('selectAll',false,null);
         document.execCommand('copy',false,null);
      //   jQ
+    },
+    onDecisionsChanged : function(){
+        jQuery('span#issueStatus',this.el).html( this.model.decisionState() );
+        //console.log('now');
     }
   });
 });

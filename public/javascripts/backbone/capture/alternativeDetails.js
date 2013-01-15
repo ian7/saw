@@ -92,6 +92,8 @@ App.module("main.capture",function(){
     },
     notified : function( notification ){
 
+        /* this should happen on the model level 
+
         // this catches notification of decision made - it is in distance of 2 hops!
         if( notification.distance === 2 ){
             if( notification.event === "dotag" || notification.event === 'destroy' ){            
@@ -99,6 +101,8 @@ App.module("main.capture",function(){
                 this.collection.fetch();
             }
         }
+
+        */
     },
     onItemRendered : function(){
         // this way we start in unExpanded state

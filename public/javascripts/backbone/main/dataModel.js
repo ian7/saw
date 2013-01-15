@@ -36,6 +36,7 @@ App.Data.SuperCollection = Backbone.Collection.extend({
         collection.on('add',this.modelAdded, this );
         collection.on('remove',this.modelRemoved, this);
         collection.on('change',this.modelChanged,this);
+        collection.on('reset',this.onCollectionReset,this);
     },
     modelAdded : function( model ){
 
@@ -69,6 +70,9 @@ App.Data.SuperCollection = Backbone.Collection.extend({
      /*   if( this.comparator ){
             this.sort();
         }*/
+    },
+    onCollectionReset : function( subCollection ){
+        this.trigger('reset',this);
     }
 
 });
