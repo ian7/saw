@@ -23,10 +23,24 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
         var listToAppendEl = jQuery("ul", typeDivEl);
 
         if( listToAppendEl ){
-          listToAppendEl.append( "<li>" + this.tag.get('name') + "</li>" );          
+          listToAppendEl.append( "<li id='" + this.tag.get('id') + "'>" + this.tag.get('name') + "</li>" );          
         }
       }
       return true;
+    },
+    onClose : function(){
+      var tagEl = jQuery("li#"+this.tag.get('id'));
+      
+      var tagTypeEl = tagEl.parent();
+      
+      tagEl.remove();
+      
+      if( tagTypeEl.children().length === 0 ){
+          tagTypeEl.parent().hide();
+      }
+      
+      
+      
     }
   });
 });

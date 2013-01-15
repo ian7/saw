@@ -21,6 +21,7 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
 
       this.context.on( "item:selected" ,this.onItemSelected, this );
       
+      this.model.updateRelationsTo = true;
     },
     onRender: function() {
       var h="";
