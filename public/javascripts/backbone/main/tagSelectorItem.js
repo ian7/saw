@@ -39,7 +39,7 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       // get count of the given tag in the issue
       var count = model.relationsTo.where({
           relation: 'Tagging',
-          origin: this.model.get('id')
+          origin: this.model.get('_id')
         }).length;
 
       if( count > 0 ){

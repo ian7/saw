@@ -4,6 +4,7 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
   this.Views.TaggingWidget = Backbone.Marionette.CompositeView.extend({
     template: JST['main/taggingWidget'],
     itemViewContainer: 'div#itemList',
+    className: 'TaggingWidget',
     events: {
 //      'click div#clearSelection': 'onClearSelection',
 //      'click div#relationButtons button.btn' : 'onRelationClicked'
@@ -28,8 +29,25 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
 
       var types = new Backbone.CollectionFilter({
         collection: this.context.types,
-        filter: {
-          super_type: "Tag"
+        filterParams: {
+          type: this.model.get('type')
+        },
+        filterFunction : function( type ){
+          // if it is not a tag, then just ignore it.
+          if( !type.isA("Tag") ){
+            return false;
+          }
+
+          var found = _(type.get('scopes')).find(function( scope ){
+            return (scope.scope === this.filterParams.type);
+          },this);
+          
+          if( found ){
+              return true;
+          }
+          else {
+              return false;
+          }
         }
       });
 
@@ -40,7 +58,7 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
         collection: this.model.relationsTo,
         filterFunction: function( relation ){
             var tag = App.main.context.tags.find( function( tag ){
-              return( tag.get('id') === relation.get('origin') )
+              return( tag.get('id') === relation.get('origin') );
             },this);
             if( tag ) {
                 return true;
@@ -51,7 +69,19 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
         }
       });
 
-      this.collection = App.main.context.tags;
+      this.collection = new Backbone.CollectionFilter({
+        collection: App.main.context.tags,
+        filterParams: {
+            types: types
+            },
+        filterFunction: function( tag ){
+          return( this.filterParams.types.find( function( type ){
+              return( type.get('name') === tag.get('type') );
+            },this)
+          );
+        }
+      });
+      
       
       this.typeSelector = new App.main.Views.TypeSelector({
         context: this.context,
@@ -64,7 +94,7 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       this.filterWidget = new App.main.Views.FilterWidget({
         context: this.context
       });
-      this.context.on('typeSelector:selectedTag', this.updateItemCount, this);
+      this.context.on('type:selected', this.updateItemCount, this);
       this.context.on('filterWidget:filter', this.updateItemCount, this);
       this.context.on('itemRelate:relationSelected',this.updateItemCount,this);
       this.context.on('filter:clear', this.onFilterClear, this);

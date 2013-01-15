@@ -6,6 +6,7 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
     events: {
       'click span#name': 'onClick'
     },
+    className: 'typeSelectorItem',
     shortcuts: {},
     speedButtons: {},
     initialize: function( options ) {
@@ -87,6 +88,9 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       } else {
           jQuery("div#items",this.el).show();
       }
+
+      jQuery("div.typeSelectorItem").removeClass('red');
+      jQuery(this.el).addClass('red');
 
       // this stops propagation :)
       return false;

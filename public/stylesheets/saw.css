@@ -1542,3 +1542,28 @@ table.alternativeListDetails tr.alternative{
 div.editable{
   cursor: text;
 }
+
+
+div.TaggingWidget div#itemSelector div#itemPane {
+  max-height: 500px;
+  min-height: 500px;
+}
+div.taggingListWidgetItem{
+  margin-left: 1em;
+  padding-left: 1em;
+  margin-right: 2em;
+  padding-right: 1em;
+  margin-top: 1px;
+  padding-top: 2px;
+  margin-bottom: 1px;
+  padding-bottom: 2px;
+  min-height: 20px;
+}
+
+div.TaggingWidget div.taggingListWidgetItem div.button{
+  width: 40px;
+}
+
+div.taggingListWidgetItem:hover{
+  background-color: #cccccc;
+}
