@@ -1380,32 +1380,32 @@ table.alternativelistdetails {
 }
 
 
-tr.alternaitve.blue{
+table.alternativeListDetails tr.alternative.open{
 /*
   background: #0095cd;
 */
   background: #99D5EB;
 }
 
-tr.alternaitve.red{
+table.alternativeListDetails tr.alternative.negative{
   /*
   background: #d81b21;
   */
   background: #EFA4A6;  
 }
 
-tr.alternaitve.white{
+table.alternativeListDetails tr.alternative.white{
   background: #eeeeee;
 }
 
-tr.alternaitve.gray{
+table.alternativeListDetails tr.alternative.colliding{
 /*
   background: #606060;
   */
   background: #BFBFBF;
 }
 
-tr.alternaitve.green{
+table.alternativeListDetails tr.alternative.positive{
 /*
   background: #64991e;
   */
@@ -1507,9 +1507,63 @@ div#speedButtonsSidebar div.button {
 }
 
 .opaqueHover {
-  opacity: 0.1;
+  opacity: 0.2;
+  cursor: pointer;
 }
 
 .opaqueHover:hover {
   opacity: 1.0;
+}
+.iconWidth{
+  width: 16px;
+}
+.authorNameWidth{
+  width: 150px;
+}
+.decisionNameWidth{
+  width: 80px;
+}
+.timeStampWidth{
+  width:150px;
+}
+
+table.alternativeListDetails tr.alternative{
+  background: #dddddd;
+  margin: 1em;
+  padding-top: 1em;
+  border-width: 10px;
+  border-color: black;
+}
+
+*{
+  cursor: default;
+}
+
+div.editable{
+  cursor: text;
+}
+
+
+div.TaggingWidget div#itemSelector div#itemPane {
+  max-height: 500px;
+  min-height: 500px;
+}
+div.taggingListWidgetItem{
+  margin-left: 1em;
+  padding-left: 1em;
+  margin-right: 2em;
+  padding-right: 1em;
+  margin-top: 1px;
+  padding-top: 2px;
+  margin-bottom: 1px;
+  padding-bottom: 2px;
+  min-height: 20px;
+}
+
+div.TaggingWidget div.taggingListWidgetItem div.button{
+  width: 40px;
+}
+
+div.taggingListWidgetItem:hover{
+  background-color: #cccccc;
 }

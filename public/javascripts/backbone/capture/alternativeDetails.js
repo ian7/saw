@@ -8,41 +8,6 @@ App.module("main.capture",function(){
     template: JST['capture/alternativeDetails'],
     tagName: "tr",
     className : "alternative", 
-    templateHelpers: {
-        renderDecisionButtons : function(){
-            // we'll return this 
-            var h = "";
-
-            /* that's old code 
-            if( !( this.your_decision && this.your_decision.name ) ) { 
-                _(this.decisions).each(function(decision) { 
-                    h += "<div class='button decide "+ decision.color.toLowerCase() +"'";
-                    h += "id='"+ decision.decision_tag_id + "' rel='whatever.html'>" + decision.name + "("+ decision.count + ")</div>";
-                }, this);
-            } else { 
-                _(this.decisions).each(function(decision) {
-                    if( decision.name == this.your_decision.name ) { 
-                        h += "<div class='button undecide " +  decision.color.toLowerCase() + "' id='" + decision.decision_tag_id + "'>Revoke(" + decision.count + ")</div>";
-                    } 
-                    else { 
-                        h += "<div class='button disabled' id='" + decision.decision_tag_id +"'>" + decision.name +"(" + decision.count +")</div>";
-                    }
-                },this); 
-            }
-            */
-            if( !this.context || !this.context.parentContext ){
-                return "";
-            }
-
-            _(this.context.parentContext.decisions.models).each( function( decision ){
-                h += "<div class='button decide "+ decision.get('Color') +"'";
-                h += "id='"+ decision.get('name') + "' rel='whatever.html'>" + decision.get('name') /*+ "("+ decision.count + ")*/ + "</div><br>";
-            },this);
-
-            h += "<div class='button black' id='relate'>Relate</div>";
-            return(h);
-        }
-    },
     events : {
 /*        'mouseover' : 'mouseover',
         "click .deleteAlternative"  : "deleteAlternative",
@@ -51,7 +16,10 @@ App.module("main.capture",function(){
         "click .decide"             : "decide",
         "click .undecide"           : "undecide",
         "click div.button#deleteAlternative"   : "deleteAlternative",
-        "click #relate" : "relate"
+        "click div#editRationale"   : "editRationale",
+        "click #relate" : "relate",
+        "click i#expand" : "expandClicked",
+        "click span#header" : "expandClicked"
 /*        'mouseout' : 'mouseout',
         'click div.name'    : 'edit',
 */
@@ -72,7 +40,8 @@ App.module("main.capture",function(){
         
         this.collection.on('add',this.updateDecisionCount,this);
         this.collection.on('remove',this.updateDecisionCount,this);
-
+        this.collection.on('gotProjects',this.updateDecisionCount,this);
+        
         this.model.on('notify',this.notified,this);
 
         // hook up for the notifications. 
@@ -82,7 +51,7 @@ App.module("main.capture",function(){
         this.itemViewOptions = {context: this.context.parentContext};
 
         // set-up alternative attribtues editing:
-        this.attributesView = new App.main.capture.Views.ItemAttributes({ model: this.model });
+        this.attributesView = new App.main.capture.Views.ItemAttributes({ model: this.model, startUnExpanded: true });
         // and hook up rendering it
         this.on('composite:model:rendered',this.onItemRendered,this);
 
@@ -103,7 +72,27 @@ App.module("main.capture",function(){
        this.model.updateRelationsFrom = true;
        this.model.getRelationsFrom();
         },
+    expandClicked : function(){
+        var expandEl = jQuery("i#expand",this.el);
+        // to be expanded
+        if( expandEl.hasClass("icon-plus-sign") ){
+            expandEl.removeClass("icon-plus-sign");
+            expandEl.addClass("icon-minus-sign");
+
+            jQuery(".expanded",this.el).slideDown();
+        }
+        // to be shrunk
+        else{
+            expandEl.removeClass("icon-minus-sign");
+            expandEl.addClass("icon-plus-sign");
+
+            jQuery(".expanded",this.el).slideUp();
+        }
+        
+    },
     notified : function( notification ){
+
+        /* this should happen on the model level 
 
         // this catches notification of decision made - it is in distance of 2 hops!
         if( notification.distance === 2 ){
@@ -112,8 +101,13 @@ App.module("main.capture",function(){
                 this.collection.fetch();
             }
         }
+
+        */
     },
     onItemRendered : function(){
+        // this way we start in unExpanded state
+        jQuery(".expanded",this.el).hide();
+
         this.attributesView.el = jQuery("div.itemAttributes",this.el).first();
         this.attributesView.render();
 
@@ -123,6 +117,8 @@ App.module("main.capture",function(){
 
         this.relatedFromList.setElement(jQuery("div#relationsFrom",this.el));
         this.relatedFromList.render();
+
+        this.updateDecisionCount();
     },
     projectComparator : function( decision ){
             //return decision.get('id');        
@@ -136,27 +132,74 @@ App.module("main.capture",function(){
     },
     updateDecisionCount : function(){
       //  this.collection.sort();
-        jQuery("span.decisionCount",this.el).html(this.collection.length);
-    },
-    onRender : function(){
-  /*      var color = "white";
-        if( this.model.attributes.decisions ) {
-        _.each( this.model.attributes.decisions, function( decision ) {
-            if( decision.count > 0 ) {
-                if( color == 'white' ) {
-                    color = decision.color;
-                }
-                else {
-                    color = 'gray';
-                }
-            }
-        });
+        var projectDecisions = this.model.getProjectDecisions({project: this.context.parentContext.project });
+    
+        jQuery("span#projectDecisionCount",this.el).html( projectDecisions.length);
+
+        if( projectDecisions.length === 0){
+            jQuery("table.decisionDetails",this.el).hide();
         }
-        // this colors decisions 
-        jQuery(this.el).removeClass().addClass("decision").addClass(color.toLowerCase());
-        */
-       
-       // let's render all the relations lists:
+        else{
+            jQuery("table.decisionDetails",this.el).show();            
+        }
+
+        jQuery("span#otherDecisionCount",this.el).html(this.collection.length - projectDecisions.length);
+
+        // first I remove all coloring classes
+        jQuery( this.el ).removeClass('colliding');
+        _(this.context.parentContext.decisions.models).each(function( decision ){
+            jQuery( this.el ).removeClass( decision.get('name').toLowerCase() );
+        },this);
+        // and then I add some
+        if( this.model.isColliding( {project: this.context.parentContext.project }) ){
+            jQuery( this.el ).addClass("colliding");
+        }
+        if( this.model.isDecided( {project: this.context.parentContext.project } ) ){
+
+            var decisionID = this.model.decision( { project: this.context.parentContext.project } );
+            var decisionTag = _(this.context.parentContext.decisions.models).where({id:decisionID})[0];
+
+            // and then we just add name of the decision tag as a class
+            jQuery( this.el ).addClass( decisionTag.get('name').toLowerCase() );
+        }
+        this.renderDecisionButtons();
+    },
+    
+    renderDecisionButtons : function(){
+            // we'll return this 
+            
+            var h = "";
+
+
+            var projectDecisions = this.model.getProjectDecisions({project: this.context.parentContext.project });
+
+            // in case there are no 'our' decisions
+            var myDecisions = _(projectDecisions).filter( function( decision ) {
+                    return ( decision.get('author_name') === userName );
+                },this);
+            
+            if( myDecisions.length === 0 ){
+                _(this.context.parentContext.decisions.models).each( function( decision ){
+                    h += "<div class='button decide "+ decision.get('name').toLowerCase() +"'";
+                    h += "id='"+ decision.get('name') + "' rel='whatever.html'>" + decision.get('name') /*+ "("+ decision.count + ")*/ + "</div><br/>";
+                },this);
+            }
+            // in case that there already are 'our' decisions
+            else{
+                _(this.context.parentContext.decisions.models).each(function(decision) {
+                    if( myDecisions[0].get('origin') === decision.get('id') ) { 
+                        h += "<div class='button undecide " +  decision.get('name').toLowerCase() + "' id='" + decision.get('id') + "'>Revoke</div><br/>";
+                    } 
+                    else { 
+                        h += "<div class='button disabled' id='" + decision.get('name') +"'>" + decision.get('name') + "</div><br/>";
+                    }
+                },this); 
+            }
+
+            h += "<div class='button black expanded' id='relate'>Relate</div>";
+            jQuery("div#decisionButtons",this.el).html( h );
+        },
+    onRender : function(){
     },
     selectAll : function( e ){ 
         if( e.toElement.innerText === '(edit to add)') {
@@ -174,30 +217,41 @@ App.module("main.capture",function(){
     decide : function( event ) {
         var decisionName = event.target.id;
 
-      //  jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
-
         this.context.dispatch( "capture:alternative:decided",{ decisionName : decisionName, alternative: this.model });
-        // let's find object for it..
+     
+    },
+    undecide : function( event ) {
+        //jQuery.getJSON( this.model.get('relation_url') + '/tag/untag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {});      
+        //
+        var projectDecisions = this.model.getProjectDecisions({project: this.context.parentContext.project });
 
-        /*
-        var decisionObject = null;
+        // in case there are no 'our' decisions
+        var myDecisions = _(projectDecisions).filter( function( decision ) {
+                return ( decision.get('author_name') === userName && 
+                         decision.get('origin') === event.target.id );
+            },this);
 
-        _(this.context.parentContext.decisions.models).each( function( decision ) {
-            if( decisionName === decision.get('name')) {
-                decisionObject = decision;
-            }
+        _(myDecisions).each( function( decision ){
+            decision.destroy();
         },this);
 
-        jQuery.getJSON( this.model.get('relation_url') + '/tag/dotag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {
-                
-                // nasty, nasty...
-                //jQuery("div.tooltip").attr("id",data.$oid);
-        });
-            */
+        //
+//        jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
     },
-    undecide : function(element) {
-        jQuery.getJSON( this.model.get('relation_url') + '/tag/untag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {});      
-        jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
+    editRationale : function(){
+        var projectDecisions = this.model.getProjectDecisions({project: this.context.parentContext.project });
+
+        // in case there are no 'our' decisions
+        var myDecisions = _(projectDecisions).filter( function( decision ) {
+                return ( decision.get('author_name') === userName );
+            },this);
+        
+        if( myDecisions.length === 0 ){
+            return;
+        }
+
+        var rationaleWidget = new App.main.capture.Views.RationaleWidget( { context: this.context, model: myDecisions[0] } );
+        App.main.layout.modal.show( rationaleWidget );
     },
   /*  recordRationale : function() {
                 alert('and here!');

@@ -5,22 +5,25 @@
         <div class='button black' id='deleteAlternative'>Delete</div>
     </div>
 
-    <b>Alternative</b> <!-- Name: <%= get('name') %>-->(<span class="decisionCount">0</span> Decisions)
+    <span id="header"><b>Alternative</b> <!-- Name: <%= get('name') %>-->(<span id="projectDecisionCount" class="bold">...</span> Decisions, <span id="otherDecisionCount" class="bold">...</span> in other projects)</span>
+    <i class="icon-plus-sign floatLeft opaqueHover" id="expand"></i>  
     <div class="itemAttributes"></div>
     <div class="decisionsDetails">
         <table class="decisionDetails">
         <thead>
             <tr class='head'>
-                <th>
+                <th class="iconWidth">
+                </th>
+                <th class="decisionNameWidth">
                     Decision
                 </th>
-                <th>
+                <th class="rationaleWidth">
                     Rationale
                 </th>
-                <th>
+                <th class="authorNameWidth">
                     Author
                 </th>
-                <th>
+                <th class="timestampWidth">
                     Timestamp
                 </th>
             </tr>
@@ -30,7 +33,7 @@
     </table>
     </div>
 
-    <div id="relationLists">
+    <div id="relationLists" class="expanded">
         <b>Incoming relations:</b>
             <div id="relationsTo"></div>
         <b>Outgoing relations:</b>
@@ -51,7 +54,8 @@
                 <tbody>
                     <tr>
                         <td>
-                            <%= renderDecisionButtons() %>
+                            <div id="decisionButtons">
+                            </div>
                         </td>
                     </tr>
                 </tbody>

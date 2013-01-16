@@ -2,7 +2,7 @@
 
 App.module("main.capture",function(){
   this.Views.ItemAttributes = Backbone.Marionette.ItemView.extend({
-    initialize : function() {
+    initialize : function( options ) {
         _(this).bindAll();
 
         this.editorObjects = {};
@@ -11,13 +11,21 @@ App.module("main.capture",function(){
         this.model.on('blured',this.blured,this);
 
         this.numberOfRenderedAttributes = 0;
+    
+        // let's persist that
+        this.startUnExpanded = options.startUnExpanded;
     },
     render : function(){
         var h = "<table class='itemAttributes'>";
 
         // first I render divs
         _(this.model.getAttributes()).each( function(attribute){
-            h += "<tr id='"+attribute+"'>";
+            if( attribute === 'name'){
+                h += "<tr id='"+attribute+"'>";
+            }
+            else{
+                h += "<tr id='"+attribute+"' class='expanded'>";                
+            }
             h += "<th>" + this.capitalizeWords(attribute) + "</th>";
             h += "<td>";
             h += "<div class='editable' id='" + attribute + "'>";
@@ -40,6 +48,10 @@ App.module("main.capture",function(){
             },this);
            
         this.numberOfRenderedAttributes = this.model.getAttributes().length;
+
+        if( this.startUnExpanded ){
+            jQuery(".expanded",this.el).hide();
+        }
     },
     refresh : function(){
 

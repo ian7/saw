@@ -2,6 +2,18 @@
 
 App.Models.Issue = App.Data.Item.extend({
   
+    state: {
+        noAlternatives: 'No alternatives',
+        noDecisions: 'No decisions were made yet',
+        missingDecisions: 'Some decisions are missing',
+        notConclusive: 'Decisions are not conclusive (multiple positive)',
+        openNonConclusive: 'Decisions not conclusive (open alternatives)',
+        noSolution: 'There are no acceptable alternatives',
+        colliding: 'Alternatives have colliding decisions',
+        decided: 'Decided',
+        unknown: 'That shouldn\'t happen'
+    },
+
   alternatives : null,
   areAlternativesUpdated : false,
 
@@ -18,6 +30,7 @@ App.Models.Issue = App.Data.Item.extend({
 
     // this needs to be instantiated late because of the late-loading issues. 
     this.alternatives = new App.Models.Alternatives();
+    this.alternatives.on('decisionsChanged',this.onDecisionsChanged );
 
     // alternatives don't need to be fetched during the object creation
     // we can afford loading them later - for example from the view initializer
@@ -54,6 +67,86 @@ App.Models.Issue = App.Data.Item.extend({
             this.updateAlternatives();
         }
       }
+    },
+    decisionState : function(){
+        if( this.alternatives.length === 0 ){
+            return this.state.noAlternatives;
+        }
+
+        var decisionsTotal = 0;
+        var foundNotDecidedAlterantive = false;
+        var foundCollidingAlternative = false;
+        var positiveAlternatives = 0;
+        var openAlternatives = 0;
+        var negativeAlternatives = 0;
+
+        var positiveDecisionTag = App.main.context.decisions.find( function( decision ){ return( decision.get('name') === 'Positive' );});
+        var openDecisionTag = App.main.context.decisions.find( function( decision ){ return( decision.get('name') === 'Open' );});
+        var negativeDecisionTag = App.main.context.decisions.find( function( decision ){ return( decision.get('name') === 'Negative' );});
+
+        _(this.alternatives.models).each( function(alternative) {
+            decisionsTotal = decisionsTotal + alternative.decisions.length;
+
+            if (alternative.decisions.length === 0) {
+                foundNotDecidedAlterantive = true;
+            }
+
+            if (alternative.isColliding({ project: App.main.context.project })) {
+                foundCollidingAlternative = true;
+            }
+
+            var decision = alternative.decision({ project: App.main.context.project });
+
+            if (decision) {
+                if (decision === positiveDecisionTag.get('id') ) {
+                    positiveAlternatives = positiveAlternatives + 1;
+                }
+                if (decision === openDecisionTag.get('id') ) {
+                    openAlternatives = openAlternatives + 1;
+                }
+                if (decision === negativeDecisionTag.get('id') ) {
+                    negativeAlternatives = negativeAlternatives + 1;
+                }
+            }
+
+        }, this);
+
+
+        if (decisionsTotal === 0) {
+            return this.state.noDecisions;
+        }
+
+        if (positiveAlternatives > 1) {
+            return this.state.notConclusive;
+        }
+
+        if (foundNotDecidedAlterantive ) {
+            return this.state.missingDecisions;
+        }
+
+
+        if (positiveAlternatives === 0) {
+            return this.state.noSolution;
+        }
+
+        if (foundCollidingAlternative) {
+            return this.state.colliding;
+        }
+
+        if (positiveAlternatives === 1) {
+            if (openAlternatives > 0){
+                return this.state.openNonConclusive;
+            }
+            else{
+                return this.state.decided;
+            }
+        }
+
+        // that shouldn't happen
+        return this.state.unknown;
+    },
+    onDecisionsChanged : function( alternative ){
+        this.trigger('decisionsChanged',{issue: this, alternative: alternative });
     }
 });
 

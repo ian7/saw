@@ -17,10 +17,10 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       this.collection.on('add', this.added, this);
     },
     onRender: function() {
-      //this.renderCollection();
+//      this.renderCollection();
     },
     added: function() {
-      //        console.log('added');
+              console.log('added');
     },
     getRelatedItemsCount: function() {
       var total = 0;

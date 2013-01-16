@@ -129,6 +129,7 @@ class RController < ApplicationController
 # that doesn't belong to the attributes, so it needs to be adjusted manually
     r.name = params[:name]
     r["Description"] = params[:Description]
+    r["rationale"] = params[:rationale]
          
     r.dynamic_type.dynamic_type_attributes.each do |attribute|
       if params[attribute.attribute_name] != nil

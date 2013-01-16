@@ -27,7 +27,7 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       this.context.dispatch("typeSelector:selectedTag", this.model);
     },
     setHighlight : function( tagModel ){
-      if( tagModel && tagModel.get('_id') === this.model.get('_id')){
+      if( tagModel && tagModel.get('id') === this.model.get('id')){
         jQuery(this.el).first().addClass('red');
       }
       else{

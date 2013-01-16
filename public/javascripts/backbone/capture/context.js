@@ -71,6 +71,8 @@ App.module("main.capture",function(){
             var view = new App.main.capture.Views.IssueDetails({model: this.issue, context: this});
            
             App.main.layout.central.show(view); 
+
+            this.parentContext.trigger("item:selected",this.issue);
         },
         issueReuse : function(){
             var view = new App.main.capture.Views.IssueReuse({collection: this.allIssues, context: this});
@@ -172,7 +174,7 @@ App.module("main.capture",function(){
 
             var relationTaggable = null;
             // let's find the right SolvedBy relation
-            _(this.context.issue.relationsTo.models).each( function( relation ){
+            _(this.eventData.alternative.relationsFrom.models).each( function( relation ){
                 if( relation.get('origin') === this.eventData.alternative.get('id') ){
                     relationTaggable = relation;
                 }

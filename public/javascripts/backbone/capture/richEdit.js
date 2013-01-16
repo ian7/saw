@@ -74,6 +74,7 @@ App.module("main.capture",function(){
     },
     focused: function( e ){
         //console.log("focused on " + e.target.nodeName + " " +e.target.id + " target: " + e.target.nodeName + " " + e.target.id);
+        this.isFocused = true;
 
         var element = e.target;
 
@@ -95,10 +96,12 @@ App.module("main.capture",function(){
         if(panelEl.length > 0) {
             panelEl.show();
         }
-        this.isFocused = true;
+ 
     },
     blured : function( e ){
         //console.log("blured on: " + e.srcElement.nodeName + " " + e.srcElement.id + " target: " + e.target.nodeName + " " + e.target.id);
+        //
+        this.isFocused = false;
         var element = e.target;
 
         //magically hide the panel
@@ -114,7 +117,6 @@ App.module("main.capture",function(){
 
         this.model.notifyBlured(this.attribute);
 
-        this.isFocused = false;
         },
     keyup : function(){
         jQuery("div.editable",this.el).removeClass("italic");

@@ -16,7 +16,12 @@ App.Models.Alternative = App.Data.Item.extend({
 
     this.decisions = new App.Data.SuperCollection();
     this.decisions.comparator = this.decisionComparator;
+    this.decisions.on('add',this.gotDecisionsUpdate,this );
+    this.decisions.on('remove',this.gotDecisionsUpdate,this );
+    this.decisions.on('gotProjects',this.gotDecisionsUpdate,this );
+
     this.on('notify',this.notified, this);
+    this.relationsFrom.on('reset',this.gotSolvedByRelations,this);
    },
    decisionComparator : function( decision ){
       var comparable = "";
@@ -50,7 +55,7 @@ App.Models.Alternative = App.Data.Item.extend({
       this.decisions.addFilter = this.addFilter;
 
       this.getRelationsFrom("SolvedBy");
-      this.relationsFrom.on('reset',this.gotSolvedByRelations,this);
+    
     },
     // this is to be passed as filter to the SuperCollection so that it can fish-out decision taggings from others
     addFilter : function( relationModel ){
@@ -94,6 +99,89 @@ App.Models.Alternative = App.Data.Item.extend({
             this.getRelationsTo();
         }
       }
+
+       if( notification.distance === 2 ){
+            if( notification.event === "dotag" || notification.event === 'destroy' ){            
+            
+                this.decisions.fetch();
+            }
+        }
+
+    },
+    gotDecisionsUpdate : function(){
+      this.trigger('decisionsChanged',this );
+    },
+    getProjectDecisions : function( options ){
+      if( !options.project ) {
+        throw new Error("decision context requires valid Project");
+      }
+
+      var projectDecisions = _(this.decisions.models).where({ project: options.project});
+
+      return projectDecisions;
+    },
+    /* */
+    getStatus : function( options ){
+
+    },
+    isDecided : function( options ) {
+
+      var projectDecisions = this.getProjectDecisions( options );
+     
+      // if there are no decisions then it is not decided
+      if( projectDecisions.length === 0){
+        return false;
+      }
+
+      // if there are decisions and they're not colliding, then we're decided
+      if( this.isColliding( options ) ){
+        return false;
+      }
+      else{
+        return true;
+      }
+    },
+    isColliding : function( options ) {
+
+      var projectDecisions = this.getProjectDecisions( options );
+     
+      // if there are no decisions then it is not decided
+      if( projectDecisions.length === 0){
+        return false;
+      }
+
+      // if we have some decisions then they should point to some decision tag
+      var firstDecisionID = projectDecisions[0].get('origin');
+
+      // this basically checks if given alternative has decisions spread over various decisions
+      var colliding = false;
+      
+      // hack hack
+      _(projectDecisions).each( function( decisionTagging ) {
+        if( decisionTagging.get('origin') !== firstDecisionID ){
+          colliding = true;
+        }
+      },this);
+      
+      if( colliding ){
+        return true;
+      }
+      else{
+        return false;
+      }
+
+    },   
+    decision : function( options ) {
+
+      // if given alternative is not decided upon, then give up
+      if( !this.isDecided( options ) ){
+        return null;
+      }
+
+      var projectDecisions = this.getProjectDecisions( options );
+      // otherwise just take first decision pointer and return the ID
+      return projectDecisions[0].get('origin');
+      
     }
 });
 

@@ -181,6 +181,10 @@ def to_hash
     h["author"]=author.id.to_s
     h["author_name"] = author.email
   end
+
+  if attributes['rationale']
+    h["rationale"]=attributes['rationale']
+  end
   return h
 end
 
