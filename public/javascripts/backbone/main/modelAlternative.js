@@ -18,6 +18,7 @@ App.Models.Alternative = App.Data.Item.extend({
     this.decisions.comparator = this.decisionComparator;
     this.decisions.on('add',this.gotDecisionsUpdate,this );
     this.decisions.on('remove',this.gotDecisionsUpdate,this );
+    this.decisions.on('reset',this.gotDecisionsUpdate,this );
     this.decisions.on('gotProjects',this.gotDecisionsUpdate,this );
 
     this.on('notify',this.notified, this);
