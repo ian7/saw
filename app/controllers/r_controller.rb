@@ -152,6 +152,14 @@ class RController < ApplicationController
     r = Taggable.find params[:id]
 
     if r 
+      destroy_taggable r
+    end
+    respond_to do |format|
+        format.json { render :json => {} }
+    end
+  end
+
+  def destroy_taggable( r )
 
       if r.class == Relation 
         ring( r.id,2,'destroy')
@@ -161,13 +169,16 @@ class RController < ApplicationController
 
 ## somehow this fails too...
 #      notify( r.dynamic_type.id.to_s)
+#      
+      r.relations_to.each do |relation|
+          destroy_taggable relation
+      end
+
+      r.relations_from.each do |relation|
+          destroy_taggable relation
+      end
 
       r.destroy
-    end
-    respond_to do |format|
-        format.json { render :json => {} }
-    end
-
 
   end
 
