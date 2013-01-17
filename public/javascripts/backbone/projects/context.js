@@ -8,8 +8,9 @@ App.module("main.projects",function(){
             this.projects = new App.Models.Project();
             this.projects.url = "/projects";
 
-            this.listen("projects:index", this.showIndex);
-            this.listen("projects:new", this.newProject);
+            this.listen("projects:index", this.showIndex,this);
+            this.listen("projects:new", this.newProject,this);
+            this.listen("projects:details",this.projectDetails,this);
 
             // this context is specific, becuase I would like it to reload list of projects if new one is created or deleted
             eventer.register(this);
@@ -57,6 +58,13 @@ App.module("main.projects",function(){
                 context: this
             });
             App.main.layout.modal.show(this.newProjectView);
+        },
+        projectDetails : function( options ){
+            this.projectDetailsView = new App.main.projects.Views.ProjectDetails({
+                context:this,
+                project: App.main.context.project
+            });
+            App.main.layout.central.show( this.projectDetailsView );
         }
 
     });
