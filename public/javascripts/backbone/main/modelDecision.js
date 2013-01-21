@@ -7,6 +7,7 @@ App.Models.Decision = App.Data.Relation.extend({
 
     // execute initializer of the class from above. 
     App.Models.Decision.__super__.initialize.apply(this);
+    this.updateProject(App.main.context);
   },
   updateProject : function( context ){
     this.context = context; 

@@ -52,6 +52,11 @@ App.Models.Alternative = App.Data.Item.extend({
       // we'll need context to get decisions, project, etc. 
       this.context = context;
 
+
+      if( !this.context ){
+        throw new Error("proceeding without context doesn't make sense");
+      }
+
       // set filter for superCollection 
       this.decisions.addFilter = this.addFilter;
 

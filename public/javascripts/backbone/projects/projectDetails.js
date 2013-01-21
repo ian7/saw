@@ -19,8 +19,8 @@ App.module("main.projects",function(){
         _(this).bindAll();
       this.itemView = App.main.projects.Views.ProjectDetailsIssue;
       this.collection = App.main.capture.context.issues;
+      this.itemViewOptions = {context:this.context};
     },
- 
     onRender: function(){
         
     }
