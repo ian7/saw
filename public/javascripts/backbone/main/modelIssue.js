@@ -62,7 +62,8 @@ App.Models.Issue = App.Data.Item.extend({
     notified : function( notification ) {
       if( notification.distance ===  1 ) {
         if( notification.event === "relate" ||
-            notification.event === "unrelate") {
+            notification.event === "unrelate" ||
+            notification.event === "destroy") {
 
             this.updateAlternatives();
         }
