@@ -86,9 +86,10 @@ App.Models.Issue = App.Data.Item.extend({
         var negativeDecisionTag = App.main.context.decisions.find( function( decision ){ return( decision.get('name') === 'Negative' );});
 
         _(this.alternatives.models).each( function(alternative) {
-            decisionsTotal = decisionsTotal + alternative.decisions.length;
+            var projectDecisions = alternative.getProjectDecisions( {project: App.main.context.project } );
+            decisionsTotal = decisionsTotal + projectDecisions;
 
-            if (alternative.decisions.length === 0) {
+            if (projectDecisions.length == 0) {
                 foundNotDecidedAlterantive = true;
             }
 
@@ -113,7 +114,7 @@ App.Models.Issue = App.Data.Item.extend({
         }, this);
 
 
-        if (decisionsTotal === 0) {
+        if (decisionsTotal == 0) {
             return this.state.noDecisions;
         }
 
@@ -126,7 +127,7 @@ App.Models.Issue = App.Data.Item.extend({
         }
 
 
-        if (positiveAlternatives === 0) {
+        if (positiveAlternatives == 0) {
             return this.state.noSolution;
         }
 
@@ -134,7 +135,7 @@ App.Models.Issue = App.Data.Item.extend({
             return this.state.colliding;
         }
 
-        if (positiveAlternatives === 1) {
+        if (positiveAlternatives == 1) {
             if (openAlternatives > 0){
                 return this.state.openNonConclusive;
             }
