@@ -1,4 +1,4 @@
-/*global Backbone,jQuery */
+/*global Backbone,jQuery,google */
 
 jQuery(function() {
    jQuery.ajaxSetup({
@@ -17,6 +17,11 @@ jQuery(function() {
         }
    });
 });
+
+/* google charts initialization */
+
+google.load("visualization", "1", {packages:["corechart"]});
+
 
 var SoftwareArchitectureWarehouse = Backbone.Marionette.Application.extend({
     Views: {},
