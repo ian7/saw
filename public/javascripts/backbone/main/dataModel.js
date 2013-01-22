@@ -320,6 +320,30 @@ App.Data.Item = App.Data.Model.extend({
             newCollection.url = this.url() + "/related_from";
         }
         return newCollection;
+    },
+    isSealed : function(){
+        var sealTag = App.main.context.tags.where({'type':'Status','name':'Sealed'})[0];
+        var sealTaggings = _(this.relationsTo.models).find( function( relation ) {
+            return( relation.get('origin') === sealTag.get('id') );
+        },this);
+
+        if( sealTaggings ){
+            return sealTaggings;
+        }        
+        else{
+            return false;
+        }
+    },
+    toggleSeal : function(){
+        var sealTag = App.main.context.tags.where({'type':'Status','name':'Sealed'})[0];
+
+        var sealing = this.isSealed();
+        if( sealing ){
+            sealing.destroy();
+        }
+        else{
+            this.tag( sealTag );
+        }
     }
 
 });

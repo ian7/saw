@@ -1,4 +1,4 @@
-/*global App, Backbone,_,jQuery,JST*/
+/*global App, Backbone,_,jQuery,JST,userName*/
 
 App.module("main.capture",function(){
   this.Views.AlternativeDetails = Backbone.Marionette.CompositeView.extend({
@@ -15,7 +15,8 @@ App.module("main.capture",function(){
         */
         "click .decide"             : "decide",
         "click .undecide"           : "undecide",
-        "click div.button#deleteAlternative"   : "deleteAlternative",
+        "click #deleteAlternative"   : "deleteAlternative",
+        "click #sealAlternative"    : 'onSealAlternative',
         "click div#editRationale"   : "editRationale",
         "click #relate" : "relate",
         "click i#expand" : "expandClicked",
@@ -63,6 +64,9 @@ App.module("main.capture",function(){
        });
        this.model.updateRelationsTo = true;
        this.model.getRelationsTo();
+
+       this.model.relationsTo.on('add',this.updateSealing,this);
+       this.model.relationsTo.on('remove',this.updateSealing,this);
 
        this.relatedFromList = new App.main.capture.Views.ItemRelationList({
            context: this.context,
@@ -200,6 +204,7 @@ App.module("main.capture",function(){
             jQuery("div#decisionButtons",this.el).html( h );
         },
     onRender : function(){
+        this.updateSealing();
     },
     selectAll : function( e ){ 
         if( e.toElement.innerText === '(edit to add)') {
@@ -315,6 +320,18 @@ App.module("main.capture",function(){
     relate : function(){
         this.context.item = this.model;
         this.context.dispatch("capture:item:relate");
+    },
+    updateSealing : function(){
+        var sealingEl = jQuery('#sealAlternative',this.el);
+        if( this.model.isSealed() ){
+            sealingEl.addClass('icon-lock').removeClass('icon-unlock');
+        }
+        else{
+            sealingEl.addClass('icon-unlock').removeClass('icon-lock');
+        }
+    },
+    onSealAlternative : function(){
+        this.model.toggleSeal();
     }
 });
 });
