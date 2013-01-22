@@ -83,7 +83,8 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
         alert( 'not in the collection - fucker: ' + this.model.get('name') );
         }
         // and then destroy it.
-        this.model.destroy();
+      this.model.destroy();
+      jQuery("div.popover").remove();
       }
     }
   });

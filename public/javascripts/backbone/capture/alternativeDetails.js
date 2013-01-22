@@ -260,6 +260,7 @@ App.module("main.capture",function(){
       if( confirm("Are you sure that you want to delete design alternaitve named:\n"+this.model.get('name') ) ) {
         // and then destroy it.
         this.model.destroy();
+        jQuery("div.popover").remove();
         }
     },
     unrelateAlternative : function() {

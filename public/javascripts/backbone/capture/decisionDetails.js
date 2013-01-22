@@ -56,9 +56,10 @@ App.module("main.capture",function(){
           }
         else {
           alert( 'not in the collection - fucker: ' + this.model.get('name') );
-          }
-          // and then destroy it.
-          this.model.destroy();
+        }
+        // and then destroy it.
+        this.model.destroy();
+        jQuery("div.popover").remove();
         }
 
     },
