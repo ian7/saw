@@ -1444,6 +1444,7 @@ div#subItems{
 
 .hyperlink { 
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .floatLeft{ 

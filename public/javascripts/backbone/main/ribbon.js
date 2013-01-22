@@ -9,7 +9,8 @@ App.module('main',function(){
         connectionCount : 0,
         events : {
             'click span#capture' : 'onCapture',
-            'click span#projects' : 'onProjects'
+            'click span#projects' : 'onProjects',
+            'click span#projectID' : 'onProjectClicked'
         },
         initialize : function(){
             // hook up to the routing events
@@ -44,6 +45,9 @@ App.module('main',function(){
         },
         onProjects : function(){
             this.context.dispatchGlobally("projects:index");
+        },
+        onProjectClicked : function(){
+            this.context.dispatchGlobally('projects:details');
         },
         onUpdateAjaxStatus : function(){
             jQuery("span#connectionCount",this.el).html(this.connectionCount);
