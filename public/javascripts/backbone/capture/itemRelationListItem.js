@@ -61,6 +61,14 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
 
       this.subViewName.setElement( jQuery( "span#subItemName",this.el ));
       this.subViewName.render();
+
+
+       jQuery("#deleteRelation",this.el).popover({
+            trigger: 'hover',
+            title: 'Delete',
+            content: 'Removes this relation permanentnly.',
+            placement: 'right'
+        });
     },
     onRelationDelete : function(){
     var promptText = "Are you sure that you want to delete relation: " + this.model.get('relation') 
