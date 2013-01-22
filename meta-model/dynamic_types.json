@@ -1,188 +1,215 @@
-[{
+[
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b9000005"
+      "$oid": "4f9d67e2e90a3e18b9000005"
     },
     "name": "Artifact",
     "super_type": null,
     "surrogate_class": null
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b9000006"
+      "$oid": "4f9d67e2e90a3e18b9000006"
     },
     "name": "Issue",
     "super_type": "Artifact",
     "surrogate_class": "Taggable"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b9000007"
+      "$oid": "4f9d67e2e90a3e18b9000007"
     },
     "name": "Alternative",
     "super_type": "Artifact",
     "surrogate_class": "Taggable"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b9000008"
+      "$oid": "4f9d67e2e90a3e18b9000008"
     },
     "name": "Tag",
     "super_type": null,
     "surrogate_class": "Tag"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b9000009"
+      "$oid": "4f9d67e2e90a3e18b9000009"
     },
     "name": "Tagging",
     "super_type": null,
     "surrogate_class": "Tagging"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b900000a"
+      "$oid": "4f9d67e2e90a3e18b900000a"
     },
     "name": "Decision",
     "super_type": "Tag",
     "surrogate_class": "Tag"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b900000b"
+      "$oid": "4f9d67e2e90a3e18b900000b"
     },
     "name": "Relation",
     "super_type": null,
     "surrogate_class": "Relation"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b900000c"
+      "$oid": "4f9d67e2e90a3e18b900000c"
     },
     "name": "TreeTag",
     "super_type": "Tag",
     "surrogate_class": "TreeTag"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b900000d"
+      "$oid": "4f9d67e2e90a3e18b900000d"
     },
     "name": "WeakTag",
     "super_type": "Tag",
     "surrogate_class": "Tag"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b900000e"
+      "$oid": "4f9d67e2e90a3e18b900000e"
     },
     "name": "Project",
     "super_type": "TreeTag",
     "surrogate_class": "Project"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b900000f"
+      "$oid": "4f9d67e2e90a3e18b900000f"
     },
     "name": "TopicGroup",
     "super_type": "TreeTag",
     "surrogate_class": "TreeTag"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b9000010"
+      "$oid": "4f9d67e2e90a3e18b9000010"
     },
     "name": "SolvedBy",
     "forward_name": "Solves",
     "reverse_name": "is solved by",
     "super_type": "Relation",
     "surrogate_class": "Relation"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b9000011"
+      "$oid": "4f9d67e2e90a3e18b9000011"
     },
     "name": "ChildOf",
     "super_type": "Relation",
     "surrogate_class": "Relation"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b9000012"
+      "$oid": "4f9d67e2e90a3e18b9000012"
     },
     "name": "Influences",
     "reverse_name": "Influenced",
     "super_type": "Relation",
     "surrogate_class": "Relation"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b9000013"
+      "$oid": "4f9d67e2e90a3e18b9000013"
     },
     "name": "Implies",
     "reverse_name": "Implied",
     "super_type": "Relation",
     "surrogate_class": "Relation"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b9000014"
+      "$oid": "4f9d67e2e90a3e18b9000014"
     },
     "name": "Contradicts",
     "reverse_name": "Is contradicted",
     "super_type": "Relation",
     "surrogate_class": "Relation"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b9000015"
+      "$oid": "4f9d67e2e90a3e18b9000015"
     },
     "name": "Scope",
     "super_type": "Tag",
     "surrogate_class": "Tag"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b9000016"
+      "$oid": "4f9d67e2e90a3e18b9000016"
     },
     "name": "Phase",
     "super_type": "Tag",
     "surrogate_class": "Tag"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b9000017"
+      "$oid": "4f9d67e2e90a3e18b9000017"
     },
     "name": "Role",
     "super_type": "Tag",
     "surrogate_class": "Tag"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b9000018"
+      "$oid": "4f9d67e2e90a3e18b9000018"
     },
     "name": "SubjectArea",
     "super_type": "Tag",
     "surrogate_class": "Tag"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b9000019"
+      "$oid": "4f9d67e2e90a3e18b9000019"
     },
     "name": "Pro",
     "super_type": "Tag",
     "surrogate_class": "Tag"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b900001a"
+      "$oid": "4f9d67e2e90a3e18b900001a"
     },
     "name": "Con",
     "super_type": "Tag",
     "surrogate_class": "Tag"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b900001b"
+      "$oid": "4f9d67e2e90a3e18b900001b"
     },
     "name": "IBM-ID",
     "super_type": "Tag",
     "surrogate_class": "Tag"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9d67e2e90a3e18b900001c"
+      "$oid": "4f9d67e2e90a3e18b900001c"
     },
     "name": "Rationale",
     "super_type": "Tag",
     "surrogate_class": "Tag"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "4f9e4f22e90a3e4ddf000001"
+      "$oid": "4f9e4f22e90a3e4ddf000001"
     },
     "name": "View",
     "super_type": "Tag",
     "surrogate_class": "Tag"
-}, {
+  },
+  {
     "_id": {
-        "$oid": "50fec4e9deb2e099b90016ff"
+      "$oid": "50fec4e9deb2e099b90016ff"
     },
     "name": "Status",
     "super_type": "Tag",
     "surrogate_class": "Tag"
-}]
+  }
+]
