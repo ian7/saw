@@ -1511,6 +1511,8 @@ div#speedButtonsSidebar div.button {
   opacity: 0.5;
   cursor: pointer;
   font-size: 1.5em;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 .opaqueHover:hover {
@@ -1518,7 +1520,7 @@ div#speedButtonsSidebar div.button {
   color: black;
 }
 .iconWidth{
-  width: 16px;
+  width: 38px;
 }
 .authorNameWidth{
   width: 150px;

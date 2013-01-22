@@ -17,6 +17,7 @@ App.module("main.capture",function(){
         "click .undecide"           : "undecide",
         "click #deleteAlternative"   : "deleteAlternative",
         "click #sealAlternative"    : 'onSealAlternative',
+        "click #tags"   : 'onTags',
         "click div#editRationale"   : "editRationale",
         "click #relate" : "relate",
         "click i#expand" : "expandClicked",
@@ -123,6 +124,49 @@ App.module("main.capture",function(){
         this.relatedFromList.render();
 
         this.updateDecisionCount();
+
+        jQuery("#deleteAlternative",this.el).popover({
+            trigger: 'hover',
+            title: 'Delete',
+            content: 'Delete this Alternative',
+            placement: 'top'
+        });
+
+        jQuery("#sealAlternative",this.el).popover({
+            trigger: 'hover',
+            title: 'Seal',
+            content: '(un)seal this Alternative',
+            placement: 'top'
+        });
+
+        jQuery("#expand",this.el).popover({
+            trigger: 'hover',
+            title: 'Expand',
+            content: 'Expand this Alternative',
+            placement: 'right'
+        });
+
+        jQuery("#relate",this.el).popover({
+            trigger: 'hover',
+            title: 'Relate',
+            content: 'Change relations to and from this Alternative',
+            placement: 'top'
+        });
+
+        jQuery("#tags",this.el).popover({
+            trigger: 'hover',
+            title: 'Tags',
+            content: 'Add and remove tags on this Alternative',
+            placement: 'top'
+        });
+
+        jQuery("#focus",this.el).popover({
+            trigger: 'hover',
+            title: 'Focus',
+            content: 'Request your team to focus on this Alternative',
+            placement: 'top'
+        });
+
     },
     projectComparator : function( decision ){
             //return decision.get('id');        
@@ -200,7 +244,7 @@ App.module("main.capture",function(){
                 },this); 
             }
 
-            h += "<div class='button black expanded' id='relate'>Relate</div>";
+//            h += "<div class='button black expanded' id='relate'>Relate</div>";
             jQuery("div#decisionButtons",this.el).html( h );
         },
     onRender : function(){
@@ -318,8 +362,12 @@ App.module("main.capture",function(){
                 }); 
     },*/
     relate : function(){
-        this.context.item = this.model;
-        this.context.dispatch("capture:item:relate");
+        //this.context.item = this.model;
+        this.context.dispatch("capture:item:relate",this.model);
+    },
+    onTags : function(){
+      var widget = new App.main.Views.TaggingWidget({context:App.main.context, model: this.model });
+      App.main.layout.modal.show( widget );
     },
     updateSealing : function(){
         var sealingEl = jQuery('#sealAlternative',this.el);

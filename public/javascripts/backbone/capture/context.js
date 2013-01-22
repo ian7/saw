@@ -189,22 +189,13 @@ App.module("main.capture",function(){
             }
         }
     }),
-    itemRelate : function(){
+    itemRelate : function( options ){
+
+        this.item = options;
 
         var artifactCollection = new App.Data.SuperCollection();
         artifactCollection.addCollection( this.allIssues );
         artifactCollection.addCollection( this.allAlternatives );
-
-        //this.issue.id="4faa276e924ff85a6d000001";
-        //this.issue.fetch();
-
-        /* 
-        this.item = new App.Models.Issue(); //= this.issue;
-        this.item.set('type','Issue');
-        */
-        //this.item = new App.Models.Alternative(); //= this.issue;
-        //this.item.set('type','Alternative');
-       
 
         var acceptableTypes = _(this.parentContext.types.models).filter( function( type ){
             var found = false;
@@ -227,7 +218,7 @@ App.module("main.capture",function(){
         this.allIssues.fetch();
         this.allAlternatives.fetch();
 
-        App.main.layout.central.show( view );        
+        App.main.layout.modal.show( view );        
     },
     projectExport : function(){
         window.open(window.location.origin+"/projects/"+this.parentContext.project.get('id')+"/export.json" ,'export pop-up');
