@@ -271,6 +271,9 @@ App.Data.Item = App.Data.Model.extend({
     notifyBlured : function( attribute ){
         jQuery.getJSON('/notify/' + this.get('id') + '/' + attribute + '/blured', function(data) {});
     },
+    notify : function( event ){
+        jQuery.getJSON('/notify/' + this.get('id') + '/' + event, function( data ){});
+    },
     getRelationsTo : function( relationType, collectionType, collectionOptions ){
         var collection = null;
 
