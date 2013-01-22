@@ -34,9 +34,6 @@
 [submodule "public/javascripts/lib/jquery-tools"]
 	path = public/javascripts/lib/jquery-tools
 	url = git@github.com:ian7/jquerytools.git
-[submodule "public/javascripts/font-awesome"]
-	path = public/javascripts/font-awesome
-	url = git@github.com:ian7/Font-Awesome.git
 [submodule "public/javascripts/lib/font-awesome"]
 	path = public/javascripts/lib/font-awesome
 	url = git@github.com:ian7/Font-Awesome.git
