@@ -18,6 +18,7 @@ App.module("main.capture",function(){
         "click #deleteAlternative"   : "deleteAlternative",
         "click #sealAlternative"    : 'onSealAlternative',
         "click #tags"   : 'onTags',
+        "click #requestFocus"   : 'onRequestFocus',
         "click div#editRationale"   : "editRationale",
         "click #relate" : "relate",
         "click i#expand" : "expandClicked",
@@ -380,6 +381,9 @@ App.module("main.capture",function(){
     },
     onSealAlternative : function(){
         this.model.toggleSeal();
+    },
+    onRequestFocus : function(){
+        this.model.notify('requestFocus');
     }
 });
 });
