@@ -46,7 +46,7 @@
       "$oid": "4f9d67e2e90a3e18b9000023"
     },
     "type_name": "Decision",
-    "attribute_name": "Color"
+    "attribute_name": "color"
   },
   {
     "_id": {

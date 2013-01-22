@@ -184,7 +184,7 @@ App.module("main.capture",function(){
             
             if( myDecisions.length === 0 ){
                 _(this.context.parentContext.decisions.models).each( function( decision ){
-                    h += "<div class='button decide "+ decision.get('name').toLowerCase() +"'";
+                    h += "<div class='button decide "+ decision.get('color').toLowerCase() +"'";
                     h += "id='"+ decision.get('name') + "' rel='whatever.html'>" + decision.get('name') /*+ "("+ decision.count + ")*/ + "</div><br/>";
                 },this);
             }
