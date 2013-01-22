@@ -1,0 +1,122 @@
+[
+  {
+    "_id": {
+      "$oid": "4f9d67e3e90a3e18b9000095"
+    },
+    "_type": "Tag",
+    "type": "Scope",
+    "name": "Project",
+    "creator_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "author_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "updated_at": {
+      "$date": 1335715811000
+    },
+    "created_at": {
+      "$date": 1335715811000
+    }
+  },
+  {
+    "_id": {
+      "$oid": "4f9d67e3e90a3e18b90000a2"
+    },
+    "_type": "Tag",
+    "type": "Scope",
+    "name": "Process",
+    "creator_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "author_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "updated_at": {
+      "$date": 1335715811000
+    },
+    "created_at": {
+      "$date": 1335715811000
+    }
+  },
+  {
+    "_id": {
+      "$oid": "4f9d67e3e90a3e18b90000b6"
+    },
+    "_type": "Tag",
+    "type": "Scope",
+    "name": "Operation",
+    "creator_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "author_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "updated_at": {
+      "$date": 1335715811000
+    },
+    "created_at": {
+      "$date": 1335715811000
+    }
+  },
+  {
+    "_id": {
+      "$oid": "4f9d67e3e90a3e18b90000cd"
+    },
+    "_type": "Tag",
+    "type": "Scope",
+    "name": "Channel",
+    "creator_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "author_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "updated_at": {
+      "$date": 1335715811000
+    },
+    "created_at": {
+      "$date": 1335715811000
+    }
+  },
+  {
+    "_id": {
+      "$oid": "4f9d67e3e90a3e18b900011b"
+    },
+    "_type": "Tag",
+    "type": "Scope",
+    "name": "Method",
+    "creator_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "author_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "updated_at": {
+      "$date": 1335715811000
+    },
+    "created_at": {
+      "$date": 1335715811000
+    }
+  },
+  {
+    "_id": {
+      "$oid": "4f9d67e3e90a3e18b9000141"
+    },
+    "_type": "Tag",
+    "type": "Scope",
+    "name": "Service",
+    "creator_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "author_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "updated_at": {
+      "$date": 1335715811000
+    },
+    "created_at": {
+      "$date": 1335715811000
+    }
+  }
+]

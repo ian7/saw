@@ -1,0 +1,8 @@
+TYPES="Tag Decision Project TopicGroup Scope Phase Role SubjectArea Pro Con Rationale View Status"
+
+for TYPE in $TYPES
+do
+    mongoimport --db saw --collection 'taggables' --jsonArray --file $TYPE.json
+done
+
+./export

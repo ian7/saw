@@ -1,0 +1,744 @@
+[
+  {
+    "_id": {
+      "$oid": "4f9d67e2e90a3e18b9000031"
+    },
+    "_type": "Project",
+    "author_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "created_at": {
+      "$date": 1335715810000
+    },
+    "creator_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "manager_ids": [
+
+    ],
+    "name": "IBM adWiki SOA sample",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1335715810000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4f9d6acbe90a3e1a59000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1335716555000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Business Process Management",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1335717911000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4f9d700de90a3e1bfc000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1335717901000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Web Services",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1335717901000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4f9d7317e90a3e1a48000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1335718679000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Patterns of Enterprise Application Architecture",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1335718679000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4f9d830ae90a3e203400000b"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1335722762000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Architectural Patterns",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1335722762000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4f9d9543e90a3e2530000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1335727427000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Exercise 0",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1335727427000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4f9d95c1e90a3e2241000005"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1335727553000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Walktrhough - University Mail System",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1335773731000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4fa40c16924ff80785000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1336151062000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Exercise 1",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1336151062000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4fa7e478924ff8556f000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1336403064000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Exercise 2",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1336403065000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4fa7e484924ff85062000004"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1336403076000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Exercise 2 - legacy",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1336403076000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4faa2716924ff85a52000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1336551190000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Sandbox",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1336551190000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4faa69ef924ff86933000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1336568303000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Exercise 3",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1336568303000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4faa69f7924ff85c1200000b"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1336568311000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Exercise 3 - legacy",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1336568311000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4fb0d1fa924ff85581000003"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1336988154000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "SAW design space",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1336988160000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4fb10084924ff86092000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1337000068000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Walkthrough",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1338668780000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4fb10099924ff86092000002"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1337000089000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Exercise 4 - legacy",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1337000089000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4fb3c56d09f9515d4f000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1337181549000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Exercise 5",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1337181549000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4fb3c57509f951484f000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1337181557000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Exercise 5 - legacy",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1337181557000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4fb3c57e09f9515d4f000002"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1337181566000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Exercise 6",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1337181566000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4fb3c58509f951484f000002"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1337181573000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Exercise 6 - legacy",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1337181573000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4fca76f2f60f94687d000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1338668786000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "Exercise 4",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1338668786000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "4fec7b45f60f944cac000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1340898117000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "OLZ Demo Project",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1340898117000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "50117004a892c507e6000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1343320068000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "PJSDesignSpace",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1343320068000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "5032c71ba892c57225000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1345505051000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "New Project (1)",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1345505051000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "509964e340373f05ce00000b"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1352230115000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "new one",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1352230115000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "50996c0040373f05ce00000c"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1352231936000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "new three",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1352231936000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "50996ce140373f05ce00000d"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1352232161000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "new four",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1352232161000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "50996d2140373f05ce00000e"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1352232225000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "new five",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1352232225000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "50996feb40373f05ce00000f"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1352232939000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "new six",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1352232939000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "50c630ea40373f393d000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1355165930000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "new ten",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1355165930000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "50c630fc40373f393d000002"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1355165948000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "SATURN 2013",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1355165948000
+    },
+    "user_ids": [
+
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "50c887b940373f67ef000001"
+    },
+    "_type": "Project",
+    "created_at": {
+      "$date": 1355319225000
+    },
+    "manager_ids": [
+
+    ],
+    "name": "new fifteen",
+    "observer_ids": [
+
+    ],
+    "type": "Project",
+    "updated_at": {
+      "$date": 1355319225000
+    },
+    "user_ids": [
+
+    ]
+  }
+]

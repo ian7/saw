@@ -1,0 +1,16 @@
+[
+  {
+    "_id": {
+      "$oid": "50fece8a9641d8c73aa88fca"
+    },
+    "_type": "Tag",
+    "type": "Status",
+    "name": "Sealed",
+    "creator_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "author_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    }
+  }
+]
