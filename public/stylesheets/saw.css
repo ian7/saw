@@ -1576,3 +1576,10 @@ div.taggingListWidgetItem:hover{
 table.alternativeListDetails tr.alternative span#header{
   padding-left: 1em;
 }
+
+table#notifications tr.notificationListWidgetItem:nth-of-type(odd) {
+  background-color: #ccc; 
+}
+table#notifications tr.notificationListWidgetItem:nth-of-type(even){
+  background-color: #eee; 
+}
