@@ -161,7 +161,7 @@ App.module("main.capture",function(){
             placement: 'top'
         });
 
-        jQuery("#focus",this.el).popover({
+        jQuery("#requestFocus",this.el).popover({
             trigger: 'hover',
             title: 'Focus',
             content: 'Request your team to focus on this Alternative',
