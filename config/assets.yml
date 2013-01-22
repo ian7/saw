@@ -84,6 +84,7 @@ stylesheets:
     - public/stylesheets/jquery.cluetip.css
     - public/stylesheets/bootstrap.css
     - public/stylesheets/bootstrap-responsive.css
+    - public/stylesheets/font-awesome/font-awesome.css
     - public/stylesheets/saw.css
   workspace:
   empty:
