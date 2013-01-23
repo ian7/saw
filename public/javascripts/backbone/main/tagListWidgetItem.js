@@ -29,16 +29,18 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       return true;
     },
     onClose : function(){
-      var tagEl = jQuery("li#"+this.tag.get('id'));
-      
-      var tagTypeEl = tagEl.parent();
-      
-      tagEl.remove();
-      
-      if( tagTypeEl.children().length === 0 ){
-          tagTypeEl.parent().hide();
-      }
-      
+
+      if( this.tag ) {
+        var tagEl = jQuery("li#"+this.tag.get('id'));
+        
+        var tagTypeEl = tagEl.parent();
+        
+        tagEl.remove();
+        
+        if( tagTypeEl.children().length === 0 ){
+            tagTypeEl.parent().hide();
+        }
+      }      
       
       
     }
