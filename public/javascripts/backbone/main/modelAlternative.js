@@ -71,7 +71,7 @@ App.Models.Alternative = App.Data.Item.extend({
      var gotIt = false;
 
       // here we go over all the decisions stored in the context
-      _(this.context.decisions.models).each(function( decision ){
+      _(App.main.context.decisions.models).each(function( decision ){
         // if decision 
         if( relationModel.get('origin') === decision.get('id') ){
           gotIt = true;
