@@ -24,8 +24,8 @@ App.Models.Issue = App.Data.Item.extend({
     App.Models.Issue.__super__.initialize.apply(this);
     
     this.set('type', "Issue");
-    this.on( 'change', this.updateAlternatives, this );
-    this.on( 'change', this.updateRelationsTo, this );
+    this.on( 'change:id', this.updateAlternatives, this );
+    this.on( 'change:id', this.updateRelationsTo, this );
 
 
     // this needs to be instantiated late because of the late-loading issues. 
