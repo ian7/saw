@@ -20,6 +20,9 @@ App.module('main',function(){
             this.context.on('status',this.statusChanged, this);
             _(this).bindAll();
 
+
+            jQuery("body").everyTime(100,this.onUpdateAjaxStatus);
+/*
             // that's tricky :)
             //jQuery("body").ajaxStart( this.updateAjaxStatus );
             jQuery("body").ajaxStop( this.onAjaxStop );
@@ -27,6 +30,8 @@ App.module('main',function(){
             //jQuery("body").ajaxError( this.onAjaxCompleteOrError );
             jQuery("body").ajaxSend( this.onAjaxSend );
             //jQuery("body").ajaxSuccess( this.onUpdateAjaxStatus );
+
+*/            
         },  
         onRender : function(){
             //debugger;
@@ -50,7 +55,7 @@ App.module('main',function(){
             this.context.dispatchGlobally('projects:details');
         },
         onUpdateAjaxStatus : function(){
-            jQuery("span#connectionCount",this.el).html(this.connectionCount);
+            jQuery("span#connectionCount",this.el).html(App.connectionsCount);
         },
         onAjaxComplete : function(){
             this.connectionCount = this.connectionCount-1;

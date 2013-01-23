@@ -24,7 +24,9 @@ google.load("visualization", "1", {packages:["corechart"]});
 /* this should sweep our session cache */
 sessionStorage.clear();
 
+
 var SoftwareArchitectureWarehouse = Backbone.Marionette.Application.extend({
+    connectionsCount : 0,
     Views: {},
     Models: {},
     Data: {},

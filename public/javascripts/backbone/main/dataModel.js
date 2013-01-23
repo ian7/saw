@@ -38,7 +38,7 @@ App.Data.Collection = Backbone.Collection.extend({
             o[collection.url] = true;
             sessionStorage[collection.ownerID] = JSON.stringify( o );
         }
-        console.log('onSync collection');
+        App.connectionsCount = App.connectionsCount - 1;
     },
     sync: function( action, collection ) {
         var o = null;
@@ -50,7 +50,8 @@ App.Data.Collection = Backbone.Collection.extend({
             return null;
         }
         else {
-            console.log('sync collection');
+            //console.log('sync collection');
+            App.connectionsCount = App.connectionsCount + 1;
             return Backbone.sync.apply(this, arguments);
         }
     },
