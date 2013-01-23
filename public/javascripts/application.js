@@ -19,9 +19,10 @@ jQuery(function() {
 });
 
 /* google charts initialization */
-
 google.load("visualization", "1", {packages:["corechart"]});
 
+/* this should sweep our session cache */
+sessionStorage.clear();
 
 var SoftwareArchitectureWarehouse = Backbone.Marionette.Application.extend({
     Views: {},

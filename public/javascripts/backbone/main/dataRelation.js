@@ -15,5 +15,6 @@ App.Data.Relations = App.Data.Collection.extend({
         else {
             this.url = item.url() + "/relations_"+direction;
         }
+        this.ownerID = item.get('id');
     }
 });
