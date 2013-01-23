@@ -30,6 +30,7 @@ App.module("main.projects",function(){
     },
     onDecisionsChanged : function(){
         jQuery("td#status",this.el).html( this.model.decisionState() );
+        jQuery("td#alternativeCount",this.el).html(this.model.alternatives.length);
     },
     onReset : function(options){
         jQuery("td#alternativeCount",this.el).html(this.model.alternatives.length);

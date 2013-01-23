@@ -29,6 +29,7 @@ App.module("main.projects",function(){
         var chartEl = jQuery("td#graphs",this.el);
         this.statusChart.setElement( chartEl );
         this.statusChart.render();
+        this.onDecisionsChanged();
     },
     onDecisionsChanged : function(){
       var decisions = {};
