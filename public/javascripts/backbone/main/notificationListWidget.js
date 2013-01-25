@@ -13,7 +13,7 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
     initialize: function(options) {
       _(this).bindAll();
 
-      this.itemView = App.main.Views.NotificationListWidgetItem;
+      this.itemView = this.selectItemView;
       this.itemViewOptions = {
         context: this.context
       };
@@ -24,7 +24,23 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
     },
     onRender: function() {
     },
+    getItemView : function( notificationModel ){
+      var subViewClass;
 
+    if( ! notificationModel ){
+        return(App.main.Views.NotificationListWidgetItem);
+    }
+    
+      switch( notificationModel.get('event') ){
+        case 'requestFocus':
+          subViewClass = App.main.Views.NotificationListWidgetRequestFocus;
+          break;
+        default:
+          subViewClass = App.main.Views.NotificationListWidgetItem;
+          break;
+        }
+      return subViewClass;
+    },
     notifyEvent : function( data ) {
       var notification = JSON.parse(data);
       
@@ -33,8 +49,15 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       notification.id = notification.id+(new Date().getTime()).toString();
 
       var model = new Backbone.Model( notification );
-      this.collection.add(model);
 
+      switch( notification.event ){
+        case 'requestFocus':
+          break;
+        default:
+          return;
+      }
+
+      this.collection.add(model);
 
       if( this.collection.length > 20 ){
         this.collection.shift();
