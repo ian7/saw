@@ -254,4 +254,20 @@ class RController < ApplicationController
         format.json { render :json => value }
     end
   end
+
+  def postNotify
+    h = JSON.parse(params.first[0].to_s);
+    h['id'] = params[:id]
+    h['distance'] = 0;
+ #   r = Taggable.find params[:id]
+    h['event'] = 'postNotify'
+    h['class'] = 'notify'
+    h['user'] = current_user.email
+ 
+    Juggernaut.publish('channel1', h.to_json.to_s )
+
+     respond_to do |format|
+        format.any { render :json => h.to_json }
+    end
+  end
 end
