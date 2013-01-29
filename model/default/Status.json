@@ -12,5 +12,33 @@
     "author_id": {
       "$oid": "4f9d67e2e90a3e18b9000004"
     }
+  },
+  {
+    "_id": {
+      "$oid": "510848050d31d2551098f1e7"
+    },
+    "_type": "Tag",
+    "type": "Status",
+    "name": "Obsolete",
+    "creator_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "author_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "510848050d31d2551098f1e8"
+    },
+    "_type": "Tag",
+    "type": "Status",
+    "name": "Tentative",
+    "creator_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "author_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    }
   }
 ]
