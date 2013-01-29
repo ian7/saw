@@ -110,10 +110,12 @@ App.module("main.capture",function(){
 
         */
        
-       // let's remove focus from all other items
-       jQuery('table.alternativeListDetails tr.alternative').removeClass('requestFocus');
-       // and add only to this one. 
-       jQuery(this.el).addClass('requestFocus');
+       if( notification.distance === 0 && notification.event === 'requestFocus'){
+           // let's remove focus from all other items
+           jQuery('table.alternativeListDetails tr.alternative').removeClass('requestFocus');
+           // and add only to this one. 
+           jQuery(this.el).addClass('requestFocus');        
+       }
     },
     onItemRendered : function(){
         // this way we start in unExpanded state
