@@ -34,6 +34,8 @@ Saw::Application.routes.draw do
   get 'r/:id/:attribute' => 'r#attribute'
   put 'r/:id/:attribute' => 'r#setAttribute'
 
+  post 'r/:id/notify' => 'r#postNotify'
+
   resources :r
   resources :t
 

@@ -1,4 +1,4 @@
-/*global App, Backbone,_,jQuery,JST*/
+/*global App, Backbone,_,jQuery,JST,userName*/
 
 App.module("main.capture",function(){
   this.Views.AlternativeDetails = Backbone.Marionette.CompositeView.extend({
@@ -15,7 +15,10 @@ App.module("main.capture",function(){
         */
         "click .decide"             : "decide",
         "click .undecide"           : "undecide",
-        "click div.button#deleteAlternative"   : "deleteAlternative",
+        "click #deleteAlternative"   : "deleteAlternative",
+        "click #sealAlternative"    : 'onSealAlternative',
+        "click #tags"   : 'onTags',
+        "click #requestFocus"   : 'onRequestFocus',
         "click div#editRationale"   : "editRationale",
         "click #relate" : "relate",
         "click i#expand" : "expandClicked",
@@ -64,6 +67,9 @@ App.module("main.capture",function(){
        this.model.updateRelationsTo = true;
        this.model.getRelationsTo();
 
+       this.model.relationsTo.on('add',this.updateSealing,this);
+       this.model.relationsTo.on('remove',this.updateSealing,this);
+
        this.relatedFromList = new App.main.capture.Views.ItemRelationList({
            context: this.context,
            collection: this.model.relationsFrom,
@@ -103,6 +109,11 @@ App.module("main.capture",function(){
         }
 
         */
+       
+       // let's remove focus from all other items
+       jQuery('table.alternativeListDetails tr.alternative').removeClass('requestFocus');
+       // and add only to this one. 
+       jQuery(this.el).addClass('requestFocus');
     },
     onItemRendered : function(){
         // this way we start in unExpanded state
@@ -119,6 +130,49 @@ App.module("main.capture",function(){
         this.relatedFromList.render();
 
         this.updateDecisionCount();
+
+        jQuery("#deleteAlternative",this.el).popover({
+            trigger: 'hover',
+            title: 'Delete',
+            content: 'Delete this Alternative',
+            placement: 'top'
+        });
+
+        jQuery("#sealAlternative",this.el).popover({
+            trigger: 'hover',
+            title: 'Seal',
+            content: '(un)seal this Alternative',
+            placement: 'top'
+        });
+
+        jQuery("#expand",this.el).popover({
+            trigger: 'hover',
+            title: 'Expand',
+            content: 'Expand this Alternative',
+            placement: 'right'
+        });
+
+        jQuery("#relate",this.el).popover({
+            trigger: 'hover',
+            title: 'Relate',
+            content: 'Change relations to and from this Alternative',
+            placement: 'top'
+        });
+
+        jQuery("#tags",this.el).popover({
+            trigger: 'hover',
+            title: 'Tags',
+            content: 'Add and remove tags on this Alternative',
+            placement: 'top'
+        });
+
+        jQuery("#requestFocus",this.el).popover({
+            trigger: 'hover',
+            title: 'Focus',
+            content: 'Request your team to focus on this Alternative',
+            placement: 'top'
+        });
+
     },
     projectComparator : function( decision ){
             //return decision.get('id');        
@@ -180,7 +234,7 @@ App.module("main.capture",function(){
             
             if( myDecisions.length === 0 ){
                 _(this.context.parentContext.decisions.models).each( function( decision ){
-                    h += "<div class='button decide "+ decision.get('name').toLowerCase() +"'";
+                    h += "<div class='button decide "+ decision.get('color').toLowerCase() +"'";
                     h += "id='"+ decision.get('name') + "' rel='whatever.html'>" + decision.get('name') /*+ "("+ decision.count + ")*/ + "</div><br/>";
                 },this);
             }
@@ -188,7 +242,7 @@ App.module("main.capture",function(){
             else{
                 _(this.context.parentContext.decisions.models).each(function(decision) {
                     if( myDecisions[0].get('origin') === decision.get('id') ) { 
-                        h += "<div class='button undecide " +  decision.get('name').toLowerCase() + "' id='" + decision.get('id') + "'>Revoke</div><br/>";
+                        h += "<div class='button undecide " +  decision.get('color').toLowerCase() + "' id='" + decision.get('id') + "'>Revoke</div><br/>";
                     } 
                     else { 
                         h += "<div class='button disabled' id='" + decision.get('name') +"'>" + decision.get('name') + "</div><br/>";
@@ -196,10 +250,11 @@ App.module("main.capture",function(){
                 },this); 
             }
 
-            h += "<div class='button black expanded' id='relate'>Relate</div>";
+//            h += "<div class='button black expanded' id='relate'>Relate</div>";
             jQuery("div#decisionButtons",this.el).html( h );
         },
     onRender : function(){
+        this.updateSealing();
     },
     selectAll : function( e ){ 
         if( e.toElement.innerText === '(edit to add)') {
@@ -210,6 +265,7 @@ App.module("main.capture",function(){
       if( confirm("Are you sure that you want to delete design alternaitve named:\n"+this.model.get('name') ) ) {
         // and then destroy it.
         this.model.destroy();
+        jQuery("div.popover").remove();
         }
     },
     unrelateAlternative : function() {
@@ -313,8 +369,27 @@ App.module("main.capture",function(){
                 }); 
     },*/
     relate : function(){
-        this.context.item = this.model;
-        this.context.dispatch("capture:item:relate");
+        //this.context.item = this.model;
+        this.context.dispatch("capture:item:relate",this.model);
+    },
+    onTags : function(){
+      var widget = new App.main.Views.TaggingWidget({context:App.main.context, model: this.model });
+      App.main.layout.modal.show( widget );
+    },
+    updateSealing : function(){
+        var sealingEl = jQuery('#sealAlternative',this.el);
+        if( this.model.isSealed() ){
+            sealingEl.addClass('icon-lock').removeClass('icon-unlock');
+        }
+        else{
+            sealingEl.addClass('icon-unlock').removeClass('icon-lock');
+        }
+    },
+    onSealAlternative : function(){
+        this.model.toggleSeal();
+    },
+    onRequestFocus : function(){
+        this.model.notify('requestFocus');
     }
 });
 });

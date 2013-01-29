@@ -3,5 +3,7 @@ COLLECTIONS="dynamic_types dynamic_type_attributes dynamic_type_scopes"
 
 for COLLECTION in $COLLECTIONS
 do
-    mongoexport --db saw --collection $COLLECTION --jsonArray > $COLLECTION.json
+    mongoexport --db saw --collection $COLLECTION --jsonArray > $COLLECTION.temp.json
+    ruby -rubygems -e 'require "json"; ARGF.each(nil) {|f| puts JSON.pretty_generate(JSON.parse(f)) }'  $COLLECTION.temp.json > $COLLECTION.json
+    rm $COLLECTION.temp.json
 done

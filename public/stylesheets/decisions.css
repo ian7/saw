@@ -149,15 +149,48 @@ table.alternativeListDetails {
 	padding-left: 2em;
 }
 
-table.alternativeListDetails td.name {
-	vertical-align: top;
-	padding: 10px;
-	border-width: 3px;
-	border-color: white;
-	border-style: solid;
-	border-radius: 15px;
+table.alternativeListDetails tr.alternative {
+	padding: 50px;
+	margin: 50px;
 }
 
+table.alternativeListDetails tr.alternative > td {
+	vertical-align: top;
+	padding: 10px;
+	border-width: 4px;
+	border-color: white;
+	border-style: solid;
+/*	border-radius: 15px;*/
+;
+	margin-bottom: 10px;
+}
+
+
+
+table.alternativeListDetails tr.requestFocus > td{
+	border-style: dashed;
+	border-color: red;	
+	padding-bottom: 1em;
+	margin-bottom: 1em;
+	border-style: solid;
+}
+
+
+/*table { border-collapse: separate; }
+td { border: solid 1px #000; }*/
+table.alternativeListDetails tr.alternative > td:first-child { 
+	border-top-left-radius: 15px; 
+	border-bottom-left-radius: 15px;
+	border-right-width: 0;
+}
+table.alternativeListDetails tr.alternative > td:last-child {
+	border-top-right-radius: 15px; 
+	border-bottom-right-radius: 15px;
+	border-left-width: 0;
+}
+
+/*table.alternativeListDetails tr.alternative:last-child > td:first-child { border-bottom-left-radius: 15px; }
+table.alternativeListDetails tr.alternative:last-child > td:last-child { border-top-left-radius: 15px; }*/
 
 .slide-out-div {
          padding: 20px;

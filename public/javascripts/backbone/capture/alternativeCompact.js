@@ -14,7 +14,7 @@ App.module("main.capture",function(){
           model: this.model, 
           attribute: "name"
         });
-      this.model.updateDecisions();
+      this.model.updateDecisions(this.context);
     },
     onRender : function() {
       this.nameEdit.render(jQuery("span.editable#name",this.el).first());

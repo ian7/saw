@@ -1444,6 +1444,7 @@ div#subItems{
 
 .hyperlink { 
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .floatLeft{ 
@@ -1507,15 +1508,19 @@ div#speedButtonsSidebar div.button {
 }
 
 .opaqueHover {
-  opacity: 0.2;
+  opacity: 0.5;
   cursor: pointer;
+  font-size: 1.5em;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 .opaqueHover:hover {
   opacity: 1.0;
+  color: black;
 }
 .iconWidth{
-  width: 16px;
+  width: 38px;
 }
 .authorNameWidth{
   width: 150px;
@@ -1566,4 +1571,15 @@ div.TaggingWidget div.taggingListWidgetItem div.button{
 
 div.taggingListWidgetItem:hover{
   background-color: #cccccc;
+}
+
+table.alternativeListDetails tr.alternative span#header{
+  padding-left: 1em;
+}
+
+table#notifications tr.notificationListWidgetItem:nth-of-type(odd) {
+  background-color: #ccc; 
+}
+table#notifications tr.notificationListWidgetItem:nth-of-type(even){
+  background-color: #eee; 
 }

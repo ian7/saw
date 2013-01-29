@@ -1,0 +1,65 @@
+[
+  {
+    "_id": {
+      "$oid": "4f9d67e2e90a3e18b900002c"
+    },
+    "_type": "Tag",
+    "author_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "color": "Green",
+    "created_at": {
+      "$date": 1335715810000
+    },
+    "creator_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "name": "Positive",
+    "type": "Decision",
+    "updated_at": {
+      "$date": 1335715810000
+    }
+  },
+  {
+    "_id": {
+      "$oid": "4f9d67e2e90a3e18b900002d"
+    },
+    "_type": "Tag",
+    "author_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "color": "Red",
+    "created_at": {
+      "$date": 1335715810000
+    },
+    "creator_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "name": "Negative",
+    "type": "Decision",
+    "updated_at": {
+      "$date": 1335715810000
+    }
+  },
+  {
+    "_id": {
+      "$oid": "4f9d67e2e90a3e18b900002e"
+    },
+    "_type": "Tag",
+    "author_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "color": "Blue",
+    "created_at": {
+      "$date": 1335715810000
+    },
+    "creator_id": {
+      "$oid": "4f9d67e2e90a3e18b9000004"
+    },
+    "name": "Open",
+    "type": "Decision",
+    "updated_at": {
+      "$date": 1335715810000
+    }
+  }
+]

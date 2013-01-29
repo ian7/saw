@@ -18,6 +18,7 @@ App.Models.Alternative = App.Data.Item.extend({
     this.decisions.comparator = this.decisionComparator;
     this.decisions.on('add',this.gotDecisionsUpdate,this );
     this.decisions.on('remove',this.gotDecisionsUpdate,this );
+    this.decisions.on('reset',this.gotDecisionsUpdate,this );
     this.decisions.on('gotProjects',this.gotDecisionsUpdate,this );
 
     this.on('notify',this.notified, this);
@@ -51,6 +52,11 @@ App.Models.Alternative = App.Data.Item.extend({
       // we'll need context to get decisions, project, etc. 
       this.context = context;
 
+
+      if( !this.context ){
+        throw new Error("proceeding without context doesn't make sense");
+      }
+
       // set filter for superCollection 
       this.decisions.addFilter = this.addFilter;
 
@@ -65,7 +71,7 @@ App.Models.Alternative = App.Data.Item.extend({
      var gotIt = false;
 
       // here we go over all the decisions stored in the context
-      _(this.context.decisions.models).each(function( decision ){
+      _(App.main.context.decisions.models).each(function( decision ){
         // if decision 
         if( relationModel.get('origin') === decision.get('id') ){
           gotIt = true;

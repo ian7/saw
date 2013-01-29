@@ -22,7 +22,8 @@ App.module("main.capture",function(){
       }
     },
     events : {
-      "click #deleteDecision" :  "deleteDecision"
+      "click #deleteDecision" :  "onDeleteDecision",
+      "click #overrideDecision" :  "onOverrideDecision"
     },
     initialize : function(options) {
       _(this).bindAll();
@@ -32,9 +33,21 @@ App.module("main.capture",function(){
       this.model.updateProject( this.context );
       },
     onRender : function() {
+      jQuery("#deleteDecision",this.el).popover({
+              trigger: 'hover',
+              title: 'Delete',
+              content: 'Permanently delete this decision',
+              placement: 'right'
+          });
+      jQuery("#overrideDecision",this.el).popover({
+              trigger: 'hover',
+              title: 'Override',
+              content: 'Override (ignore) this decision',
+              placement: 'right'
+          });
       this.projectChanged();
       },
-    deleteDecision : function(){
+    onDeleteDecision : function(){
       var promptText = "Are you sure that you want to delete selected decision?";
       if( confirm( promptText ) ) {
         if( this.model.collection ) {
@@ -43,11 +56,15 @@ App.module("main.capture",function(){
           }
         else {
           alert( 'not in the collection - fucker: ' + this.model.get('name') );
-          }
-          // and then destroy it.
-          this.model.destroy();
+        }
+        // and then destroy it.
+        this.model.destroy();
+        jQuery("div.popover").remove();
         }
 
+    },
+    onOverrideDecision : function(){
+      alert('to be implemented');
     },
     gotProjects : function(){
       if( this.model.project ) {

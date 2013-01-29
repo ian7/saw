@@ -3,12 +3,64 @@
 /*global App, Backbone,_,jQuery,eventer */
 
 App.Data.Model = Backbone.Model.extend({
-
+    initialize : function(){
+        App.Data.Model.__super__.initialize.apply(this,arguments);
+        this.on('sync',this.onSync,this);
+    },
+    sync: function() {
+        console.log('sync model');
+        return Backbone.sync.apply(this, arguments);
+    },
+    onSync : function( model,resp,options ){
+        console.log('onSync model');
+    }
 });
 
 
 App.Data.Collection = Backbone.Collection.extend({
-    model: App.Data.Model
+    model: App.Data.Model,
+    initialize : function(){
+        _(this).bindAll();
+
+        App.Data.Collection.__super__.initialize.apply(this,arguments);
+        this.on('sync',this.onSync,this);
+        eventer.register(this);
+    },
+    onSync : function( collection,resp,options ){
+        if( collection.ownerID ){
+            var o;
+            if( sessionStorage[collection.ownerID] ){
+                o = JSON.parse(sessionStorage[collection.ownerID]);
+            }
+            else{
+               o = {};
+            }
+            o[collection.url] = true;
+            sessionStorage[collection.ownerID] = JSON.stringify( o );
+        }
+        App.connectionsCount = App.connectionsCount - 1;
+    },
+    sync: function( action, collection ) {
+        var o = null;
+        if( sessionStorage[collection.ownerID] ) {
+            o = JSON.parse(sessionStorage[collection.ownerID]);
+        }
+        if( o && o[collection.url] ) {
+            console.log("sync collection caught - ditching it");
+            return null;
+        }
+        else {
+            //console.log('sync collection');
+            App.connectionsCount = App.connectionsCount + 1;
+            return Backbone.sync.apply(this, arguments);
+        }
+    },
+    notifyEvent : function( data ){
+        var notification = JSON.parse( data );
+        if( notification.distance === 1 ){
+            sessionStorage.removeItem( notification.id );
+        }
+    }
 });
 
 App.Data.SuperCollection = Backbone.Collection.extend({
@@ -271,12 +323,27 @@ App.Data.Item = App.Data.Model.extend({
     notifyBlured : function( attribute ){
         jQuery.getJSON('/notify/' + this.get('id') + '/' + attribute + '/blured', function(data) {});
     },
-    getRelationsTo : function( relationType, collectionType ){
+    notify : function( event ){
+
+        switch( typeof( event )){
+            case 'object':
+                  jQuery.post('/r/' + this.get('id') + '/notify', JSON.stringify(event), function( data ){});
+                break;
+            case 'string':
+                jQuery.getJSON('/notify/' + this.get('id') + '/' + event, function( data ){});
+                break;
+            default:
+                // that shouldn't happen
+                break;
+        }
+
+    },
+    getRelationsTo : function( relationType, collectionType, collectionOptions ){
         var collection = null;
 
         if( collectionType ){
             // this assumes that collectionType is derrived from App.Data.Relations
-            collection = new collectionType();
+            collection = new collectionType( collectionOptions );
         }
         else{
             collection = this.relationsTo;
@@ -286,12 +353,12 @@ App.Data.Item = App.Data.Model.extend({
 
         return collection;
     },
-    getRelationsFrom : function( relationType, collectionType ){
+    getRelationsFrom : function( relationType, collectionType, collectionOptions ){
         var collection = null;
 
         if( collectionType ){
             // this assumes that collectionType is derrived from App.Data.Relations
-            collection = new collectionType();
+            collection = new collectionType( collectionOptions );
         }
         else{
             collection = this.relationsFrom;
@@ -320,6 +387,30 @@ App.Data.Item = App.Data.Model.extend({
             newCollection.url = this.url() + "/related_from";
         }
         return newCollection;
+    },
+    isSealed : function(){
+        var sealTag = App.main.context.tags.where({'type':'Status','name':'Sealed'})[0];
+        var sealTaggings = _(this.relationsTo.models).find( function( relation ) {
+            return( relation.get('origin') === sealTag.get('id') );
+        },this);
+
+        if( sealTaggings ){
+            return sealTaggings;
+        }        
+        else{
+            return false;
+        }
+    },
+    toggleSeal : function(){
+        var sealTag = App.main.context.tags.where({'type':'Status','name':'Sealed'})[0];
+
+        var sealing = this.isSealed();
+        if( sealing ){
+            sealing.destroy();
+        }
+        else{
+            this.tag( sealTag );
+        }
     }
 
 });

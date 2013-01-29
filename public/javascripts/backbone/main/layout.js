@@ -36,8 +36,13 @@ App.module('main',function(){
         onRender : function(){
             this.ribbonView = new App.main.Views.Ribbon({context:this.context});
             this.ribbon.show( this.ribbonView );
+
             this.speedButtonsView = new App.main.Views.SpeedButtons({context:this.context});
             this.speedButtonsSidebar.show( this.speedButtonsView );
+
+            this.notificationView = new App.main.Views.NotificationListWidget({context:this.context});
+            this.notificationSidebar.show( this.notificationView );
+
             this.landingView = new App.main.Views.Landing({context:this.context});
             this.central.show( this.landingView );
         },

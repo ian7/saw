@@ -16,11 +16,19 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       this.itemModel.id = this.model.get(this.relationEnd);
       this.itemModel.fetch();
 
-      this.subView = new App.main.Views.ItemAttributeWidget({
+      this.subViewType = new App.main.Views.ItemAttributeWidget({
+        context: this.context,
+        model: this.itemModel,
+        attribute: 'type'
+      });  
+
+      this.subViewName = new App.main.Views.ItemAttributeWidget({
         context: this.context,
         model: this.itemModel,
         attribute: 'name'
       });  
+
+
     },
     onRender: function() {
 
@@ -51,8 +59,19 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
         }
       }
 
-      this.subView.setElement( jQuery( "td#subItem",this.el ));
-      this.subView.render();
+      this.subViewType.setElement( jQuery( "span#subItemType",this.el ));
+      this.subViewType.render();
+
+      this.subViewName.setElement( jQuery( "span#subItemName",this.el ));
+      this.subViewName.render();
+
+
+       jQuery("#deleteRelation",this.el).popover({
+            trigger: 'hover',
+            title: 'Delete',
+            content: 'Removes this relation permanentnly.',
+            placement: 'right'
+        });
     },
     onRelationDelete : function(){
     var promptText = "Are you sure that you want to delete relation: " + this.model.get('relation') 
@@ -67,7 +86,8 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
         alert( 'not in the collection - fucker: ' + this.model.get('name') );
         }
         // and then destroy it.
-        this.model.destroy();
+      this.model.destroy();
+      jQuery("div.popover").remove();
       }
     }
   });
