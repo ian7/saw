@@ -377,6 +377,7 @@ App.module("main.capture",function(){
     onTags : function(){
       var widget = new App.main.Views.TaggingWidget({context:App.main.context, model: this.model });
       App.main.layout.modal.show( widget );
+      return false;
     },
     updateSealing : function(){
         var sealingEl = jQuery('#sealAlternative',this.el);
