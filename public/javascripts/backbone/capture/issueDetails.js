@@ -11,7 +11,8 @@ App.module("main.capture",function(){
         "click #sealAlternative"    : 'onSealAlternative',
         "click #tags"   : 'onTags',
         "click #requestFocus"   : 'onRequestFocus',
-        "click #relate" : "onRelate"
+        "click #relate" : "onRelate",
+        "click #classify" : "onClassify"
     },
     templateHelpers: {
         renderAttributeFields : function(){
@@ -145,6 +146,17 @@ App.module("main.capture",function(){
     },
     onRequestFocus : function(){
         this.model.notify('requestFocus');
+    },
+    onClassify : function(){
+        var tagType = App.main.context.types.find( function( type ){
+            return ( type.get('name') === 'Status');
+        },this);
+        var classifyWidget = new App.main.Views.ClassifyWidget({
+            context: this.context,
+            tagType: tagType,
+            collection: this.model.alternatives
+        });
+        App.main.layout.modal.show( classifyWidget );
     }
 
   });
