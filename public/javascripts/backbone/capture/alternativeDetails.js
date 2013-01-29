@@ -109,6 +109,11 @@ App.module("main.capture",function(){
         }
 
         */
+       
+       // let's remove focus from all other items
+       jQuery('table.alternativeListDetails tr.alternative').removeClass('requestFocus');
+       // and add only to this one. 
+       jQuery(this.el).addClass('requestFocus');
     },
     onItemRendered : function(){
         // this way we start in unExpanded state
@@ -237,7 +242,7 @@ App.module("main.capture",function(){
             else{
                 _(this.context.parentContext.decisions.models).each(function(decision) {
                     if( myDecisions[0].get('origin') === decision.get('id') ) { 
-                        h += "<div class='button undecide " +  decision.get('name').toLowerCase() + "' id='" + decision.get('id') + "'>Revoke</div><br/>";
+                        h += "<div class='button undecide " +  decision.get('color').toLowerCase() + "' id='" + decision.get('id') + "'>Revoke</div><br/>";
                     } 
                     else { 
                         h += "<div class='button disabled' id='" + decision.get('name') +"'>" + decision.get('name') + "</div><br/>";
