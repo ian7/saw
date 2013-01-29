@@ -908,7 +908,7 @@ div#layout div#rightSidebar{
   position: fixed;
   top: 5em;
   right: 0px;
-  z-index: 1999;
+  z-index: 1000;
 }
 
 div#layout div#rightSidebar div#notificationSidebar{
@@ -1004,7 +1004,7 @@ div#layout div#trunk {
 div#layout div#central{
   background-color: white;
   margin-right: 13em;
-  margin-top: 1em;
+  margin-top: 2em;
   padding: 2em;
 }
 

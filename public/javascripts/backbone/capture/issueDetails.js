@@ -3,11 +3,15 @@
 App.module("main.capture",function(){
   this.Views.IssueDetails = Backbone.Marionette.CompositeView.extend({
     template: JST['capture/issueDetails'],
-    tagName: "div", 
+    tagName: "div",
     itemView: App.main.capture.Views.AlternativeDetails,
     itemViewContainer: "table.alternativeListDetails tbody",
     events: {
-        "click  img.anchor" : "anchorClicked"
+        "click #deleteIssue"   : "deleteIssue",
+        "click #sealAlternative"    : 'onSealAlternative',
+        "click #tags"   : 'onTags',
+        "click #requestFocus"   : 'onRequestFocus',
+        "click #relate" : "onRelate"
     },
     templateHelpers: {
         renderAttributeFields : function(){
@@ -50,7 +54,40 @@ App.module("main.capture",function(){
                 + "/issue/" + this.context.issue.get('id'));
     },
     onRender: function(){
-        
+         jQuery("#deleteIssue",this.el).popover({
+            trigger: 'hover',
+            title: 'Delete',
+            content: 'Delete this Issue',
+            placement: 'bottom'
+        });
+
+        jQuery("#sealAlternative",this.el).popover({
+            trigger: 'hover',
+            title: 'Seal',
+            content: '(un)seal this Issue',
+            placement: 'bottom'
+        });
+
+        jQuery("#relate",this.el).popover({
+            trigger: 'hover',
+            title: 'Relate',
+            content: 'Change relations to and from this Issue',
+            placement: 'bottom'
+        });
+
+        jQuery("#tags",this.el).popover({
+            trigger: 'hover',
+            title: 'Tags',
+            content: 'Add and remove tags on this Issue',
+            placement: 'bottom'
+        });
+
+        jQuery("#requestFocus",this.el).popover({
+            trigger: 'hover',
+            title: 'Focus',
+            content: 'Request your team to focus on this Issue',
+            placement: 'bottom'
+        });
     },
     onItemRendered : function() {
         this.attributesView.el = this.attributesView.$el = jQuery("div.itemAttributes",this.el).first();
@@ -77,7 +114,39 @@ App.module("main.capture",function(){
     onDecisionsChanged : function(){
         jQuery('span#issueStatus',this.el).html( this.model.decisionState() );
         //console.log('now');
+    },
+    deleteIssue : function(){
+      if( confirm("Are you sure that you want to delete design issue named:\n"+this.model.get('name') ) ) {
+        // and then destroy it.
+        this.model.destroy();
+        jQuery("div.popover").remove();
+        this.context.dispatchGlobally("capture:issues:list");
+        }
+    },
+    onRelate : function(){
+        //this.context.item = this.model;
+        this.context.dispatch("capture:item:relate",this.model);
+    },
+    onTags : function(){
+      var widget = new App.main.Views.TaggingWidget({context:App.main.context, model: this.model });
+      App.main.layout.modal.show( widget );
+    },
+    updateSealing : function(){
+        var sealingEl = jQuery('#sealAlternative',this.el);
+        if( this.model.isSealed() ){
+            sealingEl.addClass('icon-lock').removeClass('icon-unlock');
+        }
+        else{
+            sealingEl.addClass('icon-unlock').removeClass('icon-lock');
+        }
+    },
+    onSealAlternative : function(){
+        this.model.toggleSeal();
+    },
+    onRequestFocus : function(){
+        this.model.notify('requestFocus');
     }
+
   });
 });
 
