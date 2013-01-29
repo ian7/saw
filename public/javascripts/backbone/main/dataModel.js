@@ -141,9 +141,21 @@ App.Data.Item = App.Data.Model.extend({
 
         // initialization of the relations needs to happen here due to the late type declarations
         this.relationsTo = new App.Data.Relations();
+        this.relationsTo.on('add',this.relationsToChanged,this);
+        this.relationsTo.on('remove',this.relationsToChanged,this);
         this.updateRelationsTo = false;
         this.relationsFrom = new App.Data.Relations();
+        this.relationsFrom.on('add',this.relationsFromChanged,this);
+        this.relationsFrom.on('remove',this.relationsFromChanged,this);
         this.updateRelationsFrom = false;
+    },
+    relationsToChanged : function( model ){
+        this.trigger('relationsToChanged',model);
+        this.trigger('relationsChanged',model);
+    },
+    relationsFromChanged : function( model ){
+        this.trigger('relationsToChanged',model);
+        this.trigger('relationsChanged',model);
     },
     notifyEvent : function( data ) {
         var e = JSON.parse(data);
