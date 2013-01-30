@@ -373,6 +373,7 @@ App.module("main.capture",function(){
     relate : function(){
         //this.context.item = this.model;
         this.context.dispatch("capture:item:relate",this.model);
+        return false;
     },
     onTags : function(){
       var widget = new App.main.Views.TaggingWidget({context:App.main.context, model: this.model });
@@ -390,9 +391,11 @@ App.module("main.capture",function(){
     },
     onSealAlternative : function(){
         this.model.toggleSeal();
+        return false;
     },
     onRequestFocus : function(){
         this.model.notify('requestFocus');
+        return false;
     }
 });
 });
