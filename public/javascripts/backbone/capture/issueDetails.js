@@ -45,6 +45,9 @@ App.module("main.capture",function(){
         this.collection.on('decisionsChanged',this.onDecisionsChanged,this );
 
         this.itemViewOptions = {context: this.context};
+        
+        this.model.relationsTo.on('add',this.updateSealing,this);
+        this.model.relationsTo.on('remove',this.updateSealing,this);
 
         this.on('composite:model:rendered',this.onItemRendered,this);
         this.model.on('change',this.pushState,this);
