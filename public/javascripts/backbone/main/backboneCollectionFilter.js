@@ -109,7 +109,7 @@ _.extend(Backbone.CollectionFilter.prototype, Backbone.Events, {
                 // negative match against the pattern, or no key at all
                 if( (value === null && model.get(key) !== null) || 
                     (value !== null && model.get(key) === null) ||
-                    (model.get(key) !== null && model.get(key).match(value) === null) ){
+                    (model.get(key) != null && model.get(key).match(value) === null) ){
                     //(model.get(key) !== null && (model.get(key) === value) ) ){
                     matched = false;
                 }
