@@ -22,7 +22,28 @@ App.Models.Alternative = App.Data.Item.extend({
     this.decisions.on('gotProjects',this.gotDecisionsUpdate,this );
 
     this.on('notify',this.notified, this);
-    this.relationsFrom.on('reset',this.gotSolvedByRelations,this);
+    //this.relationsFrom.on('reset',this.gotSolvedByRelations,this);
+    this.on('relationsChanged',this.gotSolvedByRelations,this);
+
+
+    this.updateRelationsFrom = true;
+    this.updateRelationsTo = true;
+    this.solvedByRelations = new Backbone.CollectionFilter({
+      collection: this.relationsFrom,
+      filter: {
+        'type': 'SolvedBy'
+      }
+    });
+    this.solvedByRelations.on('add',this.onSBadded,this);
+    this.solvedByRelations.on('remove',this.onSBremoved,this);
+   },
+   onSBadded : function(model){
+    this.decisions.addCollection(model.relationsTo);
+    model.relationsTo.model = App.Models.Decision;
+    model.getRelationsTo();
+   },
+   onSBremoved : function(model){
+    this.decisons.removeCollection(model.relationsTo);
    },
    decisionComparator : function( decision ){
       var comparable = "";
@@ -60,7 +81,8 @@ App.Models.Alternative = App.Data.Item.extend({
       // set filter for superCollection 
       this.decisions.addFilter = this.addFilter;
 
-      this.getRelationsFrom("SolvedBy");
+      //this.getRelationsFrom("SolvedBy");
+      this.getRelationsFrom();
     
     },
     // this is to be passed as filter to the SuperCollection so that it can fish-out decision taggings from others
@@ -86,25 +108,22 @@ App.Models.Alternative = App.Data.Item.extend({
       }
     },
     gotSolvedByRelations : function(){
-      this.decisions.reset();
-      _(this.relationsFrom.models).each( function( model ){
+      /*this.decisions.reset();
+      _(this.solvedByRelations.models).each( function( relation ){
         // taggings on the SolvedBy relation are decisions, so let's fetch them!
 
-        var decisions = model.getRelationsTo("Tagging",App.Models.Decisions);
-        
+        var decisions = relation.getRelationsTo("Tagging",App.Models.Decisions);
+
         this.decisions.addCollection( decisions );
 
       },this);
+      
+      //this.decisions.fetch();
+
+      //this.gotDecisionsUpdate();*/
       this.areDecisionsUpdated = true;
     },
     notified : function( notification ) {
-      if( notification.distance ===  1 ) {
-        if( notification.event === "relate" ||
-            notification.event === "unrelate") {
-
-            this.getRelationsTo();
-        }
-      }
 
        if( notification.distance === 2 ){
             if( notification.event === "dotag" || notification.event === 'destroy' ){            
@@ -114,6 +133,7 @@ App.Models.Alternative = App.Data.Item.extend({
         }
 
     },
+
     gotDecisionsUpdate : function(){
       this.trigger('decisionsChanged',this );
     },
