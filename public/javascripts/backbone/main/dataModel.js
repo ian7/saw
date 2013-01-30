@@ -47,6 +47,7 @@ App.Data.Collection = Backbone.Collection.extend({
         }
         if( o && o[collection.url] ) {
             console.log("sync collection caught - ditching it");
+            this.trigger('sync',this,o[collection.url],null);
             return null;
         }
         else {
