@@ -145,11 +145,11 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
             switch( options.direction ){
                 case 'from':
                     this.relations = options.item.getRelationsFrom();
-                    this.relationEnd = 'tip';
+                    this.relationEnd = 'origin';
                     break;
                 case 'to':
                     this.relations = options.item.getRelationsTo();
-                    this.relationEnd = 'origin';
+                    this.relationEnd = 'tip';
                     break;
                 default:
                     throw new Error('Wrong direction!');
@@ -176,6 +176,10 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
             this.model = App.Data.Item;
         }
 
+        // optionally relations can be actually filtered
+        if( options.filter ){
+            this.filter = options.filter;
+        }
 
         this.relations.on('add',this.onRelationAdd,this);
         this.relations.on('remove',this.onRelationRemove,this);
@@ -187,6 +191,12 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
 
     },
     onRelationAdd : function( relation ){
+        
+        // if it doesn't go through the filter, then ditch it immediately
+        if( !this.filter( relation )){
+            return;
+        }
+
         // let's make a new thing..
         var newItem = new this.model({id:relation.get(this.relationEnd)});
 
@@ -214,6 +224,9 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
     },
     onItemFetchError : function( item ){
         this.remove( item );
+    },
+    filter : function( item ){
+        return true;
     }
 });
 
