@@ -217,6 +217,74 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
     }
 });
 
+
+App.Data.FilteredCollection = Backbone.Collection.extend({
+    initialize : function( options ){
+        _(this).bindAll();
+
+        if( !options.collection ){
+            throw new Error("it doesn't make sense to filter without collection" );
+        }
+
+        if( !options.filter ){
+            throw new Error("it doesn't make sense to filter without filter");
+        }
+
+        this.filter = options.filter;
+
+        this.collection = options.collection;
+        this.collection.on('add',this.onAdd,this);
+        this.collection.on('remove',this.onRemove,this);
+        this.collection.on('change',this.onChange,this);
+
+        // in case our collection has different model types
+        if( options.model ){
+            this.model = options.model;
+        }
+        // otherwise just copy model from the filtered collection
+        else{
+            this.model = this.collection.model;
+        }
+
+
+        // let's add what we have now...
+        _(this.collection.models).each( function( model ){
+            this.onAdd( model );
+        },this);
+
+    },
+    onAdd : function( item ){
+        if( !this.filter( item ) ){
+            return;
+        }
+        this.add( item );
+           
+    },
+    onRemove : function( item ){
+        var foundModel = _(this.models).find( function( model ){
+            return( item.get('id') === model.get('id') );
+        },this);
+
+        if( foundModel ){
+            this.remove( foundModel );
+        }
+    },
+    onChange : function( item ){
+        var foundModel = _(this.models).find( function( model ){
+            return( item.get('id') === model.get('id') );
+        },this);
+
+        if( foundModel && !this.filter( item )){
+            this.remove( foundModel );
+        }
+    },
+    filter : function( model ){
+        return true;
+    }
+
+
+});
+
 App.Data.Item = App.Data.Model.extend({
     
     relationsTo : null,
