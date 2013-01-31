@@ -26,6 +26,7 @@ App.Data.Collection = Backbone.Collection.extend({
         this.on('sync',this.onSync,this);
         eventer.register(this);
     },
+    /* this part implements client-side call cache... */
     onSync : function( collection,resp,options ){
         if( collection.ownerID ){
             var o;
@@ -61,6 +62,7 @@ App.Data.Collection = Backbone.Collection.extend({
             sessionStorage.removeItem( notification.id );
         }
     }
+    /* end of client-side cache */
 });
 
 App.Data.SuperCollection = Backbone.Collection.extend({
@@ -129,6 +131,91 @@ App.Data.SuperCollection = Backbone.Collection.extend({
 
 });
 
+
+App.Data.RelatedCollection = Backbone.Collection.extend({
+    
+    // this gets set in the initializer
+    model : null,
+
+    initialize : function( options ){
+        _(this).bindAll();
+
+        if( options.item ){
+            this.item = options.item;
+            switch( options.direction ){
+                case 'from':
+                    this.relations = options.item.getRelationsFrom();
+                    this.relationEnd = 'tip';
+                    break;
+                case 'to':
+                    this.relations = options.item.getRelationsTo();
+                    this.relationEnd = 'origin';
+                    break;
+                default:
+                    throw new Error('Wrong direction!');
+                }
+        }
+
+        if( options.relations ){
+            this.relations = options.relations;
+            this.relationEnd = options.relationEnd;
+        }
+
+        if( (!options.item && !options.relations) || 
+            (options.item && !options.direction) ||
+            (options.relations && !options.relationEnd )){
+            throw new Error("I need either relations+relationEnd or item+direction in options");
+        }
+
+        // this is what's going to be instantiated for the purpose of this collection
+        if( options.model ){
+            this.model = options.model;
+        }
+        // otherwise by default we are going to be instantiating App.Data.Item
+        else{
+            this.model = App.Data.Item;
+        }
+
+
+        this.relations.on('add',this.onRelationAdd,this);
+        this.relations.on('remove',this.onRelationRemove,this);
+
+        // let's add what we have now...
+        _(this.relations.models).each( function( relation ){
+            this.onRelationAdd( relation );
+        },this);
+
+    },
+    onRelationAdd : function( relation ){
+        // let's make a new thing..
+        var newItem = new this.model({id:relation.get(this.relationEnd)});
+
+        // that should handle faulty load...
+        newItem.on('error',this.onItemFetchError,this);
+
+        // leave a reference - might come handy later on
+        newItem.relation = relation;
+
+        // pool for the attributes. 
+        newItem.fetch();
+
+        // now plainly add it to the other items
+        this.add(newItem);
+    },
+    onRelationRemove : function( relation ){
+        
+        var relatedItem = _(this.models).find( function( itemModel ){
+            return itemModel.get('id') === relation.get(this.relationEnd);
+        },this);
+
+        if( relatedItem ){
+            this.remove( relatedItem );
+        }
+    },
+    onItemFetchError : function( item ){
+        this.remove( item );
+    }
+});
 
 App.Data.Item = App.Data.Model.extend({
     
@@ -339,6 +426,8 @@ App.Data.Item = App.Data.Model.extend({
 
     },
     getRelationsTo : function( relationType, collectionType, collectionOptions ){
+        /* this code was dirty and buggy...
+        
         var collection = null;
 
         if( collectionType ){
@@ -348,12 +437,19 @@ App.Data.Item = App.Data.Model.extend({
         else{
             collection = this.relationsTo;
         }
-        collection.setItem( this,'to', relationType );
-        collection.fetch();   
+        */
+       
+        if( !this.updateRelationsTo ){
+            this.updateRelationsTo = true;
+            this.relationsTo.setItem(this,'to');
+            this.relationsTo.fetch();   
+        }
 
-        return collection;
+        return this.relationsTo;
     },
     getRelationsFrom : function( relationType, collectionType, collectionOptions ){
+        /* this code was dirty and buggy...
+
         var collection = null;
 
         if( collectionType ){
@@ -367,6 +463,15 @@ App.Data.Item = App.Data.Model.extend({
         collection.fetch();            
         
         return collection;
+        */
+
+        if( !this.updateRelationsFrom ){
+            this.updateRelationsFrom = true;
+            this.relationsFrom.setItem(this,'to');
+            this.relationsFrom.fetch();   
+        }
+
+        return this.relationsTo;
     },
     getRelatedTo : function( collectionType, itemType ){
         var newCollection = new collectionType();
