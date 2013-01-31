@@ -29,7 +29,17 @@ App.Models.Issue = App.Data.Item.extend({
 
 
     // this needs to be instantiated late because of the late-loading issues. 
-    this.alternatives = new App.Models.Alternatives();
+    //this.alternatives = new App.Models.Alternatives();
+    this.alternatives = new App.Data.RelatedCollection({
+        // we want only SolvedBy relations
+        filter : function( relation ){ 
+            return( relation.get('relation') === 'SolvedBy'); 
+        },
+        item: this,
+        direction: 'from',
+        model: App.Models.Alternative
+    });
+    
     this.alternatives.on('decisionsChanged',this.onDecisionsChanged );
 
     // alternatives don't need to be fetched during the object creation
@@ -50,24 +60,24 @@ App.Models.Issue = App.Data.Item.extend({
     },
 
     updateAlternatives : function() {
-        if( this.get('id') ){
+       /* if( this.get('id') ){
             this.alternatives.setIssue( this );
             this.alternatives.fetch();
             this.areAlternativesUpdated = true;
-        }
+        */
     },
     updateRelationsTo : function() {
         this.getRelationsTo();
     },
     notified : function( notification ) {
-      if( notification.distance ===  1 ) {
+      /*if( notification.distance ===  1 ) {
         if( notification.event === "relate" ||
             notification.event === "unrelate" ||
             notification.event === "destroy") {
 
             this.updateAlternatives();
         }
-      }
+      }*/
     },
     decisionState : function(){
         if( this.alternatives.length === 0 ){
