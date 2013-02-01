@@ -24,7 +24,7 @@ App.Models.Alternative = App.Data.Item.extend({
    // this.relationsFrom.on('reset',this.gotSolvedByRelations,this);
 
     this.solvedByRelations = new App.Data.FilteredCollection({
-      collection: this.relationsFrom,
+      collection: this.getRelationsFrom(),
       filter: function( relation ){
         return( relation.get('relation') === "SolvedBy");
         }

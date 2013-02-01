@@ -12,18 +12,12 @@ App.module("main.projects",function(){
     initialize: function() {
         _(this).bindAll();
 
-        this.model.on('decisionsChanged',this.onDecisionsChanged,this);
-        this.model.alternatives.on('reset',this.onReset,this);
+        this.model.alternatives.on('decisionsChanged',this.onDecisionsChanged,this);  
+
+        this.model.alternatives.on('add',this.onReset,this);
+        this.model.alternatives.on('remove',this.onReset,this);
         this.model.on('change',this.render,this);
 
-        // if alternatives ain't updated, then...
-        if( !this.model.areAlternativesUpdated ){
-            this.model.updateAlternatives();
-        }
-        // otherwise if we have alternatives, then just let's update decisions
-        else{
-            this.updateDecisions();
-        }
     },
     onRender: function(){
         this.onDecisionsChanged();   
@@ -34,12 +28,6 @@ App.module("main.projects",function(){
     },
     onReset : function(options){
         jQuery("td#alternativeCount",this.el).html(this.model.alternatives.length);
-        this.updateDecisions();
-    },
-    updateDecisions : function() {
-         _(this.model.alternatives.models).each( function( alternative ){
-                alternative.updateDecisions(App.main.context);
-         },this);
     }
   });
 });
