@@ -4,15 +4,44 @@
 
 App.Data.Model = Backbone.Model.extend({
     initialize : function(){
+       // this.on('change',this.onSync,this);
+       // this.on('sync',this.onSync,this);
+        this.on('notify',this.onNotify,this);
         App.Data.Model.__super__.initialize.apply(this,arguments);
-        this.on('sync',this.onSync,this);
     },
-    sync: function() {
-        console.log('sync model');
-        return Backbone.sync.apply(this, arguments);
+    sync: function( action,model,options ) {
+
+      if( action === 'get ') {
+            var storagedVal = sessionStorage[ 'i'+model.get('id') ];
+            
+            if( storagedVal ){
+                console.log( 'model cache hit');
+                this.set(JSON.parse(storagedVal));
+            }
+            else{        
+    //            console.log('sync model');
+                this.bbSuccess = options.success;
+                options.success = this.onSync;
+        
+                return Backbone.sync.apply(this, arguments);
+            }
+        }
+        else{
+            if( this.get('id') ){
+                sessionStorage.removeItem( 'i'+this.get('id') );
+            }
+            return Backbone.sync.apply(this, arguments);
+        }
     },
     onSync : function( model,resp,options ){
-        console.log('onSync model');
+//        console.log('onSync model');
+        if( this.bbSuccess ){
+            this.bbSuccess(model,resp,options);
+        }
+        sessionStorage['i'+model.id] = JSON.stringify( model );   
+    },
+    onNotify : function( notification ){
+        sessionStorage.removeItem( 'i'+notification.id );
     }
 });
 
@@ -26,28 +55,30 @@ App.Data.Collection = Backbone.Collection.extend({
         this.on('sync',this.onSync,this);
         eventer.register(this);
     },
+    /* this part implements client-side call cache... */
     onSync : function( collection,resp,options ){
         if( collection.ownerID ){
             var o;
             if( sessionStorage[collection.ownerID] ){
-                o = JSON.parse(sessionStorage[collection.ownerID]);
+                o = JSON.parse(sessionStorage['r'+collection.ownerID]);
             }
             else{
                o = {};
             }
-            o[collection.url] = true;
-            sessionStorage[collection.ownerID] = JSON.stringify( o );
+            o[collection.url] = resp;
+            sessionStorage['r'+collection.ownerID] = JSON.stringify( o );
         }
         App.connectionsCount = App.connectionsCount - 1;
     },
     sync: function( action, collection ) {
         var o = null;
-        if( sessionStorage[collection.ownerID] ) {
-            o = JSON.parse(sessionStorage[collection.ownerID]);
+        if( action === 'get' && sessionStorage[collection.ownerID] ) {
+            o = JSON.parse(sessionStorage['r'+collection.ownerID]);
         }
-        if( o && o[collection.url] ) {
-            console.log("sync collection caught - ditching it");
-            this.trigger('sync',this,o[collection.url],null);
+        if( action === 'get' && o && o[collection.url] ) {
+            console.log("collection cache hit");
+            this.reset(o[collection.url]);
+            //collection.trigger('sync', collection, o[collection.url]);
             return null;
         }
         else {
@@ -59,9 +90,10 @@ App.Data.Collection = Backbone.Collection.extend({
     notifyEvent : function( data ){
         var notification = JSON.parse( data );
         if( notification.distance === 1 ){
-            sessionStorage.removeItem( notification.id );
+            sessionStorage.removeItem( 'r'+notification.id );
         }
     }
+    /* end of client-side cache */
 });
 
 App.Data.SuperCollection = Backbone.Collection.extend({
@@ -131,6 +163,179 @@ App.Data.SuperCollection = Backbone.Collection.extend({
 });
 
 
+App.Data.RelatedCollection = Backbone.Collection.extend({
+    
+    // this gets set in the initializer
+    model : null,
+
+    initialize : function( options ){
+        _(this).bindAll();
+
+        if( options.item ){
+            this.item = options.item;
+            switch( options.direction ){
+                case 'from':
+                    this.relations = options.item.getRelationsFrom();
+                    this.relationEnd = 'tip';
+                    break;
+                case 'to':
+                    this.relations = options.item.getRelationsTo();
+                    this.relationEnd = 'origin';
+                    break;
+                default:
+                    throw new Error('Wrong direction!');
+                }
+        }
+
+        if( options.relations ){
+            this.relations = options.relations;
+            this.relationEnd = options.relationEnd;
+        }
+
+        if( (!options.item && !options.relations) || 
+            (options.item && !options.direction) ||
+            (options.relations && !options.relationEnd )){
+            throw new Error("I need either relations+relationEnd or item+direction in options");
+        }
+
+        // this is what's going to be instantiated for the purpose of this collection
+        if( options.model ){
+            this.model = options.model;
+        }
+        // otherwise by default we are going to be instantiating App.Data.Item
+        else{
+            this.model = App.Data.Item;
+        }
+
+        // optionally relations can be actually filtered
+        if( options.filter ){
+            this.filter = options.filter;
+        }
+
+        this.relations.on('add',this.onRelationAdd,this);
+        this.relations.on('remove',this.onRelationRemove,this);
+
+        // let's add what we have now...
+        _(this.relations.models).each( function( relation ){
+            this.onRelationAdd( relation );
+        },this);
+
+    },
+    onRelationAdd : function( relation ){
+        
+        // if it doesn't go through the filter, then ditch it immediately
+        if( !this.filter( relation )){
+            return;
+        }
+
+        // let's make a new thing..
+        var newItem = new this.model({id:relation.get(this.relationEnd)});
+
+        // that should handle faulty load...
+        newItem.on('error',this.onItemFetchError,this);
+
+        // leave a reference - might come handy later on
+        newItem.relation = relation;
+
+        // pool for the attributes. 
+        newItem.fetch();
+
+        // now plainly add it to the other items
+        this.add(newItem);
+    },
+    onRelationRemove : function( relation ){
+        
+        var relatedItem = _(this.models).find( function( itemModel ){
+            return itemModel.get('id') === relation.get(this.relationEnd);
+        },this);
+
+        if( relatedItem ){
+            this.remove( relatedItem );
+        }
+    },
+    onItemFetchError : function( item ){
+        this.remove( item );
+    },
+    filter : function( item ){
+        return true;
+    }
+});
+
+
+App.Data.FilteredCollection = Backbone.Collection.extend({
+    initialize : function( options ){
+        _(this).bindAll();
+
+        if( !options.collection ){
+            throw new Error("it doesn't make sense to filter without collection" );
+        }
+
+        if( !options.filter ){
+            throw new Error("it doesn't make sense to filter without filter");
+        }
+
+        this.filter = options.filter;
+
+        this.collection = options.collection;
+        this.collection.on('add',this.onAdd,this);
+        this.collection.on('remove',this.onRemove,this);
+        this.collection.on('change',this.onChange,this);
+
+        // in case our collection has different model types
+        if( options.model ){
+            this.model = options.model;
+        }
+        // otherwise just copy model from the filtered collection
+        else{
+            this.model = this.collection.model;
+        }
+        
+
+
+        // let's add what we have now...
+        _(this.collection.models).each( function( model ){
+            this.onAdd( model );
+        },this);
+
+    },
+    onAdd : function( item ){
+        if( !this.filter( item ) ){
+            return;
+        }
+        var newModel;    
+        newModel = new this.model( item.attributes );
+        this.add( newModel ); 
+           
+    },
+    onRemove : function( item ){
+        var foundModel = _(this.models).find( function( model ){
+            return( item.get('id') === model.get('id') );
+        },this);
+
+        if( foundModel ){
+            this.remove( foundModel );
+        }
+    },
+    onChange : function( item ){
+        var foundModel = _(this.models).find( function( model ){
+            return( item.get('id') === model.get('id') );
+        },this);
+
+        if( foundModel && !this.filter( item )){
+            this.onRemove( item );
+        }
+
+        if( !foundModel && this.filter( item )){
+            this.onAdd( item );
+        }
+    },
+    filter : function( model ){
+        return true;
+    }
+
+
+});
+
 App.Data.Item = App.Data.Model.extend({
     
     relationsTo : null,
@@ -149,6 +354,15 @@ App.Data.Item = App.Data.Model.extend({
         this.relationsFrom.on('add',this.relationsFromChanged,this);
         this.relationsFrom.on('remove',this.relationsFromChanged,this);
         this.updateRelationsFrom = false;
+        this.on('change:id',this.onIdChanged,this);
+    },
+    onIdChanged : function(){
+        if( this.updateRelationsTo ){
+            this.getRelationsTo();
+        }
+        if( this.updateRelationsFrom ){
+            this.getRelatedFrom();
+        }
     },
     relationsToChanged : function( model ){
         this.trigger('relationsToChanged',model);
@@ -197,14 +411,15 @@ App.Data.Item = App.Data.Model.extend({
                 e.event === 'relate' || 
                 e.event === 'unrelate' ||
                 e.event === 'dotag' ||
-                e.event === 'untag' ) 
+                e.event === 'untag' ||
+                e.event === 'destroy') 
            )
         {
          if( this.updateRelationsFrom ) {
-            this.getRelationsFrom();
+            this.relationsFrom.fetch();
          }
          if( this.updateRelationsTo ){
-            this.getRelationsTo();
+            this.relationsTo.fetch();
          }
         }
         this.trigger('notify', e );
@@ -352,6 +567,8 @@ App.Data.Item = App.Data.Model.extend({
 
     },
     getRelationsTo : function( relationType, collectionType, collectionOptions ){
+        /* this code was dirty and buggy...
+        
         var collection = null;
 
         if( collectionType ){
@@ -361,12 +578,22 @@ App.Data.Item = App.Data.Model.extend({
         else{
             collection = this.relationsTo;
         }
-        collection.setItem( this,'to', relationType );
-        collection.fetch();   
+        */
+       
+        if( !this.updateRelationsTo ){
+            this.updateRelationsTo = true;
 
-        return collection;
+            if( !this.isNew() ) {
+                this.relationsTo.setItem(this,'to');
+                this.relationsTo.fetch();  
+            }
+        }
+
+        return this.relationsTo;
     },
     getRelationsFrom : function( relationType, collectionType, collectionOptions ){
+        /* this code was dirty and buggy...
+
         var collection = null;
 
         if( collectionType ){
@@ -380,6 +607,17 @@ App.Data.Item = App.Data.Model.extend({
         collection.fetch();            
         
         return collection;
+        */
+
+        if( !this.updateRelationsFrom ){
+            this.updateRelationsFrom = true;
+            if( !this.isNew() ) {
+                this.relationsFrom.setItem(this,'from');
+                this.relationsFrom.fetch();   
+            }
+        }
+
+        return this.relationsFrom;
     },
     getRelatedTo : function( collectionType, itemType ){
         var newCollection = new collectionType();

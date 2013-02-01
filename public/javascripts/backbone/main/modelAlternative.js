@@ -18,32 +18,55 @@ App.Models.Alternative = App.Data.Item.extend({
     this.decisions.comparator = this.decisionComparator;
     this.decisions.on('add',this.gotDecisionsUpdate,this );
     this.decisions.on('remove',this.gotDecisionsUpdate,this );
-    this.decisions.on('reset',this.gotDecisionsUpdate,this );
-    this.decisions.on('gotProjects',this.gotDecisionsUpdate,this );
 
     this.on('notify',this.notified, this);
-    //this.relationsFrom.on('reset',this.gotSolvedByRelations,this);
-    this.on('relationsChanged',this.gotSolvedByRelations,this);
 
+   // this.relationsFrom.on('reset',this.gotSolvedByRelations,this);
 
-    this.updateRelationsFrom = true;
-    this.updateRelationsTo = true;
-    this.solvedByRelations = new Backbone.CollectionFilter({
+    this.solvedByRelations = new App.Data.FilteredCollection({
       collection: this.relationsFrom,
-      filter: {
-        'type': 'SolvedBy'
-      }
+      filter: function( relation ){
+        return( relation.get('relation') === "SolvedBy");
+        }
     });
+    
     this.solvedByRelations.on('add',this.onSBadded,this);
     this.solvedByRelations.on('remove',this.onSBremoved,this);
+    
+    _(this.solvedByRelations.models).each( function( SBRelation ){
+      this.onSBadded( SBRelation );
+    },this);
+
+    this.projectDecisions = new App.Data.FilteredCollection({
+      model: App.Models.Decision,
+      collection: this.decisions,
+      filter: function( decision ){
+        var found = _(decision.projects.models).find( function( project ){
+          return( project.get('id') === App.main.context.project.get('id') );
+        },this);
+        return found;
+      }
+    });
+    this.projectDecisions.on('add',this.gotDecisionsUpdate,this);
+    this.projectDecisions.on('remove',this.gotDecisionsUpdate,this);
    },
-   onSBadded : function(model){
-    this.decisions.addCollection(model.relationsTo);
-    model.relationsTo.model = App.Models.Decision;
-    model.getRelationsTo();
+   onSBadded : function( relation ){
+      var subDecisions = new App.Data.FilteredCollection({
+        collection: relation.getRelationsTo(),
+        model: App.Models.Decision,
+        filter: function( relation ){ 
+            return( relation.get('relation') === 'Tagging'); 
+        }
+      });
+      subDecisions.sbRelation = relation;
+      this.decisions.addCollection( subDecisions );
    },
-   onSBremoved : function(model){
-    this.decisons.removeCollection(model.relationsTo);
+   onSBremoved : function( relation ){
+      var collection = _(this.decisions.collections).find( function( collection ){
+        return( collection.sbRelation === relation );
+      },this);
+
+      this.decisions.removeCollection( collection );
    },
    decisionComparator : function( decision ){
       var comparable = "";
@@ -71,7 +94,7 @@ App.Models.Alternative = App.Data.Item.extend({
     },
     updateDecisions : function( context ){
       // we'll need context to get decisions, project, etc. 
-      this.context = context;
+   /*   this.context = context;
 
 
       if( !this.context ){
@@ -84,10 +107,12 @@ App.Models.Alternative = App.Data.Item.extend({
       //this.getRelationsFrom("SolvedBy");
       this.getRelationsFrom();
     
+      this.getRelationsFrom("SolvedBy");
+    */
     },
     // this is to be passed as filter to the SuperCollection so that it can fish-out decision taggings from others
     addFilter : function( relationModel ){
-        if( !this.context ){
+      /*  if( !this.context ){
             return false;
         }
      var gotIt = false;
@@ -105,7 +130,7 @@ App.Models.Alternative = App.Data.Item.extend({
       else{
 
          return false;
-      }
+      }*/
     },
     gotSolvedByRelations : function(){
       /*this.decisions.reset();
@@ -120,39 +145,50 @@ App.Models.Alternative = App.Data.Item.extend({
       
       //this.decisions.fetch();
 
-      //this.gotDecisionsUpdate();*/
+      //this.gotDecisionsUpdate();
       this.areDecisionsUpdated = true;
+      */
     },
     notified : function( notification ) {
 
-       if( notification.distance === 2 ){
+      /*if( notification.distance ===  1 ) {
+        if( notification.event === "relate" ||
+            notification.event === "unrelate") {
+
+            this.getRelationsTo();
+        }
+      }*/
+
+
+      /* if( notification.distance === 2 ){
             if( notification.event === "dotag" || notification.event === 'destroy' ){            
             
                 this.decisions.fetch();
             }
         }
-
+*/
     },
 
     gotDecisionsUpdate : function(){
       this.trigger('decisionsChanged',this );
     },
     getProjectDecisions : function( options ){
-      if( !options.project ) {
+  /*    if( !options.project ) {
         throw new Error("decision context requires valid Project");
       }
 
       var projectDecisions = _(this.decisions.models).where({ project: options.project});
 
       return projectDecisions;
+      */
     },
     /* */
     getStatus : function( options ){
 
     },
     isDecided : function( options ) {
-
-      var projectDecisions = this.getProjectDecisions( options );
+    
+      var projectDecisions = this.projectDecisions.models;
      
       // if there are no decisions then it is not decided
       if( projectDecisions.length === 0){
@@ -168,8 +204,8 @@ App.Models.Alternative = App.Data.Item.extend({
       }
     },
     isColliding : function( options ) {
-
-      var projectDecisions = this.getProjectDecisions( options );
+    
+      var projectDecisions = this.projectDecisions.models;
      
       // if there are no decisions then it is not decided
       if( projectDecisions.length === 0){
@@ -197,14 +233,14 @@ App.Models.Alternative = App.Data.Item.extend({
       }
 
     },   
-    decision : function( options ) {
+    decision : function() {
 
       // if given alternative is not decided upon, then give up
-      if( !this.isDecided( options ) ){
+      if( !this.isDecided() ){
         return null;
       }
 
-      var projectDecisions = this.getProjectDecisions( options );
+      var projectDecisions = this.projectDecisions.models;
       // otherwise just take first decision pointer and return the ID
       return projectDecisions[0].get('origin');
       
@@ -215,7 +251,7 @@ App.Models.Alternative = App.Data.Item.extend({
 App.Models.Alternatives = App.Data.Collection.extend({
   url: '',
   model : App.Models.Alternative,
-  initialize : function( options ){
+  initialize : function( models ){
     _(this).bindAll();
 
   },

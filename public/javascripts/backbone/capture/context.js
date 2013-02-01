@@ -28,8 +28,9 @@ App.module("main.capture",function(){
 
             // it used to be instantiated here, but was moved to the main module
             this.issues = this.parentContext.issues;
-            // focused issue
-            this.issue = new App.Models.Issue();
+            // focused issue - let's skip creation of the empty object...
+            //this.issue = new App.Models.Issue();
+            
             // all issues in the repository
             this.allIssues = new App.Models.Issues();
             this.allIssues.url = "/scope/type/Issue";
@@ -54,7 +55,7 @@ App.module("main.capture",function(){
             }
         },
         issueSelected : function( args ){
-            this.issue.id = args.id;
+            this.issue = new App.Models.Issue({id:args.id});
             this.issue.fetch();
         },
         issueList: function(){
@@ -123,7 +124,8 @@ App.module("main.capture",function(){
                 }
 
                 // create new alternative
-                this.newAlternative = this.issue.alternatives.create( alternativePresets );
+                this.newAlternative = new App.Models.Alternative( alternativePresets );
+                this.newAlternative.save();
                 // wait until it gets saved 
                 this.newAlternative.on('sync',this.synced,this);
             },

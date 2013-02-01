@@ -27,10 +27,8 @@ App.module("main.capture",function(){
     },
     initialize : function(options) {
       _(this).bindAll();
-      this.model.on('gotProjects',this.gotProjects,this);
-      this.model.on('gotProjects',this.projectChanged,this);
       this.model.on('change',this.render,this);
-      this.model.updateProject( this.context );
+     // this.model.updateProject( this.context );
       },
     onRender : function() {
       jQuery("#deleteDecision",this.el).popover({
@@ -75,8 +73,11 @@ App.module("main.capture",function(){
       }
     },
     projectChanged : function(){
-      if( this.model.project && (this.model.project.get('id') === this.context.project.get('id') )){
-        this.show();
+      if( this.model.projects &&
+          _(this.model.projects.models).find( 
+              function( project ){ return project.get('id') === App.main.context.project.get('id'); })
+          ){
+          this.show();
       }
       else{
         this.hide();

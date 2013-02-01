@@ -29,7 +29,17 @@ App.Models.Issue = App.Data.Item.extend({
 
 
     // this needs to be instantiated late because of the late-loading issues. 
-    this.alternatives = new App.Models.Alternatives();
+    //this.alternatives = new App.Models.Alternatives();
+    this.alternatives = new App.Data.RelatedCollection({
+        // we want only SolvedBy relations
+        filter : function( relation ){ 
+            return( relation.get('relation') === 'SolvedBy'); 
+        },
+        item: this,
+        direction: 'to',
+        model: App.Models.Alternative
+    });
+    
     this.alternatives.on('decisionsChanged',this.onDecisionsChanged );
 
     // alternatives don't need to be fetched during the object creation
@@ -50,24 +60,24 @@ App.Models.Issue = App.Data.Item.extend({
     },
 
     updateAlternatives : function() {
-        if( this.get('id') ){
+       /* if( this.get('id') ){
             this.alternatives.setIssue( this );
             this.alternatives.fetch();
             this.areAlternativesUpdated = true;
-        }
+        */
     },
     updateRelationsTo : function() {
         this.getRelationsTo();
     },
     notified : function( notification ) {
-      if( notification.distance ===  1 ) {
+      /*if( notification.distance ===  1 ) {
         if( notification.event === "relate" ||
             notification.event === "unrelate" ||
             notification.event === "destroy") {
 
             this.updateAlternatives();
         }
-      }
+      }*/
     },
     decisionState : function(){
         if( this.alternatives.length === 0 ){
@@ -86,18 +96,18 @@ App.Models.Issue = App.Data.Item.extend({
         var negativeDecisionTag = App.main.context.decisions.find( function( decision ){ return( decision.get('name') === 'Negative' );});
 
         _(this.alternatives.models).each( function(alternative) {
-            var projectDecisions = alternative.getProjectDecisions( {project: App.main.context.project } );
-            decisionsTotal = decisionsTotal + projectDecisions;
+            var projectDecisions = alternative.projectDecisions;
+            decisionsTotal = decisionsTotal + projectDecisions.length;
 
             if (projectDecisions.length == 0) {
                 foundNotDecidedAlterantive = true;
             }
 
-            if (alternative.isColliding({ project: App.main.context.project })) {
+            if (alternative.isColliding()) {
                 foundCollidingAlternative = true;
             }
 
-            var decision = alternative.decision({ project: App.main.context.project });
+            var decision = alternative.decision();
 
             if (decision) {
                 if (decision === positiveDecisionTag.get('id') ) {

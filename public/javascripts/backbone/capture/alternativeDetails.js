@@ -35,16 +35,13 @@ App.module("main.capture",function(){
         // set-up superCollection of decisions around this alternative...
         this.collection = this.model.decisions;
         this.collection.comparator = this.projectComparator;
-        
-        if( !this.model.areDecisionsUpdated ){
-            // here we pass mainContext reference. 
-            this.model.updateDecisions(this.context.parentContext);
-        }
-        
+                
         this.collection.on('add',this.updateDecisionCount,this);
         this.collection.on('remove',this.updateDecisionCount,this);
-        this.collection.on('gotProjects',this.updateDecisionCount,this);
-        
+
+        this.model.projectDecisions.on('add',this.updateDecisionCount,this);
+        this.model.projectDecisions.on('remove',this.updateDecisionCount,this);
+
         this.model.on('notify',this.notified,this);
 
         // hook up for the notifications. 
@@ -61,23 +58,20 @@ App.module("main.capture",function(){
 
        this.relatedToList = new App.main.capture.Views.ItemRelationList({
            context: this.context,
-           collection: this.model.relationsTo,
+           collection: this.model.getRelationsTo(), 
            relationEnd: 'origin'
        });
-       this.model.updateRelationsTo = true;
-       this.model.getRelationsTo();
 
        this.model.relationsTo.on('add',this.updateSealing,this);
        this.model.relationsTo.on('remove',this.updateSealing,this);
 
        this.relatedFromList = new App.main.capture.Views.ItemRelationList({
            context: this.context,
-           collection: this.model.relationsFrom,
+           collection: this.model.getRelationsFrom(),
            relationEnd: 'tip'
        });
-       this.model.updateRelationsFrom = true;
-       this.model.getRelationsFrom();
-        },
+       
+       },
     expandClicked : function(){
         var expandEl = jQuery("i#expand",this.el);
         // to be expanded
@@ -188,7 +182,7 @@ App.module("main.capture",function(){
     },
     updateDecisionCount : function(){
       //  this.collection.sort();
-        var projectDecisions = this.model.getProjectDecisions({project: this.context.parentContext.project });
+        var projectDecisions = this.model.projectDecisions;
     
         jQuery("span#projectDecisionCount",this.el).html( projectDecisions.length);
 
@@ -227,7 +221,7 @@ App.module("main.capture",function(){
             var h = "";
 
 
-            var projectDecisions = this.model.getProjectDecisions({project: this.context.parentContext.project });
+            var projectDecisions = this.model.projectDecisions.models;
 
             // in case there are no 'our' decisions
             var myDecisions = _(projectDecisions).filter( function( decision ) {
@@ -281,7 +275,7 @@ App.module("main.capture",function(){
     undecide : function( event ) {
         //jQuery.getJSON( this.model.get('relation_url') + '/tag/untag?from_taggable_id='+element.target.id+'&project_id='+this.model.get('project_id'), function(data) {});      
         //
-        var projectDecisions = this.model.getProjectDecisions({project: this.context.parentContext.project });
+        var projectDecisions = this.model.projectDecisions.models;
 
         // in case there are no 'our' decisions
         var myDecisions = _(projectDecisions).filter( function( decision ) {

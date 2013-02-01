@@ -7,24 +7,16 @@ App.Models.Decision = App.Data.Relation.extend({
 
     // execute initializer of the class from above. 
     App.Models.Decision.__super__.initialize.apply(this);
-    this.updateProject(App.main.context);
-  },
-  updateProject : function( context ){
-    this.context = context; 
 
-    var projects = this.getRelationsTo("Tagging");
-    projects.on('reset',this.gotProjects,this);
-
-  },
-  gotProjects : function(){
-
-    _(this.relationsTo.models).each(function( model ){
-      if( model.get('origin') === this.context.project.get('id') ){
-        this.project = this.context.project;
+    this.projects = new App.Data.RelatedCollection({
+      item: this,
+      direction: 'to',
+      filter: function( item ){
+        return true;
       }
-    },this);
-    this.trigger('gotProjects');
-    this.trigger('change');
+    });
+    this.projects.on('add',this.onProjectsChanged,this);
+    this.projects.on('remove',this.onProjectsChanged,this);
   },
   findDecisionName : function( context ){
     var name = "unknown";
@@ -35,6 +27,9 @@ App.Models.Decision = App.Data.Relation.extend({
     },this);
     
     return name;
+  },
+  onProjectsChanged : function(){
+    this.trigger('change',this);
   }
 });
 

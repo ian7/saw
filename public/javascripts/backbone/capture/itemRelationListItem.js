@@ -31,8 +31,10 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
 
     },
     onRender: function() {
+
       var relationNameEl = jQuery("span#relationName",this.el);
       var relationType = App.main.context.types.findByName( this.model.get('relation') );
+
 
       // in case we're looking on the origins, then we might want to display 'reverse_name'
       // instead of simply displaying 'name'
@@ -44,6 +46,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
           relationNameEl.html( "(reverse) " +relationType.get('name') + " by");          
         }
       }
+
       // similarly to what happens above, if we're about the tips, and there is 'forward_name'
       // available, then let's use it. 
       // 
