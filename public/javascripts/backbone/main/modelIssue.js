@@ -36,7 +36,7 @@ App.Models.Issue = App.Data.Item.extend({
             return( relation.get('relation') === 'SolvedBy'); 
         },
         item: this,
-        direction: 'from',
+        direction: 'to',
         model: App.Models.Alternative
     });
     
@@ -96,7 +96,7 @@ App.Models.Issue = App.Data.Item.extend({
         var negativeDecisionTag = App.main.context.decisions.find( function( decision ){ return( decision.get('name') === 'Negative' );});
 
         _(this.alternatives.models).each( function(alternative) {
-            var projectDecisions = alternative.getProjectDecisions( {project: App.main.context.project } );
+            var projectDecisions = alternative.projectDecisions;
             decisionsTotal = decisionsTotal + projectDecisions;
 
             if (projectDecisions.length == 0) {

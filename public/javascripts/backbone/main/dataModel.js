@@ -145,11 +145,11 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
             switch( options.direction ){
                 case 'from':
                     this.relations = options.item.getRelationsFrom();
-                    this.relationEnd = 'origin';
+                    this.relationEnd = 'tip';
                     break;
                 case 'to':
                     this.relations = options.item.getRelationsTo();
-                    this.relationEnd = 'tip';
+                    this.relationEnd = 'origin';
                     break;
                 default:
                     throw new Error('Wrong direction!');
@@ -258,6 +258,7 @@ App.Data.FilteredCollection = Backbone.Collection.extend({
         else{
             this.model = this.collection.model;
         }
+        
 
 
         // let's add what we have now...
@@ -270,7 +271,9 @@ App.Data.FilteredCollection = Backbone.Collection.extend({
         if( !this.filter( item ) ){
             return;
         }
-        this.add( item );
+        var newModel;    
+        newModel = new this.model( item.attributes );
+        this.add( newModel ); 
            
     },
     onRemove : function( item ){
@@ -288,7 +291,11 @@ App.Data.FilteredCollection = Backbone.Collection.extend({
         },this);
 
         if( foundModel && !this.filter( item )){
-            this.remove( foundModel );
+            this.onRemove( item );
+        }
+
+        if( !foundModel && this.filter( item )){
+            this.onAdd( item );
         }
     },
     filter : function( model ){
@@ -352,14 +359,15 @@ App.Data.Item = App.Data.Model.extend({
                 e.event === 'relate' || 
                 e.event === 'unrelate' ||
                 e.event === 'dotag' ||
-                e.event === 'untag' ) 
+                e.event === 'untag' ||
+                e.event === 'destroy') 
            )
         {
          if( this.updateRelationsFrom ) {
-            this.getRelationsFrom();
+            this.relationsFrom.fetch();
          }
          if( this.updateRelationsTo ){
-            this.getRelationsTo();
+            this.relationsTo.fetch();
          }
         }
         this.trigger('notify', e );
@@ -548,11 +556,11 @@ App.Data.Item = App.Data.Model.extend({
 
         if( !this.updateRelationsFrom ){
             this.updateRelationsFrom = true;
-            this.relationsFrom.setItem(this,'to');
+            this.relationsFrom.setItem(this,'from');
             this.relationsFrom.fetch();   
         }
 
-        return this.relationsTo;
+        return this.relationsFrom;
     },
     getRelatedTo : function( collectionType, itemType ){
         var newCollection = new collectionType();
