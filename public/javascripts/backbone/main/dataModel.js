@@ -4,15 +4,35 @@
 
 App.Data.Model = Backbone.Model.extend({
     initialize : function(){
+       // this.on('change',this.onSync,this);
+       // this.on('sync',this.onSync,this);
+        this.on('notify',this.onNotify,this);
         App.Data.Model.__super__.initialize.apply(this,arguments);
-        this.on('sync',this.onSync,this);
     },
-    sync: function() {
-        console.log('sync model');
-        return Backbone.sync.apply(this, arguments);
+    sync: function( action,model,options ) {
+        var storagedVal = sessionStorage[ 'i'+model.get('id') ];
+        
+        if( storagedVal ){
+            console.log( 'model cache hit');
+            this.set(JSON.parse(storagedVal));
+        }
+        else{        
+//            console.log('sync model');
+            this.bbSuccess = options.success;
+            options.success = this.onSync;
+    
+            return Backbone.sync.apply(this, arguments);
+        }
     },
     onSync : function( model,resp,options ){
-        console.log('onSync model');
+//        console.log('onSync model');
+        if( this.bbSuccess ){
+            this.bbSuccess(model,resp,options);
+        }
+        sessionStorage['i'+model.id] = JSON.stringify( model );   
+    },
+    onNotify : function( notification ){
+        sessionStorage.removeItem( 'i'+notification.id );
     }
 });
 
@@ -31,23 +51,25 @@ App.Data.Collection = Backbone.Collection.extend({
         if( collection.ownerID ){
             var o;
             if( sessionStorage[collection.ownerID] ){
-                o = JSON.parse(sessionStorage[collection.ownerID]);
+                o = JSON.parse(sessionStorage['r'+collection.ownerID]);
             }
             else{
                o = {};
             }
-            o[collection.url] = true;
-            sessionStorage[collection.ownerID] = JSON.stringify( o );
+            o[collection.url] = resp;
+            sessionStorage['r'+collection.ownerID] = JSON.stringify( o );
         }
         App.connectionsCount = App.connectionsCount - 1;
     },
     sync: function( action, collection ) {
         var o = null;
         if( sessionStorage[collection.ownerID] ) {
-            o = JSON.parse(sessionStorage[collection.ownerID]);
+            o = JSON.parse(sessionStorage['r'+collection.ownerID]);
         }
         if( o && o[collection.url] ) {
-            console.log("sync collection caught - ditching it");
+            console.log("collection cache hit");
+            this.reset(o[collection.url]);
+            //collection.trigger('sync', collection, o[collection.url]);
             return null;
         }
         else {
@@ -59,7 +81,7 @@ App.Data.Collection = Backbone.Collection.extend({
     notifyEvent : function( data ){
         var notification = JSON.parse( data );
         if( notification.distance === 1 ){
-            sessionStorage.removeItem( notification.id );
+            sessionStorage.removeItem( 'r'+notification.id );
         }
     }
     /* end of client-side cache */
