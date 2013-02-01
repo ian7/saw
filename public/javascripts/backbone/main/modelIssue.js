@@ -97,17 +97,17 @@ App.Models.Issue = App.Data.Item.extend({
 
         _(this.alternatives.models).each( function(alternative) {
             var projectDecisions = alternative.projectDecisions;
-            decisionsTotal = decisionsTotal + projectDecisions;
+            decisionsTotal = decisionsTotal + projectDecisions.length;
 
             if (projectDecisions.length == 0) {
                 foundNotDecidedAlterantive = true;
             }
 
-            if (alternative.isColliding({ project: App.main.context.project })) {
+            if (alternative.isColliding()) {
                 foundCollidingAlternative = true;
             }
 
-            var decision = alternative.decision({ project: App.main.context.project });
+            var decision = alternative.decision();
 
             if (decision) {
                 if (decision === positiveDecisionTag.get('id') ) {
