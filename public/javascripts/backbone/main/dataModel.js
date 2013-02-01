@@ -10,17 +10,26 @@ App.Data.Model = Backbone.Model.extend({
         App.Data.Model.__super__.initialize.apply(this,arguments);
     },
     sync: function( action,model,options ) {
-        var storagedVal = sessionStorage[ 'i'+model.get('id') ];
+
+      if( action === 'get ') {
+            var storagedVal = sessionStorage[ 'i'+model.get('id') ];
+            
+            if( storagedVal ){
+                console.log( 'model cache hit');
+                this.set(JSON.parse(storagedVal));
+            }
+            else{        
+    //            console.log('sync model');
+                this.bbSuccess = options.success;
+                options.success = this.onSync;
         
-        if( storagedVal ){
-            console.log( 'model cache hit');
-            this.set(JSON.parse(storagedVal));
+                return Backbone.sync.apply(this, arguments);
+            }
         }
-        else{        
-//            console.log('sync model');
-            this.bbSuccess = options.success;
-            options.success = this.onSync;
-    
+        else{
+            if( this.get('id') ){
+                sessionStorage.removeItem( 'i'+this.get('id') );
+            }
             return Backbone.sync.apply(this, arguments);
         }
     },
@@ -63,10 +72,10 @@ App.Data.Collection = Backbone.Collection.extend({
     },
     sync: function( action, collection ) {
         var o = null;
-        if( sessionStorage[collection.ownerID] ) {
+        if( action === 'get' && sessionStorage[collection.ownerID] ) {
             o = JSON.parse(sessionStorage['r'+collection.ownerID]);
         }
-        if( o && o[collection.url] ) {
+        if( action === 'get' && o && o[collection.url] ) {
             console.log("collection cache hit");
             this.reset(o[collection.url]);
             //collection.trigger('sync', collection, o[collection.url]);
@@ -341,6 +350,15 @@ App.Data.Item = App.Data.Model.extend({
         this.updateRelationsTo = false;
         this.relationsFrom = new App.Data.Relations();
         this.updateRelationsFrom = false;
+        this.on('change:id',this.onIdChanged,this);
+    },
+    onIdChanged : function(){
+        if( this.updateRelationsTo ){
+            this.getRelationsTo();
+        }
+        if( this.updateRelationsFrom ){
+            this.getRelatedFrom();
+        }
     },
     notifyEvent : function( data ) {
         var e = JSON.parse(data);
@@ -552,8 +570,11 @@ App.Data.Item = App.Data.Model.extend({
        
         if( !this.updateRelationsTo ){
             this.updateRelationsTo = true;
-            this.relationsTo.setItem(this,'to');
-            this.relationsTo.fetch();   
+
+            if( !this.isNew() ) {
+                this.relationsTo.setItem(this,'to');
+                this.relationsTo.fetch();  
+            }
         }
 
         return this.relationsTo;
@@ -578,8 +599,10 @@ App.Data.Item = App.Data.Model.extend({
 
         if( !this.updateRelationsFrom ){
             this.updateRelationsFrom = true;
-            this.relationsFrom.setItem(this,'from');
-            this.relationsFrom.fetch();   
+            if( !this.isNew() ) {
+                this.relationsFrom.setItem(this,'from');
+                this.relationsFrom.fetch();   
+            }
         }
 
         return this.relationsFrom;

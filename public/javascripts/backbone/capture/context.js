@@ -124,7 +124,8 @@ App.module("main.capture",function(){
                 }
 
                 // create new alternative
-                this.newAlternative = this.issue.alternatives.create( alternativePresets );
+                this.newAlternative = new App.Models.Alternative( alternativePresets );
+                this.newAlternative.save();
                 // wait until it gets saved 
                 this.newAlternative.on('sync',this.synced,this);
             },
