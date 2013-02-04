@@ -4,14 +4,14 @@
 
 App.Data.Model = Backbone.Model.extend({
     initialize : function(){
-       // this.on('change',this.onSync,this);
-       // this.on('sync',this.onSync,this);
-        this.on('notify',this.onNotify,this);
         App.Data.Model.__super__.initialize.apply(this,arguments);
+//        this.on('change',this.onSync,this);
+//        this.on('sync',this.onSync,this);
+        this.on('notify',this.onNotify,this);
     },
     sync: function( action,model,options ) {
 
-      if( action === 'get ') {
+      if( action === 'read') {
             var storagedVal = sessionStorage[ 'i'+model.get('id') ];
             
             if( storagedVal ){
