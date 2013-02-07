@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', "~> 3.0.11"
+gem 'rails', "~> 3.0.20"
 
 
 
@@ -18,7 +18,7 @@ gem 'rtf'
 #gem 'sqlite3-ruby', :require => 'sqlite3'
 gem "mongoid", "2.0.0.rc.8"
 # , "2.0.0.rc.7"
-gem "rack", "1.2.2"
+gem "rack","~> 1.2.5" 
 #gem "SystemTimer"
 gem "bson", "~> 1.3.0"
 gem "json"
