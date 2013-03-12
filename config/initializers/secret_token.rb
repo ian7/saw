@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Saw::Application.config.secret_token = '1ba9e4a6ea45f8708d711bed7f59a114139f84ed394ea86101d93b2a9c5da635feda97ad096b18f7339423a748da39dbb8cd664877aff33f22c3e019d97b7738'
+Saw::Application.config.secret_token = '381ba9d3a927b7a7a6ef68153673e785c0ec5310cc4c431ef017b3783bf5a530cad1d67d7a61cd5c59c1414ac02df4c578464b1600af9b8e4a60d09fd0edb037'
