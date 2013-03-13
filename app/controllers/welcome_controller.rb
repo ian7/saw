@@ -3,4 +3,6 @@ class WelcomeController < ApplicationController
   end
   def logged_in
   end
+  def test
+  end
 end

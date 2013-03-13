@@ -27,7 +27,8 @@ gem "bson_ext", "~> 1.3.1"
 gem "omniauth", "~> 0.2.3"
 gem "devise", '~> 1.3.2'
 gem 'cancan', '1.4.1'
-gem 'mongrel', '1.2.0.pre2'
+#gem 'mongrel', '1.2.0.pre2'
+gem 'thin'
 gem 'juggernaut',"2.1.0"
 gem 'jammit'#, :git => 'https://github.com/ian7/jammit.git'
 gem 'useragent'

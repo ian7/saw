@@ -3,6 +3,7 @@ Saw::Application.routes.draw do
 
 
   get "welcome/index"
+  get "welcome/test"
 
   get "notify/:id/:attribute/:event" => 'notify#notify'
   get "notify/:id/:event" => 'notify#notify'

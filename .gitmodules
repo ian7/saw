@@ -37,3 +37,9 @@
 [submodule "public/javascripts/lib/font-awesome"]
 	path = public/javascripts/lib/font-awesome
 	url = git@github.com:ian7/Font-Awesome.git
+[submodule "public/javascripts/lib/mocha"]
+	path = public/javascripts/lib/mocha
+	url = git@github.com:ian7/mocha.git
+[submodule "public/javascripts/lib/chai"]
+	path = public/javascripts/lib/chai
+	url = git@github.com:ian7/chai.git
