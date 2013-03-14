@@ -357,11 +357,14 @@ App.Data.Item = App.Data.Model.extend({
         this.on('change:id',this.onIdChanged,this);
     },
     onIdChanged : function(){
+        this.relationsTo.setItem(this,'to');
+        this.relationsFrom.setItem(this,'from');
+        
         if( this.updateRelationsTo ){
             this.getRelationsTo();
         }
         if( this.updateRelationsFrom ){
-            this.getRelatedFrom();
+            this.getRelationsFrom();
         }
     },
     relationsToChanged : function( model ){
