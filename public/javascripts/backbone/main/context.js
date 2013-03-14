@@ -81,7 +81,9 @@ App.module("main",function(){
             this.setStatus( App.main.Status.ready );
         },
         onStatusReady : function(){
-            Backbone.history.start(/*{silent: true}*/);        
+            if( Backbone.history ) {
+                Backbone.history.start(/*{silent: true}*/);        
+            }
         },
         projectSelected : function( args ){
             if( !args || !args.id ){
