@@ -141,11 +141,11 @@ App.Data.SuperCollection = Backbone.Collection.extend({
     },
     removeCollection : function( collection ){
         // remove it from the list of collections
-        this.collections.splice( this.collection.indexOf( collection ),1 );
+        this.collections.splice( this.collections.indexOf( collection ),1 );
         // remove its models
         this.remove( collection.models );
         // hook off
-        this.collection.off(null,null,this);
+        collection.off(null,null,this);
     },
     modelRemoved : function( options ){
         // i should test it one day...
@@ -355,8 +355,11 @@ App.Data.Item = App.Data.Model.extend({
         this.relationsFrom.on('remove',this.relationsFromChanged,this);
         this.updateRelationsFrom = false;
         this.on('change:id',this.onIdChanged,this);
+
+        this.on('destroy',this.onDestroy,this);
     },
     onIdChanged : function(){
+
         this.relationsTo.setItem(this,'to');
         this.relationsFrom.setItem(this,'from');
         
@@ -665,6 +668,11 @@ App.Data.Item = App.Data.Model.extend({
         else{
             this.tag( sealTag );
         }
+    },
+    onDestroy : function(){
+        this.unset('id');
+        this.relationsTo.off();
+        this.relationsFrom.off();
     }
 
 });

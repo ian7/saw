@@ -9,7 +9,7 @@ describe('Item', function() {
     });
 
 
-    it('shound emit sync on save', function( done ){
+    it('shound emit saved on save', function( done ){
         Item.on('saved',function(){ 
             done(); 
         });
