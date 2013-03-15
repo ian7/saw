@@ -89,9 +89,10 @@ App.module("main",function(){
             if( !args || !args.id ){
                 return;
             }
+            this.project.set('id',args.id);
             this.project.url = "/projects/"+args.id;
             this.project.fetch();
-
+            console.log(args.id);
            // window.history.pushState("project","project",window.location.origin + "/#project/" + args.id);
             localStorage.setItem("project.lastId",args.id);
         },
