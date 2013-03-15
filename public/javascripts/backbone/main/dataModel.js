@@ -370,7 +370,7 @@ App.Data.Item = App.Data.Model.extend({
         this.on('change:id',this.onIdChanged,this);
 
         this.on('destroy',this.onDestroy,this);
-        this.on('notify',this.onNofityItem,this);
+        this.on('notify',this.onNotifyItem,this);
     },
     onIdChanged : function(){
         
