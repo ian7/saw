@@ -4,10 +4,10 @@
 
 App.Data.Model = Backbone.Model.extend({
     initialize : function(){
+        eventer.register(this);
         App.Data.Model.__super__.initialize.apply(this,arguments);
-//        this.on('change',this.onSync,this);
-//        this.on('sync',this.onSync,this);
-        this.on('notify',this.onNotify,this);
+
+     
     },
     sync: function( action,model,options ) {
 
@@ -18,7 +18,7 @@ App.Data.Model = Backbone.Model.extend({
                 console.log( 'model cache hit');
                 var value = JSON.parse(storagedVal);
                 this.set( value );
-                this.trigger('sync', this, value, options)
+                options.success(this, value, options);
             }
             else{        
     //            console.log('sync model');
@@ -42,8 +42,15 @@ App.Data.Model = Backbone.Model.extend({
         }
         sessionStorage['i'+model.id] = JSON.stringify( model );   
     },
-    onNotify : function( notification ){
-        sessionStorage.removeItem( 'i'+notification.id );
+    notifyEvent : function( data ){
+        var notification = JSON.parse( data );
+        if( notification.id == this.get('id') && notification.distance === 0 ){
+            sessionStorage.removeItem( 'i'+notification.id );
+            console.log('cache wiped for: ' + notification.id );
+        }
+        if( notification.id == this.get('id') ){
+            this.trigger('notify',notification);
+        }
     }
 });
 
@@ -345,8 +352,11 @@ App.Data.Item = App.Data.Model.extend({
     relationsFrom : null,
 
     initialize : function(){
+        
+        App.Data.Item.__super__.initialize.apply(this,arguments);
+        
         _(this).bindAll();
-        eventer.register(this);
+        //eventer.register(this);
 
         // initialization of the relations needs to happen here due to the late type declarations
         this.relationsTo = new App.Data.Relations();
@@ -360,6 +370,7 @@ App.Data.Item = App.Data.Model.extend({
         this.on('change:id',this.onIdChanged,this);
 
         this.on('destroy',this.onDestroy,this);
+        this.on('notify',this.onNofityItem,this);
     },
     onIdChanged : function(){
         
@@ -386,14 +397,14 @@ App.Data.Item = App.Data.Model.extend({
         this.trigger('relationsToChanged',model);
         this.trigger('relationsChanged',model);
     },
-    notifyEvent : function( data ) {
-        var e = JSON.parse(data);
+    onNotifyItem : function( e ) {
+        //var e = JSON.parse(data);
         e.itemId = e.id;
 
         // if item id is not matching, then kill it fast
-        if( e.id !== this.get('id') ){
-            return;
-        }
+        //if( e.id !== this.get('id') ){
+        //    return;
+        //}
 
         if( e.class === 'notify' && e.distance === 0 && (e.event === null || e.event === "" || e.event === "update") ){
             this.fetch();
@@ -436,7 +447,7 @@ App.Data.Item = App.Data.Model.extend({
             this.relationsTo.fetch();
          }
         }
-        this.trigger('notify', e );
+      //  this.trigger('notify', e );
     },
     url : function() {
         if( this.id ) {
