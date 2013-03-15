@@ -16,7 +16,9 @@ App.Data.Model = Backbone.Model.extend({
             
             if( storagedVal ){
                 console.log( 'model cache hit');
-                this.set(JSON.parse(storagedVal));
+                var value = JSON.parse(storagedVal);
+                this.set( value );
+                this.trigger('sync', this, value, options)
             }
             else{        
     //            console.log('sync model');
@@ -72,10 +74,10 @@ App.Data.Collection = Backbone.Collection.extend({
     },
     sync: function( action, collection ) {
         var o = null;
-        if( action === 'get' && sessionStorage[collection.ownerID] ) {
+        if( action === 'read' && sessionStorage[collection.ownerID] ) {
             o = JSON.parse(sessionStorage['r'+collection.ownerID]);
         }
-        if( action === 'get' && o && o[collection.url] ) {
+        if( action === 'read' && o && o[collection.url] ) {
             console.log("collection cache hit");
             this.reset(o[collection.url]);
             //collection.trigger('sync', collection, o[collection.url]);
@@ -252,6 +254,7 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
         if( relatedItem ){
             this.remove( relatedItem );
         }
+        // this actually disposes the object. 
     },
     onItemFetchError : function( item ){
         this.remove( item );
@@ -359,6 +362,11 @@ App.Data.Item = App.Data.Model.extend({
         this.on('destroy',this.onDestroy,this);
     },
     onIdChanged : function(){
+        
+        // if id is set to nullm then it doesnt make sense to touch anything. 
+        if( !this.get('id') ){
+            return;
+        }
 
         this.relationsTo.setItem(this,'to');
         this.relationsFrom.setItem(this,'from');
