@@ -37,7 +37,7 @@ App.module('main',function(){
             //debugger;
         },
         projectSelected : function( options ){
-           jQuery("span#projectID",this.el).html(options.id);
+           //jQuery("span#projectID",this.el).html(options.id);
         },
         projectChanged : function(){
            jQuery("span#projectID",this.el).html(this.context.project.get('name'));
