@@ -77,6 +77,7 @@ def to_hash()
       c['origin'] = origin.to_s
       c["created_at"]=created_at
       c["updated_at"]=updated_at
+      c["update_stamp"]= updated_at.to_i
       if author
         c["author"]=author.id.to_s
         c["author_name"] = author.email

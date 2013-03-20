@@ -11,41 +11,48 @@ App.Data.Model = Backbone.Model.extend({
     },
     sync: function( action,model,options ) {
 
-      if( action === 'read') {
-            var storagedVal = sessionStorage[ 'i'+model.get('id') ];
+      if( action === 'read' && model.get('id')) {
+            var storagedVal = localStorage[ 'i'+model.get('id') ];
             
             if( storagedVal ){
-                console.log( 'model cache hit');
+                //console.log( 'model cache hit');
                 var value = JSON.parse(storagedVal);
                 this.set( value );
                 options.success(this, value, options);
             }
-            else{        
+            else {        
     //            console.log('sync model');
                 this.bbSuccess = options.success;
                 options.success = this.onSync;
         
+                App.connectionsCount = App.connectionsCount + 1;                
                 return Backbone.sync.apply(this, arguments);
             }
         }
         else{
             if( this.get('id') ){
-                sessionStorage.removeItem( 'i'+this.get('id') );
+                localStorage.removeItem( 'i'+this.get('id') );
             }
             return Backbone.sync.apply(this, arguments);
         }
     },
     onSync : function( model,resp,options ){
 //        console.log('onSync model');
+        if( !localStorage.updateStamp || localStorage.updateStamp < model.update_stamp ){
+            localStorage.updateStamp = model.update_stamp;
+            console.log('updateStamp bumped to: '+model.update_stamp);
+        }
+
+        App.connectionsCount = App.connectionsCount - 1;                
         if( this.bbSuccess ){
             this.bbSuccess(model,resp,options);
         }
-        sessionStorage['i'+model.id] = JSON.stringify( model );   
+        localStorage['i'+model.id] = JSON.stringify( model );   
     },
     notifyEvent : function( data ){
         var notification = JSON.parse( data );
         if( notification.id == this.get('id') && notification.distance === 0 ){
-            sessionStorage.removeItem( 'i'+notification.id );
+            localStorage.removeItem( 'i'+notification.id );
             console.log('cache wiped for: ' + notification.id );
         }
         if( notification.id == this.get('id') ){
@@ -61,45 +68,66 @@ App.Data.Collection = Backbone.Collection.extend({
         _(this).bindAll();
 
         App.Data.Collection.__super__.initialize.apply(this,arguments);
-        this.on('sync',this.onSync,this);
+        //this.on('sync',this.onSync,this);
         eventer.register(this);
+        this.on('add',this.onAdd,this);
+    },
+    onAdd : function(){
+     //   console.log('added');
     },
     /* this part implements client-side call cache... */
     onSync : function( collection,resp,options ){
-        if( collection.ownerID ){
+        if( this.ownerID ){
             var o;
-            if( sessionStorage[collection.ownerID] ){
-                o = JSON.parse(sessionStorage['r'+collection.ownerID]);
+            if( localStorage[this.ownerID] ){
+                o = JSON.parse(localStorage['r'+this.ownerID]);
             }
             else{
                o = {};
             }
-            o[collection.url] = resp;
-            sessionStorage['r'+collection.ownerID] = JSON.stringify( o );
+            o[this.url] = collection;
+            localStorage['r'+this.ownerID] = JSON.stringify( o );
         }
-        App.connectionsCount = App.connectionsCount - 1;
+       App.connectionsCount = App.connectionsCount - 1;
+       this.bbSuccess(collection,resp,options);
     },
-    sync: function( action, collection ) {
+    sync: function( action, collection, options ) {
         var o = null;
-        if( action === 'read' && sessionStorage[collection.ownerID] ) {
-            o = JSON.parse(sessionStorage['r'+collection.ownerID]);
+        if( action === 'read' && localStorage['r'+collection.ownerID] ) {
+            o = JSON.parse(localStorage['r'+collection.ownerID]);
         }
         if( action === 'read' && o && o[collection.url] ) {
-            console.log("collection cache hit");
-            this.reset(o[collection.url]);
+            //this.reset(o[collection.url]);
+            //this.reset(o[collection.url]);
+            console.log("collection cache hit ("+ o[collection.url].length + "," + this.length +")" + collection.url + ")");
+            options.success(o[collection.url],'success', null);
+            this.trigger('cached'); 
+            if( this.refreshExistingRelations){
+                this.refreshExistingRelations();
+            } 
             //collection.trigger('sync', collection, o[collection.url]);
-            return null;
+            return true;
+        }
+
+        if( action === 'read') {
+            this.bbSuccess = options.success;
+            options.success = this.onSync;
+            
+            App.connectionsCount = App.connectionsCount + 1;        
+            return Backbone.sync.apply(this, arguments);
         }
         else {
             //console.log('sync collection');
+            //
+            
             App.connectionsCount = App.connectionsCount + 1;
             return Backbone.sync.apply(this, arguments);
         }
     },
     notifyEvent : function( data ){
         var notification = JSON.parse( data );
-        if( notification.distance === 1 ){
-            sessionStorage.removeItem( 'r'+notification.id );
+        if( notification.id === this.ownerID && notification.distance === 1 ){
+            localStorage.removeItem( 'r'+notification.id );
         }
     }
     /* end of client-side cache */
@@ -177,8 +205,10 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
     // this gets set in the initializer
     model : null,
 
-    initialize : function( options ){
+    initialize : function( models, options ){
         _(this).bindAll();
+
+        App.Data.RelatedCollection.__super__.initialize.apply(this,arguments);
 
         if( options.item ){
             this.item = options.item;
@@ -224,11 +254,17 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
         this.relations.on('add',this.onRelationAdd,this);
         this.relations.on('remove',this.onRelationRemove,this);
 
+        this.relations.on('reset',this.refreshExistingRelations,this);
+        this.relations.on('cached',this.refreshExistingRelations,this);
         // let's add what we have now...
+        this.refreshExistingRelations();
+        return this;
+    },
+    refreshExistingRelations : function(){
+        //console.log('relatedCollection: adding: ' + this.relations.models.length + ' existing models' );
         _(this.relations.models).each( function( relation ){
             this.onRelationAdd( relation );
         },this);
-
     },
     onRelationAdd : function( relation ){
         
@@ -248,7 +284,13 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
 
         // pool for the attributes. 
         newItem.fetch();
-
+        
+        //console.log('relatedCollection: adding ' + newItem.get('type') + " total: " + this.length);
+        
+        if( !newItem.get('type')  ){
+            //debugger;
+        }
+            
         // now plainly add it to the other items
         this.add(newItem);
     },
@@ -273,7 +315,7 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
 
 
 App.Data.FilteredCollection = Backbone.Collection.extend({
-    initialize : function( options ){
+    initialize : function( models, options ){
         _(this).bindAll();
 
         if( !options.collection ){
@@ -559,6 +601,7 @@ App.Data.Item = App.Data.Model.extend({
             "undefined",
             "created_at",
             "updated_at",
+            "update_stamp",
             "author_name",
             "author"
         ];

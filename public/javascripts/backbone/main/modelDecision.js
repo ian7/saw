@@ -8,7 +8,7 @@ App.Models.Decision = App.Data.Relation.extend({
     // execute initializer of the class from above. 
     App.Models.Decision.__super__.initialize.apply(this);
 
-    this.projects = new App.Data.RelatedCollection({
+    this.projects = new App.Data.RelatedCollection(null,{
       item: this,
       direction: 'to',
       filter: function( item ){

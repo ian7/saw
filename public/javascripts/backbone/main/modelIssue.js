@@ -30,7 +30,7 @@ App.Models.Issue = App.Data.Item.extend({
 
     // this needs to be instantiated late because of the late-loading issues. 
     //this.alternatives = new App.Models.Alternatives();
-    this.alternatives = new App.Data.RelatedCollection({
+    this.alternatives = new App.Data.RelatedCollection(null, {
         // we want only SolvedBy relations
         filter : function( relation ){ 
             return( relation.get('relation') === 'SolvedBy'); 

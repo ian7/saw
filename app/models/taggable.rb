@@ -177,6 +177,7 @@ def to_hash
   h["type"]=type
   h["created_at"]=created_at
   h["updated_at"]=updated_at
+  h["update_stamp"]= updated_at.to_i
   if author
     h["author"]=author.id.to_s
     h["author_name"] = author.email

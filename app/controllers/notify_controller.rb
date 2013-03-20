@@ -17,4 +17,12 @@ class NotifyController < ApplicationController
     super_notify( params[:id], 0, params[:event],'notify', params[:attribute] )
   	render :nothing => true
   end
+  def stamped
+    h = []
+    Taggable.where(:updated_at.gt=>params[:stamp].to_i).each{ |t| 
+      h << t.id
+    }
+
+    render :json => h.to_json
+  end
 end

@@ -36,12 +36,38 @@ var SoftwareArchitectureWarehouse = Backbone.Marionette.Application.extend({
         // that's slightly akward, but does the job.
         this.addRegions({mainRegion: 'body'});
         this.router = new this.main.Router();
+        if( typeof( localStorage.updateStamp ) == "undefined " ||
+            localStorage.updateStamp == "undefined" ){
+            localStorage.removeItem('updateStamp');
+        }
+        else {
+        jQuery.ajax({ 
+            url: "/updates/"+localStorage.updateStamp,
+            success : function(data, status, xhr){
+                console.log("received: " + data.length + " items to purge")
+                _(data).each( function( itemID ){
+                    if( localStorage.getItem('i'+itemID) ){
+                        console.log('removing: i'+itemID );
+                        localStorage.removeItem("i"+itemID );
+                    }
+                    if( localStorage.getItem('r'+itemID) ){
+                        console.log('removing: r'+itemID );
+                        localStorage.removeItem("r"+itemID );
+                    }
+                });
+                }
+            });
+        }
+
         this.start();
         //Backbone.history.start(/*{silent: true}*/);        
         //this.resources.start();
     },
     startHistory : function(){
-    }    
+    },
+    invalidateCache: function(){
+
+    }
 });
 
 var App = new SoftwareArchitectureWarehouse();

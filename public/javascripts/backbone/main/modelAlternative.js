@@ -23,7 +23,7 @@ App.Models.Alternative = App.Data.Item.extend({
 
    // this.relationsFrom.on('reset',this.gotSolvedByRelations,this);
 
-    this.solvedByRelations = new App.Data.FilteredCollection({
+    this.solvedByRelations = new App.Data.FilteredCollection(null,{
       collection: this.getRelationsFrom(),
       filter: function( relation ){
         return( relation.get('relation') === "SolvedBy");
@@ -37,7 +37,7 @@ App.Models.Alternative = App.Data.Item.extend({
       this.onSBadded( SBRelation );
     },this);
 
-    this.projectDecisions = new App.Data.FilteredCollection({
+    this.projectDecisions = new App.Data.FilteredCollection(null,{
       model: App.Models.Decision,
       collection: this.decisions,
       filter: function( decision ){
@@ -51,7 +51,7 @@ App.Models.Alternative = App.Data.Item.extend({
     this.projectDecisions.on('remove',this.gotDecisionsUpdate,this);
    },
    onSBadded : function( relation ){
-      var subDecisions = new App.Data.FilteredCollection({
+      var subDecisions = new App.Data.FilteredCollection(null,{
         collection: relation.getRelationsTo(),
         model: App.Models.Decision,
         filter: function( relation ){ 
