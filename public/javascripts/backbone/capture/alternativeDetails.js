@@ -70,7 +70,8 @@ App.module("main.capture",function(){
            collection: this.model.getRelationsFrom(),
            relationEnd: 'tip'
        });
-       
+
+
        },
     expandClicked : function(){
         var expandEl = jQuery("i#expand",this.el);
@@ -80,6 +81,8 @@ App.module("main.capture",function(){
             expandEl.addClass("icon-minus-sign");
 
             jQuery(".expanded",this.el).slideDown();
+
+            localStorage.setItem('expanded'+this.model.get('id'),true);
         }
         // to be shrunk
         else{
@@ -87,6 +90,7 @@ App.module("main.capture",function(){
             expandEl.addClass("icon-plus-sign");
 
             jQuery(".expanded",this.el).slideUp();
+            localStorage.removeItem('expanded'+this.model.get('id'));
         }
         
     },
@@ -168,6 +172,10 @@ App.module("main.capture",function(){
             content: 'Request your team to focus on this Alternative',
             placement: 'top'
         });
+
+       if( localStorage.getItem('expanded'+this.model.get('id')) ){
+            this.expandClicked();
+       }
 
     },
     projectComparator : function( decision ){
