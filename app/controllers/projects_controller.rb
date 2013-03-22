@@ -94,6 +94,12 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    p = Project.find params[:id]
+    p.destroy
+
+    respond_to do |format|
+      format.json  { render :json => {}.to_json }
+    end
   end
 
   def export

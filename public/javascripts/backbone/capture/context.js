@@ -19,6 +19,7 @@ App.module("main.capture",function(){
             this.listen("capture:project:export",this.projectExport);
             this.listen("capture:project:reportTabular",this.projectReportTabular);
             this.listen("capture:project:reportBullets",this.projectReportBullets);
+            this.listen("capture:project:delete",this.projectDelete);
 
             this.mapCommand("capture:issues:new", this.newIssue );
             this.mapCommand("capture:alternatives:create",this.newAlternative);
@@ -221,6 +222,11 @@ App.module("main.capture",function(){
         this.allAlternatives.fetch();
 
         App.main.layout.modal.show( view );        
+    },
+    projectDelete : function(){
+        //this.dispatchGlobally("project:delete");
+        this.parentContext.project.destroy();
+        this.dispatchGlobally("projects:index");
     },
     projectExport : function(){
         window.open(window.location.origin+"/projects/"+this.parentContext.project.get('id')+"/export.json" ,'export pop-up');

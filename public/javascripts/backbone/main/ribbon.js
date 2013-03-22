@@ -17,6 +17,7 @@ App.module('main',function(){
          //   Backbone.history.on('route',this.render,this);
             this.context.listen('project:selected',this.projectSelected);
             this.context.project.on('sync',this.projectChanged,this);
+            this.context.project.on('destroy',this.projectDestroyed,this);
             this.context.on('status',this.statusChanged, this);
             _(this).bindAll();
 
@@ -41,6 +42,9 @@ App.module('main',function(){
         },
         projectChanged : function(){
            jQuery("span#projectID",this.el).html(this.context.project.get('name'));
+        },
+        projectDestroyed : function(){
+           jQuery("span#projectID",this.el).html("...");            
         },
         statusChanged : function(){
           jQuery("span.status",this.el).html(this.context.status.name);  

@@ -27,15 +27,20 @@ App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customA
           event: "capture:project:export",
           shortcut: "ctrl+e"
         },
+      "Delete Project" : {
+          color: "red",
+          event: "capture:project:delete",
+          shortcut: "ctrl+d"
+        },
       "Report (Tabular)" : {
           color: "orange",
           event: "capture:project:reportTabular",
-          shortcut: "ctrl+e"
+          shortcut: "ctrl+t"
       },
        "Report (Bullets)" : {
           color: "orange",
           event: "capture:project:reportBullets",
-          shortcut: "ctrl+e"
+          shortcut: "ctrl+b"
       },
       "Reuse Issue" : {
           color: "orange",
