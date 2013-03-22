@@ -99,7 +99,7 @@ App.Data.Collection = Backbone.Collection.extend({
         if( action === 'read' && o && o[collection.url] ) {
             //this.reset(o[collection.url]);
             //this.reset(o[collection.url]);
-            console.log("collection cache hit ("+ o[collection.url].length + "," + this.length +")" + collection.url + ")");
+            //console.log("collection cache hit ("+ o[collection.url].length + "," + this.length +")" + collection.url + ")");
             options.success(o[collection.url],'success', null);
             this.trigger('cached'); 
             if( this.refreshExistingRelations){
