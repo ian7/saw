@@ -7,13 +7,21 @@ App.module('main.projects',function(){
         "click a#create" :  'createProject'
       },
       initialize : function(a){
+        _(this).extend( new Backbone.Shortcuts() );
+        this.delegateShortcuts();
         _(this).bindAll();
         //this.mainView = a.mainView;
-
+      },
+      shortcuts : {
+        "enter" : "createProject",
+        "ctrl+w" : "createProject"
       },
       onRender : function(){
         //debugger
-        jQuery("input#projectName",this.el).focus();
+        //jQuery("input#projectName",this.el).focus();
+        jQuery("body").oneTime(10,'focus', function(){ 
+          jQuery("input#projectName").focus(); 
+        });
       },
       createProject : function(){
         var name = jQuery( "input#projectName",this.el)[0].value;
