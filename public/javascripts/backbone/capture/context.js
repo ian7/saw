@@ -1,4 +1,4 @@
-/*global App, Backbone,_*/
+/*global App, Backbone,_,jQuery*/
 
 App.module("main.capture",function(){
     this.Context = Backbone.Marionette.Geppetto.Context.extend({
@@ -17,6 +17,7 @@ App.module("main.capture",function(){
             this.listen("capture:issues:reuse",this.issueReuse);
 
             this.listen("capture:project:export",this.projectExport);
+            this.listen("capture:project:import",this.projectImport);
             this.listen("capture:project:reportTabular",this.projectReportTabular);
             this.listen("capture:project:reportBullets",this.projectReportBullets);
             this.listen("capture:project:delete",this.projectDelete);
@@ -227,6 +228,10 @@ App.module("main.capture",function(){
         //this.dispatchGlobally("project:delete");
         this.parentContext.project.destroy();
         this.dispatchGlobally("projects:index");
+    },
+    projectImport : function(){
+        //this triggers file import field in the issue list
+          jQuery('#fileupload').click();
     },
     projectExport : function(){
         window.open(window.location.origin+"/projects/"+this.parentContext.project.get('id')+"/export.json" ,'export pop-up');

@@ -8,7 +8,7 @@ App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customA
       itemViewContainer: 'div.issueList',
       events : {
           "click div#newIssueButton" : "newItem",
-          "click image.anchor" : "copyAnchor"
+          "click image.anchor" : "copyAnchor",
      /*     "click .expandAll" : "expandAll",
           "click .collapseAll" : "collapseAll",
           "click .elicit" : "elicit" */
@@ -17,10 +17,15 @@ App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customA
 //        'ctrl+n': 'newItem'
       },
       speedButtons : {
-        "New Issue" : {
+      "New Issue" : {
           color: "green",
           event: "capture:issues:new",
           shortcut: "ctrl+n"
+        },
+      "Import Project" : {
+          color: "orange",
+          event: "capture:project:import",
+          shortcut: "ctrl+e"
         },
       "Export Project" : {
           color: "orange",
@@ -96,7 +101,26 @@ App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customA
     },   
     onRender : function() {
       jQuery( "img.spinner",this.el).hide();
+
+      // let's set the url for project upload...
+      jQuery("input#fileupload",this.el)
+        .attr('data-url','/projects/' +
+            this.context.parentContext.project.get('id') +
+            '/import');
+
+      jQuery('#fileupload',this.el).fileupload({
+      dataType: 'text',
+      multipart: false,
+      type: 'put',
+      done: function (e, data) {
+          // we just display what server returned 
+          alert(data.result);
+      },
+      fail: function( e, data ){
+          alert( 'Project import failed.');
+      }
+      });
       //debugger;
-    }
+    },
   });
 });

@@ -24,6 +24,10 @@ javascripts:
 #    - public/javascripts/lib/jquery/plugins/jquery.ui.widget.js
 # and then rest of jquery.ui can go
     - public/javascripts/lib/jquery.timers.js
+#    - public/javascripts/lib/jquery.query.ocupload-1.1.2.js    
+    #- public/javascripts/lib/jquery.iframe-transport/jquery.iframe-transport.js 
+    - public/javascripts/lib/jQuery.File-Upload/js/jquery.iframe-transport.js
+    - public/javascripts/lib/jQuery.File-Upload/js/jquery.fileupload.js 
 # other stuff.. order is not so critical
 #    - public/javascripts/lib/jquery/jquery.fastconfirm.js
 #    - public/javascripts/lib/jquery/jquery.tabSlideOut.v1.3.js

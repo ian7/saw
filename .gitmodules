@@ -43,3 +43,9 @@ url=git@github.com:ian7/keymaster.git
 [submodule "public/javascripts/lib/chai"]
 	path = public/javascripts/lib/chai
 	url = git@github.com:ian7/chai.git
+[submodule "public/javascripts/lib/jQuery.File-Upload"]
+	path = public/javascripts/lib/jQuery.File-Upload
+	url = git@github.com:ian7/jQuery-File-Upload.git
+[submodule "jquery.iframe-transport"]
+	path = public/javascripts/lib/jquery.iframe-transport
+	url = https://github.com/cmlenz/jquery-iframe-transport.git
