@@ -48,8 +48,9 @@ App.module("main.capture",function(){
         },
         // this is going to store actual project reference
         projectSelected : function( args ){
-            this.issues.setProjectURL( args.id );
-            this.fetchIssues();
+            //this.issues.setProjectURL( args.id );
+            //this.fetchIssues();
+            console.log('projectSelected');
         },
         projectNotified : function( notification ){
             if( notification.distance === 1 ){
@@ -90,7 +91,8 @@ App.module("main.capture",function(){
             App.main.layout.central.show( view );
         },
         fetchIssues : function(){
-            this.issues.fetch();
+            //this.issues.fetch();
+            console.log('issues.fetch');
         },
         newIssue : Backbone.Marionette.Geppetto.Command({
             execute : function(){
@@ -99,7 +101,8 @@ App.module("main.capture",function(){
                 console.log('create issue'); 
                 // { project_id: this.context.parentContext.project.get('id') }
 
-                this.newIssue = this.context.issues.create();
+                this.newIssue = new App.Models.Issue();
+                this.newIssue.save();
                 this.newIssue.on('sync',this.synced,this);
             },
             synced : function() {
