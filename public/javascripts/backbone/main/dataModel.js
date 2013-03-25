@@ -354,8 +354,7 @@ App.Data.FilteredCollection = Backbone.Collection.extend({
         if( !this.filter( item ) ){
             return;
         }
-        var newModel;    
-        newModel = new this.model( item.attributes );
+        var newModel = new this.model( item.attributes );
         this.add( newModel ); 
            
     },
@@ -425,10 +424,10 @@ App.Data.Item = App.Data.Model.extend({
         this.relationsFrom.setItem(this,'from');
         
         if( this.updateRelationsTo ){
-            this.getRelationsTo();
+            this.relationsTo.fetch();
         }
         if( this.updateRelationsFrom ){
-            this.getRelationsFrom();
+            this.relationsFrom.fetch();
         }
     },
     relationsToChanged : function( model ){

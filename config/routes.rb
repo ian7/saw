@@ -139,6 +139,10 @@ Saw::Application.routes.draw do
   put "projects/:id/import" => "projects#import"
   get "projects/:id/report" => "projects#report"
   get "projects/:id/report2" => "projects#report2"
+  get 'projects/:id/relations_to' => 'r#relations_to'
+  get 'projects/:id/relations_from' => 'r#relations_from'
+
+
 
   resources :alternatives
 

@@ -50,7 +50,21 @@ App.module("main",function(){
             this.tags.fetch();
             this.tags.on('reset', this.updateStatus, this);
 
-            this.issues = new App.Models.Issues();
+            //this.issues = new App.Models.Issues();
+            var relatedToProject = new App.Data.RelatedCollection( null, {
+                direction: 'from',
+                item: this.project,
+                model: App.Models.Issue,
+                      //  filter: function( model ){
+                      //      return( model.get('type')==='Issue');
+                      //  }
+                });
+            this.issues = new App.Data.FilteredCollection(null, {
+                collection: relatedToProject,
+                filter : function( model ){
+                    return( model.get('type') === 'Issue');
+                }
+            });
 
             // checking juggernaut connectivity
             jug.on("connect",this.updateStatus);

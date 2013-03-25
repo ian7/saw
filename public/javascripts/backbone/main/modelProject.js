@@ -10,6 +10,7 @@ App.Models.Project = App.Data.Item.extend({
       if( model ) {
         this.parse( model );
       }
+      this.updateRelationsFrom = true;
     },
     parse: function( response ){
         this.id = response.id;
