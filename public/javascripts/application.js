@@ -1,5 +1,7 @@
 /*global Backbone,jQuery,google */
 
+var debug = {};
+
 jQuery(function() {
    jQuery.ajaxSetup({
     global: true
@@ -19,7 +21,9 @@ jQuery(function() {
 });
 
 /* google charts initialization */
-google.load("visualization", "1", {packages:["corechart"]});
+if( typeof(google) !== 'undefined' ) {
+    google.load("visualization", "1", {packages:["corechart"]});
+}
 
 /* this should sweep our session cache */
 sessionStorage.clear();

@@ -15,7 +15,9 @@ App.Data.Model = Backbone.Model.extend({
             var storagedVal = localStorage[ 'i'+model.get('id') ];
             
             if( storagedVal ){
-                console.log( 'model cache hit ('+model.get('id')+"')");
+                if( debug.cache ) {
+                    console.log( 'model cache hit ('+model.get('id')+"')");
+                }
                 var value = JSON.parse(storagedVal);
                 this.set( value );
                 options.success(this, value, options);
@@ -106,7 +108,9 @@ App.Data.Collection = Backbone.Collection.extend({
         if( action === 'read' && o && o[collection.url] ) {
             //this.reset(o[collection.url]);
             //this.reset(o[collection.url]);
-            console.log("collection cache hit ("+ o[collection.url].length + "," + this.length +")" + collection.url + ")");
+            if( debug.cache ){
+                console.log("collection cache hit ("+ o[collection.url].length + "," + this.length +")" + collection.url + ")");
+            }
             options.success(o[collection.url],'success', null);
             this.trigger('cached'); 
 /*            if( this.refreshExistingRelations){
