@@ -23,7 +23,7 @@ App.Models.Issue = App.Data.Item.extend({
     // calling prototype constructor
     App.Models.Issue.__super__.initialize.apply(this);
     
-    this.set('type', "Issue");
+    //this.set('type', "Issue");
     this.on( 'change:id', this.updateAlternatives, this );
     this.on( 'change:id', this.updateRelationsTo, this );
 
