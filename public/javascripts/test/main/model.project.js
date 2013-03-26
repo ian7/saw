@@ -9,7 +9,6 @@ var captureContext = App.main.capture.context = new App.main.capture.Context({pa
 var Project = mainContext.project;
 
 describe('Project', function() {
-  describe('create without id', function() {
     it('Project should have no id after creation', function() {
       return expect(Project.get('id')).to.be.undefined;
     });
@@ -55,7 +54,8 @@ describe('Project', function() {
         });
     });
 
-    it('loads issues for the extsting project', function( done ){
+   /* it('loads issues for the extsting project', function( done ){
+        this.timeout(10000);
         Project.set('id','4fb0d1fa924ff85581000003');
         Project.fetch();
 
@@ -65,17 +65,16 @@ describe('Project', function() {
 
     });
 
-/*    it('should clean up nicely after destroying Project', function( done ){
+    it('should clean up nicely after destroying Project', function( done ){
+        this.timeout(10000);
         Project.destroy({success: function(){
             done();
             }
         });
     });
-    
-*/
+    */
 
 
 
-  });
 
 });

@@ -15,7 +15,7 @@ App.Data.Model = Backbone.Model.extend({
             var storagedVal = localStorage[ 'i'+model.get('id') ];
             
             if( storagedVal ){
-                //console.log( 'model cache hit');
+                console.log( 'model cache hit ('+model.get('id')+"')");
                 var value = JSON.parse(storagedVal);
                 this.set( value );
                 options.success(this, value, options);
@@ -52,12 +52,19 @@ App.Data.Model = Backbone.Model.extend({
     notifyEvent : function( data ){
         var notification = JSON.parse( data );
         if( notification.id == this.get('id') && notification.distance === 0 ){
-            localStorage.removeItem( 'i'+notification.id );
-            console.log('cache wiped for: ' + notification.id );
+            this.invalidateCache();
         }
         if( notification.id == this.get('id') ){
             this.trigger('notify',notification);
         }
+    },
+    invalidateCache : function(){
+        localStorage.removeItem( 'i' + this.get('id') );
+        console.log('cache wiped for: ' + this.get('id') );
+    },
+    reload : function( args ){
+        this.invalidateCache();
+        this.fetch( args );
     }
 });
 
@@ -99,12 +106,13 @@ App.Data.Collection = Backbone.Collection.extend({
         if( action === 'read' && o && o[collection.url] ) {
             //this.reset(o[collection.url]);
             //this.reset(o[collection.url]);
-            //console.log("collection cache hit ("+ o[collection.url].length + "," + this.length +")" + collection.url + ")");
+            console.log("collection cache hit ("+ o[collection.url].length + "," + this.length +")" + collection.url + ")");
             options.success(o[collection.url],'success', null);
             this.trigger('cached'); 
-            if( this.refreshExistingRelations){
+/*            if( this.refreshExistingRelations){
                 this.refreshExistingRelations();
             } 
+*/
             //collection.trigger('sync', collection, o[collection.url]);
             return true;
         }
@@ -125,10 +133,20 @@ App.Data.Collection = Backbone.Collection.extend({
         }
     },
     notifyEvent : function( data ){
-        var notification = JSON.parse( data );
-        if( notification.id === this.ownerID && notification.distance === 1 ){
-            localStorage.removeItem( 'r'+notification.id );
+        if( this.ownerID ) {
+            var notification = JSON.parse( data );
+            if( notification.id === this.ownerID && notification.distance === 1 ){
+                this.invalidateCache();
+            }
         }
+    },
+    invalidateCache : function(){
+        localStorage.removeItem( 'r'+this.ownerID );
+        console.log('relation cache wiped for: ' + this.ownerID );
+    },
+    reload : function( args ){
+        this.invalidateCache();
+        this.fetch( args );
     }
     /* end of client-side cache */
 });
@@ -254,8 +272,8 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
         this.relations.on('add',this.onRelationAdd,this);
         this.relations.on('remove',this.onRelationRemove,this);
 
-        this.relations.on('reset',this.refreshExistingRelations,this);
-        this.relations.on('cached',this.refreshExistingRelations,this);
+      //  this.relations.on('reset',this.refreshExistingRelations,this);
+      //  this.relations.on('cached',this.refreshExistingRelations,this);
         // let's add what we have now...
         this.refreshExistingRelations();
         return this;
@@ -424,10 +442,10 @@ App.Data.Item = App.Data.Model.extend({
         this.relationsFrom.setItem(this,'from');
         
         if( this.updateRelationsTo ){
-            this.relationsTo.fetch();
+            this.relationsTo.reload();
         }
         if( this.updateRelationsFrom ){
-            this.relationsFrom.fetch();
+            this.relationsFrom.reload();
         }
     },
     relationsToChanged : function( model ){
@@ -448,7 +466,7 @@ App.Data.Item = App.Data.Model.extend({
         //}
 
         if( e.class === 'notify' && e.distance === 0 && (e.event === null || e.event === "" || e.event === "update") ){
-            this.fetch();
+            this.reload();
         }
         if( e.class === 'notify' && e.event === "focused" ){
             this.trigger('focused',e.attribute); 
@@ -482,10 +500,10 @@ App.Data.Item = App.Data.Model.extend({
            )
         {
          if( this.updateRelationsFrom ) {
-            this.relationsFrom.fetch();
+            this.relationsFrom.reload();
          }
          if( this.updateRelationsTo ){
-            this.relationsTo.fetch();
+            this.relationsTo.reload();
          }
         }
       //  this.trigger('notify', e );
@@ -633,20 +651,8 @@ App.Data.Item = App.Data.Model.extend({
         }
 
     },
-    getRelationsTo : function( relationType, collectionType, collectionOptions ){
-        /* this code was dirty and buggy...
+    getRelationsTo : function( relationType, collectionType, collectionOptions ){     
         
-        var collection = null;
-
-        if( collectionType ){
-            // this assumes that collectionType is derrived from App.Data.Relations
-            collection = new collectionType( collectionOptions );
-        }
-        else{
-            collection = this.relationsTo;
-        }
-        */
-       
         if( !this.updateRelationsTo ){
             this.updateRelationsTo = true;
 
@@ -659,22 +665,6 @@ App.Data.Item = App.Data.Model.extend({
         return this.relationsTo;
     },
     getRelationsFrom : function( relationType, collectionType, collectionOptions ){
-        /* this code was dirty and buggy...
-
-        var collection = null;
-
-        if( collectionType ){
-            // this assumes that collectionType is derrived from App.Data.Relations
-            collection = new collectionType( collectionOptions );
-        }
-        else{
-            collection = this.relationsFrom;
-        }
-        collection.setItem( this,'from',relationType );
-        collection.fetch();            
-        
-        return collection;
-        */
 
         if( !this.updateRelationsFrom ){
             this.updateRelationsFrom = true;
