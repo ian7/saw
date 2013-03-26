@@ -6,7 +6,7 @@ App.Models.Project = App.Data.Item.extend({
 
       App.Models.Project.__super__.initialize.apply(this);
       
-      this.set('type','Project');
+ //     this.set('type','Project');
       if( model ) {
         this.parse( model );
       }

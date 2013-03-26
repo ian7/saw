@@ -12,7 +12,7 @@ App.Models.Alternative = App.Data.Item.extend({
     _(this).bindAll();
 
     App.Models.Alternative.__super__.initialize.apply(this);
-    this.set('type', "Alternative");
+//    this.set('type', "Alternative");
 
     this.decisions = new App.Data.SuperCollection();
     this.decisions.comparator = this.decisionComparator;
