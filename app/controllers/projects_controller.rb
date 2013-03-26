@@ -234,6 +234,10 @@ class ProjectsController < ApplicationController
         end
     end
 
+    ring( params[:id] ,1,'import' )
+    notify( params[:id],1,'import' )
+
+
     respond_to do |format|
  #     format.html # index.html.erb
       format.any  { render :text => "it worked - "+i_count.to_s+

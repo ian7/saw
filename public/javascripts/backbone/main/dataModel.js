@@ -495,13 +495,14 @@ App.Data.Item = App.Data.Model.extend({
         }
         */
        
-        if( e.distance === 1 && ( 
+        if( e.distance === 1
+        /* && ( 
                 e.event === 'relate' || 
                 e.event === 'unrelate' ||
                 e.event === 'dotag' ||
                 e.event === 'untag' ||
                 e.event === 'destroy') 
-           )
+          */ )
         {
          if( this.updateRelationsFrom ) {
             this.relationsFrom.reload();
