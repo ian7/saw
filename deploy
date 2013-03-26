@@ -2,7 +2,7 @@ export rootPath=`pwd`
 
 git pull
 git submodule init
-git submodule sync
+#git submodule sync
 git submodule update
 
 
