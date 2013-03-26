@@ -10,10 +10,10 @@ App.Data.Relations = App.Data.Collection.extend({
     setItem : function( item, direction, relationType ){
         // if there is a relation type defined, then we should feel like using it. 
         if( relationType ) {
-            this.url = _(item).result('url') + "/relations_"+direction+'/'+relationType;
+            this.url = '/r/' + item.get('id') + "/relations_"+direction+'/'+relationType;
         }
         else {
-            this.url = _(item).result('url') + "/relations_"+direction;
+            this.url = '/r/' + item.get('id') + "/relations_"+direction;
         }
         this.ownerID = item.get('id');
     }

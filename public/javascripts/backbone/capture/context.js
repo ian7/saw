@@ -50,6 +50,8 @@ App.module("main.capture",function(){
         projectSelected : function( args ){
             //this.issues.setProjectURL( args.id );
             //this.fetchIssues();
+            this.parentContext.project.set('id',args.id);
+            this.parentContext.project.fetch();
             console.log('projectSelected');
         },
         projectNotified : function( notification ){
