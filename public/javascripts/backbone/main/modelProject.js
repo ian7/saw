@@ -12,6 +12,11 @@ App.Models.Project = App.Data.Item.extend({
       }
       this.updateRelationsFrom = true;
     },
+    create : function(){
+      this.unset('id');
+      this.set('type','Project');
+      this.save();
+    },
     parse: function( response ){
         this.id = response.id;
         // this converts simple children entry into the collections - 

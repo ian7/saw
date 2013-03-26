@@ -50,6 +50,11 @@ App.Models.Alternative = App.Data.Item.extend({
     this.projectDecisions.on('add',this.gotDecisionsUpdate,this);
     this.projectDecisions.on('remove',this.gotDecisionsUpdate,this);
    },
+   create : function(){
+    this.unset('id');
+    this.set('type','Alternative');
+    this.save();
+   },
    onSBadded : function( relation ){
       var subDecisions = new App.Data.FilteredCollection(null,{
         collection: relation.getRelationsTo(),

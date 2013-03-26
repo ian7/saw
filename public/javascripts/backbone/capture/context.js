@@ -104,8 +104,8 @@ App.module("main.capture",function(){
                 // { project_id: this.context.parentContext.project.get('id') }
 
                 this.newIssue = new App.Models.Issue();
-                this.newIssue.save();
                 this.newIssue.on('sync',this.synced,this);
+                this.newIssue.create();
             },
             synced : function() {
                 this.newIssue.off('sync');
@@ -132,7 +132,7 @@ App.module("main.capture",function(){
 
                 // create new alternative
                 this.newAlternative = new App.Models.Alternative( alternativePresets );
-                this.newAlternative.save();
+                this.newAlternative.create();
                 // wait until it gets saved 
                 this.newAlternative.on('sync',this.synced,this);
             },

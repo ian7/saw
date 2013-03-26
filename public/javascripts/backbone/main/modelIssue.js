@@ -50,6 +50,11 @@ App.Models.Issue = App.Data.Item.extend({
     // this goes through the notification
     this.on('notify',this.notified, this);
   },
+    create : function(){
+      this.unset('id');
+      this.set('type','Issue');
+      this.save();
+    },
     url : function() {
         if( this.id ) {
             return '/r/' + this.id;
