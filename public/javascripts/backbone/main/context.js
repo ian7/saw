@@ -109,6 +109,9 @@ App.module("main",function(){
             console.log(args.id);
            // window.history.pushState("project","project",window.location.origin + "/#project/" + args.id);
             localStorage.setItem("project.lastId",args.id);
+            // switch views
+            this.dispatchGlobally("capture:issues:list");
+
         },
         getTypes : function( rootType, collection  ){
 //            this.types.where( {name = rootName });
