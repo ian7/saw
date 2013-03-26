@@ -33,7 +33,10 @@ App.module('main.projects',function(){
             data: { 'name': name },
             complete: this.refreshProjects
         });*/
-        this.context.projects.create({name: name});
+        
+        var newProject = new App.Models.Project();
+        newProject.set('name',name);
+        newProject.create();
         this.close();
       },
       refreshProjects : function() {

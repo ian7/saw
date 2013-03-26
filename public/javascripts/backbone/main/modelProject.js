@@ -30,7 +30,13 @@ App.Models.Project = App.Data.Item.extend({
         item.untag(this);
     },
     create : function( attributes ){
-        return this.subProjects.create( attributes );
+        if( this.subProjects ){
+            return this.subProjects.create( attributes );
+        }
+        else{
+            this.set('type','Project');
+            this.save( attributes );
+        }
     }
 });
 

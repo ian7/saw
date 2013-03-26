@@ -125,7 +125,10 @@ App.Data.Collection = Backbone.Collection.extend({
             this.bbSuccess = options.success;
             options.success = this.onSync;
             
-            App.connectionsCount = App.connectionsCount + 1;        
+            App.connectionsCount = App.connectionsCount + 1; 
+            if( !this.url ){
+                debugger;
+            }       
             return Backbone.sync.apply(this, arguments);
         }
         else {
@@ -423,10 +426,12 @@ App.Data.Item = App.Data.Model.extend({
 
         // initialization of the relations needs to happen here due to the late type declarations
         this.relationsTo = new App.Data.Relations();
+        this.relationsTo.setItem( this );
         this.relationsTo.on('add',this.relationsToChanged,this);
         this.relationsTo.on('remove',this.relationsToChanged,this);
         this.updateRelationsTo = false;
         this.relationsFrom = new App.Data.Relations();
+        this.relationsFrom.setItem( this );
         this.relationsFrom.on('add',this.relationsFromChanged,this);
         this.relationsFrom.on('remove',this.relationsFromChanged,this);
         this.updateRelationsFrom = false;
