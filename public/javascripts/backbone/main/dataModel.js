@@ -28,6 +28,7 @@ App.Data.Model = Backbone.Model.extend({
     //            console.log('sync model');
                 this.bbSuccess = options.success;
                 options.success = this.onSync;
+                options.complete = this.onComplete;
         
                 App.connectionsCount = App.connectionsCount + 1;                
                 return Backbone.sync.apply(this, arguments);
@@ -40,6 +41,9 @@ App.Data.Model = Backbone.Model.extend({
             return Backbone.sync.apply(this, arguments);
         }
     },
+    onComplete : function( model, resp, options ){
+        App.connectionsCount = App.connectionsCount - 1;                        
+    },
     onSync : function( model,resp,options ){
 //        console.log('onSync model');
         if( !localStorage.updateStamp || localStorage.updateStamp < model.update_stamp ){
@@ -47,7 +51,6 @@ App.Data.Model = Backbone.Model.extend({
             console.log('updateStamp bumped to: '+model.update_stamp);
         }
 
-        App.connectionsCount = App.connectionsCount - 1;                
         if( this.bbSuccess ){
             this.bbSuccess(model,resp,options);
         }
@@ -103,8 +106,10 @@ App.Data.Collection = Backbone.Collection.extend({
             o[this.url] = collection;
             localStorage['r'+this.ownerID] = JSON.stringify( o );
         }
-       App.connectionsCount = App.connectionsCount - 1;
        this.bbSuccess(collection,resp,options);
+    },
+    onComplete : function( collection, resp, options ){
+       App.connectionsCount = App.connectionsCount - 1;
     },
     sync: function( action, collection, options ) {
         var o = null;
@@ -130,6 +135,7 @@ App.Data.Collection = Backbone.Collection.extend({
         if( action === 'read') {
             this.bbSuccess = options.success;
             options.success = this.onSync;
+            options.complete = this.onComplete;
             
             App.connectionsCount = App.connectionsCount + 1; 
             if( !this.url ){
