@@ -18,6 +18,8 @@ App.Data.Model = Backbone.Model.extend({
                 if( debug.cache ) {
                     console.log( 'model cache hit ('+model.get('id')+"')");
                 }
+                this.updateStamp(); 
+
                 var value = JSON.parse(storagedVal);
                 this.set( value );
                 options.success(this, value, options);
@@ -49,7 +51,8 @@ App.Data.Model = Backbone.Model.extend({
         if( this.bbSuccess ){
             this.bbSuccess(model,resp,options);
         }
-        localStorage['i'+model.id] = JSON.stringify( model );   
+        localStorage['i'+model.id] = JSON.stringify( model );  
+        this.updateStamp(); 
     },
     notifyEvent : function( data ){
         var notification = JSON.parse( data );
@@ -67,6 +70,9 @@ App.Data.Model = Backbone.Model.extend({
     reload : function( args ){
         this.invalidateCache();
         this.fetch( args );
+    },
+    updateStamp : function(){
+        localStorage['s'+this.get('id')] = new Date().getTime();
     }
 });
 
@@ -154,7 +160,11 @@ App.Data.Collection = Backbone.Collection.extend({
     reload : function( args ){
         this.invalidateCache();
         this.fetch( args );
-    }
+    },
+    updateStamp : function(){
+        localStorage['s'+this.ownerID] = new Date().getTime();
+    },
+    
     /* end of client-side cache */
 });
 

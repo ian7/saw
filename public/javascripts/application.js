@@ -1,6 +1,77 @@
 /*global Backbone,jQuery,google */
 
 var debug = {};
+var config = {
+    localStorageLimit : 2000
+};
+
+cleanUpCache = function(){
+        var delta = localStorage.length - config.localStorageLimit;
+        
+        if( delta < 0 ){
+            console.log( "no cleanup needed" )
+            return true;
+        }else{
+            console.log( "cleanup of: "+delta+" entries");
+        }
+        
+        //var delta = 10;
+        var recycler = {};
+
+
+        var latestStamp = null;
+        var latestKey = null;
+
+        _(localStorage).each( function( value, key ){
+            
+            var keyId = localStorage.key( key );
+            if( keyId.match("^s") ){
+                //alert(keyId);
+
+                var stampValue = localStorage.getItem( keyId );
+
+                // we don't actually need the "s" any more
+                keyId = keyId.substring(1);
+
+                if( Object.keys(recycler).length < delta ){
+                    recycler[keyId] = stampValue;
+
+                    if( latestStamp === null || latestStamp < stampValue ){
+                        latestStamp = stampValue;
+                        latestKey = keyId;
+                    }
+                }
+                else {
+                    //debugger
+                    // trash existing recycler entry
+                    delete recycler[latestKey];
+                    latestStamp = null;
+
+                    // add the new one 
+                    recycler[ keyId ] = stampValue;
+
+                    //  first find the id with the last stamp again
+                    _(recycler).each( function( value, key ){
+
+                        if( latestStamp === null || latestStamp < stampValue ){
+                            latestStamp = stampValue;
+                            latestKey = keyId;
+                        }
+                    },this);
+                }
+            }
+        },this);
+
+        
+        // and finally trash it. 
+        _(recycler).each( function(value, key){
+            localStorage.removeItem('r'+key);
+            localStorage.removeItem('i'+key);
+            localStorage.removeItem('s'+key);
+         });
+         
+    };
+jQuery("body").everyTime(2000,'recycle cache',cleanUpCache);
 
 jQuery(function() {
    jQuery.ajaxSetup({
