@@ -9,7 +9,7 @@ cleanUpCache = function(){
         var delta = localStorage.length - config.localStorageLimit;
         
         if( delta < 0 ){
-            console.log( "no cleanup needed" )
+            //console.log( "no cleanup needed" )
             return true;
         }else{
             console.log( "cleanup of: "+delta+" entries");
