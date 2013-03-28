@@ -1,8 +1,10 @@
 /*global Backbone,jQuery,google */
 
-var debug = {};
+var debug = {
+    cache: false
+};
 var config = {
-    localStorageLimit : 2000
+    localStorageLimit : 13000
 };
 
 cleanUpCache = function(){
@@ -102,6 +104,8 @@ sessionStorage.clear();
 
 var SoftwareArchitectureWarehouse = Backbone.Marionette.Application.extend({
     connectionsCount : 0,
+    cacheCollectionHit : 0,
+    cacheItemHit : 0,
     Views: {},
     Models: {},
     Data: {},

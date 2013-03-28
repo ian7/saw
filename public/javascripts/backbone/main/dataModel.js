@@ -15,6 +15,7 @@ App.Data.Model = Backbone.Model.extend({
             var storagedVal = localStorage[ 'i'+model.get('id') ];
             
             if( storagedVal ){
+                App.cacheItemHit++;
                 if( debug.cache ) {
                     console.log( 'model cache hit ('+model.get('id')+"')");
                 }
@@ -22,7 +23,9 @@ App.Data.Model = Backbone.Model.extend({
 
                 var value = JSON.parse(storagedVal);
                 this.set( value );
-                options.success(this, value, options);
+
+                window.setTimeout( options.success, 1, this, value, options )
+                //options.success(this, value, options);
             }
             else {        
     //            console.log('sync model');
@@ -54,7 +57,15 @@ App.Data.Model = Backbone.Model.extend({
         if( this.bbSuccess ){
             this.bbSuccess(model,resp,options);
         }
-        localStorage['i'+model.id] = JSON.stringify( model );  
+        try {
+            localStorage['i'+model.id] = JSON.stringify( model );  
+        }
+        catch( e ){
+            var localStorageConsumed = unescape(encodeURIComponent(JSON.stringify(localStorage))).length;
+            console.log( "there is " + localStorageConsumed + " bytes of localStorage consumed -- shrinking cache to: " + config.localStorageLimit );
+            config.localStorageLimit = config.localStorage - 300;
+            this.invalidateCache();
+        }
         this.updateStamp(); 
     },
     notifyEvent : function( data ){
@@ -104,7 +115,16 @@ App.Data.Collection = Backbone.Collection.extend({
                o = {};
             }
             o[this.url] = collection;
-            localStorage['r'+this.ownerID] = JSON.stringify( o );
+
+            try{
+                localStorage['r'+this.ownerID] = JSON.stringify( o );
+            }
+            catch( e ){
+                var localStorageConsumed = unescape(encodeURIComponent(JSON.stringify(localStorage))).length;
+                config.localStorageLimit = config.localStorage - 300;
+                console.log( "there is " + localStorageConsumed + " bytes of localStorage consumed -- shrinking cache to: " + config.localStorageLimit );
+                this.invalidateCache();
+            }
         }
        this.bbSuccess(collection,resp,options);
     },
@@ -122,7 +142,12 @@ App.Data.Collection = Backbone.Collection.extend({
             if( debug.cache ){
                 console.log("collection cache hit ("+ o[collection.url].length + "," + this.length +")" + collection.url + ")");
             }
-            options.success(o[collection.url],'success', null);
+            App.cacheCollectionHit ++;
+
+            //options.success( o[collection.url],'success', null);
+            window.setTimeout( options.success, 1, o[collection.url], 'success', null );
+
+
             this.trigger('cached'); 
 /*            if( this.refreshExistingRelations){
                 this.refreshExistingRelations();

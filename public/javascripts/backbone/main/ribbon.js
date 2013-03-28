@@ -22,7 +22,8 @@ App.module('main',function(){
             _(this).bindAll();
 
 
-            jQuery("body").everyTime(100,this.onUpdateAjaxStatus);
+            jQuery("body").everyTime(100,this.onUpdateAjaxStatus,this);
+            jQuery("body").everyTime(1000,this.resetCounters,this);
 /*
             // that's tricky :)
             //jQuery("body").ajaxStart( this.updateAjaxStatus );
@@ -37,6 +38,10 @@ App.module('main',function(){
         onRender : function(){
             //debugger;
         },
+        resetCounters : function() {
+            App.cacheCollectionHit = 0;
+            App.cacheItemHit = 0;
+        },
         projectSelected : function( options ){
            //jQuery("span#projectID",this.el).html(options.id);
         },
@@ -47,7 +52,15 @@ App.module('main',function(){
            jQuery("span#projectID",this.el).html("...");            
         },
         statusChanged : function(){
-          jQuery("span.status",this.el).html(this.context.status.name);  
+          
+          var status = this.context.status.name;
+
+          if( App.connectionsCount == 0 ){
+            jQuery("span.status",this.el).html( status );
+          } 
+          else{
+            jQuery("span.status",this.el).html( "Transfering");
+          }
         },
         onCapture : function(){
             this.context.dispatchGlobally("capture:issues:list");
@@ -59,7 +72,13 @@ App.module('main',function(){
             this.context.dispatchGlobally('projects:details');
         },
         onUpdateAjaxStatus : function(){
-            jQuery("span#connectionCount",this.el).html(App.connectionsCount);
+            this.statusChanged();
+            
+            jQuery("span#connectionCount",this.el).html(
+                App.connectionsCount + "," +
+                App.cacheItemHit + "," +
+                App.cacheCollectionHit 
+                );
         },
         onAjaxComplete : function(){
             this.connectionCount = this.connectionCount-1;
