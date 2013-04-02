@@ -11,16 +11,16 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       _(this).bindAll();
 
       this.itemView = App.main.Views.TagSelectorItem;
+      this.taggedItemsCollection = options.taggedItemsCollection;
+      this.hideEmpty = options.hideEmpty;
+
       this.itemViewOptions = {
-        context: this.context
+        context: this.context,
+        taggedItemsCollection: this.taggedItemsCollection,
+        hideEmpty : this.hideEmpty
       };
-      this.collection.on('add', this.added, this);
     },
     onRender: function() {
-//      this.renderCollection();
-    },
-    added: function() {
-              console.log('added');
     },
     getRelatedItemsCount: function() {
       var total = 0;

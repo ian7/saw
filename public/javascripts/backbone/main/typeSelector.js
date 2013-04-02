@@ -13,8 +13,13 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       _(this).bindAll();
       this.itemView = App.main.Views.TypeSelectorItem;
 
+      this.taggedItemsCollection = options.taggedItemsCollection;
+      this.hideEmpty = options.hideEmpty;
+
       this.itemViewOptions = {
         context: this.context,
+        taggedItemsCollection: options.taggedItemsCollection,
+        hideEmpty: this.hideEmpty
       };
     },
     onRender: function() {}

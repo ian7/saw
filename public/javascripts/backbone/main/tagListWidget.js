@@ -14,9 +14,13 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
     initialize: function(options) {
       _(this).bindAll();
 
+
       this.itemView = App.main.Views.TagListWidgetItem;
+      this.hideEmpty = options.hideEmpty;
+
       this.itemViewOptions = {
-        context: this.context
+        context: this.context,
+        hideEmpty: this.hideEmpty
       };
 
       this.context.on( "item:selected" ,this.onItemSelected, this );

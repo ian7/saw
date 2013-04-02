@@ -12,10 +12,10 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
     },
     initialize: function() {
       _(this).bindAll();
-      this.model.relationsTo.on('reset', this.gotRelationsTo, this);
+      //this.model.relationsTo.on('reset', this.gotRelationsTo, this);
 
-      this.context.item.relationsFrom.on('reset',this.updateStatus,this);
-      this.context.item.relationsTo.on('reset',this.updateStatus,this);
+      //this.context.item.relationsFrom.on('reset',this.updateStatus,this);
+      //this.context.item.relationsTo.on('reset',this.updateStatus,this);
 
       this.context.on("typeSelector:selectedTag", this.onSelectedTag, this);
       this.context.on('filterWidget:filter', this.onFilterChange, this);
@@ -73,7 +73,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       this.reuseButtonEl  = jQuery("div#toggleReuse", this.el);
 
 
-        this.model.getRelationsTo();
+/*        this.model.getRelationsTo();
 
         jQuery("span#typeName",this.el).html( this.model.get('type'));
 
@@ -104,7 +104,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
         
         this.updateVisibility();
         this.updateStatus();
-
+  */
     },
     updateStatus: function() {
 

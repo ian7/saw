@@ -10,18 +10,33 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
     },
     initialize: function( options ) {
       _(this).bindAll();
-      this.context.on("capture:item:gotTagReferences", this.updateItems,this);
+
+      
+      if( !options.taggedItemsCollection ){
+          debugger;
+      }
+      
+      // let's pass collection of items that are actually tagged:
+      this.taggedItemsCollection = options.taggedItemsCollection;
+      this.taggedItemsCollection.on('add',this.onTaggedItemsCollectionChanged,this);
+      this.taggedItemsCollection.on('remove',this.onTaggedItemsCollectionChanged,this);
+
       this.itemReferences = [];
 
-      this.options = {};
+      /*this.options = {};
       this.options.hideEmpty = true;
+      */
+     this.hideEmpty = options.hideEmpty;
 
       this.context.on("typeSelector:selectedTag",this.setHighlight,this);
+  
+      this.context.on('type:selected', this.setHighlightType,this.model);
     },
     onRender: function() {
-      if( this.options.hideEmpty ){
+      if( this.hideEmpty ){
         jQuery( this.el ).hide();
       }
+      this.onTaggedItemsCollectionChanged();
     },
     onClick: function() {
       this.context.dispatch("typeSelector:selectedTag", this.model);
@@ -35,6 +50,23 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       }
       return false;
     },
+    // this is not exactly what one would call optimall....
+    onTaggedItemsCollectionChanged : function(){
+      var count = 0;
+      _(this.model.relationsFrom.models).each( function( relation ) {
+        if( relation.get('relation') === 'Tagging') {
+          var subCount = this.taggedItemsCollection.where({
+            id: relation.get('tip')
+          }).length;
+          count += subCount;
+        }
+      },this);
+      if( count > 0 ){
+        jQuery( this.el ).show();
+      }
+      this.itemReferenceCount = count;
+      jQuery("span#itemCount",this.el).first().html(this.itemReferenceCount);
+    },
     updateItems: function(model) {
       // get count of the given tag in the issue
       var count = model.relationsTo.where({
@@ -46,11 +78,10 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
           this.itemReferences.push(model.get('id')) ;
         this.itemReferenceCount = this.itemReferences.length;
 
-        if( this.itemReferenceCount > 0 && this.options.hideEmpty ){
+        if( this.itemReferenceCount > 0 && this.hideEmpty ){
           jQuery( this.el ).show();
         }
 
-        jQuery("span#itemCount",this.el).first().html(this.itemReferenceCount);
         }
       }
   });

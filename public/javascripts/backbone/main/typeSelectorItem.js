@@ -14,10 +14,18 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       // set itemView to itself
       this.itemView = App.main.Views.TypeSelectorItem;
       // pass the context
+
+      // let's pass collection of items that are actually tagged:
+      this.taggedItemsCollection = options.taggedItemsCollection;
+
+      this.hideEmpty = options.hideEmpty;
+
       this.itemViewOptions = {
-        context: this.context
+        context: this.context,
+        taggedItemsCollection: this.taggedItemsCollection
       };
       this.itemViewContainer = "div#subItems";
+
 
       // and set the collection
       this.collection = new Backbone.CollectionFilter({
@@ -41,11 +49,14 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       });
       this.tagSelector = new App.main.Views.TagSelector({
         context: this.context,
-        collection: this.tagFilterCollection
+        taggedItemsCollection:  this.taggedItemsCollection,
+        collection: this.tagFilterCollection,
+        hideEmpty: this.hideEmpty
       });
       
-      this.context.on("capture:item:gotTagReferences", this.updateTagItemCounts,this);
-
+      //this.context.on("capture:item:gotTagReferences", this.updateTagItemCounts,this);
+      this.taggedItemsCollection.on('add',this.updateTagItemCounts,this);      
+      this.taggedItemsCollection.on('remove',this.updateTagItemCounts,this);
       this.on('composite:rendered', this.modelRendered, this);
 
     },
@@ -60,17 +71,20 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
 
       // render tags
       this.tagSelector.setElement( jQuery( "div#items",this.el ).first() );
-      this.tagSelector.render();  
+      this.tagSelector.render();
 
       // hide tag list...
-      jQuery( "div#items",this.el).hide();
+      if( this.hideEmpty ){
+       jQuery( "div#items",this.el).hide();
+      }
+      this.updateTagItemCounts();
     },
     updateSubCount: function() {
       jQuery("span#subCount", this.el).first().html("subtypes: " + this.collection.models.length + ", items: " + this.itemCollection.models.length);
     },
     updateTagItemCounts : function(){
       var relatedItemsCount = this.tagSelector.getRelatedItemsCount();
-      if( relatedItemsCount > 0 ){
+      if( relatedItemsCount > 0 || !this.hideEmpty ){
         jQuery(this.el).show();
       }else{
         jQuery(this.el).hide();
@@ -89,8 +103,8 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
           jQuery("div#items",this.el).show();
       }
 
-      jQuery("div.typeSelectorItem").removeClass('red');
-      jQuery(this.el).addClass('red');
+//      jQuery("div.typeSelectorItem").removeClass('red');
+//      jQuery(this.el).addClass('red');
 
       // this stops propagation :)
       return false;

@@ -38,9 +38,8 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       this.typeSelector = new App.main.Views.TypeSelector({
         context: this.context,
         collection: types,
-        options: {
-          hideEmpty: true
-        }
+        taggedItemsCollection: this.collection,
+        hideEmpty: true
       });
 
       this.filterWidget = new App.main.Views.FilterWidget({

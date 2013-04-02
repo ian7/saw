@@ -5,7 +5,7 @@ App.Models.Tag = App.Data.Item.extend({
       _(this).bindAll();
 
       App.Models.Project.__super__.initialize.apply(this);
-  
+      this.getRelationsFrom();
     },
    
 });
