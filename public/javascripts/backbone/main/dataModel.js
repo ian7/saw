@@ -1,6 +1,6 @@
 /* this model is to be coupled with juggernaut notification mechanism  */
 
-/*global App, Backbone,_,jQuery,eventer */
+/*global App, Backbone,_,jQuery,eventer,debug,config,unescape */
 
 App.Data.Model = Backbone.Model.extend({
     initialize : function(){
@@ -24,7 +24,7 @@ App.Data.Model = Backbone.Model.extend({
                 var value = JSON.parse(storagedVal);
                 this.set( value );
 
-                window.setTimeout( options.success, 1, this, value, options )
+                window.setTimeout( options.success, 1, this, value, options );
                 //options.success(this, value, options);
             }
             else {        
@@ -194,8 +194,7 @@ App.Data.Collection = Backbone.Collection.extend({
     },
     updateStamp : function(){
         localStorage['s'+this.ownerID] = new Date().getTime();
-    },
-    
+    }
     /* end of client-side cache */
 });
 
@@ -388,11 +387,15 @@ App.Data.FilteredCollection = Backbone.Collection.extend({
             throw new Error("it doesn't make sense to filter without collection" );
         }
 
-        if( !options.filter ){
-            throw new Error("it doesn't make sense to filter without filter");
+        if( options.filter ) {
+            this.filter = options.filter;
         }
-
-        this.filter = options.filter;
+        else {
+            //throw new Error("it doesn't make sense to filter without filter");
+            console.log("it doesn't make sense to filter without filter");
+        }
+        
+        this.filterParams = options.filterParams;
 
         this.collection = options.collection;
         this.collection.on('add',this.onAdd,this);
