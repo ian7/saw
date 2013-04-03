@@ -107,12 +107,29 @@ _.extend(Backbone.CollectionFilter.prototype, Backbone.Events, {
             _(this.filterSet).each(function(value, key) {
                 // required match is null, but attribute isn't null
                 // negative match against the pattern, or no key at all
-                if( (value === null && model.get(key) !== null) || 
-                    (value !== null && model.get(key) === null) ||
-                    (model.get(key) != null && model.get(key).match(value) === null) ){
-                    //(model.get(key) !== null && (model.get(key) === value) ) ){
+                var v = model.get(key);
+                if( (value === null && v !== null) ) {
+                    matched = false;
+                } 
+                if( (value !== null && v === null) ) {
                     matched = false;
                 }
+                
+                // for some mysterious reason this works
+                if( (model.get(key) != null && model.get(key).match("^"+value.toString()+"$") === null) ){ 
+                    matched = false 
+                }
+                
+                // whereas this crashes... i would hihgly appreciate some expertise
+                /*
+                if( v != null ) {
+                    //debugger
+                    //console.log( "v: " + v + " value: " + value.toString() );
+                    if(v  == value.toString() ) {
+                        matched = false;
+                    }
+                }
+                */
             }, this);
             if(matched === false) {
                 return false;
