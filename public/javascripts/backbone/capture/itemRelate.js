@@ -6,7 +6,8 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
     itemViewContainer: 'div#itemList',
     events: {
       'click div#clearSelection': 'onClearSelection',
-      'click div#relationButtons button.btn' : 'onRelationClicked'
+      'click div#relationButtons button.btn' : 'onRelationClicked',
+      'click div#clearFilter' : 'onClearFilter'
     },
     shortcuts: {},
     speedButtons: {
@@ -22,7 +23,8 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
 
       this.itemView = App.main.capture.Views.ItemRelateItem;
       this.itemViewOptions = {
-        context: this.context
+        context: this.context,
+        item: this.context.item
       };
 
       var types = new Backbone.CollectionFilter({
@@ -35,9 +37,8 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       this.typeSelector = new App.main.Views.TypeSelector({
         context: this.context,
         collection: types,
-        options: {
-          hideEmpty: true
-        }
+        taggedItemsCollection: this.collection,
+        hideEmpty: true
       });
 
       this.filterWidget = new App.main.Views.FilterWidget({
@@ -50,8 +51,8 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
 
       this.context.on('itemRelate:relationSelected',this.onRelationSelected,this);
 
-      this.collection.on('add', this.updateItemCount, this);
-      this.collection.on('remove', this.updateItemCount, this);
+     // this.collection.on('add', this.updateItemCount, this);
+     // this.collection.on('remove', this.updateItemCount, this);
 
       this.on('composite:model:rendered', this.onModelRendered, this);
 
@@ -71,10 +72,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       }, this);
 
       // this makes the item to take care about its relations
-      this.context.item.updateRelationsFrom = true;
       this.context.item.getRelationsFrom();
-
-      this.context.item.updateRelationsTo = true;
       this.context.item.getRelationsTo();
 
     },
@@ -89,6 +87,11 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       jQuery("span#itemName", this.el).html(this.context.item.get('name'));
       this.renderRelationButtons();
     },
+    onClearFilter : function(){
+      this.context.trigger("typeSelector:selectedTag", null);
+      this.context.trigger('filterWidget:filter', null);
+      this.context.trigger('itemRelate:relationSelected', null);
+    },
     renderRelationButtons: function() {
       var h = "";
 
@@ -101,7 +104,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       jQuery("div#relationButtons").buttonset();
     },
     onRelationClicked: function( event ){
-      var relation = this.context.parentContext.types.find(function(type){ return type.get('name') == event.target.id;});
+      var relation = this.context.parentContext.types.find(function(type){ return type.get('name') === event.target.id;});
       this.context.dispatch("itemRelate:relationSelected",relation );
     },
     onRelationSelected : function( relation ){

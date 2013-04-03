@@ -58,6 +58,11 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       this.taggedItemsCollection.on('add',this.updateTagItemCounts,this);      
       this.taggedItemsCollection.on('remove',this.updateTagItemCounts,this);
       this.on('composite:rendered', this.modelRendered, this);
+    
+      this.context.on('typeSelector:selectedTag',this.onSelectedTag,this);
+    },
+    onSelectedTag : function(){
+      jQuery("span#name").removeClass('red');
     },
     modelRendered: function() {
       this.collection.setFilter({

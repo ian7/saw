@@ -21,7 +21,11 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       this.context.on('filterWidget:filter', this.onFilterChange, this);
       this.context.on('itemRelate:relationSelected',this.onRelationSelected,this);
 
-
+      this.item = options.item;
+      this.item.relationsFrom.on('add',this.updateStatus,this);
+      this.item.relationsFrom.on('remove',this.updateStatus,this);
+      this.item.relationsTo.on('add',this.updateStatus,this);
+      this.item.relationsTo.on('remove',this.updateStatus,this);
 
       this.acceptableRelationsFrom = _(this.context.parentContext.types.models).filter(function(type) {
         var found = false;
@@ -31,7 +35,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
         }
 
         _(type.get('scopes')).each(function(scope) {
-          if( (this.context.item.get('type') === scope.domain )
+          if( (this.item.get('type') === scope.domain )
               && scope.domain
               && (this.model.get('type') === scope.scope )
               ) {
@@ -51,7 +55,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
         }
 
         _(type.get('scopes')).each(function(scope) {
-          if( (this.context.item.get('type') === scope.scope )
+          if( (this.item.get('type') === scope.scope )
               && scope.domain
               && (this.model.get('type') === scope.domain )
               ) {
@@ -65,7 +69,6 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
 
 
 
-
     },
     onRender: function() {
       // let's try to spare some selectors
@@ -73,11 +76,9 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       this.reuseButtonEl  = jQuery("div#toggleReuse", this.el);
 
 
-/*        this.model.getRelationsTo();
+      jQuery("span#typeName",this.el).html( this.model.get('type'));
 
-        jQuery("span#typeName",this.el).html( this.model.get('type'));
-
-        var h="";
+      var h="";
 
         if( this.acceptableRelationsTo.length > 0 ){
           _(this.acceptableRelationsTo).each(function(relation) {
@@ -104,7 +105,6 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
         
         this.updateVisibility();
         this.updateStatus();
-  */
     },
     updateStatus: function() {
 
@@ -113,7 +113,8 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       // we need to go throught the "relations from", but it makes no sense to go all over them
       // bcasuse it is easier to just browse relations of the main item
 
-      this.context.item.relationsFrom.each( function( relation ){
+
+      this.item.relationsFrom.each( function( relation ){
         if( relation.get('tip') === this.model.get('id') ){
           jQuery( "div#makeRelationToButtons button#"+relation.get('relation'),this.el).addClass("btn-success");
         }
@@ -126,7 +127,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       // we need to go throught the "relations from", but it makes no sense to go all over them
       // bcasuse it is easier to just browse relations of the main item
 
-      this.context.item.relationsTo.each( function( relation ){
+      this.item.relationsTo.each( function( relation ){
         if( relation.get('origin') === this.model.get('id') ){
           jQuery( "div#makeRelationFromButtons button#"+relation.get('relation'),this.el).addClass("btn-success");
         }
@@ -153,6 +154,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
         //this.context.item.relate({item: this.model, relation: relationName });
         this.model.relate({item: this.context.item, relation: relationName});
         }
+        
     },
     onRelateFromClicked : function( e ){
 
@@ -177,7 +179,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
         }
     },    
     onToggleReuse: function() {
-      if(jQuery("div#toggleReuse", this.el).hasClass("gray")) {
+  /*    if(jQuery("div#toggleReuse", this.el).hasClass("gray")) {
         return;
       }
 
@@ -198,16 +200,19 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
           item: this.model
         });
       }
+      */
     },
     gotRelationsTo: function() {
-      var taggingCount = this.model.relationsTo.where({
+      /*var taggingCount = this.model.relationsTo.where({
         relation: 'Tagging'
       }).length;
       jQuery("span#counts", this.el).html(taggingCount);
       this.context.dispatch("capture:item:gotTagReferences", this.model);
       this.updateVisibility();
       //this.updateStatus();
+      */
     },
+
     onItemClick: function(argument) {
       this.context.dispatch("itemSelector:selectedItem", this.model);
     },
@@ -249,9 +254,9 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       }
 
       if(this.lastSelectedTag) {
-        var matches = this.model.relationsTo.where({
+        var matches = this.lastSelectedTag.relationsFrom.where({
           relation: 'Tagging',
-          origin: this.lastSelectedTag.get('id')
+          tip: this.model.get('id')
         });
 
         if(matches.length === 0) {
@@ -273,7 +278,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       } else {
         jQuery(this.el).hide();
       }
-
+      
     }
   });
 });
