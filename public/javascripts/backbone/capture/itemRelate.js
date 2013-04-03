@@ -44,7 +44,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       this.filterWidget = new App.main.Views.FilterWidget({
         context: this.context
       });
-      this.context.on('typeSelector:selectedTag', this.updateItemCount, this);
+      this.context.on('typeSelector:selectedTag', this.onSelectedTag, this);
       this.context.on('filterWidget:filter', this.updateItemCount, this);
       this.context.on('itemRelate:relationSelected',this.updateItemCount,this);
       this.context.on('filter:clear', this.onFilterClear, this);
@@ -55,6 +55,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
      // this.collection.on('remove', this.updateItemCount, this);
 
       this.on('composite:model:rendered', this.onModelRendered, this);
+      this.on('composite:collection:rendered',this.onCollectionRendered,this);
 
       this.acceptableRelations = _(this.context.parentContext.types.models).filter(function(type) {
         var found = false;
@@ -87,6 +88,17 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       jQuery("span#itemName", this.el).html(this.context.item.get('name'));
       this.renderRelationButtons();
     },
+    onCollectionRendered : function(){
+      // let's restore selected tag
+      if( localStorage.relateItemSelectedTag ){
+        var previouslySelectedTag = this.context.parentContext.tags.find( function( tag ){
+          return( tag.get('id') === localStorage.relateItemSelectedTag );
+        },this);
+        if( previouslySelectedTag ){
+          this.context.trigger('typeSelector:selectedTag', previouslySelectedTag );
+        }
+      }
+    },
     onClearFilter : function(){
       this.context.trigger("typeSelector:selectedTag", null);
       this.context.trigger('filterWidget:filter', null);
@@ -113,6 +125,15 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       if( relation ){
         jQuery("div#relationButtons button.btn#"+relation.get('name')).addClass("btn-success");
       }
+    },
+    onSelectedTag : function( tag ){
+      if( tag ) {
+          localStorage.relateItemSelectedTag = tag.get('id');      
+      }
+      else{
+          localStorage.relateItemSelectedTag = null
+      }
+      this.updateItemCount();
     },
     updateItemCount: function() {
       jQuery(this.el).oneTime(100, 'updatedItemCount', this.delayedUpdateItemCount);

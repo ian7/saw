@@ -10,7 +10,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       'click div#buttonsTo button' : 'onRelateToClicked',
       'click div#buttonsFrom button' : 'onRelateFromClicked'
     },
-    initialize: function() {
+    initialize: function( options ) {
       _(this).bindAll();
       //this.model.relationsTo.on('reset', this.gotRelationsTo, this);
 

@@ -61,8 +61,13 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
     
       this.context.on('typeSelector:selectedTag',this.onSelectedTag,this);
     },
-    onSelectedTag : function(){
-      jQuery("span#name").removeClass('red');
+    onSelectedTag : function( tag ){
+      if( tag && tag.get('type') === this.model.get('name') ){
+        this.onSelected();
+      }
+      else {
+        this.onUnselected();
+      }
     },
     modelRendered: function() {
       this.collection.setFilter({
@@ -99,20 +104,24 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       e.append(iv.$el);
     },
     onClick: function() {
-      this.context.dispatch('type:selected', this.model);
       // toggle show items
       if( jQuery( "div#items",this.el).is(':visible')) {
-          jQuery("div#items",this.el).hide();
+        this.onUnselected();
       } else {
-          jQuery("div#items",this.el).show();
+        this.onSelected();
       }
-
-//      jQuery("div.typeSelectorItem").removeClass('red');
-      jQuery("span#name").removeClass('red');
-      jQuery("span#name",this.el).addClass('red');
-
-      // this stops propagation :)
+      // this needs to stop further propagation
       return false;
+    },
+    onSelected: function(){
+      this.context.dispatch('type:selected', this.model);
+      jQuery("div#items").hide();
+      jQuery("div#items",this.el).show();
+    },
+    onUnselected: function(){
+      jQuery("div#items",this.el).hide();
+      jQuery("span#name",this.el).removeClass('red');
+ 
     }
   });
 });
