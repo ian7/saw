@@ -86,15 +86,16 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       this.typeSelector = new App.main.Views.TypeSelector({
         context: this.context,
         collection: types,
-        options: {
-          hideEmpty: true
-        }
+        hideEmpty: false,
+        taggedItemsCollection: this.collection
+
       });
 
       this.filterWidget = new App.main.Views.FilterWidget({
         context: this.context
       });
       this.context.on('type:selected', this.updateItemCount, this);
+      this.context.on("type:selected", this.onTypeSelected, this);
       this.context.on('filterWidget:filter', this.updateItemCount, this);
       this.context.on('itemRelate:relationSelected',this.updateItemCount,this);
       this.context.on('filter:clear', this.onFilterClear, this);
@@ -108,6 +109,9 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
 
      
     },
+    onTypeSelected: function( type ){
+      jQuery("div#tagList",this.el).hide();
+    },
     onModelRendered: function() {
       this.typeSelector.setElement(jQuery("div#typeSelector", this.el));
       this.typeSelector.render();
@@ -117,6 +121,10 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       
       jQuery("span#itemType", this.el).html(this.model.get('type'));
       jQuery("span#itemName", this.el).html(this.model.get('name'));
+
+
+      // let's hide tags
+      this.onTypeSelected();
     },
     updateItemCount: function() {
       jQuery(this.el).oneTime(100, 'updatedItemCount', this.delayedUpdateItemCount);

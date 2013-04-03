@@ -55,7 +55,7 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       var count = 0;
       _(this.model.relationsFrom.models).each( function( relation ) {
         if( relation.get('relation') === 'Tagging') {
-          var subCount = this.taggedItemsCollection.where({
+          var subCount = _(this.taggedItemsCollection.models).where({
             id: relation.get('tip')
           }).length;
           count += subCount;

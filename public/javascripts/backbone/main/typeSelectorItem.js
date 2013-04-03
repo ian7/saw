@@ -58,7 +58,6 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       this.taggedItemsCollection.on('add',this.updateTagItemCounts,this);      
       this.taggedItemsCollection.on('remove',this.updateTagItemCounts,this);
       this.on('composite:rendered', this.modelRendered, this);
-
     },
     modelRendered: function() {
       this.collection.setFilter({
@@ -104,7 +103,8 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       }
 
 //      jQuery("div.typeSelectorItem").removeClass('red');
-//      jQuery(this.el).addClass('red');
+      jQuery("span#name").removeClass('red');
+      jQuery("span#name",this.el).addClass('red');
 
       // this stops propagation :)
       return false;
