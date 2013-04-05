@@ -11,6 +11,7 @@ App.module("main.capture",function(){
       "click .expand" : "toggleExpand",
       "click div.issueCompactView" : "doExpand",
       "click .deleteIssue" : "deleteItem",
+      "click .removeIssue" : "removeItem",
       "click .details" : "navigateToDetails",
       "mouseover" : "mouseOver",
       "mouseout" : "mouseOut",
@@ -117,6 +118,20 @@ App.module("main.capture",function(){
     deleteItem : function() {
     
     if( confirm("Are you sure that you want to delete design issue named:\n"+this.model.get('name') ) ) {
+
+      if( this.model.collection ) {
+        // remove it from the collection first
+        this.model.collection.remove( this.model );
+        }
+      else {
+        alert( 'not in the collection - fucker: ' + this.model.get('name') );
+        }
+        // and then destroy it.
+        this.model.destroy();
+      }
+    },
+    removeItem : function() {
+    if( confirm("Are you sure that you want to remove from the project, the design issue named:\n"+this.model.get('name') ) ) {
 
       if( this.model.collection ) {
         // remove it from the collection first
