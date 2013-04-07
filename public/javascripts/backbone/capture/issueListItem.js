@@ -115,33 +115,26 @@ App.module("main.capture",function(){
               });         
           }
     },
-    deleteItem : function() {
-    
-    if( confirm("Are you sure that you want to delete design issue named:\n"+this.model.get('name') ) ) {
+    deleteItem : function() {    
+      if( confirm("Are you sure that you want to delete design issue named:\n"+this.model.get('name') ) ) {
 
-      if( this.model.collection ) {
-        // remove it from the collection first
-        this.model.collection.remove( this.model );
+        if( this.model.collection ) {
+          // remove it from the collection first
+          this.model.collection.remove( this.model );
         }
-      else {
-        alert( 'not in the collection - fucker: ' + this.model.get('name') );
-        }
-        // and then destroy it.
+          // and then destroy it.
         this.model.destroy();
       }
     },
     removeItem : function() {
-    if( confirm("Are you sure that you want to remove from the project, the design issue named:\n"+this.model.get('name') ) ) {
+      if( confirm("Are you sure that you want to remove from the project, the design issue named:\n"+this.model.get('name') ) ) {
+          var issueProjectRelation = App.main.context.project.relationsFrom.find( function( relation ){
+            return( relation.get('tip') === this.model.get('id') ); 
+          },this);
 
-      if( this.model.collection ) {
-        // remove it from the collection first
-        this.model.collection.remove( this.model );
-        }
-      else {
-        alert( 'not in the collection - fucker: ' + this.model.get('name') );
-        }
-        // and then destroy it.
-        this.model.destroy();
+          if( issueProjectRelation ){ 
+            issueProjectRelation.destroy();
+          }
       }
     },
     doExpand : function() {
