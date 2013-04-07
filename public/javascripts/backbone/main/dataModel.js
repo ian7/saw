@@ -186,7 +186,9 @@ App.Data.Collection = Backbone.Collection.extend({
     },
     invalidateCache : function(){
         localStorage.removeItem( 'r'+this.ownerID );
-        console.log('relation cache wiped for: ' + this.ownerID );
+        if( debug.cache ){
+            console.log('relation cache wiped for: ' + this.ownerID );
+        }
     },
     reload : function( args ){
         this.invalidateCache();
