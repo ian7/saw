@@ -1511,8 +1511,6 @@ div#speedButtonsSidebar div.button {
   opacity: 0.5;
   cursor: pointer;
   font-size: 1.5em;
-  margin-left: 2px;
-  margin-right: 2px;
 }
 
 .opaqueHover:hover {
@@ -1586,4 +1584,20 @@ table#notifications tr.notificationListWidgetItem:nth-of-type(even){
 
 .alignCenter{
   text-align: center;
+}
+
+.iconWidth{
+  width: 16px;
+}
+
+td.alternativeStatus{
+  width: 10%;
+}
+
+.green{
+  color: green;
+}
+
+.blue {
+  color: blue;
 }

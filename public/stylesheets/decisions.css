@@ -53,7 +53,7 @@ table.alternativeListDetails{
 	margin-top: 10px;
 }
 
-table.alternativeList td, 
+table.alternativeList > td, 
 table.alternativeListDetails td{
 	padding: 2px;
 }

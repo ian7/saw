@@ -15,13 +15,40 @@ App.module("main.capture",function(){
           attribute: "name"
         });
       this.model.updateDecisions(this.context);
+      this.model.on('decisionsChanged',this.onDecisionChanged,this);
     },
     onRender : function() {
       this.nameEdit.render(jQuery("span.editable#name",this.el).first());
        if( this.model.isNew() ){
         this.focus();
         console.log("focusing");
-      }   },
+      }   
+      this.onDecisionChanged();
+    },
+    onDecisionChanged : function(){
+      var statusEl = jQuery("span#decisionStatus",this.el);
+     
+      if( this.model.isDecided() ){
+        var decision = this.model.decision();
+        var decisionTag = App.main.context.decisions.find( function( model ){
+          return model.get('id') === decision;
+        });
+
+        statusEl.html( "Alligned: <span id='decisionName' class='"
+          + decisionTag.get('color').toLowerCase()
+          +"'>"  
+          + decisionTag.get('name') + "</span>" );
+        return;
+      }
+
+      if( this.model.isColliding() ){
+        statusEl.html( "Colliding" );
+        return;
+      }
+
+      statusEl.html( "No positions" );
+
+    },
     focus: function(){
       try{
           jQuery(this.el).oneTime(100,'some_focus',this.doFocus);
