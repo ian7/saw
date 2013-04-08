@@ -43,6 +43,8 @@ App.module("main.capture",function(){
         this.collection = this.model.alternatives;
 
         this.collection.on('decisionsChanged',this.onDecisionsChanged,this );
+        this.collection.on('add',this.onDecisionsChanged,this );
+        this.collection.on('remove',this.onDecisionsChanged,this );
 
         this.itemViewOptions = {context: this.context};
         
@@ -58,6 +60,8 @@ App.module("main.capture",function(){
                 + "/issue/" + this.context.issue.get('id'));
     },
     onRender: function(){
+    },
+    onItemRendered : function() {
          jQuery("#deleteIssue",this.el).popover({
             trigger: 'hover',
             title: 'Delete',
@@ -92,12 +96,11 @@ App.module("main.capture",function(){
             content: 'Request your team to focus on this Issue',
             placement: 'bottom'
         });
-    },
-    onItemRendered : function() {
+
+
         this.attributesView.el = this.attributesView.$el = jQuery("div.itemAttributes",this.el).first();
         this.attributesView.render();
         this.model.updateAlternatives();
-
         },
     anchorClicked : function() {
         jQuery("img.anchor",this.el).popover({
