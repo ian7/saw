@@ -79,7 +79,9 @@ App.Data.Model = Backbone.Model.extend({
     },
     invalidateCache : function(){
         localStorage.removeItem( 'i' + this.get('id') );
-        console.log('cache wiped for: ' + this.get('id') );
+        if( debug.cache ) {
+            console.log('cache wiped for: ' + this.get('id') );
+        }
     },
     reload : function( args ){
         this.invalidateCache();
