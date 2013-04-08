@@ -63,6 +63,7 @@ App.module("main.capture",function(){
         this.focus();
         console.log("focusing");
       }
+      this.onDecisionsChanged();
     },
     onDecisionsChanged : function(){
         jQuery('span#issueStatus',this.el).html( this.model.decisionState() );
