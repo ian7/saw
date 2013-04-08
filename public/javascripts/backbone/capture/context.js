@@ -64,6 +64,7 @@ App.module("main.capture",function(){
             this.issue.fetch();
         },
         issueList: function(){
+            this.dispatchGlobally('mode:capture');
             // create the view
             var view = new App.main.capture.Views.IssueList({collection: this.issues, context: this });
             
@@ -73,6 +74,7 @@ App.module("main.capture",function(){
             //this.fetchIssues();
         },
         issueDetails : function() {
+            this.dispatchGlobally('mode:capture');
             // create the view
             var view = new App.main.capture.Views.IssueDetails({model: this.issue, context: this});
            
@@ -81,6 +83,7 @@ App.module("main.capture",function(){
             this.parentContext.trigger("item:selected",this.issue);
         },
         issueReuse : function(){
+            this.dispatchGlobally('mode:capture');
             var view = new App.main.capture.Views.IssueReuse({collection: this.allIssues, context: this});
             this.allIssues.fetch();
            

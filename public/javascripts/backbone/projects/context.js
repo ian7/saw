@@ -36,6 +36,7 @@ App.module("main.projects",function(){
             }
         },
         showIndex: function() {
+            this.dispatchGlobally('mode:projects');
             console.log('rendering projects index');
             //this.context.options.view.render();
             this.mainView = new App.main.projects.Views.ProjectList({
@@ -60,6 +61,8 @@ App.module("main.projects",function(){
             App.main.layout.modal.show(this.newProjectView);
         },
         projectDetails : function( options ){
+            this.dispatchGlobally('mode:track');
+
             this.projectDetailsView = new App.main.projects.Views.ProjectDetails({
                 context:this,
                 project: App.main.context.project

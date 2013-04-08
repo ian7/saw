@@ -8,8 +8,10 @@ App.module('main',function(){
         template : JST['main/ribbon'],
         connectionCount : 0,
         events : {
-            'click span#capture' : 'onCapture',
-            'click span#projects' : 'onProjects',
+            'click span#capture' : 'onCaptureClicked',
+            'click span#projects' : 'onProjectsClicked',
+            'click span#decide' : 'onDecideClicked',
+            'click span#track' : 'onTrackClicked',
             'click span#projectID' : 'onProjectClicked'
         },
         initialize : function(){
@@ -34,6 +36,10 @@ App.module('main',function(){
             //jQuery("body").ajaxSuccess( this.onUpdateAjaxStatus );
 
 */            
+            this.context.on('mode:projects',this.onProjects,this);
+            this.context.on('mode:capture',this.onCapture,this);
+            this.context.on('mode:decide',this.onDecide,this);
+            this.context.on('mode:track',this.onTrack,this);
         },  
         onRender : function(){
             //debugger;
@@ -62,11 +68,17 @@ App.module('main',function(){
             jQuery("span.status",this.el).html( "Transfering");
           }
         },
-        onCapture : function(){
+        onCaptureClicked : function(){
             this.context.dispatchGlobally("capture:issues:list");
         },
-        onProjects : function(){
+        onProjectsClicked : function(){
             this.context.dispatchGlobally("projects:index");
+        },
+        onDecideClicked : function(){
+            console.log('decide');
+        },
+        onTrackClicked : function(){
+            this.onProjectClicked();
         },
         onProjectClicked : function(){
             this.context.dispatchGlobally('projects:details');
@@ -91,6 +103,25 @@ App.module('main',function(){
         onAjaxStop : function(){
             this.connectionCount = 0;
             this.onUpdateAjaxStatus();
+        },
+        onProjects : function(){
+            this.clearMode();
+            jQuery("span.button.black#projects",this.el).addClass('active');
+        },
+        onCapture : function(){
+            this.clearMode();
+            jQuery("span.button.black#capture",this.el).addClass('active');
+        },
+        onDecide : function(){
+            this.clearMode();
+            jQuery("span.button.black#decide",this.el).addClass('active');
+        },
+        onTrack : function(){
+            this.clearMode();
+            jQuery("span.button.black#track",this.el).addClass('active');
+        },
+        clearMode : function(){
+            jQuery("span.button.black",this.el).removeClass('active');
         }
     });
 });
