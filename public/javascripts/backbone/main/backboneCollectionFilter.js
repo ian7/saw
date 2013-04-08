@@ -114,10 +114,12 @@ _.extend(Backbone.CollectionFilter.prototype, Backbone.Events, {
                 if( (value !== null && v === null) ) {
                     matched = false;
                 }
+    
+                var expression = new RegExp("^"+value.toString()+"$","i");
                 
                 // for some mysterious reason this works
-                if( (model.get(key) != null && model.get(key).match("^"+value.toString()+"$") === null) ){ 
-                    matched = false 
+                if( (model.get(key) != null && model.get(key).match(expression) === null) ){ 
+                    matched = false; 
                 }
                 
                 // whereas this crashes... i would hihgly appreciate some expertise
