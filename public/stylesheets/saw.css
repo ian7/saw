@@ -1016,10 +1016,11 @@ div.project {
   display: inline;
 }
 
-div.project div.name {
+div.project span.name {
   display: inline;
   font-weight: bold;
   text-decoration: underline;
+  cursor:pointer;
 }
 
 div.project div.moreDetailsButton {
@@ -1606,4 +1607,7 @@ td.alternativeStatus{
 .spacer30{
   width: 30%;
   display: inline-block;
+}
+.ribbonButton{
+  min-width: 100px;
 }

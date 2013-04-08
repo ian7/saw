@@ -5,7 +5,7 @@ App.module("main.projects",function(){
  this.Views.ProjectItem = Backbone.Marionette.CompositeView.extend({
         events :{
             'click div.moreDetailsButton' :  'moreDetails',
-            'click div.name' : 'navigateProject'
+            'click .name' : 'navigateProject'
         },
         template: JST['projects/listItem'],
         templateHelpers: {
@@ -62,6 +62,15 @@ App.module("main.projects",function(){
             //this.model.on('change',this.render,this);
             this.model.trigger('change');
             this.itemViewOptions = {context: this.context};
+        },
+        onRender : function(){
+            if( this.model.get('id') === App.main.context.project.get('id') ) {
+                jQuery( "span#active",this.el).first().html("(active)");
+            }
+            else{
+                jQuery( "span#active",this.el).first().html("");
+            }
+
         },
         updateSubs : function(){
             this.collection = this.model.subProjects;
