@@ -46,6 +46,10 @@ App.module("main.capture",function(){
       this.searchEdit.on('entered', this.createNewAlternative,this );
 
       this.on('composite:rendered',this.onCompositeRendered,this);
+
+      this.collection.on('decisionsChanged',this.onDecisionsChanged,this );
+      this.collection.on('add',this.onDecisionsChanged,this );
+      this.collection.on('remove',this.onDecisionsChanged,this );
     },
     onCompositeRendered : function() {
 
@@ -59,6 +63,10 @@ App.module("main.capture",function(){
         this.focus();
         console.log("focusing");
       }
+    },
+    onDecisionsChanged : function(){
+        jQuery('span#issueStatus',this.el).html( this.model.decisionState() );
+        //console.log('now');
     },
     relateWithAlternative : function( alternative ){
       

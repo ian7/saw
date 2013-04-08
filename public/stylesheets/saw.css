@@ -1601,3 +1601,9 @@ td.alternativeStatus{
 .blue {
   color: blue;
 }
+
+
+.spacer30{
+  width: 30%;
+  display: inline-block;
+}
