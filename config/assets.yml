@@ -34,6 +34,7 @@ javascripts:
 #    - public/javascripts/lib/jquery/jquery.blockUI.js
     - public/javascripts/lib/bootstrap/js/*.js
     - public/javascripts/juggernaut.js 
+    - public/javascripts/base64.js 
 #libs
     - public/javascripts/lib/underscore/underscore.js
     - public/javascripts/lib/backbone/backbone.js
