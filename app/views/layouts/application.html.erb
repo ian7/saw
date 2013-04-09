@@ -19,7 +19,29 @@
   </script>
   <!-- charts from google -->
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-  
+
+ <script type="text/javascript">
+  var smtRecordingOptions = { 
+   fps: 24,
+   recTime: 300,
+   postsInterval: 2,
+   trackingServer: "http://saw.sonyx.net/smt2/",
+   storageServer: "http://saw.sonyx.net/smt2/",
+    warn: true, 
+   warnText: "We are going to record your mouse movements for a remote usability study."
+  };
+   /*Math.round(Math.random()),*/
+  </script>
+
+<!--  <script type="text/javascript" src="/assets/smt2/core/js/smt-aux.min.js"></script>  
+  <script type="text/javascript" src="/assets/smt2/core/js/smt-record.min.js"></script>  
+-->
+  <script type="text/javascript" src="/assets/smt2/core/js/src/smt-aux.js"></script>  
+  <script type="text/javascript" src="/assets/smt2/core/js/src/smt-record.js"></script>  
+  <script type="text/javascript">
+     smt2.record( smtRecordingOptions );
+  </script>
+
 	  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 	  <%= include_stylesheets :common %>
       <%= include_javascripts :common %> 
