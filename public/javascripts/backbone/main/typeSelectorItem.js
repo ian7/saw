@@ -60,6 +60,9 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
       this.on('composite:rendered', this.modelRendered, this);
     
       this.context.on('typeSelector:selectedTag',this.onSelectedTag,this);
+
+      this.context.on('filter:clear', this.onFilterClear, this);
+
     },
     onSelectedTag : function( tag ){
       if( tag && tag.get('type') === this.model.get('name') ){
@@ -115,13 +118,12 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
     },
     onSelected: function(){
       this.context.dispatch('type:selected', this.model);
-      jQuery("div#items").hide();
+//      jQuery("div#items",this.el).hide();
       jQuery("div#items",this.el).show();
     },
     onUnselected: function(){
       jQuery("div#items",this.el).hide();
       jQuery("span#name",this.el).removeClass('red');
- 
     }
   });
 });

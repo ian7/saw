@@ -30,9 +30,16 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
 
       var types = new Backbone.CollectionFilter({
         collection: this.context.parentContext.types,
-        filter: {
-          super_type: "Tag"
+        filterFunction : function( type ){
+          if( type.get('super_type') === "Tag" ||
+              type.get('super_type') === "TreeTag"){
+            return true;
+          }
+          return false;
         }
+        /*filter: {
+          super_type: "Tag"
+        }*/
       });
 
       this.typeSelector = new App.main.Views.TypeSelector({
@@ -53,6 +60,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
       this.collection.on('remove',this.updateItemCount,this);
 
       this.on('composite:model:rendered', this.onModelRendered, this);
+      this.context.on('filter:clear', this.onFilterClear, this);
     },
     onModelRendered: function() {
       this.typeSelector.setElement(jQuery("div#typeSelector", this.el));
@@ -79,6 +87,11 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
     },
     onFilterClear : function(){
       this.onClearSelection();
+    },
+    onFilterClear: function() {
+      this.context.dispatch('typeSelector:selectedTag', null);
+      this.context.dispatch('filterWidget:filter', null);
     }
+
   });
 });

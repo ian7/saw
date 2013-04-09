@@ -6,7 +6,8 @@ App.module("main",function(that,App,Backbone,Marionette,jQuery,_,customArgs){
     template: JST['main/filterWidget'],
     className: 'minHeight padding1em',
     events : {
-        'keyup input#filter' : 'onKeyUp'
+        'keyup input#filter' : 'onKeyUp',
+        'click #clearFilter' : 'onClearFilterClick'
     },
     shortcuts : {
     },
@@ -23,6 +24,9 @@ App.module("main",function(that,App,Backbone,Marionette,jQuery,_,customArgs){
     },
     onFilterSet : function( newFilter ){
         jQuery( "input#filter",this.el)[0].value = newFilter;
+    },
+    onClearFilterClick : function(){
+        this.context.trigger('filter:clear');
     }
   });
 });
