@@ -85,7 +85,10 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
         if( this.model.get('name') == null || this.model.get('name') === ""){
           show = false;
         } 
-        if( this.model.get('name') && this.model.get('name').match( this.lastFilterText) === null){
+
+        var expression = new RegExp(this.lastFilterText,"i");
+
+        if( this.model.get('name') && this.model.get('name').match( expression ) === null){
           show = false;
         }
       }
