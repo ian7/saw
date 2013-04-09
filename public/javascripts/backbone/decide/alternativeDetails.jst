@@ -1,0 +1,76 @@
+<td class="name">           
+
+    <div class="deleteAlternative">
+        <span class="altenrnativeFocusedUsers"></span>
+        <i class="icon-bullhorn opaqueHover" id="requestFocus"></i>
+        <i class="icon-tags opaqueHover" id="tags"></i>
+        <i class="icon-random opaqueHover" id="relate"></i>
+        <i class="opaqueHover" id="sealAlternative"></i>
+        <!-- <div class='button black' id='deleteAlternative'>Delete</div> -->
+        <i class="icon-trash opaqueHover" id="deleteAlternative"></i>
+    </div>
+
+    <span id="header"><b>Alternative</b> <!-- Name: <%= get('name') %>-->(<span id="projectDecisionCount" class="bold">...</span> Decisions, <span id="otherDecisionCount" class="bold">...</span> in other projects)</span>
+    <i class="icon-plus-sign floatLeft opaqueHover" id="expand"></i>  
+    <div class="itemAttributes"></div>
+    <div class="decisionsDetails">
+        <table class="decisionDetails">
+        <thead>
+            <tr class='head'>
+                <th class="iconWidth">
+                </th>
+                <th class="decisionNameWidth">
+                    Decision
+                </th>
+                <th class="rationaleWidth">
+                    Rationale
+                </th>
+                <th class="authorNameWidth">
+                    Author
+                </th>
+                <th class="timestampWidth">
+                    Timestamp
+                </th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+    </table>
+    </div>
+
+    <div id="relationLists" class="expanded">
+        <b>Incoming relations:</b>
+            <div id="relationsTo"></div>
+        <b>Outgoing relations:</b>
+            <div id="relationsFrom"></div>    
+    </div>
+
+
+</td>
+<td class="decisions"> 
+                <table class="decisions">
+                <thead>
+                    <tr>
+                        <th>
+                            <b>Decisions</b>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div id="decisionButtons">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="foot">
+                        <td>
+                            <div class="button orange" id="editRationale">Edit Rationale</div>
+                            <div class="button orange hide" id="sealDecision">Seal Decision</div>
+                        </td>
+                    </tr>
+                </tfoot>
+                </table>
+</td>

@@ -1,0 +1,24 @@
+<td class="iconWidth">
+     <i class="icon-trash floatLeft opaqueHover" id="deleteDecision"></i> 
+     <i class="icon-thumbs-down floatLeft opaqueHover" id="overrideDecision"></i> 
+</td>
+<td id="<%= get('id') %>" class="decisionNameWidth">
+    <%= findDecisionName() %>
+</td>
+<td>
+    <%= get('rationale') %>
+</td>
+<td class="authorNameWidth">
+    <%= get('author_name') %>
+</td>
+<td class="timeStampWidth">
+    <%= printTimestamp() %>
+</td>
+<td class="projectName debug">
+    ...
+</td>
+<!--
+<td>
+    <div class="button black" id="deleteDecision">Delete Decision</div>
+</td>
+-->

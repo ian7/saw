@@ -61,7 +61,7 @@ App.module('main',function(){
           
           var status = this.context.status.name;
 
-          if( App.connectionsCount == 0 ){
+          if( App.connectionsCount === 0 ){
             jQuery("span.status",this.el).html( status );
           } 
           else{
@@ -75,7 +75,7 @@ App.module('main',function(){
             this.context.dispatchGlobally("projects:index");
         },
         onDecideClicked : function(){
-            console.log('decide');
+            this.context.dispatchGlobally("decide:issues:list");
         },
         onTrackClicked : function(){
             this.onProjectClicked();
