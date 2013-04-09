@@ -49,3 +49,6 @@ url=git@github.com:ian7/keymaster.git
 [submodule "jquery.iframe-transport"]
 	path = public/javascripts/lib/jquery.iframe-transport
 	url = https://github.com/cmlenz/jquery-iframe-transport.git
+[submodule "public/assets/smt2"]
+	path = public/assets/smt2
+	url = git@github.com:ian7/smt3.git
