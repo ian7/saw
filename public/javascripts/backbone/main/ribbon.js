@@ -75,7 +75,7 @@ App.module('main',function(){
             this.context.dispatchGlobally("projects:index");
         },
         onDecideClicked : function(){
-            this.context.dispatchGlobally("decide:issues:list");
+//            this.context.dispatchGlobally("decide:issues:list");
         },
         onTrackClicked : function(){
             this.onProjectClicked();
