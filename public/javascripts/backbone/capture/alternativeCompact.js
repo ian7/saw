@@ -34,7 +34,7 @@ App.module("main.capture",function(){
           return model.get('id') === decision;
         });
 
-        statusEl.html( "Alligned: <span id='decisionName' class='"
+        statusEl.html( "Aligned: <span id='decisionName' class='"
           + decisionTag.get('color').toLowerCase()
           +"'>"  
           + decisionTag.get('name') + "</span>" );
