@@ -76,7 +76,25 @@ App.module("main.capture",function(){
 
        this.userDecided = false;
 
+       this.context.on("tagListWidget:tagSelected",this.onTagSelected,this);
        },
+    onTagSelected : function( tag ){
+        if( tag ){
+            var found = this.model.getRelationsTo().find( function( relation ) {
+                return( relation.get('origin') == tag );
+            },this);
+
+            if( found ){
+                jQuery(this.el).show();
+            }
+            else{
+                jQuery(this.el).hide();
+            }
+        }
+        else{
+            jQuery(this.el).show();
+        }
+    },
     expandClicked : function(){
         var expandEl = jQuery("i#expand",this.el);
         // to be expanded
@@ -436,6 +454,7 @@ App.module("main.capture",function(){
             this.userDecided = false;
             this.editRationale( decision );
         }
-    }
+    },
+
 });
 });

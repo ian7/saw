@@ -54,7 +54,7 @@ App.module("main",function(){
             var relatedToProject = new App.Data.RelatedCollection( null, {
                 direction: 'from',
                 item: this.project,
-                model: App.Models.Issue,
+                model: App.Models.Issue
                       //  filter: function( model ){
                       //      return( model.get('type')==='Issue');
                       //  }
@@ -118,10 +118,11 @@ App.module("main",function(){
 
         },
         itemSelected : function( item ){
-            var relationsToItem = item.getRelationsTo();
+            /*var relationsToItem = item.getRelationsTo();
 
             this.tagListWidget = new App.main.Views.TagListWidget({context:this, collection : relationsToItem, model: item  });
             App.main.layout.tagSidebar.show( this.tagListWidget );            
+            */
         }
     });
 });

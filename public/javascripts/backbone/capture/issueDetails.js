@@ -101,6 +101,10 @@ App.module("main.capture",function(){
         this.attributesView.el = this.attributesView.$el = jQuery("div.itemAttributes",this.el).first();
         this.attributesView.render();
         this.model.updateAlternatives();
+
+        this.tagListWidget = new App.main.Views.TagListWidget({context:this, collection : this.collection  });
+        App.main.layout.tagSidebar.show( this.tagListWidget );  
+
         },
     anchorClicked : function() {
         jQuery("img.anchor",this.el).popover({
@@ -163,8 +167,10 @@ App.module("main.capture",function(){
             collection: this.model.alternatives
         });
         App.main.layout.modal.show( classifyWidget );
+    },
+    onClose : function(){
+        App.main.layout.tagSidebar.close();
     }
-
   });
 });
 

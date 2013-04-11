@@ -5,7 +5,9 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
     template: JST['main/tagListWidgetItem'],
     tagName: "span",
     className: "tagListWidgetItem",
-    events: {},
+    events: {
+      'click': 'onClickTagName'
+    },
     shortcuts: {},
     speedButtons: {},
     initialize: function(options) {
@@ -13,7 +15,7 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
 
     },
     render : function(){
-      this.tag = this.context.tags.find( function( tag ){
+      this.tag = App.main.context.tags.find( function( tag ){
         return( this.model.get('origin') === tag.get('id') );
       },this);
 
@@ -23,10 +25,15 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
         var listToAppendEl = jQuery("ul", typeDivEl);
 
         if( listToAppendEl ){
-          listToAppendEl.append( "<li id='" + this.tag.get('id') + "'>" + this.tag.get('name') + "</li>" );          
+          var found = jQuery("li#"+this.tag.get('id'),listToAppendEl);
+          
+          if( found.length === 0 ) {
+              listToAppendEl.append( "<li id='" + this.tag.get('id') + "' class='tagId'>" + this.tag.get('name') + "</li>" );          
+          }
         }
       }
-      return true;
+      this.delegateEvents();
+      return false;
     },
     onClose : function(){
 
@@ -41,8 +48,9 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
             tagTypeEl.parent().hide();
         }
       }      
-      
-      
+    },
+    onClickTagName : function(){
+      this.context.dispatchGlobally("tagListWidget:tagSelected",this.tag);
     }
   });
 });

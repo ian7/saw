@@ -50,6 +50,24 @@ App.module("main.capture",function(){
       this.collection.on('decisionsChanged',this.onDecisionsChanged,this );
       this.collection.on('add',this.onDecisionsChanged,this );
       this.collection.on('remove',this.onDecisionsChanged,this );
+       this.context.on("tagListWidget:tagSelected",this.onTagSelected,this);
+    },
+    onTagSelected : function( tag ){
+        if( tag ){
+            var found = this.model.getRelationsTo().find( function( relation ) {
+                return( relation.get('origin') === tag );
+            },this);
+
+            if( found ){
+                jQuery(this.el).show();
+            }
+            else{
+                jQuery(this.el).hide();
+            }
+        }
+        else{
+            jQuery(this.el).show();
+        }
     },
     onCompositeRendered : function() {
 

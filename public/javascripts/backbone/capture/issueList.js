@@ -8,7 +8,7 @@ App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customA
       itemViewContainer: 'div.issueList',
       events : {
           "click div#newIssueButton" : "newItem",
-          "click image.anchor" : "copyAnchor",
+          "click image.anchor" : "copyAnchor"
      /*     "click .expandAll" : "expandAll",
           "click .collapseAll" : "collapseAll",
           "click .elicit" : "elicit" */
@@ -62,6 +62,8 @@ App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customA
 
       this.collection.on('add',this.onIssueAdded,this);
 
+      this.on('composite:model:rendered',this.onItemRendered,this);
+
       _(this).bindAll();
     },   
     newItem : function() {
@@ -99,7 +101,7 @@ App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customA
           this.removeNewItem();
           this.newItem();
     },   
-    onRender : function() {
+    onItemRendered : function(){
       jQuery( "img.spinner",this.el).hide();
 
       // let's set the url for project upload...
@@ -120,7 +122,17 @@ App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customA
           alert( 'Project import failed.');
       }
       });
-      //debugger;
+ 
+      this.tagListWidget = new App.main.Views.TagListWidget({context:this, collection : this.collection  });
+      App.main.layout.tagSidebar.show( this.tagListWidget );  
+      App.main.layout.tagSidebar.currentView.render();
     },
+    onRender : function() {
+      this.onItemRendered();
+    },
+    onClose : function(){
+        App.main.layout.tagSidebar.close();
+    }
+
   });
 });

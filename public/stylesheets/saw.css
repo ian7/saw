@@ -1615,3 +1615,9 @@ td.alternativeStatus{
 .strike {
   background: transparent url('/images/strike.png') 0 50% repeat-x;
 }
+
+div#clearFilter{
+  margin: 0 auto;
+  width: 68%;
+  margin: 1em;
+}
