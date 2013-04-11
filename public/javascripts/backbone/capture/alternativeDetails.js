@@ -261,6 +261,13 @@ App.module("main.capture",function(){
 
 //            h += "<div class='button black expanded' id='relate'>Relate</div>";
             jQuery("div#decisionButtons",this.el).html( h );
+
+            if( this.model.isSealed()) {
+               jQuery("div.button",this.el)
+                   .removeClass('red green blue orange')
+                   .addClass('disabled')
+                   .attr('id','');
+            }
         },
     onRender : function(){
         this.updateSealing();
@@ -400,14 +407,22 @@ App.module("main.capture",function(){
     },
     updateSealing : function(){
         var sealingEl = jQuery('#sealAlternative',this.el);
-        if( this.model.isSealed() ){
+        if( this.model.isSealed() && !sealingEl.hasClass('icon-lock') ){
             sealingEl.addClass('icon-lock').removeClass('icon-unlock');
+            // disable editing 
+            //this.render();
+            jQuery("div.editable",this.el).attr('contenteditable', 'false');
+            this.renderDecisionButtons();
         }
-        else{
+
+        if( !this.model.isSealed() && !sealingEl.hasClass('icon-unlock')){
             sealingEl.addClass('icon-unlock').removeClass('icon-lock');
+            // rerender the widget
+            jQuery('body').oneTime(10,this.render);
         }
     },
     onSealAlternative : function(){
+        jQuery("i#sealAlternative",this.el).mouseout();
         this.model.toggleSeal();
         return false;
     },
