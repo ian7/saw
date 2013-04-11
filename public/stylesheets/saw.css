@@ -1611,3 +1611,7 @@ td.alternativeStatus{
 .ribbonButton{
   min-width: 100px;
 }
+
+.strike {
+  background: transparent url('/images/strike.png') 0 50% repeat-x;
+}

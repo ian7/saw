@@ -61,5 +61,12 @@
     },
     "type_name": "Alternative",
     "attribute_name": "Cons"
+  },
+  {
+    "_id": {
+      "$oid": "5166ef48feb613f3d1cad069"
+    },
+    "type_name": "Tagging",
+    "attribute_name": "revoked"
   }
 ]

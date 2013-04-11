@@ -3,6 +3,7 @@
 App.module("main.capture",function(){
   this.Views.DecisionDetails = Backbone.Marionette.ItemView.extend({
     tagName : "tr",
+    className : 'decisionDetails',
     template: JST['capture/decisionDetails'],
     templateHelpers : {
       findDecisionName : function(){
@@ -29,8 +30,17 @@ App.module("main.capture",function(){
       _(this).bindAll();
       this.model.on('change',this.render,this);
      // this.model.updateProject( this.context );
+      this.model.on('change',this.onRender,this);
       },
     onRender : function() {
+      if( this.model.get('revoked') ){
+        jQuery(this.el).addClass('strike');
+      }
+      else{
+        jQuery(this.el).removeClass('strike');
+      }
+
+
       jQuery("#deleteDecision",this.el).popover({
               trigger: 'hover',
               title: 'Delete',

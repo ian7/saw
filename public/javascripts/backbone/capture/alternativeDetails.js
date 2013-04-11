@@ -38,6 +38,7 @@ App.module("main.capture",function(){
                 
         this.collection.on('add',this.updateDecisionCount,this);
         this.collection.on('remove',this.updateDecisionCount,this);
+        this.collection.on('change',this.updateDecisionCount,this);
 
         this.model.projectDecisions.on('add',this.updateDecisionCount,this);
         this.model.projectDecisions.on('remove',this.updateDecisionCount,this);
@@ -233,7 +234,8 @@ App.module("main.capture",function(){
 
             // in case there are no 'our' decisions
             var myDecisions = _(projectDecisions).filter( function( decision ) {
-                    return ( decision.get('author_name') === userName );
+                    return ( decision.get('author_name') === userName &&
+                             !decision.get('revoked') );
                 },this);
             
             if( myDecisions.length === 0 ){
@@ -292,7 +294,8 @@ App.module("main.capture",function(){
             },this);
 
         _(myDecisions).each( function( decision ){
-            decision.destroy();
+            decision.set('revoked','just because');
+            decision.save();
         },this);
 
         //
