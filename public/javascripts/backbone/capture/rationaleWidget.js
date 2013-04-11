@@ -52,6 +52,9 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
             });
         }
     */
+        jQuery('body').oneTime(100,function(){
+            jQuery("div.editable#rationale").focus().click()
+        });
     },
     save: function() {
      //   this.model.set('rationale',jQuery("div#rationaleText", this.el).html());

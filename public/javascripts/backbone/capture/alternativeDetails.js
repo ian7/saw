@@ -39,6 +39,8 @@ App.module("main.capture",function(){
         this.collection.on('add',this.updateDecisionCount,this);
         this.collection.on('remove',this.updateDecisionCount,this);
         this.collection.on('change',this.updateDecisionCount,this);
+        
+        this.collection.on('add',this.onDecisionAdded,this);
 
         this.model.projectDecisions.on('add',this.updateDecisionCount,this);
         this.model.projectDecisions.on('remove',this.updateDecisionCount,this);
@@ -72,6 +74,7 @@ App.module("main.capture",function(){
            relationEnd: 'tip'
        });
 
+       this.userDecided = false;
 
        },
     expandClicked : function(){
@@ -278,6 +281,7 @@ App.module("main.capture",function(){
     },
     decide : function( event ) {
         var decisionName = event.target.id;
+        this.userDecided = true;
 
         this.context.dispatch( "capture:alternative:decided",{ decisionName : decisionName, alternative: this.model });
      
@@ -301,19 +305,28 @@ App.module("main.capture",function(){
         //
 //        jQuery("td.decisions", this.el).html("<img src='/images/ui-anim_basic_16x16.gif'/>");
     },
-    editRationale : function(){
-        var projectDecisions = this.model.getProjectDecisions({project: this.context.parentContext.project });
-
+    editRationale : function( model ){
+        var decisionModel = null;
+        
+        if( !model.attributes ){
+        var projectDecisions = this.model.projectDecisions.models;
+        
         // in case there are no 'our' decisions
         var myDecisions = _(projectDecisions).filter( function( decision ) {
-                return ( decision.get('author_name') === userName );
+                return ( decision.get('author_name') === userName &&
+                    !decision.get('revoked'));
             },this);
         
         if( myDecisions.length === 0 ){
             return;
+            }
+        decisionModel = myDecisions[0];
         }
-
-        var rationaleWidget = new App.main.capture.Views.RationaleWidget( { context: this.context, model: myDecisions[0] } );
+        else{
+            decisionModel = model;
+        }
+        
+        var rationaleWidget = new App.main.capture.Views.RationaleWidget( { context: this.context, model: decisionModel } );
         App.main.layout.modal.show( rationaleWidget );
     },
   /*  recordRationale : function() {
@@ -401,6 +414,13 @@ App.module("main.capture",function(){
     onRequestFocus : function(){
         this.model.notify('requestFocus');
         return false;
+    },
+    onDecisionAdded : function( decision ){
+        if( decision.get('author_name') === userName &&
+            this.userDecided ){
+            this.userDecided = false;
+            this.editRationale( decision );
+        }
     }
 });
 });
