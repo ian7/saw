@@ -47,6 +47,17 @@ App.Models.Alternative = App.Data.Item.extend({
         return found;
       }
     });
+
+
+    this.activeDecisions = new App.Data.FilteredCollection(null,{
+      model: App.Models.Decision,
+      collection: this.projectDecisions,
+      filter: function( decision ){
+          return( !decision.get('revoked') );
+      }
+    });
+
+
     this.projectDecisions.on('add',this.gotDecisionsUpdate,this);
     this.projectDecisions.on('remove',this.gotDecisionsUpdate,this);
    },
@@ -193,9 +204,13 @@ App.Models.Alternative = App.Data.Item.extend({
     },
     isDecided : function( options ) {
     
-      var projectDecisions = this.projectDecisions.models;
+      var projectDecisions = this.activeDecisions.models;
      
       // if there are no decisions then it is not decided
+      projectDecisions.filter( function( decision ) {
+        return( !decision.get('revoked') )
+      },this);
+       
       if( projectDecisions.length === 0){
         return false;
       }
@@ -210,7 +225,7 @@ App.Models.Alternative = App.Data.Item.extend({
     },
     isColliding : function( options ) {
     
-      var projectDecisions = this.projectDecisions.models;
+      var projectDecisions = this.activeDecisions.models;
      
       // if there are no decisions then it is not decided
       if( projectDecisions.length === 0){
@@ -245,7 +260,8 @@ App.Models.Alternative = App.Data.Item.extend({
         return null;
       }
 
-      var projectDecisions = this.projectDecisions.models;
+      var projectDecisions = this.activeDecisions.models;
+
       // otherwise just take first decision pointer and return the ID
       return projectDecisions[0].get('origin');
       
