@@ -101,7 +101,7 @@ App.Models.Issue = App.Data.Item.extend({
         var negativeDecisionTag = App.main.context.decisions.find( function( decision ){ return( decision.get('name') === 'Negative' );});
 
         _(this.alternatives.models).each( function(alternative) {
-            var projectDecisions = alternative.projectDecisions;
+            var projectDecisions = alternative.activeDecisions;
             decisionsTotal = decisionsTotal + projectDecisions.length;
 
             if (projectDecisions.length == 0) {
