@@ -13,3 +13,8 @@ public/assets/workspace.css
 public/assets/workspace.js
 .DS_Store
 Gemfile.lock
+public/assets/app.js
+public/assets/logged_in.js
+public/assets/templates.js
+public/assets/testing.css
+public/assets/testing.js
