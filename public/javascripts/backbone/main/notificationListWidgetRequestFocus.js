@@ -45,6 +45,7 @@ App.module("main", function(that, App, Backbone, Marionette, jQuery, _, customAr
     onClick : function(){
       this.itemModel.notify({hoho:'hihi'});
       //jQuery.post('/r/' + this.model.get('id') + '/notify', "{\"hoho\":\"hihi\"}", function( data ){});
+      this.context.dispatchGlobally("notification:focus:item",this.model);
     }
   });
 });
