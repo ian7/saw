@@ -39,6 +39,9 @@
   <script type="text/javascript" src="/assets/smt2/core/js/src/smt-aux.js"></script>  
   <script type="text/javascript" src="/assets/smt2/core/js/src/smt-record.js"></script>  
   <script type="text/javascript">
+     if( window.location.host.match('local') ){
+      smtRecordingOptions.disabled = true;
+     }
      smt2.record( smtRecordingOptions );
   </script>
 
