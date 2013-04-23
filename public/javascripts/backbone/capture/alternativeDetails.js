@@ -449,11 +449,14 @@ App.module("main.capture",function(){
         return false;
     },
     onDecisionAdded : function( decision ){
+        /* disabled, because was 'annoying'
+        
         if( decision.get('author_name') === userName &&
             this.userDecided ){
             this.userDecided = false;
             this.editRationale( decision );
         }
+        */
     },
 
 });
