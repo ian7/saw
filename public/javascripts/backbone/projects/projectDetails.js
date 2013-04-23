@@ -27,7 +27,6 @@ App.module("main.projects",function(){
     },
     onRender: function(){
         var chartEl = jQuery("td#graphs",this.el);
-  //      jQuery("div#nameOfIssue",this.el).html( App.main.capture.context.issues.models[0].attributes.name);
         this.statusChart.setElement( chartEl );
         this.statusChart.render();
         this.onDecisionsChanged();
@@ -48,10 +47,13 @@ App.module("main.projects",function(){
         }
 	  }
 
-//	  console.log(decisions)	  
-	  alternativesDecision.push(["Open", decisions["4f9d67e2e90a3e18b900002e"]])
-	  alternativesDecision.push(["Positive", decisions["4f9d67e2e90a3e18b900002c"]])
-	  alternativesDecision.push(["Negative", decisions["4f9d67e2e90a3e18b900002d"]])
+//	  console.log(decisions)
+    var PosDecision = App.main.context.decisions.find( function( decision ) { return decision.get('name') === "Positive" } ).id
+    var NegDecision = App.main.context.decisions.find( function( decision ) { return decision.get('name') === "Negative" } ).id
+    var OpeDecision = App.main.context.decisions.find( function( decision ) { return decision.get('name') === "Open" } ).id	  
+	  alternativesDecision.push(["Open", decisions[OpeDecision]])
+	  alternativesDecision.push(["Positive", decisions[PosDecision]])
+	  alternativesDecision.push(["Negative", decisions[NegDecision]])
 	  alternativesDecision.push(["Colliding", decisions["Colliding"]])
 	  alternativesDecision.push(["Not decided", decisions["Not decided"]])
 			
