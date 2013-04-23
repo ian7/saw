@@ -27,26 +27,44 @@ App.module("main.decide",function(){
     },
     onDecisionChanged : function(){
       var statusEl = jQuery("span#decisionStatus",this.el);
-     
+      var h = "";
+
+      App.main.context.decisions.each( function( decisionTag ) {
+        h += decisionTag.get('name') + ": ";
+        var decisionCounter = 0;
+        
+        this.model.decisions.each( function( decision ){
+          if( decision.get('origin') === decisionTag.get('id') ){
+            decisionCounter++;
+          }
+        },this);
+        h += decisionCounter + " ";
+        
+      },this);
+
       if( this.model.isDecided() ){
         var decision = this.model.decision();
         var decisionTag = App.main.context.decisions.find( function( model ){
           return model.get('id') === decision;
         });
 
-        statusEl.html( "Alligned: <span id='decisionName' class='"
+        h += " (Alligned: <span id='decisionName' class='"
           + decisionTag.get('color').toLowerCase()
           +"'>"  
-          + decisionTag.get('name') + "</span>" );
+          + decisionTag.get('name') + ")</span>";
+
+        statusEl.html( h );
         return;
       }
 
       if( this.model.isColliding() ){
-        statusEl.html( "Colliding" );
+        h += " (Colliding)";
+        statusEl.html( h );
         return;
       }
 
-      statusEl.html( "No positions" );
+      h += " (No positions)";
+      statusEl.html( h );
 
     },
     focus: function(){

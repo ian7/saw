@@ -1592,7 +1592,8 @@ table#notifications tr.notificationListWidgetItem:nth-of-type(even){
 }
 
 td.alternativeStatus{
-  width: 10%;
+  min-width: 10%;
+  text-align: right;
 }
 
 .green{
