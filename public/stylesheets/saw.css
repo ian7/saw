@@ -1634,4 +1634,6 @@ div#clockSidebar{
   position: absolute;
   bottom: 0;
 }
+.thirdWidth{
+  width: 33%;
 }

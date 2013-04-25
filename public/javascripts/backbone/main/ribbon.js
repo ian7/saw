@@ -80,7 +80,7 @@ App.module('main',function(){
             this.context.dispatchGlobally("decide:issues:list");
         },
         onNavigateClicked : function(){
-            this.context.dispatchGlobally("navigate:issues:list");
+            this.context.dispatchGlobally("navigate:start");
         },
         onTrackClicked : function(){
             this.onProjectClicked();
