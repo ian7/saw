@@ -39,10 +39,11 @@
   <script type="text/javascript" src="/assets/smt2/core/js/src/smt-aux.js"></script>  
   <script type="text/javascript" src="/assets/smt2/core/js/src/smt-record.js"></script>  
   <script type="text/javascript">
-     if( window.location.host.match('local') ){
+     if( window.location.host.match('local') ||
+         window.location.host.match('demo')){
       smtRecordingOptions.disabled = true;
      }
-     smt2.record( smtRecordingOptions );
+//     smt2.record( smtRecordingOptions );
   </script>
 
 	  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -57,9 +58,11 @@
       </script>
     </head>
 
-	<body>
+	<body class='impress-supported'>
       <%= yield %>
       <!-- that's the end of content, javascripts start here! -->
 
+      <div id="impressRoot">
+      </div>
 	</body>
 </html>
