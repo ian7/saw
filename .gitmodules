@@ -52,3 +52,6 @@ url=git@github.com:ian7/keymaster.git
 [submodule "public/assets/smt2"]
 	path = public/assets/smt2
 	url = git@github.com:ian7/smt3.git
+[submodule "public/javascripts/lib/impress.js"]
+	path = public/javascripts/lib/impress.js
+	url = git@github.com:ian7/impress.js.git
