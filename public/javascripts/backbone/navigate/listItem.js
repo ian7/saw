@@ -32,10 +32,10 @@ App.module("main.navigate",function(that,App,Backbone,Marionette,jQuery,_,custom
           var name = "...";
 
           if( this.direction === 'to') {
-            name = relationType.get('forward_name');
+            name = relationType.get('reverse_name');
           }
           else {
-            name = relationType.get('reverse_name');
+            name = relationType.get('forward_name');
           }
           if( !name ){
             name = relationType.get('name');
