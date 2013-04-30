@@ -42,11 +42,13 @@ App.module("main.navigate",function(that,App,Backbone,Marionette,jQuery,_,custom
 
       this.listFromView = new App.main.navigate.Views.List( {
         collection: this.artifactsRelatedFrom,
-        context: this.context
+        context: this.context,
+        direction: 'from'
       });
       this.listToView = new App.main.navigate.Views.List( {
         collection: this.artifactsRelatedTo,
-        context: this.context        
+        context: this.context,
+        direction: 'to'
       });
 
       _(this).bindAll();

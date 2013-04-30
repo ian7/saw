@@ -21,6 +21,28 @@ App.module("main.navigate",function(that,App,Backbone,Marionette,jQuery,_,custom
       jQuery("div#item span#name",this.el).html( this.model.get('name') );
       jQuery("div#item span#type",this.el).first().html( this.model.get('type') );      
 
+      if( this.model.metaData && this.model.metaData.relation ){
+        // let's find the relation type
+        
+        var relationType = App.main.context.types.find( function( type ){
+          return( type.get('name') === this.model.metaData.relation.get('relation') );
+        },this); 
+        
+        if( relationType ){
+          var name = "...";
+
+          if( this.direction === 'to') {
+            name = relationType.get('forward_name');
+          }
+          else {
+            name = relationType.get('reverse_name');
+          }
+          if( !name ){
+            name = relationType.get('name');
+          }
+          jQuery("span#relation",this.el).html(name);
+        }
+      }
     /*  if( this.model.get('name') && this.model.get('name') != "" ){
         this.$el.show();
       }
