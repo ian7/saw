@@ -80,7 +80,11 @@ App.module("main.capture",function(){
        this.context.on("tagListWidget:tagSelected",this.onTagSelected,this);
        this.context.on('capture:focusRequested',this.onFocusEvent,this);
        },
+    onClickWhaterver : function() {
+        jQuery("i",this.el).mouseout();
+    },
     onShot : function(){
+        this.onClickWhaterver();
         this.context.dispatchGlobally('navigate:start',this.model);
     },
     onTagSelected : function( tag ){

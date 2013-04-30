@@ -10,12 +10,12 @@ App.module("main.capture",function(){
     events : {
       "click .expand" : "toggleExpand",
       "click div.issueCompactView" : "doExpand",
-      "click .deleteIssue" : "deleteItem",
-      "click .removeIssue" : "removeItem",
-      "click .details" : "navigateToDetails",
+      "click #deleteIssue" : "deleteItem",
+      "click #removeIssue" : "removeItem",
+      "click #details" : "navigateToDetails",
       "mouseover" : "mouseOver",
       "mouseout" : "mouseOut",
-      "click div.addAlternativeButton" : "newAlternative"
+      "click #addAlternativeButton" : "newAlternative"
     },
     shortcuts : {
       "ctrl+l" : "newAlternative"
@@ -81,6 +81,37 @@ App.module("main.capture",function(){
         this.focus();
         console.log("focusing");
       }
+
+
+      jQuery("#addAlternativeButton",this.el).popover({
+            trigger: 'hover',
+            title: 'Add alternative',
+            content: 'Adds new alternative related to this issue',
+            placement: 'top'
+        });
+
+      jQuery("#details",this.el).popover({
+            trigger: 'hover',
+            title: 'Details',
+            content: 'Zoom in for details of this issue',
+            placement: 'top'
+        });
+
+      jQuery("#removeIssue",this.el).popover({
+            trigger: 'hover',
+            title: 'Unlink',
+            content: 'Unlink issue from the project without deleting it',
+            placement: 'top'
+        });
+
+      jQuery("#deleteIssue",this.el).popover({
+            trigger: 'hover',
+            title: 'Delete',
+            content: 'Delete the issue permanently',
+            placement: 'top'
+        });
+
+
       this.onDecisionsChanged();
     },
     onDecisionsChanged : function(){
@@ -193,7 +224,11 @@ App.module("main.capture",function(){
           jQuery("table.alternativeList", this.el).slideUp(300);
           jQuery(".expand", this.el).html("Expand");  
     },
+    onClickWhaterver : function() {
+        jQuery("i",this.el).mouseout();
+    },
     navigateToDetails : function () {
+        this.onClickWhaterver();
         this.context.dispatch("issue:selected",{id:this.model.id});
         this.context.dispatch("capture:issues:details");
     },
