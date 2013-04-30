@@ -182,6 +182,7 @@ App.module("main.capture",function(){
         }
           // and then destroy it.
         this.model.destroy();
+        this.onClickWhaterver();
       }
     },
     removeItem : function() {
@@ -193,6 +194,7 @@ App.module("main.capture",function(){
           if( issueProjectRelation ){ 
             issueProjectRelation.destroy();
           }
+          this.onClickWhaterver();
       }
     },
     doExpand : function() {
