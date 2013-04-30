@@ -1640,3 +1640,7 @@ div#clockSidebar{
 td#item div#item div#attributes div.attribute{
   padding-top: 0.3em;
 }
+.rightPad1em{
+  padding-right: 1em;
+  padding-top: 0.5em;
+}

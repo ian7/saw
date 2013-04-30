@@ -16,6 +16,7 @@ App.module("main.capture",function(){
         "click .decide"             : "decide",
         "click .undecide"           : "undecide",
         "click #deleteAlternative"   : "deleteAlternative",
+        "click #shot"   : "onShot",
         "click #sealAlternative"    : 'onSealAlternative',
         "click #tags"   : 'onTags',
         "click #requestFocus"   : 'onRequestFocus',
@@ -78,6 +79,9 @@ App.module("main.capture",function(){
 
        this.context.on("tagListWidget:tagSelected",this.onTagSelected,this);
        },
+    onShot : function(){
+        this.context.dispatchGlobally('navigate:start',this.model);
+    },
     onTagSelected : function( tag ){
         if( tag ){
             var found = this.model.getRelationsTo().find( function( relation ) {

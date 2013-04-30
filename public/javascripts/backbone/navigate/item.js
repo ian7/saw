@@ -6,6 +6,7 @@ App.module("main.navigate",function(that,App,Backbone,Marionette,jQuery,_,custom
   this.Views.Item = Backbone.Marionette.CompositeView.extend({
       template: JST['navigate/item'],
       events : {
+        'click i#shot' : 'onShotClick'
       },
     initialize : function() {
 
@@ -79,6 +80,8 @@ App.module("main.navigate",function(that,App,Backbone,Marionette,jQuery,_,custom
       this.listToView.render();
 
     },
-
+    onShotClick : function(){
+      this.context.dispatch('navigate:item:shot',this.model);
+    }
   });
 });

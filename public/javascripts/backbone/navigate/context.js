@@ -8,6 +8,7 @@ App.module("main.navigate",function(){
             this.listen("navigate:start",this.onIssueList);
             this.listen("navigate:move",this.onMove);
             this.listen("navigate:issues:details",this.onIssueDetails);
+            this.listen('navigate:item:shot',this.onItemShot);
         },
         onIssueList: function( model ){
             this.dispatchGlobally('mode:navigate');
@@ -32,7 +33,16 @@ App.module("main.navigate",function(){
         onMove : function( newId ) {
             this.view.model.set('id',newId );
             this.view.model.fetch();
-        }  
+        },
+        onItemShot  :function( model ){
+            if( model.get('type') === 'Issue' ){
+                this.dispatchGlobally('issue:selected',{id:model.get('id')});
+                this.dispatchGlobally('capture:issues:details');
+            }
+            if( model.get('type') === 'Project' ){
+                this.dispatchGlobally('capture:issues:list');
+            }
+        }
 // end of class
 });
 // end 
