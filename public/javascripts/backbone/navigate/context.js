@@ -42,6 +42,17 @@ App.module("main.navigate",function(){
             if( model.get('type') === 'Project' ){
                 this.dispatchGlobally('capture:issues:list');
             }
+            if( model.get('type') === 'Alternative' ){
+                var sbRelation = (model.getRelationsFrom()).find( function( relation ){
+                    return( relation.get('relation') === 'SolvedBy');
+                },this);
+                if( sbRelation ) {
+                    this.dispatchGlobally('issue:selected',{id:sbRelation.get('tip')});
+                    this.dispatchGlobally('capture:issues:details');
+                    this.dispatchGlobally('capture:focusRequested',model.get('id'));
+                }
+            }
+
         }
 // end of class
 });

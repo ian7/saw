@@ -78,6 +78,7 @@ App.module("main.capture",function(){
        this.userDecided = false;
 
        this.context.on("tagListWidget:tagSelected",this.onTagSelected,this);
+       this.context.on('capture:focusRequested',this.onFocusEvent,this);
        },
     onShot : function(){
         this.context.dispatchGlobally('navigate:start',this.model);
@@ -135,11 +136,19 @@ App.module("main.capture",function(){
         */
        
        if( notification.distance === 0 && notification.event === 'requestFocus'){
+        this.onFocusRequested();
+       }
+    },
+    onFocusEvent : function( id ){
+        if( id === this.model.get('id') ){
+            this.onFocusRequested();
+        }
+    },
+    onFocusRequested : function(){
            // let's remove focus from all other items
            jQuery('table.alternativeListDetails tr.alternative').removeClass('requestFocus');
            // and add only to this one. 
            jQuery(this.el).addClass('requestFocus');        
-       }
     },
     onItemRendered : function(){
         // this way we start in unExpanded state
