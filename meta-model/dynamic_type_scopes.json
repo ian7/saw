@@ -115,5 +115,13 @@
     },
     "type_name": "Status",
     "type_scope": "Alternative"
+  },
+  {
+    "_id": {
+      "$oid": "517f12c3b2f60e49a4bad1bd"
+    },
+    "type_name": "Precedes",
+    "type_scope": "Issue",
+    "type_domain": "Issue"
   }
 ]
