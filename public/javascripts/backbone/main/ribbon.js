@@ -124,6 +124,8 @@ App.module('main',function(){
         onNavigate : function(){
             this.clearMode();
             jQuery("span.button.black#navigate",this.el).addClass('active');
+            jQuery('div#rightSidebar').hide();
+            jQuery('div#central').css('margin-right','0');
         },
         onTrack : function(){
             this.clearMode();
@@ -131,6 +133,8 @@ App.module('main',function(){
         },
         clearMode : function(){
             jQuery("span.button.black",this.el).removeClass('active');
+            jQuery('div#rightSidebar').show();
+            jQuery('div#central').css('margin-right','13em');
         }
     });
 });
