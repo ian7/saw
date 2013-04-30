@@ -19,8 +19,7 @@ body {
 
 *{
  margin: 0;
- baseline: 16px;
- line-height: 16px;
+/*line-height: 16px;*/
 }
 
 html, body {
@@ -1636,4 +1635,8 @@ div#clockSidebar{
 }
 .thirdWidth{
   width: 33%;
+}
+
+td#item div#item div#attributes div.attribute{
+  padding-top: 0.3em;
 }
