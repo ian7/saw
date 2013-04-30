@@ -166,6 +166,14 @@ App.module("main.capture",function(){
 
         this.updateDecisionCount();
 
+
+        jQuery("#shot",this.el).popover({
+            trigger: 'hover',
+            title: 'Navigate',
+            content: 'Navigate starting from this alternative',
+            placement: 'top'
+        });
+
         jQuery("#deleteAlternative",this.el).popover({
             trigger: 'hover',
             title: 'Delete',

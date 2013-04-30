@@ -66,6 +66,14 @@ App.module("main.capture",function(){
     onRender: function(){
     },
     onItemRendered : function() {
+
+        jQuery("#shot",this.el).popover({
+            trigger: 'hover',
+            title: 'Navigate',
+            content: 'Navigate starting from this issue',
+            placement: 'top'
+        });
+
          jQuery("#deleteIssue",this.el).popover({
             trigger: 'hover',
             title: 'Delete',
