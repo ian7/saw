@@ -54,12 +54,13 @@ App.module("main.navigate",function(that,App,Backbone,Marionette,jQuery,_,custom
       _(this).bindAll();
     },   
     onRender : function(){
-      jQuery("td#item div#item span#name",this.el).first().html( this.model.get('name') );
-      jQuery("td#item div#item span#type",this.el).first().html( this.model.get('type') );
+      jQuery("div.itemName span#name",this.el).first().html( this.model.get('name') );
+      jQuery("div.itemName span#type",this.el).first().html( this.model.get('type') );
 
       var attributesEl = jQuery("div#attributes",this.el);
       attributesEl.html("");
-      
+      var attributesCount = 0;
+
       _(this.model.getAttributes()).each( function( name ){
         var h = "";
         if( name === 'name'){
@@ -72,15 +73,20 @@ App.module("main.navigate",function(that,App,Backbone,Marionette,jQuery,_,custom
         }
         h += "<span>"+value+"</span></div>";
         
+        attributesCount++;
+
         attributesEl.append( h );
       },this);
+
+      if( attributesCount === 0 ){
+        attributesEl.append( "<i>(no additional attributes)</i>" );
+      }
 
       this.listFromView.setElement( jQuery("div#from",this.el ) );
       this.listFromView.render();
       
       this.listToView.setElement( jQuery("div#to",this.el ) );
       this.listToView.render();
-
     },
     onShotClick : function(){
       this.context.dispatch('navigate:item:shot',this.model);
