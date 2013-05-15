@@ -727,6 +727,16 @@ App.Data.Item = App.Data.Model.extend({
 
         return this.relationsTo;
     },
+    getMetrics : function(){
+//ER1: responsible for creating array filled with metrics
+        var metrics = {};
+        metrics['Implies'] = this.relationsTo.where({'relation':'Implies'}).length;
+        metrics['Influences'] = this.relationsTo.where({'relation':'Influences'}).length;
+        metrics['SolvedBy'] = this.relationsTo.where({'relation':'SolvedBy'}).length;
+        metrics['Tagging'] = this.relationsTo.where({'relation':'Tagging'}).length;
+        metrics['Contradicts'] = this.relationsTo.where({'relation':'Contradicts'}).length;
+        return metrics;
+    },
     getRelationsFrom : function( relationType, collectionType, collectionOptions ){
 
         if( !this.updateRelationsFrom ){

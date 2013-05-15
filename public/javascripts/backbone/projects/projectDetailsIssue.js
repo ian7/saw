@@ -25,6 +25,7 @@ App.module("main.projects",function(){
     onDecisionsChanged : function(){
         jQuery("td#status",this.el).html( this.model.decisionState() );
         jQuery("td#alternativeCount",this.el).html(this.model.alternatives.length);
+        jQuery("td#metrics",this.el).html(JSON.stringify(App.main.capture.context.issues.models[0].getMetrics()).replace('{','').replace('}',''));
     },
     onReset : function(options){
         jQuery("td#alternativeCount",this.el).html(this.model.alternatives.length);
