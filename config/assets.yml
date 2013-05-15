@@ -99,6 +99,7 @@ stylesheets:
     - public/stylesheets/bootstrap-responsive.css
     - public/stylesheets/font-awesome/font-awesome.css
     - public/stylesheets/saw.css
+    - public/javascripts/lib/impress.js/css/impress-demo.css    
   testing:
     - public/javascripts/lib/mocha/mocha.css
   workspace:

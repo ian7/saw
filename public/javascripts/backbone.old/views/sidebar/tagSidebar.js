@@ -33,6 +33,9 @@ App.Views.TagSidebar = Backbone.View.extend({
     this.collection.on('sync',this.render,this);
 
     eventer.register(this);
+
+    // super giga lame!
+    this.everyTime(700,'refreshTaggings',this.onRefreshTaggings);
   },
   /*
   appendHtml : function( collectionView, itemView, index ){
@@ -40,6 +43,7 @@ App.Views.TagSidebar = Backbone.View.extend({
   },
   */
   render : function() {
+    this.taggingsCount = 0;
     //h =   "<ul class='tagList'>";
     var h=""
     var tagTypes = {};
@@ -55,12 +59,14 @@ App.Views.TagSidebar = Backbone.View.extend({
       tagTypes[tagging.get('type')][tagging.get('name')] = tagging;
     });
     _(tagTypes).each( function(tags, tagType){
-      h += ""+ tagType
+      h += ""+ tagType;
       h += "<ul class='tagType'>";
       
       var sortedTags = _.sortBy(tags,function(tag){ return( tag.get('name')) });
       _(sortedTags).each( function( tagging ){
         h += "<li>"+tagging.get('name') + "</li>";
+
+        this.taggingCount ++;
       },this);
       h += "</ul>"
     },this);
@@ -68,6 +74,12 @@ App.Views.TagSidebar = Backbone.View.extend({
     h += "</div>";
 
     jQuery( this.el ).html( h );
+  },
+  // this is so lame that it is beyond any acceptance
+  onRefreshTaggings : function(){
+    if( this.taggingsCount === 0 ){
+      this.render();
+    }
   },
   updateTagCount : function(){
     var count = this.collection.length.toString();

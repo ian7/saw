@@ -19,8 +19,7 @@ body {
 
 *{
  margin: 0;
- baseline: 16px;
- line-height: 16px;
+/*line-height: 16px;*/
 }
 
 html, body {
@@ -1620,4 +1619,40 @@ div#clearFilter{
   margin: 0 auto;
   width: 68%;
   margin: 1em;
+}
+
+
+div#clockSidebar{
+  width: 100%;
+  height: 3em;
+  text-align: center;
+  background-color: black;
+  color: white;
+  font-size: 3em;
+  padding-top: 1em;
+  position: absolute;
+  bottom: 0;
+}
+.thirdWidth{
+  width: 33%;
+}
+
+td#item div#item div#attributes div.attribute{
+  padding-top: 0.3em;
+}
+.rightPad1em{
+  padding-right: 1em;
+  padding-top: 0.5em;
+}
+
+
+div.itemName{
+  width: 85%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 25pt;
+  padding: 1em;
+  background: #eee;
+  margin-bottom: 0.5em;
+  border-radius: 0.3em;
 }

@@ -1,4 +1,4 @@
-/*global App,Backbone,JST,_ */
+/*global App,Backbone,JST,_,jQuery */
 
 App.module('main',function(){
     this.Views.Layout = Backbone.Marionette.Layout.extend({
@@ -31,6 +31,7 @@ App.module('main',function(){
                 view: this,
                 context: App.main.Context
             });
+            jQuery('body').everyTime(30000,'updateClock',this.onClockTick);
         },
         /* after layout is rendered, we could furnish it with some widgets: */
         onRender : function(){
@@ -45,6 +46,8 @@ App.module('main',function(){
 
             this.landingView = new App.main.Views.Landing({context:this.context});
             this.central.show( this.landingView );
+
+            this.onClockTick();
         },
         template : JST['main/layout'],
         el: 'body',
@@ -52,6 +55,9 @@ App.module('main',function(){
         regions: null,
         start : function(){
             this.render();
+        },
+        onClockTick : function() {
+            jQuery('div#clockSidebar span#time',this.el).html(Date().match("[0-9][0-9]:[0-9][0-9]"));
         }
     });
 });

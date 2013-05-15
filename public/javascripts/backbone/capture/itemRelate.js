@@ -29,9 +29,13 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
 
       var types = new Backbone.CollectionFilter({
         collection: this.context.parentContext.types,
-        filter: {
+        // this goes recursively - includes TreeTags
+        filterFunction: function( tag ){
+          return tag.isA("Tag");
+         }
+        /*filter: {
           super_type: "Tag"
-        }
+        }*/
       });
 
       this.typeSelector = new App.main.Views.TypeSelector({
@@ -131,7 +135,7 @@ App.module("main.capture", function(that, App, Backbone, Marionette, jQuery, _, 
           localStorage.relateItemSelectedTag = tag.get('id');      
       }
       else{
-          localStorage.relateItemSelectedTag = null
+          localStorage.relateItemSelectedTag = null;
       }
       this.updateItemCount();
     },

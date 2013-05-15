@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
 	  	end
 
 		puts "Notifying " + t.type + " id: " + id.to_s + " with action: " + action + " distance: " + distance.to_s
-
+		logger.info "Notifying: " + t.type + " id: " + id.to_s + " with action: " + action + " class: " + eventClass + " distance: " + distance.to_s
 	  	# feed the new channel
     	Juggernaut.publish('channel1', h.to_json.to_s )
   	end
