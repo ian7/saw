@@ -12,6 +12,7 @@ App.module("main.capture",function(){
         "click #tags"   : 'onTags',
         "click #requestFocus"   : 'onRequestFocus',
         "click #relate" : "onRelate",
+        'click #shot' : 'onShot',
         "click #classify" : "onClassify"
     },
     templateHelpers: {
@@ -54,6 +55,9 @@ App.module("main.capture",function(){
         this.on('composite:model:rendered',this.onItemRendered,this);
         this.model.on('change',this.pushState,this);
     },
+    onShot : function(){
+            this.context.dispatchGlobally('navigate:start',this.model);
+    },
     pushState : function() {
         window.history.pushState("issue details", "issue details", window.location.origin 
                 + "/#capture/project/" + this.context.parentContext.project.get('id')
@@ -62,6 +66,14 @@ App.module("main.capture",function(){
     onRender: function(){
     },
     onItemRendered : function() {
+
+        jQuery("#shot",this.el).popover({
+            trigger: 'hover',
+            title: 'Navigate',
+            content: 'Navigate starting from this issue',
+            placement: 'top'
+        });
+
          jQuery("#deleteIssue",this.el).popover({
             trigger: 'hover',
             title: 'Delete',

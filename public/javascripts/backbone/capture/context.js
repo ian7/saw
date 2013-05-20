@@ -45,6 +45,15 @@ App.module("main.capture",function(){
             this.item = null;
 
             this.listen( "capture:item:relate",this.itemRelate );
+            this.on("notification:focus:item",this.onFocusNotification,this);
+
+        },
+        onFocusNotification : function( notification ){
+            
+            if( notification.get('type') === "Issue" ){
+                this.issueSelected({id:notification.get('itemID')});
+                this.issueDetails()
+            }
         },
         // this is going to store actual project reference
         projectSelected : function( args ){
@@ -72,6 +81,10 @@ App.module("main.capture",function(){
             App.main.layout.central.show(view);
             //this.region.show(view);
             //this.fetchIssues();
+            
+            //this.tagListWidget = new App.main.Views.TagListWidget({context:this, collection : relationsToItem, model: item  });
+            //App.main.layout.tagSidebar.show( this.tagListWidget );  
+
         },
         issueDetails : function() {
             this.dispatchGlobally('mode:capture');

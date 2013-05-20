@@ -349,7 +349,9 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
         newItem.on('error',this.onItemFetchError,this);
 
         // leave a reference - might come handy later on
-        newItem.relation = relation;
+        newItem.metaData = {
+            relation : relation
+        };
 
         // pool for the attributes. 
         newItem.fetch();
@@ -428,6 +430,9 @@ App.Data.FilteredCollection = Backbone.Collection.extend({
             return;
         }
         var newModel = new this.model( item.attributes );
+
+        newModel.metaData = item.metaData;
+
         this.add( newModel ); 
            
     },

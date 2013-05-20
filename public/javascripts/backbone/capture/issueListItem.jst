@@ -1,10 +1,19 @@
 <div class="issueCompactView" id ="<%= get('id') %>">
     <div style="float: right" class="buttons">
 <!--            <div class="button gray expand">Expand</div> -->
-        <div class="button green addAlternativeButton">Add Alternative</div>
-        <div class="button orange details">Details</div>
-        <div class="button black removeIssue">Remove</div>
-        <div class="button black deleteIssue">Delete</div>
+
+        <!--<div class="button green addAlternativeButton">Add Alternative</div>-->
+        <i class="icon-trash opaqueHover icon-plus" id="addAlternativeButton"></i>
+
+        <!-- <div class="button orange details">Details</div> -->
+        <i class="icon-trash opaqueHover icon-eye-open" id="details"></i>
+
+        <!-- <div class="button black removeIssue">Remove</div> -->
+        <i class="icon-trash opaqueHover icon-remove-circle" id="removeIssue"></i>
+
+        <!-- <div class="button black deleteIssue">Delete</div> -->
+        <i class="icon-trash opaqueHover icon-remove" id="deleteIssue"></i>
+
     </div>
     <span class="focusedUsers"></span>
     <b>Issue:</b> <span class="spacer30"></span><b>Status: </b><span id="issueStatus"></span>

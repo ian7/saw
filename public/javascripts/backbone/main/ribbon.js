@@ -11,7 +11,9 @@ App.module('main',function(){
             'click span#capture' : 'onCaptureClicked',
             'click span#projects' : 'onProjectsClicked',
             'click span#decide' : 'onDecideClicked',
+            'click span#navigate' : 'onNavigateClicked',
             'click span#track' : 'onTrackClicked',
+            'click span#analytics' : 'onAnalyticsClicked',
             'click span#projectID' : 'onProjectClicked'
         },
         initialize : function(){
@@ -39,6 +41,8 @@ App.module('main',function(){
             this.context.on('mode:projects',this.onProjects,this);
             this.context.on('mode:capture',this.onCapture,this);
             this.context.on('mode:decide',this.onDecide,this);
+            this.context.on('mode:navigate',this.onNavigate,this);
+            this.context.on('mode:analytics',this.onAnalytics,this);
             this.context.on('mode:track',this.onTrack,this);
         },  
         onRender : function(){
@@ -77,11 +81,17 @@ App.module('main',function(){
         onDecideClicked : function(){
             this.context.dispatchGlobally("decide:issues:list");
         },
+        onNavigateClicked : function(){
+            this.context.dispatchGlobally("navigate:start");
+        },
         onTrackClicked : function(){
             this.onProjectClicked();
         },
         onProjectClicked : function(){
             this.context.dispatchGlobally('projects:details');
+        },
+        onAnalyticsClicked : function(){
+            this.context.dispatchGlobally('analyze:index');
         },
         onUpdateAjaxStatus : function(){
             this.statusChanged();
@@ -116,12 +126,24 @@ App.module('main',function(){
             this.clearMode();
             jQuery("span.button.black#decide",this.el).addClass('active');
         },
+        onNavigate : function(){
+            this.clearMode();
+            jQuery("span.button.black#navigate",this.el).addClass('active');
+            jQuery('div#rightSidebar').hide();
+            jQuery('div#central').css('margin-right','0');
+        },
         onTrack : function(){
             this.clearMode();
             jQuery("span.button.black#track",this.el).addClass('active');
         },
+        onAnalytics : function(){
+            this.clearMode();
+            jQuery("span.button.black#analytics",this.el).addClass('active');
+        },
         clearMode : function(){
             jQuery("span.button.black",this.el).removeClass('active');
+            jQuery('div#rightSidebar').show();
+            jQuery('div#central').css('margin-right','13em');
         }
     });
 });

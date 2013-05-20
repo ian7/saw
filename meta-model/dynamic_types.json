@@ -211,5 +211,14 @@
     "name": "Status",
     "super_type": "Tag",
     "surrogate_class": "Tag"
+  },
+  {
+    "_id": {
+      "$oid": "517f12c3b2f60e49a4bad1bc"
+    },
+    "name": "Precedes",
+    "reverse_name": "is preceded by",
+    "super_type": "Relation",
+    "surrogate_class": "Relation"
   }
 ]

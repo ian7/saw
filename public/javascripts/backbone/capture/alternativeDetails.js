@@ -16,6 +16,7 @@ App.module("main.capture",function(){
         "click .decide"             : "decide",
         "click .undecide"           : "undecide",
         "click #deleteAlternative"   : "deleteAlternative",
+        "click #shot"   : "onShot",
         "click #sealAlternative"    : 'onSealAlternative',
         "click #tags"   : 'onTags',
         "click #requestFocus"   : 'onRequestFocus',
@@ -77,7 +78,15 @@ App.module("main.capture",function(){
        this.userDecided = false;
 
        this.context.on("tagListWidget:tagSelected",this.onTagSelected,this);
+       this.context.on('capture:focusRequested',this.onFocusEvent,this);
        },
+    onClickWhaterver : function() {
+        jQuery("i",this.el).mouseout();
+    },
+    onShot : function(){
+        this.onClickWhaterver();
+        this.context.dispatchGlobally('navigate:start',this.model);
+    },
     onTagSelected : function( tag ){
         if( tag ){
             var found = this.model.getRelationsTo().find( function( relation ) {
@@ -131,11 +140,19 @@ App.module("main.capture",function(){
         */
        
        if( notification.distance === 0 && notification.event === 'requestFocus'){
+        this.onFocusRequested();
+       }
+    },
+    onFocusEvent : function( id ){
+        if( id === this.model.get('id') ){
+            this.onFocusRequested();
+        }
+    },
+    onFocusRequested : function(){
            // let's remove focus from all other items
            jQuery('table.alternativeListDetails tr.alternative').removeClass('requestFocus');
            // and add only to this one. 
            jQuery(this.el).addClass('requestFocus');        
-       }
     },
     onItemRendered : function(){
         // this way we start in unExpanded state
@@ -152,6 +169,14 @@ App.module("main.capture",function(){
         this.relatedFromList.render();
 
         this.updateDecisionCount();
+
+
+        jQuery("#shot",this.el).popover({
+            trigger: 'hover',
+            title: 'Navigate',
+            content: 'Navigate starting from this alternative',
+            placement: 'top'
+        });
 
         jQuery("#deleteAlternative",this.el).popover({
             trigger: 'hover',
