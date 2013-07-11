@@ -465,6 +465,237 @@ App.Data.FilteredCollection = Backbone.Collection.extend({
 
 });
 
+App.Data.D3nodes = Backbone.Collection.extend({
+    initialize : function(issuesA, projectA, issuesB, projectB){
+        _(this).bindAll();
+		
+		this.nodes = [];
+        this.issuesA = issuesA;
+        this.projectA = projectA;
+        this.issuesB = issuesB;
+        this.projectB = projectB;
+        this.issuesA.on('add',this.onAddA,this);
+        this.issuesA.on('remove',this.onRemoveA,this);
+
+		this.issuesB.on('add',this.onAddB,this);
+		this.issuesB.on('remove',this.onRemoveB,this);
+		
+		
+    },
+    onAddA : function( item ){
+    
+		item.alternatives.on('add', function(a) {this.onAlternativeAddA(item, a)}, this);
+		item.alternatives.on('remove', function(a) {this.onAlternativeRemoveA(item, a)}, this);
+
+		var decisionA = 'No decisions were made yet';
+		var decisionB = 'No decisions were made yet';		
+		
+		item.on('decisionsChanged',function(){this.decisionA(item)},this);
+		
+		var already = false;  
+        var name = item.get('name');
+		var saw_id = item.id;
+		var id = 0;   // 0 - A; 1 - B; 2 - common;        
+		
+		for (var i in this.nodes){
+			if (this.nodes[i].saw_id == saw_id){
+				this.nodes[i].id = 2;
+				already = true;
+			}
+		};
+		
+        if (!already){
+        	this.nodes.push({id: id, x:200, y:100, name: name, saw_id: saw_id, pie : [{decision: decisionB, value: 1},{ decision: decisionA, value: 1}], Alternatives: []})
+        };
+        this.trigger("nodesChanged");
+    },
+    
+    decisionA : function (item ){
+	    
+	    for (var i in this.nodes){
+	    	if (this.nodes[i].saw_id == item.id){
+	    		App.main.context.project.set('id', this.projectA.get('id') ); 	
+	    		this.nodes[i].pie[1].decision = item.decisionState();
+	    		if (this.nodes[i].id == 0) { this.nodes[i].pie[0].decision = item.decisionState(); }
+	    	}
+	    };
+	    this.trigger("nodesChanged");
+    },
+    
+    onAlternativeAddA : function (issue, alternative){
+    	
+		var saw_id = alternative.id;
+		var name  = alternative.get('name');
+		
+		alternative.on('decisionsChanged', this.onAlternativeDecisionA(alternative) , this);
+		
+		for (var i in this.nodes){
+			if ((this.nodes[i].saw_id == issue.id) && (this.nodes[i].id != 2 )){
+				this.nodes[i].pie[0].value += 1;
+				this.nodes[i].pie[1].value += 1;
+				this.nodes[i].Alternatives.push({saw_id: saw_id, name: name, decisionA: null, decisionB: null });
+			}
+		};		
+		
+		this.trigger("nodesChanged");
+    },
+    
+    onAlternativeDecisionA : function (a){
+//    	console.log(a);
+    
+    },
+    
+    onAlternativeRemoveA: function(issue, alternative) {
+    
+    	var alt_id = alternative.id;
+    	var iss_id = issue.id;
+    	for (var i in this.nodes){
+    		if(this.nodes[i].saw_id == iss_id) {
+    			for (var j in this.nodes[i].Alternatives){
+    				if (this.nodes[i].Alternatives[j] == alt_id){
+    					this.nodes[i].Alternatives.splice(j,1);
+    					this.nodes[i].pie[0].value -= 1;
+    					this.nodes[i].pie[1].value -= 1;
+    				}
+    			}
+    		}
+    	};
+    	this.trigger("nodesChanged");
+    },
+    
+    onRemoveA : function (item){
+    
+    	for (var i in this.nodes) {
+    		if (this.nodes[i].saw_id == item.id){
+    			if (this.nodes[i].id == 2) {
+    				this.nodes[i].id = 1;
+    				this.nodes[i].pie[1].decision = this.nodes[i].pie[0].decision;
+    				break;
+    			}
+    			else {
+    				this.nodes.splice(i,1);
+    				break;
+    			}
+    		}
+    	};
+    	this.trigger("nodesChanged");
+    },
+    
+	onAddB : function( item ){
+  
+		item.alternatives.on('add', function(a) {this.onAlternativeAddB(item, a)}, this);
+		item.alternatives.on('remove', function(a) {this.onAlternativeRemoveB(item, a)}, this);
+
+		var decisionA = 'No decisions were made yet';
+		var decisionB = 'No decisions were made yet';		
+		
+		item.on('decisionsChanged',function(){this.decisionB(item)},this);
+		
+//		console.log(decisionA);	
+		
+		var already = false;  
+        var name = item.get('name');
+		var saw_id = item.id;
+		var id = 1;   // 0 - A; 1 - B; 2 - common;        
+		
+		for (var i in this.nodes){
+			if (this.nodes[i].saw_id == saw_id){
+				this.nodes[i].id = 2;
+				already = true;
+			}
+		};
+		
+        if (!already){
+        	this.nodes.push({id: id, x:200, y:100, name: name, saw_id: saw_id, pie : [{decision: decisionB, value: 1},{ decision: decisionA, value: 1}], Alternatives: []})
+        };
+        this.trigger("nodesChanged");
+           
+    },
+    
+    decisionB : function (item ){
+	    for (var i in this.nodes){
+	    	if (this.nodes[i].saw_id == item.id){
+	    		App.main.context.project.set('id', this.projectB.get('id') ); 
+	    		this.nodes[i].pie[0].decision = item.decisionState();
+	    		if (this.nodes[i].id == 1) { this.nodes[i].pie[1].decision = item.decisionState(); };
+	    	}
+	    };	
+	    this.trigger("nodesChanged");
+    },
+    
+    onAlternativeAddB : function (issue, alternative){
+    	
+//    	console.log(alternative);
+//    	console.log(issue);
+		var saw_id = alternative.id;
+		var name  = alternative.get('name');
+		
+		alternative.on('decisionsChanged', this.onAlternativeDecisionB(alternative) , this);
+		
+		for (var i in this.nodes){
+			if ((this.nodes[i].saw_id == issue.id) && (this.nodes[i].id != 2 )){
+				this.nodes[i].Alternatives.push({saw_id: saw_id, name: name, decisionA: null, decisionB: null});
+				this.nodes[i].pie[0].value += 1;
+				this.nodes[i].pie[1].value += 1;
+			}
+		};		
+		this.trigger("nodesChanged");
+    },
+    
+    onAlternativeDecisionB : function (a){
+    	
+    	
+    
+    },
+    
+    
+    onAlternativeRemoveB: function(issue, alternative) {
+    	var alt_id = alternative.id;
+    	var iss_id = issue.id;
+    	for (var i in this.nodes){
+    		if(this.nodes[i].saw_id == iss_id) {
+    			for (var j in this.nodes[i].Alternatives){
+    				if (this.nodes[i].Alternatives[j] == alt_id){
+    					this.nodes[i].Alternatives.splice(j,1);
+    					this.nodes[i].pie[0].value -= 1;
+    					this.nodes[i].pie[0].value -= 1;
+    				}
+    			}
+    		}
+    	};	
+    	this.trigger("nodesChanged");
+    },
+    
+    onRemoveB : function (item){
+    	
+    	for (var i in this.nodes) {
+    		if (this.nodes[i].saw_id == item.id){
+    			if (this.nodes[i].id == 2) {
+    				this.nodes[i].id = 0;
+    				this.nodes[i].pie[0].decision = this.nodes[i].pie[1].decision;    				
+    				break;
+    			}
+    			else {
+    				this.nodes.splice(i,1);
+    				break;
+    			}
+    		}
+    	};
+    	this.trigger("nodesChanged");
+    },
+
+ 
+    getNodes : function(){
+        return this.nodes;
+    }
+
+
+});
+
+
+
+
+
 App.Data.Item = App.Data.Model.extend({
     
     relationsTo : null,

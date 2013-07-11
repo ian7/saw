@@ -1,6 +1,4 @@
 /*global App, Backbone,_,jQuery,JST*/	
-var nodes = [];
-
 App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,customArgs){
 
   this.Views.Index = Backbone.Marionette.CompositeView.extend({
@@ -23,12 +21,14 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       this.projectB = new App.Data.Item();
 
       this.relatedToA = new App.Data.RelatedCollection(null,{
-        item: this.projectA,
+        item: this.projectA ,
         direction: 'from',
       });
-
+    
+	  
       this.issuesA = new App.Data.FilteredCollection( null, {
         collection: this.relatedToA ,
+        model: App.Models.Issue,
         filter : function( item ){
           return( item.get('type') === 'Issue');
         }
@@ -42,14 +42,24 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 
       this.issuesB = new App.Data.FilteredCollection( null, {
         collection: this.relatedToB ,
+        model: App.Models.Issue,
         filter : function( item ){
           return( item.get('type') === 'Issue');
         }
       })
-
-
-	 var foci = [{x: 200, y: 400},{x: 1200, y: 400}, {x: 700, y: 400}];
+	 
+	 var foci = [{x: 200, y: 300},{x: 1200, y: 300}, {x: 700, y: 300}];
+	 var decisionsColors = {null: 'white', 'No decisions were made yet': 'red',  'Some decisions are missing': 'grey', 'Decisions are not conclusive (multiple positive)' : 'green', 'Decided': 'blue'};
+	 
 	 this.force = new d3.layout.force();
+//	 this.piee = new d3.layout.pie()
+//		.sort(null)
+//		.value(function(d) { return d.value; });
+//     this.arc = new d3.svg.arc()
+//	    .outerRadius(10)
+//	    .innerRadius(0);
+    		
+		
 	 this.force.on("tick", function(q) {
 
 	    // Push nodes toward their designated focus.
@@ -59,143 +69,86 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 	      	o.x += (foci[o.id].x - o.x) * k;
 	  	});
 	  
-	  	d3.select('svg').selectAll("circle.node")
-	   		.attr("cx", function(d) { return d.x; })
-	   		.attr("cy", function(d) { return d.y; })
-	   		.attr("id", function(d) { return d.id; })
-	   		.style("fill", function(d) {return d.fill; });
+//	  	d3.select('svg').selectAll("circle.node")
+//	   		.attr("cx", function(d) { return d.x; })
+//	   		.attr("cy", function(d) { return d.y; })
+//	   		.attr("id", function(d) { return d.id; })
+//	   		.attr("r", function(d) {return d.Alternatives.length*2;})
+//	   		.style("fill", function(d) {return decisionsColors[d.pie[0].decision]; });
+	   	
+	   	d3.select('svg').selectAll('.node')
+//	   		.attr('fill', function(d,i) {console.log(i); return decisionsColors['Decided']; })
+	   		.attr('transform', function(d) {return 'translate(' + d.x + ',' + d.y + ')'; });
+	   	d3.select('svg').selectAll(".node").selectAll("path")
+//	   		.outerRadius(function(d) { return (d.data.value-1)*2})
+			.attr('transform', function(d) {return 'scale('+d.data.value+')'})
+	   		.attr('fill', function(d) {return decisionsColors[d.data.decision]; });	
 		   		
      });
-	///----------------<-------------
-	 this.issuesA.on("add", this.onIssueAAdded, this);
-	 this.issuesA.on("remove", this.onIssueARemoved, this);
-	 this.issuesB.on("remove", this.onIssueBRemoved, this);	 
-	 this.issuesB.on("add", this.onIssueBAdded, this);	 
-	 
+     
+     this.myD3nodes = new App.Data.D3nodes(this.issuesA, this.projectA, this.issuesB, this.projectB);
+     this.myD3nodes.on("nodesChanged",this.refreshNodes, this);
+ 
       this.hasSVG = false;
       _(this).bindAll();      
       
     },   
 	
-	onIssueARemoved : function(delissue) {
-//		console.log(delissue);
-		for(var i in nodes){
-			if (nodes[i].saw_id == delissue.id){
-				if (nodes[i].id == 2) {
-					nodes[i].fill = 'red';
-					nodes[i].id = 1;
-					break;
-				}
-				else {
-					nodes.splice(i,1);
-					break;
-				}
-			}
-		};
-		d3.selectAll('.node').data(nodes).exit().remove();
-		this.force.start();
-	},
-	
-	onIssueBRemoved : function(delissue) {
-//		console.log(delissue);
-		for(var i in nodes){
-			if (nodes[i].saw_id == delissue.id){
-				if (nodes[i].id == 2) {
-					nodes[i].fill = 'blue';
-					nodes[i].id = 0;
-					break;
-				}
-				else {
-					nodes.splice(i,1);
-					break;
-				}
-			}
-		};
-		d3.selectAll('.node').data(nodes).exit().remove();
-		this.force.start();
-	},	
-
-	
-	onIssueAAdded : function(newissue) {
-// 		console.log(newissue.id);	
-	 	var not_added = true;
-	 	for (var i in nodes){
-	 		if (nodes[i].saw_id == newissue.id){
-	 			nodes[i].id = 2;
-	 			nodes[i].fill = 'yellow';
-//	 			nodes.push({id: 2, x:700, y:100, name: newissue.get('name'), saw_id: newissue.id});		
-	 			not_added = false;
-	 		}
-	 	};
-	 	if ( not_added) {
-	 		nodes.push({id: 0, x:200, y:100, name: newissue.get('name'), saw_id: newissue.id, fill: 'blue'});
- 		};
- 		
-	 	this.force
-	 		.nodes(nodes)
-	 		.links([])
-	 		.gravity(0);
- 	
-	 	
-//	 	this.force.start();
-	 	
-	 	d3.select('svg').selectAll("circle.node")
-	 	    .data(nodes)
-	 	  .enter().append("svg:circle")
-	 	    .attr("class", "node")
-	 	    .attr("cx", function(d) { return d.x; })
-	 	    .attr("cy", function(d) { return d.y; })
-	 	    .attr("r", 8)
-   	 	    .attr("id", function(d) { return d.id; })
-	 	    .style("fill", function(d) { return d.fill; })
-	 	    .style("stroke", "black")
-	 	    .style("stroke-width", 1.5)
-	 	
-	 	this.force.start();
-	},
-	
-	onIssueBAdded : function(newissue) {
-// 		console.log(newissue.get('name'));	
-	 	var not_added = true;
-	 	for (var i in nodes){
-	 		if (nodes[i].saw_id == newissue.id){
-	 			nodes[i].id = 2;
-	 			nodes[i].fill = 'yellow';
-//	 			nodes.push({id: 2, x:700, y:100, name: newissue.get('name'), saw_id: newissue.id});		
-	 			not_added = false;
-	 		}
-	 	};
-	 	if ( not_added) {
-	 		nodes.push({id: 1, x:1200, y:100, name: newissue.get('name'), saw_id: newissue.id, fill: 'red'});
-	 		
-	 	};
-	 	
-	 	
-	 	this.force
-	 		.nodes(nodes)
-	 		.links([])
-	 		.gravity(0);
- 	
-	 	
-//	 	this.force.start();
-	 	
-	 	d3.select('svg').selectAll("circle.node")
-	 	    .data(nodes)
-	 	  .enter().append("svg:circle")
-	 	    .attr("class", "node")
-	 	    .attr("cx", function(d) { return d.x; })
-	 	    .attr("cy", function(d) { return d.y; })
-	 	    .attr("r", 8)
-	 	    .attr("id", function(d) { return d.id; })
-	 	    .style("fill", function(d) { return d.fill; })
-	 	    .style("stroke", "black")
-	 	    .style("stroke-width", 1.5)
-	 	
-	 	this.force.start();
-	},
+	refreshNodes : function (){
+//		this.force.stop();
+//		var decisionsColors = {0: 'white', 'No decisions were made yet': 'yellow', 'Some decisions are missing': 'grey', 'Decisions are not conclusive (multiple positive)' : 'green', 'Decided': 'blue'};
+		nodes = this.myD3nodes.getNodes();
+//		console.log(nodes);
+		var pie = d3.layout.pie()
+		    .sort(null)
+		    .value(function(d) { return d.value; });
 		
-	
-	
+		var arc = d3.svg.arc()
+		    .outerRadius(2) //function(d) { return (d.data.value)*2})
+		    .innerRadius(0);
+				    
+		this.force
+			.nodes(nodes)
+			.links([])
+			.gravity(0);
+		this.force.start();	
+
+		d3.select('svg').selectAll(".node")
+		    .data(nodes)
+		  .enter().append("g")
+		   .attr("class", "node")
+		   .on("mouseover", function(d) {console.log(d.name)});
+
+
+		d3.select('svg').selectAll(".node").selectAll("path")
+		  .data(function(d) {return pie(d.pie); })
+		 .enter().append("svg:path")
+		  .attr("d", arc)		  
+//		  .style("stroke", "black");
+//		  .style("fill", function(d,i) { return decisionsColors[d.data.decision]; });
+
+		d3.selectAll('.node').data(nodes).exit().remove();
+//		
+//		d3.select('svg').selectAll("circle.node")
+//		    .data(nodes)
+//		  .enter().append("svg:circle")
+//		    .attr("class", "node")
+//		    .attr("cx", function(d) { return d.x; })
+//		    .attr("cy", function(d) { return d.y; })
+//		    .attr("r", function(d) {return d.Alternatives.length*2;})
+//			.attr("id", function(d) { return d.id; })
+//		    .style("fill", function(d) { return decisionsColors[d.pie[d.id].decision]; })
+//		    .style("stroke", "black")
+//		    .style("stroke-width", 1.5)
+//		
+//		
+//	    this.force
+//	    	.nodes(nodes)
+//	    	.links([])
+//	    	.gravity(0);
+	    this.force.start();	
+	},
+
     onRender : function(){
 
       _(this.projects).each( function( project ){
@@ -221,11 +174,10 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       this.projectA.set('id',e.target.id);
       this.projectA.fetch();
       
-      
       if (!this.hasSVG){
 		d3.select("#mysvg").append("svg")
 			.attr("width", 1500)
-			.attr("height", 800);
+			.attr("height", 600);
 		d3.select('svg').append('svg:rect')
 			.attr('x', 150)
 			.attr('y', 5)
@@ -279,7 +231,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       if (!this.hasSVG){
       	d3.select("#mysvg").append("svg")
       	.attr("width", 1500)
-      	.attr("height", 800);
+      	.attr("height", 600);
       	this.hasSVG = true;
       	nodes = [];
       	d3.selectAll('.node').remove();

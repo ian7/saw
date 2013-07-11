@@ -14,6 +14,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       this.itemViewOptions = {context: this.context};
       // keyboard shortcuts handling
       this.model.on('change',this.onChange, this);
+      
 
       _(this).bindAll();
     },   
