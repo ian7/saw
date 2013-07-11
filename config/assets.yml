@@ -47,6 +47,7 @@ javascripts:
 #    - public/javascripts/lib/backbonerailsauthtokenadapter.js
     - public/javascripts/lib/notifier.js
 # visualization stuff
+    - public/javascripts/lib/d3/d3.js
 #    - public/javascripts/yahoo-dom-event.js
 #    - public/javascripts/helpers.js
 #    - public/javascripts/public_smo_scripts.js
@@ -99,7 +100,8 @@ stylesheets:
     - public/stylesheets/bootstrap-responsive.css
     - public/stylesheets/font-awesome/font-awesome.css
     - public/stylesheets/saw.css
-    - public/javascripts/lib/impress.js/css/impress-demo.css    
+    - public/javascripts/lib/impress.js/css/impress-demo.css
+    - public/stylesheets/app.css
   testing:
     - public/javascripts/lib/mocha/mocha.css
   workspace:

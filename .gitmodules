@@ -55,3 +55,6 @@ url=git@github.com:ian7/keymaster.git
 [submodule "public/javascripts/lib/impress.js"]
 	path = public/javascripts/lib/impress.js
 	url = git@github.com:ian7/impress.js.git
+[submodule "public/javascripts/lib/d3"]
+	path = public/javascripts/lib/d3
+	url = git@github.com:thebouh/d3.git
