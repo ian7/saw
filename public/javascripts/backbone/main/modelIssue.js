@@ -17,7 +17,7 @@ App.Models.Issue = App.Data.Item.extend({
   alternatives : null,
   areAlternativesUpdated : false,
 
-  initialize : function(){
+  initialize : function( attributes, options ){
     _(this).bindAll();
 
     // calling prototype constructor
@@ -27,9 +27,11 @@ App.Models.Issue = App.Data.Item.extend({
     this.on( 'change:id', this.updateAlternatives, this );
     this.on( 'change:id', this.updateRelationsTo, this );
 
+    if( !options ){
+        options = {};
+    }
 
     // this needs to be instantiated late because of the late-loading issues. 
-    //this.alternatives = new App.Models.Alternatives();
     this.alternatives = new App.Data.RelatedCollection(null, {
         // we want only SolvedBy relations
         filter : function( relation ){ 
@@ -37,7 +39,10 @@ App.Models.Issue = App.Data.Item.extend({
         },
         item: this,
         direction: 'to',
-        model: App.Models.Alternative
+        model: App.Models.Alternative,
+        modelOptions: {
+            project: options.project
+        }
     });
     
     this.alternatives.on('decisionsChanged',this.onDecisionsChanged );
@@ -64,26 +69,10 @@ App.Models.Issue = App.Data.Item.extend({
         }
     },
 
-    updateAlternatives : function() {
-       /* if( this.get('id') ){
-            this.alternatives.setIssue( this );
-            this.alternatives.fetch();
-            this.areAlternativesUpdated = true;
-        */
-    },
     updateRelationsTo : function() {
         this.getRelationsTo();
     },
-    notified : function( notification ) {
-      /*if( notification.distance ===  1 ) {
-        if( notification.event === "relate" ||
-            notification.event === "unrelate" ||
-            notification.event === "destroy") {
-
-            this.updateAlternatives();
-        }
-      }*/
-    },
+   
     decisionState : function(){
         if( this.alternatives.length === 0 ){
             return this.state.noAlternatives;
@@ -101,7 +90,9 @@ App.Models.Issue = App.Data.Item.extend({
         var negativeDecisionTag = App.main.context.decisions.find( function( decision ){ return( decision.get('name') === 'Negative' );});
 
         _(this.alternatives.models).each( function(alternative) {
+            
             var projectDecisions = alternative.activeDecisions;
+
             decisionsTotal = decisionsTotal + projectDecisions.length;
 
             if (projectDecisions.length == 0) {

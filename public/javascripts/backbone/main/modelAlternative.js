@@ -8,11 +8,10 @@ App.Models.Alternative = App.Data.Item.extend({
   areDecisionsUpdated : false,
 
 
-  initialize : function(){
+  initialize : function( attributes, options ){
     _(this).bindAll();
 
     App.Models.Alternative.__super__.initialize.apply(this);
-//    this.set('type', "Alternative");
 
     this.decisions = new App.Data.SuperCollection();
     this.decisions.comparator = this.decisionComparator;
@@ -29,23 +28,31 @@ App.Models.Alternative = App.Data.Item.extend({
         return( relation.get('relation') === "SolvedBy");
         }
     });
-    
+   
     this.solvedByRelations.on('add',this.onSBadded,this);
     this.solvedByRelations.on('remove',this.onSBremoved,this);
-    
+   
     _(this.solvedByRelations.models).each( function( SBRelation ){
       this.onSBadded( SBRelation );
     },this);
 
+    if( options && options.project ){
+      this.project = options.project;
+    }
+    else{
+      this.project = App.main.context.project;
+    }
+
     this.projectDecisions = new App.Data.FilteredCollection(null,{
       model: App.Models.Decision,
       collection: this.decisions,
-      filter: function( decision ){
+      filter : function( decision ){
         var found = _(decision.projects.models).find( function( project ){
-          return( project.get('id') === App.main.context.project.get('id') );
+          return( project.get('id') === this.filterParams.project.get('id') );
         },this);
         return found;
-      }
+      },
+      filterParams : { project: this.project }
     });
 
 
@@ -108,109 +115,15 @@ App.Models.Alternative = App.Data.Item.extend({
             return '/r';
         }
     },
-    updateDecisions : function( context ){
-      // we'll need context to get decisions, project, etc. 
-   /*   this.context = context;
-
-
-      if( !this.context ){
-        throw new Error("proceeding without context doesn't make sense");
-      }
-
-      // set filter for superCollection 
-      this.decisions.addFilter = this.addFilter;
-
-      //this.getRelationsFrom("SolvedBy");
-      this.getRelationsFrom();
-    
-      this.getRelationsFrom("SolvedBy");
-    */
-    },
     // this is to be passed as filter to the SuperCollection so that it can fish-out decision taggings from others
-    addFilter : function( relationModel ){
-      /*  if( !this.context ){
-            return false;
-        }
-     var gotIt = false;
-
-      // here we go over all the decisions stored in the context
-      _(App.main.context.decisions.models).each(function( decision ){
-        // if decision 
-        if( relationModel.get('origin') === decision.get('id') ){
-          gotIt = true;
-        }
-      },this);
-      if( gotIt ) {
-          return true;
-      }
-      else{
-
-         return false;
-      }*/
-    },
-    gotSolvedByRelations : function(){
-      /*this.decisions.reset();
-      _(this.solvedByRelations.models).each( function( relation ){
-        // taggings on the SolvedBy relation are decisions, so let's fetch them!
-
-        var decisions = relation.getRelationsTo("Tagging",App.Models.Decisions);
-
-        this.decisions.addCollection( decisions );
-
-      },this);
-      
-      //this.decisions.fetch();
-
-      //this.gotDecisionsUpdate();
-      this.areDecisionsUpdated = true;
-      */
-    },
-    notified : function( notification ) {
-
-      /*if( notification.distance ===  1 ) {
-        if( notification.event === "relate" ||
-            notification.event === "unrelate") {
-
-            this.getRelationsTo();
-        }
-      }*/
-
-
-      /* if( notification.distance === 2 ){
-            if( notification.event === "dotag" || notification.event === 'destroy' ){            
-            
-                this.decisions.fetch();
-            }
-        }
-*/
-    },
 
     gotDecisionsUpdate : function(){
       this.trigger('decisionsChanged',this );
     },
-    getProjectDecisions : function( options ){
-  /*    if( !options.project ) {
-        throw new Error("decision context requires valid Project");
-      }
-
-      var projectDecisions = _(this.decisions.models).where({ project: options.project});
-
-      return projectDecisions;
-      */
-    },
-    /* */
-    getStatus : function( options ){
-
-    },
     isDecided : function( options ) {
     
       var projectDecisions = this.activeDecisions.models;
-     
-      // if there are no decisions then it is not decided
-      projectDecisions.filter( function( decision ) {
-        return( !decision.get('revoked') )
-      },this);
-       
+            
       if( projectDecisions.length === 0){
         return false;
       }
@@ -223,10 +136,11 @@ App.Models.Alternative = App.Data.Item.extend({
         return true;
       }
     },
+    
     isColliding : function( options ) {
     
       var projectDecisions = this.activeDecisions.models;
-     
+
       // if there are no decisions then it is not decided
       if( projectDecisions.length === 0){
         return false;

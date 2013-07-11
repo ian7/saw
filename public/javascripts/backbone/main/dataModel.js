@@ -320,6 +320,10 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
             this.filter = options.filter;
         }
 
+        if( options.modelOptions ) {
+            this.modelOptions = options.modelOptions;
+        }
+
         this.relations.on('add',this.onRelationAdd,this);
         this.relations.on('remove',this.onRelationRemove,this);
 
@@ -343,7 +347,7 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
         }
 
         // let's make a new thing..
-        var newItem = new this.model({id:relation.get(this.relationEnd)});
+        var newItem = new this.model( { id:relation.get(this.relationEnd) }, this.modelOptions );
 
         // that should handle faulty load...
         newItem.on('error',this.onItemFetchError,this);
@@ -417,6 +421,7 @@ App.Data.FilteredCollection = Backbone.Collection.extend({
             this.model = this.collection.model;
         }
         
+        this.modelOptions = options.modelOptions;
 
 
         // let's add what we have now...
@@ -429,7 +434,7 @@ App.Data.FilteredCollection = Backbone.Collection.extend({
         if( !this.filter( item ) ){
             return;
         }
-        var newModel = new this.model( item.attributes );
+        var newModel = new this.model( item.attributes, this.modelOptions );
 
         newModel.metaData = item.metaData;
 
@@ -514,7 +519,7 @@ App.Data.D3nodes = Backbone.Collection.extend({
 	    
 	    for (var i in this.nodes){
 	    	if (this.nodes[i].saw_id == item.id){
-	    		App.main.context.project.set('id', this.projectA.get('id') ); 	
+	    		//App.main.context.project.set('id', this.projectA.get('id') ); 	
 	    		this.nodes[i].pie[1].decision = item.decisionState();
 	    		if (this.nodes[i].id == 0) { this.nodes[i].pie[0].decision = item.decisionState(); }
 	    	}
@@ -615,7 +620,7 @@ App.Data.D3nodes = Backbone.Collection.extend({
     decisionB : function (item ){
 	    for (var i in this.nodes){
 	    	if (this.nodes[i].saw_id == item.id){
-	    		App.main.context.project.set('id', this.projectB.get('id') ); 
+	    		//App.main.context.project.set('id', this.projectB.get('id') ); 
 	    		this.nodes[i].pie[0].decision = item.decisionState();
 	    		if (this.nodes[i].id == 1) { this.nodes[i].pie[1].decision = item.decisionState(); };
 	    	}

@@ -29,6 +29,9 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       this.issuesA = new App.Data.FilteredCollection( null, {
         collection: this.relatedToA ,
         model: App.Models.Issue,
+        modelOptions : {
+        	project: this.projectA
+        },
         filter : function( item ){
           return( item.get('type') === 'Issue');
         }
@@ -43,6 +46,9 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       this.issuesB = new App.Data.FilteredCollection( null, {
         collection: this.relatedToB ,
         model: App.Models.Issue,
+        modelOptions : {
+        	project: this.projectB
+        },
         filter : function( item ){
           return( item.get('type') === 'Issue');
         }
