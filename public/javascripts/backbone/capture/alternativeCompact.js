@@ -14,7 +14,6 @@ App.module("main.capture",function(){
           model: this.model, 
           attribute: "name"
         });
-      this.model.updateDecisions(this.context);
       this.model.on('decisionsChanged',this.onDecisionChanged,this);
     },
     onRender : function() {
