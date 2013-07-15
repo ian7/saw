@@ -54,20 +54,13 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
         }
       })
 	 
-	 var foci = [{x: 200, y: 300},{x: 1200, y: 300}, {x: 700, y: 300}];
+	 var foci = [{x: 200, y: 300},{x: 1100, y: 300}, {x: 700, y: 300}];
 	 var decisionsColors = {null: 'white', 'No decisions were made yet': 'red',  'Some decisions are missing': 'grey', 'Decisions are not conclusive (multiple positive)' : 'green', 'Decided': 'blue'};
 	 
 	 this.force = new d3.layout.force();
-//	 this.piee = new d3.layout.pie()
-//		.sort(null)
-//		.value(function(d) { return d.value; });
-//     this.arc = new d3.svg.arc()
-//	    .outerRadius(10)
-//	    .innerRadius(0);
-    		
 		
 	 this.force.on("tick", function(q) {
-
+//	 console.log(nodes);
 	    // Push nodes toward their designated focus.
 	  	var k = .1 * q.alpha;
 	  	nodes.forEach(function(o, i) {
@@ -87,7 +80,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 	   		.attr('transform', function(d) {return 'translate(' + d.x + ',' + d.y + ')'; });
 	   	d3.select('svg').selectAll(".node").selectAll("path")
 //	   		.outerRadius(function(d) { return (d.data.value-1)*2})
-			.attr('transform', function(d) {return 'scale('+d.data.value+')'})
+			.attr('transform', function(d) {return 'scale('+(d.data.value*1.7)+')'})
 	   		.attr('fill', function(d) {return decisionsColors[d.data.decision]; });	
 		   		
      });
@@ -99,6 +92,82 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       _(this).bindAll();      
       
     },   
+	
+	drawSvg : function () {
+	
+	this.hasSVG = true;	
+	d3.select("#mysvg").append("svg")
+		.attr("width", 1600)
+		.attr("height", 600);
+	d3.select('svg').append('svg:rect')
+		.attr('x', 1)
+		.attr('y', 1)
+		.attr('width', 1598)
+		.attr('height',598)
+		.attr('opacity', 1)
+		.style('fill', 'white')
+		.style('stroke', 'black')
+		.style('stroke-width', 2)
+		.style('stroke-opacity', 1)  	
+	d3.select('svg').append('svg:rect')  // upper line
+		.attr('x', 0)
+		.attr('y', 0)
+		.attr('width', 1300)
+		.attr('height',30)
+		.attr('opacity', 0.1)  
+//	d3.select('svg').append('svg:circle')
+//		.attr('cx', 200)
+//		.attr('cy', 20)
+//		.attr('r', 8)
+//		.attr('class', 'info')
+//		.style('fill', 'blue')
+	d3.select('svg').append("svg:text")
+		.attr('x', 200)
+		.attr('y', 20)
+		.text('project A')
+	d3.select('svg').append("svg:text")
+		.attr('x', 650)
+		.attr('y', 20)
+		.text('common issues')
+	d3.select('svg').append("svg:text")
+		.attr('x', 1050)
+		.attr('y', 20)
+		.text('project B')
+	d3.select('svg').append('svg:rect')
+		.attr('x', 1300)
+		.attr('y', 0)
+		.attr('width', 300)
+		.attr('height',600)
+		.attr('opacity', 0.1)	
+	d3.select('svg').append("svg:text")
+		.attr('x', 1350)
+		.attr('y', 120)
+		.text('Description')	
+	d3.select('svg').append("svg:text")
+		.attr('x', 1350)
+		.attr('y', 150)
+		.text('Name:')	
+	d3.select('svg').append("svg:text")
+		.attr('x', 1350)
+		.attr('y', 180)
+		.attr('class', 'issuename')
+		//.text('Name')
+	
+	d3.selectAll('.node').remove();
+	
+	d3.select("#mysvg").append("div")   
+	    .attr("class", "tooltip")               
+	    .style("opacity", 0);
+	
+	},
+	
+	putinfo : function() {
+	
+		console.log(this);
+		d3.select('svg').select(".issuename")
+			.text(data.name)	
+	
+	},
 	
 	refreshNodes : function (){
 //		this.force.stop();
@@ -116,14 +185,32 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 		this.force
 			.nodes(nodes)
 			.links([])
-			.gravity(0);
+			.gravity(0)
+			.charge(-80);
 		this.force.start();	
 
 		d3.select('svg').selectAll(".node")
 		    .data(nodes)
 		  .enter().append("g")
 		   .attr("class", "node")
-		   .on("mouseover", function(d) {console.log(d.name)});
+		   .on("mouseover", function(d) {
+		   		d3.select('svg').select(".issuename").text(d.name)	
+				d3.select('.tooltip')
+					.transition()        
+				    .duration(200)      
+				    .style("opacity", .9)
+				d3.select('.tooltip').html(d.name + "<br/> Radius:"  + d.Alternatives.length)  
+				    .style("left", (d3.event.pageX) + "px")     
+				    .style("top", (d3.event.pageY - 28) + "px"); 	   		
+		   })
+		   .on("mouseout", function(d) {
+		   		d3.select('svg').select(".issuename").text("")	
+		   		d3.select('.tooltip')
+		   			.transition()        
+		   		    .duration(500)      
+		   		    .style("opacity", 0) 	   		
+		   });
+		   
 
 
 		d3.select('svg').selectAll(".node").selectAll("path")
@@ -181,49 +268,9 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       this.projectA.fetch();
       
       if (!this.hasSVG){
-		d3.select("#mysvg").append("svg")
-			.attr("width", 1500)
-			.attr("height", 600);
-		d3.select('svg').append('svg:rect')
-			.attr('x', 150)
-			.attr('y', 5)
-			.attr('width', 1100)
-			.attr('height',30)
-			.attr('opacity', 0.1)  
-		d3.select('svg').append('svg:circle')
-			.attr('cx', 200)
-			.attr('cy', 20)
-			.attr('r', 8)
-			.attr('class', 'info')
-			.style('fill', 'blue')
-		d3.select('svg').append("svg:text")
-			.attr('x', 220)
-			.attr('y', 20)
-			.text('project A')
-		d3.select('svg').append('svg:circle')
-			.attr('cx', 700)
-			.attr('cy', 20)
-			.attr('r', 8)
-			.attr('class', 'info')
-			.style('fill', 'yellow')
-		d3.select('svg').append("svg:text")
-			.attr('x', 720)
-			.attr('y', 20)
-			.text('common issues')
-		d3.select('svg').append('svg:circle')
-			.attr('cx', 1100)
-			.attr('cy', 20)
-			.attr('r', 8)
-			.attr('class', 'info')
-			.style('fill', 'red')
-		d3.select('svg').append("svg:text")
-			.attr('x', 1120)
-			.attr('y', 20)
-			.text('project B')
-		this.hasSVG = true;
-		nodes = [];
-      	d3.selectAll('.node').remove();
-      }
+      	this.drawSvg();
+	    
+	  }
       
     },
     
@@ -235,12 +282,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       this.projectB.fetch();
       
       if (!this.hasSVG){
-      	d3.select("#mysvg").append("svg")
-      	.attr("width", 1500)
-      	.attr("height", 600);
-      	this.hasSVG = true;
-      	nodes = [];
-      	d3.selectAll('.node').remove();
+      	this.drawSvg();
       };
     }
     
