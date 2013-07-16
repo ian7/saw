@@ -54,41 +54,38 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
         }
       })
 	 
+	 
+	 this.hasSVG = false;
+	 selectedNode = null;
+	 
+	 this.myD3nodes = new App.Data.D3nodes(this.issuesA, this.projectA, this.issuesB, this.projectB);
+	 this.myD3nodes.on("nodesChanged",this.refreshNodes, this);
+	 this.myD3nodes.on("nodesAttrChanged", this.refreshNodesAttr, this);
+	 
+	 
 	 var foci = [{x: 200, y: 300},{x: 1100, y: 300}, {x: 700, y: 300}];
 	 var decisionsColors = {null: 'white', 'No decisions were made yet': 'red',  'Some decisions are missing': 'grey', 'Decisions are not conclusive (multiple positive)' : 'green', 'Decided': 'blue'};
 	 
 	 this.force = new d3.layout.force();
 		
 	 this.force.on("tick", function(q) {
-//	 console.log(nodes);
 	    // Push nodes toward their designated focus.
 	  	var k = .1 * q.alpha;
 	  	nodes.forEach(function(o, i) {
 	  		o.y += (foci[o.id].y - o.y) * k;
 	      	o.x += (foci[o.id].x - o.x) * k;
 	  	});
-	  
-//	  	d3.select('svg').selectAll("circle.node")
-//	   		.attr("cx", function(d) { return d.x; })
-//	   		.attr("cy", function(d) { return d.y; })
-//	   		.attr("id", function(d) { return d.id; })
-//	   		.attr("r", function(d) {return d.Alternatives.length*2;})
-//	   		.style("fill", function(d) {return decisionsColors[d.pie[0].decision]; });
-	   	
+	  	   	
 	   	d3.select('svg').selectAll('.node')
-//	   		.attr('fill', function(d,i) {console.log(i); return decisionsColors['Decided']; })
 	   		.attr('transform', function(d) {return 'translate(' + d.x + ',' + d.y + ')'; });
 	   	d3.select('svg').selectAll(".node").selectAll("path")
-//	   		.outerRadius(function(d) { return (d.data.value-1)*2})
 			.attr('transform', function(d) {return 'scale('+(d.data.value*1.7)+')'})
 	   		.attr('fill', function(d) {return decisionsColors[d.data.decision]; });	
 		   		
      });
      
-     this.myD3nodes = new App.Data.D3nodes(this.issuesA, this.projectA, this.issuesB, this.projectB);
-     this.myD3nodes.on("nodesChanged",this.refreshNodes, this);
- 
-      this.hasSVG = false;
+
+ 	 
       _(this).bindAll();      
       
     },   
@@ -155,25 +152,24 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 	
 	d3.selectAll('.node').remove();
 	
+	
 	d3.select("#mysvg").append("div")   
 	    .attr("class", "tooltip")               
 	    .style("opacity", 0);
 	
 	},
 	
-	putinfo : function() {
+	changeView : function(k) {
 	
-		console.log(this);
-		d3.select('svg').select(".issuename")
-			.text(data.name)	
-	
+//		console.log(k);
+		selectedNode = k;
+		this.refreshNodes();
 	},
 	
-	refreshNodes : function (){
-//		this.force.stop();
-//		var decisionsColors = {0: 'white', 'No decisions were made yet': 'yellow', 'Some decisions are missing': 'grey', 'Decisions are not conclusive (multiple positive)' : 'green', 'Decided': 'blue'};
+	refreshNodes : function (k){
 		nodes = this.myD3nodes.getNodes();
-//		console.log(nodes);
+//		if(selectedNode != null) {console.log(selectedNode);}
+		
 		var pie = d3.layout.pie()
 		    .sort(null)
 		    .value(function(d) { return d.value; });
@@ -193,23 +189,16 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 		    .data(nodes)
 		  .enter().append("g")
 		   .attr("class", "node")
+		   .call(this.force.drag)    // enables drag and drop for nodes
 		   .on("mouseover", function(d) {
-		   		d3.select('svg').select(".issuename").text(d.name)	
-				d3.select('.tooltip')
-					.transition()        
-				    .duration(200)      
-				    .style("opacity", .9)
-				d3.select('.tooltip').html(d.name + "<br/> Radius:"  + d.Alternatives.length)  
-				    .style("left", (d3.event.pageX) + "px")     
-				    .style("top", (d3.event.pageY - 28) + "px"); 	   		
+		   		d3.select('svg').select(".issuename").text(d.name)	// changing right column description	   		
 		   })
 		   .on("mouseout", function(d) {
-		   		d3.select('svg').select(".issuename").text("")	
-		   		d3.select('.tooltip')
-		   			.transition()        
-		   		    .duration(500)      
-		   		    .style("opacity", 0) 	   		
-		   });
+		   		d3.select('svg').select(".issuename").text("")		   		
+		   })
+		   .on('click', this.changeView);
+
+		   
 		   
 
 
@@ -217,30 +206,39 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 		  .data(function(d) {return pie(d.pie); })
 		 .enter().append("svg:path")
 		  .attr("d", arc)		  
-//		  .style("stroke", "black");
-//		  .style("fill", function(d,i) { return decisionsColors[d.data.decision]; });
+		  .on("mouseover", function(d) {
+		  		d3.select('.tooltip') 								// changing tooltip opacity and text
+		  			.transition()        
+		  		    .duration(200)      
+		  		    .style("opacity", .9)
+		  		d3.select('.tooltip').html(d.data.decision + "<br/> Radius:"+(d.data.value-1))  
+		  		    .style("left", (d3.event.pageX) + "px")     
+		  		    .style("top", (d3.event.pageY - 28) + "px"); 	   		
+		  })
+		  .on("mouseout", function(d) {
+		  		d3.select('.tooltip')
+		  			.transition()        
+		  		    .duration(500)      
+		  		    .style("opacity", 0) 	   		
+		  });
 
 		d3.selectAll('.node').data(nodes).exit().remove();
-//		
-//		d3.select('svg').selectAll("circle.node")
-//		    .data(nodes)
-//		  .enter().append("svg:circle")
-//		    .attr("class", "node")
-//		    .attr("cx", function(d) { return d.x; })
-//		    .attr("cy", function(d) { return d.y; })
-//		    .attr("r", function(d) {return d.Alternatives.length*2;})
-//			.attr("id", function(d) { return d.id; })
-//		    .style("fill", function(d) { return decisionsColors[d.pie[d.id].decision]; })
-//		    .style("stroke", "black")
-//		    .style("stroke-width", 1.5)
-//		
-//		
-//	    this.force
-//	    	.nodes(nodes)
-//	    	.links([])
-//	    	.gravity(0);
+
 	    this.force.start();	
 	},
+	
+	refreshNodesAttr : function() {
+		
+		nodes = this.myD3nodes.getNodes();
+		this.force
+			.nodes(nodes)
+			.links([])
+			.gravity(0)
+			.charge(-80);
+		this.force.tick();	
+	
+	},
+	
 
     onRender : function(){
 

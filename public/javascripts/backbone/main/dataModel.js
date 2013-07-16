@@ -491,7 +491,7 @@ App.Data.D3nodes = Backbone.Collection.extend({
     
 		item.alternatives.on('add', function(a) {this.onAlternativeAddA(item, a)}, this);
 		item.alternatives.on('remove', function(a) {this.onAlternativeRemoveA(item, a)}, this);
-
+		
 		var decisionA = 'No decisions were made yet';
 		var decisionB = 'No decisions were made yet';		
 		
@@ -524,7 +524,7 @@ App.Data.D3nodes = Backbone.Collection.extend({
 	    		if (this.nodes[i].id == 0) { this.nodes[i].pie[0].decision = item.decisionState(); }
 	    	}
 	    };
-	    this.trigger("nodesChanged");
+	    this.trigger("nodesAttrChanged");
     },
     
     onAlternativeAddA : function (issue, alternative){
@@ -532,8 +532,8 @@ App.Data.D3nodes = Backbone.Collection.extend({
 		var saw_id = alternative.id;
 		var name  = alternative.get('name');
 		
-		alternative.on('decisionsChanged', this.onAlternativeDecisionA(alternative) , this);
-		
+		alternative.on('decisionsChanged', this.onAlternativeDecisionA(saw_id, issue) , this);
+
 		for (var i in this.nodes){
 			if ((this.nodes[i].saw_id == issue.id) && (this.nodes[i].id != 2 )){
 				this.nodes[i].pie[0].value += 1;
@@ -542,12 +542,14 @@ App.Data.D3nodes = Backbone.Collection.extend({
 			}
 		};		
 		
-		this.trigger("nodesChanged");
+		this.trigger("nodesAttrChanged");
     },
     
-    onAlternativeDecisionA : function (a){
-//    	console.log(a);
-    
+    onAlternativeDecisionA : function (a, iss){
+//		console.log(iss.alternatives.models);
+//		for (var j in iss.alternatives.models) {
+//			console.log(j);
+//		}
     },
     
     onAlternativeRemoveA: function(issue, alternative) {
@@ -565,7 +567,7 @@ App.Data.D3nodes = Backbone.Collection.extend({
     			}
     		}
     	};
-    	this.trigger("nodesChanged");
+    	this.trigger("nodesAttrChanged");
     },
     
     onRemoveA : function (item){
@@ -625,7 +627,7 @@ App.Data.D3nodes = Backbone.Collection.extend({
 	    		if (this.nodes[i].id == 1) { this.nodes[i].pie[1].decision = item.decisionState(); };
 	    	}
 	    };	
-	    this.trigger("nodesChanged");
+	    this.trigger("nodesAttrChanged");
     },
     
     onAlternativeAddB : function (issue, alternative){
@@ -644,7 +646,7 @@ App.Data.D3nodes = Backbone.Collection.extend({
 				this.nodes[i].pie[1].value += 1;
 			}
 		};		
-		this.trigger("nodesChanged");
+		this.trigger("nodesAttrChanged");
     },
     
     onAlternativeDecisionB : function (a){
@@ -668,7 +670,7 @@ App.Data.D3nodes = Backbone.Collection.extend({
     			}
     		}
     	};	
-    	this.trigger("nodesChanged");
+    	this.trigger("nodesAttrChanged");
     },
     
     onRemoveB : function (item){

@@ -47,9 +47,9 @@ text.id {
 div.tooltip {   
   position: absolute;           
   text-align: center;           
-  width: 120px;
+  width: 130px;
   word-wrap: break-word;
-  height: 50px;                 
+  height: 55px;                 
   padding: 2px;             
   font: 12px sans-serif;        
   background: black;   
