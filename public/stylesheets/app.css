@@ -47,11 +47,11 @@ text.id {
 div.tooltip {   
   position: absolute;           
   text-align: center;           
-  width: 130px;
+  width: 200px;
   word-wrap: break-word;
-  height: 55px;                 
+  height: 100px;                 
   padding: 2px;             
-  font: 12px sans-serif;        
+  font: 15px sans-serif;        
   background: black;   
   border: 0px;      
   border-radius: 8px;           

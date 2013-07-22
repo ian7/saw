@@ -471,14 +471,14 @@ App.Data.FilteredCollection = Backbone.Collection.extend({
 });
 
 App.Data.D3nodes = Backbone.Collection.extend({
-    initialize : function(issuesA, projectA, issuesB, projectB){
+    initialize : function(issuesA, issuesB){
         _(this).bindAll();
 		
 		this.nodes = [];
         this.issuesA = issuesA;
-        this.projectA = projectA;
+//        this.projectA = projectA;
         this.issuesB = issuesB;
-        this.projectB = projectB;
+//        this.projectB = projectB;
         this.issuesA.on('add',this.onAddA,this);
         this.issuesA.on('remove',this.onRemoveA,this);
 
@@ -532,24 +532,37 @@ App.Data.D3nodes = Backbone.Collection.extend({
 		var saw_id = alternative.id;
 		var name  = alternative.get('name');
 		
-		alternative.on('decisionsChanged', this.onAlternativeDecisionA(saw_id, issue) , this);
+		alternative.on('decisionsChanged', this.onAlternativeDecisionA , this);
 
 		for (var i in this.nodes){
 			if ((this.nodes[i].saw_id == issue.id) && (this.nodes[i].id != 2 )){
 				this.nodes[i].pie[0].value += 1;
 				this.nodes[i].pie[1].value += 1;
-				this.nodes[i].Alternatives.push({saw_id: saw_id, name: name, decisionA: null, decisionB: null });
+				this.nodes[i].Alternatives.push({saw_id: saw_id, name: name, id: 2, Decisions : [{decision: null, value: 5}, {decision: null, value: 5}] });
+				break;
 			}
 		};		
 		
 		this.trigger("nodesAttrChanged");
     },
     
-    onAlternativeDecisionA : function (a, iss){
-//		console.log(iss.alternatives.models);
-//		for (var j in iss.alternatives.models) {
-//			console.log(j);
-//		}
+    onAlternativeDecisionA : function (alternative){
+		i_id = alternative.relationsFrom.models[0].get('tip');
+//		console.log(alternative.decisions)
+		a_id = alternative.id;
+		if( alternative.decision()){
+		for (j in this.nodes){
+			if (this.nodes[j].saw_id == i_id) {
+				for (k in this.nodes[j].Alternatives) {
+					if (this.nodes[j].Alternatives[k].saw_id == a_id){
+						this.nodes[j].Alternatives[k].Decisions[1].decision = App.main.context.decisions.find( function( decision ) { return decision.id === alternative.decision() } ).get('name');
+						break;
+					}
+				}
+			}
+		}}
+		this.trigger("nodesAttrChanged");
+//		console.log(alternative.relationsFrom.models[0].get('tip'));
     },
     
     onAlternativeRemoveA: function(issue, alternative) {
@@ -563,6 +576,7 @@ App.Data.D3nodes = Backbone.Collection.extend({
     					this.nodes[i].Alternatives.splice(j,1);
     					this.nodes[i].pie[0].value -= 1;
     					this.nodes[i].pie[1].value -= 1;
+    					break;
     				}
     			}
     		}
@@ -637,11 +651,12 @@ App.Data.D3nodes = Backbone.Collection.extend({
 		var saw_id = alternative.id;
 		var name  = alternative.get('name');
 		
-		alternative.on('decisionsChanged', this.onAlternativeDecisionB(alternative) , this);
+		alternative.on('decisionsChanged', this.onAlternativeDecisionB , this);
 		
 		for (var i in this.nodes){
 			if ((this.nodes[i].saw_id == issue.id) && (this.nodes[i].id != 2 )){
-				this.nodes[i].Alternatives.push({saw_id: saw_id, name: name, decisionA: null, decisionB: null});
+				this.nodes[i].Alternatives.push({saw_id: saw_id, name: name, id: 2, Decisions : [{decision: null, value: 5}, {decision: null, value: 5}] });
+				
 				this.nodes[i].pie[0].value += 1;
 				this.nodes[i].pie[1].value += 1;
 			}
@@ -649,8 +664,22 @@ App.Data.D3nodes = Backbone.Collection.extend({
 		this.trigger("nodesAttrChanged");
     },
     
-    onAlternativeDecisionB : function (a){
-    	
+    onAlternativeDecisionB : function (alternative){
+		i_id = alternative.relationsFrom.models[0].get('tip');
+//		console.log(alternative.decisions)
+		a_id = alternative.id;
+		if( alternative.decision()){
+		for (j in this.nodes){
+			if (this.nodes[j].saw_id == i_id) {
+				for (k in this.nodes[j].Alternatives) {
+					if (this.nodes[j].Alternatives[k].saw_id == a_id){
+						this.nodes[j].Alternatives[k].Decisions[0].decision = App.main.context.decisions.find( function( decision ) { return decision.id === alternative.decision() } ).get('name');
+						break;
+					}
+				}
+			}
+		}}
+		this.trigger("nodesAttrChanged");    	
     	
     
     },

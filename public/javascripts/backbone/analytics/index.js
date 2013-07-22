@@ -57,38 +57,73 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 	 
 	 this.hasSVG = false;
 	 selectedNode = null;
+	 this.Nodes = [];
 	 
-	 this.myD3nodes = new App.Data.D3nodes(this.issuesA, this.projectA, this.issuesB, this.projectB);
+	 
+	 this.myD3nodes = new App.Data.D3nodes(this.issuesA, this.issuesB);
 	 this.myD3nodes.on("nodesChanged",this.refreshNodes, this);
 	 this.myD3nodes.on("nodesAttrChanged", this.refreshNodesAttr, this);
 	 
 	 
-	 var foci = [{x: 200, y: 300},{x: 1100, y: 300}, {x: 700, y: 300}];
-	 var decisionsColors = {null: 'white', 'No decisions were made yet': 'red',  'Some decisions are missing': 'grey', 'Decisions are not conclusive (multiple positive)' : 'green', 'Decided': 'blue'};
+	 
 	 
 	 this.force = new d3.layout.force();
+	 
+	 this.force
+		 .links([])
+		 .gravity(0)
+		 .charge(-80)
+	 
+	 this.arc = new d3.svg.arc()
+	     .outerRadius(2) //function(d) { return (d.data.value)*2})
+	     .innerRadius(0);
 		
 	 this.force.on("tick", function(q) {
-	    // Push nodes toward their designated focus.
+
+		var foci = [{x: 200, y: 300},{x: 1100, y: 300}, {x: 700, y: 300}];
+		var decisionsColors = {null: 'brown', 'No decisions were made yet': 'red',  'Some decisions are missing': 'grey', 'Decisions are not conclusive (multiple positive)' : 'green', 'Decided': 'blue'};
+
+//	     Push nodes toward their designated focus.
 	  	var k = .1 * q.alpha;
 	  	nodes.forEach(function(o, i) {
 	  		o.y += (foci[o.id].y - o.y) * k;
 	      	o.x += (foci[o.id].x - o.x) * k;
 	  	});
-	  	   	
+
 	   	d3.select('svg').selectAll('.node')
 	   		.attr('transform', function(d) {return 'translate(' + d.x + ',' + d.y + ')'; });
 	   	d3.select('svg').selectAll(".node").selectAll("path")
-			.attr('transform', function(d) {return 'scale('+(d.data.value*1.7)+')'})
+			.attr('transform', function(d) {return 'scale('+d.data.value*2+')'})
 	   		.attr('fill', function(d) {return decisionsColors[d.data.decision]; });	
 		   		
      });
-     
 
  	 
-      _(this).bindAll();      
+     _(this).bindAll();      
+// 	 _.bind(this.onTick,this);
       
     },   
+    
+//    onTick : function(q) {
+//        Push nodes toward their designated focus.
+//		console.log(q.aplha);
+//        var foci = [{x: 200, y: 300},{x: 1100, y: 300}, {x: 700, y: 300}];
+//        var decisionsColors = {null: 'white', 'No decisions were made yet': 'red',  'Some decisions are missing': 'grey', 'Decisions are not conclusive (multiple positive)' : 'green', 'Decided': 'blue'};
+//     	var k = .1 * q.alpha;
+//     	if (this.Nodes) {
+//	     	this.Nodes.forEach(function(o, i) {
+//	     		o.y += (foci[o.id].y - o.y) * k;
+//	         	o.x += (foci[o.id].x - o.x) * k;
+//	     	});
+//     	}
+//      	d3.select('svg').selectAll('.node')
+//      		.attr('transform', function(d) {return 'translate(' + d.x + ',' + d.y + ')'; });
+//      	d3.select('svg').selectAll(".node").selectAll("path")
+//    		.attr('transform', function(d) {return 'scale('+(d.data.value*1.7)+')'})
+//      		.attr('fill', function(d) {return decisionsColors[d.data.decision]; });	
+//    	   		
+//    },
+//    
 	
 	drawSvg : function () {
 	
@@ -109,15 +144,9 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 	d3.select('svg').append('svg:rect')  // upper line
 		.attr('x', 0)
 		.attr('y', 0)
-		.attr('width', 1300)
+		.attr('width', 1600)
 		.attr('height',30)
 		.attr('opacity', 0.1)  
-//	d3.select('svg').append('svg:circle')
-//		.attr('cx', 200)
-//		.attr('cy', 20)
-//		.attr('r', 8)
-//		.attr('class', 'info')
-//		.style('fill', 'blue')
 	d3.select('svg').append("svg:text")
 		.attr('x', 200)
 		.attr('y', 20)
@@ -130,20 +159,6 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 		.attr('x', 1050)
 		.attr('y', 20)
 		.text('project B')
-	d3.select('svg').append('svg:rect')
-		.attr('x', 1300)
-		.attr('y', 0)
-		.attr('width', 300)
-		.attr('height',600)
-		.attr('opacity', 0.1)	
-	d3.select('svg').append("svg:text")
-		.attr('x', 1350)
-		.attr('y', 120)
-		.text('Description')	
-	d3.select('svg').append("svg:text")
-		.attr('x', 1350)
-		.attr('y', 150)
-		.text('Name:')	
 	d3.select('svg').append("svg:text")
 		.attr('x', 1350)
 		.attr('y', 180)
@@ -161,9 +176,9 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 	
 	changeView : function(k) {
 	
-//		console.log(k);
+		console.log(k.index);
 		selectedNode = k;
-		this.refreshNodes();
+		this.context.dispatch('analyze:issue',k.index)
 	},
 	
 	refreshNodes : function (k){
@@ -174,15 +189,9 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 		    .sort(null)
 		    .value(function(d) { return d.value; });
 		
-		var arc = d3.svg.arc()
-		    .outerRadius(2) //function(d) { return (d.data.value)*2})
-		    .innerRadius(0);
-				    
 		this.force
-			.nodes(nodes)
-			.links([])
-			.gravity(0)
-			.charge(-80);
+			.nodes(nodes);
+		
 		this.force.start();	
 
 		d3.select('svg').selectAll(".node")
@@ -196,7 +205,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 		   .on("mouseout", function(d) {
 		   		d3.select('svg').select(".issuename").text("")		   		
 		   })
-		   .on('click', this.changeView);
+		   .on('click', this.changeView );
 
 		   
 		   
@@ -205,7 +214,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 		d3.select('svg').selectAll(".node").selectAll("path")
 		  .data(function(d) {return pie(d.pie); })
 		 .enter().append("svg:path")
-		  .attr("d", arc)		  
+		  .attr("d", this.arc)		  
 		  .on("mouseover", function(d) {
 		  		d3.select('.tooltip') 								// changing tooltip opacity and text
 		  			.transition()        
@@ -230,11 +239,9 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 	refreshNodesAttr : function() {
 		
 		nodes = this.myD3nodes.getNodes();
+//		console.log(nodes)
 		this.force
-			.nodes(nodes)
-			.links([])
-			.gravity(0)
-			.charge(-80);
+			.nodes(nodes);
 		this.force.tick();	
 	
 	},
