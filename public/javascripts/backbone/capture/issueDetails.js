@@ -112,7 +112,6 @@ App.module("main.capture",function(){
 
         this.attributesView.el = this.attributesView.$el = jQuery("div.itemAttributes",this.el).first();
         this.attributesView.render();
-        this.model.updateAlternatives();
 
         this.tagListWidget = new App.main.Views.TagListWidget({context:this, collection : this.collection  });
         App.main.layout.tagSidebar.show( this.tagListWidget );  

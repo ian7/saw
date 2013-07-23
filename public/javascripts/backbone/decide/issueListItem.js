@@ -34,7 +34,7 @@ App.module("main.decide",function(){
       this.collection = this.model.alternatives;
       // in order to get alternatives collection, one needs to stimulate issue to fetch it :)
       this.itemViewOptions = {context: this.context};    
-      this.model.updateAlternatives();
+//      this.model.updateAlternatives();
 
       this.nameEdit = new App.main.capture.Views.RichEdit({
           model: this.model, 
