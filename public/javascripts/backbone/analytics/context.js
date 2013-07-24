@@ -14,10 +14,10 @@ App.module("main.analytics",function(){
             var view = new App.main.analytics.Views.Index({context: this});
             App.main.layout.central.show( view );
         },
-        onIssue : function(q) {
+        onIssue : function(options) {
             this.dispatchGlobally('mode:analytics');		
             
-            var view = new App.main.analytics.Views.Issue({context: this, ii: q});
+            var view = new App.main.analytics.Views.Issue({context: this, issueIndex: options.issueIndex, projectAname: options.projectAname, projectBname : options.projectBname});
             App.main.layout.central.show( view );
         }
 // end of class
