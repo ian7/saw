@@ -178,7 +178,8 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 	
 		console.log(k.index);
 		selectedNode = k;
-		this.context.dispatch('analyze:issue',k.index)
+		this.force.stop();
+		this.context.dispatch('analyze:issue',{ issueIndex : k.index} )
 	},
 	
 	refreshNodes : function (k){

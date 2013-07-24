@@ -15,8 +15,10 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
         context: this.context
       };
       
-  	  this.ii = options.ii;
-  	  nodes = nodes[this.ii].Alternatives;
+      this.on('show',this.onShow,this);
+      
+  	  this.issueIndex = options.issueIndex;
+  	  nodes = nodes[this.issueIndex].Alternatives;
       this.projects = App.main.context.tags.filter( function( tag ){ return( tag.get('type')==='Project');} );
 
       this.projectA = new App.Data.Item();
@@ -54,11 +56,19 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
           return( item.get('type') === 'Issue');
         }
       })
+	 this.arc = new d3.svg.arc()
+	     .outerRadius(2) //function(d) { return (d.data.value)*2})
+	     .innerRadius(0);
 	 
 	 this.force2 = new d3.layout.force();
+	 
+	 this.force2
+	 	 .links([])
+	 	 .gravity(0)
+	 	 .charge(-80);
 	
 	 this.force2.on("tick", function(q) {
-		var foci = [{x: 200, y: 300},{x: 1200, y: 300}, {x: 700, y: 300}];
+		var foci = [{x: 200, y: 300},{x: 1100, y: 300}, {x: 700, y: 300}];
 		var decisionsColors = {null: 'blue', 'Positive': 'green',  'Negative': 'red', 'Open' : 'yellow'};
 //	     Push nodes toward their designated focus.
 	  	var k = .1 * q.alpha;
@@ -85,35 +95,26 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 	
 	refreshNodes : function (){
 		
-//		var znodes = this.myD3nodes.getNodes();
-//		console.log(znodes[this.ii]);
-//		if( znodes) {nodes = znodes[this.ii].Alternatives;}
 		var pie = d3.layout.pie()
 		    .sort(null)
 		    .value(function(d) { return d.value; });
 		
-		var arc = d3.svg.arc()
-		    .outerRadius(2) //function(d) { return (d.data.value)*2})
-		    .innerRadius(0);
-//		console.log(nodes);		    
 		this.force2
-			.nodes(nodes)
-			.links([])
-			.gravity(0)
-			.charge(-80);
+			.nodes(nodes);
 		this.force2.start();	
-
+		
 		d3.select('svg').selectAll(".node")
 		    .data(nodes)
 		  .enter().append("g")
-		   .attr("class", "node");
+		   .attr("class", "node")
+		   .call(this.force2.drag);
 
 		d3.select('svg').selectAll(".node").selectAll("path")
 		  .data(function(d) {return pie(d.Decisions); })
 		 .enter().append("svg:path")
-		  .attr("d", arc)		  
+		  .attr("d", this.arc)		  
 
-		d3.selectAll('.node').data(nodes).exit().remove();
+		d3.select('svg').selectAll('.node').data(nodes).exit().remove();
 
 	    this.force2.start();	
 	},
@@ -134,8 +135,14 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       this.itemsBview.setElement( jQuery( 'tr#issues td#projectB',this.el));
       this.itemsBview.render();
       this.delegateEvents();    
-         
+//  	  this.svgRef = d3.select(jQuery("#mysvg",this.el)[0]);
+  	
     },
+    
+    onShow : function() {
+    	this.refreshNodes();
+    },
+    
     
     drawSvg : function () {
     	
@@ -203,7 +210,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
     	d3.select("#mysvg").append("div")   
     	    .attr("class", "tooltip")               
     	    .style("opacity", 0);
-    	this.refreshNodes();
+    	    
     },
     
     
@@ -213,7 +220,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       
       this.projectA.set('id',e.target.id);
       this.projectA.fetch();
-      this.refreshNodes();
+      
     },
     
     onProjectBclicked : function( e ){
