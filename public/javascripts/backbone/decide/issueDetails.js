@@ -100,7 +100,7 @@ App.module("main.decide",function(){
 
         this.attributesView.el = this.attributesView.$el = jQuery("div.itemAttributes",this.el).first();
         this.attributesView.render();
-        this.model.updateAlternatives();
+//        this.model.updateAlternatives();
         },
     anchorClicked : function() {
         jQuery("img.anchor",this.el).popover({
