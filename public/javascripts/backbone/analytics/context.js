@@ -17,7 +17,7 @@ App.module("main.analytics",function(){
         onIssue : function(options) {
             this.dispatchGlobally('mode:analytics');		
             
-            var view = new App.main.analytics.Views.Issue({context: this, issueIndex: options.issueIndex});
+            var view = new App.main.analytics.Views.Issue({context: this, issueIndex: options.issueIndex, projectAname: options.projectAname, projectBname : options.projectBname});
             App.main.layout.central.show( view );
         }
 // end of class
