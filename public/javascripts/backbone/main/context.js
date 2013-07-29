@@ -83,8 +83,9 @@ App.module("main",function(){
             this.on("item:selected",this.itemSelected,this);
 
             this.on("history:push",this.onHistoryPush,this);
+            this.on('history:pop',this.onHistoryPop,this);
 
-            window.onpopstate = this.onHistoryPop;
+            window.onpopstate = this.onBrowserHistoryPop;
         },
         setStatus : function( newStatus ){
             this.status = newStatus;
@@ -116,11 +117,11 @@ App.module("main",function(){
             this.project.set('id',args.id);
             this.project.url = "/projects/"+args.id;
             this.project.fetch();
-            console.log(args.id);
+            console.log( args.id );
            // window.history.pushState("project","project",window.location.origin + "/#project/" + args.id);
             localStorage.setItem("project.lastId",args.id);
             // switch views
-            this.dispatchGlobally("capture:issues:list");
+            //this.dispatchGlobally("capture:issues:list");
 
         },
         getTypes : function( rootType, collection  ){
@@ -139,14 +140,14 @@ App.module("main",function(){
             
             _.extend( historyItem, serializedView );
             _.extend( historyItem, { 
-                projectId : this.project.get('id')
+                project : this.project.get('id')
             });
 
             // first push after the pop should be surpressed
 
             if( this.popped ){
                 console.log( 'history.push surpressed');
-                this.popped = false
+                this.popped = false;
                 return;
             }
 
@@ -154,20 +155,39 @@ App.module("main",function(){
             //this.history.push(historyItem);
             if( JSON.stringify( history.state ) != JSON.stringify( historyItem ) &&
                 JSON.stringify( this.lastHistoryPop ) != JSON.stringify( historyItem )) {
-                history.pushState( historyItem, 'someTitle',"?someHash");
+
+
+                var uri = '#/project/' + this.project.get('id');
+                for (var key in serializedView) {
+                  if (serializedView.hasOwnProperty(key)) {
+                    uri = uri + '/' + key + '/' + serializedView[key];
+                  }
+                }
+
+                history.pushState( historyItem, 'someTitle',uri);
                 console.log('pushing: '+JSON.stringify(historyItem));
             }
             else{
                 console.log('duplicate history state');
             }
         },
-        onHistoryPop : function( event ){
+        onBrowserHistoryPop : function( event ){
              //alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
              if( event.state ){
                  console.log( event.state );
                  _.clone( this.lastHistoryPop, event.state );
-                 this.popped = true;
+                 this.popped = true;   
+
+                 // dispatch it to the other contextes
                  this.dispatchGlobally('history:pop',event.state);
+             }
+        },
+        onHistoryPop : function( viewState ){
+             // we are loading the project here: 
+             if( viewState.project ){
+                if( viewState.project != this.project.get('id') ){
+                    this.projectSelected( {id: viewState.project });
+                }
              }
         }
     });

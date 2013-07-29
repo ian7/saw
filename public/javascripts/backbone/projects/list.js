@@ -17,16 +17,9 @@ App.module("main.projects",function(){
         },
 
         initialize : function(){
-           /* Backbone.Marionette.Geppetto.bindContext({
-                view: this,
-                context: App.main.projects.context,
-                parentContext: App.main.context
-                });*/
+
             this.itemViewOptions = {context: this.context};
-//            this.context.projects.on('change',this.render,this);
-            
-            //var speedButtonsSidebar = new App.Views.ProjectSpeedButtons({mainView:this});   
-            //layout.speedButtonsSidebar.show( speedButtonsSidebar );
+
         },
 
         // this is executed after template is alreayd rendered
@@ -36,6 +29,7 @@ App.module("main.projects",function(){
             this.rootView.model.on("change",function(){
                 this.render();
                 },this.rootView);
+                  this.context.dispatchGlobally("history:push", {dialog:'main.projects.projectList'} );
         },
         newProject : function(){
             jQuery("#newProjectModal").modal('show');
