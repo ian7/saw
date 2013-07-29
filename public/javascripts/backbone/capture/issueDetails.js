@@ -64,6 +64,14 @@ App.module("main.capture",function(){
                 + "/issue/" + this.context.issue.get('id'));
     },
     onRender: function(){
+        this.context.dispatchGlobally("history:push", this.serialize() );
+    },
+    serialize : function(){
+    var v = {
+        dialog: 'main.capture.issueDetails',
+        issueId: this.context.issue.get('id')
+      };
+      return v;
     },
     onItemRendered : function() {
 

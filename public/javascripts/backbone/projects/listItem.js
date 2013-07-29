@@ -112,6 +112,7 @@ App.module("main.projects",function(){
             if( this.model.get('id') ) {
                 this.context.dispatchToParent("project:selected",{id: this.model.get('id')});
             }
+            this.context.dispatchGlobally("capture:issues:list");
         }
     });
 /*    this.Views.ProjecDetailsWidget = Backbone.Marionette.ItemView.extend({
