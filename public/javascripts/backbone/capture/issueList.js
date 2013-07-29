@@ -129,6 +129,13 @@ App.module("main.capture",function(that,App,Backbone,Marionette,jQuery,_,customA
     },
     onRender : function() {
       this.onItemRendered();
+      this.context.dispatchGlobally("history:push", this.serialize() );
+    },
+    serialize : function(){
+      var v = {
+        dialog: 'main.capture.issueList'
+      };
+      return v;
     },
     onClose : function(){
         App.main.layout.tagSidebar.close();

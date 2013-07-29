@@ -7,7 +7,7 @@ App.module("main.analytics",function(that,parentModule){
         this.context = new this.Context({ parentContext: this.parentModule.context });        
 
       //  this.mainView = new this.Views.IssueList({context: this.context});
-        this.router = new this.Router("capture",{context: this.context});
+        this.router = new this.Router("analytics",{context: this.context});
     });
 });
 
