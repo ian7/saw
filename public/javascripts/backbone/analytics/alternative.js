@@ -1,8 +1,8 @@
 /*global App, Backbone,_,jQuery,JST*/	
 App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,customArgs){
 
-  this.Views.Issue = Backbone.Marionette.CompositeView.extend({
-      template: JST['analytics/issue'],
+  this.Views.Alternative = Backbone.Marionette.CompositeView.extend({
+      template: JST['analytics/alternative'],
       itemViewContainer: 'div#items',
       events : {
 //        'click tr#projects td#projectA div.projectName'  : 'onProjectAclicked',
@@ -21,9 +21,10 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       this.myD3nodes.on("nodesAttrChanged", this.refreshNodes, this);
       
   	  this.issueIndex = options.issueIndex;
+  	  this.alternativeIndex = options.alternativeIndex;
   	  this.issueName = this.myD3nodes.getIssueName(this.issueIndex);
-  	  
-  	  nodes = this.myD3nodes.getNodes(this.issueIndex);
+  	  this.alternativeName= this.myD3nodes.getAlternativeName(this.issueIndex, this.alternativeIndex)
+  	  nodes = this.myD3nodes.getNodes(this.issueIndex, this.alternativeIndex);
       
 
 	 this.arc = new d3.svg.arc()
@@ -48,10 +49,11 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 	  	});
 	  	 	
 	   	d3.select('svg').selectAll('.node')
-	   		.attr('transform', function(d) {return 'translate(' + d.x + ',' + d.y + ')'; });
+	   		.attr('transform', function(d) {return 'translate(' + d.x + ',' + d.y + ')'; })
+	   		.attr('fill', function(d) {return decisionsColors[d.decision]; });	
 	   	d3.select('svg').selectAll(".node").selectAll("path")
 			.attr('transform', function(d) {return 'scale('+d.data.value*2+')'})
-	   		.attr('fill', function(d) {return decisionsColors[d.data.decision]; });	
+	   		.attr('fill', function(d) {return decisionsColors[d.decision]; });	
 		   		
      });
      
@@ -60,16 +62,10 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       
     },   
 	
-	
-	changeView : function(alternative) {
-		console.log(alternative);
-		this.force.stop();
-		this.context.dispatch('analyze:alternative',{ issueIndex : this.issueIndex, alternativeIndex : alternative.index,  D3nodes: this.myD3nodes} )
-	},
-	
+		
 	refreshNodes : function (){
 		
-		nodes = this.myD3nodes.getNodes(this.issueIndex);
+		nodes = this.myD3nodes.getNodes(this.issueIndex, this.alternativeIndex);
 		var pie = d3.layout.pie()
 		    .sort(null)
 		    .value(function(d) { return d.value; });
@@ -88,7 +84,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 		   			.transition()        
 		   		    .duration(200)      
 		   		    .style("opacity", .9)
-		   		d3.select('.tooltip').html(d.name +'<br/> Dec A:'+ d.pie[1].decision + '<br/> Dec B:'+ d.pie[0].decision )  
+		   		d3.select('.tooltip').html('Decision: '+ d.decision + '<br/> Author:'+ d.author )  
 		   		    .style("left", (d3.event.pageX) + "px")     
 		   		    .style("top", (d3.event.pageY - 28) + "px"); 	   		
 		   })
@@ -97,8 +93,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 		   			.transition()        
 		   		    .duration(500)      
 		   		    .style("opacity", 0) 	   		
-		   })
-		   .on('click', this.changeView );
+		   });
 		   
 
 		d3.select('svg').selectAll(".node").selectAll("path")
@@ -134,7 +129,8 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
     onShow : function() {
     	d3.select('.ProjectA').text(this.myD3nodes.getProjectAname());
     	d3.select('.ProjectB').text(this.myD3nodes.getProjectBname());
-    	d3.select('.issuename').text(this.issueName)
+    	d3.select('.issuename').text(this.issueName);
+    	d3.select('.alternativename').text(this.alternativeName);
     	this.refreshNodes();
     },
         

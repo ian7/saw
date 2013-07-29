@@ -471,20 +471,19 @@ App.Data.FilteredCollection = Backbone.Collection.extend({
 });
 
 App.Data.D3nodes = Backbone.Collection.extend({
-    initialize : function(issuesA, issuesB){
-        _(this).bindAll();
-		
+    initialize : function(issuesA, issuesB, projectA, projectB){
+        
 		this.nodes = [];
         this.issuesA = issuesA;
-//        this.projectA = projectA;
+        this.projectA = projectA;
         this.issuesB = issuesB;
-//        this.projectB = projectB;
+        this.projectB = projectB;
         this.issuesA.on('add',this.onAddA,this);
         this.issuesA.on('remove',this.onRemoveA,this);
 
 		this.issuesB.on('add',this.onAddB,this);
 		this.issuesB.on('remove',this.onRemoveB,this);
-		
+		_(this).bindAll();
 		
     },
     onAddA : function( item ){
@@ -532,13 +531,15 @@ App.Data.D3nodes = Backbone.Collection.extend({
 		var saw_id = alternative.id;
 		var name  = alternative.get('name');
 		
-		alternative.on('decisionsChanged', this.onAlternativeDecisionA , this);
+		alternative.on('decisionsChanged', function(a) {this.onAlternativeDecisionA(a, issue.id) }, this);
+		alternative.decisions.on('add', function(d) {this.onDecisionsAadd(issue.id, alternative.id, d)}, this);
+		alternative.decisions.on('remove', function(d) {this.onDecisionsAremove(issue.id, alternative.id, d)}, this);
 
 		for (var i in this.nodes){
 			if ((this.nodes[i].saw_id == issue.id) && (this.nodes[i].id != 2 )){
 				this.nodes[i].pie[0].value += 1;
 				this.nodes[i].pie[1].value += 1;
-				this.nodes[i].Alternatives.push({saw_id: saw_id, name: name, id: 2, Decisions : [{decision: null, value: 5}, {decision: null, value: 5}] });
+				this.nodes[i].Alternatives.push({saw_id: saw_id, name: name, id: 2, pie : [{decision: null, value: 1}, {decision: null, value: 1}], Decisions: [] });
 				break;
 			}
 		};		
@@ -546,19 +547,20 @@ App.Data.D3nodes = Backbone.Collection.extend({
 		this.trigger("nodesAttrChanged");
     },
     
-    onAlternativeDecisionA : function (alternative){
-		i_id = alternative.relationsFrom.models[0].get('tip');
-//		console.log(alternative.decisions)
+    onAlternativeDecisionA : function (alternative, issue_id){
+
 		a_id = alternative.id;
+//		console.log(alternative.decisions);
 		if( alternative.decision()){
 		for (j in this.nodes){
-			if (this.nodes[j].saw_id == i_id) {
+			if (this.nodes[j].saw_id == issue_id) {
 				for (k in this.nodes[j].Alternatives) {
 					if (this.nodes[j].Alternatives[k].saw_id == a_id){
-						this.nodes[j].Alternatives[k].Decisions[1].decision = App.main.context.decisions.find( function( decision ) { return decision.id === alternative.decision() } ).get('name');
+						this.nodes[j].Alternatives[k].pie[1].decision = App.main.context.decisions.find( function( decision ) { return decision.id === alternative.decision() } ).get('name');
 						break;
 					}
 				}
+				break;
 			}
 		}}
 		this.trigger("nodesAttrChanged");
@@ -572,13 +574,14 @@ App.Data.D3nodes = Backbone.Collection.extend({
     	for (var i in this.nodes){
     		if(this.nodes[i].saw_id == iss_id) {
     			for (var j in this.nodes[i].Alternatives){
-    				if (this.nodes[i].Alternatives[j] == alt_id){
+    				if (this.nodes[i].Alternatives[j].saw_id == alt_id){
     					this.nodes[i].Alternatives.splice(j,1);
     					this.nodes[i].pie[0].value -= 1;
     					this.nodes[i].pie[1].value -= 1;
     					break;
     				}
     			}
+    			break;
     		}
     	};
     	this.trigger("nodesAttrChanged");
@@ -601,6 +604,59 @@ App.Data.D3nodes = Backbone.Collection.extend({
     	};
     	this.trigger("nodesChanged");
     },
+    
+    onDecisionsAadd : function (issue_id, alternative_id, decision) {
+
+//		relationsTo = decision.getRelationsTo();
+		
+		decision.relationsTo.on('add', function(r){ this.onADecisionRelationToAdd(issue_id, alternative_id, decision, r)}, this);
+		
+		
+    },
+    
+    onADecisionRelationToAdd : function (i, a, decision, r) {
+//    	console.log(r.get('origin'));
+		if( (r.get('origin') == this.projectA.id) && (decision.get('revoked') == null)){
+			for (j in this.nodes){
+				if (this.nodes[j].saw_id == i) {
+					for (k in this.nodes[j].Alternatives) {
+						if (this.nodes[j].Alternatives[k].saw_id == a){
+							this.nodes[j].Alternatives[k].Decisions.push({saw_id: decision.id, decision: App.main.context.decisions.find( function( d ) { return d.id === decision.get('origin') } ).get('name') , author: decision.get('author_name'), id: 0, pie: [{value: 5}, {value: 5}] });
+							
+							this.nodes[j].Alternatives[k].pie[0].value += 1;
+							this.nodes[j].Alternatives[k].pie[1].value += 1;    					
+							
+							break;
+						}
+					}
+					break;
+				}
+			}
+		}
+    },
+    
+    onDecisionsAremove : function (issue_id, alternative_id, decision) {
+//    	console.log(decision)
+		for (var i in this.nodes){
+			if(this.nodes[i].saw_id == issue_id) {
+				for (var j in this.nodes[i].Alternatives){
+					if (this.nodes[i].Alternatives[j].saw_id == alternative_id){
+						for (var k in this.nodes[i].Alternatives[j].Decisions){
+							if 	(this.nodes[i].Alternatives[j].Decisions[k].saw_id == decision.id){
+								this.nodes[i].Alternatives[j].Decisions.splice(k,1);
+								this.nodes[i].Alternatives[j].pie[0].value -= 1;
+								this.nodes[i].Alternatives[j].pie[1].value -= 1;
+								break;
+							}
+						}
+						break;
+					}
+				}
+				break;
+			}
+		}
+    },
+    
     
 	onAddB : function( item ){
   
@@ -651,12 +707,13 @@ App.Data.D3nodes = Backbone.Collection.extend({
 		var saw_id = alternative.id;
 		var name  = alternative.get('name');
 		
-		alternative.on('decisionsChanged', this.onAlternativeDecisionB , this);
+		alternative.on('decisionsChanged', function(a) {this.onAlternativeDecisionB(a, issue.id) }, this);
+		alternative.decisions.on('add', function(d) {this.onDecisionsBadd(issue.id, alternative.id, d)}, this);
+		alternative.decisions.on('remove', function(d) {this.onDecisionsBremove(issue.id, alternative.id, d)}, this);
 		
 		for (var i in this.nodes){
 			if ((this.nodes[i].saw_id == issue.id) && (this.nodes[i].id != 2 )){
-				this.nodes[i].Alternatives.push({saw_id: saw_id, name: name, id: 2, Decisions : [{decision: null, value: 5}, {decision: null, value: 5}] });
-				
+				this.nodes[i].Alternatives.push({saw_id: saw_id, name: name, id: 2, pie : [{decision: null, value: 1}, {decision: null, value: 1}], Decisions : [] });				
 				this.nodes[i].pie[0].value += 1;
 				this.nodes[i].pie[1].value += 1;
 			}
@@ -664,19 +721,18 @@ App.Data.D3nodes = Backbone.Collection.extend({
 		this.trigger("nodesAttrChanged");
     },
     
-    onAlternativeDecisionB : function (alternative){
-		i_id = alternative.relationsFrom.models[0].get('tip');
-//		console.log(alternative.decisions)
+    onAlternativeDecisionB : function (alternative, issue_id){
 		a_id = alternative.id;
 		if( alternative.decision()){
 		for (j in this.nodes){
-			if (this.nodes[j].saw_id == i_id) {
+			if (this.nodes[j].saw_id == issue_id) {
 				for (k in this.nodes[j].Alternatives) {
 					if (this.nodes[j].Alternatives[k].saw_id == a_id){
-						this.nodes[j].Alternatives[k].Decisions[0].decision = App.main.context.decisions.find( function( decision ) { return decision.id === alternative.decision() } ).get('name');
+						this.nodes[j].Alternatives[k].pie[0].decision = App.main.context.decisions.find( function( decision ) { return decision.id === alternative.decision() } ).get('name');
 						break;
 					}
 				}
+				break;
 			}
 		}}
 		this.trigger("nodesAttrChanged");    	
@@ -691,12 +747,14 @@ App.Data.D3nodes = Backbone.Collection.extend({
     	for (var i in this.nodes){
     		if(this.nodes[i].saw_id == iss_id) {
     			for (var j in this.nodes[i].Alternatives){
-    				if (this.nodes[i].Alternatives[j] == alt_id){
+    				if (this.nodes[i].Alternatives[j].saw_id == alt_id){
     					this.nodes[i].Alternatives.splice(j,1);
     					this.nodes[i].pie[0].value -= 1;
     					this.nodes[i].pie[0].value -= 1;
+    					break;
     				}
     			}
+    			break;
     		}
     	};	
     	this.trigger("nodesAttrChanged");
@@ -719,13 +777,98 @@ App.Data.D3nodes = Backbone.Collection.extend({
     	};
     	this.trigger("nodesChanged");
     },
+    
+    onDecisionsBadd : function (issue_id, alternative_id, decision) {
 
- 
-    getNodes : function(){
-        return this.nodes;
-    }
+//		relationsTo = decision.getRelationsTo();
+//		if( (this.projectA.id == null) && (this.projectB.id != null)) {
+			decision.relationsTo.on('add', function(r){ this.onBDecisionRelationToAdd(issue_id, alternative_id, decision, r)}, this);
+//    	}
+    },
+    
+    onBDecisionRelationToAdd : function (i, a, decision, r) {
+    //    	console.log(r.get('origin'));
+    		if( (r.get('origin') == this.projectB.id) && (decision.get('revoked') == null)){
+    			for (j in this.nodes){
+    				if (this.nodes[j].saw_id == i) {
+    					for (k in this.nodes[j].Alternatives) {
+    						if (this.nodes[j].Alternatives[k].saw_id == a){
+    							this.nodes[j].Alternatives[k].Decisions.push({saw_id: decision.id, decision: App.main.context.decisions.find( function( d ) { return d.id === decision.get('origin') } ).get('name') , author: decision.get('author_name'), id: 1, pie: [{value: 5}, {value: 5}] });
+    							
+    							this.nodes[j].Alternatives[k].pie[0].value += 1;
+    							this.nodes[j].Alternatives[k].pie[1].value += 1;    					
+    							
+    							break;
+    						}
+    					}
+    					break;
+    				}
+    			}
+    		}
+        },
+    
+    onDecisionsBremove : function (issue_id, alternative, decision) {
+//    	console.log(decision)
+		for (var i in this.nodes){
+			if(this.nodes[i].saw_id == issue_id) {
+				for (var j in this.nodes[i].Alternatives){
+					if (this.nodes[i].Alternatives[j].saw_id == alternative_id){
+						for (var k in this.nodes[i].Alternatives[j].Decisions){
+							if 	(this.nodes[i].Alternatives[j].Decisions[k].saw_id == decision.id){
+								this.nodes[i].Alternatives[j].Decisions.splice(k,1);
+								this.nodes[i].Alternatives[j].pie[0].value -= 1;
+								this.nodes[i].Alternatives[j].pie[1].value -= 1;
+								break;
+							}
+						}
+						break;
+					}
+				}
+				break;
+			}
+		}
+    },
 
-
+    getNodes : function(issueIndex, alternativeIndex){
+        if ((issueIndex == null) && (alternativeIndex == null)){
+        	return this.nodes;
+        }
+        else if ((issueIndex != null) && (alternativeIndex == null)) {
+        	return this.nodes[issueIndex].Alternatives
+        }
+        else if ((issueIndex != null) && (alternativeIndex != null)) {
+        	return this.nodes[issueIndex].Alternatives[alternativeIndex].Decisions
+        }
+    },
+	
+	getProjectAname : function() {
+		if(this.projectA.get('name')){
+			return this.projectA.get('name');
+		}
+		else {
+			return 'Project A : Not selected';
+		}
+	},
+	
+	getProjectBname : function() {
+		if(this.projectB.get('name')){
+			return this.projectB.get('name');
+		}
+		else {
+			return 'Project B : Not selected';
+		}	
+	},
+	
+	getIssueName : function(issueIndex) {
+	
+		return this.nodes[issueIndex].name;
+	},
+	getAlternativeName : function(issueIndex, alternativeIndex) {
+	
+		return this.nodes[issueIndex].Alternatives[alternativeIndex].name;
+	}
+	
+	
 });
 
 

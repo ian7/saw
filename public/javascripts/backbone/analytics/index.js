@@ -54,9 +54,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
         }
       })
 	 
-	 this.projectAname = 'Project A : Not selected';
-	 this.projectBname = 'Project B : Not selected';
-	 this.myD3nodes = new App.Data.D3nodes(this.issuesA, this.issuesB);
+	 this.myD3nodes = new App.Data.D3nodes(this.issuesA, this.issuesB, this.projectA, this.projectB);
 	 this.myD3nodes.on("nodesChanged",this.refreshNodes, this);
 	 this.myD3nodes.on("nodesAttrChanged", this.refreshNodesAttr, this);
 	 
@@ -163,12 +161,12 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 //	
 //	},
 	
-	changeView : function(k) {
+	changeView : function(issue) {
 	
-		console.log(k.index);
-		selectedNode = k;
+//		console.log(issue.index);
+//		selectedNode = issue;
 		this.force.stop();
-		this.context.dispatch('analyze:issue',{ issueIndex : k.index, projectAname: this.projectAname, projectBname: this.projectBname} )
+		this.context.dispatch('analyze:issue',{ issueIndex : issue.index, D3nodes: this.myD3nodes} )
 	},
 	
 	refreshNodes : function (k){
@@ -194,7 +192,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 		   			.transition()        
 		   		    .duration(200)      
 		   		    .style("opacity", .9)
-		   		d3.select('.tooltip').html(d.name + "<br/> Radius:"+(d.pie[0].value) + "<br/> "+ ((d.pie[0].decision == d.pie[1].decision) ? 
+		   		d3.select('.tooltip').html(d.name + "<br/> Radius:"+(d.pie[0].value-1) + "<br/> "+ ((d.pie[0].decision == d.pie[1].decision) ? 
 			   				d.pie[0].decision : 'projectA: '+ d.pie[1].decision+ '<br/>' + 'projectB: '+ d.pie[0].decision))  
 		   		    .style("left", (d3.event.pageX) + "px")     
 		   		    .style("top", (d3.event.pageY - 28) + "px"); 	   		
@@ -268,8 +266,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       jQuery( e.target ).addClass('red');
       
       this.projectA.set('id',e.target.id);
-      this.projectA.fetch();
-   	  this.projectAname = this.projectA.get('name');   
+      this.projectA.fetch();  
       d3.select('.ProjectA').text(this.projectA.get('name'));
       
     },
@@ -279,8 +276,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       jQuery( e.target ).addClass('red');
 
       this.projectB.set('id',e.target.id);
-      this.projectB.fetch();
-   	  this.projectBname = this.projectB.get('name');      
+      this.projectB.fetch();     
       d3.select('.ProjectB').text(this.projectB.get('name'));
 		
     }
