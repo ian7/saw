@@ -19,6 +19,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       
       
   	  this.issueIndex = options.issueIndex;
+  	  this.issueName = nodes[this.issueIndex].name;
   	  nodes = nodes[this.issueIndex].Alternatives;
       this.projectAname = options.projectAname;
 	  this.projectBname = options.projectBname;
@@ -169,7 +170,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
     onShow : function() {
     	d3.select('.ProjectA').text(this.projectAname);
     	d3.select('.ProjectB').text(this.projectBname);
-    	d3.select('.issuename').text(nodes[this.issueIndex].name)
+    	d3.select('.issuename').text(this.issueName)
     	this.refreshNodes();
     },
         
