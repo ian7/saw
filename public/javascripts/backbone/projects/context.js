@@ -11,17 +11,28 @@ App.module("main.projects",function(){
             this.listen("projects:index", this.showIndex,this);
             this.listen("projects:new", this.newProject,this);
             this.listen("projects:details",this.projectDetails,this);
+            this.listen('history:pop',this.onHistoryPop,this);
 
             // this context is specific, becuase I would like it to reload list of projects if new one is created or deleted
             eventer.register(this);
 
             // find if there was some active project from previous session
-            var lastProjectId = localStorage.getItem("project.lastId");
-           if(lastProjectId && lastProjectId !== 'undefined') {
+ /*           var lastProjectId = localStorage.getItem("project.lastId");
+            if(lastProjectId && lastProjectId !== 'undefined') {
                 this.dispatchGlobally("project:selected", {
                     id: lastProjectId
                 });
 
+            }
+*/
+        },
+        onHistoryPop : function( viewState ){
+            switch( viewState.dialog ){
+                case 'main.projects.projectList':
+                    this.trigger('projects:index');
+                    break;
+                default:
+                    break;
             }
         },
         notifyEvent: function(data) {

@@ -47,6 +47,21 @@ App.module("main.capture",function(){
             this.listen( "capture:item:relate",this.itemRelate );
             this.on("notification:focus:item",this.onFocusNotification,this);
 
+            this.on('history:pop',this.onHistoryPop,this);
+
+        },
+        onHistoryPop : function( viewState ){
+            switch( viewState.dialog ){
+                case 'main.capture.issueDetails':
+                    this.trigger('issue:selected',{ id: viewState.issueId });
+                    this.trigger('capture:issues:details');
+                    break;
+                case 'main.capture.issueList':
+                    this.trigger('capture:issues:list');
+                    break;
+                default:
+                    break;
+            }
         },
         onFocusNotification : function( notification ){
             
@@ -160,32 +175,6 @@ App.module("main.capture",function(){
                 this.issue.relate( {item: this.newAlternative, relation: "SolvedBy"});
             }
         }),
-/*        loadDecisions : Backbone.Marionette.Geppetto.Command({
-            solvedByRelations : new Backbone.Collection(),
-            decisions : new Backbone.Collection(),
-
-            execute : function(){
-                _(this).bindAll();
-
-                // snatch alternative reference from the 
-                this.alternative = this.eventData.alternative;
-
-                if( this.eventData.issue ){
-                    this.issue = this.eventData.issue;
-                }
-                else{
-                    this.issue = this.context.issue;
-                }
-
-                // fetching SBs
-                this.solvedByRelations.url = this.alternative.url() + "/relations_from/SolvedBy";
-                this.solvedByRelations.on('reset',this.onSolvedByRelationsReady,this);
-                this.solvedByRelations.fetch();
-            },
-            onSolvedByRelationsReady : function(){
-                debugger;
-            }
-        })*/
     decided : Backbone.Marionette.Geppetto.Command({
         execute : function(){
             var decisionTag = null;

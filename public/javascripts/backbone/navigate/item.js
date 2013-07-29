@@ -14,6 +14,7 @@ App.module("main.navigate",function(that,App,Backbone,Marionette,jQuery,_,custom
 //      this.itemViewOptions = {context: this.context};
       // keyboard shortcuts handling
       this.model.on('change',this.onRender,this);
+      this.model.on('change',this.onCompositeRendered,this);
 
       this.itemsRelatedFrom = new App.Data.RelatedCollection( null, {
         item: this.model, 
@@ -51,8 +52,13 @@ App.module("main.navigate",function(that,App,Backbone,Marionette,jQuery,_,custom
         direction: 'to'
       });
 
+      this.on('composite:rendered',this.onCompositeRendered, this );
+
       _(this).bindAll();
     },   
+    onCompositeRendered : function(){
+      this.context.dispatchGlobally("history:push", this.serialize() );
+    },
     onRender : function(){
       jQuery("div.itemName span#name",this.el).first().html( this.model.get('name') );
       jQuery("div.itemName span#type",this.el).first().html( this.model.get('type') );
@@ -87,6 +93,13 @@ App.module("main.navigate",function(that,App,Backbone,Marionette,jQuery,_,custom
       
       this.listToView.setElement( jQuery("div#to",this.el ) );
       this.listToView.render();
+    },
+    serialize : function(){
+      var v = {
+        dialog: 'main.navigate.item',
+        itemId: this.model.get('id')
+      };
+      return v;
     },
     onShotClick : function(){
       this.context.dispatch('navigate:item:shot',this.model);

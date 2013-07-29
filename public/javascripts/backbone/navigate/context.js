@@ -9,6 +9,18 @@ App.module("main.navigate",function(){
             this.listen("navigate:move",this.onMove);
             this.listen("navigate:issues:details",this.onIssueDetails);
             this.listen('navigate:item:shot',this.onItemShot);
+            this.listen('history:pop',this.onHistoryPop);
+        },
+        onHistoryPop : function( viewState ){
+            switch( viewState.dialog ){
+                case 'main.navigate.item':
+                    this.trigger('navigate:start');
+                    this.trigger('navigate:move',viewState.itemId );
+                    break;
+                default:
+                    break;
+            }
+
         },
         onIssueList: function( model ){
             this.dispatchGlobally('mode:navigate');
