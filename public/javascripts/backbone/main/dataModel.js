@@ -488,9 +488,6 @@ App.Data.D3nodes = Backbone.Collection.extend({
     },
     onAddA : function( item ){
     
-		item.alternatives.on('add', function(a) {this.onAlternativeAddA(item, a)}, this);
-		item.alternatives.on('remove', function(a) {this.onAlternativeRemoveA(item, a)}, this);
-		
 		var decisionA = 'No decisions were made yet';
 		var decisionB = 'No decisions were made yet';		
 		
@@ -511,6 +508,10 @@ App.Data.D3nodes = Backbone.Collection.extend({
         if (!already){
         	this.nodes.push({id: id, x:200, y:100, name: name, saw_id: saw_id, pie : [{decision: decisionB, value: 1},{ decision: decisionA, value: 1}], Alternatives: []})
         };
+        
+        item.alternatives.on('add', function(a) {this.onAlternativeAddA(item, a)}, this);
+        item.alternatives.on('remove', function(a) {this.onAlternativeRemoveA(item, a)}, this);
+        
         this.trigger("nodesChanged");
     },
     
@@ -530,19 +531,19 @@ App.Data.D3nodes = Backbone.Collection.extend({
     	
 		var saw_id = alternative.id;
 		var name  = alternative.get('name');
-		
-		alternative.on('decisionsChanged', function(a) {this.onAlternativeDecisionA(a, issue.id) }, this);
-		alternative.decisions.on('add', function(d) {this.onDecisionsAadd(issue.id, alternative.id, d)}, this);
-		alternative.decisions.on('remove', function(d) {this.onDecisionsAremove(issue.id, alternative.id, d)}, this);
 
 		for (var i in this.nodes){
-			if ((this.nodes[i].saw_id == issue.id) && (this.nodes[i].id != 2 )){
+			if ((this.nodes[i].saw_id == issue.id) && (this.nodes[i].Alternatives.length < issue.alternatives.length )){//// <===
 				this.nodes[i].pie[0].value += 1;
 				this.nodes[i].pie[1].value += 1;
 				this.nodes[i].Alternatives.push({saw_id: saw_id, name: name, id: 2, pie : [{decision: null, value: 1}, {decision: null, value: 1}], Decisions: [] });
 				break;
 			}
 		};		
+		
+		alternative.on('decisionsChanged', function(a) {this.onAlternativeDecisionA(a, issue.id) }, this);
+		alternative.decisions.on('add', function(d) {this.onDecisionsAadd(issue.id, alternative.id, d)}, this);
+		alternative.decisions.on('remove', function(d) {this.onDecisionsAremove(issue.id, alternative.id, d)}, this);
 		
 		this.trigger("nodesAttrChanged");
     },
@@ -633,6 +634,7 @@ App.Data.D3nodes = Backbone.Collection.extend({
 				}
 			}
 		}
+		this.trigger('nodesAttrChanged')
     },
     
     onDecisionsAremove : function (issue_id, alternative_id, decision) {
@@ -655,13 +657,13 @@ App.Data.D3nodes = Backbone.Collection.extend({
 				break;
 			}
 		}
+		this.trigger('nodesAttrChanged')
     },
     
     
 	onAddB : function( item ){
   
-		item.alternatives.on('add', function(a) {this.onAlternativeAddB(item, a)}, this);
-		item.alternatives.on('remove', function(a) {this.onAlternativeRemoveB(item, a)}, this);
+		
 
 		var decisionA = 'No decisions were made yet';
 		var decisionB = 'No decisions were made yet';		
@@ -685,6 +687,9 @@ App.Data.D3nodes = Backbone.Collection.extend({
         if (!already){
         	this.nodes.push({id: id, x:200, y:100, name: name, saw_id: saw_id, pie : [{decision: decisionB, value: 1},{ decision: decisionA, value: 1}], Alternatives: []})
         };
+        item.alternatives.on('add', function(a) {this.onAlternativeAddB(item, a)}, this);
+        item.alternatives.on('remove', function(a) {this.onAlternativeRemoveB(item, a)}, this);
+        
         this.trigger("nodesChanged");
            
     },
@@ -707,17 +712,20 @@ App.Data.D3nodes = Backbone.Collection.extend({
 		var saw_id = alternative.id;
 		var name  = alternative.get('name');
 		
-		alternative.on('decisionsChanged', function(a) {this.onAlternativeDecisionB(a, issue.id) }, this);
-		alternative.decisions.on('add', function(d) {this.onDecisionsBadd(issue.id, alternative.id, d)}, this);
-		alternative.decisions.on('remove', function(d) {this.onDecisionsBremove(issue.id, alternative.id, d)}, this);
+		
 		
 		for (var i in this.nodes){
-			if ((this.nodes[i].saw_id == issue.id) && (this.nodes[i].id != 2 )){
+			if ((this.nodes[i].saw_id == issue.id) && (this.nodes[i].Alternatives.length < issue.alternatives.length  )){
 				this.nodes[i].Alternatives.push({saw_id: saw_id, name: name, id: 2, pie : [{decision: null, value: 1}, {decision: null, value: 1}], Decisions : [] });				
 				this.nodes[i].pie[0].value += 1;
 				this.nodes[i].pie[1].value += 1;
 			}
 		};		
+		
+		alternative.on('decisionsChanged', function(a) {this.onAlternativeDecisionB(a, issue.id) }, this);
+		alternative.decisions.on('add', function(d) {this.onDecisionsBadd(issue.id, alternative.id, d)}, this);
+		alternative.decisions.on('remove', function(d) {this.onDecisionsBremove(issue.id, alternative.id, d)}, this);
+		
 		this.trigger("nodesAttrChanged");
     },
     
@@ -805,6 +813,7 @@ App.Data.D3nodes = Backbone.Collection.extend({
     				}
     			}
     		}
+			this.trigger('nodesAttrChanged')
         },
     
     onDecisionsBremove : function (issue_id, alternative, decision) {
@@ -827,6 +836,7 @@ App.Data.D3nodes = Backbone.Collection.extend({
 				break;
 			}
 		}
+		this.trigger('nodesAttrChanged')		
     },
 
     getNodes : function(issueIndex, alternativeIndex){
@@ -834,10 +844,18 @@ App.Data.D3nodes = Backbone.Collection.extend({
         	return this.nodes;
         }
         else if ((issueIndex != null) && (alternativeIndex == null)) {
-        	return this.nodes[issueIndex].Alternatives
+        	if ( issueIndex < this.nodes.length) { 
+	        	return this.nodes[issueIndex].Alternatives
+	        }
+	        else {return []}
         }
         else if ((issueIndex != null) && (alternativeIndex != null)) {
-        	return this.nodes[issueIndex].Alternatives[alternativeIndex].Decisions
+        	
+        	if ( issueIndex < this.nodes.length && alternativeIndex < this.nodes[issueIndex].Alternatives.length) { 
+	        	return this.nodes[issueIndex].Alternatives[alternativeIndex].Decisions
+        	}
+        	else {return []}
+
         }
     },
 	
@@ -860,12 +878,18 @@ App.Data.D3nodes = Backbone.Collection.extend({
 	},
 	
 	getIssueName : function(issueIndex) {
-	
-		return this.nodes[issueIndex].name;
+		
+		if (this.nodes.length > issueIndex) {
+			return this.nodes[issueIndex].name;
+		}
+		else {return 'loading...'}
 	},
 	getAlternativeName : function(issueIndex, alternativeIndex) {
-	
-		return this.nodes[issueIndex].Alternatives[alternativeIndex].name;
+		
+		if (issueIndex < this.nodes.length && alternativeIndex < this.nodes[issueIndex].Alternatives.length) {
+			return this.nodes[issueIndex].Alternatives[alternativeIndex].name;
+		}
+		else {return 'loading...'}
 	}
 	
 	

@@ -17,13 +17,68 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       
       this.on('show',this.onShow,this);
       
-      this.myD3nodes = options.D3nodes;
-      this.myD3nodes.on("nodesAttrChanged", this.refreshNodes, this);
+      this.issueIndex = options.issueIndex;
+ 	  
+ 	  this.projectA = new App.Data.Item();
       
-  	  this.issueIndex = options.issueIndex;
-  	  this.issueName = this.myD3nodes.getIssueName(this.issueIndex);
+      if( options.projectAid){
+      	this.projectAid = options.projectAid;
+      	this.projectA.set('id',this.projectAid)
+      	this.projectA.fetch();
+      }
+      
+      
+      this.projectB = new App.Data.Item();
+	  
+	  if (options.projectBid){
+	  	this.projectBid = options.projectBid;
+	  	this.projectB.set('id',this.projectBid)
+	  	this.projectB.fetch();
+	  }
+	  	 
+      this.relatedToA = new App.Data.RelatedCollection(null,{
+        item: this.projectA ,
+        direction: 'from',
+      });
+      	   
+      this.issuesA = new App.Data.FilteredCollection( null, {
+        collection: this.relatedToA ,
+        model: App.Models.Issue,
+        modelOptions : {
+        	project: this.projectA
+        },
+        filter : function( item ){
+          return( item.get('type') === 'Issue');
+        }
+      })
+
+
+      this.relatedToB = new App.Data.RelatedCollection(null,{
+        item: this.projectB,
+        direction: 'from'
+      });
+
+      this.issuesB = new App.Data.FilteredCollection( null, {
+        collection: this.relatedToB ,
+        model: App.Models.Issue,
+        modelOptions : {
+        	project: this.projectB
+        },
+        filter : function( item ){
+          return( item.get('type') === 'Issue');
+        }
+      })
+
+	 
+	  this.myD3nodes = new App.Data.D3nodes(this.issuesA, this.issuesB, this.projectA, this.projectB);
+      
+      
+      this.myD3nodes.on("nodesAttrChanged", this.refreshNodes, this);
+      this.myD3nodes.on("nodesChanged", this.refreshNodes, this);
   	  
-  	  nodes = this.myD3nodes.getNodes(this.issueIndex);
+//  	  this.issueName = this.myD3nodes.getIssueName(this.issueIndex);
+  	  
+//  	  nodes = this.myD3nodes.getNodes(this.issueIndex);
       
 
 	 this.arc = new d3.svg.arc()
@@ -62,9 +117,9 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 	
 	
 	changeView : function(alternative) {
-		console.log(alternative);
+//		console.log(alternative);
 		this.force.stop();
-		this.context.dispatch('analyze:alternative',{ issueIndex : this.issueIndex, alternativeIndex : alternative.index,  D3nodes: this.myD3nodes} )
+		this.context.dispatch('analyze:alternative',{projectAid: this.projectAid, projectBid : this.projectBid, issueIndex : this.issueIndex, alternativeIndex : alternative.index} )
 	},
 	
 	refreshNodes : function (){
@@ -73,6 +128,10 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 		var pie = d3.layout.pie()
 		    .sort(null)
 		    .value(function(d) { return d.value; });
+		
+		
+		d3.select('.issuename').text(this.myD3nodes.getIssueName(this.issueIndex));
+		
 		
 		this.force
 			.nodes(nodes);
@@ -112,31 +171,46 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 	},
 
     onRender : function(){
-
-//      _(this.projects).each( function( project ){
-//        var h = "<div class='projectName' id='" + project.get('id') +  "'>" + project.get('name') + "</div>";
-//        jQuery('tr#projects td#projectA',this.el).append( h );
-//        jQuery('tr#projects td#projectB',this.el).append( h );
-//      },this);
-//
-//      this.itemsAview = new App.main.analytics.Views.List({context: this.context, collection: this.issuesA });
-//      this.itemsAview.setElement( jQuery( 'tr#issues td#projectA',this.el));
-//      this.itemsAview.render();
-//
-//      this.itemsBview = new App.main.analytics.Views.List({context: this.context, collection: this.issuesB });
-//      this.itemsBview.setElement( jQuery( 'tr#issues td#projectB',this.el));
-//      this.itemsBview.render();
-//      this.delegateEvents();    
-
+  
+		this.context.dispatchGlobally("history:push", this.serializeIssue(this.issueIndex) );
   	
     },
     
     onShow : function() {
     	d3.select('.ProjectA').text(this.myD3nodes.getProjectAname());
     	d3.select('.ProjectB').text(this.myD3nodes.getProjectBname());
-    	d3.select('.issuename').text(this.issueName)
-    	this.refreshNodes();
+    	
+//    	this.refreshNodes();
     },
+    
+    
+    serializeIssue : function (issueIndex) {
+    	var v = {dialog: 'main.analytics.issue'}
+    	if (this.projectAid) {
+        	v = {
+        		dialog : 'main.analytics.issue',
+        		projectAid : this.projectA.id,
+        		issueIndex : issueIndex
+        	}
+        }
+        if (this.projectAid && this.projectBid) {
+        	v = {
+        		dialog : 'main.analytics.issue',
+        		projectAid : this.projectA.id,
+        		projectBid : this.projectB.id,
+        		issueIndex : issueIndex        
+        	}
+        }
+        else if (this.projectBid) {
+        	v = {
+        		dialog : 'main.analytics.issue',
+        		projectBid : this.projectB.id,
+        		issueIndex : issueIndex        		
+        	}
+        }
+    	return v;
+    }
+    
         
 //    
 //    onProjectAclicked : function( e ){

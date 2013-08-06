@@ -14,18 +14,40 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       this.itemViewOptions = {
         context: this.context
       };
-
+	  nodes = [];
       this.projects = App.main.context.tags.filter( function( tag ){ return( tag.get('type')==='Project');} );
-
+	
       this.projectA = new App.Data.Item();
+      
+      if( options.projectAid){
+      	this.projectAid = options.projectAid;
+      }
+      
+      if (this.projectAid){
+      	 	if(this.projectA.id != this.projectAid){
+      	 	 	this.projectA.set('id',this.projectAid)
+      	 	 	this.projectA.fetch();
+      	 	}
+      }
+      
       this.projectB = new App.Data.Item();
-
+	  
+	  if (options.projectBid){
+	  	this.projectBid = options.projectBid;
+	  }
+	  
+	  if (this.projectBid){
+	  		if(this.projectB.id != this.projectBid){
+		  	 	this.projectB.set('id',this.projectBid)
+		  	 	this.projectB.fetch();
+		  	}
+	  }
+	  	 
       this.relatedToA = new App.Data.RelatedCollection(null,{
         item: this.projectA ,
         direction: 'from',
       });
-    
-	  
+      	   
       this.issuesA = new App.Data.FilteredCollection( null, {
         collection: this.relatedToA ,
         model: App.Models.Issue,
@@ -53,12 +75,14 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
           return( item.get('type') === 'Issue');
         }
       })
+
 	 
 	 this.myD3nodes = new App.Data.D3nodes(this.issuesA, this.issuesB, this.projectA, this.projectB);
 	 this.myD3nodes.on("nodesChanged",this.refreshNodes, this);
 	 this.myD3nodes.on("nodesAttrChanged", this.refreshNodesAttr, this);
 	 
-
+	 
+	 
 	 this.force = new d3.layout.force();
 	 
 	 this.force
@@ -112,61 +136,13 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 //    },
 //    
 	
-//	drawSvg : function () {
-//	
-//	this.hasSVG = true;	
-//	d3.select("#mysvg").append("svg")
-//		.attr("width", 1600)
-//		.attr("height", 600);
-//	d3.select('svg').append('svg:rect')
-//		.attr('x', 1)
-//		.attr('y', 1)
-//		.attr('width', 1598)
-//		.attr('height',598)
-//		.attr('opacity', 1)
-//		.style('fill', 'white')
-//		.style('stroke', 'black')
-//		.style('stroke-width', 2)
-//		.style('stroke-opacity', 1)  	
-//	d3.select('svg').append('svg:rect')  // upper line
-//		.attr('x', 0)
-//		.attr('y', 0)
-//		.attr('width', 1600)
-//		.attr('height',30)
-//		.attr('opacity', 0.1)  
-//	d3.select('svg').append("svg:text")
-//		.attr('x', 200)
-//		.attr('y', 20)
-//		.text('project A')
-//	d3.select('svg').append("svg:text")
-//		.attr('x', 650)
-//		.attr('y', 20)
-//		.text('common issues')
-//	d3.select('svg').append("svg:text")
-//		.attr('x', 1050)
-//		.attr('y', 20)
-//		.text('project B')
-//	d3.select('svg').append("svg:text")
-//		.attr('x', 1350)
-//		.attr('y', 180)
-//		.attr('class', 'issuename')
-		//.text('Name')
-//	
-//	d3.selectAll('.node').remove();
-//	
-//	
-//	d3.select("#mysvg").append("div")   
-//	    .attr("class", "tooltip")               
-//	    .style("opacity", 0);
-//	
-//	},
-	
 	changeView : function(issue) {
 	
-//		console.log(issue.index);
-//		selectedNode = issue;
+
 		this.force.stop();
-		this.context.dispatch('analyze:issue',{ issueIndex : issue.index, D3nodes: this.myD3nodes} )
+		this.context.dispatch('analyze:issue',{ projectAid: this.projectAid, projectBid : this.projectBid, issueIndex : issue.index} );
+//		this.context.dispatchGlobally("history:push", this.serializeIssue(issue.index) );
+		
 	},
 	
 	refreshNodes : function (k){
@@ -209,21 +185,7 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
 		  .data(function(d) {return pie(d.pie); })
 		 .enter().append("svg:path")
 		  .attr("d", this.arc)		  
-//		  .on("mouseover", function(d) {
-//		  		d3.select('.tooltip') 								// changing tooltip opacity and text
-//		  			.transition()        
-//		  		    .duration(200)      
-//		  		    .style("opacity", .9)
-//		  		d3.select('.tooltip').html(d.data.decision + "<br/> Radius:"+(d.data.value-1))  
-//		  		    .style("left", (d3.event.pageX) + "px")     
-//		  		    .style("top", (d3.event.pageY - 28) + "px"); 	   		
-//		  })
-//		  .on("mouseout", function(d) {
-//		  		d3.select('.tooltip')
-//		  			.transition()        
-//		  		    .duration(500)      
-//		  		    .style("opacity", 0) 	   		
-//		  });
+
 
 		d3.selectAll('.node').data(nodes).exit().remove();
 
@@ -259,6 +221,9 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       this.itemsBview.setElement( jQuery( 'tr#issues td#projectB',this.el));
       this.itemsBview.render();
       this.delegateEvents();        
+      
+	  this.context.dispatchGlobally("history:push", this.serializeIndex() );
+      
     },
     
     onProjectAclicked : function( e ){
@@ -268,6 +233,9 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       this.projectA.set('id',e.target.id);
       this.projectA.fetch();  
       d3.select('.ProjectA').text(this.projectA.get('name'));
+      this.projectAid = e.target.id;
+      nodes =[];
+//      this.context.dispatchGlobally("history:push",  this.serializeIndex() );
       
     },
     
@@ -278,8 +246,34 @@ App.module("main.analytics",function(that,App,Backbone,Marionette,jQuery,_,custo
       this.projectB.set('id',e.target.id);
       this.projectB.fetch();     
       d3.select('.ProjectB').text(this.projectB.get('name'));
-		
-    }
+	  this.projectBid = e.target.id;
+	  nodes = [];
+//	  this.context.dispatchGlobally("history:push", this.serializeIndex() );	
+    },
     
+    serializeIndex : function () {
+    	var v = {dialog: 'main.analytics.index'}
+    	if (this.projectAid) {
+	    	v = {
+	    		dialog : 'main.analytics.index',
+	    		projectAid : this.projectA.id,
+	    	}
+	    }
+	    if (this.projectAid && this.projectBid) {
+	    	v = {
+	    		dialog : 'main.analytics.index',
+	    		projectAid : this.projectA.id,
+	    		projectBid : this.projectB.id
+	    	}
+	    }
+	    else if (this.projectBid) {
+	    	v = {
+	    		dialog : 'main.analytics.index',
+	    		projectBid : this.projectB.id
+	    	}
+	    }
+    	return v;
+    }    
+        
   });
 });
