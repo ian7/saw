@@ -130,7 +130,13 @@ class ProjectsController < ApplicationController
       # decisions on sb relations
       sbs.each do |sb|
         e.concat sb.related_to
-        e.concat sb.relations_to
+
+        positions = sb.relations_to
+        e.concat positions
+
+        positions.each do |position|
+          e.concat position.relations_to
+        end
       end
 
 
@@ -170,6 +176,8 @@ class ProjectsController < ApplicationController
     # hash map between old and new ids
     reuse_hash={}
 
+    old_id = '';
+
     d.each do |i|
 
       t = nil
@@ -180,40 +188,75 @@ class ProjectsController < ApplicationController
       end
 
       t = DynamicType.find_by_name(i["type"]).new_instance
-      
       #copy all attributes
+
+      #logger.info 'new_instance: ' + t.to_json.to_s
+      oldProjectId = nil
+
       i.each do |a,v|
         case a
           when 'tip'
             t[a] = BSON::ObjectId.from_string v
           when 'origin'
             t[a] = BSON::ObjectId.from_string v
+          when 'id', '_id'
+            # do nothing and memorize old id
+            if i['type'] == 'Project'
+              # if this is a project, then skip it.
+              oldProjectId = i[a] 
+
+              logger.info 'skipping project ids'
+
+              t['parent'] = p['name']
+            else
+              t[a] = v
+            end
+          when 'parent'
+            # do totally nothing
+            logger.info 'skipping parent dig'
           else
             t[a] = v
           end
       end
 
 
+      logger.info 'new_instance: ' + t.to_json.to_s
+
+
       case t._type
         # we should try to reuse tags - create only those which don't already exist
-        when 'Tag'
+        when 'Tag', 'Project'
           # in case tag with the same name and type already exists, then reuse
           #debugger
-          if Taggable.exists?(:conditions=>{:_type=>"Tag",:name=>t.name,:type=>t.type})
-            new_t=Taggable.find :first, :conditions=>{:_type=>"Tag",:name=>t.name,:type=>t.type}
+          if Taggable.find :first, :conditions=>{:name=>t.name,:type=>t.type}
+            t=Taggable.find :first, :conditions=>{:name=>t.name,:type=>t.type}
             # keep reused ids in hash
+            logger.info 'reusing: ' + t._id.to_s + " type: " + t.type + " name: " + t.name
 
-            reuse_hash[t.id]=new_t.id
+            reuse_hash[i['_id']] = t._id
 
             rt_count = rt_count + 1
 
           else
             # othrerwise just create it
+            logger.info 'creating: ' + t._id.to_s + " type: " + t.type +  " name: " + t.name
+
+            if oldProjectId 
+              reuse_hash[oldProjectId] = t._id
+            end
+
             t.save
           end
         else
+          logger.info 'creating: ' + t.to_json.to_s 
           t.save
         end
+
+      if t._type == 'Project'
+          logger.info 'project: ' + t.name.to_s + " id: " + t._id.to_s
+          logger.info t.to_json.to_s
+          t.save
+      end
 
       case t.type
         when 'Issue'
@@ -222,13 +265,15 @@ class ProjectsController < ApplicationController
         when 'Tagging'
 
           #in case origin was reused
-          if reuse_hash[t.origin]
-            t.origin = reuse_hash[t.origin]
+          if reuse_hash[t.origin.to_s]
+            logger.info 'reusing tagging (' + t._id.to_s + ') origin'
+            t.origin = reuse_hash[t.origin.to_s]
             t.save
           end
 
-          t.do_tag_with( p )
+          #t.do_tag_with( p )
           d_count = d_count + 1
+
         else
           # do nothing
         end
