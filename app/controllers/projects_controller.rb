@@ -8,9 +8,21 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find params[:id]
+
+    j = @project.to_json
+
+    if @project['parent']
+      parentTaggable = Taggable.find :first, :conditions=>{:type=>"Project",:name=>@project['parent']}
+      if parentTaggable
+        j['parentID'] = parentTaggable._id.to_s
+      end
+    end
+
+
+
     respond_to do |format|
       format.html
-      format.json {render :json=> @project.to_json}
+      format.json {render :json=> j}
       format.tex {render :project => @project }
     end
   end
