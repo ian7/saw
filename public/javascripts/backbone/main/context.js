@@ -58,7 +58,7 @@ App.module("main",function(){
             this.tags.on('reset', this.updateStatus, this);
 
             //this.issues = new App.Models.Issues();
-            this.relatedToProject = new App.Data.RelatedCollection( null, {
+            var relatedToProject = new App.Data.RelatedCollection( null, {
                 direction: 'from',
                 item: this.project,
                 model: App.Models.Issue
@@ -67,7 +67,7 @@ App.module("main",function(){
                       //  }
                 });
             this.issues = new App.Data.FilteredCollection(null, {
-                collection: this.relatedToProject,
+                collection: relatedToProject,
                 filter : function( model ){
                     return( model.get('type') === 'Issue');
                 }
@@ -117,7 +117,7 @@ App.module("main",function(){
             this.project.set('id',args.id);
             this.project.url = "/projects/"+args.id;
             this.project.fetch();
-            console.log( "project changed to: " +  args.id );
+            console.log( args.id );
            // window.history.pushState("project","project",window.location.origin + "/#project/" + args.id);
             localStorage.setItem("project.lastId",args.id);
             // switch views
