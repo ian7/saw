@@ -7,9 +7,19 @@ App.Models.Project = App.Data.Item.extend({
       App.Models.Project.__super__.initialize.apply(this);
       
  //     this.set('type','Project');
+
+
+      //this.parent = null;
+
+      this.allRelationsTo = new App.Data.SuperCollection();
+      this.allRelationsFrom = new App.Data.SuperCollection();
+
+
       if( model ) {
         this.parse( model );
       }
+      
+
       this.updateRelationsFrom = true;
     },
     create : function(){
@@ -21,6 +31,28 @@ App.Models.Project = App.Data.Item.extend({
         this.id = response.id;
         // this converts simple children entry into the collections - 
         this.subProjects = new App.Models.Projects(response.children);
+        
+        if( response.attributes ){
+            attributes = response.attributes
+        }
+        else{
+            attributes = response
+        }
+
+        if( attributes.parent ){
+          this.parent = new App.Models.Project();
+          this.parent.url = "/projects/" + attributes.parentID;
+          this.parent.set('id', attributes.parentID);
+          this.parent.fetch();
+
+          this.allRelationsTo.addCollection(this.getRelationsTo());
+          this.allRelationsTo.addCollection(this.parent.getRelationsTo());
+
+          this.allRelationsFrom.addCollection(this.getRelationsFrom());
+          this.allRelationsFrom.addCollection(this.parent.getRelationsFrom());
+
+        }
+
         return response;
     },     
     addItem : function( item ){
@@ -37,7 +69,8 @@ App.Models.Project = App.Data.Item.extend({
             this.set('type','Project');
             this.save( attributes );
         }
-    }
+    }, 
+
 });
 
 App.Models.Projects = App.Data.Collection.extend({

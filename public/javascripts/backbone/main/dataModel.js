@@ -244,6 +244,7 @@ App.Data.SuperCollection = Backbone.Collection.extend({
         else{
             this.add( model );
         }   
+        //console.log('superCollection: model Added');
     },
     removeCollection : function( collection ){
         // remove it from the list of collections
@@ -256,6 +257,8 @@ App.Data.SuperCollection = Backbone.Collection.extend({
     modelRemoved : function( options ){
         // i should test it one day...
         this.remove( options );
+        //console.log('superCollection: model Removed');
+
     },
     modelChanged : function(){
      /*   if( this.comparator ){
@@ -283,11 +286,21 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
             this.item = options.item;
             switch( options.direction ){
                 case 'from':
-                    this.relations = options.item.getRelationsFrom();
+                    if( options.item.allRelationsFrom ){
+                        this.relations = options.item.allRelationsFrom;
+                    }
+                    else {
+                        this.relations = options.item.getRelationsFrom();
+                    }
                     this.relationEnd = 'tip';
                     break;
                 case 'to':
-                    this.relations = options.item.getRelationsTo();
+                    if( options.item.allRelationsTo ){
+                        this.relations = options.item.allRelationsTo;
+                    }
+                    else {
+                        this.relations = options.item.getRelationsTo();
+                    }
                     this.relationEnd = 'origin';
                     break;
                 default:
@@ -326,6 +339,7 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
 
         this.relations.on('add',this.onRelationAdd,this);
         this.relations.on('remove',this.onRelationRemove,this);
+        this.relations.on('reset',this.refreshExistingRelations,this);
 
       //  this.relations.on('reset',this.refreshExistingRelations,this);
       //  this.relations.on('cached',this.refreshExistingRelations,this);
@@ -340,7 +354,7 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
         },this);
     },
     onRelationAdd : function( relation ){
-        
+        //console.log('relatedCollection: relation added');
         // if it doesn't go through the filter, then ditch it immediately
         if( !this.filter( relation )){
             return;
