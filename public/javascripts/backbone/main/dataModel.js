@@ -194,6 +194,7 @@ App.Data.Collection = Backbone.Collection.extend({
     },
     reload : function( args ){
         this.invalidateCache();
+        this.reset();
         this.fetch( args );
     },
     updateStamp : function(){
@@ -327,7 +328,10 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
         this.relations.on('add',this.onRelationAdd,this);
         this.relations.on('remove',this.onRelationRemove,this);
 
-      //  this.relations.on('reset',this.refreshExistingRelations,this);
+        this.relations.on('reset', function() { 
+            //this.refreshExistingRelations();
+        },this);
+
       //  this.relations.on('cached',this.refreshExistingRelations,this);
         // let's add what we have now...
         this.refreshExistingRelations();
@@ -343,6 +347,11 @@ App.Data.RelatedCollection = Backbone.Collection.extend({
         
         // if it doesn't go through the filter, then ditch it immediately
         if( !this.filter( relation )){
+            return;
+        }
+        // let's see if we have it already
+        if( this.find( function( m ) { return( m.get('id') == relation.get('id') ); } ) ){
+            console.log('ditching relatedCollection duplicate with ' + relation.get('id'));
             return;
         }
 

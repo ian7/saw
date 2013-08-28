@@ -58,7 +58,7 @@ App.module("main",function(){
             this.tags.on('reset', this.updateStatus, this);
 
             //this.issues = new App.Models.Issues();
-            var relatedToProject = new App.Data.RelatedCollection( null, {
+            this.relatedToProject = new App.Data.RelatedCollection( null, {
                 direction: 'from',
                 item: this.project,
                 model: App.Models.Issue
@@ -66,12 +66,29 @@ App.module("main",function(){
                       //      return( model.get('type')==='Issue');
                       //  }
                 });
+            this.relatedToProject.relations.on('add', function(){ console.log( 'relatedToProject added ' + this.relatedToProject.length );}, this);
+            this.relatedToProject.relations.on('remove', function(){ console.log( 'relatedToProject removed ' + this.relatedToProject.length );}, this);
+            this.relatedToProject.relations.on('reset', function(){ 
+                console.log( 'relatedToProject reset ' + this.relatedToProject.length );
+                //this.issues.collection.refreshExistingRelations();
+            }, this);
+
             this.issues = new App.Data.FilteredCollection(null, {
-                collection: relatedToProject,
+                collection: this.relatedToProject,
                 filter : function( model ){
                     return( model.get('type') === 'Issue');
                 }
             });
+
+
+            this.issues.collection.on('add', function(){ console.log( 'issues added ' + this.issues.length );}, this);
+            this.issues.collection.on('remove', function(){ 
+                console.log( 'issues removed ' + this.issues.length );
+            }, this);
+            this.issues.collection.on('reset', function(){ 
+                console.log( 'issues reset ' + this.issues.length );
+                this.issues.collection.refreshExistingRelations();
+            }, this);
 
             // checking juggernaut connectivity
             jug.on("connect",this.updateStatus);
