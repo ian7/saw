@@ -162,6 +162,24 @@ def related_to( relation_type = "", taggable_type = "" )
   return related_taggables
 end
 
+def is_related_to( taggable )
+    relations_to.each do |relation|
+      if relation.origin == taggable.id 
+        return true
+      end
+    end
+    return false
+end
+
+def is_related_from( taggable )
+    relations_from.each do |relation|
+      if relation.tip == taggable.id 
+        return true
+      end
+    end
+    return false
+end
+
 ### returns taggables to which this one is both related to and related from
 def related( relation_type = "", taggable_type = "" )
   related_taggables = [];
