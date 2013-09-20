@@ -1,5 +1,5 @@
-require './analysis/toolkit.rb'
-require './analysis/toolkit-item.rb'
+require './analysis/toolkit/utils.rb'
+require './analysis/toolkit/item.rb'
 
 
 # let's clean up a bit
@@ -19,7 +19,7 @@ outputIssues = File.open rootPath+'output/issues.csv','w'
 outputAlternaitves = File.open rootPath+'output/alternatives.csv','w'
 outputDecisions = File.open rootPath+'output/decisions.csv','w'
 
-require './analysis/toolkit-models.rb'
+require './analysis/toolkit/models.rb'
 
 # load up digested log
 digestFile = File.open rootPath+'digest.log'
