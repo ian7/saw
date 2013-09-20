@@ -1,0 +1,63 @@
+32743 130421 08:46:14 INFO: 
+
+Started GET "/users/sign_in" for 92.107.18.234 at 2013-04-21 08:46:14 +0000
+32743 130421 08:46:14 INFO:   Processing by Devise::SessionsController#new as HTML
+32743 130421 08:46:14 INFO: Username: (none)
+32743 130421 08:46:14 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.9ms)
+32743 130421 08:46:14 INFO: Completed 200 OK in 4ms (Views: 2.9ms)
+32743 130421 09:53:38 INFO: 
+
+Started GET "/users/sign_in" for 92.107.18.234 at 2013-04-21 09:53:38 +0000
+32743 130421 09:53:38 INFO:   Processing by Devise::SessionsController#new as HTML
+32743 130421 09:53:38 INFO: Username: (none)
+32743 130421 09:53:38 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.1ms)
+32743 130421 09:53:38 INFO: Completed 200 OK in 3ms (Views: 1.9ms)
+32743 130421 12:03:38 INFO: 
+
+Started GET "/users/sign_in" for 92.107.18.234 at 2013-04-21 12:03:38 +0000
+32743 130421 12:03:38 INFO:   Processing by Devise::SessionsController#new as HTML
+32743 130421 12:03:38 INFO: Username: (none)
+32743 130421 12:03:38 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.2ms)
+32743 130421 12:03:38 INFO: Completed 200 OK in 3ms (Views: 2.0ms)
+32743 130421 13:44:36 INFO: 
+
+Started GET "/users/sign_in" for 188.60.2.193 at 2013-04-21 13:44:36 +0000
+32743 130421 13:44:36 INFO:   Processing by Devise::SessionsController#new as HTML
+32743 130421 13:44:36 INFO: Username: (none)
+32743 130421 13:44:36 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.1ms)
+32743 130421 13:44:36 INFO: Completed 200 OK in 3ms (Views: 1.9ms)
+32743 130421 14:48:24 INFO: 
+
+Started GET "/users/sign_in" for 188.60.2.193 at 2013-04-21 14:48:24 +0000
+32743 130421 14:48:24 INFO:   Processing by Devise::SessionsController#new as HTML
+32743 130421 14:48:24 INFO: Username: (none)
+32743 130421 14:48:24 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.3ms)
+32743 130421 14:48:24 INFO: Completed 200 OK in 3ms (Views: 2.1ms)
+32743 130421 16:25:25 INFO: 
+
+Started GET "/users/sign_in" for 188.60.2.193 at 2013-04-21 16:25:25 +0000
+32743 130421 16:25:25 INFO:   Processing by Devise::SessionsController#new as HTML
+32743 130421 16:25:25 INFO: Username: (none)
+32743 130421 16:25:25 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.4ms)
+32743 130421 16:25:25 INFO: Completed 200 OK in 4ms (Views: 2.3ms)
+32743 130421 17:50:42 INFO: 
+
+Started GET "/users/sign_in" for 188.60.2.193 at 2013-04-21 17:50:42 +0000
+32743 130421 17:50:42 INFO:   Processing by Devise::SessionsController#new as HTML
+32743 130421 17:50:42 INFO: Username: (none)
+32743 130421 17:50:42 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.3ms)
+32743 130421 17:50:42 INFO: Completed 200 OK in 3ms (Views: 2.1ms)
+32743 130421 20:59:28 INFO: 
+
+Started GET "/users/sign_in" for 188.60.2.193 at 2013-04-21 20:59:28 +0000
+32743 130421 20:59:28 INFO:   Processing by Devise::SessionsController#new as HTML
+32743 130421 20:59:28 INFO: Username: (none)
+32743 130421 20:59:28 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.0ms)
+32743 130421 20:59:28 INFO: Completed 200 OK in 3ms (Views: 1.9ms)
+32743 130421 22:40:40 INFO: 
+
+Started GET "/users/sign_in" for 92.107.18.234 at 2013-04-21 22:40:40 +0000
+32743 130421 22:40:40 INFO:   Processing by Devise::SessionsController#new as HTML
+32743 130421 22:40:40 INFO: Username: (none)
+32743 130421 22:40:40 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.2ms)
+32743 130421 22:40:40 INFO: Completed 200 OK in 3ms (Views: 2.1ms)

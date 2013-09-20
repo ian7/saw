@@ -1,0 +1,265 @@
+2890 130405 20:22:15 INFO: 
+
+Started GET "/" for 46.165.221.13 at 2013-04-05 20:22:15 +0000
+2890 130405 20:22:15 INFO:   Processing by WelcomeController#index as HTML
+2890 130405 20:22:15 INFO: Username: (none)
+2890 130405 20:22:15 INFO: Rendered welcome/index.html.erb within layouts/application (0.7ms)
+2890 130405 20:22:15 INFO: Completed 200 OK in 2ms (Views: 1.6ms)
+2890 130405 20:22:17 INFO: 
+
+Started GET "/updates/1363947569" for 46.165.221.13 at 2013-04-05 20:22:17 +0000
+2890 130405 20:22:17 INFO:   Processing by NotifyController#stamped as 
+2890 130405 20:22:17 INFO:   Parameters: {"stamp"=>"1363947569"}
+2890 130405 20:22:17 INFO: Username: (none)
+2890 130405 20:22:17 INFO: Completed 200 OK in 5ms (Views: 0.2ms)
+2890 130405 20:22:17 INFO: 
+
+Started GET "/scope/type/Decision" for 46.165.221.13 at 2013-04-05 20:22:17 +0000
+2890 130405 20:22:17 INFO:   Processing by ScopeController#type as JSON
+2890 130405 20:22:17 INFO:   Parameters: {"type_name"=>"Decision"}
+2890 130405 20:22:17 INFO: Username: (none)
+2890 130405 20:22:17 INFO: Completed 200 OK in 12ms (Views: 0.9ms)
+2890 130405 20:22:17 INFO: 
+
+Started GET "/t" for 46.165.221.13 at 2013-04-05 20:22:17 +0000
+2890 130405 20:22:17 INFO:   Processing by TController#index as JSON
+2890 130405 20:22:17 INFO: Username: (none)
+2890 130405 20:22:17 INFO: Completed   in 0ms
+2890 130405 20:22:17 INFO: 
+
+Started GET "/tags" for 46.165.221.13 at 2013-04-05 20:22:17 +0000
+2890 130405 20:22:17 INFO:   Processing by TagsController#index as JSON
+2890 130405 20:22:17 INFO: Username: (none)
+2890 130405 20:22:17 INFO: Completed 200 OK in 182ms (Views: 43.3ms)
+2890 130405 20:22:17 INFO: 
+
+Started GET "/r/514c3031da300c41cd000001/related_from/Issue" for 46.165.221.13 at 2013-04-05 20:22:17 +0000
+2890 130405 20:22:17 INFO:   Processing by RController#related_from as JSON
+2890 130405 20:22:17 INFO:   Parameters: {"id"=>"514c3031da300c41cd000001", "type"=>"Issue"}
+2890 130405 20:22:17 INFO: Username: (none)
+2890 130405 20:22:17 INFO: Completed   in 1ms
+2890 130405 20:22:18 INFO: 
+
+Started GET "/users/sign_in" for 46.165.221.13 at 2013-04-05 20:22:18 +0000
+2890 130405 20:22:18 INFO:   Processing by Devise::SessionsController#new as HTML
+2890 130405 20:22:18 INFO: Username: (none)
+2890 130405 20:22:18 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.2ms)
+2890 130405 20:22:18 INFO: Completed 200 OK in 3ms (Views: 1.9ms)
+2890 130405 20:22:20 INFO: 
+
+Started POST "/users/sign_in" for 46.165.221.13 at 2013-04-05 20:22:20 +0000
+2890 130405 20:22:20 INFO:   Processing by Devise::SessionsController#create as HTML
+2890 130405 20:22:20 INFO:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"oikWBo1aXitpLRffeZWZGT24UjfgBxeqFOIDoijDXvE=", "user"=>{"email"=>"marcin@sonyx.net", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+2890 130405 20:22:20 INFO: Username: marcin@sonyx.net
+2890 130405 20:22:20 INFO: Redirected to http://exercises.saw.sonyx.net/welcome/logged_in
+2890 130405 20:22:20 INFO: Completed 302 Found in 206ms
+2890 130405 20:22:20 INFO: 
+
+Started GET "/welcome/logged_in" for 46.165.221.13 at 2013-04-05 20:22:20 +0000
+2890 130405 20:22:20 INFO:   Processing by WelcomeController#logged_in as HTML
+2890 130405 20:22:20 INFO: Username: marcin@sonyx.net
+2890 130405 20:22:20 INFO: Rendered welcome/logged_in.html.erb within layouts/application (1.0ms)
+2890 130405 20:22:20 INFO: Completed 200 OK in 14ms (Views: 12.4ms)
+2890 130405 20:22:21 INFO: 
+
+Started GET "/" for 46.165.221.13 at 2013-04-05 20:22:21 +0000
+2890 130405 20:22:21 INFO:   Processing by WelcomeController#index as HTML
+2890 130405 20:22:21 INFO: Username: marcin@sonyx.net
+2890 130405 20:22:21 INFO: Rendered welcome/index.html.erb within layouts/application (1.3ms)
+2890 130405 20:22:21 INFO: Completed 200 OK in 5ms (Views: 2.8ms)
+2890 130405 20:22:21 INFO: 
+
+Started GET "/updates/1363947569" for 46.165.221.13 at 2013-04-05 20:22:21 +0000
+2890 130405 20:22:21 INFO:   Processing by NotifyController#stamped as 
+2890 130405 20:22:21 INFO:   Parameters: {"stamp"=>"1363947569"}
+2890 130405 20:22:21 INFO: Username: marcin@sonyx.net
+2890 130405 20:22:21 INFO: Completed 200 OK in 4ms (Views: 0.1ms)
+2890 130405 20:22:21 INFO: 
+
+Started GET "/scope/type/Decision" for 46.165.221.13 at 2013-04-05 20:22:21 +0000
+2890 130405 20:22:21 INFO:   Processing by ScopeController#type as JSON
+2890 130405 20:22:21 INFO:   Parameters: {"type_name"=>"Decision"}
+2890 130405 20:22:21 INFO: Username: marcin@sonyx.net
+2890 130405 20:22:21 INFO: Completed 200 OK in 9ms (Views: 0.5ms)
+2890 130405 20:22:21 INFO: 
+
+Started GET "/t" for 46.165.221.13 at 2013-04-05 20:22:21 +0000
+2890 130405 20:22:21 INFO:   Processing by TController#index as JSON
+2890 130405 20:22:21 INFO: Username: marcin@sonyx.net
+2890 130405 20:22:21 INFO: Completed 200 OK in 85ms (Views: 5.6ms)
+2890 130405 20:22:21 INFO: 
+
+Started GET "/tags" for 46.165.221.13 at 2013-04-05 20:22:21 +0000
+2890 130405 20:22:21 INFO:   Processing by TagsController#index as JSON
+2890 130405 20:22:21 INFO: Username: marcin@sonyx.net
+2890 130405 20:22:22 INFO: Completed 200 OK in 214ms (Views: 31.2ms)
+2890 130405 20:22:22 INFO: 
+
+Started GET "/r/514c3031da300c41cd000001/related_from/Issue" for 46.165.221.13 at 2013-04-05 20:22:22 +0000
+2890 130405 20:22:22 INFO:   Processing by RController#related_from as JSON
+2890 130405 20:22:22 INFO:   Parameters: {"id"=>"514c3031da300c41cd000001", "type"=>"Issue"}
+2890 130405 20:22:22 INFO: Username: marcin@sonyx.net
+2890 130405 20:22:22 INFO: Completed 200 OK in 11ms (Views: 2.0ms)
+2859 130405 20:22:23 INFO: 
+
+Started GET "/projects" for 46.165.221.13 at 2013-04-05 20:22:23 +0000
+2859 130405 20:22:24 INFO:   Processing by ProjectsController#index as JSON
+2859 130405 20:22:24 INFO: Username: marcin@sonyx.net
+2859 130405 20:22:24 INFO: Completed 200 OK in 64ms (Views: 5.8ms)
+2859 130405 20:22:27 INFO: 
+
+Started GET "/projects" for 46.165.221.13 at 2013-04-05 20:22:27 +0000
+2859 130405 20:22:27 INFO:   Processing by ProjectsController#index as JSON
+2859 130405 20:22:27 INFO: Username: marcin@sonyx.net
+2859 130405 20:22:27 INFO: Completed 200 OK in 51ms (Views: 0.7ms)
+2859 130405 20:22:33 INFO: 
+
+Started GET "/r/514c3031da300c41cd000001/related_from/Issue" for 46.165.221.13 at 2013-04-05 20:22:33 +0000
+2859 130405 20:22:33 INFO:   Processing by RController#related_from as JSON
+2859 130405 20:22:33 INFO:   Parameters: {"id"=>"514c3031da300c41cd000001", "type"=>"Issue"}
+2859 130405 20:22:33 INFO: Username: marcin@sonyx.net
+2859 130405 20:22:33 INFO: Completed 200 OK in 12ms (Views: 1.7ms)
+2859 130405 20:22:34 INFO: 
+
+Started GET "/r/514c3031da300c41cd000001/related_from/Issue" for 46.165.221.13 at 2013-04-05 20:22:34 +0000
+2859 130405 20:22:34 INFO:   Processing by RController#related_from as JSON
+2859 130405 20:22:34 INFO:   Parameters: {"id"=>"514c3031da300c41cd000001", "type"=>"Issue"}
+2859 130405 20:22:34 INFO: Username: marcin@sonyx.net
+2859 130405 20:22:34 INFO: Completed 200 OK in 11ms (Views: 0.7ms)
+2859 130405 20:22:36 INFO: 
+
+Started GET "/r/514c3031da300c41cd000001/related_from/Issue" for 46.165.221.13 at 2013-04-05 20:22:36 +0000
+2859 130405 20:22:36 INFO:   Processing by RController#related_from as JSON
+2859 130405 20:22:36 INFO:   Parameters: {"id"=>"514c3031da300c41cd000001", "type"=>"Issue"}
+2859 130405 20:22:36 INFO: Username: marcin@sonyx.net
+2859 130405 20:22:36 INFO: Completed 200 OK in 9ms (Views: 0.5ms)
+2859 130405 20:22:39 INFO: 
+
+Started GET "/projects" for 46.165.221.13 at 2013-04-05 20:22:39 +0000
+2859 130405 20:22:39 INFO:   Processing by ProjectsController#index as JSON
+2859 130405 20:22:39 INFO: Username: marcin@sonyx.net
+2859 130405 20:22:39 INFO: Completed 200 OK in 49ms (Views: 0.9ms)
+2859 130405 20:22:40 INFO: 
+
+Started GET "/r/514c3031da300c41cd000001/related_from/Issue" for 46.165.221.13 at 2013-04-05 20:22:40 +0000
+2859 130405 20:22:40 INFO:   Processing by RController#related_from as JSON
+2859 130405 20:22:40 INFO:   Parameters: {"id"=>"514c3031da300c41cd000001", "type"=>"Issue"}
+2859 130405 20:22:40 INFO: Username: marcin@sonyx.net
+2859 130405 20:22:40 INFO: Completed 200 OK in 8ms (Views: 0.7ms)
+2859 130405 20:22:41 INFO: 
+
+Started GET "/r/514b2277da300c0aff000001/related_from/Issue" for 46.165.221.13 at 2013-04-05 20:22:41 +0000
+2859 130405 20:22:41 INFO:   Processing by RController#related_from as JSON
+2859 130405 20:22:41 INFO:   Parameters: {"id"=>"514b2277da300c0aff000001", "type"=>"Issue"}
+2859 130405 20:22:41 INFO: Username: marcin@sonyx.net
+2859 130405 20:22:41 INFO: Completed 200 OK in 82ms (Views: 1.4ms)
+2859 130405 20:22:42 INFO: 
+
+Started GET "/r/4fca072ff60f944a91000003/relations_from" for 46.165.221.13 at 2013-04-05 20:22:42 +0000
+2859 130405 20:22:42 INFO:   Processing by RController#relations_from as JSON
+2859 130405 20:22:42 INFO:   Parameters: {"id"=>"4fca072ff60f944a91000003"}
+2890 130405 20:22:42 INFO: 
+
+Started GET "/r/4fca072ff60f944a91000003" for 46.165.221.13 at 2013-04-05 20:22:42 +0000
+2859 130405 20:22:42 INFO: Username: marcin@sonyx.net
+2890 130405 20:22:42 INFO:   Processing by RController#show as JSON
+2890 130405 20:22:42 INFO:   Parameters: {"id"=>"4fca072ff60f944a91000003"}
+2890 130405 20:22:42 INFO: Username: marcin@sonyx.net
+2890 130405 20:22:42 INFO: Completed 404 Not Found in 8ms
+2859 130405 20:22:42 INFO: Completed 404 Not Found in 37ms
+2890 130405 20:22:42 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fca072ff60f944a91000003.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+2859 130405 20:22:42 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fca072ff60f944a91000003.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+2859 130405 20:22:42 INFO: 
+
+Started GET "/r/4fa074bde90a3e4a01000006" for 46.165.221.13 at 2013-04-05 20:22:42 +0000
+2890 130405 20:22:42 INFO: 
+
+Started GET "/r/4fca072df60f944a91000001" for 46.165.221.13 at 2013-04-05 20:22:42 +0000
+2859 130405 20:22:42 INFO:   Processing by RController#show as JSON
+2859 130405 20:22:42 INFO:   Parameters: {"id"=>"4fa074bde90a3e4a01000006"}
+2859 130405 20:22:42 INFO: Username: marcin@sonyx.net
+2890 130405 20:22:42 INFO:   Processing by RController#show as JSON
+2859 130405 20:22:42 INFO: Completed 404 Not Found in 7ms
+2890 130405 20:22:42 INFO:   Parameters: {"id"=>"4fca072df60f944a91000001"}
+2859 130405 20:22:42 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fa074bde90a3e4a01000006.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+2859 130405 20:22:42 INFO: 
+
+Started GET "/r/4fa074bde90a3e4a01000006/relations_from" for 46.165.221.13 at 2013-04-05 20:22:42 +0000
+2890 130405 20:22:42 INFO: Username: marcin@sonyx.net
+2890 130405 20:22:42 INFO: Completed 404 Not Found in 16ms
+2890 130405 20:22:42 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fca072df60f944a91000001.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+2859 130405 20:22:42 INFO:   Processing by RController#relations_from as JSON
+2859 130405 20:22:42 INFO:   Parameters: {"id"=>"4fa074bde90a3e4a01000006"}
+2859 130405 20:22:42 INFO: Username: marcin@sonyx.net
+2859 130405 20:22:42 INFO: Completed 404 Not Found in 4ms
+2859 130405 20:22:42 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fa074bde90a3e4a01000006.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+2859 130405 20:22:42 INFO: 
+
+Started GET "/r/4fa074aee90a3e4a01000004/relations_from" for 46.165.221.13 at 2013-04-05 20:22:42 +0000
+2859 130405 20:22:42 INFO:   Processing by RController#relations_from as JSON
+2859 130405 20:22:42 INFO:   Parameters: {"id"=>"4fa074aee90a3e4a01000004"}
+2859 130405 20:22:42 INFO: Username: marcin@sonyx.net
+2859 130405 20:22:42 INFO: Completed 404 Not Found in 8ms
+2859 130405 20:22:42 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fa074aee90a3e4a01000004.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+2890 130405 20:22:42 INFO: 
+
+Started GET "/r/4fa074aee90a3e4a01000004" for 46.165.221.13 at 2013-04-05 20:22:42 +0000
+2859 130405 20:22:42 INFO: 
+
+Started GET "/r/514c3031da300c41cd000001/related_from/Issue" for 46.165.221.13 at 2013-04-05 20:22:42 +0000
+2859 130405 20:22:42 INFO:   Processing by RController#related_from as JSON
+2859 130405 20:22:42 INFO:   Parameters: {"id"=>"514c3031da300c41cd000001", "type"=>"Issue"}
+2859 130405 20:22:42 INFO: Username: marcin@sonyx.net
+2890 130405 20:22:42 INFO:   Processing by RController#show as JSON
+2890 130405 20:22:42 INFO:   Parameters: {"id"=>"4fa074aee90a3e4a01000004"}
+2890 130405 20:22:42 INFO: Username: marcin@sonyx.net
+2890 130405 20:22:42 INFO: Completed 404 Not Found in 17ms
+2890 130405 20:22:42 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fa074aee90a3e4a01000004.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+2859 130405 20:22:42 INFO: Completed 200 OK in 66ms (Views: 2.3ms)
+2859 130405 20:22:43 INFO: 
+
+Started GET "/r/514c3031da300c41cd000001/related_from/Issue" for 46.165.221.13 at 2013-04-05 20:22:43 +0000
+2859 130405 20:22:43 INFO:   Processing by RController#related_from as JSON
+2859 130405 20:22:43 INFO:   Parameters: {"id"=>"514c3031da300c41cd000001", "type"=>"Issue"}
+2859 130405 20:22:43 INFO: Username: marcin@sonyx.net
+2859 130405 20:22:43 INFO: Completed 200 OK in 65ms (Views: 0.9ms)
+2872 130405 20:22:43 INFO: 
+
+Started GET "/r/4fca072df60f944a91000001/relations_from" for 46.165.221.13 at 2013-04-05 20:22:43 +0000
+2872 130405 20:22:43 INFO:   Processing by RController#relations_from as JSON
+2872 130405 20:22:43 INFO:   Parameters: {"id"=>"4fca072df60f944a91000001"}
+2872 130405 20:22:43 INFO: Username: marcin@sonyx.net
+2872 130405 20:22:43 INFO: Completed 404 Not Found in 12ms
+2872 130405 20:22:43 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fca072df60f944a91000001.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+

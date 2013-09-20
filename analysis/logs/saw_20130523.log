@@ -1,0 +1,1370 @@
+4237 130523 13:56:18 INFO: 
+
+Started GET "/" for 195.65.3.246 at 2013-05-23 13:56:18 +0000
+4237 130523 13:56:18 INFO:   Processing by WelcomeController#index as HTML
+4237 130523 13:56:18 INFO: Username: (none)
+4237 130523 13:56:18 INFO: Rendered welcome/index.html.erb within layouts/application (0.6ms)
+4237 130523 13:56:18 INFO: Completed 200 OK in 2ms (Views: 1.5ms)
+4237 130523 13:56:21 INFO: 
+
+Started GET "/updates/1369209650" for 195.65.3.246 at 2013-05-23 13:56:21 +0000
+4237 130523 13:56:21 INFO:   Processing by NotifyController#stamped as 
+4237 130523 13:56:21 INFO:   Parameters: {"stamp"=>"1369209650"}
+4237 130523 13:56:21 INFO: Username: (none)
+4237 130523 13:56:21 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+4237 130523 13:56:21 INFO: 
+
+Started GET "/scope/type/Decision" for 195.65.3.246 at 2013-05-23 13:56:21 +0000
+4237 130523 13:56:21 INFO:   Processing by ScopeController#type as JSON
+4237 130523 13:56:21 INFO:   Parameters: {"type_name"=>"Decision"}
+4237 130523 13:56:21 INFO: Username: (none)
+4237 130523 13:56:21 INFO: Completed 200 OK in 9ms (Views: 0.7ms)
+4237 130523 13:56:21 INFO: 
+
+Started GET "/tags" for 195.65.3.246 at 2013-05-23 13:56:21 +0000
+4237 130523 13:56:21 INFO:   Processing by TagsController#index as JSON
+4237 130523 13:56:21 INFO: Username: (none)
+4237 130523 13:56:21 INFO: Completed 200 OK in 228ms (Views: 61.9ms)
+4237 130523 13:56:21 INFO: 
+
+Started GET "/t" for 195.65.3.246 at 2013-05-23 13:56:21 +0000
+4237 130523 13:56:22 INFO:   Processing by TController#index as JSON
+4237 130523 13:56:22 INFO: Username: (none)
+4237 130523 13:56:22 INFO: Completed   in 1ms
+4237 130523 13:56:22 INFO: 
+
+Started GET "/r/518a833eda300c484c000001/relations_from" for 195.65.3.246 at 2013-05-23 13:56:22 +0000
+4237 130523 13:56:22 INFO:   Processing by RController#relations_from as JSON
+4237 130523 13:56:22 INFO:   Parameters: {"id"=>"518a833eda300c484c000001"}
+4237 130523 13:56:22 INFO: Username: (none)
+4237 130523 13:56:22 INFO: Completed   in 1ms
+4237 130523 13:56:22 INFO: 
+
+Started GET "/t" for 195.65.3.246 at 2013-05-23 13:56:22 +0000
+4237 130523 13:56:22 INFO:   Processing by TController#index as JSON
+4237 130523 13:56:22 INFO: Username: (none)
+4237 130523 13:56:22 INFO: Completed   in 1ms
+4237 130523 13:56:25 INFO: 
+
+Started GET "/users/sign_in" for 195.65.3.246 at 2013-05-23 13:56:25 +0000
+4237 130523 13:56:25 INFO:   Processing by Devise::SessionsController#new as HTML
+4237 130523 13:56:25 INFO: Username: (none)
+4237 130523 13:56:25 INFO: Rendered devise/sessions/new.html.erb within layouts/application (2.3ms)
+4237 130523 13:56:25 INFO: Completed 200 OK in 9ms (Views: 6.4ms)
+23578 130523 13:56:28 INFO: 
+
+Started GET "/auth/facebook" for 195.65.3.246 at 2013-05-23 13:56:28 +0000
+23578 130523 13:56:29 INFO: 
+
+Started GET "/auth/facebook/callback?code=AQAZupltp-dc4iCxBWuWv6R-s7KcZfRaykq2NpqmXTp5tQCV2LjtDuEjMC7nXLqlEbAOJKfP4OgObfJoiq5_9Kf46BIlhSGYwb3_u978gNmCusLPVEh-iKCuHdVk_lEzDJgpmmZFFjndhIB-3tuQcvm361U8DS2pzFdQ_XqulkLt8z2bqZFzsIsxBPjPqiLj1kD1n86W_D5S1TvEfb7iinf_CE3xeQJ9DjN4OFtYjoa6V1Oq03XDUu_xB9VMrOgpz8opVgrTHMq2PxbLukfj009UUuDnCo_ceBMnG7Sv0flt_Sf96zRldv2HYYivEMbdGHs" for 195.65.3.246 at 2013-05-23 13:56:29 +0000
+23578 130523 13:56:29 INFO:   Processing by AuthenticationsController#create as HTML
+23578 130523 13:56:29 INFO:   Parameters: {"code"=>"AQAZupltp-dc4iCxBWuWv6R-s7KcZfRaykq2NpqmXTp5tQCV2LjtDuEjMC7nXLqlEbAOJKfP4OgObfJoiq5_9Kf46BIlhSGYwb3_u978gNmCusLPVEh-iKCuHdVk_lEzDJgpmmZFFjndhIB-3tuQcvm361U8DS2pzFdQ_XqulkLt8z2bqZFzsIsxBPjPqiLj1kD1n86W_D5S1TvEfb7iinf_CE3xeQJ9DjN4OFtYjoa6V1Oq03XDUu_xB9VMrOgpz8opVgrTHMq2PxbLukfj009UUuDnCo_ceBMnG7Sv0flt_Sf96zRldv2HYYivEMbdGHs", "provider"=>"facebook"}
+23578 130523 13:56:29 INFO: Username: (none)
+23578 130523 13:56:29 INFO: Redirected to http://exercises.saw.sonyx.net/welcome/logged_in
+23578 130523 13:56:29 INFO: Completed 302 Found in 15ms
+23578 130523 13:56:30 INFO: 
+
+Started GET "/welcome/logged_in" for 195.65.3.246 at 2013-05-23 13:56:30 +0000
+23578 130523 13:56:30 INFO:   Processing by WelcomeController#logged_in as HTML
+23578 130523 13:56:30 INFO: Username: swami8327@libero.it
+23578 130523 13:56:30 INFO: Rendered welcome/logged_in.html.erb within layouts/application (4.1ms)
+23578 130523 13:56:30 INFO: Completed 200 OK in 14ms (Views: 12.1ms)
+23578 130523 13:56:30 INFO: 
+
+Started GET "/" for 195.65.3.246 at 2013-05-23 13:56:30 +0000
+23578 130523 13:56:30 INFO:   Processing by WelcomeController#index as HTML
+23578 130523 13:56:30 INFO: Username: swami8327@libero.it
+23578 130523 13:56:30 INFO: Rendered welcome/index.html.erb within layouts/application (0.5ms)
+23578 130523 13:56:30 INFO: Completed 200 OK in 4ms (Views: 2.0ms)
+23578 130523 13:56:31 INFO: 
+
+Started GET "/updates/1369209650" for 195.65.3.246 at 2013-05-23 13:56:31 +0000
+4237 130523 13:56:31 INFO: 
+
+Started GET "/scope/type/Decision" for 195.65.3.246 at 2013-05-23 13:56:31 +0000
+4237 130523 13:56:31 INFO:   Processing by ScopeController#type as JSON
+4237 130523 13:56:31 INFO:   Parameters: {"type_name"=>"Decision"}
+4237 130523 13:56:31 INFO: Username: swami8327@libero.it
+23578 130523 13:56:31 INFO:   Processing by NotifyController#stamped as 
+23578 130523 13:56:31 INFO:   Parameters: {"stamp"=>"1369209650"}
+23578 130523 13:56:31 INFO: Username: swami8327@libero.it
+4237 130523 13:56:31 INFO: Completed 200 OK in 17ms (Views: 1.1ms)
+4237 130523 13:56:31 INFO: 
+
+Started GET "/t" for 195.65.3.246 at 2013-05-23 13:56:31 +0000
+4237 130523 13:56:31 INFO:   Processing by TController#index as JSON
+4237 130523 13:56:31 INFO: Username: swami8327@libero.it
+23578 130523 13:56:31 INFO: Completed 200 OK in 25ms (Views: 13.7ms)
+23578 130523 13:56:31 INFO: 
+
+Started GET "/tags" for 195.65.3.246 at 2013-05-23 13:56:31 +0000
+23578 130523 13:56:31 INFO:   Processing by TagsController#index as JSON
+23578 130523 13:56:31 INFO: Username: swami8327@libero.it
+23587 130523 13:56:31 INFO: 
+
+Started GET "/r/518a833eda300c484c000001/relations_from" for 195.65.3.246 at 2013-05-23 13:56:31 +0000
+4237 130523 13:56:31 INFO: Completed 200 OK in 160ms (Views: 4.4ms)
+4237 130523 13:56:31 INFO: 
+
+Started GET "/t" for 195.65.3.246 at 2013-05-23 13:56:31 +0000
+4237 130523 13:56:31 INFO:   Processing by TController#index as JSON
+4237 130523 13:56:31 INFO: Username: swami8327@libero.it
+23578 130523 13:56:31 INFO: Completed 200 OK in 285ms (Views: 39.3ms)
+4237 130523 13:56:31 INFO: Completed 200 OK in 132ms (Views: 3.9ms)
+23587 130523 13:56:31 INFO:   Processing by RController#relations_from as JSON
+23587 130523 13:56:31 INFO:   Parameters: {"id"=>"518a833eda300c484c000001"}
+23587 130523 13:56:31 INFO: Username: swami8327@libero.it
+23587 130523 13:56:31 INFO: Completed 200 OK in 60ms (Views: 10.8ms)
+4237 130523 13:56:34 INFO: 
+
+Started GET "/r/54fb3c57e09f9515d4f000002/relations_from" for 195.65.3.246 at 2013-05-23 13:56:34 +0000
+23587 130523 13:56:34 INFO: 
+
+Started GET "/r/518a833eda300c484c000001/relations_from" for 195.65.3.246 at 2013-05-23 13:56:34 +0000
+23578 130523 13:56:34 INFO: 
+
+Started GET "/projects/54fb3c57e09f9515d4f000002" for 195.65.3.246 at 2013-05-23 13:56:34 +0000
+4237 130523 13:56:34 INFO:   Processing by RController#relations_from as JSON
+4237 130523 13:56:34 INFO:   Parameters: {"id"=>"54fb3c57e09f9515d4f000002"}
+4237 130523 13:56:34 INFO: Username: swami8327@libero.it
+4237 130523 13:56:34 INFO: Completed 500 Internal Server Error in 3ms
+23587 130523 13:56:34 INFO:   Processing by RController#relations_from as JSON
+23587 130523 13:56:34 INFO:   Parameters: {"id"=>"518a833eda300c484c000001"}
+23578 130523 13:56:34 INFO:   Processing by ProjectsController#show as JSON
+23578 130523 13:56:34 INFO:   Parameters: {"id"=>"54fb3c57e09f9515d4f000002"}
+4237 130523 13:56:34 FATAL: 
+BSON::InvalidObjectId (illegal ObjectId format):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+23587 130523 13:56:34 INFO: Username: swami8327@libero.it
+23578 130523 13:56:34 INFO: Username: swami8327@libero.it
+23578 130523 13:56:34 INFO: Completed 500 Internal Server Error in 2ms
+23578 130523 13:56:34 FATAL: 
+BSON::InvalidObjectId (illegal ObjectId format):
+  app/controllers/projects_controller.rb:10:in `show'
+
+
+23587 130523 13:56:34 INFO: Completed 200 OK in 40ms (Views: 4.1ms)
+23587 130523 13:56:35 INFO: 
+
+Started GET "/projects" for 195.65.3.246 at 2013-05-23 13:56:35 +0000
+23587 130523 13:56:35 INFO:   Processing by ProjectsController#index as JSON
+23587 130523 13:56:35 INFO: Username: swami8327@libero.it
+23578 130523 13:56:35 INFO: 
+
+Started GET "/projects/54fb3c57e09f9515d4f000002" for 195.65.3.246 at 2013-05-23 13:56:35 +0000
+23578 130523 13:56:35 INFO:   Processing by ProjectsController#show as JSON
+23578 130523 13:56:35 INFO:   Parameters: {"id"=>"54fb3c57e09f9515d4f000002"}
+23578 130523 13:56:35 INFO: Username: swami8327@libero.it
+23578 130523 13:56:35 INFO: Completed 500 Internal Server Error in 2ms
+23578 130523 13:56:35 FATAL: 
+BSON::InvalidObjectId (illegal ObjectId format):
+  app/controllers/projects_controller.rb:10:in `show'
+
+
+23587 130523 13:56:35 INFO: Completed 200 OK in 833ms (Views: 5.5ms)
+23587 130523 13:56:36 INFO: 
+
+Started GET "/projects" for 195.65.3.246 at 2013-05-23 13:56:36 +0000
+23587 130523 13:56:36 INFO:   Processing by ProjectsController#index as JSON
+23587 130523 13:56:36 INFO: Username: swami8327@libero.it
+23587 130523 13:56:37 INFO: Completed 200 OK in 826ms (Views: 5.0ms)
+23587 130523 13:57:18 INFO: 
+
+Started GET "/r/5166ccc6da300c1e44000001/relations_from" for 195.65.3.246 at 2013-05-23 13:57:18 +0000
+23587 130523 13:57:18 INFO:   Processing by RController#relations_from as JSON
+23587 130523 13:57:18 INFO:   Parameters: {"id"=>"5166ccc6da300c1e44000001"}
+23587 130523 13:57:18 INFO: Username: swami8327@libero.it
+23587 130523 13:57:18 INFO: Completed 200 OK in 36ms (Views: 4.5ms)
+23587 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d831ce90a3e203400000c/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO:   Processing by RController#relations_to as JSON
+23587 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d831ce90a3e203400000c"}
+23578 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d831ce90a3e203400000c" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO: Username: swami8327@libero.it
+23578 130523 13:57:19 INFO:   Processing by RController#show as JSON
+23578 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d831ce90a3e203400000c"}
+23578 130523 13:57:19 INFO: Username: swami8327@libero.it
+23578 130523 13:57:19 INFO: Completed 200 OK in 6ms (Views: 1.6ms)
+23587 130523 13:57:19 INFO: Completed 200 OK in 15ms (Views: 1.2ms)
+23578 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d833be90a3e1fe8000015" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d833be90a3e1fe8000015/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23578 130523 13:57:19 INFO:   Processing by RController#show as JSON
+23578 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d833be90a3e1fe8000015"}
+23587 130523 13:57:19 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d835de90a3e1fe8000017/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d833be90a3e1fe8000015"}
+23578 130523 13:57:19 INFO: Username: swami8327@libero.it
+23587 130523 13:57:19 INFO: Username: swami8327@libero.it
+23578 130523 13:57:19 INFO: Completed 200 OK in 5ms (Views: 0.4ms)
+4237 130523 13:57:19 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d835de90a3e1fe8000017"}
+23578 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d835de90a3e1fe8000017" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23578 130523 13:57:19 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+23578 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d835de90a3e1fe8000017"}
+23578 130523 13:57:19 INFO: Username: swami8327@libero.it
+23578 130523 13:57:19 INFO: Completed 200 OK in 5ms (Views: 1.4ms)
+23587 130523 13:57:19 INFO: Completed 200 OK in 35ms (Views: 1.6ms)
+4237 130523 13:57:19 INFO: Completed 200 OK in 37ms (Views: 2.2ms)
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d836ce90a3e1fd7000005/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d836ce90a3e1fd7000005" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+4237 130523 13:57:19 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d836ce90a3e1fd7000005"}
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+23587 130523 13:57:19 INFO:   Processing by RController#show as JSON
+23587 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d836ce90a3e1fd7000005"}
+23587 130523 13:57:19 INFO: Username: swami8327@libero.it
+23587 130523 13:57:19 INFO: Completed 200 OK in 5ms (Views: 0.6ms)
+4237 130523 13:57:19 INFO: Completed 200 OK in 15ms (Views: 0.9ms)
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d8377e90a3e1fe8000019" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+4237 130523 13:57:19 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d8377e90a3e1fe8000019"}
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+4237 130523 13:57:19 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+23606 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d8377e90a3e1fe8000019/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d831ce90a3e203400000d/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+4237 130523 13:57:19 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d831ce90a3e203400000d"}
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+4237 130523 13:57:19 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+23587 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d831ce90a3e203400000d" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO:   Processing by RController#show as JSON
+23587 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d831ce90a3e203400000d"}
+23587 130523 13:57:19 INFO: Username: swami8327@libero.it
+23587 130523 13:57:19 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+23587 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9ee8aae90a3e7002000001/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO:   Processing by RController#relations_to as JSON
+23587 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9ee8aae90a3e7002000001"}
+23587 130523 13:57:19 INFO: Username: swami8327@libero.it
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9ee8aae90a3e7002000001" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+4237 130523 13:57:19 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9ee8aae90a3e7002000001"}
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+4237 130523 13:57:19 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d833be90a3e1fe8000016/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+4237 130523 13:57:19 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d833be90a3e1fe8000016"}
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+4237 130523 13:57:19 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d833be90a3e1fe8000016" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+4237 130523 13:57:19 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d833be90a3e1fe8000016"}
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+4237 130523 13:57:19 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9e4a86e90a3e3188000005/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+4237 130523 13:57:19 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9e4a86e90a3e3188000005"}
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+4237 130523 13:57:19 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9e4a86e90a3e3188000005" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+4237 130523 13:57:19 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9e4a86e90a3e3188000005"}
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+23587 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d835de90a3e1fe8000018/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:19 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+23587 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d835de90a3e1fe8000018"}
+23587 130523 13:57:19 INFO: Username: swami8327@libero.it
+23587 130523 13:57:19 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+23587 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d835de90a3e1fe8000018" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO:   Processing by RController#show as JSON
+23587 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d835de90a3e1fe8000018"}
+23587 130523 13:57:19 INFO: Username: swami8327@libero.it
+23587 130523 13:57:19 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+23587 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9dca88e90a3e3188000001/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO:   Processing by RController#relations_to as JSON
+23587 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9dca88e90a3e3188000001"}
+23587 130523 13:57:19 INFO: Username: swami8327@libero.it
+23587 130523 13:57:19 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+23587 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9dca88e90a3e3188000001" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO:   Processing by RController#show as JSON
+23587 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9dca88e90a3e3188000001"}
+23587 130523 13:57:19 INFO: Username: swami8327@libero.it
+23587 130523 13:57:19 INFO: Completed 200 OK in 4ms (Views: 0.2ms)
+23587 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9e4a87e90a3e3188000006/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO:   Processing by RController#relations_to as JSON
+23587 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9e4a87e90a3e3188000006"}
+23587 130523 13:57:19 INFO: Username: swami8327@libero.it
+23587 130523 13:57:19 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+23587 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9e4a87e90a3e3188000006" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO:   Processing by RController#show as JSON
+23587 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9e4a87e90a3e3188000006"}
+23587 130523 13:57:19 INFO: Username: swami8327@libero.it
+23587 130523 13:57:19 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+23587 130523 13:57:19 INFO: 
+
+Started GET "/r/4fa79086924ff84129000004/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO:   Processing by RController#relations_to as JSON
+23587 130523 13:57:19 INFO:   Parameters: {"id"=>"4fa79086924ff84129000004"}
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4fa79086924ff84129000004" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+4237 130523 13:57:19 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4fa79086924ff84129000004"}
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+4237 130523 13:57:19 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+23587 130523 13:57:19 INFO: Username: swami8327@libero.it
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d836ce90a3e1fd7000006/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO: Completed 200 OK in 70ms (Views: 0.8ms)
+4237 130523 13:57:19 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d836ce90a3e1fd7000006"}
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+4237 130523 13:57:19 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+23587 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d836ce90a3e1fd7000006" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO:   Processing by RController#show as JSON
+23587 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d836ce90a3e1fd7000006"}
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9eef6ce90a3e7328000001/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO: Username: swami8327@libero.it
+4237 130523 13:57:19 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9eef6ce90a3e7328000001"}
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+23587 130523 13:57:19 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4237 130523 13:57:19 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9eef6ce90a3e7328000001" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+4237 130523 13:57:19 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9eef6ce90a3e7328000001"}
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+4237 130523 13:57:19 INFO: Completed 200 OK in 5ms (Views: 1.1ms)
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d8377e90a3e1fe800001a/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+4237 130523 13:57:19 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d8377e90a3e1fe800001a"}
+23587 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d8377e90a3e1fe800001a" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+23587 130523 13:57:19 INFO:   Processing by RController#show as JSON
+23587 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d8377e90a3e1fe800001a"}
+23587 130523 13:57:19 INFO: Username: swami8327@libero.it
+23587 130523 13:57:19 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4237 130523 13:57:19 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9eef72e90a3e7328000002/relations_to" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+4237 130523 13:57:19 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9eef72e90a3e7328000002"}
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+4237 130523 13:57:19 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9eef72e90a3e7328000002" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+4237 130523 13:57:19 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9eef72e90a3e7328000002"}
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+4237 130523 13:57:19 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d8627e90a3e21dd000001/relations_from" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+4237 130523 13:57:19 INFO:   Processing by RController#relations_from as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d8627e90a3e21dd000001"}
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+23578 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d864de90a3e21dd000003/relations_from" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d8627e90a3e21dd000001" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO:   Processing by RController#show as JSON
+23587 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d8627e90a3e21dd000001"}
+23587 130523 13:57:19 INFO: Username: swami8327@libero.it
+23587 130523 13:57:19 INFO: Completed 200 OK in 19ms (Views: 0.3ms)
+23578 130523 13:57:19 INFO:   Processing by RController#relations_from as JSON
+23578 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d864de90a3e21dd000003"}
+23587 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d864de90a3e21dd000003" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23578 130523 13:57:19 INFO: Username: swami8327@libero.it
+23587 130523 13:57:19 INFO:   Processing by RController#show as JSON
+23587 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d864de90a3e21dd000003"}
+23587 130523 13:57:19 INFO: Username: swami8327@libero.it
+4237 130523 13:57:19 INFO: Completed 200 OK in 140ms (Views: 1.2ms)
+23578 130523 13:57:19 INFO: Completed 200 OK in 12ms (Views: 0.8ms)
+4237 130523 13:57:19 INFO: 
+
+Started GET "/r/4f9d8658e90a3e21dd000005/relations_from" for 195.65.3.246 at 2013-05-23 13:57:19 +0000
+23587 130523 13:57:19 INFO: Completed 200 OK in 10ms (Views: 0.3ms)
+4237 130523 13:57:19 INFO:   Processing by RController#relations_from as JSON
+4237 130523 13:57:19 INFO:   Parameters: {"id"=>"4f9d8658e90a3e21dd000005"}
+4237 130523 13:57:19 INFO: Username: swami8327@libero.it
+4237 130523 13:57:19 INFO: Completed 200 OK in 15ms (Views: 0.3ms)
+23606 130523 13:57:20 INFO:   Processing by RController#relations_to as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8377e90a3e1fe8000019"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 31ms (Views: 8.5ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8658e90a3e21dd000005" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8658e90a3e21dd000005"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 4ms (Views: 0.5ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d86ffe90a3e21dd00000b/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8700e90a3e21dd00000d/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+23587 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8700e90a3e21dd00000d" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8700e90a3e21dd00000d"}
+23587 130523 13:57:20 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+23587 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8700e90a3e21dd00000d"}
+23587 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d86ffe90a3e21dd00000b"}
+23587 130523 13:57:20 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: Completed 200 OK in 9ms (Views: 0.4ms)
+23615 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d86ffe90a3e21dd00000b" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO: Completed 200 OK in 10ms (Views: 0.4ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8705e90a3e21d3000003/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8705e90a3e21d3000003"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 10ms (Views: 0.8ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8705e90a3e21d3000003" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8705e90a3e21d3000003"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d870be90a3e21dd00000f/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d870be90a3e21dd00000f"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d870be90a3e21dd00000f" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d870be90a3e21dd00000f"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8713e90a3e21d3000005/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8713e90a3e21d3000005" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8713e90a3e21d3000005"}
+4237 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8713e90a3e21d3000005"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+4237 130523 13:57:20 INFO: Completed 200 OK in 11ms (Views: 0.4ms)
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d872fe90a3e21dd000011/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d872fe90a3e21dd000011"}
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d872fe90a3e21dd000011" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d872fe90a3e21dd000011"}
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8732e90a3e21dd000013/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+23606 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8732e90a3e21dd000013"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8732e90a3e21dd000013" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d873ae90a3e2236000001/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8732e90a3e21dd000013"}
+4237 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d873ae90a3e2236000001"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+4237 130523 13:57:20 INFO: Completed 200 OK in 9ms (Views: 0.4ms)
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d873ae90a3e2236000001" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d873ae90a3e2236000001"}
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d873de90a3e21dd000015/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d873de90a3e21dd000015"}
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: Completed 200 OK in 7ms (Views: 0.9ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d873de90a3e21dd000015" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d873de90a3e21dd000015"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d836ce90a3e1fd7000005/relations_to" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#relations_to as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d836ce90a3e1fd7000005"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d874ee90a3e2241000001/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d874ee90a3e2241000001"}
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+23606 130523 13:57:20 INFO: Completed 200 OK in 16ms (Views: 1.1ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d874ee90a3e2241000001" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d874ee90a3e2241000001"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8754e90a3e2241000003/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8754e90a3e2241000003"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8754e90a3e2241000003" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8754e90a3e2241000003"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d864de90a3e21dd000003" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d864de90a3e21dd000003"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8627e90a3e21dd000001/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8627e90a3e21dd000001"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8658e90a3e21dd000005/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8658e90a3e21dd000005"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8627e90a3e21dd000002/relations_to" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8627e90a3e21dd000002"}
+23606 130523 13:57:20 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d864de90a3e21dd000003/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8627e90a3e21dd000001" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8627e90a3e21dd000001"}
+23606 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d864de90a3e21dd000003"}
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+23606 130523 13:57:20 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8658e90a3e21dd000006/relations_to" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8658e90a3e21dd000006"}
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+23615 130523 13:57:20 INFO:   Processing by RController#show as JSON
+23615 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d86ffe90a3e21dd00000b"}
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d864de90a3e21dd000004/relations_to" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d864de90a3e21dd000004"}
+23615 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8377e90a3e1fe8000019/relations_to" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8377e90a3e1fe8000019"}
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+23615 130523 13:57:20 INFO: Completed 200 OK in 23ms (Views: 8.7ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8761e90a3e21dd000017/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8761e90a3e21dd000017"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8761e90a3e21dd000017" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8761e90a3e21dd000017"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8765e90a3e21dd000019/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8765e90a3e21dd000019"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4237 130523 13:57:20 INFO: Completed 200 OK in 73ms (Views: 1.1ms)
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8765e90a3e21dd000019" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8765e90a3e21dd000019"}
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8658e90a3e21dd000005" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8658e90a3e21dd000005"}
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8700e90a3e21dd00000d" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8700e90a3e21dd00000d"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+23606 130523 13:57:20 INFO: Completed 200 OK in 3ms (Views: 0.4ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8700e90a3e21dd00000d/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8700e90a3e21dd00000d"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d86ffe90a3e21dd00000b/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d86ffe90a3e21dd00000b"}
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8701e90a3e21dd00000e/relations_to" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8701e90a3e21dd00000e"}
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d86ffe90a3e21dd00000c/relations_to" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO:   Processing by RController#relations_to as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d86ffe90a3e21dd00000c"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: Completed 200 OK in 5ms (Views: 0.2ms)
+23615 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8705e90a3e21d3000003/relations_from" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+23615 130523 13:57:20 INFO:   Processing by RController#relations_from as JSON
+23615 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8705e90a3e21d3000003"}
+23615 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/4f9d8705e90a3e21d3000004/relations_to" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#relations_to as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"4f9d8705e90a3e21d3000004"}
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+4237 130523 13:57:20 INFO: 
+
+Started GET "/r/4fa78ec9924ff84129000001/relations_to" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23615 130523 13:57:20 INFO: Completed 200 OK in 12ms (Views: 1.2ms)
+4237 130523 13:57:20 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:20 INFO:   Parameters: {"id"=>"4fa78ec9924ff84129000001"}
+4237 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+23606 130523 13:57:20 INFO: 
+
+Started GET "/r/516e45e8da300c6650000003/relations_to" for 195.65.3.246 at 2013-05-23 13:57:20 +0000
+23606 130523 13:57:20 INFO:   Processing by RController#relations_to as JSON
+23606 130523 13:57:20 INFO:   Parameters: {"id"=>"516e45e8da300c6650000003"}
+4237 130523 13:57:20 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+23606 130523 13:57:20 INFO: Username: swami8327@libero.it
+23606 130523 13:57:20 INFO: Completed 200 OK in 9ms (Views: 0.5ms)
+23606 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8705e90a3e21d3000003" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23606 130523 13:57:21 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8705e90a3e21d3000003"}
+4237 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d870be90a3e21dd00000f/relations_from" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23606 130523 13:57:21 INFO: Username: swami8327@libero.it
+4237 130523 13:57:21 INFO:   Processing by RController#relations_from as JSON
+4237 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d870be90a3e21dd00000f"}
+23615 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d870be90a3e21dd000010/relations_to" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+4237 130523 13:57:21 INFO: Username: swami8327@libero.it
+23606 130523 13:57:21 INFO: Completed 200 OK in 5ms (Views: 0.4ms)
+23615 130523 13:57:21 INFO:   Processing by RController#relations_to as JSON
+23615 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d870be90a3e21dd000010"}
+23615 130523 13:57:21 INFO: Username: swami8327@libero.it
+4237 130523 13:57:21 INFO: Completed 200 OK in 9ms (Views: 0.4ms)
+23615 130523 13:57:21 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+23615 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d870be90a3e21dd00000f" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+4237 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8713e90a3e21d3000005" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+4237 130523 13:57:21 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8713e90a3e21d3000005/relations_from" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+4237 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8713e90a3e21d3000005"}
+23606 130523 13:57:21 INFO:   Processing by RController#relations_from as JSON
+4237 130523 13:57:21 INFO: Username: swami8327@libero.it
+23606 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8713e90a3e21d3000005"}
+23615 130523 13:57:21 INFO:   Processing by RController#show as JSON
+23615 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d870be90a3e21dd00000f"}
+23606 130523 13:57:21 INFO: Username: swami8327@libero.it
+23615 130523 13:57:21 INFO: Username: swami8327@libero.it
+4237 130523 13:57:21 INFO: Completed 200 OK in 5ms (Views: 1.2ms)
+23615 130523 13:57:21 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+23606 130523 13:57:21 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+23615 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8713e90a3e21d3000006/relations_to" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23615 130523 13:57:21 INFO:   Processing by RController#relations_to as JSON
+23615 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8713e90a3e21d3000006"}
+23615 130523 13:57:21 INFO: Username: swami8327@libero.it
+23606 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d872fe90a3e21dd000011/relations_from" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23606 130523 13:57:21 INFO:   Processing by RController#relations_from as JSON
+23606 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d872fe90a3e21dd000011"}
+23615 130523 13:57:21 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+23606 130523 13:57:21 INFO: Username: swami8327@libero.it
+23606 130523 13:57:21 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+23606 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d872fe90a3e21dd000012/relations_to" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23606 130523 13:57:21 INFO:   Processing by RController#relations_to as JSON
+23606 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d872fe90a3e21dd000012"}
+23606 130523 13:57:21 INFO: Username: swami8327@libero.it
+23615 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d872fe90a3e21dd000011" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23615 130523 13:57:21 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8732e90a3e21dd000013/relations_from" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23615 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d872fe90a3e21dd000011"}
+23606 130523 13:57:21 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4237 130523 13:57:21 INFO:   Processing by RController#relations_from as JSON
+4237 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8732e90a3e21dd000013"}
+23615 130523 13:57:21 INFO: Username: swami8327@libero.it
+4237 130523 13:57:21 INFO: Username: swami8327@libero.it
+23615 130523 13:57:21 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4237 130523 13:57:21 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+4237 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8732e90a3e21dd000014/relations_to" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23615 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8732e90a3e21dd000013" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+4237 130523 13:57:21 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8732e90a3e21dd000014"}
+23615 130523 13:57:21 INFO:   Processing by RController#show as JSON
+23615 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8732e90a3e21dd000013"}
+4237 130523 13:57:21 INFO: Username: swami8327@libero.it
+23615 130523 13:57:21 INFO: Username: swami8327@libero.it
+4237 130523 13:57:21 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+23615 130523 13:57:21 INFO: Completed 200 OK in 7ms (Views: 0.5ms)
+23615 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d873ae90a3e2236000001/relations_from" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23615 130523 13:57:21 INFO:   Processing by RController#relations_from as JSON
+23615 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d873ae90a3e2236000001"}
+23615 130523 13:57:21 INFO: Username: swami8327@libero.it
+4237 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d873ae90a3e2236000002/relations_to" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+4237 130523 13:57:21 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d873ae90a3e2236000002"}
+4237 130523 13:57:21 INFO: Username: swami8327@libero.it
+23606 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d873ae90a3e2236000001" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23606 130523 13:57:21 INFO:   Processing by RController#show as JSON
+23615 130523 13:57:21 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+23606 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d873ae90a3e2236000001"}
+23606 130523 13:57:21 INFO: Username: swami8327@libero.it
+4237 130523 13:57:21 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+23606 130523 13:57:21 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+23606 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d873de90a3e21dd000015/relations_from" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23606 130523 13:57:21 INFO:   Processing by RController#relations_from as JSON
+23606 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d873de90a3e21dd000015"}
+23606 130523 13:57:21 INFO: Username: swami8327@libero.it
+23606 130523 13:57:21 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+23606 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d873de90a3e21dd000015" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23606 130523 13:57:21 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d873de90a3e21dd000015"}
+23606 130523 13:57:21 INFO: Username: swami8327@libero.it
+23606 130523 13:57:21 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+23606 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d873de90a3e21dd000016/relations_to" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23606 130523 13:57:21 INFO:   Processing by RController#relations_to as JSON
+23606 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d873de90a3e21dd000016"}
+4237 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d874ee90a3e2241000001/relations_from" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+4237 130523 13:57:21 INFO:   Processing by RController#relations_from as JSON
+23606 130523 13:57:21 INFO: Username: swami8327@libero.it
+4237 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d874ee90a3e2241000001"}
+23615 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d874ee90a3e2241000002/relations_to" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+4237 130523 13:57:21 INFO: Username: swami8327@libero.it
+23615 130523 13:57:21 INFO:   Processing by RController#relations_to as JSON
+23615 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d874ee90a3e2241000002"}
+23615 130523 13:57:21 INFO: Username: swami8327@libero.it
+23606 130523 13:57:21 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+4237 130523 13:57:21 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+23615 130523 13:57:21 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+4237 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8754e90a3e2241000003/relations_from" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23615 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d874ee90a3e2241000001" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23606 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8754e90a3e2241000004/relations_to" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+4237 130523 13:57:21 INFO:   Processing by RController#relations_from as JSON
+4237 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8754e90a3e2241000003"}
+23606 130523 13:57:21 INFO:   Processing by RController#relations_to as JSON
+23615 130523 13:57:21 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8754e90a3e2241000004"}
+23615 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d874ee90a3e2241000001"}
+4237 130523 13:57:21 INFO: Username: swami8327@libero.it
+23606 130523 13:57:21 INFO: Username: swami8327@libero.it
+23615 130523 13:57:21 INFO: Username: swami8327@libero.it
+23615 130523 13:57:21 INFO: Completed 200 OK in 3ms (Views: 0.4ms)
+23606 130523 13:57:21 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+4237 130523 13:57:21 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4237 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8754e90a3e2241000003" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+4237 130523 13:57:21 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8754e90a3e2241000003"}
+4237 130523 13:57:21 INFO: Username: swami8327@libero.it
+4237 130523 13:57:21 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4237 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d86ffe90a3e21dd00000b" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23606 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d864de90a3e21dd000004/relations_to" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23615 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8658e90a3e21dd000006/relations_to" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+4237 130523 13:57:21 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d86ffe90a3e21dd00000b"}
+23615 130523 13:57:21 INFO:   Processing by RController#relations_to as JSON
+23606 130523 13:57:21 INFO:   Processing by RController#relations_to as JSON
+23615 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8658e90a3e21dd000006"}
+23606 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d864de90a3e21dd000004"}
+23615 130523 13:57:21 INFO: Username: swami8327@libero.it
+4237 130523 13:57:21 INFO: Username: swami8327@libero.it
+23606 130523 13:57:21 INFO: Username: swami8327@libero.it
+23587 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8627e90a3e21dd000002/relations_to" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+4237 130523 13:57:21 INFO: Completed 200 OK in 7ms (Views: 0.5ms)
+23587 130523 13:57:21 INFO:   Processing by RController#relations_to as JSON
+23587 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8627e90a3e21dd000002"}
+23587 130523 13:57:21 INFO: Username: swami8327@libero.it
+23615 130523 13:57:21 INFO: Completed 200 OK in 9ms (Views: 0.2ms)
+23606 130523 13:57:21 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+23587 130523 13:57:21 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+23587 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8765e90a3e21dd00001a/relations_to" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23606 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8761e90a3e21dd000018/relations_to" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+4237 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8701e90a3e21dd00000e/relations_to" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23615 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8765e90a3e21dd000019" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23587 130523 13:57:21 INFO:   Processing by RController#relations_to as JSON
+23606 130523 13:57:21 INFO:   Processing by RController#relations_to as JSON
+23606 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8761e90a3e21dd000018"}
+23587 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8765e90a3e21dd00001a"}
+4237 130523 13:57:21 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8701e90a3e21dd00000e"}
+23615 130523 13:57:21 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:21 INFO: Username: swami8327@libero.it
+23587 130523 13:57:21 INFO: Username: swami8327@libero.it
+23615 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8765e90a3e21dd000019"}
+4237 130523 13:57:21 INFO: Username: swami8327@libero.it
+23615 130523 13:57:21 INFO: Username: swami8327@libero.it
+23615 130523 13:57:21 INFO: Completed 200 OK in 5ms (Views: 1.1ms)
+23615 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8761e90a3e21dd000017" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+4237 130523 13:57:21 INFO: Completed 200 OK in 13ms (Views: 0.2ms)
+23587 130523 13:57:21 INFO: Completed 200 OK in 15ms (Views: 0.2ms)
+23615 130523 13:57:21 INFO:   Processing by RController#show as JSON
+23615 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8761e90a3e21dd000017"}
+23578 130523 13:57:21 INFO: 
+
+Started GET "/r/4f9d8765e90a3e21dd000019/relations_from" for 195.65.3.246 at 2013-05-23 13:57:21 +0000
+23615 130523 13:57:21 INFO: Username: swami8327@libero.it
+23606 130523 13:57:21 INFO: Completed 200 OK in 24ms (Views: 6.7ms)
+23615 130523 13:57:21 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+23578 130523 13:57:21 INFO:   Processing by RController#relations_from as JSON
+23578 130523 13:57:21 INFO:   Parameters: {"id"=>"4f9d8765e90a3e21dd000019"}
+23578 130523 13:57:21 INFO: Username: swami8327@libero.it
+23578 130523 13:57:21 INFO: Completed 200 OK in 11ms (Views: 0.6ms)
+23615 130523 13:57:22 INFO: 
+
+Started GET "/r/4f9d8705e90a3e21d3000004/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+23615 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+23578 130523 13:57:22 INFO: 
+
+Started GET "/r/4fa78ec9924ff84129000001/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+23615 130523 13:57:22 INFO:   Parameters: {"id"=>"4f9d8705e90a3e21d3000004"}
+23606 130523 13:57:22 INFO: 
+
+Started GET "/r/516e46a3da300c675a000003/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+23615 130523 13:57:22 INFO: Username: swami8327@libero.it
+4237 130523 13:57:22 INFO: 
+
+Started GET "/r/516e4e3fda300c6791000009/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+23606 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+23606 130523 13:57:22 INFO:   Parameters: {"id"=>"516e46a3da300c675a000003"}
+4237 130523 13:57:22 INFO:   Parameters: {"id"=>"516e4e3fda300c6791000009"}
+23587 130523 13:57:22 INFO: 
+
+Started GET "/r/516e45e8da300c6650000003/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+23615 130523 13:57:22 INFO: Completed 200 OK in 26ms (Views: 0.7ms)
+23578 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+23578 130523 13:57:22 INFO:   Parameters: {"id"=>"4fa78ec9924ff84129000001"}
+23606 130523 13:57:22 INFO: Username: swami8327@libero.it
+4237 130523 13:57:22 INFO: Username: swami8327@libero.it
+23587 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+23587 130523 13:57:22 INFO:   Parameters: {"id"=>"516e45e8da300c6650000003"}
+23606 130523 13:57:22 INFO: Completed 200 OK in 19ms (Views: 0.5ms)
+23578 130523 13:57:22 INFO: Username: swami8327@libero.it
+23578 130523 13:57:22 INFO: Completed 200 OK in 28ms (Views: 0.3ms)
+23587 130523 13:57:22 INFO: Username: swami8327@libero.it
+4237 130523 13:57:22 INFO: Completed 200 OK in 33ms (Views: 1.5ms)
+23587 130523 13:57:22 INFO: Completed 200 OK in 27ms (Views: 0.7ms)
+23624 130523 13:57:22 INFO: 
+
+Started GET "/r/4f9d86ffe90a3e21dd00000c/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+23587 130523 13:57:22 INFO: 
+
+Started GET "/r/4f9d870be90a3e21dd000010/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+23587 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+23587 130523 13:57:22 INFO:   Parameters: {"id"=>"4f9d870be90a3e21dd000010"}
+23587 130523 13:57:22 INFO: Username: swami8327@libero.it
+23587 130523 13:57:22 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+23587 130523 13:57:22 INFO: 
+
+Started GET "/r/4f9d8713e90a3e21d3000006/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+23587 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+23587 130523 13:57:22 INFO:   Parameters: {"id"=>"4f9d8713e90a3e21d3000006"}
+23587 130523 13:57:22 INFO: Username: swami8327@libero.it
+23587 130523 13:57:22 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+23587 130523 13:57:22 INFO: 
+
+Started GET "/r/4f9d872fe90a3e21dd000012/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+23587 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+23587 130523 13:57:22 INFO:   Parameters: {"id"=>"4f9d872fe90a3e21dd000012"}
+23587 130523 13:57:22 INFO: Username: swami8327@libero.it
+23587 130523 13:57:22 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+23587 130523 13:57:22 INFO: 
+
+Started GET "/r/4f9d8732e90a3e21dd000014/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+23587 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+23587 130523 13:57:22 INFO:   Parameters: {"id"=>"4f9d8732e90a3e21dd000014"}
+23587 130523 13:57:22 INFO: Username: swami8327@libero.it
+23587 130523 13:57:22 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+23587 130523 13:57:22 INFO: 
+
+Started GET "/r/4f9d873ae90a3e2236000002/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+23587 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+23587 130523 13:57:22 INFO:   Parameters: {"id"=>"4f9d873ae90a3e2236000002"}
+23587 130523 13:57:22 INFO: Username: swami8327@libero.it
+4237 130523 13:57:22 INFO: 
+
+Started GET "/r/4f9d873de90a3e21dd000016/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+4237 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:22 INFO:   Parameters: {"id"=>"4f9d873de90a3e21dd000016"}
+23587 130523 13:57:22 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+4237 130523 13:57:22 INFO: Username: swami8327@libero.it
+4237 130523 13:57:22 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4237 130523 13:57:22 INFO: 
+
+Started GET "/r/4f9d874ee90a3e2241000002/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+4237 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:22 INFO:   Parameters: {"id"=>"4f9d874ee90a3e2241000002"}
+4237 130523 13:57:22 INFO: Username: swami8327@libero.it
+4237 130523 13:57:22 INFO: Completed 200 OK in 5ms (Views: 0.2ms)
+4237 130523 13:57:22 INFO: 
+
+Started GET "/r/4f9d8754e90a3e2241000004/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+4237 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:22 INFO:   Parameters: {"id"=>"4f9d8754e90a3e2241000004"}
+4237 130523 13:57:22 INFO: Username: swami8327@libero.it
+23587 130523 13:57:22 INFO: 
+
+Started GET "/r/4f9d8761e90a3e21dd000018/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+4237 130523 13:57:22 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+23587 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+23587 130523 13:57:22 INFO:   Parameters: {"id"=>"4f9d8761e90a3e21dd000018"}
+23587 130523 13:57:22 INFO: Username: swami8327@libero.it
+23587 130523 13:57:22 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+23587 130523 13:57:22 INFO: 
+
+Started GET "/r/516e46a3da300c675a000003/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+23587 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+23587 130523 13:57:22 INFO:   Parameters: {"id"=>"516e46a3da300c675a000003"}
+23587 130523 13:57:22 INFO: Username: swami8327@libero.it
+4237 130523 13:57:22 INFO: 
+
+Started GET "/r/516d4176da300c2ae7000001" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+4237 130523 13:57:22 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:22 INFO:   Parameters: {"id"=>"516d4176da300c2ae7000001"}
+4237 130523 13:57:22 INFO: Username: swami8327@libero.it
+23587 130523 13:57:22 INFO: Completed 200 OK in 9ms (Views: 0.3ms)
+4237 130523 13:57:22 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4237 130523 13:57:22 INFO: 
+
+Started GET "/r/516e4e3fda300c6791000009/relations_to" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+4237 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+4237 130523 13:57:22 INFO:   Parameters: {"id"=>"516e4e3fda300c6791000009"}
+4237 130523 13:57:22 INFO: Username: swami8327@libero.it
+4237 130523 13:57:22 INFO: Completed 200 OK in 7ms (Views: 0.5ms)
+4237 130523 13:57:22 INFO: 
+
+Started GET "/r/516d4176da300c2ae7000001" for 195.65.3.246 at 2013-05-23 13:57:22 +0000
+4237 130523 13:57:22 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:22 INFO:   Parameters: {"id"=>"516d4176da300c2ae7000001"}
+4237 130523 13:57:22 INFO: Username: swami8327@libero.it
+4237 130523 13:57:22 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+23624 130523 13:57:22 INFO:   Processing by RController#relations_to as JSON
+23624 130523 13:57:22 INFO:   Parameters: {"id"=>"4f9d86ffe90a3e21dd00000c"}
+23624 130523 13:57:22 INFO: Username: swami8327@libero.it
+23624 130523 13:57:22 INFO: Completed 200 OK in 16ms (Views: 4.7ms)
+23624 130523 13:57:29 INFO: 
+
+Started GET "/projects" for 195.65.3.246 at 2013-05-23 13:57:29 +0000
+23624 130523 13:57:29 INFO:   Processing by ProjectsController#index as JSON
+23624 130523 13:57:29 INFO: Username: swami8327@libero.it
+23624 130523 13:57:29 INFO: Completed 200 OK in 817ms (Views: 6.0ms)
+23624 130523 13:57:35 INFO: 
+
+Started GET "/r/5166ccf1da300c1e2900006f/relations_from" for 195.65.3.246 at 2013-05-23 13:57:35 +0000
+23624 130523 13:57:35 INFO:   Processing by RController#relations_from as JSON
+23624 130523 13:57:35 INFO:   Parameters: {"id"=>"5166ccf1da300c1e2900006f"}
+23624 130523 13:57:35 INFO: Username: swami8327@libero.it
+23624 130523 13:57:35 INFO: Completed 200 OK in 62ms (Views: 7.7ms)
+23624 130523 13:57:38 INFO: 
+
+Started GET "/r/4fca072df60f944a91000001/relations_from" for 195.65.3.246 at 2013-05-23 13:57:38 +0000
+4237 130523 13:57:38 INFO: 
+
+Started GET "/r/4fca072df60f944a91000001" for 195.65.3.246 at 2013-05-23 13:57:38 +0000
+4237 130523 13:57:38 INFO:   Processing by RController#show as JSON
+4237 130523 13:57:38 INFO:   Parameters: {"id"=>"4fca072df60f944a91000001"}
+4237 130523 13:57:38 INFO: Username: swami8327@libero.it
+23624 130523 13:57:38 INFO:   Processing by RController#relations_from as JSON
+4237 130523 13:57:38 INFO: Completed 404 Not Found in 2ms
+4237 130523 13:57:38 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fca072df60f944a91000001.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+23624 130523 13:57:38 INFO:   Parameters: {"id"=>"4fca072df60f944a91000001"}
+23587 130523 13:57:38 INFO: 
+
+Started GET "/r/4fca072ff60f944a91000003/relations_from" for 195.65.3.246 at 2013-05-23 13:57:38 +0000
+23624 130523 13:57:38 INFO: Username: swami8327@libero.it
+23606 130523 13:57:38 INFO: 
+
+Started GET "/r/4fa074bde90a3e4a01000006/relations_from" for 195.65.3.246 at 2013-05-23 13:57:38 +0000
+23578 130523 13:57:38 INFO: 
+
+Started GET "/r/4fca072ff60f944a91000003" for 195.65.3.246 at 2013-05-23 13:57:38 +0000
+23587 130523 13:57:38 INFO:   Processing by RController#relations_from as JSON
+23587 130523 13:57:38 INFO:   Parameters: {"id"=>"4fca072ff60f944a91000003"}
+23587 130523 13:57:38 INFO: Username: swami8327@libero.it
+23606 130523 13:57:38 INFO:   Processing by RController#relations_from as JSON
+23606 130523 13:57:38 INFO:   Parameters: {"id"=>"4fa074bde90a3e4a01000006"}
+23606 130523 13:57:38 INFO: Username: swami8327@libero.it
+23578 130523 13:57:38 INFO:   Processing by RController#show as JSON
+23578 130523 13:57:38 INFO:   Parameters: {"id"=>"4fca072ff60f944a91000003"}
+23615 130523 13:57:38 INFO: 
+
+Started GET "/r/4fa074bde90a3e4a01000006" for 195.65.3.246 at 2013-05-23 13:57:38 +0000
+23578 130523 13:57:38 INFO: Username: swami8327@libero.it
+23615 130523 13:57:38 INFO:   Processing by RController#show as JSON
+23624 130523 13:57:38 INFO: Completed 404 Not Found in 118ms
+23587 130523 13:57:38 INFO: Completed 404 Not Found in 81ms
+23606 130523 13:57:38 INFO: Completed 404 Not Found in 72ms
+23578 130523 13:57:38 INFO: Completed 404 Not Found in 60ms
+23615 130523 13:57:38 INFO:   Parameters: {"id"=>"4fa074bde90a3e4a01000006"}
+23578 130523 13:57:38 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fca072ff60f944a91000003.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+23615 130523 13:57:38 INFO: Username: swami8327@libero.it
+23624 130523 13:57:38 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fca072df60f944a91000001.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+23587 130523 13:57:38 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fca072ff60f944a91000003.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+23615 130523 13:57:38 INFO: Completed 404 Not Found in 18ms
+23615 130523 13:57:38 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fa074bde90a3e4a01000006.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+23606 130523 13:57:38 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fa074bde90a3e4a01000006.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+23606 130523 13:57:38 INFO: 
+
+Started GET "/r/4fa074aee90a3e4a01000004/relations_from" for 195.65.3.246 at 2013-05-23 13:57:38 +0000
+23606 130523 13:57:38 INFO:   Processing by RController#relations_from as JSON
+23606 130523 13:57:38 INFO:   Parameters: {"id"=>"4fa074aee90a3e4a01000004"}
+23606 130523 13:57:38 INFO: Username: swami8327@libero.it
+23606 130523 13:57:38 INFO: Completed 404 Not Found in 2ms
+23606 130523 13:57:38 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fa074aee90a3e4a01000004.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+23606 130523 13:57:39 INFO: 
+
+Started GET "/r/4fa074aee90a3e4a01000004" for 195.65.3.246 at 2013-05-23 13:57:39 +0000
+23606 130523 13:57:39 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:39 INFO:   Parameters: {"id"=>"4fa074aee90a3e4a01000004"}
+23606 130523 13:57:39 INFO: Username: swami8327@libero.it
+23606 130523 13:57:39 INFO: Completed 404 Not Found in 2ms
+23606 130523 13:57:39 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fa074aee90a3e4a01000004.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+23606 130523 13:57:39 INFO: 
+
+Started GET "/r/4fca072df60f944a91000001" for 195.65.3.246 at 2013-05-23 13:57:39 +0000
+23606 130523 13:57:39 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:39 INFO:   Parameters: {"id"=>"4fca072df60f944a91000001"}
+23606 130523 13:57:39 INFO: Username: swami8327@libero.it
+23606 130523 13:57:39 INFO: Completed 404 Not Found in 2ms
+23606 130523 13:57:39 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fca072df60f944a91000001.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+23606 130523 13:57:39 INFO: 
+
+Started GET "/r/4fa074bde90a3e4a01000006" for 195.65.3.246 at 2013-05-23 13:57:39 +0000
+23606 130523 13:57:39 INFO:   Processing by RController#show as JSON
+23606 130523 13:57:39 INFO:   Parameters: {"id"=>"4fa074bde90a3e4a01000006"}
+23606 130523 13:57:39 INFO: Username: swami8327@libero.it
+23606 130523 13:57:39 INFO: Completed 404 Not Found in 2ms
+23606 130523 13:57:39 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fa074bde90a3e4a01000006.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+23606 130523 13:57:39 INFO: 
+
+Started GET "/r/4fca072df60f944a91000001/relations_from" for 195.65.3.246 at 2013-05-23 13:57:39 +0000
+23606 130523 13:57:39 INFO:   Processing by RController#relations_from as JSON
+23624 130523 13:57:39 INFO: 
+
+Started GET "/r/4fca072ff60f944a91000003/relations_from" for 195.65.3.246 at 2013-05-23 13:57:39 +0000
+23606 130523 13:57:39 INFO:   Parameters: {"id"=>"4fca072df60f944a91000001"}
+23615 130523 13:57:39 INFO: 
+
+Started GET "/r/4fa074aee90a3e4a01000004/relations_from" for 195.65.3.246 at 2013-05-23 13:57:39 +0000
+23587 130523 13:57:39 INFO: 
+
+Started GET "/r/4fca072ff60f944a91000003" for 195.65.3.246 at 2013-05-23 13:57:39 +0000
+23624 130523 13:57:39 INFO:   Processing by RController#relations_from as JSON
+23624 130523 13:57:39 INFO:   Parameters: {"id"=>"4fca072ff60f944a91000003"}
+23606 130523 13:57:39 INFO: Username: swami8327@libero.it
+23587 130523 13:57:39 INFO:   Processing by RController#show as JSON
+23587 130523 13:57:39 INFO:   Parameters: {"id"=>"4fca072ff60f944a91000003"}
+23624 130523 13:57:39 INFO: Username: swami8327@libero.it
+23606 130523 13:57:39 INFO: Completed 404 Not Found in 3ms
+23587 130523 13:57:39 INFO: Username: swami8327@libero.it
+23624 130523 13:57:39 INFO: Completed 404 Not Found in 2ms
+23615 130523 13:57:39 INFO:   Processing by RController#relations_from as JSON
+23587 130523 13:57:39 INFO: Completed 404 Not Found in 2ms
+23615 130523 13:57:39 INFO:   Parameters: {"id"=>"4fa074aee90a3e4a01000004"}
+23624 130523 13:57:39 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fca072ff60f944a91000003.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+23606 130523 13:57:39 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fca072df60f944a91000001.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+23615 130523 13:57:39 INFO: Username: swami8327@libero.it
+23587 130523 13:57:39 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fca072ff60f944a91000003.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+23615 130523 13:57:39 INFO: Completed 404 Not Found in 3ms
+23615 130523 13:57:39 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fa074aee90a3e4a01000004.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+23615 130523 13:57:39 INFO: 
+
+Started GET "/r/4fa074bde90a3e4a01000006/relations_from" for 195.65.3.246 at 2013-05-23 13:57:39 +0000
+23587 130523 13:57:39 INFO: 
+
+Started GET "/r/4fa074aee90a3e4a01000004" for 195.65.3.246 at 2013-05-23 13:57:39 +0000
+23615 130523 13:57:39 INFO:   Processing by RController#relations_from as JSON
+23615 130523 13:57:39 INFO:   Parameters: {"id"=>"4fa074bde90a3e4a01000006"}
+23587 130523 13:57:39 INFO:   Processing by RController#show as JSON
+23587 130523 13:57:39 INFO:   Parameters: {"id"=>"4fa074aee90a3e4a01000004"}
+23615 130523 13:57:39 INFO: Username: swami8327@libero.it
+23587 130523 13:57:39 INFO: Username: swami8327@libero.it
+23615 130523 13:57:39 INFO: Completed 404 Not Found in 2ms
+23587 130523 13:57:39 INFO: Completed 404 Not Found in 2ms
+23587 130523 13:57:39 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fa074aee90a3e4a01000004.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+23615 130523 13:57:39 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4fa074bde90a3e4a01000006.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+23615 130523 13:58:03 INFO: 
+
+Started GET "/projects" for 195.65.3.246 at 2013-05-23 13:58:03 +0000
+23615 130523 13:58:03 INFO:   Processing by ProjectsController#index as JSON
+23615 130523 13:58:03 INFO: Username: swami8327@libero.it
+23615 130523 13:58:04 INFO: Completed 200 OK in 841ms (Views: 6.3ms)

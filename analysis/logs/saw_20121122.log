@@ -1,0 +1,27 @@
+3353 121122 12:43:31 INFO: 
+
+Started GET "/" for 10.62.97.80 at 2012-11-22 12:43:31 +0000
+3353 121122 12:43:31 INFO:   Processing by WelcomeController#index as HTML
+3353 121122 12:43:31 INFO: Username: (none)
+3353 121122 12:43:31 INFO: Rendered welcome/index.html.erb within layouts/application (2.3ms)
+3353 121122 12:43:31 INFO: Completed 200 OK in 9ms (Views: 7.3ms)
+3353 121122 12:43:32 INFO: 
+
+Started GET "/scope/type/Decision" for 10.62.97.80 at 2012-11-22 12:43:32 +0000
+3353 121122 12:43:32 INFO:   Processing by ScopeController#type as JSON
+3353 121122 12:43:32 INFO:   Parameters: {"type_name"=>"Decision"}
+3353 121122 12:43:32 INFO: Username: (none)
+3353 121122 12:43:32 INFO: Completed 200 OK in 28ms (Views: 5.3ms)
+3353 121122 12:43:32 INFO: 
+
+Started GET "/t" for 10.62.97.80 at 2012-11-22 12:43:32 +0000
+3353 121122 12:43:32 INFO:   Processing by TController#index as JSON
+3353 121122 12:43:32 INFO: Username: (none)
+3353 121122 12:43:32 INFO: Completed   in 1ms
+3353 121122 12:43:32 INFO: 
+
+Started GET "/users/sign_in" for 10.62.97.80 at 2012-11-22 12:43:32 +0000
+3353 121122 12:43:32 INFO:   Processing by Devise::SessionsController#new as HTML
+3353 121122 12:43:32 INFO: Username: (none)
+3353 121122 12:43:32 INFO: Rendered devise/sessions/new.html.erb within layouts/application (2.8ms)
+3353 121122 12:43:32 INFO: Completed 200 OK in 8ms (Views: 5.6ms)

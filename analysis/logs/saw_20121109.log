@@ -1,0 +1,28 @@
+8107 121109 00:11:49 INFO: 
+
+Started GET "/" for 85.4.78.252 at 2012-11-09 00:11:49 +0000
+8107 121109 00:11:49 INFO:   Processing by WelcomeController#index as HTML
+8107 121109 00:11:49 INFO: Username: marcin.nowak@sonyx.net
+8107 121109 00:11:49 INFO: Rendered welcome/index.html.erb within layouts/application (0.7ms)
+8107 121109 00:11:49 INFO: Completed 200 OK in 4ms (Views: 1.4ms)
+8107 121109 00:11:54 INFO: 
+
+Started GET "/scope/type/Decision" for 85.4.78.252 at 2012-11-09 00:11:54 +0000
+8107 121109 00:11:54 INFO:   Processing by ScopeController#type as JSON
+8107 121109 00:11:54 INFO:   Parameters: {"type_name"=>"Decision"}
+8107 121109 00:11:54 INFO: Username: marcin.nowak@sonyx.net
+8107 121109 00:11:54 INFO: Completed 200 OK in 12ms (Views: 0.7ms)
+8107 121109 00:11:54 INFO: 
+
+Started GET "/t" for 85.4.78.252 at 2012-11-09 00:11:54 +0000
+8107 121109 00:11:54 INFO:   Processing by TController#index as JSON
+8107 121109 00:11:54 INFO: Username: marcin.nowak@sonyx.net
+8107 121109 00:11:54 INFO: Completed 200 OK in 514ms (Views: 408.3ms)
+8107 121109 12:59:37 INFO: 
+
+Started GET "/notify/4dc2647f798e1c64b6000010/Recommendation/focused" for 10.62.96.129 at 2012-11-09 12:59:37 +0000
+8107 121109 12:59:37 INFO:   Processing by NotifyController#notify as JSON
+8107 121109 12:59:37 INFO:   Parameters: {"id"=>"4dc2647f798e1c64b6000010", "attribute"=>"Recommendation", "event"=>"focused"}
+8107 121109 12:59:37 INFO: Username: pautasso@twitter
+8107 121109 12:59:37 INFO: Rendered text template (0.0ms)
+8107 121109 12:59:37 INFO: Completed 200 OK in 7ms (Views: 0.9ms)

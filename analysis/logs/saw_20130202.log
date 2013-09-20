@@ -1,0 +1,7 @@
+31186 130202 10:24:26 INFO: 
+
+Started GET "/" for 83.77.3.164 at 2013-02-02 10:24:26 +0000
+31186 130202 10:24:26 INFO:   Processing by WelcomeController#index as HTML
+31186 130202 10:24:26 INFO: Username: marcin@sonyx.net
+31186 130202 10:24:26 INFO: Rendered welcome/index.html.erb within layouts/application (3.5ms)
+31186 130202 10:24:26 INFO: Completed 200 OK in 14ms (Views: 10.1ms)

@@ -1,0 +1,940 @@
+4474 130428 12:52:50 INFO: 
+
+Started GET "/" for 46.127.124.9 at 2013-04-28 12:52:50 +0000
+4474 130428 12:52:50 INFO:   Processing by WelcomeController#index as HTML
+4474 130428 12:52:50 INFO: Username: (none)
+4474 130428 12:52:50 INFO: Rendered welcome/index.html.erb within layouts/application (0.8ms)
+4474 130428 12:52:50 INFO: Completed 200 OK in 3ms (Views: 1.8ms)
+4474 130428 12:52:51 INFO: 
+
+Started GET "/tags" for 46.127.124.9 at 2013-04-28 12:52:51 +0000
+4474 130428 12:52:51 INFO:   Processing by TagsController#index as JSON
+4474 130428 12:52:51 INFO: Username: (none)
+4474 130428 12:52:52 INFO: Completed 200 OK in 267ms (Views: 64.9ms)
+4474 130428 12:52:52 INFO: 
+
+Started GET "/scope/type/Decision" for 46.127.124.9 at 2013-04-28 12:52:52 +0000
+4474 130428 12:52:52 INFO:   Processing by ScopeController#type as JSON
+4474 130428 12:52:52 INFO:   Parameters: {"type_name"=>"Decision"}
+4474 130428 12:52:52 INFO: Username: (none)
+4474 130428 12:52:52 INFO: Completed 200 OK in 9ms (Views: 0.8ms)
+4474 130428 12:52:52 INFO: 
+
+Started GET "/updates/1366969572" for 46.127.124.9 at 2013-04-28 12:52:52 +0000
+4474 130428 12:52:52 INFO:   Processing by NotifyController#stamped as 
+4474 130428 12:52:52 INFO:   Parameters: {"stamp"=>"1366969572"}
+4474 130428 12:52:52 INFO: Username: (none)
+4474 130428 12:52:52 INFO: Completed 200 OK in 4ms (Views: 0.1ms)
+4474 130428 12:52:52 INFO: 
+
+Started GET "/t" for 46.127.124.9 at 2013-04-28 12:52:52 +0000
+4474 130428 12:52:52 INFO:   Processing by TController#index as JSON
+4474 130428 12:52:52 INFO: Username: (none)
+4474 130428 12:52:52 INFO: Completed   in 0ms
+4474 130428 12:52:52 INFO: 
+
+Started GET "/r/51765a68da300c1849000001/relations_from" for 46.127.124.9 at 2013-04-28 12:52:52 +0000
+4474 130428 12:52:52 INFO:   Processing by RController#relations_from as JSON
+4474 130428 12:52:52 INFO:   Parameters: {"id"=>"51765a68da300c1849000001"}
+4474 130428 12:52:52 INFO: Username: (none)
+4474 130428 12:52:52 INFO: Completed   in 1ms
+4474 130428 12:52:52 INFO: 
+
+Started GET "/t" for 46.127.124.9 at 2013-04-28 12:52:52 +0000
+4474 130428 12:52:52 INFO:   Processing by TController#index as JSON
+4474 130428 12:52:52 INFO: Username: (none)
+4474 130428 12:52:52 INFO: Completed   in 1ms
+4474 130428 12:52:54 INFO: 
+
+Started GET "/r/51765a68da300c1849000001/relations_from" for 46.127.124.9 at 2013-04-28 12:52:54 +0000
+4474 130428 12:52:54 INFO:   Processing by RController#relations_from as JSON
+4474 130428 12:52:54 INFO:   Parameters: {"id"=>"51765a68da300c1849000001"}
+4474 130428 12:52:54 INFO: Username: (none)
+4474 130428 12:52:54 INFO: Completed   in 1ms
+4474 130428 12:52:56 INFO: 
+
+Started GET "/users/sign_in" for 46.127.124.9 at 2013-04-28 12:52:56 +0000
+4474 130428 12:52:56 INFO:   Processing by Devise::SessionsController#new as HTML
+4474 130428 12:52:56 INFO: Username: (none)
+4474 130428 12:52:56 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.7ms)
+4474 130428 12:52:56 INFO: Completed 200 OK in 4ms (Views: 2.7ms)
+945 130428 12:52:58 INFO: 
+
+Started GET "/auth/twitter" for 46.127.124.9 at 2013-04-28 12:52:58 +0000
+945 130428 12:53:02 INFO: 
+
+Started GET "/auth/twitter/callback?oauth_token=fzSfn6uiTNVqPSXjCw6w9LmXK1K9w7s1zDMeeNnU8eA&oauth_verifier=LRaWWjMPTVMGHORGT8HNCsy0VVqI6kHIlSpKyraE" for 46.127.124.9 at 2013-04-28 12:53:02 +0000
+945 130428 12:53:04 INFO:   Processing by AuthenticationsController#create as HTML
+945 130428 12:53:04 INFO:   Parameters: {"oauth_token"=>"fzSfn6uiTNVqPSXjCw6w9LmXK1K9w7s1zDMeeNnU8eA", "oauth_verifier"=>"LRaWWjMPTVMGHORGT8HNCsy0VVqI6kHIlSpKyraE", "provider"=>"twitter"}
+945 130428 12:53:04 INFO: Username: (none)
+945 130428 12:53:04 INFO: Redirected to http://exercises.saw.sonyx.net/welcome/logged_in
+945 130428 12:53:04 INFO: Completed 302 Found in 17ms
+945 130428 12:53:04 INFO: 
+
+Started GET "/welcome/logged_in" for 46.127.124.9 at 2013-04-28 12:53:04 +0000
+945 130428 12:53:04 INFO:   Processing by WelcomeController#logged_in as HTML
+945 130428 12:53:04 INFO: Username: LorenzoBaracchi@twitter
+945 130428 12:53:04 INFO: Rendered welcome/logged_in.html.erb within layouts/application (4.5ms)
+945 130428 12:53:04 INFO: Completed 200 OK in 15ms (Views: 12.6ms)
+945 130428 12:53:05 INFO: 
+
+Started GET "/" for 46.127.124.9 at 2013-04-28 12:53:05 +0000
+945 130428 12:53:05 INFO:   Processing by WelcomeController#index as HTML
+945 130428 12:53:05 INFO: Username: LorenzoBaracchi@twitter
+945 130428 12:53:05 INFO: Rendered welcome/index.html.erb within layouts/application (0.9ms)
+945 130428 12:53:05 INFO: Completed 200 OK in 4ms (Views: 2.8ms)
+945 130428 12:53:05 INFO: 
+
+Started GET "/updates/1366969572" for 46.127.124.9 at 2013-04-28 12:53:05 +0000
+4474 130428 12:53:05 INFO: 
+
+Started GET "/scope/type/Decision" for 46.127.124.9 at 2013-04-28 12:53:05 +0000
+945 130428 12:53:05 INFO:   Processing by NotifyController#stamped as 
+945 130428 12:53:05 INFO:   Parameters: {"stamp"=>"1366969572"}
+4474 130428 12:53:05 INFO:   Processing by ScopeController#type as JSON
+4474 130428 12:53:05 INFO:   Parameters: {"type_name"=>"Decision"}
+945 130428 12:53:05 INFO: Username: LorenzoBaracchi@twitter
+4474 130428 12:53:05 INFO: Username: LorenzoBaracchi@twitter
+4474 130428 12:53:05 INFO: Completed 200 OK in 15ms (Views: 1.0ms)
+4474 130428 12:53:05 INFO: 
+
+Started GET "/t" for 46.127.124.9 at 2013-04-28 12:53:05 +0000
+4474 130428 12:53:05 INFO:   Processing by TController#index as JSON
+4474 130428 12:53:05 INFO: Username: LorenzoBaracchi@twitter
+945 130428 12:53:05 INFO: Completed 200 OK in 27ms (Views: 13.1ms)
+945 130428 12:53:05 INFO: 
+
+Started GET "/tags" for 46.127.124.9 at 2013-04-28 12:53:05 +0000
+945 130428 12:53:05 INFO:   Processing by TagsController#index as JSON
+945 130428 12:53:05 INFO: Username: LorenzoBaracchi@twitter
+963 130428 12:53:06 INFO: 
+
+Started GET "/r/51765a68da300c1849000001/relations_from" for 46.127.124.9 at 2013-04-28 12:53:06 +0000
+4474 130428 12:53:06 INFO: Completed 200 OK in 144ms (Views: 5.1ms)
+4474 130428 12:53:06 INFO: 
+
+Started GET "/t" for 46.127.124.9 at 2013-04-28 12:53:06 +0000
+4474 130428 12:53:06 INFO:   Processing by TController#index as JSON
+4474 130428 12:53:06 INFO: Username: LorenzoBaracchi@twitter
+945 130428 12:53:06 INFO: Completed 200 OK in 291ms (Views: 88.9ms)
+4474 130428 12:53:06 INFO: Completed 200 OK in 117ms (Views: 4.3ms)
+963 130428 12:53:06 INFO:   Processing by RController#relations_from as JSON
+963 130428 12:53:06 INFO:   Parameters: {"id"=>"51765a68da300c1849000001"}
+963 130428 12:53:06 INFO: Username: LorenzoBaracchi@twitter
+963 130428 12:53:06 INFO: Completed 200 OK in 56ms (Views: 10.2ms)
+963 130428 12:53:08 INFO: 
+
+Started GET "/r/51765a68da300c1849000001/relations_from" for 46.127.124.9 at 2013-04-28 12:53:08 +0000
+963 130428 12:53:08 INFO:   Processing by RController#relations_from as JSON
+963 130428 12:53:08 INFO:   Parameters: {"id"=>"51765a68da300c1849000001"}
+963 130428 12:53:08 INFO: Username: LorenzoBaracchi@twitter
+963 130428 12:53:08 INFO: Completed 200 OK in 37ms (Views: 4.8ms)
+963 130428 12:53:09 INFO: 
+
+Started GET "/r/4faa1da8924ff84f2600000e/relations_from" for 46.127.124.9 at 2013-04-28 12:53:09 +0000
+4474 130428 12:53:09 INFO: 
+
+Started GET "/r/517a4b7ada300c6c61000006/relations_from" for 46.127.124.9 at 2013-04-28 12:53:09 +0000
+963 130428 12:53:09 INFO:   Processing by RController#relations_from as JSON
+963 130428 12:53:09 INFO:   Parameters: {"id"=>"4faa1da8924ff84f2600000e"}
+963 130428 12:53:09 INFO: Username: LorenzoBaracchi@twitter
+4474 130428 12:53:09 INFO:   Processing by RController#relations_from as JSON
+4474 130428 12:53:09 INFO:   Parameters: {"id"=>"517a4b7ada300c6c61000006"}
+4474 130428 12:53:09 INFO: Username: LorenzoBaracchi@twitter
+963 130428 12:53:09 INFO: Completed 200 OK in 9ms (Views: 0.6ms)
+4474 130428 12:53:09 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+4474 130428 12:53:09 INFO: 
+
+Started GET "/r/517a4b7ada300c6c61000006/relations_from" for 46.127.124.9 at 2013-04-28 12:53:09 +0000
+963 130428 12:53:09 INFO: 
+
+Started GET "/r/4faa1da8924ff84f2600000e/relations_from" for 46.127.124.9 at 2013-04-28 12:53:09 +0000
+4474 130428 12:53:09 INFO:   Processing by RController#relations_from as JSON
+963 130428 12:53:09 INFO:   Processing by RController#relations_from as JSON
+963 130428 12:53:09 INFO:   Parameters: {"id"=>"4faa1da8924ff84f2600000e"}
+4474 130428 12:53:09 INFO:   Parameters: {"id"=>"517a4b7ada300c6c61000006"}
+963 130428 12:53:09 INFO: Username: LorenzoBaracchi@twitter
+4474 130428 12:53:09 INFO: Username: LorenzoBaracchi@twitter
+4474 130428 12:53:09 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+963 130428 12:53:09 INFO: Completed 200 OK in 9ms (Views: 0.8ms)
+963 130428 13:00:07 INFO: 
+
+Started GET "/undefined/projects/51765a68da300c1849000001/report2" for 46.127.124.9 at 2013-04-28 13:00:07 +0000
+963 130428 13:00:07 FATAL: 
+ActionController::RoutingError (No route matches "/undefined/projects/51765a68da300c1849000001/report2"):
+  
+
+
+963 130428 21:51:24 INFO: 
+
+Started GET "/" for 46.127.124.9 at 2013-04-28 21:51:24 +0000
+963 130428 21:51:24 INFO:   Processing by WelcomeController#index as HTML
+963 130428 21:51:24 INFO: Username: (none)
+963 130428 21:51:24 INFO: Rendered welcome/index.html.erb within layouts/application (3.7ms)
+963 130428 21:51:24 INFO: Completed 200 OK in 11ms (Views: 8.4ms)
+963 130428 21:51:27 INFO: 
+
+Started GET "/updates/1366365493" for 46.127.124.9 at 2013-04-28 21:51:27 +0000
+963 130428 21:51:27 INFO:   Processing by NotifyController#stamped as 
+963 130428 21:51:27 INFO:   Parameters: {"stamp"=>"1366365493"}
+963 130428 21:51:27 INFO: Username: (none)
+963 130428 21:51:27 INFO: Completed 200 OK in 56ms (Views: 10.7ms)
+963 130428 21:51:27 INFO: 
+
+Started GET "/t" for 46.127.124.9 at 2013-04-28 21:51:27 +0000
+963 130428 21:51:27 INFO:   Processing by TController#index as JSON
+963 130428 21:51:27 INFO: Username: (none)
+963 130428 21:51:27 INFO: Completed   in 1ms
+963 130428 21:51:27 INFO: 
+
+Started GET "/scope/type/Decision" for 46.127.124.9 at 2013-04-28 21:51:27 +0000
+963 130428 21:51:27 INFO:   Processing by ScopeController#type as JSON
+963 130428 21:51:27 INFO:   Parameters: {"type_name"=>"Decision"}
+963 130428 21:51:27 INFO: Username: (none)
+963 130428 21:51:27 INFO: Completed 200 OK in 12ms (Views: 1.8ms)
+963 130428 21:51:27 INFO: 
+
+Started GET "/tags" for 46.127.124.9 at 2013-04-28 21:51:27 +0000
+963 130428 21:51:27 INFO:   Processing by TagsController#index as JSON
+963 130428 21:51:27 INFO: Username: (none)
+963 130428 21:51:27 INFO: Completed 200 OK in 187ms (Views: 33.1ms)
+963 130428 21:51:27 INFO: 
+
+Started GET "/r/516fc98bda300c3b96000001/relations_from" for 46.127.124.9 at 2013-04-28 21:51:27 +0000
+963 130428 21:51:27 INFO:   Processing by RController#relations_from as JSON
+963 130428 21:51:27 INFO:   Parameters: {"id"=>"516fc98bda300c3b96000001"}
+963 130428 21:51:27 INFO: Username: (none)
+963 130428 21:51:27 INFO: Completed   in 1ms
+963 130428 21:51:29 INFO: 
+
+Started GET "/users/sign_in" for 46.127.124.9 at 2013-04-28 21:51:29 +0000
+963 130428 21:51:29 INFO:   Processing by Devise::SessionsController#new as HTML
+963 130428 21:51:29 INFO: Username: (none)
+963 130428 21:51:29 INFO: Rendered devise/sessions/new.html.erb within layouts/application (2.3ms)
+963 130428 21:51:29 INFO: Completed 200 OK in 9ms (Views: 5.6ms)
+963 130428 21:51:31 INFO: 
+
+Started GET "/auth/twitter" for 46.127.124.9 at 2013-04-28 21:51:31 +0000
+7581 130428 21:51:36 INFO: 
+
+Started GET "/auth/twitter/callback?oauth_token=TKLotkW3o1HGZpk5hyLBTRFH5iZy6YH4UCE5fkxI&oauth_verifier=JzRfwEJ82MH7eoD60h2p1vCHcDoUXDQT2Mloim8q8" for 46.127.124.9 at 2013-04-28 21:51:36 +0000
+7581 130428 21:51:38 INFO:   Processing by AuthenticationsController#create as HTML
+7581 130428 21:51:38 INFO:   Parameters: {"oauth_token"=>"TKLotkW3o1HGZpk5hyLBTRFH5iZy6YH4UCE5fkxI", "oauth_verifier"=>"JzRfwEJ82MH7eoD60h2p1vCHcDoUXDQT2Mloim8q8", "provider"=>"twitter"}
+7581 130428 21:51:38 INFO: Username: (none)
+7581 130428 21:51:38 INFO: Redirected to http://exercises.saw.sonyx.net/welcome/logged_in
+7581 130428 21:51:38 INFO: Completed 302 Found in 19ms
+7581 130428 21:51:38 INFO: 
+
+Started GET "/welcome/logged_in" for 46.127.124.9 at 2013-04-28 21:51:38 +0000
+7581 130428 21:51:38 INFO:   Processing by WelcomeController#logged_in as HTML
+7581 130428 21:51:38 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:38 INFO: Rendered welcome/logged_in.html.erb within layouts/application (3.8ms)
+7581 130428 21:51:38 INFO: Completed 200 OK in 14ms (Views: 12.1ms)
+7581 130428 21:51:38 INFO: 
+
+Started GET "/" for 46.127.124.9 at 2013-04-28 21:51:38 +0000
+7581 130428 21:51:38 INFO:   Processing by WelcomeController#index as HTML
+7581 130428 21:51:38 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:38 INFO: Rendered welcome/index.html.erb within layouts/application (0.9ms)
+7581 130428 21:51:38 INFO: Completed 200 OK in 4ms (Views: 2.5ms)
+7581 130428 21:51:38 INFO: 
+
+Started GET "/updates/1366365493" for 46.127.124.9 at 2013-04-28 21:51:38 +0000
+7581 130428 21:51:38 INFO:   Processing by NotifyController#stamped as 
+7581 130428 21:51:38 INFO:   Parameters: {"stamp"=>"1366365493"}
+7581 130428 21:51:38 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:38 INFO: 
+
+Started GET "/scope/type/Decision" for 46.127.124.9 at 2013-04-28 21:51:38 +0000
+963 130428 21:51:38 INFO:   Processing by ScopeController#type as JSON
+963 130428 21:51:38 INFO:   Parameters: {"type_name"=>"Decision"}
+963 130428 21:51:38 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:38 INFO: Completed 200 OK in 25ms (Views: 0.8ms)
+963 130428 21:51:38 INFO: 
+
+Started GET "/t" for 46.127.124.9 at 2013-04-28 21:51:38 +0000
+963 130428 21:51:38 INFO:   Processing by TController#index as JSON
+963 130428 21:51:38 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:38 INFO: Completed 200 OK in 102ms (Views: 12.9ms)
+7581 130428 21:51:38 INFO: 
+
+Started GET "/r/516fc98bda300c3b96000001/relations_from" for 46.127.124.9 at 2013-04-28 21:51:38 +0000
+7581 130428 21:51:38 INFO:   Processing by RController#relations_from as JSON
+7581 130428 21:51:38 INFO:   Parameters: {"id"=>"516fc98bda300c3b96000001"}
+7581 130428 21:51:38 INFO: Username: LorenzoBaracchi@twitter
+7595 130428 21:51:38 INFO: 
+
+Started GET "/tags" for 46.127.124.9 at 2013-04-28 21:51:38 +0000
+7581 130428 21:51:38 INFO: Completed 200 OK in 62ms (Views: 9.9ms)
+963 130428 21:51:38 INFO: Completed 200 OK in 133ms (Views: 4.6ms)
+963 130428 21:51:39 INFO: 
+
+Started GET "/r/5171072cda300c7d14000001" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+963 130428 21:51:39 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:39 INFO: 
+
+Started GET "/r/51710996da300c7de1000001" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+963 130428 21:51:39 INFO:   Parameters: {"id"=>"5171072cda300c7d14000001"}
+963 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:39 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:39 INFO:   Parameters: {"id"=>"51710996da300c7de1000001"}
+963 130428 21:51:39 INFO: Completed 200 OK in 6ms (Views: 0.6ms)
+7581 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:39 INFO: Completed 200 OK in 10ms (Views: 0.5ms)
+7581 130428 21:51:39 INFO: 
+
+Started GET "/r/51710d35da300c7d14000009" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:39 INFO:   Parameters: {"id"=>"51710d35da300c7d14000009"}
+7581 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:39 INFO: 
+
+Started GET "/r/51710ef0da300c7f80000001" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO: Completed 200 OK in 5ms (Views: 0.5ms)
+7581 130428 21:51:39 INFO: 
+
+Started GET "/r/5171109ada300c7fd7000006" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:39 INFO:   Parameters: {"id"=>"5171109ada300c7fd7000006"}
+7581 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:39 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+963 130428 21:51:39 INFO:   Processing by RController#show as JSON
+963 130428 21:51:39 INFO:   Parameters: {"id"=>"51710ef0da300c7f80000001"}
+963 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:39 INFO: Completed 200 OK in 5ms (Views: 0.4ms)
+963 130428 21:51:39 INFO: 
+
+Started GET "/r/517107b0da300c7cf0000003/relations_from" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+963 130428 21:51:39 INFO:   Processing by RController#relations_from as JSON
+963 130428 21:51:39 INFO:   Parameters: {"id"=>"517107b0da300c7cf0000003"}
+963 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:39 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+963 130428 21:51:39 INFO: 
+
+Started GET "/r/517104f0da300c7bc8000003/relations_from" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO: 
+
+Started GET "/r/517104f0da300c7bc8000003" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+963 130428 21:51:39 INFO:   Processing by RController#relations_from as JSON
+7581 130428 21:51:39 INFO:   Processing by RController#show as JSON
+963 130428 21:51:39 INFO:   Parameters: {"id"=>"517104f0da300c7bc8000003"}
+7581 130428 21:51:39 INFO:   Parameters: {"id"=>"517104f0da300c7bc8000003"}
+963 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:39 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+7581 130428 21:51:39 INFO: 
+
+Started GET "/r/517104f7da300c7bd1000001/relations_from" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO:   Processing by RController#relations_from as JSON
+963 130428 21:51:39 INFO: Completed 200 OK in 12ms (Views: 0.4ms)
+7581 130428 21:51:39 INFO:   Parameters: {"id"=>"517104f7da300c7bd1000001"}
+7581 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:39 INFO: Completed 200 OK in 9ms (Views: 0.4ms)
+7581 130428 21:51:39 INFO: 
+
+Started GET "/r/517104f7da300c7bd1000001" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:39 INFO:   Parameters: {"id"=>"517104f7da300c7bd1000001"}
+7581 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:39 INFO: Completed 200 OK in 21ms (Views: 2.7ms)
+7581 130428 21:51:39 INFO: 
+
+Started GET "/r/5171081eda300c7e0d000001" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:39 INFO:   Parameters: {"id"=>"5171081eda300c7e0d000001"}
+7581 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:39 INFO: 
+
+Started GET "/r/5171081eda300c7e0d000001/relations_from" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO: Completed 200 OK in 8ms (Views: 0.7ms)
+7581 130428 21:51:39 INFO: 
+
+Started GET "/r/517107b0da300c7dae000001" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+963 130428 21:51:39 INFO:   Processing by RController#relations_from as JSON
+963 130428 21:51:39 INFO:   Parameters: {"id"=>"5171081eda300c7e0d000001"}
+7581 130428 21:51:39 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:39 INFO:   Parameters: {"id"=>"517107b0da300c7dae000001"}
+963 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:39 INFO: Completed 200 OK in 12ms (Views: 0.6ms)
+7581 130428 21:51:39 INFO: Completed 200 OK in 10ms (Views: 0.4ms)
+963 130428 21:51:39 INFO: 
+
+Started GET "/r/517109bfda300c7e75000001/relations_from" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO: 
+
+Started GET "/r/517109a8da300c7df6000001/relations_from" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+963 130428 21:51:39 INFO:   Processing by RController#relations_from as JSON
+7581 130428 21:51:39 INFO:   Processing by RController#relations_from as JSON
+963 130428 21:51:39 INFO:   Parameters: {"id"=>"517109bfda300c7e75000001"}
+7581 130428 21:51:39 INFO:   Parameters: {"id"=>"517109a8da300c7df6000001"}
+963 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:39 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+963 130428 21:51:39 INFO: 
+
+Started GET "/r/51710ad6da300c7e82000003/relations_from" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+963 130428 21:51:39 INFO:   Processing by RController#relations_from as JSON
+963 130428 21:51:39 INFO:   Parameters: {"id"=>"51710ad6da300c7e82000003"}
+7581 130428 21:51:39 INFO: Completed 200 OK in 18ms (Views: 2.0ms)
+963 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:39 INFO: Completed 200 OK in 10ms (Views: 0.4ms)
+7581 130428 21:51:39 INFO: 
+
+Started GET "/r/4faa1da8924ff84f2600000e/relations_from" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO:   Processing by RController#relations_from as JSON
+7581 130428 21:51:39 INFO:   Parameters: {"id"=>"4faa1da8924ff84f2600000e"}
+7581 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:39 INFO: Completed 200 OK in 14ms (Views: 0.6ms)
+7581 130428 21:51:39 INFO: 
+
+Started GET "/r/51710d65da300c7d1400000a" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:39 INFO:   Parameters: {"id"=>"51710d65da300c7d1400000a"}
+7581 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:39 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+7581 130428 21:51:39 INFO: 
+
+Started GET "/r/51710f0bda300c7fbb000001" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:39 INFO:   Parameters: {"id"=>"51710f0bda300c7fbb000001"}
+7605 130428 21:51:39 INFO: 
+
+Started GET "/r/51710f06da300c7fcd000001" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:39 INFO: Completed 200 OK in 59ms (Views: 0.4ms)
+7581 130428 21:51:39 INFO: 
+
+Started GET "/r/517110ceda300c7d1400000d" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:39 INFO:   Parameters: {"id"=>"517110ceda300c7d1400000d"}
+7581 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:39 INFO: Completed 200 OK in 5ms (Views: 0.4ms)
+7581 130428 21:51:39 INFO: 
+
+Started GET "/r/517a4b7fda300c6c29000006/relations_to" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO:   Processing by RController#relations_to as JSON
+7581 130428 21:51:39 INFO:   Parameters: {"id"=>"517a4b7fda300c6c29000006"}
+7581 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:39 INFO: Completed 200 OK in 11ms (Views: 0.9ms)
+7581 130428 21:51:39 INFO: 
+
+Started GET "/r/517a4b9ada300c6c1c00000a/relations_to" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO:   Processing by RController#relations_to as JSON
+7581 130428 21:51:39 INFO:   Parameters: {"id"=>"517a4b9ada300c6c1c00000a"}
+963 130428 21:51:39 INFO: 
+
+Started GET "/r/517a4befda300c6c6a000004/relations_to" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+7581 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:39 INFO:   Processing by RController#relations_to as JSON
+963 130428 21:51:39 INFO:   Parameters: {"id"=>"517a4befda300c6c6a000004"}
+963 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:39 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+963 130428 21:51:39 INFO: Completed 200 OK in 10ms (Views: 0.5ms)
+7595 130428 21:51:39 INFO:   Processing by TagsController#index as JSON
+7595 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:39 INFO: 
+
+Started GET "/r/51765a68da300c1849000001" for 46.127.124.9 at 2013-04-28 21:51:39 +0000
+963 130428 21:51:39 INFO:   Processing by RController#show as JSON
+963 130428 21:51:39 INFO:   Parameters: {"id"=>"51765a68da300c1849000001"}
+963 130428 21:51:39 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:39 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+7595 130428 21:51:40 INFO: Completed 200 OK in 224ms (Views: 43.7ms)
+7605 130428 21:51:40 INFO:   Processing by RController#show as JSON
+7605 130428 21:51:40 INFO:   Parameters: {"id"=>"51710f06da300c7fcd000001"}
+7605 130428 21:51:40 INFO: Username: LorenzoBaracchi@twitter
+7605 130428 21:51:40 INFO: Completed 200 OK in 21ms (Views: 7.3ms)
+7605 130428 21:51:40 INFO: 
+
+Started GET "/r/517652dfda300c1675000001/relations_from" for 46.127.124.9 at 2013-04-28 21:51:40 +0000
+7595 130428 21:51:40 INFO: 
+
+Started GET "/r/5176537eda300c1675000002/relations_from" for 46.127.124.9 at 2013-04-28 21:51:40 +0000
+7605 130428 21:51:40 INFO:   Processing by RController#relations_from as JSON
+7605 130428 21:51:40 INFO:   Parameters: {"id"=>"517652dfda300c1675000001"}
+7595 130428 21:51:40 INFO:   Processing by RController#relations_from as JSON
+7595 130428 21:51:40 INFO:   Parameters: {"id"=>"5176537eda300c1675000002"}
+963 130428 21:51:40 INFO: 
+
+Started GET "/r/51765a68da300c1849000001/relations_from" for 46.127.124.9 at 2013-04-28 21:51:40 +0000
+7581 130428 21:51:40 INFO: 
+
+Started GET "/r/51765a6eda300c1849000002/relations_from" for 46.127.124.9 at 2013-04-28 21:51:40 +0000
+7605 130428 21:51:40 INFO: Username: LorenzoBaracchi@twitter
+7595 130428 21:51:40 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:40 INFO:   Processing by RController#relations_from as JSON
+963 130428 21:51:40 INFO:   Parameters: {"id"=>"51765a68da300c1849000001"}
+7581 130428 21:51:40 INFO:   Processing by RController#relations_from as JSON
+7581 130428 21:51:40 INFO:   Parameters: {"id"=>"51765a6eda300c1849000002"}
+963 130428 21:51:40 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:40 INFO: Username: LorenzoBaracchi@twitter
+7605 130428 21:51:40 INFO: Completed 200 OK in 31ms (Views: 2.5ms)
+963 130428 21:51:40 INFO: Completed 200 OK in 45ms (Views: 4.1ms)
+7581 130428 21:51:40 INFO: Completed 200 OK in 92ms (Views: 10.7ms)
+7595 130428 21:51:40 INFO: Completed 200 OK in 215ms (Views: 20.9ms)
+7595 130428 21:51:41 INFO: 
+
+Started GET "/r/517a4368da300c691f000001" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7581 130428 21:51:41 INFO: 
+
+Started GET "/r/517a4368da300c691f000001/relations_to" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7581 130428 21:51:41 INFO:   Processing by RController#relations_to as JSON
+7581 130428 21:51:41 INFO:   Parameters: {"id"=>"517a4368da300c691f000001"}
+963 130428 21:51:41 INFO: 
+
+Started GET "/r/517a43b7da300c6a78000002/relations_to" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7581 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:41 INFO:   Processing by RController#relations_to as JSON
+963 130428 21:51:41 INFO:   Parameters: {"id"=>"517a43b7da300c6a78000002"}
+963 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7595 130428 21:51:41 INFO:   Processing by RController#show as JSON
+7605 130428 21:51:41 INFO: 
+
+Started GET "/r/517a43b7da300c6a78000002" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7595 130428 21:51:41 INFO:   Parameters: {"id"=>"517a4368da300c691f000001"}
+7595 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:41 INFO: Completed 200 OK in 9ms (Views: 0.5ms)
+7605 130428 21:51:41 INFO:   Processing by RController#show as JSON
+963 130428 21:51:41 INFO: Completed 200 OK in 9ms (Views: 0.4ms)
+7605 130428 21:51:41 INFO:   Parameters: {"id"=>"517a43b7da300c6a78000002"}
+7581 130428 21:51:41 INFO: 
+
+Started GET "/r/517a43c8da300c6aa1000005/relations_to" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7605 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:41 INFO: 
+
+Started GET "/r/517a43c8da300c6aa1000005" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7595 130428 21:51:41 INFO: Completed 200 OK in 9ms (Views: 2.4ms)
+963 130428 21:51:41 INFO:   Processing by RController#show as JSON
+963 130428 21:51:41 INFO:   Parameters: {"id"=>"517a43c8da300c6aa1000005"}
+7605 130428 21:51:41 INFO: Completed 200 OK in 5ms (Views: 0.5ms)
+963 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:41 INFO:   Processing by RController#relations_to as JSON
+7581 130428 21:51:41 INFO:   Parameters: {"id"=>"517a43c8da300c6aa1000005"}
+963 130428 21:51:41 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+7581 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:41 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+7581 130428 21:51:41 INFO: 
+
+Started GET "/r/517a46f7da300c6b31000001/relations_to" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7581 130428 21:51:41 INFO:   Processing by RController#relations_to as JSON
+7581 130428 21:51:41 INFO:   Parameters: {"id"=>"517a46f7da300c6b31000001"}
+7581 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:41 INFO: 
+
+Started GET "/r/517a46f7da300c6b31000001" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7605 130428 21:51:41 INFO: 
+
+Started GET "/r/517a47aeda300c6c73000001/relations_to" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+963 130428 21:51:41 INFO:   Processing by RController#show as JSON
+963 130428 21:51:41 INFO:   Parameters: {"id"=>"517a46f7da300c6b31000001"}
+7581 130428 21:51:41 INFO: Completed 200 OK in 75ms (Views: 5.3ms)
+963 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:41 INFO: 
+
+Started GET "/r/517a47aeda300c6c73000001" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+963 130428 21:51:41 INFO: Completed 200 OK in 10ms (Views: 0.4ms)
+7605 130428 21:51:41 INFO:   Processing by RController#relations_to as JSON
+7605 130428 21:51:41 INFO:   Parameters: {"id"=>"517a47aeda300c6c73000001"}
+963 130428 21:51:41 INFO: 
+
+Started GET "/r/517a47dada300c6c61000001" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7581 130428 21:51:41 INFO:   Processing by RController#show as JSON
+963 130428 21:51:41 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:41 INFO:   Parameters: {"id"=>"517a47aeda300c6c73000001"}
+963 130428 21:51:41 INFO:   Parameters: {"id"=>"517a47dada300c6c61000001"}
+7581 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7595 130428 21:51:41 INFO: 
+
+Started GET "/r/517a47dada300c6c61000001/relations_to" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+963 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7605 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:41 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+963 130428 21:51:41 INFO: Completed 200 OK in 5ms (Views: 0.4ms)
+7595 130428 21:51:41 INFO:   Processing by RController#relations_to as JSON
+7605 130428 21:51:41 INFO: Completed 200 OK in 17ms (Views: 0.5ms)
+7595 130428 21:51:41 INFO:   Parameters: {"id"=>"517a47dada300c6c61000001"}
+7595 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7595 130428 21:51:41 INFO: Completed 200 OK in 14ms (Views: 0.4ms)
+7595 130428 21:51:41 INFO: 
+
+Started GET "/r/517a47dfda300c6c6a000001/relations_to" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7595 130428 21:51:41 INFO:   Processing by RController#relations_to as JSON
+7595 130428 21:51:41 INFO:   Parameters: {"id"=>"517a47dfda300c6c6a000001"}
+7595 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7595 130428 21:51:41 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+7614 130428 21:51:41 INFO: 
+
+Started GET "/r/517a47dfda300c6c6a000001" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7595 130428 21:51:41 INFO: 
+
+Started GET "/r/517a47f3da300c6b31000003/relations_to" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7605 130428 21:51:41 INFO: 
+
+Started GET "/r/517a47f3da300c6b31000003" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7595 130428 21:51:41 INFO:   Processing by RController#relations_to as JSON
+7595 130428 21:51:41 INFO:   Parameters: {"id"=>"517a47f3da300c6b31000003"}
+963 130428 21:51:41 INFO: 
+
+Started GET "/r/517a4802da300c6c73000003" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7605 130428 21:51:41 INFO:   Processing by RController#show as JSON
+7605 130428 21:51:41 INFO:   Parameters: {"id"=>"517a47f3da300c6b31000003"}
+7605 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7595 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:41 INFO: 
+
+Started GET "/r/517a4802da300c6c73000003/relations_to" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7605 130428 21:51:41 INFO: Completed 200 OK in 10ms (Views: 0.5ms)
+7605 130428 21:51:41 INFO: 
+
+Started GET "/r/517a4812da300c6c61000003/relations_to" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7605 130428 21:51:41 INFO:   Processing by RController#relations_to as JSON
+963 130428 21:51:41 INFO:   Processing by RController#show as JSON
+7605 130428 21:51:41 INFO:   Parameters: {"id"=>"517a4812da300c6c61000003"}
+963 130428 21:51:41 INFO:   Parameters: {"id"=>"517a4802da300c6c73000003"}
+7605 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7595 130428 21:51:41 INFO: Completed 200 OK in 28ms (Views: 0.9ms)
+963 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7605 130428 21:51:41 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+963 130428 21:51:41 INFO: Completed 200 OK in 14ms (Views: 1.8ms)
+7581 130428 21:51:41 INFO:   Processing by RController#relations_to as JSON
+7581 130428 21:51:41 INFO:   Parameters: {"id"=>"517a4802da300c6c73000003"}
+7581 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:41 INFO: Completed 200 OK in 10ms (Views: 0.6ms)
+7581 130428 21:51:41 INFO: 
+
+Started GET "/r/517a4812da300c6c61000003" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7581 130428 21:51:41 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:41 INFO:   Parameters: {"id"=>"517a4812da300c6c61000003"}
+7581 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:41 INFO: 
+
+Started GET "/r/517a4845da300c6ca0000001" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7605 130428 21:51:41 INFO: 
+
+Started GET "/r/517a4845da300c6ca0000001/relations_to" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7605 130428 21:51:41 INFO:   Processing by RController#relations_to as JSON
+7605 130428 21:51:41 INFO:   Parameters: {"id"=>"517a4845da300c6ca0000001"}
+963 130428 21:51:41 INFO:   Processing by RController#show as JSON
+963 130428 21:51:41 INFO:   Parameters: {"id"=>"517a4845da300c6ca0000001"}
+7581 130428 21:51:41 INFO: Completed 200 OK in 14ms (Views: 0.4ms)
+7605 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:41 INFO: 
+
+Started GET "/r/517a48b0da300c6c85000002/relations_to" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7581 130428 21:51:41 INFO:   Processing by RController#relations_to as JSON
+7581 130428 21:51:41 INFO:   Parameters: {"id"=>"517a48b0da300c6c85000002"}
+7581 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7605 130428 21:51:41 INFO: Completed 200 OK in 20ms (Views: 0.4ms)
+963 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7605 130428 21:51:41 INFO: 
+
+Started GET "/r/517a48b0da300c6c85000002" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7581 130428 21:51:41 INFO: Completed 200 OK in 15ms (Views: 0.4ms)
+7605 130428 21:51:41 INFO:   Processing by RController#show as JSON
+7605 130428 21:51:41 INFO:   Parameters: {"id"=>"517a48b0da300c6c85000002"}
+7605 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:41 INFO: Completed 200 OK in 37ms (Views: 0.4ms)
+7605 130428 21:51:41 INFO: Completed 200 OK in 13ms (Views: 0.4ms)
+7605 130428 21:51:41 INFO: 
+
+Started GET "/r/517a49c7da300c6b43000004/relations_to" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7605 130428 21:51:41 INFO:   Processing by RController#relations_to as JSON
+7605 130428 21:51:41 INFO:   Parameters: {"id"=>"517a49c7da300c6b43000004"}
+7605 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7605 130428 21:51:41 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+7605 130428 21:51:41 INFO: 
+
+Started GET "/r/517a49c7da300c6b43000004" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7605 130428 21:51:41 INFO:   Processing by RController#show as JSON
+7605 130428 21:51:41 INFO:   Parameters: {"id"=>"517a49c7da300c6b43000004"}
+7605 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7605 130428 21:51:41 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+963 130428 21:51:41 INFO: 
+
+Started GET "/r/517a49fbda300c6b43000006" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+963 130428 21:51:41 INFO:   Processing by RController#show as JSON
+963 130428 21:51:41 INFO:   Parameters: {"id"=>"517a49fbda300c6b43000006"}
+963 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:41 INFO: Completed 200 OK in 10ms (Views: 0.9ms)
+7605 130428 21:51:41 INFO: 
+
+Started GET "/r/517a4a02da300c6c1c000008/relations_to" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7605 130428 21:51:41 INFO:   Processing by RController#relations_to as JSON
+7605 130428 21:51:41 INFO:   Parameters: {"id"=>"517a4a02da300c6c1c000008"}
+7605 130428 21:51:41 INFO: Username: LorenzoBaracchi@twitter
+7605 130428 21:51:41 INFO: Completed 200 OK in 12ms (Views: 0.4ms)
+7623 130428 21:51:41 INFO: 
+
+Started GET "/r/517a49fbda300c6b43000006/relations_to" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7605 130428 21:51:41 INFO: 
+
+Started GET "/r/517a4a02da300c6c1c000008" for 46.127.124.9 at 2013-04-28 21:51:41 +0000
+7605 130428 21:51:42 INFO:   Processing by RController#show as JSON
+7605 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4a02da300c6c1c000008"}
+7605 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7605 130428 21:51:42 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+7605 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4b44da300c6c55000001/relations_to" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7605 130428 21:51:42 INFO:   Processing by RController#relations_to as JSON
+7605 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4b44da300c6c55000001"}
+7605 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4b44da300c6c55000001" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+963 130428 21:51:42 INFO:   Processing by RController#show as JSON
+963 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4b44da300c6c55000001"}
+963 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7605 130428 21:51:42 INFO: Completed 200 OK in 18ms (Views: 0.7ms)
+963 130428 21:51:42 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+7605 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4b9ada300c6c1c00000a" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7605 130428 21:51:42 INFO:   Processing by RController#show as JSON
+7605 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4b9ada300c6c1c00000a"}
+7605 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7605 130428 21:51:42 INFO: Completed 200 OK in 4ms (Views: 0.2ms)
+7605 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4bc7da300c6b31000008/relations_to" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7605 130428 21:51:42 INFO:   Processing by RController#relations_to as JSON
+7605 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4bc7da300c6b31000008"}
+7605 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7605 130428 21:51:42 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+7605 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4bc7da300c6b31000008" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7605 130428 21:51:42 INFO:   Processing by RController#show as JSON
+7605 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4bc7da300c6b31000008"}
+7605 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4befda300c6c6a000004" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+963 130428 21:51:42 INFO:   Processing by RController#show as JSON
+7605 130428 21:51:42 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+7581 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4befda300c6c46000002/relations_to" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+963 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4befda300c6c6a000004"}
+7581 130428 21:51:42 INFO:   Processing by RController#relations_to as JSON
+7581 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4befda300c6c46000002"}
+963 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:42 INFO: Completed 200 OK in 10ms (Views: 0.4ms)
+7581 130428 21:51:42 INFO: Completed 200 OK in 12ms (Views: 0.4ms)
+7581 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4befda300c6c46000002" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7581 130428 21:51:42 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4befda300c6c46000002"}
+7581 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:42 INFO: Completed 200 OK in 5ms (Views: 0.4ms)
+7581 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4bf7da300c6c46000004/relations_to" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7581 130428 21:51:42 INFO:   Processing by RController#relations_to as JSON
+7581 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4bf7da300c6c46000004"}
+7581 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:42 INFO: Completed 200 OK in 9ms (Views: 0.4ms)
+7581 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4bf7da300c6c46000004" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+963 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4c2fda300c6c8f000005/relations_to" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7581 130428 21:51:42 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4bf7da300c6c46000004"}
+963 130428 21:51:42 INFO:   Processing by RController#relations_to as JSON
+7581 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4c2fda300c6c8f000005"}
+963 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:42 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+963 130428 21:51:42 INFO: Completed 200 OK in 10ms (Views: 0.4ms)
+963 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4c2fda300c6c8f000005" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+963 130428 21:51:42 INFO:   Processing by RController#show as JSON
+963 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4c2fda300c6c8f000005"}
+963 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:42 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+963 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4c4ada300c6b4300000a/relations_to" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+963 130428 21:51:42 INFO:   Processing by RController#relations_to as JSON
+963 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4c4ada300c6b4300000a"}
+963 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:42 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+963 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4c4ada300c6b4300000a" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7581 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4c5bda300c6c73000005/relations_to" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+963 130428 21:51:42 INFO:   Processing by RController#show as JSON
+963 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4c4ada300c6b4300000a"}
+7581 130428 21:51:42 INFO:   Processing by RController#relations_to as JSON
+7581 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4c5bda300c6c73000005"}
+963 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:42 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+7581 130428 21:51:42 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+7581 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4c5bda300c6c73000005" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7581 130428 21:51:42 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4c5bda300c6c73000005"}
+7581 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:42 INFO: Completed 200 OK in 6ms (Views: 0.5ms)
+7581 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4c88da300c6b4300000c/relations_to" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7581 130428 21:51:42 INFO:   Processing by RController#relations_to as JSON
+7581 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4c88da300c6b4300000c"}
+7581 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:42 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+7581 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4c88da300c6b4300000c" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7581 130428 21:51:42 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4c88da300c6b4300000c"}
+7581 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4391da300c6a81000003/relations_from" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+963 130428 21:51:42 INFO:   Processing by RController#relations_from as JSON
+963 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4391da300c6a81000003"}
+7581 130428 21:51:42 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+963 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:42 INFO: Completed 200 OK in 9ms (Views: 0.3ms)
+963 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4391da300c6a81000003" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+963 130428 21:51:42 INFO:   Processing by RController#show as JSON
+963 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4391da300c6a81000003"}
+963 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:42 INFO: Completed 200 OK in 4ms (Views: 0.5ms)
+963 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4788da300c6c46000001/relations_from" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+963 130428 21:51:42 INFO:   Processing by RController#relations_from as JSON
+963 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4788da300c6c46000001"}
+963 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:42 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+963 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4788da300c6c46000001" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+963 130428 21:51:42 INFO:   Processing by RController#show as JSON
+963 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4788da300c6c46000001"}
+963 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:42 INFO: 
+
+Started GET "/r/517a475dda300c6c1c000002/relations_from" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7581 130428 21:51:42 INFO:   Processing by RController#relations_from as JSON
+963 130428 21:51:42 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+7581 130428 21:51:42 INFO:   Parameters: {"id"=>"517a475dda300c6c1c000002"}
+7581 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:42 INFO: Completed 200 OK in 11ms (Views: 0.3ms)
+7581 130428 21:51:42 INFO: 
+
+Started GET "/r/517a475dda300c6c1c000002" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7581 130428 21:51:42 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:42 INFO:   Parameters: {"id"=>"517a475dda300c6c1c000002"}
+7581 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:42 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+7581 130428 21:51:42 INFO: 
+
+Started GET "/r/517a477bda300c6c29000001/relations_from" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7581 130428 21:51:42 INFO:   Processing by RController#relations_from as JSON
+7581 130428 21:51:42 INFO:   Parameters: {"id"=>"517a477bda300c6c29000001"}
+7581 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:42 INFO: Completed 200 OK in 11ms (Views: 0.3ms)
+7581 130428 21:51:42 INFO: 
+
+Started GET "/r/517a477bda300c6c29000001" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7581 130428 21:51:42 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:42 INFO:   Parameters: {"id"=>"517a477bda300c6c29000001"}
+7581 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+963 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4b7ada300c6c61000006/relations_from" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7581 130428 21:51:42 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+963 130428 21:51:42 INFO:   Processing by RController#relations_from as JSON
+963 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4b7ada300c6c61000006"}
+963 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7614 130428 21:51:42 INFO:   Processing by RController#show as JSON
+7614 130428 21:51:42 INFO:   Parameters: {"id"=>"517a47dfda300c6c6a000001"}
+7581 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4b7ada300c6c61000006" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+963 130428 21:51:42 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+7581 130428 21:51:42 INFO:   Processing by RController#show as JSON
+7581 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4b7ada300c6c61000006"}
+7581 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:42 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+7614 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7614 130428 21:51:42 INFO: Completed 200 OK in 34ms (Views: 8.5ms)
+7614 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4391da300c6aaa000002/relations_to" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7614 130428 21:51:42 INFO:   Processing by RController#relations_to as JSON
+7614 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4391da300c6aaa000002"}
+7614 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7614 130428 21:51:42 INFO: Completed 200 OK in 12ms (Views: 0.9ms)
+7614 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4788da300c6c09000001/relations_to" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7614 130428 21:51:42 INFO:   Processing by RController#relations_to as JSON
+7614 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4788da300c6c09000001"}
+7614 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:42 INFO: 
+
+Started GET "/r/517a475dda300c6b31000002/relations_to" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7581 130428 21:51:42 INFO:   Processing by RController#relations_to as JSON
+7581 130428 21:51:42 INFO:   Parameters: {"id"=>"517a475dda300c6b31000002"}
+7581 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7614 130428 21:51:42 INFO: Completed 200 OK in 17ms (Views: 1.3ms)
+7614 130428 21:51:42 INFO: 
+
+Started GET "/r/517a477bda300c6c1c000003/relations_to" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7614 130428 21:51:42 INFO:   Processing by RController#relations_to as JSON
+7614 130428 21:51:42 INFO:   Parameters: {"id"=>"517a477bda300c6c1c000003"}
+7614 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7581 130428 21:51:42 INFO: Completed 200 OK in 16ms (Views: 1.0ms)
+7614 130428 21:51:42 INFO: Completed 200 OK in 12ms (Views: 0.8ms)
+7614 130428 21:51:42 INFO: 
+
+Started GET "/r/517a4b7ada300c6c8f000004/relations_to" for 46.127.124.9 at 2013-04-28 21:51:42 +0000
+7614 130428 21:51:42 INFO:   Processing by RController#relations_to as JSON
+7614 130428 21:51:42 INFO:   Parameters: {"id"=>"517a4b7ada300c6c8f000004"}
+7614 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7614 130428 21:51:42 INFO: Completed 200 OK in 16ms (Views: 1.1ms)
+7623 130428 21:51:42 INFO:   Processing by RController#relations_to as JSON
+7623 130428 21:51:42 INFO:   Parameters: {"id"=>"517a49fbda300c6b43000006"}
+7623 130428 21:51:42 INFO: Username: LorenzoBaracchi@twitter
+7623 130428 21:51:42 INFO: Completed 200 OK in 22ms (Views: 5.8ms)
+7623 130428 21:52:03 INFO: 
+
+Started GET "/projects/51765a68da300c1849000001/report" for 46.127.124.9 at 2013-04-28 21:52:03 +0000
+7623 130428 21:52:03 INFO:   Processing by ProjectsController#report as HTML
+7623 130428 21:52:03 INFO:   Parameters: {"id"=>"51765a68da300c1849000001"}
+7623 130428 21:52:03 INFO: Username: LorenzoBaracchi@twitter
+7623 130428 21:52:04 INFO: Rendered projects/report.html.erb (207.0ms)
+7623 130428 21:52:04 INFO: Completed 200 OK in 214ms (Views: 210.7ms)
+7623 130428 21:53:04 INFO: 
+
+Started GET "/projects/51765a68da300c1849000001/report2" for 46.127.124.9 at 2013-04-28 21:53:04 +0000
+7623 130428 21:53:04 INFO:   Processing by ProjectsController#report2 as HTML
+7623 130428 21:53:04 INFO:   Parameters: {"id"=>"51765a68da300c1849000001"}
+7623 130428 21:53:04 INFO: Username: LorenzoBaracchi@twitter
+7623 130428 21:53:04 INFO: Rendered projects/report2.html.erb (186.7ms)
+7623 130428 21:53:04 INFO: Completed 200 OK in 191ms (Views: 188.3ms)
+7623 130428 21:53:31 INFO: 
+
+Started GET "/projects/51765a68da300c1849000001/report" for 46.127.124.9 at 2013-04-28 21:53:31 +0000
+7623 130428 21:53:31 INFO:   Processing by ProjectsController#report as HTML
+7623 130428 21:53:31 INFO:   Parameters: {"id"=>"51765a68da300c1849000001"}
+7623 130428 21:53:31 INFO: Username: LorenzoBaracchi@twitter
+7623 130428 21:53:32 INFO: Rendered projects/report.html.erb (234.0ms)
+7623 130428 21:53:32 INFO: Completed 200 OK in 237ms (Views: 235.0ms)

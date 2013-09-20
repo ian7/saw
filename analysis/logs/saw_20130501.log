@@ -1,0 +1,1489 @@
+7623 130501 08:28:04 INFO: 
+
+Started GET "/" for 2.229.216.15 at 2013-05-01 08:28:04 +0000
+7623 130501 08:28:04 INFO:   Processing by WelcomeController#index as HTML
+7623 130501 08:28:04 INFO: Username: (none)
+7623 130501 08:28:04 INFO: Rendered welcome/index.html.erb within layouts/application (2.4ms)
+7623 130501 08:28:04 INFO: Completed 200 OK in 8ms (Views: 6.2ms)
+7623 130501 08:28:09 INFO: 
+
+Started GET "/updates/undefined" for 2.229.216.15 at 2013-05-01 08:28:09 +0000
+7623 130501 08:28:09 INFO:   Processing by NotifyController#stamped as 
+7623 130501 08:28:09 INFO:   Parameters: {"stamp"=>"undefined"}
+7623 130501 08:28:09 INFO: Username: (none)
+7623 130501 08:28:09 INFO: Completed 200 OK in 282ms (Views: 11.0ms)
+7623 130501 08:28:09 INFO: 
+
+Started GET "/scope/type/Decision" for 2.229.216.15 at 2013-05-01 08:28:09 +0000
+7623 130501 08:28:09 INFO:   Processing by ScopeController#type as JSON
+7623 130501 08:28:09 INFO:   Parameters: {"type_name"=>"Decision"}
+7623 130501 08:28:09 INFO: Username: (none)
+7623 130501 08:28:09 INFO: Completed 200 OK in 12ms (Views: 2.1ms)
+7623 130501 08:28:09 INFO: 
+
+Started GET "/t" for 2.229.216.15 at 2013-05-01 08:28:09 +0000
+7623 130501 08:28:09 INFO:   Processing by TController#index as JSON
+7623 130501 08:28:09 INFO: Username: (none)
+7623 130501 08:28:09 INFO: Completed   in 1ms
+7623 130501 08:28:09 INFO: 
+
+Started GET "/t" for 2.229.216.15 at 2013-05-01 08:28:09 +0000
+7623 130501 08:28:09 INFO:   Processing by TController#index as JSON
+7623 130501 08:28:09 INFO: Username: (none)
+7623 130501 08:28:09 INFO: Completed   in 1ms
+7623 130501 08:28:09 INFO: 
+
+Started GET "/tags" for 2.229.216.15 at 2013-05-01 08:28:09 +0000
+7623 130501 08:28:09 INFO:   Processing by TagsController#index as JSON
+7623 130501 08:28:09 INFO: Username: (none)
+7623 130501 08:28:09 INFO: Completed 200 OK in 182ms (Views: 31.9ms)
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b900002c/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b900002c"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b900002d/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b900002d"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b900002e/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b900002e"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/5166cbccda300c1e3c000001/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"5166cbccda300c1e3c000001"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/5166ccc6da300c1e44000001/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"5166ccc6da300c1e44000001"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/5166ccf1da300c1e2900006f/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"5166ccf1da300c1e2900006f"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 0ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/5166ce29da300c1e29000070/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"5166ce29da300c1e29000070"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/516d4176da300c2ae7000001/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"516d4176da300c2ae7000001"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/516d41aada300c2acb000002/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"516d41aada300c2acb000002"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/516fc98bda300c3b96000001/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"516fc98bda300c3b96000001"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/516fc993da300c3b96000002/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"516fc993da300c3b96000002"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/517652dfda300c1675000001/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"517652dfda300c1675000001"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/5176537eda300c1675000002/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"5176537eda300c1675000002"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/51765a68da300c1849000001/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"51765a68da300c1849000001"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/51765a6eda300c1849000002/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"51765a6eda300c1849000002"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b9000030/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b9000030"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b9000036/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b9000036"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b900003b/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b900003b"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b9000040/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b9000040"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b9000045/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b9000045"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 0ms
+7623 130501 08:28:10 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b900004a/relations_from" for 2.229.216.15 at 2013-05-01 08:28:10 +0000
+7623 130501 08:28:10 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:10 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b900004a"}
+7623 130501 08:28:10 INFO: Username: (none)
+7623 130501 08:28:10 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b900004f/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b900004f"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b9000054/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b9000054"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b9000068/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b9000068"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b900005e/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b900005e"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b9000072/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b9000072"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b9000059/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b9000059"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b900006d/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b900006d"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 0ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b9000063/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b9000063"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b9000077/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b9000077"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b9000095/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b9000095"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b90000a2/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b90000a2"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b90000b6/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b90000b6"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 0ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b90000cd/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b90000cd"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 0ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b900011b/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b900011b"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 0ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b9000141/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b9000141"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b9000097/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b9000097"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 0ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b90000b8/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b90000b8"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 0ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b90000e3/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b90000e3"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b900009b/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b900009b"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 0ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b90000bb/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b90000bb"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b90000c6/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b90000c6"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b90000d1/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b90000d1"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b90000db/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b90000db"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 0ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b90000e7/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b90000e7"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 0ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b9000099/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b9000099"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b90000a5/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b90000a5"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 0ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b90000c4/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b90000c4"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b90000e5/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b90000e5"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b9000144/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b9000144"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 0ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e3e90a3e18b900011e/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e3e90a3e18b900011e"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b9000179/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b9000179"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b9000180/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b9000180"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 0ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b9000187/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b9000187"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b900018e/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b900018e"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b9000195/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b9000195"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b900019f/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b900019f"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b90001a6/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b90001a6"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b90001ad/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b90001ad"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b90001b4/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b90001b4"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b90001bb/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b90001bb"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b90001d7/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b90001d7"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b90001de/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b90001de"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b90001e5/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b90001e5"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:11 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b90001ef/relations_from" for 2.229.216.15 at 2013-05-01 08:28:11 +0000
+7623 130501 08:28:11 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:11 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b90001ef"}
+7623 130501 08:28:11 INFO: Username: (none)
+7623 130501 08:28:11 INFO: Completed   in 1ms
+7623 130501 08:28:12 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b90001f6/relations_from" for 2.229.216.15 at 2013-05-01 08:28:12 +0000
+7623 130501 08:28:12 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:12 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b90001f6"}
+7623 130501 08:28:12 INFO: Username: (none)
+7623 130501 08:28:12 INFO: Completed   in 1ms
+7623 130501 08:28:12 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b9000200/relations_from" for 2.229.216.15 at 2013-05-01 08:28:12 +0000
+7623 130501 08:28:12 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:12 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b9000200"}
+7623 130501 08:28:12 INFO: Username: (none)
+7623 130501 08:28:12 INFO: Completed   in 2ms
+7623 130501 08:28:12 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b9000207/relations_from" for 2.229.216.15 at 2013-05-01 08:28:12 +0000
+7623 130501 08:28:12 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:12 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b9000207"}
+7623 130501 08:28:12 INFO: Username: (none)
+7623 130501 08:28:12 INFO: Completed   in 1ms
+7623 130501 08:28:12 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b900020e/relations_from" for 2.229.216.15 at 2013-05-01 08:28:12 +0000
+7623 130501 08:28:12 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:12 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b900020e"}
+7623 130501 08:28:12 INFO: Username: (none)
+7623 130501 08:28:12 INFO: Completed   in 0ms
+7623 130501 08:28:12 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b9000218/relations_from" for 2.229.216.15 at 2013-05-01 08:28:12 +0000
+7623 130501 08:28:12 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:12 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b9000218"}
+7623 130501 08:28:12 INFO: Username: (none)
+7623 130501 08:28:12 INFO: Completed   in 1ms
+7623 130501 08:28:12 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b900021f/relations_from" for 2.229.216.15 at 2013-05-01 08:28:12 +0000
+7623 130501 08:28:12 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:12 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b900021f"}
+7623 130501 08:28:12 INFO: Username: (none)
+7623 130501 08:28:12 INFO: Completed   in 0ms
+7623 130501 08:28:12 INFO: 
+
+Started GET "/r/4f9d67e5e90a3e18b900028c/relations_from" for 2.229.216.15 at 2013-05-01 08:28:12 +0000
+7623 130501 08:28:12 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:12 INFO:   Parameters: {"id"=>"4f9d67e5e90a3e18b900028c"}
+7623 130501 08:28:12 INFO: Username: (none)
+7623 130501 08:28:12 INFO: Completed   in 0ms
+7623 130501 08:28:12 INFO: 
+
+Started GET "/r/4f9d67e5e90a3e18b9000293/relations_from" for 2.229.216.15 at 2013-05-01 08:28:12 +0000
+7623 130501 08:28:12 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:12 INFO:   Parameters: {"id"=>"4f9d67e5e90a3e18b9000293"}
+7623 130501 08:28:12 INFO: Username: (none)
+7623 130501 08:28:12 INFO: Completed   in 0ms
+7623 130501 08:28:12 INFO: 
+
+Started GET "/r/4f9d67e5e90a3e18b900029a/relations_from" for 2.229.216.15 at 2013-05-01 08:28:12 +0000
+7623 130501 08:28:12 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:12 INFO:   Parameters: {"id"=>"4f9d67e5e90a3e18b900029a"}
+7623 130501 08:28:12 INFO: Username: (none)
+7623 130501 08:28:12 INFO: Completed   in 1ms
+7623 130501 08:28:12 INFO: 
+
+Started GET "/r/4f9d67e5e90a3e18b90002b3/relations_from" for 2.229.216.15 at 2013-05-01 08:28:12 +0000
+7623 130501 08:28:12 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:12 INFO:   Parameters: {"id"=>"4f9d67e5e90a3e18b90002b3"}
+7623 130501 08:28:12 INFO: Username: (none)
+7623 130501 08:28:12 INFO: Completed   in 0ms
+7623 130501 08:28:12 INFO: 
+
+Started GET "/r/4f9d67e5e90a3e18b90002ba/relations_from" for 2.229.216.15 at 2013-05-01 08:28:12 +0000
+7623 130501 08:28:12 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:12 INFO:   Parameters: {"id"=>"4f9d67e5e90a3e18b90002ba"}
+7623 130501 08:28:12 INFO: Username: (none)
+7623 130501 08:28:12 INFO: Completed   in 0ms
+7623 130501 08:28:12 INFO: 
+
+Started GET "/r/4f9d67e5e90a3e18b90002c1/relations_from" for 2.229.216.15 at 2013-05-01 08:28:12 +0000
+7623 130501 08:28:12 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:12 INFO:   Parameters: {"id"=>"4f9d67e5e90a3e18b90002c1"}
+7623 130501 08:28:12 INFO: Username: (none)
+7623 130501 08:28:12 INFO: Completed   in 1ms
+7623 130501 08:28:12 INFO: 
+
+Started GET "/r/4f9d67e5e90a3e18b90002c8/relations_from" for 2.229.216.15 at 2013-05-01 08:28:12 +0000
+7623 130501 08:28:12 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:12 INFO:   Parameters: {"id"=>"4f9d67e5e90a3e18b90002c8"}
+7623 130501 08:28:12 INFO: Username: (none)
+7623 130501 08:28:12 INFO: Completed   in 0ms
+7623 130501 08:28:12 INFO: 
+
+Started GET "/r/4f9d67e5e90a3e18b90002e1/relations_from" for 2.229.216.15 at 2013-05-01 08:28:12 +0000
+7623 130501 08:28:12 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:12 INFO:   Parameters: {"id"=>"4f9d67e5e90a3e18b90002e1"}
+7623 130501 08:28:12 INFO: Username: (none)
+7623 130501 08:28:12 INFO: Completed   in 0ms
+7623 130501 08:28:12 INFO: 
+
+Started GET "/r/4f9d67e5e90a3e18b90002e8/relations_from" for 2.229.216.15 at 2013-05-01 08:28:12 +0000
+7623 130501 08:28:12 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:12 INFO:   Parameters: {"id"=>"4f9d67e5e90a3e18b90002e8"}
+7623 130501 08:28:12 INFO: Username: (none)
+7623 130501 08:28:12 INFO: Completed   in 1ms
+7623 130501 08:28:12 INFO: 
+
+Started GET "/users/sign_in" for 2.229.216.15 at 2013-05-01 08:28:12 +0000
+7623 130501 08:28:12 INFO:   Processing by Devise::SessionsController#new as HTML
+7623 130501 08:28:12 INFO: Username: (none)
+7623 130501 08:28:12 INFO: Rendered devise/sessions/new.html.erb within layouts/application (2.4ms)
+7623 130501 08:28:12 INFO: Completed 200 OK in 9ms (Views: 5.8ms)
+18091 130501 08:28:38 INFO: 
+
+Started GET "/" for 2.229.216.15 at 2013-05-01 08:28:38 +0000
+18091 130501 08:28:39 INFO:   Processing by WelcomeController#index as HTML
+18091 130501 08:28:39 INFO: Username: (none)
+18091 130501 08:28:39 INFO: Rendered welcome/index.html.erb within layouts/application (5.2ms)
+18091 130501 08:28:39 INFO: Completed 200 OK in 17ms (Views: 14.2ms)
+18091 130501 08:28:39 INFO: 
+
+Started GET "/updates/1366969572" for 2.229.216.15 at 2013-05-01 08:28:39 +0000
+18091 130501 08:28:39 INFO:   Processing by NotifyController#stamped as 
+18091 130501 08:28:39 INFO:   Parameters: {"stamp"=>"1366969572"}
+18091 130501 08:28:39 INFO: Username: (none)
+7623 130501 08:28:39 INFO: 
+
+Started GET "/scope/type/Decision" for 2.229.216.15 at 2013-05-01 08:28:39 +0000
+7623 130501 08:28:39 INFO:   Processing by ScopeController#type as JSON
+7623 130501 08:28:39 INFO:   Parameters: {"type_name"=>"Decision"}
+7623 130501 08:28:39 INFO: Username: (none)
+18091 130501 08:28:39 INFO: Completed 200 OK in 22ms (Views: 10.7ms)
+7623 130501 08:28:39 INFO: Completed 200 OK in 9ms (Views: 0.8ms)
+18091 130501 08:28:39 INFO: 
+
+Started GET "/t" for 2.229.216.15 at 2013-05-01 08:28:39 +0000
+18091 130501 08:28:39 INFO:   Processing by TController#index as JSON
+18091 130501 08:28:39 INFO: Username: (none)
+18091 130501 08:28:39 INFO: Completed   in 1ms
+7623 130501 08:28:40 INFO: 
+
+Started GET "/tags" for 2.229.216.15 at 2013-05-01 08:28:40 +0000
+7623 130501 08:28:40 INFO:   Processing by TagsController#index as JSON
+7623 130501 08:28:40 INFO: Username: (none)
+18091 130501 08:28:40 INFO: 
+
+Started GET "/r/51765a68da300c1849000001/relations_from" for 2.229.216.15 at 2013-05-01 08:28:40 +0000
+18091 130501 08:28:40 INFO:   Processing by RController#relations_from as JSON
+18091 130501 08:28:40 INFO:   Parameters: {"id"=>"51765a68da300c1849000001"}
+18091 130501 08:28:40 INFO: Username: (none)
+18091 130501 08:28:40 INFO: Completed   in 1ms
+7623 130501 08:28:40 INFO: Completed 200 OK in 177ms (Views: 32.0ms)
+7623 130501 08:28:41 INFO: 
+
+Started GET "/users/sign_in" for 2.229.216.15 at 2013-05-01 08:28:41 +0000
+7623 130501 08:28:41 INFO:   Processing by Devise::SessionsController#new as HTML
+7623 130501 08:28:41 INFO: Username: (none)
+7623 130501 08:28:41 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.3ms)
+7623 130501 08:28:41 INFO: Completed 200 OK in 3ms (Views: 2.1ms)
+7623 130501 08:28:48 INFO: 
+
+Started POST "/users/sign_in" for 2.229.216.15 at 2013-05-01 08:28:48 +0000
+7623 130501 08:28:48 INFO:   Processing by Devise::SessionsController#create as HTML
+7623 130501 08:28:48 INFO:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"oikWBo1aXitpLRffeZWZGT24UjfgBxeqFOIDoijDXvE=", "user"=>{"email"=>"danielegallan", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+7623 130501 08:28:48 INFO: Username: danielegallan
+7623 130501 08:28:48 INFO: Redirected to http://exercises.saw.sonyx.net/welcome/logged_in
+7623 130501 08:28:48 INFO: Completed 302 Found in 110ms
+7623 130501 08:28:48 INFO: 
+
+Started GET "/welcome/logged_in" for 2.229.216.15 at 2013-05-01 08:28:48 +0000
+7623 130501 08:28:48 INFO:   Processing by WelcomeController#logged_in as HTML
+7623 130501 08:28:48 INFO: Username: danielegallan
+7623 130501 08:28:48 INFO: Rendered welcome/logged_in.html.erb within layouts/application (0.8ms)
+7623 130501 08:28:48 INFO: Completed 200 OK in 4ms (Views: 2.5ms)
+7623 130501 08:28:49 INFO: 
+
+Started GET "/" for 2.229.216.15 at 2013-05-01 08:28:49 +0000
+7623 130501 08:28:49 INFO:   Processing by WelcomeController#index as HTML
+7623 130501 08:28:49 INFO: Username: danielegallan
+7623 130501 08:28:49 INFO: Rendered welcome/index.html.erb within layouts/application (0.6ms)
+7623 130501 08:28:49 INFO: Completed 200 OK in 3ms (Views: 1.5ms)
+7623 130501 08:28:49 INFO: 
+
+Started GET "/updates/1366969572" for 2.229.216.15 at 2013-05-01 08:28:49 +0000
+7623 130501 08:28:49 INFO:   Processing by NotifyController#stamped as 
+7623 130501 08:28:49 INFO:   Parameters: {"stamp"=>"1366969572"}
+7623 130501 08:28:49 INFO: Username: danielegallan
+7623 130501 08:28:49 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+7623 130501 08:28:49 INFO: 
+
+Started GET "/scope/type/Decision" for 2.229.216.15 at 2013-05-01 08:28:49 +0000
+7623 130501 08:28:49 INFO:   Processing by ScopeController#type as JSON
+7623 130501 08:28:49 INFO:   Parameters: {"type_name"=>"Decision"}
+7623 130501 08:28:49 INFO: Username: danielegallan
+7623 130501 08:28:49 INFO: Completed 200 OK in 9ms (Views: 0.7ms)
+7623 130501 08:28:49 INFO: 
+
+Started GET "/t" for 2.229.216.15 at 2013-05-01 08:28:49 +0000
+7623 130501 08:28:49 INFO:   Processing by TController#index as JSON
+7623 130501 08:28:49 INFO: Username: danielegallan
+18091 130501 08:28:49 INFO: 
+
+Started GET "/tags" for 2.229.216.15 at 2013-05-01 08:28:49 +0000
+18091 130501 08:28:49 INFO:   Processing by TagsController#index as JSON
+18091 130501 08:28:49 INFO: Username: danielegallan
+18107 130501 08:28:49 INFO: 
+
+Started GET "/r/51765a68da300c1849000001/relations_from" for 2.229.216.15 at 2013-05-01 08:28:49 +0000
+7623 130501 08:28:49 INFO: Completed 200 OK in 195ms (Views: 6.6ms)
+18091 130501 08:28:49 INFO: Completed 200 OK in 251ms (Views: 36.2ms)
+18107 130501 08:28:50 INFO:   Processing by RController#relations_from as JSON
+18107 130501 08:28:50 INFO:   Parameters: {"id"=>"51765a68da300c1849000001"}
+18107 130501 08:28:50 INFO: Username: danielegallan
+18107 130501 08:28:50 INFO: Completed 200 OK in 54ms (Views: 11.3ms)
+18107 130501 08:28:50 INFO: 
+
+Started GET "/projects/516d41aada300c2acb000002" for 2.229.216.15 at 2013-05-01 08:28:50 +0000
+18107 130501 08:28:50 INFO:   Processing by ProjectsController#show as JSON
+18107 130501 08:28:50 INFO:   Parameters: {"id"=>"516d41aada300c2acb000002"}
+18107 130501 08:28:50 INFO: Username: danielegallan
+18107 130501 08:28:50 INFO: Completed 200 OK in 5ms (Views: 1.7ms)
+18107 130501 08:28:50 INFO: 
+
+Started GET "/r/516d41aada300c2acb000002/relations_from" for 2.229.216.15 at 2013-05-01 08:28:50 +0000
+18107 130501 08:28:50 INFO:   Processing by RController#relations_from as JSON
+18107 130501 08:28:50 INFO:   Parameters: {"id"=>"516d41aada300c2acb000002"}
+18107 130501 08:28:50 INFO: Username: danielegallan
+18107 130501 08:28:50 INFO: Completed 200 OK in 123ms (Views: 15.5ms)
+18107 130501 08:28:50 INFO: 
+
+Started GET "/r/517a4368da300c691f000001" for 2.229.216.15 at 2013-05-01 08:28:50 +0000
+18091 130501 08:28:50 INFO: 
+
+Started GET "/r/517a46f7da300c6b31000001" for 2.229.216.15 at 2013-05-01 08:28:50 +0000
+18107 130501 08:28:50 INFO:   Processing by RController#show as JSON
+18107 130501 08:28:50 INFO:   Parameters: {"id"=>"517a4368da300c691f000001"}
+7623 130501 08:28:50 INFO: 
+
+Started GET "/r/517a49fbda300c6b43000006" for 2.229.216.15 at 2013-05-01 08:28:50 +0000
+18107 130501 08:28:50 INFO: Username: danielegallan
+18091 130501 08:28:50 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:50 INFO:   Parameters: {"id"=>"517a46f7da300c6b31000001"}
+18091 130501 08:28:50 INFO: Username: danielegallan
+7623 130501 08:28:50 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:50 INFO:   Parameters: {"id"=>"517a49fbda300c6b43000006"}
+18107 130501 08:28:50 INFO: Completed 200 OK in 5ms (Views: 0.6ms)
+7623 130501 08:28:50 INFO: Username: danielegallan
+18091 130501 08:28:50 INFO: Completed 200 OK in 7ms (Views: 1.6ms)
+7623 130501 08:28:50 INFO: Completed 200 OK in 5ms (Views: 0.4ms)
+7623 130501 08:28:50 INFO: 
+
+Started GET "/r/4fa78c27924ff8410f000001/relations_to" for 2.229.216.15 at 2013-05-01 08:28:50 +0000
+7623 130501 08:28:50 INFO:   Processing by RController#relations_to as JSON
+7623 130501 08:28:50 INFO:   Parameters: {"id"=>"4fa78c27924ff8410f000001"}
+7623 130501 08:28:50 INFO: Username: danielegallan
+7623 130501 08:28:50 INFO: Completed 200 OK in 10ms (Views: 0.9ms)
+7623 130501 08:28:50 INFO: 
+
+Started GET "/r/4fa78c27924ff8410f000001" for 2.229.216.15 at 2013-05-01 08:28:50 +0000
+7623 130501 08:28:50 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:50 INFO:   Parameters: {"id"=>"4fa78c27924ff8410f000001"}
+7623 130501 08:28:50 INFO: Username: danielegallan
+7623 130501 08:28:50 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78d3b924ff8410f000003/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78d3b924ff8410f000003"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 11ms (Views: 0.3ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78d3b924ff8410f000003" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78d3b924ff8410f000003"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 3ms (Views: 0.4ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78d3f924ff84121000004/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78d3f924ff84121000004"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 7ms (Views: 0.5ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78d3f924ff84121000004" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78d3f924ff84121000004"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78e1c924ff8410f000005/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78e1c924ff8410f000005"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78e1c924ff8410f000005" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78e1c924ff8410f000005"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78e39924ff8410f000007/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78e39924ff8410f000007"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 7ms (Views: 0.5ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78e39924ff8410f000007" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78e39924ff8410f000007"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78e52924ff84117000002/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78e52924ff84117000002"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78e52924ff84117000002" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78e52924ff84117000002"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78eba924ff84121000006/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78eba924ff84121000006"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78eba924ff84121000006" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78eba924ff84121000006"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78ebc924ff84121000008/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78ebc924ff84121000008"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78ebc924ff84121000008" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78ebc924ff84121000008"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 3ms (Views: 0.4ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78ecb924ff84117000004/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78ecb924ff84117000004"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 7ms (Views: 0.5ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78ecb924ff84117000004" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78ecb924ff84117000004"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78ed6924ff840c1000005/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78ed6924ff840c1000005"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 7ms (Views: 0.5ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78ed6924ff840c1000005" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78ed6924ff840c1000005"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78ef7924ff8410f00000b/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78ef7924ff8410f00000b"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 7ms (Views: 0.5ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78ef7924ff8410f00000b" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78ef7924ff8410f00000b"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78f06924ff8412100000a/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78f06924ff8412100000a"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78f06924ff8412100000a" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78f06924ff8412100000a"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+18091 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa7956c924ff84129000006/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa7956c924ff84129000006" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa7956c924ff84129000006"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa79b18924ff8447f000001/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa79b18924ff8447f000001"}
+18091 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa7956c924ff84129000006"}
+7623 130501 08:28:51 INFO: Username: danielegallan
+18091 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+18091 130501 08:28:51 INFO: Completed 200 OK in 13ms (Views: 1.0ms)
+18091 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa79b18924ff8447f000001" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+18091 130501 08:28:51 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa79b18924ff8447f000001"}
+18091 130501 08:28:51 INFO: Username: danielegallan
+18091 130501 08:28:51 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+18091 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa79b27924ff8448b000001/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+18091 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa79b27924ff8448b000001"}
+18091 130501 08:28:51 INFO: Username: danielegallan
+18091 130501 08:28:51 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+18091 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa79b2c924ff8449d000001/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+7623 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa79b27924ff8448b000001" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+18107 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa79b2c924ff8449d000001" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+18091 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+7623 130501 08:28:51 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa79b2c924ff8449d000001"}
+7623 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa79b27924ff8448b000001"}
+18091 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Username: danielegallan
+18107 130501 08:28:51 INFO:   Processing by RController#show as JSON
+18107 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa79b2c924ff8449d000001"}
+18107 130501 08:28:51 INFO: Username: danielegallan
+7623 130501 08:28:51 INFO: Completed 200 OK in 5ms (Views: 0.4ms)
+18107 130501 08:28:51 INFO: Completed 200 OK in 5ms (Views: 0.4ms)
+18091 130501 08:28:51 INFO: Completed 200 OK in 10ms (Views: 0.5ms)
+18091 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa79b35924ff8449d000003/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+18091 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa79b35924ff8449d000003"}
+18091 130501 08:28:51 INFO: Username: danielegallan
+18091 130501 08:28:51 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+18091 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa79b35924ff8449d000003" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+18091 130501 08:28:51 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa79b35924ff8449d000003"}
+18091 130501 08:28:51 INFO: Username: danielegallan
+18091 130501 08:28:51 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18091 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa79b40924ff8448b000003/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+18091 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa79b40924ff8448b000003"}
+18091 130501 08:28:51 INFO: Username: danielegallan
+18091 130501 08:28:51 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+18091 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa79b40924ff8448b000003" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+18091 130501 08:28:51 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa79b40924ff8448b000003"}
+18091 130501 08:28:51 INFO: Username: danielegallan
+18091 130501 08:28:51 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+18091 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa79b49924ff84493000001/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+18091 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa79b49924ff84493000001"}
+18091 130501 08:28:51 INFO: Username: danielegallan
+18091 130501 08:28:51 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+18091 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa79b49924ff84493000001" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+18091 130501 08:28:51 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa79b49924ff84493000001"}
+18091 130501 08:28:51 INFO: Username: danielegallan
+18091 130501 08:28:51 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18091 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78c27924ff8410f000002/relations_to" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+18091 130501 08:28:51 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78c27924ff8410f000002"}
+18091 130501 08:28:51 INFO: Username: danielegallan
+18091 130501 08:28:51 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+18091 130501 08:28:51 INFO: 
+
+Started GET "/r/4fa78c27924ff8410f000002" for 2.229.216.15 at 2013-05-01 08:28:51 +0000
+18091 130501 08:28:51 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:51 INFO:   Parameters: {"id"=>"4fa78c27924ff8410f000002"}
+18091 130501 08:28:51 INFO: Username: danielegallan
+18091 130501 08:28:51 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa78d3b924ff8410f000004/relations_to" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa78d3b924ff8410f000004"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa78d3b924ff8410f000004" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa78d3b924ff8410f000004"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa78ed3924ff8410f000009/relations_to" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa78ed3924ff8410f000009"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa78ed3924ff8410f000009" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa78ed3924ff8410f000009"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa78d3f924ff84121000005/relations_to" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa78d3f924ff84121000005"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa78d3f924ff84121000005" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa78d3f924ff84121000005"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa7956c924ff84129000007/relations_to" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa7956c924ff84129000007"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa7956c924ff84129000007" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa7956c924ff84129000007"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4faa2c93924ff85b5b000001/relations_to" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4faa2c93924ff85b5b000001"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4faa2c93924ff85b5b000001" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4faa2c93924ff85b5b000001"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4faa2c8b924ff85c09000001/relations_to" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4faa2c8b924ff85c09000001"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4faa2c8b924ff85c09000001" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4faa2c8b924ff85c09000001"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa78c91924ff84121000002/relations_from" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_from as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa78c91924ff84121000002"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa78c91924ff84121000002" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa78c91924ff84121000002"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa78e3e924ff840c1000001/relations_from" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_from as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa78e3e924ff840c1000001"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa78e3e924ff840c1000001" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa78e3e924ff840c1000001"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa78e68924ff840c1000003/relations_from" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_from as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa78e68924ff840c1000003"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa78e68924ff840c1000003" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa78e68924ff840c1000003"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4f9d8705e90a3e21d3000003/relations_from" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_from as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4f9d8705e90a3e21d3000003"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 7ms (Views: 0.6ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4f9d8705e90a3e21d3000003" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4f9d8705e90a3e21d3000003"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa7959f924ff8435b000001/relations_from" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_from as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa7959f924ff8435b000001"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa7959f924ff8435b000001" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa7959f924ff8435b000001"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa795b8924ff84380000001/relations_from" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_from as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa795b8924ff84380000001"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa795b8924ff84380000001" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa795b8924ff84380000001"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa78c91924ff84121000003/relations_to" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa78c91924ff84121000003"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa78e3e924ff840c1000002/relations_to" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa78e3e924ff840c1000002"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 7ms (Views: 0.5ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa78e68924ff840c1000004/relations_to" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa78e68924ff840c1000004"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 11ms (Views: 0.9ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/516e45e8da300c6650000003/relations_to" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"516e45e8da300c6650000003"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa7959f924ff8435b000002/relations_to" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa7959f924ff8435b000002"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 10ms (Views: 0.8ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/4fa795b8924ff84380000002/relations_to" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"4fa795b8924ff84380000002"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 8ms (Views: 0.6ms)
+18091 130501 08:28:52 INFO: 
+
+Started GET "/r/516e46a3da300c675a000003/relations_to" for 2.229.216.15 at 2013-05-01 08:28:52 +0000
+18091 130501 08:28:52 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:52 INFO:   Parameters: {"id"=>"516e46a3da300c675a000003"}
+18091 130501 08:28:52 INFO: Username: danielegallan
+18091 130501 08:28:52 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+18091 130501 08:28:53 INFO: 
+
+Started GET "/r/516e4e3fda300c6791000009/relations_to" for 2.229.216.15 at 2013-05-01 08:28:53 +0000
+18091 130501 08:28:53 INFO:   Processing by RController#relations_to as JSON
+18091 130501 08:28:53 INFO:   Parameters: {"id"=>"516e4e3fda300c6791000009"}
+18091 130501 08:28:53 INFO: Username: danielegallan
+18091 130501 08:28:53 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+18091 130501 08:28:53 INFO: 
+
+Started GET "/r/516d4176da300c2ae7000001" for 2.229.216.15 at 2013-05-01 08:28:53 +0000
+18091 130501 08:28:53 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:53 INFO:   Parameters: {"id"=>"516d4176da300c2ae7000001"}
+18091 130501 08:28:53 INFO: Username: danielegallan
+18091 130501 08:28:53 INFO: Completed 200 OK in 3ms (Views: 0.1ms)
+18091 130501 08:28:53 INFO: 
+
+Started GET "/r/517a4391da300c6a81000003" for 2.229.216.15 at 2013-05-01 08:28:53 +0000
+18091 130501 08:28:53 INFO:   Processing by RController#show as JSON
+18091 130501 08:28:53 INFO:   Parameters: {"id"=>"517a4391da300c6a81000003"}
+18091 130501 08:28:53 INFO: Username: danielegallan
+18091 130501 08:28:53 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18091 130501 08:28:53 INFO: 
+
+Started GET "/r/517a4388da300c6aaa000001/relations_from" for 2.229.216.15 at 2013-05-01 08:28:53 +0000
+18091 130501 08:28:53 INFO:   Processing by RController#relations_from as JSON
+18091 130501 08:28:53 INFO:   Parameters: {"id"=>"517a4388da300c6aaa000001"}
+18091 130501 08:28:53 INFO: Username: danielegallan
+18091 130501 08:28:53 INFO: Completed 404 Not Found in 2ms
+18107 130501 08:28:53 INFO: 
+
+Started GET "/r/517a4388da300c6aaa000001" for 2.229.216.15 at 2013-05-01 08:28:53 +0000
+18107 130501 08:28:53 INFO:   Processing by RController#show as JSON
+18107 130501 08:28:53 INFO:   Parameters: {"id"=>"517a4388da300c6aaa000001"}
+18107 130501 08:28:53 INFO: Username: danielegallan
+7623 130501 08:28:53 INFO: 
+
+Started GET "/r/517a4788da300c6c46000001" for 2.229.216.15 at 2013-05-01 08:28:53 +0000
+7623 130501 08:28:53 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:53 INFO:   Parameters: {"id"=>"517a4788da300c6c46000001"}
+7623 130501 08:28:53 INFO: Username: danielegallan
+7623 130501 08:28:53 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+18107 130501 08:28:53 INFO: Completed 404 Not Found in 14ms
+7623 130501 08:28:53 INFO: 
+
+Started GET "/r/517a475dda300c6c1c000002/relations_from" for 2.229.216.15 at 2013-05-01 08:28:53 +0000
+7623 130501 08:28:53 INFO:   Processing by RController#relations_from as JSON
+7623 130501 08:28:53 INFO:   Parameters: {"id"=>"517a475dda300c6c1c000002"}
+7623 130501 08:28:53 INFO: Username: danielegallan
+18091 130501 08:28:53 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 517a4388da300c6aaa000001.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+7623 130501 08:28:53 INFO: Completed 200 OK in 8ms (Views: 0.6ms)
+7623 130501 08:28:53 INFO: 
+
+Started GET "/r/517a475dda300c6c1c000002" for 2.229.216.15 at 2013-05-01 08:28:53 +0000
+7623 130501 08:28:53 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:53 INFO:   Parameters: {"id"=>"517a475dda300c6c1c000002"}
+7623 130501 08:28:53 INFO: Username: danielegallan
+7623 130501 08:28:53 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18107 130501 08:28:53 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 517a4388da300c6aaa000001.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+18107 130501 08:28:53 INFO: 
+
+Started GET "/r/517a477bda300c6c29000001/relations_from" for 2.229.216.15 at 2013-05-01 08:28:53 +0000
+18107 130501 08:28:53 INFO:   Processing by RController#relations_from as JSON
+18107 130501 08:28:53 INFO:   Parameters: {"id"=>"517a477bda300c6c29000001"}
+18107 130501 08:28:53 INFO: Username: danielegallan
+18107 130501 08:28:53 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+18107 130501 08:28:53 INFO: 
+
+Started GET "/r/4faa1da8924ff84f2600000e" for 2.229.216.15 at 2013-05-01 08:28:53 +0000
+7623 130501 08:28:53 INFO: 
+
+Started GET "/r/517a477bda300c6c29000001" for 2.229.216.15 at 2013-05-01 08:28:53 +0000
+7623 130501 08:28:53 INFO:   Processing by RController#show as JSON
+18107 130501 08:28:53 INFO:   Processing by RController#show as JSON
+7623 130501 08:28:53 INFO:   Parameters: {"id"=>"517a477bda300c6c29000001"}
+18107 130501 08:28:53 INFO:   Parameters: {"id"=>"4faa1da8924ff84f2600000e"}
+7623 130501 08:28:53 INFO: Username: danielegallan
+18107 130501 08:28:53 INFO: Username: danielegallan
+7623 130501 08:28:53 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+18107 130501 08:28:53 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+18107 130501 09:28:32 INFO: 
+
+Started GET "/notify/4fa02f0ae90a3e379a000005/name/focused" for 2.229.216.15 at 2013-05-01 09:28:32 +0000
+18107 130501 09:28:32 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 09:28:32 INFO:   Parameters: {"id"=>"4fa02f0ae90a3e379a000005", "attribute"=>"name", "event"=>"focused"}
+18107 130501 09:28:32 INFO: Username: danielegallan
+18107 130501 09:28:32 INFO: Notifying: Issue id: 4fa02f0ae90a3e379a000005 with action: focused class: notify distance: 0
+18107 130501 09:28:32 INFO: Rendered text template (0.0ms)
+18107 130501 09:28:32 INFO: Completed 200 OK in 11ms (Views: 4.5ms)
+18107 130501 09:28:32 INFO: 
+
+Started GET "/notify/4fa02f0ae90a3e379a000005/name/blured" for 2.229.216.15 at 2013-05-01 09:28:32 +0000
+18107 130501 09:28:32 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 09:28:32 INFO:   Parameters: {"id"=>"4fa02f0ae90a3e379a000005", "attribute"=>"name", "event"=>"blured"}
+18107 130501 09:28:32 INFO: Username: danielegallan
+18107 130501 09:28:32 INFO: Notifying: Issue id: 4fa02f0ae90a3e379a000005 with action: blured class: notify distance: 0
+18107 130501 09:28:32 INFO: Rendered text template (0.0ms)
+18107 130501 09:28:32 INFO: Completed 200 OK in 5ms (Views: 0.9ms)
+18107 130501 09:28:36 INFO: 
+
+Started GET "/notify/4fa02f0ae90a3e379a000005/name/blured" for 2.229.216.15 at 2013-05-01 09:28:36 +0000
+18107 130501 09:28:36 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 09:28:36 INFO:   Parameters: {"id"=>"4fa02f0ae90a3e379a000005", "attribute"=>"name", "event"=>"blured"}
+18107 130501 09:28:36 INFO: Username: danielegallan
+18107 130501 09:28:36 INFO: Notifying: Issue id: 4fa02f0ae90a3e379a000005 with action: blured class: notify distance: 0
+18107 130501 09:28:36 INFO: Rendered text template (0.0ms)
+18107 130501 09:28:36 INFO: Completed 200 OK in 4ms (Views: 0.6ms)
+18107 130501 09:31:57 INFO: 
+
+Started GET "/notify/4fa02f0ae90a3e379a000005/name/focused" for 2.229.216.15 at 2013-05-01 09:31:57 +0000
+18107 130501 09:31:57 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 09:31:57 INFO:   Parameters: {"id"=>"4fa02f0ae90a3e379a000005", "attribute"=>"name", "event"=>"focused"}
+18107 130501 09:31:57 INFO: Username: danielegallan
+18107 130501 09:31:57 INFO: Notifying: Issue id: 4fa02f0ae90a3e379a000005 with action: focused class: notify distance: 0
+18107 130501 09:31:57 INFO: Rendered text template (0.0ms)
+18107 130501 09:31:57 INFO: Completed 200 OK in 4ms (Views: 0.7ms)
+18107 130501 09:32:01 INFO: 
+
+Started GET "/notify/4fa02f0ae90a3e379a000005/name/blured" for 2.229.216.15 at 2013-05-01 09:32:01 +0000
+18107 130501 09:32:01 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 09:32:01 INFO:   Parameters: {"id"=>"4fa02f0ae90a3e379a000005", "attribute"=>"name", "event"=>"blured"}
+18107 130501 09:32:01 INFO: Username: danielegallan
+18107 130501 09:32:01 INFO: Notifying: Issue id: 4fa02f0ae90a3e379a000005 with action: blured class: notify distance: 0
+18107 130501 09:32:01 INFO: Rendered text template (0.0ms)
+18107 130501 09:32:01 INFO: Completed 200 OK in 4ms (Views: 0.9ms)
+18107 130501 09:32:18 INFO: 
+
+Started GET "/notify/4fa0dfc7e90a3e6254000006/name/focused" for 2.229.216.15 at 2013-05-01 09:32:18 +0000
+18107 130501 09:32:18 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 09:32:18 INFO:   Parameters: {"id"=>"4fa0dfc7e90a3e6254000006", "attribute"=>"name", "event"=>"focused"}
+18107 130501 09:32:18 INFO: Username: danielegallan
+18107 130501 09:32:18 INFO: Notifying: Issue id: 4fa0dfc7e90a3e6254000006 with action: focused class: notify distance: 0
+18107 130501 09:32:18 INFO: Rendered text template (0.0ms)
+18107 130501 09:32:18 INFO: Completed 200 OK in 4ms (Views: 0.6ms)
+18107 130501 09:32:23 INFO: 
+
+Started GET "/notify/4fa0dfc7e90a3e6254000006/name/blured" for 2.229.216.15 at 2013-05-01 09:32:23 +0000
+18107 130501 09:32:23 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 09:32:23 INFO:   Parameters: {"id"=>"4fa0dfc7e90a3e6254000006", "attribute"=>"name", "event"=>"blured"}
+18107 130501 09:32:23 INFO: Username: danielegallan
+18107 130501 09:32:23 INFO: Notifying: Issue id: 4fa0dfc7e90a3e6254000006 with action: blured class: notify distance: 0
+18107 130501 09:32:23 INFO: Rendered text template (0.0ms)
+18107 130501 09:32:23 INFO: Completed 200 OK in 4ms (Views: 0.7ms)
+18107 130501 09:52:36 INFO: 
+
+Started GET "/notify/4fa0dfc7e90a3e6254000006/name/focused" for 2.229.216.15 at 2013-05-01 09:52:36 +0000
+18107 130501 09:52:36 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 09:52:36 INFO:   Parameters: {"id"=>"4fa0dfc7e90a3e6254000006", "attribute"=>"name", "event"=>"focused"}
+18107 130501 09:52:36 INFO: Username: danielegallan
+18107 130501 09:52:36 INFO: Notifying: Issue id: 4fa0dfc7e90a3e6254000006 with action: focused class: notify distance: 0
+18107 130501 09:52:36 INFO: Rendered text template (0.0ms)
+18107 130501 09:52:36 INFO: Completed 200 OK in 6ms (Views: 0.9ms)
+18107 130501 09:52:42 INFO: 
+
+Started GET "/notify/4fa0dfc7e90a3e6254000006/name/blured" for 2.229.216.15 at 2013-05-01 09:52:42 +0000
+18107 130501 09:52:42 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 09:52:42 INFO:   Parameters: {"id"=>"4fa0dfc7e90a3e6254000006", "attribute"=>"name", "event"=>"blured"}
+18107 130501 09:52:42 INFO: Username: danielegallan
+18107 130501 09:52:42 INFO: Notifying: Issue id: 4fa0dfc7e90a3e6254000006 with action: blured class: notify distance: 0
+18107 130501 09:52:42 INFO: Rendered text template (0.0ms)
+18107 130501 09:52:42 INFO: Completed 200 OK in 4ms (Views: 0.7ms)
+18107 130501 09:52:42 INFO: 
+
+Started GET "/notify/4fa7956c924ff84129000006/name/focused" for 2.229.216.15 at 2013-05-01 09:52:42 +0000
+18107 130501 09:52:42 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 09:52:42 INFO:   Parameters: {"id"=>"4fa7956c924ff84129000006", "attribute"=>"name", "event"=>"focused"}
+18107 130501 09:52:42 INFO: Username: danielegallan
+18107 130501 09:52:42 INFO: Notifying: Issue id: 4fa7956c924ff84129000006 with action: focused class: notify distance: 0
+18107 130501 09:52:42 INFO: Rendered text template (0.0ms)
+18107 130501 09:52:42 INFO: Completed 200 OK in 4ms (Views: 0.7ms)
+18107 130501 09:52:42 INFO: 
+
+Started GET "/notify/4fa7956c924ff84129000006/name/blured" for 2.229.216.15 at 2013-05-01 09:52:42 +0000
+18107 130501 09:52:42 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 09:52:42 INFO:   Parameters: {"id"=>"4fa7956c924ff84129000006", "attribute"=>"name", "event"=>"blured"}
+18107 130501 09:52:42 INFO: Username: danielegallan
+18107 130501 09:52:42 INFO: Notifying: Issue id: 4fa7956c924ff84129000006 with action: blured class: notify distance: 0
+18107 130501 09:52:42 INFO: Rendered text template (0.0ms)
+18107 130501 09:52:42 INFO: Completed 200 OK in 4ms (Views: 0.6ms)
+18107 130501 09:52:43 INFO: 
+
+Started GET "/notify/4fa7956c924ff84129000006/name/focused" for 2.229.216.15 at 2013-05-01 09:52:43 +0000
+18107 130501 09:52:43 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 09:52:43 INFO:   Parameters: {"id"=>"4fa7956c924ff84129000006", "attribute"=>"name", "event"=>"focused"}
+18107 130501 09:52:43 INFO: Username: danielegallan
+18107 130501 09:52:43 INFO: Notifying: Issue id: 4fa7956c924ff84129000006 with action: focused class: notify distance: 0
+18107 130501 09:52:43 INFO: Rendered text template (0.0ms)
+18107 130501 09:52:43 INFO: Completed 200 OK in 4ms (Views: 0.7ms)
+18107 130501 09:52:43 INFO: 
+
+Started GET "/notify/4fa7956c924ff84129000006/name/blured" for 2.229.216.15 at 2013-05-01 09:52:43 +0000
+18107 130501 09:52:43 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 09:52:43 INFO:   Parameters: {"id"=>"4fa7956c924ff84129000006", "attribute"=>"name", "event"=>"blured"}
+18107 130501 09:52:43 INFO: Username: danielegallan
+18107 130501 09:52:43 INFO: Notifying: Issue id: 4fa7956c924ff84129000006 with action: blured class: notify distance: 0
+18107 130501 09:52:43 INFO: Rendered text template (0.0ms)
+18107 130501 09:52:43 INFO: Completed 200 OK in 4ms (Views: 0.7ms)
+18107 130501 09:52:43 INFO: 
+
+Started GET "/notify/4fa7956c924ff84129000006/name/focused" for 2.229.216.15 at 2013-05-01 09:52:43 +0000
+18107 130501 09:52:43 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 09:52:43 INFO:   Parameters: {"id"=>"4fa7956c924ff84129000006", "attribute"=>"name", "event"=>"focused"}
+18107 130501 09:52:43 INFO: Username: danielegallan
+18107 130501 09:52:43 INFO: Notifying: Issue id: 4fa7956c924ff84129000006 with action: focused class: notify distance: 0
+18107 130501 09:52:43 INFO: Rendered text template (0.0ms)
+18107 130501 09:52:43 INFO: Completed 200 OK in 4ms (Views: 0.8ms)
+18107 130501 09:52:48 INFO: 
+
+Started GET "/notify/4fa7956c924ff84129000006/name/blured" for 2.229.216.15 at 2013-05-01 09:52:48 +0000
+18107 130501 09:52:48 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 09:52:48 INFO:   Parameters: {"id"=>"4fa7956c924ff84129000006", "attribute"=>"name", "event"=>"blured"}
+18107 130501 09:52:48 INFO: Username: danielegallan
+18107 130501 09:52:48 INFO: Notifying: Issue id: 4fa7956c924ff84129000006 with action: blured class: notify distance: 0
+18107 130501 09:52:48 INFO: Rendered text template (0.0ms)
+18107 130501 09:52:48 INFO: Completed 200 OK in 4ms (Views: 0.8ms)
+18107 130501 10:10:02 INFO: 
+
+Started GET "/notify/4fa7956c924ff84129000006/name/focused" for 2.229.216.15 at 2013-05-01 10:10:02 +0000
+18107 130501 10:10:02 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 10:10:02 INFO:   Parameters: {"id"=>"4fa7956c924ff84129000006", "attribute"=>"name", "event"=>"focused"}
+18107 130501 10:10:02 INFO: Username: danielegallan
+18107 130501 10:10:02 INFO: Notifying: Issue id: 4fa7956c924ff84129000006 with action: focused class: notify distance: 0
+18107 130501 10:10:02 INFO: Rendered text template (0.0ms)
+18107 130501 10:10:02 INFO: Completed 200 OK in 7ms (Views: 0.9ms)
+18107 130501 10:10:04 INFO: 
+
+Started GET "/notify/4fa7956c924ff84129000006/name/blured" for 2.229.216.15 at 2013-05-01 10:10:04 +0000
+18107 130501 10:10:04 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 10:10:04 INFO:   Parameters: {"id"=>"4fa7956c924ff84129000006", "attribute"=>"name", "event"=>"blured"}
+18107 130501 10:10:04 INFO: Username: danielegallan
+18107 130501 10:10:04 INFO: Notifying: Issue id: 4fa7956c924ff84129000006 with action: blured class: notify distance: 0
+18107 130501 10:10:04 INFO: Rendered text template (0.0ms)
+18107 130501 10:10:04 INFO: Completed 200 OK in 4ms (Views: 0.8ms)
+18107 130501 11:31:05 INFO: 
+
+Started GET "/notify/4fa7956c924ff84129000006/name/focused" for 2.229.216.15 at 2013-05-01 11:31:05 +0000
+18107 130501 11:31:05 INFO:   Processing by NotifyController#notify as JSON
+18107 130501 11:31:05 INFO:   Parameters: {"id"=>"4fa7956c924ff84129000006", "attribute"=>"name", "event"=>"focused"}
+18107 130501 11:31:05 INFO: Username: danielegallan
+18107 130501 11:31:05 INFO: Notifying: Issue id: 4fa7956c924ff84129000006 with action: focused class: notify distance: 0
+18107 130501 11:31:05 INFO: Rendered text template (0.0ms)
+18107 130501 11:31:05 INFO: Completed 200 OK in 7ms (Views: 0.6ms)

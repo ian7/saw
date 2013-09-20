@@ -1,0 +1,7 @@
+7824 121030 13:13:52 INFO: 
+
+Started HEAD "/" for 10.61.100.234 at 2012-10-30 13:13:52 +0000
+7824 121030 13:13:52 INFO:   Processing by WelcomeController#index as HTML
+7824 121030 13:13:52 INFO: Username: (none)
+7824 121030 13:13:52 INFO: Rendered welcome/index.html.erb within layouts/application (2.0ms)
+7824 121030 13:13:52 INFO: Completed 200 OK in 7ms (Views: 6.6ms)

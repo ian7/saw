@@ -1,0 +1,27 @@
+8107 121119 13:23:10 INFO: 
+
+Started GET "/" for 10.40.6.103 at 2012-11-19 13:23:10 +0000
+8107 121119 13:23:10 INFO:   Processing by WelcomeController#index as HTML
+8107 121119 13:23:10 INFO: Username: (none)
+8107 121119 13:23:10 INFO: Rendered welcome/index.html.erb within layouts/application (0.7ms)
+8107 121119 13:23:10 INFO: Completed 200 OK in 2ms (Views: 1.6ms)
+8107 121119 13:23:11 INFO: 
+
+Started GET "/scope/type/Decision" for 10.40.6.103 at 2012-11-19 13:23:11 +0000
+8107 121119 13:23:11 INFO:   Processing by ScopeController#type as JSON
+8107 121119 13:23:11 INFO:   Parameters: {"type_name"=>"Decision"}
+8107 121119 13:23:11 INFO: Username: (none)
+8107 121119 13:23:12 INFO: Completed 200 OK in 44ms (Views: 3.0ms)
+8107 121119 13:23:12 INFO: 
+
+Started GET "/t" for 10.40.6.103 at 2012-11-19 13:23:12 +0000
+8107 121119 13:23:12 INFO:   Processing by TController#index as JSON
+8107 121119 13:23:12 INFO: Username: (none)
+8107 121119 13:23:12 INFO: Completed   in 1ms
+8107 121119 13:23:12 INFO: 
+
+Started GET "/users/sign_in" for 10.40.6.103 at 2012-11-19 13:23:12 +0000
+8107 121119 13:23:12 INFO:   Processing by Devise::SessionsController#new as HTML
+8107 121119 13:23:12 INFO: Username: (none)
+8107 121119 13:23:12 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.3ms)
+8107 121119 13:23:12 INFO: Completed 200 OK in 3ms (Views: 2.1ms)

@@ -1,0 +1,346 @@
+7568 121029 11:14:00 INFO: 
+
+Started GET "/" for 10.61.101.75 at 2012-10-29 11:14:00 +0000
+7568 121029 11:14:00 INFO:   Processing by WelcomeController#index as HTML
+7568 121029 11:14:00 INFO: Username: (none)
+7568 121029 11:14:00 INFO: Rendered welcome/index.html.erb within layouts/application (2.8ms)
+7568 121029 11:14:00 INFO: Completed 200 OK in 11ms (Views: 9.2ms)
+7568 121029 11:14:06 INFO: 
+
+Started GET "/t" for 10.61.101.75 at 2012-10-29 11:14:06 +0000
+7568 121029 11:14:06 INFO:   Processing by TController#index as JSON
+7568 121029 11:14:06 INFO: Username: (none)
+7579 121029 11:14:06 INFO: 
+
+Started GET "/r/4dc261f0798e1c64b6000009" for 10.61.101.75 at 2012-10-29 11:14:06 +0000
+7587 121029 11:14:06 INFO: 
+
+Started GET "/projects/4fb3c56d09f9515d4f000001" for 10.61.101.75 at 2012-10-29 11:14:06 +0000
+7596 121029 11:14:06 INFO: 
+
+Started GET "/r/4fb3c56d09f9515d4f000001/related_from/Issue" for 10.61.101.75 at 2012-10-29 11:14:06 +0000
+7568 121029 11:14:07 INFO: Completed 200 OK in 1011ms (Views: 720.4ms)
+7579 121029 11:14:07 INFO:   Processing by RController#show as JSON
+7579 121029 11:14:07 INFO:   Parameters: {"id"=>"4dc261f0798e1c64b6000009"}
+7579 121029 11:14:07 INFO: Username: (none)
+7579 121029 11:14:07 INFO: Completed 200 OK in 21ms (Views: 6.1ms)
+7587 121029 11:14:07 INFO:   Processing by ProjectsController#show as JSON
+7587 121029 11:14:07 INFO:   Parameters: {"id"=>"4fb3c56d09f9515d4f000001"}
+7579 121029 11:14:07 INFO: 
+
+Started GET "/r/4dc261f0798e1c64b6000009/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:07 +0000
+7587 121029 11:14:07 INFO: Username: (none)
+7579 121029 11:14:07 INFO:   Processing by RController#related_to as JSON
+7579 121029 11:14:07 INFO:   Parameters: {"id"=>"4dc261f0798e1c64b6000009", "type"=>"Alternative"}
+7579 121029 11:14:07 INFO: Username: (none)
+7596 121029 11:14:07 INFO:   Processing by RController#related_from as JSON
+7596 121029 11:14:07 INFO:   Parameters: {"id"=>"4fb3c56d09f9515d4f000001", "type"=>"Issue"}
+7587 121029 11:14:07 INFO: Completed 200 OK in 15ms (Views: 6.1ms)
+7596 121029 11:14:07 INFO: Username: (none)
+7579 121029 11:14:07 INFO: Completed 200 OK in 18ms (Views: 0.7ms)
+7596 121029 11:14:07 INFO: Completed 200 OK in 46ms (Views: 5.0ms)
+7596 121029 11:14:07 INFO: 
+
+Started GET "/r/4dc2647f798e1c64b6000010/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:07 +0000
+7579 121029 11:14:07 INFO: 
+
+Started GET "/r/4dc2631d798e1c64b600000b/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:07 +0000
+7587 121029 11:14:07 INFO: 
+
+Started GET "/r/4dc261a2798e1c64b6000007/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:07 +0000
+7579 121029 11:14:07 INFO:   Processing by RController#related_to as JSON
+7579 121029 11:14:07 INFO:   Parameters: {"id"=>"4dc2631d798e1c64b600000b", "type"=>"Alternative"}
+7579 121029 11:14:07 INFO: Username: (none)
+7568 121029 11:14:07 INFO: 
+
+Started GET "/r/4fba06de09f9511e7c000001/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:07 +0000
+7587 121029 11:14:07 INFO:   Processing by RController#related_to as JSON
+7596 121029 11:14:07 INFO:   Processing by RController#related_to as JSON
+7587 121029 11:14:07 INFO:   Parameters: {"id"=>"4dc261a2798e1c64b6000007", "type"=>"Alternative"}
+7596 121029 11:14:07 INFO:   Parameters: {"id"=>"4dc2647f798e1c64b6000010", "type"=>"Alternative"}
+7587 121029 11:14:07 INFO: Username: (none)
+7568 121029 11:14:07 INFO:   Processing by RController#related_to as JSON
+7568 121029 11:14:07 INFO:   Parameters: {"id"=>"4fba06de09f9511e7c000001", "type"=>"Alternative"}
+7568 121029 11:14:07 INFO: Username: (none)
+7579 121029 11:14:07 INFO: Completed 200 OK in 17ms (Views: 5.3ms)
+7579 121029 11:14:07 INFO: 
+
+Started GET "/r/4f2ea806e97fa8e232000091/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:07 +0000
+7579 121029 11:14:07 INFO:   Processing by RController#related_to as JSON
+7579 121029 11:14:07 INFO:   Parameters: {"id"=>"4f2ea806e97fa8e232000091", "type"=>"Alternative"}
+7579 121029 11:14:07 INFO: Username: (none)
+7587 121029 11:14:07 INFO: Completed 200 OK in 28ms (Views: 1.8ms)
+7587 121029 11:14:07 INFO: 
+
+Started GET "/r/4dc26713798e1c6967000001/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:07 +0000
+7587 121029 11:14:07 INFO:   Processing by RController#related_to as JSON
+7587 121029 11:14:07 INFO:   Parameters: {"id"=>"4dc26713798e1c6967000001", "type"=>"Alternative"}
+7587 121029 11:14:07 INFO: Username: (none)
+7568 121029 11:14:07 INFO: Completed 200 OK in 34ms (Views: 1.8ms)
+7568 121029 11:14:07 INFO: 
+
+Started GET "/r/4fba0c5609f9511e87000001/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:07 +0000
+7568 121029 11:14:07 INFO:   Processing by RController#related_to as JSON
+7568 121029 11:14:07 INFO:   Parameters: {"id"=>"4fba0c5609f9511e87000001", "type"=>"Alternative"}
+7568 121029 11:14:07 INFO: Username: (none)
+7587 121029 11:14:07 INFO: Completed 200 OK in 20ms (Views: 0.4ms)
+7587 121029 11:14:07 INFO: 
+
+Started GET "/r/4fba0ddb09f9511e87000003/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:07 +0000
+7587 121029 11:14:07 INFO:   Processing by RController#related_to as JSON
+7587 121029 11:14:07 INFO:   Parameters: {"id"=>"4fba0ddb09f9511e87000003", "type"=>"Alternative"}
+7587 121029 11:14:07 INFO: Username: (none)
+7568 121029 11:14:07 INFO: Completed 200 OK in 22ms (Views: 0.5ms)
+7568 121029 11:14:08 INFO: 
+
+Started GET "/r/4dc261f0798e1c64b6000009/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:08 +0000
+7568 121029 11:14:08 INFO:   Processing by RController#related_to as JSON
+7568 121029 11:14:08 INFO:   Parameters: {"id"=>"4dc261f0798e1c64b6000009", "type"=>"Alternative"}
+7568 121029 11:14:08 INFO: Username: (none)
+7596 121029 11:14:08 INFO: Username: (none)
+7568 121029 11:14:08 INFO: Completed 200 OK in 19ms (Views: 0.8ms)
+7579 121029 11:14:08 INFO: Completed 200 OK in 89ms (Views: 0.5ms)
+7596 121029 11:14:08 INFO: Completed 200 OK in 116ms (Views: 1.1ms)
+7587 121029 11:14:08 INFO: Completed 200 OK in 63ms (Views: 0.6ms)
+7587 121029 11:14:28 INFO: 
+
+Started GET "/" for 10.61.101.75 at 2012-10-29 11:14:28 +0000
+7587 121029 11:14:28 INFO:   Processing by WelcomeController#index as HTML
+7587 121029 11:14:28 INFO: Username: (none)
+7587 121029 11:14:28 INFO: Rendered welcome/index.html.erb within layouts/application (3.4ms)
+7587 121029 11:14:28 INFO: Completed 200 OK in 11ms (Views: 10.1ms)
+7587 121029 11:14:28 INFO: 
+
+Started GET "/r/4dc261f0798e1c64b6000009" for 10.61.101.75 at 2012-10-29 11:14:28 +0000
+7587 121029 11:14:28 INFO:   Processing by RController#show as JSON
+7587 121029 11:14:28 INFO:   Parameters: {"id"=>"4dc261f0798e1c64b6000009"}
+7587 121029 11:14:28 INFO: Username: (none)
+7587 121029 11:14:28 INFO: Completed 200 OK in 22ms (Views: 0.5ms)
+7596 121029 11:14:28 INFO: 
+
+Started GET "/t" for 10.61.101.75 at 2012-10-29 11:14:28 +0000
+7579 121029 11:14:28 INFO: 
+
+Started GET "/projects/4fb3c56d09f9515d4f000001" for 10.61.101.75 at 2012-10-29 11:14:28 +0000
+7596 121029 11:14:28 INFO:   Processing by TController#index as JSON
+7579 121029 11:14:28 INFO:   Processing by ProjectsController#show as JSON
+7596 121029 11:14:28 INFO: Username: (none)
+7579 121029 11:14:28 INFO:   Parameters: {"id"=>"4fb3c56d09f9515d4f000001"}
+7579 121029 11:14:28 INFO: Username: (none)
+7606 121029 11:14:28 INFO: 
+
+Started GET "/r/4fb3c56d09f9515d4f000001/related_from/Issue" for 10.61.101.75 at 2012-10-29 11:14:28 +0000
+7579 121029 11:14:28 INFO: Completed 200 OK in 9ms (Views: 1.6ms)
+7579 121029 11:14:29 INFO: 
+
+Started GET "/r/4dc261f0798e1c64b6000009/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:29 +0000
+7579 121029 11:14:29 INFO:   Processing by RController#related_to as JSON
+7579 121029 11:14:29 INFO:   Parameters: {"id"=>"4dc261f0798e1c64b6000009", "type"=>"Alternative"}
+7579 121029 11:14:29 INFO: Username: (none)
+7579 121029 11:14:29 INFO: Completed 200 OK in 31ms (Views: 0.8ms)
+7606 121029 11:14:29 INFO:   Processing by RController#related_from as JSON
+7606 121029 11:14:29 INFO:   Parameters: {"id"=>"4fb3c56d09f9515d4f000001", "type"=>"Issue"}
+7606 121029 11:14:29 INFO: Username: (none)
+7606 121029 11:14:29 INFO: Completed 200 OK in 60ms (Views: 9.1ms)
+7606 121029 11:14:29 INFO: 
+
+Started GET "/r/4dc2631d798e1c64b600000b/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:29 +0000
+7579 121029 11:14:29 INFO: 
+
+Started GET "/r/4dc2647f798e1c64b6000010/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:29 +0000
+7579 121029 11:14:29 INFO:   Processing by RController#related_to as JSON
+7579 121029 11:14:29 INFO:   Parameters: {"id"=>"4dc2647f798e1c64b6000010", "type"=>"Alternative"}
+7579 121029 11:14:29 INFO: Username: (none)
+7587 121029 11:14:29 INFO: 
+
+Started GET "/r/4dc261f0798e1c64b6000009/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:29 +0000
+7568 121029 11:14:29 INFO: 
+
+Started GET "/r/4dc261a2798e1c64b6000007/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:29 +0000
+7606 121029 11:14:29 INFO:   Processing by RController#related_to as JSON
+7606 121029 11:14:29 INFO:   Parameters: {"id"=>"4dc2631d798e1c64b600000b", "type"=>"Alternative"}
+7568 121029 11:14:29 INFO:   Processing by RController#related_to as JSON
+7568 121029 11:14:29 INFO:   Parameters: {"id"=>"4dc261a2798e1c64b6000007", "type"=>"Alternative"}
+7587 121029 11:14:29 INFO:   Processing by RController#related_to as JSON
+7568 121029 11:14:29 INFO: Username: (none)
+7587 121029 11:14:29 INFO:   Parameters: {"id"=>"4dc261f0798e1c64b6000009", "type"=>"Alternative"}
+7587 121029 11:14:29 INFO: Username: (none)
+7568 121029 11:14:29 INFO: Completed 200 OK in 38ms (Views: 0.6ms)
+7568 121029 11:14:29 INFO: 
+
+Started GET "/r/4f2ea806e97fa8e232000091/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:29 +0000
+7568 121029 11:14:29 INFO:   Processing by RController#related_to as JSON
+7568 121029 11:14:29 INFO:   Parameters: {"id"=>"4f2ea806e97fa8e232000091", "type"=>"Alternative"}
+7568 121029 11:14:29 INFO: Username: (none)
+7579 121029 11:14:29 INFO: Completed 200 OK in 94ms (Views: 1.2ms)
+7587 121029 11:14:29 INFO: Completed 200 OK in 61ms (Views: 2.7ms)
+7579 121029 11:14:29 INFO: 
+
+Started GET "/r/4dc26713798e1c6967000001/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:29 +0000
+7579 121029 11:14:29 INFO:   Processing by RController#related_to as JSON
+7579 121029 11:14:29 INFO:   Parameters: {"id"=>"4dc26713798e1c6967000001", "type"=>"Alternative"}
+7579 121029 11:14:29 INFO: Username: (none)
+7587 121029 11:14:29 INFO: 
+
+Started GET "/r/4fba06de09f9511e7c000001/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:29 +0000
+7587 121029 11:14:29 INFO:   Processing by RController#related_to as JSON
+7587 121029 11:14:29 INFO:   Parameters: {"id"=>"4fba06de09f9511e7c000001", "type"=>"Alternative"}
+7587 121029 11:14:29 INFO: Username: (none)
+7579 121029 11:14:29 INFO: Completed 200 OK in 22ms (Views: 0.4ms)
+7579 121029 11:14:29 INFO: 
+
+Started GET "/r/4fba0c5609f9511e87000001/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:29 +0000
+7579 121029 11:14:29 INFO:   Processing by RController#related_to as JSON
+7579 121029 11:14:29 INFO:   Parameters: {"id"=>"4fba0c5609f9511e87000001", "type"=>"Alternative"}
+7579 121029 11:14:29 INFO: Username: (none)
+7568 121029 11:14:29 INFO: Completed 200 OK in 60ms (Views: 0.5ms)
+7568 121029 11:14:29 INFO: 
+
+Started GET "/r/4fba0ddb09f9511e87000003/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:14:29 +0000
+7568 121029 11:14:29 INFO:   Processing by RController#related_to as JSON
+7568 121029 11:14:29 INFO:   Parameters: {"id"=>"4fba0ddb09f9511e87000003", "type"=>"Alternative"}
+7568 121029 11:14:29 INFO: Username: (none)
+7587 121029 11:14:29 INFO: Completed 200 OK in 38ms (Views: 0.6ms)
+7606 121029 11:14:29 INFO: Username: (none)
+7579 121029 11:14:29 INFO: Completed 200 OK in 28ms (Views: 0.5ms)
+7568 121029 11:14:29 INFO: Completed 200 OK in 19ms (Views: 0.7ms)
+7606 121029 11:14:29 INFO: Completed 200 OK in 153ms (Views: 0.5ms)
+7596 121029 11:14:29 INFO: Completed 200 OK in 780ms (Views: 598.7ms)
+7787 121029 11:15:04 INFO: 
+
+Started GET "/" for 10.61.101.75 at 2012-10-29 11:15:04 +0000
+7787 121029 11:15:05 INFO:   Processing by WelcomeController#index as HTML
+7787 121029 11:15:05 INFO: Username: (none)
+7787 121029 11:15:05 INFO: Rendered welcome/index.html.erb within layouts/application (2.4ms)
+7787 121029 11:15:05 INFO: Completed 200 OK in 10ms (Views: 8.0ms)
+7787 121029 11:15:05 INFO: 
+
+Started GET "/t" for 10.61.101.75 at 2012-10-29 11:15:05 +0000
+7787 121029 11:15:05 INFO:   Processing by TController#index as JSON
+7787 121029 11:15:05 INFO: Username: (none)
+7797 121029 11:15:05 INFO: 
+
+Started GET "/projects/4fb3c56d09f9515d4f000001" for 10.61.101.75 at 2012-10-29 11:15:05 +0000
+7806 121029 11:15:05 INFO: 
+
+Started GET "/r/4fb3c56d09f9515d4f000001/related_from/Issue" for 10.61.101.75 at 2012-10-29 11:15:05 +0000
+7815 121029 11:15:06 INFO: 
+
+Started GET "/r/4dc261f0798e1c64b6000009" for 10.61.101.75 at 2012-10-29 11:15:05 +0000
+7787 121029 11:15:06 INFO: Completed 200 OK in 1012ms (Views: 666.1ms)
+7797 121029 11:15:06 INFO:   Processing by ProjectsController#show as JSON
+7797 121029 11:15:06 INFO:   Parameters: {"id"=>"4fb3c56d09f9515d4f000001"}
+7797 121029 11:15:06 INFO: Username: (none)
+7797 121029 11:15:06 INFO: Completed 200 OK in 21ms (Views: 4.8ms)
+7806 121029 11:15:06 INFO:   Processing by RController#related_from as JSON
+7806 121029 11:15:06 INFO:   Parameters: {"id"=>"4fb3c56d09f9515d4f000001", "type"=>"Issue"}
+7806 121029 11:15:06 INFO: Username: (none)
+7815 121029 11:15:06 INFO:   Processing by RController#show as JSON
+7815 121029 11:15:06 INFO:   Parameters: {"id"=>"4dc261f0798e1c64b6000009"}
+7815 121029 11:15:06 INFO: Username: (none)
+7815 121029 11:15:06 INFO: Completed 200 OK in 12ms (Views: 4.7ms)
+7815 121029 11:15:06 INFO: 
+
+Started GET "/r/4dc261f0798e1c64b6000009/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:15:06 +0000
+7815 121029 11:15:06 INFO:   Processing by RController#related_to as JSON
+7815 121029 11:15:06 INFO:   Parameters: {"id"=>"4dc261f0798e1c64b6000009", "type"=>"Alternative"}
+7815 121029 11:15:07 INFO: Username: (none)
+7806 121029 11:15:07 INFO: Completed 200 OK in 88ms (Views: 5.4ms)
+7815 121029 11:15:07 INFO: Completed 200 OK in 50ms (Views: 0.6ms)
+7815 121029 11:15:07 INFO: 
+
+Started GET "/r/4dc2631d798e1c64b600000b/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:15:07 +0000
+7806 121029 11:15:07 INFO: 
+
+Started GET "/r/4dc2647f798e1c64b6000010/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:15:07 +0000
+7815 121029 11:15:07 INFO:   Processing by RController#related_to as JSON
+7797 121029 11:15:07 INFO: 
+
+Started GET "/r/4dc261a2798e1c64b6000007/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:15:07 +0000
+7815 121029 11:15:07 INFO:   Parameters: {"id"=>"4dc2631d798e1c64b600000b", "type"=>"Alternative"}
+7815 121029 11:15:07 INFO: Username: (none)
+7806 121029 11:15:07 INFO:   Processing by RController#related_to as JSON
+7806 121029 11:15:07 INFO:   Parameters: {"id"=>"4dc2647f798e1c64b6000010", "type"=>"Alternative"}
+7806 121029 11:15:07 INFO: Username: (none)
+7797 121029 11:15:07 INFO:   Processing by RController#related_to as JSON
+7797 121029 11:15:07 INFO:   Parameters: {"id"=>"4dc261a2798e1c64b6000007", "type"=>"Alternative"}
+7797 121029 11:15:07 INFO: Username: (none)
+7787 121029 11:15:07 INFO: 
+
+Started GET "/r/4f2ea806e97fa8e232000091/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:15:07 +0000
+7787 121029 11:15:07 INFO:   Processing by RController#related_to as JSON
+7787 121029 11:15:07 INFO:   Parameters: {"id"=>"4f2ea806e97fa8e232000091", "type"=>"Alternative"}
+7787 121029 11:15:07 INFO: Username: (none)
+7806 121029 11:15:07 INFO: Completed 200 OK in 50ms (Views: 1.0ms)
+7806 121029 11:15:07 INFO: 
+
+Started GET "/r/4dc26713798e1c6967000001/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:15:07 +0000
+7806 121029 11:15:07 INFO:   Processing by RController#related_to as JSON
+7806 121029 11:15:07 INFO:   Parameters: {"id"=>"4dc26713798e1c6967000001", "type"=>"Alternative"}
+7806 121029 11:15:07 INFO: Username: (none)
+7815 121029 11:15:07 INFO: Completed 200 OK in 66ms (Views: 0.4ms)
+7815 121029 11:15:07 INFO: 
+
+Started GET "/r/4fba0c5609f9511e87000001/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:15:07 +0000
+7815 121029 11:15:07 INFO:   Processing by RController#related_to as JSON
+7815 121029 11:15:07 INFO:   Parameters: {"id"=>"4fba0c5609f9511e87000001", "type"=>"Alternative"}
+7815 121029 11:15:07 INFO: Username: (none)
+7806 121029 11:15:07 INFO: Completed 200 OK in 15ms (Views: 0.4ms)
+7787 121029 11:15:07 INFO: Completed 200 OK in 32ms (Views: 2.6ms)
+7806 121029 11:15:07 INFO: 
+
+Started GET "/r/4fba06de09f9511e7c000001/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:15:07 +0000
+7787 121029 11:15:07 INFO: 
+
+Started GET "/r/4fba0ddb09f9511e87000003/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:15:07 +0000
+7806 121029 11:15:07 INFO:   Processing by RController#related_to as JSON
+7806 121029 11:15:07 INFO:   Parameters: {"id"=>"4fba06de09f9511e7c000001", "type"=>"Alternative"}
+7806 121029 11:15:07 INFO: Username: (none)
+7797 121029 11:15:07 INFO: Completed 200 OK in 73ms (Views: 4.5ms)
+7787 121029 11:15:07 INFO:   Processing by RController#related_to as JSON
+7787 121029 11:15:07 INFO:   Parameters: {"id"=>"4fba0ddb09f9511e87000003", "type"=>"Alternative"}
+7787 121029 11:15:07 INFO: Username: (none)
+7815 121029 11:15:07 INFO: Completed 200 OK in 26ms (Views: 0.6ms)
+7806 121029 11:15:07 INFO: Completed 200 OK in 18ms (Views: 0.7ms)
+7787 121029 11:15:07 INFO: Completed 200 OK in 21ms (Views: 0.7ms)
+7787 121029 11:15:34 INFO: 
+
+Started GET "/projects" for 10.61.101.75 at 2012-10-29 11:15:34 +0000
+7787 121029 11:15:34 INFO:   Processing by ProjectsController#index as JSON
+7787 121029 11:15:34 INFO: Username: (none)
+7787 121029 11:15:35 INFO: Completed 200 OK in 1151ms (Views: 5.3ms)
+7787 121029 11:15:37 INFO: 
+
+Started GET "/projects/4fca76f2f60f94687d000001" for 10.61.101.75 at 2012-10-29 11:15:37 +0000
+7787 121029 11:15:37 INFO:   Processing by ProjectsController#show as JSON
+7787 121029 11:15:37 INFO:   Parameters: {"id"=>"4fca76f2f60f94687d000001"}
+7787 121029 11:15:37 INFO: Username: (none)
+7787 121029 11:15:37 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+7824 121029 11:15:37 INFO: 
+
+Started GET "/r/4fca76f2f60f94687d000001/related_from/Issue" for 10.61.101.75 at 2012-10-29 11:15:37 +0000
+7824 121029 11:15:37 INFO:   Processing by RController#related_from as JSON
+7824 121029 11:15:37 INFO:   Parameters: {"id"=>"4fca76f2f60f94687d000001", "type"=>"Issue"}
+7824 121029 11:15:37 INFO: Username: (none)
+7824 121029 11:15:37 INFO: Completed 200 OK in 21ms (Views: 4.5ms)
+7824 121029 11:15:37 INFO: 
+
+Started GET "/r/4fb3580c09f951427b000007/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:15:37 +0000
+7787 121029 11:15:37 INFO: 
+
+Started GET "/r/508684d8071aa53cba000001/related_to/Alternative" for 10.61.101.75 at 2012-10-29 11:15:37 +0000
+7787 121029 11:15:37 INFO:   Processing by RController#related_to as JSON
+7787 121029 11:15:37 INFO:   Parameters: {"id"=>"508684d8071aa53cba000001", "type"=>"Alternative"}
+7787 121029 11:15:37 INFO: Username: (none)
+7787 121029 11:15:37 INFO: Completed 200 OK in 15ms (Views: 0.7ms)
+7824 121029 11:15:37 INFO:   Processing by RController#related_to as JSON
+7824 121029 11:15:37 INFO:   Parameters: {"id"=>"4fb3580c09f951427b000007", "type"=>"Alternative"}
+7824 121029 11:15:37 INFO: Username: (none)
+7824 121029 11:15:37 INFO: Completed 200 OK in 18ms (Views: 1.4ms)
+7824 121029 11:15:40 INFO: 
+
+Started GET "/r/4fb3580c09f951427b000007" for 10.61.101.75 at 2012-10-29 11:15:40 +0000
+7824 121029 11:15:40 INFO:   Processing by RController#show as JSON
+7824 121029 11:15:40 INFO:   Parameters: {"id"=>"4fb3580c09f951427b000007"}
+7824 121029 11:15:40 INFO: Username: (none)
+7824 121029 11:15:40 INFO: Completed 200 OK in 4ms (Views: 0.4ms)

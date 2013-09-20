@@ -1,0 +1,634 @@
+20671 130518 08:02:01 INFO: 
+
+Started GET "/" for 79.24.116.45 at 2013-05-18 08:02:01 +0000
+20671 130518 08:02:01 INFO:   Processing by WelcomeController#index as HTML
+20671 130518 08:02:01 INFO: Username: (none)
+20671 130518 08:02:01 INFO: Rendered welcome/index.html.erb within layouts/application (0.6ms)
+20671 130518 08:02:01 INFO: Completed 200 OK in 2ms (Views: 1.5ms)
+20671 130518 08:02:03 INFO: 
+
+Started GET "/updates/1368630839" for 79.24.116.45 at 2013-05-18 08:02:03 +0000
+20671 130518 08:02:03 INFO:   Processing by NotifyController#stamped as 
+20671 130518 08:02:03 INFO:   Parameters: {"stamp"=>"1368630839"}
+20671 130518 08:02:03 INFO: Username: (none)
+20671 130518 08:02:03 INFO: Completed 200 OK in 9ms (Views: 0.2ms)
+20671 130518 08:02:03 INFO: 
+
+Started GET "/t" for 79.24.116.45 at 2013-05-18 08:02:03 +0000
+20671 130518 08:02:03 INFO:   Processing by TController#index as JSON
+20671 130518 08:02:03 INFO: Username: (none)
+20671 130518 08:02:03 INFO: Completed   in 1ms
+20671 130518 08:02:03 INFO: 
+
+Started GET "/scope/type/Decision" for 79.24.116.45 at 2013-05-18 08:02:03 +0000
+20671 130518 08:02:03 INFO:   Processing by ScopeController#type as JSON
+20671 130518 08:02:03 INFO:   Parameters: {"type_name"=>"Decision"}
+20671 130518 08:02:03 INFO: Username: (none)
+20671 130518 08:02:03 INFO: Completed 200 OK in 13ms (Views: 0.8ms)
+20671 130518 08:02:03 INFO: 
+
+Started GET "/tags" for 79.24.116.45 at 2013-05-18 08:02:03 +0000
+20671 130518 08:02:03 INFO:   Processing by TagsController#index as JSON
+20671 130518 08:02:03 INFO: Username: (none)
+20671 130518 08:02:03 INFO: Completed 200 OK in 245ms (Views: 85.9ms)
+20671 130518 08:02:03 INFO: 
+
+Started GET "/r/518a85d0da300c484c000002/relations_from" for 79.24.116.45 at 2013-05-18 08:02:03 +0000
+20671 130518 08:02:03 INFO:   Processing by RController#relations_from as JSON
+20671 130518 08:02:03 INFO:   Parameters: {"id"=>"518a85d0da300c484c000002"}
+20671 130518 08:02:03 INFO: Username: (none)
+20671 130518 08:02:03 INFO: Completed   in 1ms
+28132 130518 08:02:09 INFO: 
+
+Started GET "/users/sign_in" for 79.24.116.45 at 2013-05-18 08:02:09 +0000
+28132 130518 08:02:09 INFO:   Processing by Devise::SessionsController#new as HTML
+28132 130518 08:02:09 INFO: Username: (none)
+28132 130518 08:02:09 INFO: Rendered devise/sessions/new.html.erb within layouts/application (5.9ms)
+28132 130518 08:02:09 INFO: Completed 200 OK in 23ms (Views: 14.7ms)
+28132 130518 08:02:11 INFO: 
+
+Started GET "/auth/facebook" for 79.24.116.45 at 2013-05-18 08:02:11 +0000
+28132 130518 08:02:12 INFO: 
+
+Started GET "/auth/facebook/callback?code=AQDqquwp1D9UKRGDJxrcBC3LQ411dZha9Z8m6AB803N_yJObz34UbkFoOTqHp3jzGjIIyBRQ7nlKCeyumW5DK3c3Vcz7AxWBrcgnJ7MX5rHvJBrtNiOYjc7wmk7CSWu8pvhNRxotPSE7j2_oGBwIbz-P_Fc5Jx4xkJPwIGVCsYF1m6_j3xCdbbBzxFrch_xR5LXTaS9G1XnDxWgNJoV1T-B8iUYlE0cvKqOMioW60BB1cXyuqfqnzbgCioAB2mXPKjvC3JLyuQ1KAINLJpbl93aKxWkKLfbJPhrStMrOTUTbc9NKQIYEJUNL-vj9j3gq5Qw" for 79.24.116.45 at 2013-05-18 08:02:12 +0000
+28132 130518 08:02:12 INFO:   Processing by AuthenticationsController#create as HTML
+28132 130518 08:02:12 INFO:   Parameters: {"code"=>"AQDqquwp1D9UKRGDJxrcBC3LQ411dZha9Z8m6AB803N_yJObz34UbkFoOTqHp3jzGjIIyBRQ7nlKCeyumW5DK3c3Vcz7AxWBrcgnJ7MX5rHvJBrtNiOYjc7wmk7CSWu8pvhNRxotPSE7j2_oGBwIbz-P_Fc5Jx4xkJPwIGVCsYF1m6_j3xCdbbBzxFrch_xR5LXTaS9G1XnDxWgNJoV1T-B8iUYlE0cvKqOMioW60BB1cXyuqfqnzbgCioAB2mXPKjvC3JLyuQ1KAINLJpbl93aKxWkKLfbJPhrStMrOTUTbc9NKQIYEJUNL-vj9j3gq5Qw", "provider"=>"facebook"}
+28132 130518 08:02:12 INFO: Username: (none)
+28132 130518 08:02:12 INFO: Redirected to http://exercises.saw.sonyx.net/welcome/logged_in
+28132 130518 08:02:12 INFO: Completed 302 Found in 13ms
+28132 130518 08:02:13 INFO: 
+
+Started GET "/welcome/logged_in" for 79.24.116.45 at 2013-05-18 08:02:13 +0000
+28132 130518 08:02:13 INFO:   Processing by WelcomeController#logged_in as HTML
+28132 130518 08:02:13 INFO: Username: simocomo90@hotmail.it
+28132 130518 08:02:13 INFO: Rendered welcome/logged_in.html.erb within layouts/application (0.8ms)
+28132 130518 08:02:13 INFO: Completed 200 OK in 6ms (Views: 4.1ms)
+28132 130518 08:02:13 INFO: 
+
+Started GET "/" for 79.24.116.45 at 2013-05-18 08:02:13 +0000
+28132 130518 08:02:13 INFO:   Processing by WelcomeController#index as HTML
+28132 130518 08:02:13 INFO: Username: simocomo90@hotmail.it
+28132 130518 08:02:13 INFO: Rendered welcome/index.html.erb within layouts/application (1.2ms)
+28132 130518 08:02:13 INFO: Completed 200 OK in 5ms (Views: 2.8ms)
+28132 130518 08:02:13 INFO: 
+
+Started GET "/updates/1368630839" for 79.24.116.45 at 2013-05-18 08:02:13 +0000
+28132 130518 08:02:13 INFO:   Processing by NotifyController#stamped as 
+28132 130518 08:02:13 INFO:   Parameters: {"stamp"=>"1368630839"}
+28132 130518 08:02:13 INFO: Username: simocomo90@hotmail.it
+20671 130518 08:02:14 INFO: 
+
+Started GET "/t" for 79.24.116.45 at 2013-05-18 08:02:14 +0000
+28132 130518 08:02:14 INFO: Completed 200 OK in 24ms (Views: 13.7ms)
+20671 130518 08:02:14 INFO:   Processing by TController#index as JSON
+20671 130518 08:02:14 INFO: Username: simocomo90@hotmail.it
+28132 130518 08:02:14 INFO: 
+
+Started GET "/scope/type/Decision" for 79.24.116.45 at 2013-05-18 08:02:14 +0000
+28132 130518 08:02:14 INFO:   Processing by ScopeController#type as JSON
+28132 130518 08:02:14 INFO:   Parameters: {"type_name"=>"Decision"}
+28132 130518 08:02:14 INFO: Username: simocomo90@hotmail.it
+28132 130518 08:02:14 INFO: Completed 200 OK in 17ms (Views: 4.5ms)
+28132 130518 08:02:14 INFO: 
+
+Started GET "/tags" for 79.24.116.45 at 2013-05-18 08:02:14 +0000
+28132 130518 08:02:14 INFO:   Processing by TagsController#index as JSON
+28132 130518 08:02:14 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:02:14 INFO: 
+
+Started GET "/r/518a85d0da300c484c000002/relations_from" for 79.24.116.45 at 2013-05-18 08:02:14 +0000
+20671 130518 08:02:14 INFO: Completed 200 OK in 165ms (Views: 6.2ms)
+28132 130518 08:02:14 INFO: Completed 200 OK in 318ms (Views: 118.5ms)
+28132 130518 08:02:14 INFO: 
+
+Started GET "/r/51948e11da300c5f22000001/relations_from" for 79.24.116.45 at 2013-05-18 08:02:14 +0000
+28132 130518 08:02:14 INFO:   Processing by RController#relations_from as JSON
+28132 130518 08:02:14 INFO:   Parameters: {"id"=>"51948e11da300c5f22000001"}
+28132 130518 08:02:14 INFO: Username: simocomo90@hotmail.it
+28132 130518 08:02:14 INFO: Completed 200 OK in 13ms (Views: 1.7ms)
+28142 130518 08:02:14 INFO:   Processing by RController#relations_from as JSON
+28142 130518 08:02:14 INFO:   Parameters: {"id"=>"518a85d0da300c484c000002"}
+28142 130518 08:02:14 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:02:15 INFO: Completed 200 OK in 316ms (Views: 39.6ms)
+28142 130518 08:02:15 INFO: 
+
+Started GET "/r/54fb3c57e09f9515d4f000002/relations_from" for 79.24.116.45 at 2013-05-18 08:02:15 +0000
+28142 130518 08:02:15 INFO:   Processing by RController#relations_from as JSON
+28142 130518 08:02:15 INFO:   Parameters: {"id"=>"54fb3c57e09f9515d4f000002"}
+28142 130518 08:02:15 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:02:15 INFO: Completed 500 Internal Server Error in 2ms
+28132 130518 08:02:15 INFO: 
+
+Started GET "/projects/54fb3c57e09f9515d4f000002" for 79.24.116.45 at 2013-05-18 08:02:15 +0000
+28132 130518 08:02:15 INFO:   Processing by ProjectsController#show as JSON
+28132 130518 08:02:15 INFO:   Parameters: {"id"=>"54fb3c57e09f9515d4f000002"}
+28132 130518 08:02:15 INFO: Username: simocomo90@hotmail.it
+28132 130518 08:02:15 INFO: Completed 500 Internal Server Error in 2ms
+28132 130518 08:02:15 FATAL: 
+BSON::InvalidObjectId (illegal ObjectId format):
+  app/controllers/projects_controller.rb:10:in `show'
+
+
+28142 130518 08:02:15 FATAL: 
+BSON::InvalidObjectId (illegal ObjectId format):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+28142 130518 08:02:19 INFO: 
+
+Started GET "/r/4fbc7dba09f9512ffa00000a/relations_from" for 79.24.116.45 at 2013-05-18 08:02:19 +0000
+28142 130518 08:02:19 INFO:   Processing by RController#relations_from as JSON
+28142 130518 08:02:19 INFO:   Parameters: {"id"=>"4fbc7dba09f9512ffa00000a"}
+28142 130518 08:02:19 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:02:19 INFO: Completed 200 OK in 8ms (Views: 0.6ms)
+28142 130518 08:02:19 INFO: 
+
+Started GET "/r/4fbc7dbe09f95123e0000003/relations_from" for 79.24.116.45 at 2013-05-18 08:02:19 +0000
+28142 130518 08:02:19 INFO:   Processing by RController#relations_from as JSON
+28142 130518 08:02:19 INFO:   Parameters: {"id"=>"4fbc7dbe09f95123e0000003"}
+28142 130518 08:02:19 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:02:19 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+28142 130518 08:02:19 INFO: 
+
+Started GET "/r/4fbc7dc909f95123e0000005/relations_from" for 79.24.116.45 at 2013-05-18 08:02:19 +0000
+28142 130518 08:02:19 INFO:   Processing by RController#relations_from as JSON
+28142 130518 08:02:19 INFO:   Parameters: {"id"=>"4fbc7dc909f95123e0000005"}
+28142 130518 08:02:19 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:02:19 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+28142 130518 08:02:19 INFO: 
+
+Started GET "/r/4fbc7dc409f9512ffa00000c/relations_from" for 79.24.116.45 at 2013-05-18 08:02:19 +0000
+28142 130518 08:02:19 INFO:   Processing by RController#relations_from as JSON
+28142 130518 08:02:19 INFO:   Parameters: {"id"=>"4fbc7dc409f9512ffa00000c"}
+28142 130518 08:02:19 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:02:19 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+28142 130518 08:02:19 INFO: 
+
+Started GET "/r/4fbc7df809f9512ffa00000e/relations_from" for 79.24.116.45 at 2013-05-18 08:02:19 +0000
+28142 130518 08:02:19 INFO:   Processing by RController#relations_from as JSON
+28142 130518 08:02:19 INFO:   Parameters: {"id"=>"4fbc7df809f9512ffa00000e"}
+28142 130518 08:02:19 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:02:19 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+28142 130518 08:02:21 INFO: 
+
+Started GET "/r/4fbc9cdb09f9512f75000001" for 79.24.116.45 at 2013-05-18 08:02:21 +0000
+28142 130518 08:02:21 INFO:   Processing by RController#show as JSON
+28142 130518 08:02:21 INFO:   Parameters: {"id"=>"4fbc9cdb09f9512f75000001"}
+28142 130518 08:02:21 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:02:21 INFO: Completed 200 OK in 4ms (Views: 0.6ms)
+28142 130518 08:02:21 INFO: 
+
+Started GET "/r/4fbc9cf609f9512f45000003" for 79.24.116.45 at 2013-05-18 08:02:21 +0000
+28142 130518 08:02:21 INFO:   Processing by RController#show as JSON
+28142 130518 08:02:21 INFO:   Parameters: {"id"=>"4fbc9cf609f9512f45000003"}
+28142 130518 08:02:21 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:02:21 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+28142 130518 08:02:39 INFO: 
+
+Started GET "/projects" for 79.24.116.45 at 2013-05-18 08:02:39 +0000
+28142 130518 08:02:39 INFO:   Processing by ProjectsController#index as JSON
+28142 130518 08:02:39 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:02:40 INFO: Completed 200 OK in 875ms (Views: 5.2ms)
+28142 130518 08:02:42 INFO: 
+
+Started GET "/r/518a85d0da300c484c000002/relations_from" for 79.24.116.45 at 2013-05-18 08:02:42 +0000
+28142 130518 08:02:42 INFO:   Processing by RController#relations_from as JSON
+28142 130518 08:02:42 INFO:   Parameters: {"id"=>"518a85d0da300c484c000002"}
+28142 130518 08:02:42 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:02:42 INFO: Completed 200 OK in 336ms (Views: 86.1ms)
+28142 130518 08:03:01 INFO: 
+
+Started GET "/r/4fbc9cdb09f9512f75000001/relations_to" for 79.24.116.45 at 2013-05-18 08:03:01 +0000
+28142 130518 08:03:01 INFO:   Processing by RController#relations_to as JSON
+28142 130518 08:03:01 INFO:   Parameters: {"id"=>"4fbc9cdb09f9512f75000001"}
+28142 130518 08:03:01 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:03:01 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+28142 130518 08:03:01 INFO: 
+
+Started GET "/r/4fbc9cf609f9512f45000003/relations_to" for 79.24.116.45 at 2013-05-18 08:03:01 +0000
+28142 130518 08:03:01 INFO:   Processing by RController#relations_to as JSON
+28142 130518 08:03:01 INFO:   Parameters: {"id"=>"4fbc9cf609f9512f45000003"}
+28142 130518 08:03:01 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:03:01 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+28142 130518 08:03:01 INFO: 
+
+Started GET "/r/4fbc9cbe09f9512f24000003" for 79.24.116.45 at 2013-05-18 08:03:01 +0000
+28142 130518 08:03:01 INFO:   Processing by RController#show as JSON
+28142 130518 08:03:01 INFO:   Parameters: {"id"=>"4fbc9cbe09f9512f24000003"}
+28142 130518 08:03:01 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:03:01 INFO: Completed 200 OK in 3ms (Views: 0.2ms)
+28142 130518 08:03:29 INFO: 
+
+Started GET "/r/4fbc900309f95128a6000005/relations_to" for 79.24.116.45 at 2013-05-18 08:03:29 +0000
+28142 130518 08:03:29 INFO:   Processing by RController#relations_to as JSON
+28142 130518 08:03:29 INFO:   Parameters: {"id"=>"4fbc900309f95128a6000005"}
+28142 130518 08:03:29 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:03:29 INFO: Completed 200 OK in 5ms (Views: 0.2ms)
+28142 130518 08:03:29 INFO: 
+
+Started GET "/r/4fbc901409f95128eb000009/relations_to" for 79.24.116.45 at 2013-05-18 08:03:29 +0000
+28142 130518 08:03:29 INFO:   Processing by RController#relations_to as JSON
+28142 130518 08:03:29 INFO:   Parameters: {"id"=>"4fbc901409f95128eb000009"}
+28142 130518 08:03:29 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:03:29 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+28142 130518 08:03:29 INFO: 
+
+Started GET "/r/4fbc902609f9512a6c000005/relations_to" for 79.24.116.45 at 2013-05-18 08:03:29 +0000
+28142 130518 08:03:29 INFO:   Processing by RController#relations_to as JSON
+28142 130518 08:03:29 INFO:   Parameters: {"id"=>"4fbc902609f9512a6c000005"}
+28142 130518 08:03:29 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:03:29 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+28142 130518 08:03:29 INFO: 
+
+Started GET "/r/4fbc8ff109f95128bc000005" for 79.24.116.45 at 2013-05-18 08:03:29 +0000
+28142 130518 08:03:29 INFO:   Processing by RController#show as JSON
+28142 130518 08:03:29 INFO:   Parameters: {"id"=>"4fbc8ff109f95128bc000005"}
+28142 130518 08:03:29 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:03:29 INFO: Completed 200 OK in 3ms (Views: 0.1ms)
+28142 130518 08:32:17 INFO: 
+
+Started GET "/r/4fbc88fe09f951271b000001/relations_to" for 79.24.116.45 at 2013-05-18 08:32:17 +0000
+28142 130518 08:32:17 INFO:   Processing by RController#relations_to as JSON
+28142 130518 08:32:17 INFO:   Parameters: {"id"=>"4fbc88fe09f951271b000001"}
+28142 130518 08:32:17 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:32:17 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+28142 130518 08:32:17 INFO: 
+
+Started GET "/r/4fbc88e709f951262b000004" for 79.24.116.45 at 2013-05-18 08:32:17 +0000
+28142 130518 08:32:17 INFO:   Processing by RController#show as JSON
+28142 130518 08:32:17 INFO:   Parameters: {"id"=>"4fbc88e709f951262b000004"}
+28142 130518 08:32:17 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:32:17 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+28142 130518 08:32:17 INFO: 
+
+Started GET "/r/4fbc88f409f95125ac000004/relations_to" for 79.24.116.45 at 2013-05-18 08:32:17 +0000
+28142 130518 08:32:17 INFO:   Processing by RController#relations_to as JSON
+28142 130518 08:32:17 INFO:   Parameters: {"id"=>"4fbc88f409f95125ac000004"}
+28142 130518 08:32:17 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:32:17 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+28142 130518 08:32:17 INFO: 
+
+Started GET "/r/4fbc890a09f9512724000001/relations_to" for 79.24.116.45 at 2013-05-18 08:32:17 +0000
+28142 130518 08:32:17 INFO:   Processing by RController#relations_to as JSON
+28142 130518 08:32:17 INFO:   Parameters: {"id"=>"4fbc890a09f9512724000001"}
+28142 130518 08:32:17 INFO: Username: simocomo90@hotmail.it
+28142 130518 08:32:17 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+28142 130518 09:28:20 INFO: 
+
+Started GET "/projects" for 79.24.116.45 at 2013-05-18 09:28:20 +0000
+28142 130518 09:28:20 INFO:   Processing by ProjectsController#index as JSON
+28142 130518 09:28:20 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:28:21 INFO: Completed 200 OK in 873ms (Views: 4.8ms)
+28142 130518 09:28:23 INFO: 
+
+Started GET "/r/518a833eda300c484c000001/relations_from" for 79.24.116.45 at 2013-05-18 09:28:23 +0000
+28142 130518 09:28:23 INFO:   Processing by RController#relations_from as JSON
+28142 130518 09:28:23 INFO:   Parameters: {"id"=>"518a833eda300c484c000001"}
+28142 130518 09:28:23 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:28:23 INFO: Completed 200 OK in 37ms (Views: 4.0ms)
+28142 130518 09:28:24 INFO: 
+
+Started GET "/r/5195fa4fda300c2bcf000001/relations_to" for 79.24.116.45 at 2013-05-18 09:28:24 +0000
+28142 130518 09:28:24 INFO:   Processing by RController#relations_to as JSON
+28142 130518 09:28:24 INFO:   Parameters: {"id"=>"5195fa4fda300c2bcf000001"}
+28142 130518 09:28:24 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:28:24 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+28142 130518 09:28:24 INFO: 
+
+Started GET "/r/5195fa73da300c2c4e000001/relations_to" for 79.24.116.45 at 2013-05-18 09:28:24 +0000
+28142 130518 09:28:24 INFO:   Processing by RController#relations_to as JSON
+28142 130518 09:28:24 INFO:   Parameters: {"id"=>"5195fa73da300c2c4e000001"}
+28142 130518 09:28:24 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:28:24 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+28142 130518 09:29:14 INFO: 
+
+Started GET "/r/518cbea4da300c3c2800000d/relations_to" for 79.24.116.45 at 2013-05-18 09:29:14 +0000
+28142 130518 09:29:14 INFO:   Processing by RController#relations_to as JSON
+28142 130518 09:29:14 INFO:   Parameters: {"id"=>"518cbea4da300c3c2800000d"}
+28142 130518 09:29:14 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:29:14 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+28142 130518 09:29:14 INFO: 
+
+Started GET "/r/518cbcd4da300c3c7000000a/relations_to" for 79.24.116.45 at 2013-05-18 09:29:14 +0000
+28142 130518 09:29:14 INFO:   Processing by RController#relations_to as JSON
+28142 130518 09:29:14 INFO:   Parameters: {"id"=>"518cbcd4da300c3c7000000a"}
+28142 130518 09:29:14 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:29:14 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+28142 130518 09:29:14 INFO: 
+
+Started GET "/r/518cbcf1da300c3d0500000f/relations_to" for 79.24.116.45 at 2013-05-18 09:29:14 +0000
+28142 130518 09:29:14 INFO:   Processing by RController#relations_to as JSON
+28142 130518 09:29:14 INFO:   Parameters: {"id"=>"518cbcf1da300c3d0500000f"}
+28142 130518 09:29:14 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:29:14 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+28142 130518 09:29:14 INFO: 
+
+Started GET "/r/518cbe50da300c3cf400000e/relations_to" for 79.24.116.45 at 2013-05-18 09:29:14 +0000
+28142 130518 09:29:14 INFO:   Processing by RController#relations_to as JSON
+28142 130518 09:29:14 INFO:   Parameters: {"id"=>"518cbe50da300c3cf400000e"}
+28142 130518 09:29:14 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:29:14 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+28142 130518 09:29:14 INFO: 
+
+Started GET "/r/518cbe39da300c3c3100000a/relations_to" for 79.24.116.45 at 2013-05-18 09:29:14 +0000
+28142 130518 09:29:14 INFO:   Processing by RController#relations_to as JSON
+28142 130518 09:29:14 INFO:   Parameters: {"id"=>"518cbe39da300c3c3100000a"}
+28142 130518 09:29:14 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:29:14 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+28142 130518 09:29:14 INFO: 
+
+Started GET "/r/518cbd35da300c3b6f00000d/relations_to" for 79.24.116.45 at 2013-05-18 09:29:14 +0000
+28142 130518 09:29:14 INFO:   Processing by RController#relations_to as JSON
+28142 130518 09:29:14 INFO:   Parameters: {"id"=>"518cbd35da300c3b6f00000d"}
+28142 130518 09:29:14 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:29:14 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+28142 130518 09:29:14 INFO: 
+
+Started GET "/r/518cbcafda300c3cfd000006" for 79.24.116.45 at 2013-05-18 09:29:14 +0000
+28142 130518 09:29:14 INFO:   Processing by RController#show as JSON
+28142 130518 09:29:14 INFO:   Parameters: {"id"=>"518cbcafda300c3cfd000006"}
+28142 130518 09:29:14 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:29:14 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+28142 130518 09:36:09 INFO: 
+
+Started GET "/notify/518cbea4da300c3c2800000d/name/focused" for 79.24.116.45 at 2013-05-18 09:36:09 +0000
+28142 130518 09:36:09 INFO:   Processing by NotifyController#notify as JSON
+28142 130518 09:36:09 INFO:   Parameters: {"id"=>"518cbea4da300c3c2800000d", "attribute"=>"name", "event"=>"focused"}
+28142 130518 09:36:09 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:36:09 INFO: Notifying: Alternative id: 518cbea4da300c3c2800000d with action: focused class: notify distance: 0
+28142 130518 09:36:09 INFO: Rendered text template (0.0ms)
+28142 130518 09:36:09 INFO: Completed 200 OK in 11ms (Views: 4.5ms)
+28142 130518 09:36:09 INFO: 
+
+Started GET "/notify/518cbea4da300c3c2800000d/name/blured" for 79.24.116.45 at 2013-05-18 09:36:09 +0000
+28142 130518 09:36:09 INFO:   Processing by NotifyController#notify as JSON
+28142 130518 09:36:09 INFO:   Parameters: {"id"=>"518cbea4da300c3c2800000d", "attribute"=>"name", "event"=>"blured"}
+28142 130518 09:36:09 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:36:09 INFO: Notifying: Alternative id: 518cbea4da300c3c2800000d with action: blured class: notify distance: 0
+28142 130518 09:36:09 INFO: Rendered text template (0.0ms)
+28142 130518 09:36:09 INFO: Completed 200 OK in 5ms (Views: 0.8ms)
+28142 130518 09:36:09 INFO: 
+
+Started GET "/notify/518cbea4da300c3c2800000d/name/focused" for 79.24.116.45 at 2013-05-18 09:36:09 +0000
+28142 130518 09:36:09 INFO:   Processing by NotifyController#notify as JSON
+28142 130518 09:36:09 INFO:   Parameters: {"id"=>"518cbea4da300c3c2800000d", "attribute"=>"name", "event"=>"focused"}
+28142 130518 09:36:09 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:36:09 INFO: Notifying: Alternative id: 518cbea4da300c3c2800000d with action: focused class: notify distance: 0
+28142 130518 09:36:09 INFO: Rendered text template (0.0ms)
+28142 130518 09:36:09 INFO: Completed 200 OK in 4ms (Views: 0.6ms)
+28142 130518 09:36:13 INFO: 
+
+Started GET "/notify/518cbea4da300c3c2800000d/name/blured" for 79.24.116.45 at 2013-05-18 09:36:13 +0000
+28142 130518 09:36:13 INFO:   Processing by NotifyController#notify as JSON
+28142 130518 09:36:13 INFO:   Parameters: {"id"=>"518cbea4da300c3c2800000d", "attribute"=>"name", "event"=>"blured"}
+28142 130518 09:36:13 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:36:13 INFO: Notifying: Alternative id: 518cbea4da300c3c2800000d with action: blured class: notify distance: 0
+28142 130518 09:36:13 INFO: Rendered text template (0.0ms)
+28142 130518 09:36:13 INFO: Completed 200 OK in 4ms (Views: 0.7ms)
+28142 130518 09:36:13 INFO: 
+
+Started GET "/notify/518cbcafda300c3cfd000006/Recommendation/focused" for 79.24.116.45 at 2013-05-18 09:36:13 +0000
+28142 130518 09:36:13 INFO:   Processing by NotifyController#notify as JSON
+28142 130518 09:36:13 INFO:   Parameters: {"id"=>"518cbcafda300c3cfd000006", "attribute"=>"Recommendation", "event"=>"focused"}
+28142 130518 09:36:13 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:36:13 INFO: Notifying: Issue id: 518cbcafda300c3cfd000006 with action: focused class: notify distance: 0
+28142 130518 09:36:13 INFO: Rendered text template (0.0ms)
+28142 130518 09:36:13 INFO: Completed 200 OK in 4ms (Views: 0.6ms)
+28142 130518 09:36:15 INFO: 
+
+Started GET "/notify/518cbcafda300c3cfd000006/Recommendation/blured" for 79.24.116.45 at 2013-05-18 09:36:15 +0000
+28142 130518 09:36:15 INFO:   Processing by NotifyController#notify as JSON
+28142 130518 09:36:15 INFO:   Parameters: {"id"=>"518cbcafda300c3cfd000006", "attribute"=>"Recommendation", "event"=>"blured"}
+28142 130518 09:36:15 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:36:15 INFO: Notifying: Issue id: 518cbcafda300c3cfd000006 with action: blured class: notify distance: 0
+28142 130518 09:36:15 INFO: Rendered text template (0.0ms)
+28142 130518 09:36:15 INFO: Completed 200 OK in 4ms (Views: 0.7ms)
+28142 130518 09:40:09 INFO: 
+
+Started GET "/r/518cbc91da300c3ceb000004/relations_to" for 79.24.116.45 at 2013-05-18 09:40:09 +0000
+28142 130518 09:40:09 INFO:   Processing by RController#relations_to as JSON
+28142 130518 09:40:09 INFO:   Parameters: {"id"=>"518cbc91da300c3ceb000004"}
+28142 130518 09:40:09 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:40:09 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+28142 130518 09:40:09 INFO: 
+
+Started GET "/r/518cb749da300c3c70000004" for 79.24.116.45 at 2013-05-18 09:40:09 +0000
+28142 130518 09:40:09 INFO:   Processing by RController#show as JSON
+28142 130518 09:40:09 INFO:   Parameters: {"id"=>"518cb749da300c3c70000004"}
+28142 130518 09:40:09 INFO: Username: simocomo90@hotmail.it
+28142 130518 09:40:09 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+28142 130518 12:28:39 INFO: 
+
+Started GET "/r/518cb26dda300c3c1f000004/relations_to" for 79.24.116.45 at 2013-05-18 12:28:39 +0000
+28142 130518 12:28:39 INFO:   Processing by RController#relations_to as JSON
+28142 130518 12:28:39 INFO:   Parameters: {"id"=>"518cb26dda300c3c1f000004"}
+28142 130518 12:28:39 INFO: Username: simocomo90@hotmail.it
+28142 130518 12:28:39 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+28142 130518 12:28:39 INFO: 
+
+Started GET "/r/518cb253da300c3c16000002/relations_to" for 79.24.116.45 at 2013-05-18 12:28:39 +0000
+28142 130518 12:28:39 INFO:   Processing by RController#relations_to as JSON
+28142 130518 12:28:39 INFO:   Parameters: {"id"=>"518cb253da300c3c16000002"}
+28142 130518 12:28:39 INFO: Username: simocomo90@hotmail.it
+28142 130518 12:28:39 INFO: Completed 200 OK in 57ms (Views: 0.2ms)
+28142 130518 12:28:39 INFO: 
+
+Started GET "/r/518cb237da300c3c1f000003" for 79.24.116.45 at 2013-05-18 12:28:39 +0000
+28142 130518 12:28:39 INFO:   Processing by RController#show as JSON
+28142 130518 12:28:39 INFO:   Parameters: {"id"=>"518cb237da300c3c1f000003"}
+28142 130518 12:28:39 INFO: Username: simocomo90@hotmail.it
+28142 130518 12:28:39 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+28142 130518 13:00:50 INFO: 
+
+Started GET "/projects" for 79.24.116.45 at 2013-05-18 13:00:50 +0000
+28142 130518 13:00:50 INFO:   Processing by ProjectsController#index as JSON
+28142 130518 13:00:50 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:00:51 INFO: Completed 200 OK in 857ms (Views: 4.4ms)
+28142 130518 13:00:54 INFO: 
+
+Started GET "/r/518a85d0da300c484c000002/relations_from" for 79.24.116.45 at 2013-05-18 13:00:54 +0000
+28142 130518 13:00:54 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:00:54 INFO:   Parameters: {"id"=>"518a85d0da300c484c000002"}
+28142 130518 13:00:54 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:00:55 INFO: Completed 200 OK in 286ms (Views: 62.1ms)
+28142 130518 13:00:58 INFO: 
+
+Started GET "/r/4fbc88f409f95125ac000004/relations_from" for 79.24.116.45 at 2013-05-18 13:00:58 +0000
+28142 130518 13:00:58 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:00:58 INFO:   Parameters: {"id"=>"4fbc88f409f95125ac000004"}
+28142 130518 13:00:58 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:00:58 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+28142 130518 13:00:58 INFO: 
+
+Started GET "/r/4fbc88fe09f951271b000001/relations_from" for 79.24.116.45 at 2013-05-18 13:00:58 +0000
+28142 130518 13:00:58 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:00:58 INFO:   Parameters: {"id"=>"4fbc88fe09f951271b000001"}
+28142 130518 13:00:58 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:00:58 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+28142 130518 13:00:58 INFO: 
+
+Started GET "/r/4fbc890a09f9512724000001/relations_from" for 79.24.116.45 at 2013-05-18 13:00:58 +0000
+28142 130518 13:00:58 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:00:58 INFO:   Parameters: {"id"=>"4fbc890a09f9512724000001"}
+28142 130518 13:00:58 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:00:58 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+28142 130518 13:00:58 INFO: 
+
+Started GET "/r/4fbc900309f95128a6000005/relations_from" for 79.24.116.45 at 2013-05-18 13:00:58 +0000
+28142 130518 13:00:58 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:00:58 INFO:   Parameters: {"id"=>"4fbc900309f95128a6000005"}
+28142 130518 13:00:58 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:00:58 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+28142 130518 13:00:58 INFO: 
+
+Started GET "/r/4fbc902609f9512a6c000005/relations_from" for 79.24.116.45 at 2013-05-18 13:00:58 +0000
+28142 130518 13:00:58 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:00:58 INFO:   Parameters: {"id"=>"4fbc902609f9512a6c000005"}
+28142 130518 13:00:58 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:00:58 INFO: Completed 200 OK in 60ms (Views: 0.4ms)
+28142 130518 13:00:58 INFO: 
+
+Started GET "/r/4fbc901409f95128eb000009/relations_from" for 79.24.116.45 at 2013-05-18 13:00:58 +0000
+28142 130518 13:00:58 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:00:58 INFO:   Parameters: {"id"=>"4fbc901409f95128eb000009"}
+28142 130518 13:00:58 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:00:58 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+28142 130518 13:00:58 INFO: 
+
+Started GET "/r/4fbc9cdb09f9512f75000001/relations_from" for 79.24.116.45 at 2013-05-18 13:00:58 +0000
+28142 130518 13:00:58 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:00:58 INFO:   Parameters: {"id"=>"4fbc9cdb09f9512f75000001"}
+28142 130518 13:00:58 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:00:58 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+28142 130518 13:00:58 INFO: 
+
+Started GET "/r/4fbc9cf609f9512f45000003/relations_from" for 79.24.116.45 at 2013-05-18 13:00:58 +0000
+28142 130518 13:00:58 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:00:58 INFO:   Parameters: {"id"=>"4fbc9cf609f9512f45000003"}
+28142 130518 13:00:58 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:00:58 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+28142 130518 13:44:21 INFO: 
+
+Started GET "/projects" for 79.24.116.45 at 2013-05-18 13:44:21 +0000
+28142 130518 13:44:21 INFO:   Processing by ProjectsController#index as JSON
+28142 130518 13:44:21 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:44:22 INFO: Completed 200 OK in 859ms (Views: 4.1ms)
+28142 130518 13:44:25 INFO: 
+
+Started GET "/r/518a833eda300c484c000001/relations_from" for 79.24.116.45 at 2013-05-18 13:44:25 +0000
+28142 130518 13:44:25 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:44:25 INFO:   Parameters: {"id"=>"518a833eda300c484c000001"}
+28142 130518 13:44:25 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:44:25 INFO: Completed 200 OK in 38ms (Views: 4.6ms)
+28142 130518 13:44:26 INFO: 
+
+Started GET "/r/518cbcafda300c3cfd000006" for 79.24.116.45 at 2013-05-18 13:44:26 +0000
+28142 130518 13:44:26 INFO:   Processing by RController#show as JSON
+28142 130518 13:44:26 INFO:   Parameters: {"id"=>"518cbcafda300c3cfd000006"}
+28142 130518 13:44:26 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:44:26 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+28142 130518 13:44:27 INFO: 
+
+Started GET "/r/518cb26dda300c3c1f000004/relations_from" for 79.24.116.45 at 2013-05-18 13:44:27 +0000
+28142 130518 13:44:27 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:44:27 INFO:   Parameters: {"id"=>"518cb26dda300c3c1f000004"}
+28142 130518 13:44:27 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:44:27 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+28142 130518 13:44:27 INFO: 
+
+Started GET "/r/518cb253da300c3c16000002/relations_from" for 79.24.116.45 at 2013-05-18 13:44:27 +0000
+28142 130518 13:44:27 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:44:27 INFO:   Parameters: {"id"=>"518cb253da300c3c16000002"}
+28142 130518 13:44:27 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:44:28 INFO: Completed 200 OK in 13ms (Views: 0.3ms)
+28142 130518 13:44:28 INFO: 
+
+Started GET "/r/518cbc91da300c3ceb000004/relations_from" for 79.24.116.45 at 2013-05-18 13:44:28 +0000
+28142 130518 13:44:28 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:44:28 INFO:   Parameters: {"id"=>"518cbc91da300c3ceb000004"}
+28142 130518 13:44:28 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:44:28 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+28142 130518 13:44:28 INFO: 
+
+Started GET "/r/518cbcd4da300c3c7000000a/relations_from" for 79.24.116.45 at 2013-05-18 13:44:28 +0000
+28142 130518 13:44:28 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:44:28 INFO:   Parameters: {"id"=>"518cbcd4da300c3c7000000a"}
+28142 130518 13:44:28 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:44:28 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+28142 130518 13:44:28 INFO: 
+
+Started GET "/r/518cbea4da300c3c2800000d" for 79.24.116.45 at 2013-05-18 13:44:28 +0000
+28142 130518 13:44:28 INFO:   Processing by RController#show as JSON
+28142 130518 13:44:28 INFO:   Parameters: {"id"=>"518cbea4da300c3c2800000d"}
+28142 130518 13:44:28 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:44:28 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+28142 130518 13:44:28 INFO: 
+
+Started GET "/r/518cbea4da300c3c2800000d/relations_from" for 79.24.116.45 at 2013-05-18 13:44:28 +0000
+28142 130518 13:44:28 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:44:28 INFO:   Parameters: {"id"=>"518cbea4da300c3c2800000d"}
+28142 130518 13:44:28 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:44:28 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+28142 130518 13:44:28 INFO: 
+
+Started GET "/r/518cbcf1da300c3d0500000f/relations_from" for 79.24.116.45 at 2013-05-18 13:44:28 +0000
+28142 130518 13:44:28 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:44:28 INFO:   Parameters: {"id"=>"518cbcf1da300c3d0500000f"}
+28142 130518 13:44:28 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:44:28 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+28142 130518 13:44:29 INFO: 
+
+Started GET "/r/518cbe50da300c3cf400000e/relations_from" for 79.24.116.45 at 2013-05-18 13:44:29 +0000
+28142 130518 13:44:29 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:44:29 INFO:   Parameters: {"id"=>"518cbe50da300c3cf400000e"}
+28142 130518 13:44:29 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:44:29 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+28142 130518 13:44:29 INFO: 
+
+Started GET "/r/518cbe39da300c3c3100000a/relations_from" for 79.24.116.45 at 2013-05-18 13:44:29 +0000
+28142 130518 13:44:29 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:44:29 INFO:   Parameters: {"id"=>"518cbe39da300c3c3100000a"}
+28142 130518 13:44:29 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:44:29 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+28142 130518 13:44:29 INFO: 
+
+Started GET "/r/518cbd35da300c3b6f00000d/relations_from" for 79.24.116.45 at 2013-05-18 13:44:29 +0000
+28142 130518 13:44:29 INFO:   Processing by RController#relations_from as JSON
+28142 130518 13:44:29 INFO:   Parameters: {"id"=>"518cbd35da300c3b6f00000d"}
+28142 130518 13:44:29 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:44:29 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+32335 130518 13:44:54 INFO: 
+
+Started GET "/r/518cb88bda300c3cfd000003/relations_to" for 79.24.116.45 at 2013-05-18 13:44:54 +0000
+28142 130518 13:44:54 INFO: 
+
+Started GET "/r/518cb879da300c3c31000008/relations_to" for 79.24.116.45 at 2013-05-18 13:44:54 +0000
+28142 130518 13:44:54 INFO:   Processing by RController#relations_to as JSON
+28142 130518 13:44:54 INFO:   Parameters: {"id"=>"518cb879da300c3c31000008"}
+28142 130518 13:44:54 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:44:54 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+28142 130518 13:44:54 INFO: 
+
+Started GET "/r/518cb811da300c3c70000005" for 79.24.116.45 at 2013-05-18 13:44:54 +0000
+28142 130518 13:44:54 INFO:   Processing by RController#show as JSON
+28142 130518 13:44:54 INFO:   Parameters: {"id"=>"518cb811da300c3c70000005"}
+28142 130518 13:44:54 INFO: Username: simocomo90@hotmail.it
+28142 130518 13:44:54 INFO: Completed 200 OK in 3ms (Views: 0.4ms)
+32335 130518 13:44:54 INFO:   Processing by RController#relations_to as JSON
+32335 130518 13:44:54 INFO:   Parameters: {"id"=>"518cb88bda300c3cfd000003"}
+32335 130518 13:44:54 INFO: Username: simocomo90@hotmail.it
+32335 130518 13:44:55 INFO: Completed 200 OK in 54ms (Views: 7.0ms)
+32335 130518 13:44:55 INFO: 
+
+Started GET "/r/518cb811da300c3c70000005" for 79.24.116.45 at 2013-05-18 13:44:55 +0000
+32335 130518 13:44:55 INFO:   Processing by RController#show as JSON
+32335 130518 13:44:55 INFO:   Parameters: {"id"=>"518cb811da300c3c70000005"}
+32335 130518 13:44:55 INFO: Username: simocomo90@hotmail.it
+32335 130518 13:44:55 INFO: Completed 200 OK in 8ms (Views: 1.3ms)
+32335 130518 13:44:56 INFO: 
+
+Started GET "/r/518cb811da300c3c70000005" for 79.24.116.45 at 2013-05-18 13:44:56 +0000
+32335 130518 13:44:56 INFO:   Processing by RController#show as JSON
+32335 130518 13:44:56 INFO:   Parameters: {"id"=>"518cb811da300c3c70000005"}
+32335 130518 13:44:56 INFO: Username: simocomo90@hotmail.it
+32335 130518 13:44:56 INFO: Completed 200 OK in 3ms (Views: 0.3ms)

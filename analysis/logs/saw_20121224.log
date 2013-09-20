@@ -1,0 +1,33 @@
+20784 121224 22:43:30 INFO: 
+
+Started GET "/scope/type/Decision" for 94.42.232.155 at 2012-12-24 22:43:30 +0000
+20784 121224 22:43:30 INFO:   Processing by ScopeController#type as JSON
+20784 121224 22:43:30 INFO:   Parameters: {"type_name"=>"Decision"}
+20784 121224 22:43:30 INFO: Username: (none)
+20784 121224 22:43:30 INFO: Completed 200 OK in 20ms (Views: 2.3ms)
+20784 121224 22:43:30 INFO: 
+
+Started GET "/t" for 94.42.232.155 at 2012-12-24 22:43:30 +0000
+20784 121224 22:43:30 INFO:   Processing by TController#index as JSON
+20784 121224 22:43:30 INFO: Username: (none)
+20784 121224 22:43:30 INFO: Completed   in 1ms
+20784 121224 22:43:30 INFO: 
+
+Started GET "/tags" for 94.42.232.155 at 2012-12-24 22:43:30 +0000
+20784 121224 22:43:30 INFO:   Processing by TagsController#index as JSON
+20784 121224 22:43:30 INFO: Username: (none)
+20784 121224 22:43:30 INFO: Completed 200 OK in 182ms (Views: 97.0ms)
+20784 121224 22:43:30 INFO: 
+
+Started GET "/projects/4fb0d1fa924ff85581000003" for 94.42.232.155 at 2012-12-24 22:43:30 +0000
+20784 121224 22:43:30 INFO:   Processing by ProjectsController#show as JSON
+20784 121224 22:43:30 INFO:   Parameters: {"id"=>"4fb0d1fa924ff85581000003"}
+20784 121224 22:43:30 INFO: Username: (none)
+20784 121224 22:43:30 INFO: Completed   in 1ms
+20784 121224 22:43:35 INFO: 
+
+Started GET "/users/sign_in" for 94.42.232.155 at 2012-12-24 22:43:35 +0000
+20784 121224 22:43:35 INFO:   Processing by Devise::SessionsController#new as HTML
+20784 121224 22:43:35 INFO: Username: (none)
+20784 121224 22:43:35 INFO: Rendered devise/sessions/new.html.erb within layouts/application (4.2ms)
+20784 121224 22:43:35 INFO: Completed 200 OK in 11ms (Views: 8.1ms)

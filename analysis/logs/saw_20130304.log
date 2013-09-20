@@ -1,0 +1,2248 @@
+9654 130304 16:47:25 INFO: 
+
+Started GET "/" for 195.176.181.30 at 2013-03-04 16:47:25 +0000
+9654 130304 16:47:25 INFO:   Processing by WelcomeController#index as HTML
+9654 130304 16:47:25 INFO: Username: (none)
+9654 130304 16:47:25 INFO: Rendered welcome/index.html.erb within layouts/application (0.6ms)
+9654 130304 16:47:25 INFO: Completed 200 OK in 2ms (Views: 1.6ms)
+9654 130304 16:47:25 INFO: 
+
+Started GET "/scope/type/Decision" for 195.176.181.30 at 2013-03-04 16:47:25 +0000
+9654 130304 16:47:25 INFO:   Processing by ScopeController#type as JSON
+9654 130304 16:47:25 INFO:   Parameters: {"type_name"=>"Decision"}
+9654 130304 16:47:25 INFO: Username: (none)
+9654 130304 16:47:25 INFO: Completed 200 OK in 35ms (Views: 1.5ms)
+9654 130304 16:47:25 INFO: 
+
+Started GET "/tags" for 195.176.181.30 at 2013-03-04 16:47:25 +0000
+9654 130304 16:47:25 INFO:   Processing by TagsController#index as JSON
+9654 130304 16:47:25 INFO: Username: (none)
+9654 130304 16:47:26 INFO: Completed 200 OK in 344ms (Views: 36.2ms)
+9654 130304 16:47:26 INFO: 
+
+Started GET "/r/509971bf924ff80831000001/related_from/Issue" for 195.176.181.30 at 2013-03-04 16:47:26 +0000
+9654 130304 16:47:26 INFO:   Processing by RController#related_from as JSON
+9654 130304 16:47:26 INFO:   Parameters: {"id"=>"509971bf924ff80831000001", "type"=>"Issue"}
+9654 130304 16:47:26 INFO: Username: (none)
+9654 130304 16:47:26 INFO: Completed   in 1ms
+9654 130304 16:47:26 INFO: 
+
+Started GET "/t" for 195.176.181.30 at 2013-03-04 16:47:26 +0000
+9654 130304 16:47:26 INFO:   Processing by TController#index as JSON
+9654 130304 16:47:26 INFO: Username: (none)
+9654 130304 16:47:26 INFO: Completed   in 1ms
+9654 130304 16:47:26 INFO: 
+
+Started GET "/projects/509971bf924ff80831000001" for 195.176.181.30 at 2013-03-04 16:47:26 +0000
+9654 130304 16:47:26 INFO:   Processing by ProjectsController#show as JSON
+9654 130304 16:47:26 INFO:   Parameters: {"id"=>"509971bf924ff80831000001"}
+9654 130304 16:47:26 INFO: Username: (none)
+9654 130304 16:47:26 INFO: Completed   in 1ms
+9654 130304 16:47:28 INFO: 
+
+Started GET "/users/sign_in" for 195.176.181.30 at 2013-03-04 16:47:28 +0000
+9654 130304 16:47:28 INFO:   Processing by Devise::SessionsController#new as HTML
+9654 130304 16:47:28 INFO: Username: (none)
+9654 130304 16:47:28 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.5ms)
+9654 130304 16:47:28 INFO: Completed 200 OK in 4ms (Views: 2.4ms)
+9654 130304 16:47:30 INFO: 
+
+Started POST "/users/sign_in" for 195.176.181.30 at 2013-03-04 16:47:30 +0000
+9654 130304 16:47:30 INFO:   Processing by Devise::SessionsController#create as HTML
+9654 130304 16:47:30 INFO:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"oikWBo1aXitpLRffeZWZGT24UjfgBxeqFOIDoijDXvE=", "user"=>{"email"=>"marcin@sonyx.net", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+9654 130304 16:47:30 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:30 INFO: Redirected to http://staging.saw.sonyx.net/welcome/logged_in
+9654 130304 16:47:30 INFO: Completed 302 Found in 138ms
+9654 130304 16:47:30 INFO: 
+
+Started GET "/welcome/logged_in" for 195.176.181.30 at 2013-03-04 16:47:30 +0000
+9654 130304 16:47:30 INFO:   Processing by WelcomeController#logged_in as HTML
+9654 130304 16:47:30 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:30 INFO: Rendered welcome/logged_in.html.erb within layouts/application (1.7ms)
+9654 130304 16:47:30 INFO: Completed 200 OK in 5ms (Views: 3.3ms)
+9654 130304 16:47:30 INFO: 
+
+Started GET "/" for 195.176.181.30 at 2013-03-04 16:47:30 +0000
+9654 130304 16:47:30 INFO:   Processing by WelcomeController#index as HTML
+9654 130304 16:47:30 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:30 INFO: Rendered welcome/index.html.erb within layouts/application (0.5ms)
+9654 130304 16:47:30 INFO: Completed 200 OK in 3ms (Views: 1.5ms)
+9654 130304 16:47:30 INFO: 
+
+Started GET "/t" for 195.176.181.30 at 2013-03-04 16:47:30 +0000
+9654 130304 16:47:30 INFO:   Processing by TController#index as JSON
+9654 130304 16:47:30 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:30 INFO: Completed 200 OK in 161ms (Views: 4.2ms)
+9654 130304 16:47:30 INFO: 
+
+Started GET "/scope/type/Decision" for 195.176.181.30 at 2013-03-04 16:47:30 +0000
+9654 130304 16:47:30 INFO:   Processing by ScopeController#type as JSON
+9654 130304 16:47:30 INFO:   Parameters: {"type_name"=>"Decision"}
+9654 130304 16:47:30 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:30 INFO: Completed 200 OK in 13ms (Views: 0.9ms)
+9654 130304 16:47:30 INFO: 
+
+Started GET "/tags" for 195.176.181.30 at 2013-03-04 16:47:30 +0000
+9654 130304 16:47:30 INFO:   Processing by TagsController#index as JSON
+9654 130304 16:47:30 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:31 INFO: Completed 200 OK in 230ms (Views: 34.1ms)
+9654 130304 16:47:31 INFO: 
+
+Started GET "/projects/509971bf924ff80831000001" for 195.176.181.30 at 2013-03-04 16:47:31 +0000
+9654 130304 16:47:31 INFO:   Processing by ProjectsController#show as JSON
+9654 130304 16:47:31 INFO:   Parameters: {"id"=>"509971bf924ff80831000001"}
+9654 130304 16:47:31 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:31 INFO: Completed 200 OK in 4ms (Views: 0.2ms)
+9654 130304 16:47:31 INFO: 
+
+Started GET "/r/509971bf924ff80831000001/related_from/Issue" for 195.176.181.30 at 2013-03-04 16:47:31 +0000
+9654 130304 16:47:31 INFO:   Processing by RController#related_from as JSON
+9654 130304 16:47:31 INFO:   Parameters: {"id"=>"509971bf924ff80831000001", "type"=>"Issue"}
+9654 130304 16:47:31 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:31 INFO: Completed 200 OK in 10ms (Views: 0.4ms)
+12887 130304 16:47:31 INFO: 
+
+Started GET "/r/509971c4924ff80827000001/relations_to" for 195.176.181.30 at 2013-03-04 16:47:31 +0000
+12887 130304 16:47:32 INFO:   Processing by RController#relations_to as JSON
+12887 130304 16:47:32 INFO:   Parameters: {"id"=>"509971c4924ff80827000001"}
+12887 130304 16:47:32 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:32 INFO: Completed 200 OK in 63ms (Views: 45.2ms)
+12887 130304 16:47:32 INFO: 
+
+Started GET "/r/51195664924ff80e7c000001/relations_from" for 195.176.181.30 at 2013-03-04 16:47:32 +0000
+9654 130304 16:47:32 INFO: 
+
+Started GET "/r/51195664924ff80e7c000001" for 195.176.181.30 at 2013-03-04 16:47:32 +0000
+12887 130304 16:47:32 INFO:   Processing by RController#relations_from as JSON
+9654 130304 16:47:32 INFO:   Processing by RController#show as JSON
+9654 130304 16:47:32 INFO:   Parameters: {"id"=>"51195664924ff80e7c000001"}
+12887 130304 16:47:32 INFO:   Parameters: {"id"=>"51195664924ff80e7c000001"}
+9654 130304 16:47:32 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:32 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:32 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+12887 130304 16:47:32 INFO: Completed 200 OK in 9ms (Views: 0.5ms)
+12887 130304 16:47:32 INFO: 
+
+Started GET "/r/51195665924ff80e7c000002/relations_to" for 195.176.181.30 at 2013-03-04 16:47:32 +0000
+12887 130304 16:47:32 INFO:   Processing by RController#relations_to as JSON
+12887 130304 16:47:32 INFO:   Parameters: {"id"=>"51195665924ff80e7c000002"}
+12887 130304 16:47:32 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:32 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+12887 130304 16:47:34 INFO: 
+
+Started GET "/projects" for 195.176.181.30 at 2013-03-04 16:47:34 +0000
+12887 130304 16:47:34 INFO:   Processing by ProjectsController#index as JSON
+12887 130304 16:47:34 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:35 INFO: Completed 200 OK in 1354ms (Views: 9.0ms)
+12887 130304 16:47:38 INFO: 
+
+Started GET "/r/50c630fc40373f393d000002/related_from/Issue" for 195.176.181.30 at 2013-03-04 16:47:38 +0000
+12887 130304 16:47:38 INFO:   Processing by RController#related_from as JSON
+12887 130304 16:47:38 INFO:   Parameters: {"id"=>"50c630fc40373f393d000002", "type"=>"Issue"}
+12887 130304 16:47:38 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:38 INFO: Completed 200 OK in 9ms (Views: 0.3ms)
+12887 130304 16:47:49 INFO: 
+
+Started GET "/r/4fb0d1fa924ff85581000003/related_from/Issue" for 195.176.181.30 at 2013-03-04 16:47:49 +0000
+12887 130304 16:47:49 INFO:   Processing by RController#related_from as JSON
+12887 130304 16:47:49 INFO:   Parameters: {"id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue"}
+12887 130304 16:47:49 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:49 INFO: Completed 200 OK in 42ms (Views: 3.2ms)
+12887 130304 16:47:49 INFO: 
+
+Started GET "/r/4fb0d22f924ff85357000003/relations_to" for 195.176.181.30 at 2013-03-04 16:47:49 +0000
+12887 130304 16:47:49 INFO:   Processing by RController#relations_to as JSON
+12887 130304 16:47:49 INFO:   Parameters: {"id"=>"4fb0d22f924ff85357000003"}
+12887 130304 16:47:49 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:49 INFO: 
+
+Started GET "/r/4fb0d5c9924ff8535700000f/relations_to" for 195.176.181.30 at 2013-03-04 16:47:49 +0000
+9654 130304 16:47:49 INFO:   Processing by RController#relations_to as JSON
+9654 130304 16:47:49 INFO:   Parameters: {"id"=>"4fb0d5c9924ff8535700000f"}
+9654 130304 16:47:49 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:49 INFO: Completed 200 OK in 26ms (Views: 1.3ms)
+12887 130304 16:47:49 INFO: 
+
+Started GET "/r/50895c55924ff8123a000001/relations_to" for 195.176.181.30 at 2013-03-04 16:47:49 +0000
+12887 130304 16:47:49 INFO:   Processing by RController#relations_to as JSON
+12887 130304 16:47:49 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001"}
+12887 130304 16:47:49 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:49 INFO: Completed 200 OK in 24ms (Views: 1.2ms)
+9654 130304 16:47:49 INFO: 
+
+Started GET "/r/50895418924ff81206000001/relations_to" for 195.176.181.30 at 2013-03-04 16:47:49 +0000
+9654 130304 16:47:49 INFO:   Processing by RController#relations_to as JSON
+9654 130304 16:47:49 INFO:   Parameters: {"id"=>"50895418924ff81206000001"}
+9654 130304 16:47:49 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:49 INFO: Completed 200 OK in 23ms (Views: 1.0ms)
+12887 130304 16:47:49 INFO: 
+
+Started GET "/r/50af6da5924ff80f55000005/relations_to" for 195.176.181.30 at 2013-03-04 16:47:49 +0000
+12887 130304 16:47:49 INFO:   Processing by RController#relations_to as JSON
+12887 130304 16:47:49 INFO:   Parameters: {"id"=>"50af6da5924ff80f55000005"}
+12887 130304 16:47:49 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:49 INFO: Completed 200 OK in 116ms (Views: 7.4ms)
+12887 130304 16:47:49 INFO: 
+
+Started GET "/r/50b9d655924ff84bcf000001/relations_to" for 195.176.181.30 at 2013-03-04 16:47:49 +0000
+12887 130304 16:47:49 INFO:   Processing by RController#relations_to as JSON
+12887 130304 16:47:49 INFO:   Parameters: {"id"=>"50b9d655924ff84bcf000001"}
+12887 130304 16:47:49 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:49 INFO: Completed 200 OK in 176ms (Views: 155.8ms)
+9654 130304 16:47:49 INFO: 
+
+Started GET "/r/50b7683b924ff807d2000001/relations_to" for 195.176.181.30 at 2013-03-04 16:47:49 +0000
+9654 130304 16:47:49 INFO:   Processing by RController#relations_to as JSON
+9654 130304 16:47:49 INFO:   Parameters: {"id"=>"50b7683b924ff807d2000001"}
+9654 130304 16:47:49 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:50 INFO: Completed 200 OK in 114ms (Views: 3.1ms)
+12887 130304 16:47:50 INFO: Completed 200 OK in 194ms (Views: 8.5ms)
+12899 130304 16:47:50 INFO: 
+
+Started GET "/r/50af6cf1924ff80f38000001/relations_to" for 195.176.181.30 at 2013-03-04 16:47:49 +0000
+9654 130304 16:47:50 INFO: 
+
+Started GET "/r/50be6c9e924ff83d14000001/relations_to" for 195.176.181.30 at 2013-03-04 16:47:50 +0000
+9654 130304 16:47:50 INFO:   Processing by RController#relations_to as JSON
+9654 130304 16:47:50 INFO:   Parameters: {"id"=>"50be6c9e924ff83d14000001"}
+12887 130304 16:47:50 INFO: 
+
+Started GET "/r/50bf3445924ff8665a000001/relations_to" for 195.176.181.30 at 2013-03-04 16:47:50 +0000
+9654 130304 16:47:50 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:50 INFO:   Processing by RController#relations_to as JSON
+12887 130304 16:47:50 INFO:   Parameters: {"id"=>"50bf3445924ff8665a000001"}
+12887 130304 16:47:50 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:50 INFO: Completed 200 OK in 458ms (Views: 13.4ms)
+9654 130304 16:47:50 INFO: 
+
+Started GET "/r/50d422bc924ff83bc3000001/relations_to" for 195.176.181.30 at 2013-03-04 16:47:50 +0000
+9654 130304 16:47:50 INFO:   Processing by RController#relations_to as JSON
+9654 130304 16:47:50 INFO:   Parameters: {"id"=>"50d422bc924ff83bc3000001"}
+9654 130304 16:47:50 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:50 INFO: Completed 200 OK in 124ms (Views: 1.9ms)
+9654 130304 16:47:50 INFO: 
+
+Started GET "/r/50ed5c63924ff871a4000001/relations_to" for 195.176.181.30 at 2013-03-04 16:47:50 +0000
+9654 130304 16:47:50 INFO:   Processing by RController#relations_to as JSON
+9654 130304 16:47:50 INFO:   Parameters: {"id"=>"50ed5c63924ff871a4000001"}
+12908 130304 16:47:50 INFO: 
+
+Started GET "/r/50b61c95924ff8054d000001/relations_to" for 195.176.181.30 at 2013-03-04 16:47:50 +0000
+9654 130304 16:47:50 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:50 INFO: Completed 200 OK in 695ms (Views: 7.0ms)
+9654 130304 16:47:50 INFO: Completed 200 OK in 107ms (Views: 5.0ms)
+9654 130304 16:47:51 INFO: 
+
+Started GET "/r/4fb0d41f924ff853d1000001/relations_from" for 195.176.181.30 at 2013-03-04 16:47:50 +0000
+9654 130304 16:47:51 INFO:   Processing by RController#relations_from as JSON
+9654 130304 16:47:51 INFO:   Parameters: {"id"=>"4fb0d41f924ff853d1000001"}
+12887 130304 16:47:51 INFO: 
+
+Started GET "/r/50c0b8c6924ff83693000001/relations_to" for 195.176.181.30 at 2013-03-04 16:47:51 +0000
+9654 130304 16:47:51 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:51 INFO:   Processing by RController#relations_to as JSON
+12887 130304 16:47:51 INFO:   Parameters: {"id"=>"50c0b8c6924ff83693000001"}
+9654 130304 16:47:51 INFO: Completed 200 OK in 341ms (Views: 6.4ms)
+12887 130304 16:47:51 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:51 INFO: 
+
+Started GET "/r/4fb0d25e924ff85357000005/relations_from" for 195.176.181.30 at 2013-03-04 16:47:51 +0000
+9654 130304 16:47:51 INFO:   Processing by RController#relations_from as JSON
+9654 130304 16:47:51 INFO:   Parameters: {"id"=>"4fb0d25e924ff85357000005"}
+9654 130304 16:47:51 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:51 INFO: Completed 200 OK in 102ms (Views: 2.2ms)
+9654 130304 16:47:51 INFO: 
+
+Started GET "/r/4fb0d25e924ff85357000005" for 195.176.181.30 at 2013-03-04 16:47:51 +0000
+12887 130304 16:47:52 INFO: Completed 200 OK in 635ms (Views: 28.6ms)
+12918 130304 16:47:52 INFO: 
+
+Started GET "/r/4fb0d41f924ff853d1000001" for 195.176.181.30 at 2013-03-04 16:47:51 +0000
+9654 130304 16:47:52 INFO:   Processing by RController#show as JSON
+12887 130304 16:47:52 INFO: 
+
+Started GET "/r/4fb0d26b924ff85357000007" for 195.176.181.30 at 2013-03-04 16:47:52 +0000
+9654 130304 16:47:52 INFO:   Parameters: {"id"=>"4fb0d25e924ff85357000005"}
+12887 130304 16:47:52 INFO:   Processing by RController#show as JSON
+12887 130304 16:47:52 INFO:   Parameters: {"id"=>"4fb0d26b924ff85357000007"}
+12887 130304 16:47:52 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:52 INFO: Completed 200 OK in 72ms (Views: 12.9ms)
+9654 130304 16:47:52 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:52 INFO: 
+
+Started GET "/r/4fb0d644924ff8558e00000f/relations_from" for 195.176.181.30 at 2013-03-04 16:47:52 +0000
+12926 130304 16:47:52 INFO: 
+
+Started GET "/r/4fb0d26b924ff85357000007/relations_from" for 195.176.181.30 at 2013-03-04 16:47:52 +0000
+9654 130304 16:47:52 INFO: Completed 200 OK in 644ms (Views: 44.6ms)
+12887 130304 16:47:52 INFO:   Processing by RController#relations_from as JSON
+12887 130304 16:47:52 INFO:   Parameters: {"id"=>"4fb0d644924ff8558e00000f"}
+12887 130304 16:47:53 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:53 INFO: 
+
+Started GET "/r/4fb0d644924ff8558e00000f" for 195.176.181.30 at 2013-03-04 16:47:53 +0000
+9654 130304 16:47:53 INFO:   Processing by RController#show as JSON
+9654 130304 16:47:53 INFO:   Parameters: {"id"=>"4fb0d644924ff8558e00000f"}
+12887 130304 16:47:53 INFO: Completed 200 OK in 513ms (Views: 67.2ms)
+12887 130304 16:47:53 INFO: 
+
+Started GET "/r/4fb0d623924ff8558e00000b/relations_from" for 195.176.181.30 at 2013-03-04 16:47:53 +0000
+9654 130304 16:47:53 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:53 INFO:   Processing by RController#relations_from as JSON
+12887 130304 16:47:53 INFO:   Parameters: {"id"=>"4fb0d623924ff8558e00000b"}
+12887 130304 16:47:54 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:54 INFO: Completed 200 OK in 840ms (Views: 112.7ms)
+12887 130304 16:47:54 INFO: Completed 200 OK in 584ms (Views: 26.3ms)
+9654 130304 16:47:54 INFO: 
+
+Started GET "/r/4fb0d623924ff8558e00000b" for 195.176.181.30 at 2013-03-04 16:47:54 +0000
+12887 130304 16:47:54 INFO: 
+
+Started GET "/r/4fb0d62e924ff8558e00000d/relations_from" for 195.176.181.30 at 2013-03-04 16:47:54 +0000
+9654 130304 16:47:54 INFO:   Processing by RController#show as JSON
+9654 130304 16:47:54 INFO:   Parameters: {"id"=>"4fb0d623924ff8558e00000b"}
+12887 130304 16:47:55 INFO:   Processing by RController#relations_from as JSON
+12887 130304 16:47:55 INFO:   Parameters: {"id"=>"4fb0d62e924ff8558e00000d"}
+9654 130304 16:47:55 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:55 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:55 INFO: Completed 200 OK in 521ms (Views: 106.8ms)
+12887 130304 16:47:55 INFO: Completed 200 OK in 555ms (Views: 61.7ms)
+9654 130304 16:47:55 INFO: 
+
+Started GET "/r/4fb0d62e924ff8558e00000d" for 195.176.181.30 at 2013-03-04 16:47:55 +0000
+9654 130304 16:47:55 INFO:   Processing by RController#show as JSON
+9654 130304 16:47:55 INFO:   Parameters: {"id"=>"4fb0d62e924ff8558e00000d"}
+12887 130304 16:47:55 INFO: 
+
+Started GET "/r/50acdf56924ff8069b000003/relations_from" for 195.176.181.30 at 2013-03-04 16:47:55 +0000
+9654 130304 16:47:55 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:56 INFO:   Processing by RController#relations_from as JSON
+9654 130304 16:47:56 INFO: Completed 200 OK in 231ms (Views: 22.9ms)
+12887 130304 16:47:56 INFO:   Parameters: {"id"=>"50acdf56924ff8069b000003"}
+9654 130304 16:47:56 INFO: 
+
+Started GET "/r/50acdf56924ff8069b000003" for 195.176.181.30 at 2013-03-04 16:47:56 +0000
+12887 130304 16:47:56 INFO: Username: marcin@sonyx.net
+9654 130304 16:47:56 INFO:   Processing by RController#show as JSON
+9654 130304 16:47:56 INFO:   Parameters: {"id"=>"50acdf56924ff8069b000003"}
+9654 130304 16:47:56 INFO: Username: marcin@sonyx.net
+12887 130304 16:47:56 INFO: Completed 404 Not Found in 771ms
+9654 130304 16:47:57 INFO: Completed 404 Not Found in 440ms
+12887 130304 16:47:57 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 50acdf56924ff8069b000003.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+12887 130304 16:47:58 INFO: 
+
+Started GET "/" for 195.176.181.30 at 2013-03-04 16:47:58 +0000
+9654 130304 16:47:58 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 50acdf56924ff8069b000003.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+9654 130304 16:47:58 INFO: 
+
+Started GET "/r/50acdf56924ff806b7000003/relations_from" for 195.176.181.30 at 2013-03-04 16:47:58 +0000
+9654 130304 16:47:58 INFO:   Processing by RController#relations_from as JSON
+9654 130304 16:47:58 INFO:   Parameters: {"id"=>"50acdf56924ff806b7000003"}
+9654 130304 16:47:59 INFO: Username: marcin@sonyx.net
+9654 130304 16:48:00 INFO: Completed 200 OK in 1171ms (Views: 263.6ms)
+12937 130304 16:48:00 INFO: 
+
+Started GET "/r/50acdef2924ff806b7000001/relations_from" for 195.176.181.30 at 2013-03-04 16:48:00 +0000
+12945 130304 16:48:01 INFO: 
+
+Started GET "/r/50acdef2924ff806b7000001" for 195.176.181.30 at 2013-03-04 16:48:00 +0000
+12887 130304 16:48:01 INFO:   Processing by WelcomeController#index as HTML
+12887 130304 16:48:01 INFO: Username: marcin@sonyx.net
+12887 130304 16:48:01 INFO: Rendered welcome/index.html.erb within layouts/application (107.1ms)
+12887 130304 16:48:01 INFO: Completed 200 OK in 200ms (Views: 178.3ms)
+9654 130304 16:48:01 INFO: 
+
+Started GET "/projects/4f9d700de90a3e1bfc000001" for 195.176.181.30 at 2013-03-04 16:48:01 +0000
+9654 130304 16:48:02 INFO:   Processing by ProjectsController#show as JSON
+12887 130304 16:48:02 INFO: 
+
+Started GET "/t" for 195.176.181.30 at 2013-03-04 16:48:02 +0000
+9654 130304 16:48:02 INFO:   Parameters: {"id"=>"4f9d700de90a3e1bfc000001"}
+9654 130304 16:48:02 INFO: Username: marcin@sonyx.net
+12887 130304 16:48:02 INFO:   Processing by TController#index as JSON
+12887 130304 16:48:02 INFO: Username: marcin@sonyx.net
+9654 130304 16:48:04 INFO: Completed 200 OK in 2057ms (Views: 142.7ms)
+9654 130304 16:48:04 INFO: 
+
+Started GET "/scope/type/Decision" for 195.176.181.30 at 2013-03-04 16:48:04 +0000
+9654 130304 16:48:05 INFO:   Processing by ScopeController#type as JSON
+9654 130304 16:48:05 INFO:   Parameters: {"type_name"=>"Decision"}
+12956 130304 16:48:05 INFO: 
+
+Started GET "/tags" for 195.176.181.30 at 2013-03-04 16:48:05 +0000
+9654 130304 16:48:07 INFO: Username: marcin@sonyx.net
+9654 130304 16:48:07 INFO: Completed 200 OK in 2037ms (Views: 21.9ms)
+12964 130304 16:48:08 INFO: 
+
+Started GET "/r/4f9d700de90a3e1bfc000001/related_from/Issue" for 195.176.181.30 at 2013-03-04 16:48:07 +0000
+9654 130304 16:48:13 INFO: 
+
+Started GET "/projects/4f9d700de90a3e1bfc000001/export.json" for 195.176.181.30 at 2013-03-04 16:48:13 +0000
+9654 130304 16:48:14 INFO:   Processing by ProjectsController#export as JSON
+9654 130304 16:48:14 INFO:   Parameters: {"id"=>"4f9d700de90a3e1bfc000001"}
+9654 130304 16:48:18 INFO: Username: marcin@sonyx.net
+12887 130304 16:48:26 INFO: Completed 200 OK in 23785ms (Views: 2005.7ms)
+12908 130304 16:48:35 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:48:35 INFO:   Parameters: {"id"=>"50b61c95924ff8054d000001"}
+12908 130304 16:48:38 INFO: Username: marcin@sonyx.net
+12899 130304 16:48:38 INFO:   Processing by RController#relations_to as JSON
+12899 130304 16:48:39 INFO:   Parameters: {"id"=>"50af6cf1924ff80f38000001"}
+12899 130304 16:48:42 INFO: Username: marcin@sonyx.net
+12918 130304 16:48:44 INFO:   Processing by RController#show as JSON
+12918 130304 16:48:44 INFO:   Parameters: {"id"=>"4fb0d41f924ff853d1000001"}
+12918 130304 16:48:47 INFO: Username: marcin@sonyx.net
+12926 130304 16:48:48 INFO:   Processing by RController#relations_from as JSON
+12926 130304 16:48:48 INFO:   Parameters: {"id"=>"4fb0d26b924ff85357000007"}
+12926 130304 16:48:52 INFO: Username: marcin@sonyx.net
+12918 130304 16:48:53 INFO: Completed 200 OK in 7930ms (Views: 1613.5ms)
+12945 130304 16:48:54 INFO:   Processing by RController#show as JSON
+12945 130304 16:48:54 INFO:   Parameters: {"id"=>"50acdef2924ff806b7000001"}
+12945 130304 16:48:54 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:54 INFO:   Processing by RController#relations_from as JSON
+12937 130304 16:48:54 INFO:   Parameters: {"id"=>"50acdef2924ff806b7000001"}
+12926 130304 16:48:55 INFO: Completed 200 OK in 6054ms (Views: 185.5ms)
+12899 130304 16:48:55 INFO: Completed 200 OK in 16212ms (Views: 1584.6ms)
+12937 130304 16:48:55 INFO: Username: marcin@sonyx.net
+12945 130304 16:48:55 INFO: Completed 200 OK in 1654ms (Views: 1008.8ms)
+12908 130304 16:48:56 INFO: Completed 200 OK in 20565ms (Views: 767.1ms)
+12937 130304 16:48:57 INFO: Completed 200 OK in 2202ms (Views: 323.5ms)
+12964 130304 16:48:57 INFO:   Processing by RController#related_from as JSON
+12964 130304 16:48:57 INFO:   Parameters: {"id"=>"4f9d700de90a3e1bfc000001", "type"=>"Issue"}
+12964 130304 16:48:57 INFO: Username: marcin@sonyx.net
+12956 130304 16:48:57 INFO:   Processing by TagsController#index as JSON
+12956 130304 16:48:57 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:57 INFO: Completed 200 OK in 325ms (Views: 11.8ms)
+12964 130304 16:48:57 INFO: 
+
+Started GET "/r/4f2e9c62e97fa8e232000005/relations_to" for 195.176.181.30 at 2013-03-04 16:48:57 +0000
+12964 130304 16:48:57 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:48:57 INFO:   Parameters: {"id"=>"4f2e9c62e97fa8e232000005"}
+12964 130304 16:48:57 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:57 INFO: 
+
+Started GET "/r/4f2e9c7ee97fa8e23200000b/relations_to" for 195.176.181.30 at 2013-03-04 16:48:57 +0000
+12964 130304 16:48:57 INFO: Completed 200 OK in 116ms (Views: 3.6ms)
+12908 130304 16:48:57 INFO: 
+
+Started GET "/r/4f2e9c9ce97fa8e232000011/relations_to" for 195.176.181.30 at 2013-03-04 16:48:57 +0000
+12937 130304 16:48:57 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:48:57 INFO:   Parameters: {"id"=>"4f2e9c7ee97fa8e23200000b"}
+12945 130304 16:48:57 INFO: 
+
+Started GET "/r/4f2e9cd3e97fa8e23200001b/relations_to" for 195.176.181.30 at 2013-03-04 16:48:57 +0000
+12964 130304 16:48:57 INFO: 
+
+Started GET "/r/4f2e9cf8e97fa8e232000025/relations_to" for 195.176.181.30 at 2013-03-04 16:48:57 +0000
+12908 130304 16:48:57 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:48:57 INFO:   Parameters: {"id"=>"4f2e9c9ce97fa8e232000011"}
+12964 130304 16:48:57 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:48:57 INFO:   Parameters: {"id"=>"4f2e9cf8e97fa8e232000025"}
+12908 130304 16:48:57 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:57 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:57 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:58 INFO: Completed 200 OK in 47ms (Views: 2.4ms)
+12908 130304 16:48:58 INFO: Completed 200 OK in 65ms (Views: 1.5ms)
+12908 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2e9d51e97fa8e23200002d/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12908 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2e9d51e97fa8e23200002d"}
+12908 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2e9da2e97fa8e232000031/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12945 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2e9cd3e97fa8e23200001b"}
+12964 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2e9da2e97fa8e232000031"}
+12964 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12945 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:58 INFO: Completed 200 OK in 87ms (Views: 1.6ms)
+12908 130304 16:48:58 INFO: Completed 200 OK in 34ms (Views: 0.8ms)
+12908 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2e9ddfe97fa8e23200003d/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12937 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2e9dc4e97fa8e232000037/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12908 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2e9ddfe97fa8e23200003d"}
+12908 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2e9dc4e97fa8e232000037"}
+12937 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:58 INFO: Completed 200 OK in 33ms (Views: 1.8ms)
+12937 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2e9e01e97fa8e232000041/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12937 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2e9e01e97fa8e232000041"}
+12937 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:58 INFO: Completed 200 OK in 26ms (Views: 1.3ms)
+12945 130304 16:48:58 INFO: Completed 200 OK in 251ms (Views: 83.4ms)
+12937 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2e9e1be97fa8e232000047/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12937 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2e9e1be97fa8e232000047"}
+12937 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:58 INFO: Completed 200 OK in 265ms (Views: 4.0ms)
+12956 130304 16:48:58 INFO: Completed 200 OK in 705ms (Views: 188.0ms)
+12945 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2e9e38e97fa8e23200004d/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12945 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2e9e38e97fa8e23200004d"}
+12945 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12956 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2e9e69e97fa8e232000055/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12964 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2e9eb5e97fa8e232000067/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12956 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2e9e69e97fa8e232000055"}
+12908 130304 16:48:58 INFO: Completed 200 OK in 361ms (Views: 93.3ms)
+12956 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12945 130304 16:48:58 INFO: Completed 200 OK in 130ms (Views: 3.0ms)
+12964 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2e9eb5e97fa8e232000067"}
+12937 130304 16:48:58 INFO: Completed 200 OK in 186ms (Views: 3.0ms)
+12908 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2e9f40e97fa8e232000075/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12964 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12908 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2e9f40e97fa8e232000075"}
+12908 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2e9f5ce97fa8e23200007b/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12937 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2e9f5ce97fa8e23200007b"}
+12937 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12945 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2ea7cbe97fa8e232000085/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12945 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2ea7cbe97fa8e232000085"}
+12945 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:58 INFO: Completed 200 OK in 29ms (Views: 1.6ms)
+12964 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2ea806e97fa8e232000091/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12964 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2ea806e97fa8e232000091"}
+12945 130304 16:48:58 INFO: Completed 200 OK in 60ms (Views: 1.8ms)
+12964 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12908 130304 16:48:58 INFO: Completed 200 OK in 79ms (Views: 2.6ms)
+12945 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2ea820e97fa8e232000097/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12945 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2ea820e97fa8e232000097"}
+12956 130304 16:48:58 INFO: Completed 200 OK in 118ms (Views: 5.1ms)
+12937 130304 16:48:58 INFO: Completed 200 OK in 87ms (Views: 2.2ms)
+12908 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2ea840e97fa8e23200009f/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12908 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2ea840e97fa8e23200009f"}
+12945 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12908 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:58 INFO: Completed 200 OK in 45ms (Views: 1.6ms)
+12956 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2ea875e97fa8e2320000a7/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12956 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2ea875e97fa8e2320000a7"}
+12956 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:58 INFO: 
+
+Started GET "/r/4faa276e924ff85a6d000001/relations_to" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12937 130304 16:48:58 INFO: 
+
+Started GET "/r/4f9d722ae90a3e1c0d000267/relations_from" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12964 130304 16:48:58 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:48:58 INFO:   Processing by RController#relations_from as JSON
+12964 130304 16:48:58 INFO:   Parameters: {"id"=>"4faa276e924ff85a6d000001"}
+12937 130304 16:48:58 INFO:   Parameters: {"id"=>"4f9d722ae90a3e1c0d000267"}
+12937 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12908 130304 16:48:58 INFO: Completed 200 OK in 23ms (Views: 1.2ms)
+12945 130304 16:48:58 INFO: Completed 200 OK in 50ms (Views: 1.6ms)
+12937 130304 16:48:58 INFO: Completed 200 OK in 12ms (Views: 0.3ms)
+12964 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:58 INFO: 
+
+Started GET "/r/4f9d722ae90a3e1c0d000267" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12937 130304 16:48:58 INFO:   Processing by RController#show as JSON
+12937 130304 16:48:58 INFO:   Parameters: {"id"=>"4f9d722ae90a3e1c0d000267"}
+12937 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12956 130304 16:48:58 INFO: Completed 200 OK in 34ms (Views: 3.1ms)
+12908 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2e9c69e97fa8e232000007" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12945 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2e9c69e97fa8e232000007/relations_from" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12937 130304 16:48:58 INFO: Completed 200 OK in 16ms (Views: 2.5ms)
+12908 130304 16:48:58 INFO:   Processing by RController#show as JSON
+12908 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2e9c69e97fa8e232000007"}
+12908 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2e9c73e97fa8e232000009/relations_from" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12908 130304 16:48:58 INFO: Completed 200 OK in 8ms (Views: 0.9ms)
+12945 130304 16:48:58 INFO:   Processing by RController#relations_from as JSON
+12945 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2e9c69e97fa8e232000007"}
+12956 130304 16:48:58 INFO: 
+
+Started GET "/r/4f2e9c73e97fa8e232000009" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12908 130304 16:48:58 INFO: 
+
+Started GET "/r/4f99d3fbe90a3e0b00000023/relations_from" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12945 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12956 130304 16:48:58 INFO:   Processing by RController#show as JSON
+12956 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2e9c73e97fa8e232000009"}
+12956 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12908 130304 16:48:58 INFO:   Processing by RController#relations_from as JSON
+12908 130304 16:48:58 INFO:   Parameters: {"id"=>"4f99d3fbe90a3e0b00000023"}
+12908 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12945 130304 16:48:58 INFO: Completed 200 OK in 24ms (Views: 0.4ms)
+12937 130304 16:48:58 INFO:   Processing by RController#relations_from as JSON
+12937 130304 16:48:58 INFO:   Parameters: {"id"=>"4f2e9c73e97fa8e232000009"}
+12937 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:58 INFO: Completed 200 OK in 101ms (Views: 4.6ms)
+12945 130304 16:48:58 INFO: 
+
+Started GET "/r/4f99d3fbe90a3e0b00000023" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12964 130304 16:48:58 INFO: 
+
+Started GET "/r/4f99d3f8e90a3e0b00000021/relations_from" for 195.176.181.30 at 2013-03-04 16:48:58 +0000
+12945 130304 16:48:58 INFO:   Processing by RController#show as JSON
+12945 130304 16:48:58 INFO:   Parameters: {"id"=>"4f99d3fbe90a3e0b00000023"}
+12945 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:58 INFO:   Processing by RController#relations_from as JSON
+12964 130304 16:48:58 INFO:   Parameters: {"id"=>"4f99d3f8e90a3e0b00000021"}
+12964 130304 16:48:58 INFO: Username: marcin@sonyx.net
+12956 130304 16:48:59 INFO: Completed 404 Not Found in 331ms
+12945 130304 16:48:59 INFO: Completed 404 Not Found in 182ms
+12964 130304 16:48:59 INFO: Completed 404 Not Found in 190ms
+12908 130304 16:48:59 INFO: Completed 404 Not Found in 370ms
+12956 130304 16:48:59 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4f2e9c73e97fa8e232000009.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+12937 130304 16:48:59 INFO: Completed 404 Not Found in 435ms
+12945 130304 16:48:59 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4f99d3fbe90a3e0b00000023.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+12945 130304 16:48:59 INFO: 
+
+Started GET "/r/4f99d3f5e90a3e0b0000001f/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12956 130304 16:48:59 INFO: 
+
+Started GET "/r/4f99d3f8e90a3e0b00000021" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12945 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12945 130304 16:48:59 INFO:   Parameters: {"id"=>"4f99d3f5e90a3e0b0000001f"}
+12945 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12945 130304 16:48:59 INFO: Completed 404 Not Found in 48ms
+12964 130304 16:48:59 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4f99d3f8e90a3e0b00000021.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+12945 130304 16:48:59 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4f99d3f5e90a3e0b0000001f.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+12908 130304 16:48:59 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4f99d3fbe90a3e0b00000023.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+12964 130304 16:48:59 INFO: 
+
+Started GET "/r/4f99d3f5e90a3e0b0000001f" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12964 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12964 130304 16:48:59 INFO:   Parameters: {"id"=>"4f99d3f5e90a3e0b0000001f"}
+12964 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:59 INFO: Completed 404 Not Found in 10ms
+12964 130304 16:48:59 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4f99d3f5e90a3e0b0000001f.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+12945 130304 16:48:59 INFO: 
+
+Started GET "/r/4f99d3a6e90a3e0b0000001d/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12937 130304 16:48:59 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4f2e9c73e97fa8e232000009.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+12964 130304 16:48:59 INFO: 
+
+Started GET "/r/4f99d3a6e90a3e0b0000001d" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12956 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12937 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9d0ae97fa8e23200002b" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12956 130304 16:48:59 INFO:   Parameters: {"id"=>"4f99d3f8e90a3e0b00000021"}
+12945 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12908 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9d0ae97fa8e23200002b/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12945 130304 16:48:59 INFO:   Parameters: {"id"=>"4f99d3a6e90a3e0b0000001d"}
+12937 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12937 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9d0ae97fa8e23200002b"}
+12945 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12956 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12945 130304 16:48:59 INFO: Completed 404 Not Found in 9ms
+12945 130304 16:48:59 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4f99d3a6e90a3e0b0000001d.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+12908 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12908 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9d0ae97fa8e23200002b"}
+12908 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:59 INFO: Completed 200 OK in 12ms (Views: 0.5ms)
+12956 130304 16:48:59 INFO: Completed 404 Not Found in 25ms
+12937 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9cfee97fa8e232000027/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12937 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12937 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9cfee97fa8e232000027"}
+12937 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12956 130304 16:48:59 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4f99d3f8e90a3e0b00000021.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+12937 130304 16:48:59 INFO: Completed 200 OK in 9ms (Views: 0.3ms)
+12908 130304 16:48:59 INFO: Completed 200 OK in 11ms (Views: 0.4ms)
+12945 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9cfee97fa8e232000027" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12945 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12945 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9cfee97fa8e232000027"}
+12945 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12908 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9d05e97fa8e232000029/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12908 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12908 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9d05e97fa8e232000029"}
+12908 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9d05e97fa8e232000029" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12937 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12937 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9d05e97fa8e232000029"}
+12945 130304 16:48:59 INFO: Completed 200 OK in 13ms (Views: 0.6ms)
+12937 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:59 INFO: Completed 200 OK in 18ms (Views: 0.4ms)
+12908 130304 16:48:59 INFO: Completed 200 OK in 23ms (Views: 0.5ms)
+12908 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9cc9e97fa8e232000019/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12937 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9cc9e97fa8e232000019" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12908 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12937 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12908 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9cc9e97fa8e232000019"}
+12937 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9cc9e97fa8e232000019"}
+12908 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12945 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9ca4e97fa8e232000013/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12945 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12945 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9ca4e97fa8e232000013"}
+12908 130304 16:48:59 INFO: Completed 200 OK in 14ms (Views: 0.4ms)
+12945 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:59 INFO: Completed 200 OK in 21ms (Views: 0.7ms)
+12956 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9ca4e97fa8e232000013" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12945 130304 16:48:59 INFO: Completed 404 Not Found in 18ms
+12956 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12937 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9caae97fa8e232000015/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12956 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9ca4e97fa8e232000013"}
+12956 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12908 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9caae97fa8e232000015" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12956 130304 16:48:59 INFO: Completed 404 Not Found in 4ms
+12908 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12937 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12937 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9caae97fa8e232000015"}
+12937 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12945 130304 16:48:59 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4f2e9ca4e97fa8e232000013.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+12908 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9caae97fa8e232000015"}
+12908 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12964 130304 16:48:59 INFO:   Parameters: {"id"=>"4f99d3a6e90a3e0b0000001d"}
+12908 130304 16:48:59 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+12964 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12956 130304 16:48:59 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4f2e9ca4e97fa8e232000013.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+12964 130304 16:48:59 INFO: Completed 404 Not Found in 4ms
+12956 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9cbde97fa8e232000017/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12937 130304 16:48:59 INFO: Completed 200 OK in 12ms (Views: 0.3ms)
+12964 130304 16:48:59 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 4f99d3a6e90a3e0b0000001d.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+12956 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12956 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9cbde97fa8e232000017"}
+12937 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9cbde97fa8e232000017" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12964 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9c85e97fa8e23200000d/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12956 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12937 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9cbde97fa8e232000017"}
+12937 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12937 130304 16:48:59 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+12964 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9c85e97fa8e23200000d"}
+12964 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9c85e97fa8e23200000d" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12937 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12937 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9c85e97fa8e23200000d"}
+12908 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9c8ce97fa8e23200000f/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12937 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12956 130304 16:48:59 INFO: Completed 200 OK in 11ms (Views: 0.4ms)
+12908 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12908 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9c8ce97fa8e23200000f"}
+12937 130304 16:48:59 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+12908 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9c8ce97fa8e23200000f" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12937 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12937 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9c8ce97fa8e23200000f"}
+12937 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:59 INFO: Completed 200 OK in 12ms (Views: 0.6ms)
+12937 130304 16:48:59 INFO: Completed 200 OK in 3ms (Views: 0.5ms)
+12956 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9d9ae97fa8e23200002f/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12937 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9d9ae97fa8e23200002f" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12937 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12937 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9d9ae97fa8e23200002f"}
+12937 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12956 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12956 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9d9ae97fa8e23200002f"}
+12908 130304 16:48:59 INFO: Completed 200 OK in 15ms (Views: 0.3ms)
+12956 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9dcce97fa8e232000039/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12964 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12964 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9dcce97fa8e232000039"}
+12964 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:59 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+12937 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9dcce97fa8e232000039" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12908 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9dd2e97fa8e23200003b/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12937 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12937 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9dcce97fa8e232000039"}
+12937 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12908 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12908 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9dd2e97fa8e23200003b"}
+12908 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:59 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+12945 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9dd2e97fa8e23200003b" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12945 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12945 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9dd2e97fa8e23200003b"}
+12945 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12956 130304 16:48:59 INFO: Completed 200 OK in 20ms (Views: 1.3ms)
+12956 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9e0ce97fa8e232000043/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12956 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12956 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9e0ce97fa8e232000043"}
+12956 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12945 130304 16:48:59 INFO: Completed 200 OK in 10ms (Views: 0.3ms)
+12945 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9e0ce97fa8e232000043" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12945 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12908 130304 16:48:59 INFO: Completed 200 OK in 24ms (Views: 0.4ms)
+12945 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9e0ce97fa8e232000043"}
+12964 130304 16:48:59 INFO: Completed 200 OK in 31ms (Views: 0.5ms)
+12945 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9e11e97fa8e232000045/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12964 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12964 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9e11e97fa8e232000045"}
+12964 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12908 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9e11e97fa8e232000045" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12945 130304 16:48:59 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+12908 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12908 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9e11e97fa8e232000045"}
+12945 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9cebe97fa8e232000023/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12956 130304 16:48:59 INFO: Completed 200 OK in 19ms (Views: 0.3ms)
+12908 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12945 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12945 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9cebe97fa8e232000023"}
+12908 130304 16:48:59 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+12945 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12908 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9cebe97fa8e232000023" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12908 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12908 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9cebe97fa8e232000023"}
+12908 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12956 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9cd9e97fa8e23200001d/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12956 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12956 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9cd9e97fa8e23200001d"}
+12956 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:59 INFO: Completed 200 OK in 27ms (Views: 11.9ms)
+12908 130304 16:48:59 INFO: Completed 200 OK in 19ms (Views: 2.2ms)
+12937 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9cd9e97fa8e23200001d" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12945 130304 16:48:59 INFO: Completed 200 OK in 37ms (Views: 1.0ms)
+12937 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12937 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9cd9e97fa8e23200001d"}
+12945 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9cdfe97fa8e23200001f/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12956 130304 16:48:59 INFO: Completed 200 OK in 37ms (Views: 0.3ms)
+12937 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12908 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9cdfe97fa8e23200001f" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12937 130304 16:48:59 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+12908 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12908 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9cdfe97fa8e23200001f"}
+12908 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12945 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12945 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9cdfe97fa8e23200001f"}
+12964 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9ce5e97fa8e232000021/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12945 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12908 130304 16:48:59 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+12956 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9ce5e97fa8e232000021" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12937 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9daae97fa8e232000033/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12956 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12937 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12956 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9ce5e97fa8e232000021"}
+12937 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9daae97fa8e232000033"}
+12956 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12964 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9ce5e97fa8e232000021"}
+12945 130304 16:48:59 INFO: Completed 200 OK in 10ms (Views: 0.5ms)
+12956 130304 16:48:59 INFO: Completed 200 OK in 4ms (Views: 0.5ms)
+12937 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12956 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9daae97fa8e232000033" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12956 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12956 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9daae97fa8e232000033"}
+12908 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9db2e97fa8e232000035/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12956 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:59 INFO: Completed 200 OK in 17ms (Views: 0.3ms)
+12908 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12908 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9db2e97fa8e232000035"}
+12945 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9db2e97fa8e232000035" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12908 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12956 130304 16:48:59 INFO: Completed 200 OK in 5ms (Views: 1.1ms)
+12945 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12945 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9db2e97fa8e232000035"}
+12945 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12956 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9df8e97fa8e23200003f/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12937 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9df8e97fa8e23200003f" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12908 130304 16:48:59 INFO: Completed 200 OK in 16ms (Views: 0.5ms)
+12945 130304 16:48:59 INFO: Completed 200 OK in 9ms (Views: 0.8ms)
+12964 130304 16:48:59 INFO: Completed 200 OK in 36ms (Views: 1.4ms)
+12937 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12937 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9df8e97fa8e23200003f"}
+12956 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12937 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12956 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9df8e97fa8e23200003f"}
+12964 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9e50e97fa8e232000053/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12956 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12937 130304 16:48:59 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+12964 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12964 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9e50e97fa8e232000053"}
+12937 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9e3fe97fa8e23200004f/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12937 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12945 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9e50e97fa8e232000053" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12937 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9e3fe97fa8e23200004f"}
+12937 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12945 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12945 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9e50e97fa8e232000053"}
+12945 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12964 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12945 130304 16:48:59 INFO: Completed 200 OK in 5ms (Views: 0.4ms)
+12908 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9e3fe97fa8e23200004f" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12908 130304 16:48:59 INFO:   Processing by RController#show as JSON
+12956 130304 16:48:59 INFO: Completed 200 OK in 18ms (Views: 0.5ms)
+12908 130304 16:48:59 INFO:   Parameters: {"id"=>"4f2e9e3fe97fa8e23200004f"}
+12908 130304 16:48:59 INFO: Username: marcin@sonyx.net
+12908 130304 16:48:59 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+12964 130304 16:48:59 INFO: Completed 200 OK in 12ms (Views: 0.3ms)
+12964 130304 16:48:59 INFO: 
+
+Started GET "/r/4f2e9e47e97fa8e232000051/relations_from" for 195.176.181.30 at 2013-03-04 16:48:59 +0000
+12964 130304 16:48:59 INFO:   Processing by RController#relations_from as JSON
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e47e97fa8e232000051"}
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e47e97fa8e232000051" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e47e97fa8e232000051"}
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e22e97fa8e232000049/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e22e97fa8e232000049" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+12937 130304 16:49:00 INFO: Completed 200 OK in 27ms (Views: 0.5ms)
+12945 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e22e97fa8e232000049"}
+12956 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12964 130304 16:49:00 INFO: Completed 200 OK in 16ms (Views: 0.5ms)
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e22e97fa8e232000049"}
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e2ce97fa8e23200004b" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12937 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12937 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e2ce97fa8e23200004b"}
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:00 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f2ce97fa8e232000071/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO: Completed 200 OK in 8ms (Views: 0.9ms)
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e2ce97fa8e23200004b/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f2ce97fa8e232000071"}
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f2ce97fa8e232000071" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e2ce97fa8e23200004b"}
+12945 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f2ce97fa8e232000071"}
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO: Completed 200 OK in 21ms (Views: 4.1ms)
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f0fe97fa8e232000069/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f0fe97fa8e232000069"}
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+12908 130304 16:49:00 INFO: Completed 200 OK in 10ms (Views: 0.5ms)
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f0fe97fa8e232000069" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO: Completed 200 OK in 11ms (Views: 0.3ms)
+12908 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f0fe97fa8e232000069"}
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f18e97fa8e23200006b/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12956 130304 16:49:00 INFO: Completed 200 OK in 11ms (Views: 0.3ms)
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f18e97fa8e23200006b"}
+12908 130304 16:49:00 INFO: Completed 200 OK in 5ms (Views: 1.2ms)
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f18e97fa8e23200006b" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12937 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f1ee97fa8e23200006d/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f18e97fa8e23200006b"}
+12937 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12937 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f1ee97fa8e23200006d"}
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f1ee97fa8e23200006d" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f24e97fa8e23200006f/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f1ee97fa8e23200006d"}
+12956 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f24e97fa8e23200006f"}
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f24e97fa8e23200006f" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12937 130304 16:49:00 INFO: Completed 200 OK in 11ms (Views: 0.3ms)
+12908 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12964 130304 16:49:00 INFO: Completed 200 OK in 14ms (Views: 0.3ms)
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f24e97fa8e23200006f"}
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Completed 200 OK in 9ms (Views: 0.4ms)
+12956 130304 16:49:00 INFO: Completed 200 OK in 9ms (Views: 0.4ms)
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f33e97fa8e232000073/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+12945 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f33e97fa8e232000073"}
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f33e97fa8e232000073" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f33e97fa8e232000073"}
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea7e4e97fa8e23200008d/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea7e4e97fa8e23200008d"}
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: Completed 200 OK in 4ms (Views: 0.5ms)
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea7e4e97fa8e23200008d" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea7e4e97fa8e23200008d"}
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea7d2e97fa8e232000087/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Completed 200 OK in 12ms (Views: 0.4ms)
+12964 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea7d2e97fa8e232000087"}
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea7d2e97fa8e232000087" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea7d2e97fa8e232000087"}
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO: Completed 200 OK in 15ms (Views: 0.5ms)
+12908 130304 16:49:00 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea7d8e97fa8e232000089" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO: Completed 200 OK in 10ms (Views: 0.3ms)
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea7d8e97fa8e232000089/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea7d8e97fa8e232000089"}
+12945 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea7d8e97fa8e232000089"}
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea7dfe97fa8e23200008b" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea7dfe97fa8e23200008b"}
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea7dfe97fa8e23200008b/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea7e9e97fa8e23200008f/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea7dfe97fa8e23200008b"}
+12956 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea7e9e97fa8e23200008f"}
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Completed 200 OK in 10ms (Views: 0.4ms)
+12937 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea7e9e97fa8e23200008f" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO: Completed 200 OK in 7ms (Views: 0.6ms)
+12937 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12937 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea7e9e97fa8e23200008f"}
+12937 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: Completed 200 OK in 12ms (Views: 0.4ms)
+12937 130304 16:49:00 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f49e97fa8e232000077/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f49e97fa8e232000077" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f49e97fa8e232000077"}
+12908 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f49e97fa8e232000077"}
+12956 130304 16:49:00 INFO: Completed 200 OK in 17ms (Views: 0.3ms)
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f4fe97fa8e232000079/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f4fe97fa8e232000079"}
+12937 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f4fe97fa8e232000079" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Completed 200 OK in 11ms (Views: 0.5ms)
+12908 130304 16:49:00 INFO: Completed 200 OK in 9ms (Views: 2.1ms)
+12937 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f77e97fa8e232000083/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f77e97fa8e232000083"}
+12937 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f4fe97fa8e232000079"}
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f77e97fa8e232000083" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO: Completed 200 OK in 15ms (Views: 1.7ms)
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f62e97fa8e23200007d/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f62e97fa8e23200007d" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12937 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f62e97fa8e23200007d"}
+12937 130304 16:49:00 INFO: Completed 200 OK in 68ms (Views: 8.5ms)
+12937 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f69e97fa8e23200007f/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO: Completed 200 OK in 111ms (Views: 3.0ms)
+12937 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f69e97fa8e23200007f"}
+12964 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f62e97fa8e23200007d"}
+12937 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f69e97fa8e23200007f" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO: Completed 200 OK in 130ms (Views: 2.2ms)
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f69e97fa8e23200007f"}
+12908 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f77e97fa8e232000083"}
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f72e97fa8e232000081/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f72e97fa8e232000081"}
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:00 INFO: Completed 200 OK in 92ms (Views: 0.9ms)
+12956 130304 16:49:00 INFO: Completed 200 OK in 50ms (Views: 0.8ms)
+12908 130304 16:49:00 INFO: Completed 200 OK in 44ms (Views: 0.5ms)
+12945 130304 16:49:00 INFO: Completed 200 OK in 16ms (Views: 0.3ms)
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9f72e97fa8e232000081" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO: Completed 200 OK in 90ms (Views: 0.4ms)
+12956 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9f72e97fa8e232000081"}
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea810e97fa8e232000093/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12956 130304 16:49:00 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea810e97fa8e232000093"}
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea810e97fa8e232000093" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea810e97fa8e232000093"}
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea816e97fa8e232000095/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea816e97fa8e232000095" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea816e97fa8e232000095"}
+12908 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea816e97fa8e232000095"}
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e9ce97fa8e232000061/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12937 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12937 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e9ce97fa8e232000061"}
+12937 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+12964 130304 16:49:00 INFO: Completed 200 OK in 12ms (Views: 0.5ms)
+12945 130304 16:49:00 INFO: Completed 200 OK in 10ms (Views: 0.3ms)
+12956 130304 16:49:00 INFO: Completed 200 OK in 17ms (Views: 0.7ms)
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e9ce97fa8e232000061" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e9ce97fa8e232000061"}
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e71e97fa8e232000057" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e78e97fa8e232000059/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e78e97fa8e232000059"}
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e71e97fa8e232000057/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e71e97fa8e232000057"}
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e71e97fa8e232000057"}
+12937 130304 16:49:00 INFO: Completed 200 OK in 122ms (Views: 1.1ms)
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Completed 200 OK in 116ms (Views: 1.8ms)
+12956 130304 16:49:00 INFO: Completed 200 OK in 49ms (Views: 1.7ms)
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e78e97fa8e232000059" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e7ee97fa8e23200005b/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12908 130304 16:49:00 INFO: Completed 200 OK in 44ms (Views: 1.0ms)
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e78e97fa8e232000059"}
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e7ee97fa8e23200005b"}
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e7ee97fa8e23200005b" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e7ee97fa8e23200005b"}
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Completed 200 OK in 38ms (Views: 0.3ms)
+12937 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e89e97fa8e23200005d/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e89e97fa8e23200005d" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12937 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12937 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e89e97fa8e23200005d"}
+12945 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e89e97fa8e23200005d"}
+12937 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+12964 130304 16:49:00 INFO: Completed 200 OK in 156ms (Views: 0.5ms)
+12908 130304 16:49:00 INFO: Completed 200 OK in 29ms (Views: 0.8ms)
+12956 130304 16:49:00 INFO: Completed 200 OK in 54ms (Views: 0.4ms)
+12937 130304 16:49:00 INFO: Completed 200 OK in 10ms (Views: 0.3ms)
+12937 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e95e97fa8e23200005f/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e95e97fa8e23200005f" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12937 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12937 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e95e97fa8e23200005f"}
+12956 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12937 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e95e97fa8e23200005f"}
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9eaae97fa8e232000065" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9eaae97fa8e232000065"}
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9eaae97fa8e232000065/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9ea2e97fa8e232000063/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+12908 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9eaae97fa8e232000065"}
+12964 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9ea2e97fa8e232000063"}
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:00 INFO: Completed 200 OK in 9ms (Views: 0.4ms)
+12945 130304 16:49:00 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9ea2e97fa8e232000063" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9ea2e97fa8e232000063"}
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:00 INFO: Completed 200 OK in 11ms (Views: 0.3ms)
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea85ce97fa8e2320000a5/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+12964 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea85ce97fa8e2320000a5"}
+12937 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea85ce97fa8e2320000a5" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: Completed 200 OK in 18ms (Views: 1.9ms)
+12937 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12937 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea85ce97fa8e2320000a5"}
+12937 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea84ee97fa8e2320000a1/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12937 130304 16:49:00 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+12908 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12937 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea84ee97fa8e2320000a1" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea84ee97fa8e2320000a1"}
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12937 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea84ee97fa8e2320000a1"}
+12937 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:00 INFO: Completed 200 OK in 14ms (Views: 0.5ms)
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea856e97fa8e2320000a3/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12937 130304 16:49:00 INFO: Completed 200 OK in 6ms (Views: 1.4ms)
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea856e97fa8e2320000a3" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea856e97fa8e2320000a3"}
+12945 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea856e97fa8e2320000a3"}
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea837e97fa8e23200009d/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO: Completed 200 OK in 25ms (Views: 1.5ms)
+12956 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea837e97fa8e23200009d"}
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea837e97fa8e23200009d" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO: Completed 200 OK in 28ms (Views: 0.5ms)
+12945 130304 16:49:00 INFO: Completed 200 OK in 34ms (Views: 1.5ms)
+12937 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea828e97fa8e232000099/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea828e97fa8e232000099" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea828e97fa8e232000099"}
+12937 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12937 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea828e97fa8e232000099"}
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO: Completed 200 OK in 57ms (Views: 2.6ms)
+12937 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea82ee97fa8e23200009b/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+12908 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12945 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea837e97fa8e23200009d"}
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea82ee97fa8e23200009b"}
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:00 INFO: Completed 200 OK in 15ms (Views: 0.4ms)
+12908 130304 16:49:00 INFO: Completed 200 OK in 8ms (Views: 0.7ms)
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea82ee97fa8e23200009b" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f9d722be90a3e1c0d000268/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea82ee97fa8e23200009b"}
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea87ce97fa8e2320000a9/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+12908 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12937 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea87ce97fa8e2320000a9" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea87ce97fa8e2320000a9"}
+12937 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea87ce97fa8e2320000a9"}
+12956 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f9d722be90a3e1c0d000268"}
+12945 130304 16:49:00 INFO: Completed 200 OK in 20ms (Views: 0.3ms)
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:00 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+12937 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea891e97fa8e2320000ab/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12937 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12937 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea891e97fa8e2320000ab"}
+12937 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2ea891e97fa8e2320000ab" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9c69e97fa8e232000008/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2ea891e97fa8e2320000ab"}
+12964 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:00 INFO: Completed 200 OK in 11ms (Views: 0.2ms)
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9c69e97fa8e232000008"}
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: Completed 200 OK in 17ms (Views: 0.3ms)
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:00 INFO: Completed 200 OK in 10ms (Views: 0.4ms)
+12945 130304 16:49:00 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+12964 130304 16:49:00 INFO: Completed 200 OK in 10ms (Views: 1.5ms)
+12937 130304 16:49:00 INFO: 
+
+Started GET "/r/4faa2796924ff85a6d000003/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4faa2796924ff85a6d000003" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12937 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12937 130304 16:49:00 INFO:   Parameters: {"id"=>"4faa2796924ff85a6d000003"}
+12945 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4faa2796924ff85a6d000003"}
+12937 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4faa279f924ff85a52000004/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4faa279f924ff85a52000004"}
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4faa279f924ff85a52000004" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4faa279a924ff85a52000002/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12956 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4faa279f924ff85a52000004"}
+12937 130304 16:49:00 INFO: Completed 200 OK in 9ms (Views: 0.3ms)
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4faa279a924ff85a52000002"}
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+12964 130304 16:49:00 INFO: Completed 200 OK in 13ms (Views: 0.6ms)
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4faa279a924ff85a52000002" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4faa279a924ff85a52000002"}
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4faa279c924ff85a6d000005/relations_from" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO:   Processing by RController#relations_from as JSON
+12964 130304 16:49:00 INFO: Completed 200 OK in 5ms (Views: 0.5ms)
+12937 130304 16:49:00 INFO: 
+
+Started GET "/r/4faa279c924ff85a6d000005" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO: Completed 200 OK in 22ms (Views: 0.3ms)
+12937 130304 16:49:00 INFO:   Processing by RController#show as JSON
+12937 130304 16:49:00 INFO:   Parameters: {"id"=>"4faa279c924ff85a6d000005"}
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4faa279c924ff85a6d000005"}
+12937 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9cfee97fa8e232000028/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9cfee97fa8e232000028"}
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9d0ae97fa8e23200002c/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:00 INFO: Completed 200 OK in 11ms (Views: 0.2ms)
+12964 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9d0ae97fa8e23200002c"}
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9d05e97fa8e23200002a/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9d05e97fa8e23200002a"}
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:00 INFO: Completed 200 OK in 26ms (Views: 0.2ms)
+12956 130304 16:49:00 INFO: Completed 200 OK in 22ms (Views: 1.4ms)
+12945 130304 16:49:00 INFO: Completed 200 OK in 99ms (Views: 6.5ms)
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9caae97fa8e232000016/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9caae97fa8e232000016"}
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9cbde97fa8e232000018/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9cc9e97fa8e23200001a/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9cbde97fa8e232000018"}
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9cc9e97fa8e23200001a"}
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Completed 200 OK in 10ms (Views: 0.2ms)
+12956 130304 16:49:00 INFO: Completed 200 OK in 19ms (Views: 0.3ms)
+12964 130304 16:49:00 INFO: Completed 200 OK in 14ms (Views: 0.2ms)
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9c85e97fa8e23200000e/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9c85e97fa8e23200000e"}
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9c8ce97fa8e232000010/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9d9ae97fa8e232000030/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9c8ce97fa8e232000010"}
+12945 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9d9ae97fa8e232000030"}
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:00 INFO: Completed 200 OK in 12ms (Views: 0.2ms)
+12945 130304 16:49:00 INFO: Completed 200 OK in 11ms (Views: 0.2ms)
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9dd2e97fa8e23200003c/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO: Completed 200 OK in 130ms (Views: 0.6ms)
+12945 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9dd2e97fa8e23200003c"}
+12956 130304 16:49:00 INFO: Completed 200 OK in 26ms (Views: 0.2ms)
+12956 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9dcce97fa8e23200003a/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:00 INFO: Completed 200 OK in 135ms (Views: 0.5ms)
+12956 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9dcce97fa8e23200003a"}
+12956 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:00 INFO: Completed 200 OK in 9ms (Views: 0.2ms)
+12908 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e0ce97fa8e232000044/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9cebe97fa8e232000024/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12937 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9e11e97fa8e232000046/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12908 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e0ce97fa8e232000044"}
+12956 130304 16:49:00 INFO: Completed 200 OK in 10ms (Views: 0.2ms)
+12945 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9cebe97fa8e232000024"}
+12908 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9e11e97fa8e232000046"}
+12937 130304 16:49:00 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:00 INFO: 
+
+Started GET "/r/4f2e9cd9e97fa8e23200001e/relations_to" for 195.176.181.30 at 2013-03-04 16:49:00 +0000
+12964 130304 16:49:00 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:49:00 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+12964 130304 16:49:00 INFO:   Parameters: {"id"=>"4f2e9cd9e97fa8e23200001e"}
+12908 130304 16:49:00 INFO: Completed 200 OK in 10ms (Views: 0.2ms)
+12937 130304 16:49:01 INFO: Completed 200 OK in 38ms (Views: 12.7ms)
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9db2e97fa8e232000036/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12945 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9cdfe97fa8e232000020/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12964 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9db2e97fa8e232000036"}
+12956 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9daae97fa8e232000034/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9daae97fa8e232000034"}
+12956 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9ce5e97fa8e232000022/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO: Completed 200 OK in 39ms (Views: 0.8ms)
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9ce5e97fa8e232000022"}
+12964 130304 16:49:01 INFO: Completed 200 OK in 117ms (Views: 0.7ms)
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9df8e97fa8e232000040/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12964 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:01 INFO: Completed 200 OK in 25ms (Views: 2.6ms)
+12964 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9df8e97fa8e232000040"}
+12937 130304 16:49:01 INFO: Completed 200 OK in 15ms (Views: 0.4ms)
+12964 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9e50e97fa8e232000054/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:49:01 INFO: Completed 200 OK in 12ms (Views: 0.2ms)
+12956 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9e3fe97fa8e232000050/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12945 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9cdfe97fa8e232000020"}
+12956 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9e50e97fa8e232000054"}
+12956 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9e3fe97fa8e232000050"}
+12964 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9e47e97fa8e232000052/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9e22e97fa8e23200004a/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12956 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9e22e97fa8e23200004a"}
+12964 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9e47e97fa8e232000052"}
+12964 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:01 INFO: Completed 200 OK in 28ms (Views: 0.2ms)
+12945 130304 16:49:01 INFO: Completed 200 OK in 30ms (Views: 0.2ms)
+12908 130304 16:49:01 INFO: Completed 200 OK in 26ms (Views: 0.3ms)
+12945 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9f2ce97fa8e232000072/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO: Completed 200 OK in 22ms (Views: 0.3ms)
+12945 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9f0fe97fa8e23200006a/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12945 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9f2ce97fa8e232000072"}
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9e2ce97fa8e23200004c/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9f0fe97fa8e23200006a"}
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9e2ce97fa8e23200004c"}
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9f1ee97fa8e23200006e/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12964 130304 16:49:01 INFO: Completed 200 OK in 34ms (Views: 8.6ms)
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9f1ee97fa8e23200006e"}
+12956 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9f18e97fa8e23200006c/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO: Completed 200 OK in 17ms (Views: 0.2ms)
+12964 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9f18e97fa8e23200006c"}
+12964 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:01 INFO: Completed 200 OK in 17ms (Views: 0.2ms)
+12908 130304 16:49:01 INFO: Completed 200 OK in 22ms (Views: 0.2ms)
+12945 130304 16:49:01 INFO: Completed 200 OK in 24ms (Views: 0.3ms)
+12945 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9f24e97fa8e232000070/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12964 130304 16:49:01 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+12945 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9f24e97fa8e232000070"}
+12945 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:01 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+12964 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2ea7d2e97fa8e232000088/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12945 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9f33e97fa8e232000074/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12964 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2ea7d2e97fa8e232000088"}
+12956 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2ea7d8e97fa8e23200008a/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2ea7dfe97fa8e23200008c/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12945 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9f33e97fa8e232000074"}
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2ea7d8e97fa8e23200008a"}
+12964 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2ea7dfe97fa8e23200008c"}
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2ea7e4e97fa8e23200008e/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2ea7e4e97fa8e23200008e"}
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:01 INFO: Completed 200 OK in 20ms (Views: 0.5ms)
+12945 130304 16:49:01 INFO: Completed 200 OK in 19ms (Views: 0.3ms)
+12937 130304 16:49:01 INFO: Completed 200 OK in 20ms (Views: 0.2ms)
+12956 130304 16:49:01 INFO: Completed 200 OK in 25ms (Views: 0.2ms)
+12908 130304 16:49:01 INFO: Completed 200 OK in 18ms (Views: 0.2ms)
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2ea7e9e97fa8e232000090/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12956 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9f49e97fa8e232000078/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9f77e97fa8e232000084/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9f4fe97fa8e23200007a/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12956 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9f49e97fa8e232000078"}
+12964 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9f69e97fa8e232000080/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12945 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9f4fe97fa8e23200007a"}
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9f69e97fa8e232000080"}
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9f77e97fa8e232000084"}
+12956 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2ea7e9e97fa8e232000090"}
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:01 INFO: Completed 200 OK in 21ms (Views: 0.2ms)
+12945 130304 16:49:01 INFO: Completed 200 OK in 22ms (Views: 0.2ms)
+12964 130304 16:49:01 INFO: Completed 200 OK in 24ms (Views: 0.3ms)
+12964 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9f72e97fa8e232000082/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO: Completed 200 OK in 26ms (Views: 0.3ms)
+12908 130304 16:49:01 INFO: Completed 200 OK in 25ms (Views: 0.2ms)
+12964 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9f72e97fa8e232000082"}
+12964 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2ea810e97fa8e232000094/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12956 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2ea816e97fa8e232000096/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2ea810e97fa8e232000094"}
+12964 130304 16:49:01 INFO: Completed 200 OK in 19ms (Views: 0.8ms)
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO: Completed 200 OK in 15ms (Views: 0.5ms)
+12964 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9e71e97fa8e232000058/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12964 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9e71e97fa8e232000058"}
+12956 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2ea816e97fa8e232000096"}
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9f62e97fa8e23200007e/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12945 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9e9ce97fa8e232000062/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9e78e97fa8e23200005a/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12964 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9e9ce97fa8e232000062"}
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9e78e97fa8e23200005a"}
+12945 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9f62e97fa8e23200007e"}
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:01 INFO: Completed 200 OK in 37ms (Views: 1.6ms)
+12956 130304 16:49:01 INFO: Completed 200 OK in 46ms (Views: 0.2ms)
+12937 130304 16:49:01 INFO: Completed 200 OK in 18ms (Views: 0.4ms)
+12956 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9e7ee97fa8e23200005c/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12945 130304 16:49:01 INFO: Completed 200 OK in 24ms (Views: 0.3ms)
+12956 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9e7ee97fa8e23200005c"}
+12908 130304 16:49:01 INFO: Completed 200 OK in 17ms (Views: 0.2ms)
+12956 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9e89e97fa8e23200005e/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9e89e97fa8e23200005e"}
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9e95e97fa8e232000060/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12945 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9e95e97fa8e232000060"}
+12964 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9eaae97fa8e232000066/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2e9ea2e97fa8e232000064/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12964 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9eaae97fa8e232000066"}
+12956 130304 16:49:01 INFO: Completed 200 OK in 13ms (Views: 0.2ms)
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2e9ea2e97fa8e232000064"}
+12945 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2ea85ce97fa8e2320000a6/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO: Completed 200 OK in 17ms (Views: 0.2ms)
+12956 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2ea85ce97fa8e2320000a6"}
+12956 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:01 INFO: Completed 200 OK in 16ms (Views: 0.2ms)
+12945 130304 16:49:01 INFO: Completed 200 OK in 19ms (Views: 0.2ms)
+12937 130304 16:49:01 INFO: Completed 200 OK in 16ms (Views: 0.2ms)
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2ea84ee97fa8e2320000a2/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2ea84ee97fa8e2320000a2"}
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2ea856e97fa8e2320000a4/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2ea856e97fa8e2320000a4"}
+12956 130304 16:49:01 INFO: Completed 200 OK in 16ms (Views: 0.2ms)
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2ea828e97fa8e23200009a/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12945 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2ea837e97fa8e23200009e/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12956 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2ea828e97fa8e23200009a"}
+12945 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2ea837e97fa8e23200009e"}
+12945 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: Completed 200 OK in 13ms (Views: 0.2ms)
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2ea82ee97fa8e23200009c/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2ea82ee97fa8e23200009c"}
+12937 130304 16:49:01 INFO: Completed 200 OK in 12ms (Views: 0.2ms)
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2ea87ce97fa8e2320000aa/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2ea87ce97fa8e2320000aa"}
+12956 130304 16:49:01 INFO: Completed 200 OK in 12ms (Views: 0.2ms)
+12945 130304 16:49:01 INFO: Completed 200 OK in 14ms (Views: 0.2ms)
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:01 INFO: 
+
+Started GET "/r/4f2ea891e97fa8e2320000ac/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12945 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12945 130304 16:49:01 INFO:   Parameters: {"id"=>"4f2ea891e97fa8e2320000ac"}
+12956 130304 16:49:01 INFO: 
+
+Started GET "/r/4faa2796924ff85a6d000004/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12945 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12956 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12956 130304 16:49:01 INFO:   Parameters: {"id"=>"4faa2796924ff85a6d000004"}
+12937 130304 16:49:01 INFO: Completed 200 OK in 13ms (Views: 0.2ms)
+12964 130304 16:49:01 INFO: 
+
+Started GET "/r/4faa279f924ff85a52000005/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12956 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12964 130304 16:49:01 INFO:   Parameters: {"id"=>"4faa279f924ff85a52000005"}
+12908 130304 16:49:01 INFO: Completed 200 OK in 21ms (Views: 0.2ms)
+12964 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4faa279a924ff85a52000003/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4faa279a924ff85a52000003"}
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4faa279c924ff85a6d000006/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4faa279c924ff85a6d000006"}
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12945 130304 16:49:01 INFO: Completed 200 OK in 30ms (Views: 1.1ms)
+12956 130304 16:49:01 INFO: Completed 200 OK in 46ms (Views: 2.9ms)
+12908 130304 16:49:01 INFO: Completed 200 OK in 54ms (Views: 2.7ms)
+12964 130304 16:49:01 INFO: Completed 200 OK in 69ms (Views: 1.1ms)
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4faa27a4924ff85a6d000007/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4faa27a4924ff85a6d000007"}
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO: Completed 200 OK in 64ms (Views: 0.9ms)
+12908 130304 16:49:01 INFO: Completed 200 OK in 9ms (Views: 0.2ms)
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4facfa29924ff805b6000003/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4facfa29924ff805b6000003"}
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4fb02050924ff82c89000005/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4fb02050924ff82c89000005"}
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4fb4cdcd09f9510493000005/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4fb4cdcd09f9510493000005"}
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: Completed 200 OK in 9ms (Views: 0.3ms)
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/510b3c18924ff82085000001/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"510b3c18924ff82085000001"}
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO: Completed 200 OK in 10ms (Views: 0.3ms)
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4faa27a6924ff85a52000006/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4faa27a6924ff85a52000006"}
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4facfa26924ff805b6000001/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4facfa26924ff805b6000001"}
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4fb0204e924ff82c89000001/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4fb0204e924ff82c89000001"}
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO: Completed 200 OK in 9ms (Views: 0.1ms)
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4fb4cdce09f9510489000001/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4fb4cdce09f9510489000001"}
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4fba474609f951220800000e/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO: Completed 200 OK in 12ms (Views: 0.4ms)
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4fba474609f951220800000e"}
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4faa27a7924ff85a5c000001/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4faa27a7924ff85a5c000001"}
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12964 130304 16:49:01 INFO: 
+
+Started GET "/r/4fb0204f924ff82c89000003/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO: Completed 200 OK in 16ms (Views: 0.4ms)
+12964 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO: Completed 200 OK in 13ms (Views: 0.2ms)
+12964 130304 16:49:01 INFO:   Parameters: {"id"=>"4fb0204f924ff82c89000003"}
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4fb4cdd209f9510489000003/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12964 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4fb4cdd209f9510489000003"}
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4fba474709f9512e52000005/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12964 130304 16:49:01 INFO: Completed 200 OK in 10ms (Views: 0.2ms)
+12937 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4fba474709f9512e52000005"}
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: Completed 200 OK in 13ms (Views: 0.3ms)
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/510b3c1a924ff82085000003/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO: Completed 200 OK in 9ms (Views: 0.3ms)
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"510b3c1a924ff82085000003"}
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: Completed 200 OK in 9ms (Views: 0.3ms)
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4faa27a6924ff85a80000001/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4faa27a6924ff85a80000001"}
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4fb0204f924ff810f7000004/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4fb0204f924ff810f7000004"}
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4fb4cdcf09f9510493000007/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4fb4cdcf09f9510493000007"}
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+12908 130304 16:49:01 INFO: 
+
+Started GET "/r/4fba474709f9512e48000003/relations_to" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12908 130304 16:49:01 INFO:   Processing by RController#relations_to as JSON
+12908 130304 16:49:01 INFO:   Parameters: {"id"=>"4fba474709f9512e48000003"}
+12908 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12908 130304 16:49:01 INFO: Completed 200 OK in 9ms (Views: 0.3ms)
+12937 130304 16:49:01 INFO: 
+
+Started GET "/r/4faa2716924ff85a52000001" for 195.176.181.30 at 2013-03-04 16:49:01 +0000
+12937 130304 16:49:01 INFO:   Processing by RController#show as JSON
+12937 130304 16:49:01 INFO:   Parameters: {"id"=>"4faa2716924ff85a52000001"}
+12937 130304 16:49:01 INFO: Username: marcin@sonyx.net
+12937 130304 16:49:01 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+9654 130304 16:49:02 INFO: Completed 200 OK in 47358ms (Views: 0.3ms)

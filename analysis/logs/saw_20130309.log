@@ -1,0 +1,28 @@
+20474 130309 22:29:00 INFO: 
+
+Started GET "/r/513a3c74924ff85003000001/related_from/Issue" for 178.197.233.125 at 2013-03-09 22:29:00 +0000
+20474 130309 22:29:00 INFO:   Processing by RController#related_from as JSON
+20474 130309 22:29:00 INFO:   Parameters: {"id"=>"513a3c74924ff85003000001", "type"=>"Issue"}
+20474 130309 22:29:00 INFO: Username: (none)
+20474 130309 22:29:00 INFO: Completed   in 1ms
+20474 130309 22:29:00 INFO: 
+
+Started GET "/r/513a3c8e924ff84fef000001/relations_to" for 178.197.233.125 at 2013-03-09 22:29:00 +0000
+20474 130309 22:29:00 INFO:   Processing by RController#relations_to as JSON
+20474 130309 22:29:00 INFO:   Parameters: {"id"=>"513a3c8e924ff84fef000001"}
+20474 130309 22:29:00 INFO: Username: (none)
+20474 130309 22:29:00 INFO: Completed   in 0ms
+20474 130309 22:29:00 INFO: 
+
+Started GET "/r/513a3c8e924ff84fef000001" for 178.197.233.125 at 2013-03-09 22:29:00 +0000
+20474 130309 22:29:00 INFO:   Processing by RController#show as JSON
+20474 130309 22:29:00 INFO:   Parameters: {"id"=>"513a3c8e924ff84fef000001"}
+20474 130309 22:29:00 INFO: Username: (none)
+20474 130309 22:29:00 INFO: Completed   in 1ms
+20474 130309 22:29:05 INFO: 
+
+Started GET "/users/sign_in" for 178.197.233.125 at 2013-03-09 22:29:05 +0000
+20474 130309 22:29:05 INFO:   Processing by Devise::SessionsController#new as HTML
+20474 130309 22:29:05 INFO: Username: (none)
+20474 130309 22:29:05 INFO: Rendered devise/sessions/new.html.erb within layouts/application (60.1ms)
+20474 130309 22:29:05 INFO: Completed 200 OK in 72ms (Views: 67.1ms)

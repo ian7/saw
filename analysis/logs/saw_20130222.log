@@ -1,0 +1,47 @@
+9654 130222 12:59:08 INFO: 
+
+Started GET "/" for 10.62.97.94 at 2013-02-22 12:59:08 +0000
+9654 130222 12:59:08 INFO:   Processing by WelcomeController#index as HTML
+9654 130222 12:59:08 INFO: Username: (none)
+9654 130222 12:59:08 INFO: Rendered welcome/index.html.erb within layouts/application (1.1ms)
+9654 130222 12:59:08 INFO: Completed 200 OK in 3ms (Views: 2.1ms)
+9654 130222 12:59:09 INFO: 
+
+Started GET "/projects/4fb3c56d09f9515d4f000001" for 10.62.97.94 at 2013-02-22 12:59:09 +0000
+9654 130222 12:59:09 INFO:   Processing by ProjectsController#show as JSON
+9654 130222 12:59:09 INFO:   Parameters: {"id"=>"4fb3c56d09f9515d4f000001"}
+9654 130222 12:59:09 INFO: Username: (none)
+9654 130222 12:59:09 INFO: Completed   in 1ms
+9654 130222 12:59:09 INFO: 
+
+Started GET "/r/4fb3c56d09f9515d4f000001/related_from/Issue" for 10.62.97.94 at 2013-02-22 12:59:09 +0000
+9654 130222 12:59:09 INFO:   Processing by RController#related_from as JSON
+9654 130222 12:59:09 INFO:   Parameters: {"id"=>"4fb3c56d09f9515d4f000001", "type"=>"Issue"}
+9654 130222 12:59:09 INFO: Username: (none)
+9654 130222 12:59:09 INFO: Completed   in 1ms
+9654 130222 12:59:09 INFO: 
+
+Started GET "/t" for 10.62.97.94 at 2013-02-22 12:59:09 +0000
+9654 130222 12:59:09 INFO:   Processing by TController#index as JSON
+9654 130222 12:59:09 INFO: Username: (none)
+9654 130222 12:59:09 INFO: Completed   in 0ms
+9654 130222 12:59:09 INFO: 
+
+Started GET "/scope/type/Decision" for 10.62.97.94 at 2013-02-22 12:59:09 +0000
+9654 130222 12:59:09 INFO:   Processing by ScopeController#type as JSON
+9654 130222 12:59:09 INFO:   Parameters: {"type_name"=>"Decision"}
+9654 130222 12:59:09 INFO: Username: (none)
+9654 130222 12:59:09 INFO: Completed 200 OK in 20ms (Views: 0.9ms)
+9654 130222 12:59:09 INFO: 
+
+Started GET "/users/sign_in" for 10.62.97.94 at 2013-02-22 12:59:09 +0000
+9654 130222 12:59:09 INFO:   Processing by Devise::SessionsController#new as HTML
+9654 130222 12:59:09 INFO: Username: (none)
+9654 130222 12:59:09 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.9ms)
+9654 130222 12:59:09 INFO: Completed 200 OK in 13ms (Views: 6.3ms)
+9654 130222 12:59:09 INFO: 
+
+Started GET "/tags" for 10.62.97.94 at 2013-02-22 12:59:09 +0000
+9654 130222 12:59:09 INFO:   Processing by TagsController#index as JSON
+9654 130222 12:59:09 INFO: Username: (none)
+9654 130222 12:59:10 INFO: Completed 200 OK in 399ms (Views: 34.8ms)

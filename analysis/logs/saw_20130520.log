@@ -1,0 +1,587 @@
+14227 130520 12:55:55 INFO: 
+
+Started GET "/notify/518a0425da300c2ca3000001/Recommendation/focused" for 10.62.96.122 at 2013-05-20 12:55:55 +0000
+14227 130520 12:55:55 INFO:   Processing by NotifyController#notify as JSON
+14227 130520 12:55:55 INFO:   Parameters: {"id"=>"518a0425da300c2ca3000001", "attribute"=>"Recommendation", "event"=>"focused"}
+14227 130520 12:55:55 INFO: Username: mattia.candeloro89@gmail.com
+14227 130520 12:55:55 INFO: Notifying: Issue id: 518a0425da300c2ca3000001 with action: focused class: notify distance: 0
+14227 130520 12:55:55 INFO: Rendered text template (0.0ms)
+14227 130520 12:55:55 INFO: Completed 200 OK in 11ms (Views: 4.0ms)
+14227 130520 12:55:55 INFO: 
+
+Started GET "/notify/518a0425da300c2ca3000001/Recommendation/blured" for 10.62.96.122 at 2013-05-20 12:55:55 +0000
+14227 130520 12:55:55 INFO:   Processing by NotifyController#notify as JSON
+14227 130520 12:55:55 INFO:   Parameters: {"id"=>"518a0425da300c2ca3000001", "attribute"=>"Recommendation", "event"=>"blured"}
+14227 130520 12:55:55 INFO: Username: mattia.candeloro89@gmail.com
+14227 130520 12:55:55 INFO: Notifying: Issue id: 518a0425da300c2ca3000001 with action: blured class: notify distance: 0
+14227 130520 12:55:55 INFO: Rendered text template (0.0ms)
+14227 130520 12:55:55 INFO: Completed 200 OK in 4ms (Views: 0.6ms)
+14227 130520 12:56:00 INFO: 
+
+Started GET "/notify/518a0425da300c2ca3000001/Recommendation/focused" for 10.62.96.122 at 2013-05-20 12:56:00 +0000
+14227 130520 12:56:00 INFO:   Processing by NotifyController#notify as JSON
+14227 130520 12:56:00 INFO:   Parameters: {"id"=>"518a0425da300c2ca3000001", "attribute"=>"Recommendation", "event"=>"focused"}
+14227 130520 12:56:00 INFO: Username: mattia.candeloro89@gmail.com
+14227 130520 12:56:00 INFO: Notifying: Issue id: 518a0425da300c2ca3000001 with action: focused class: notify distance: 0
+14227 130520 12:56:00 INFO: Rendered text template (0.0ms)
+14227 130520 12:56:00 INFO: Completed 200 OK in 4ms (Views: 0.6ms)
+14227 130520 14:57:28 INFO: 
+
+Started GET "/" for 85.5.98.97 at 2013-05-20 14:57:28 +0000
+14227 130520 14:57:28 INFO:   Processing by WelcomeController#index as HTML
+14227 130520 14:57:28 INFO: Username: marcin@sonyx.net
+14227 130520 14:57:28 INFO: Rendered welcome/index.html.erb within layouts/application (2.9ms)
+14227 130520 14:57:28 INFO: Completed 200 OK in 10ms (Views: 7.6ms)
+14227 130520 14:57:30 INFO: 
+
+Started GET "/updates/1368784413" for 85.5.98.97 at 2013-05-20 14:57:30 +0000
+14227 130520 14:57:30 INFO:   Processing by NotifyController#stamped as 
+14227 130520 14:57:30 INFO:   Parameters: {"stamp"=>"1368784413"}
+14227 130520 14:57:30 INFO: Username: marcin@sonyx.net
+14227 130520 14:57:30 INFO: Completed 200 OK in 17ms (Views: 10.9ms)
+14227 130520 14:57:30 INFO: 
+
+Started GET "/scope/type/Decision" for 85.5.98.97 at 2013-05-20 14:57:30 +0000
+14227 130520 14:57:30 INFO:   Processing by ScopeController#type as JSON
+14227 130520 14:57:30 INFO:   Parameters: {"type_name"=>"Decision"}
+14227 130520 14:57:30 INFO: Username: marcin@sonyx.net
+14227 130520 14:57:30 INFO: Completed 200 OK in 19ms (Views: 2.0ms)
+14227 130520 14:57:30 INFO: 
+
+Started GET "/tags" for 85.5.98.97 at 2013-05-20 14:57:30 +0000
+14227 130520 14:57:30 INFO:   Processing by TagsController#index as JSON
+14227 130520 14:57:30 INFO: Username: marcin@sonyx.net
+14227 130520 14:57:30 INFO: Completed 200 OK in 210ms (Views: 34.1ms)
+14227 130520 14:57:30 INFO: 
+
+Started GET "/t" for 85.5.98.97 at 2013-05-20 14:57:30 +0000
+14227 130520 14:57:30 INFO:   Processing by TController#index as JSON
+14227 130520 14:57:30 INFO: Username: marcin@sonyx.net
+14227 130520 14:57:31 INFO: Completed 200 OK in 129ms (Views: 5.7ms)
+14227 130520 14:57:31 INFO: 
+
+Started GET "/r/5193a637da300c3002000001/relations_from" for 85.5.98.97 at 2013-05-20 14:57:31 +0000
+14227 130520 14:57:31 INFO:   Processing by RController#relations_from as JSON
+14227 130520 14:57:31 INFO:   Parameters: {"id"=>"5193a637da300c3002000001"}
+14227 130520 14:57:31 INFO: Username: marcin@sonyx.net
+14227 130520 14:57:31 INFO: Completed 200 OK in 25ms (Views: 2.9ms)
+14227 130520 14:57:32 INFO: 
+
+Started GET "/r/5195f82eda300c2a50000003" for 85.5.98.97 at 2013-05-20 14:57:32 +0000
+14227 130520 14:57:32 INFO:   Processing by RController#show as JSON
+14227 130520 14:57:32 INFO:   Parameters: {"id"=>"5195f82eda300c2a50000003"}
+14227 130520 14:57:32 INFO: Username: marcin@sonyx.net
+14227 130520 14:57:32 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+14227 130520 14:57:32 INFO: 
+
+Started GET "/r/5195f866da300c2baa000002" for 85.5.98.97 at 2013-05-20 14:57:32 +0000
+14227 130520 14:57:32 INFO:   Processing by RController#show as JSON
+14227 130520 14:57:32 INFO:   Parameters: {"id"=>"5195f866da300c2baa000002"}
+14227 130520 14:57:32 INFO: Username: marcin@sonyx.net
+14227 130520 14:57:32 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+14227 130520 14:57:32 INFO: 
+
+Started GET "/r/5195fa28da300c2c31000001" for 85.5.98.97 at 2013-05-20 14:57:32 +0000
+14227 130520 14:57:32 INFO:   Processing by RController#show as JSON
+14227 130520 14:57:32 INFO:   Parameters: {"id"=>"5195fa28da300c2c31000001"}
+14227 130520 14:57:32 INFO: Username: marcin@sonyx.net
+14227 130520 14:57:32 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+14227 130520 14:57:32 INFO: 
+
+Started GET "/r/5195fe1ada300c2c64000005" for 85.5.98.97 at 2013-05-20 14:57:32 +0000
+14227 130520 14:57:32 INFO:   Processing by RController#show as JSON
+14227 130520 14:57:32 INFO:   Parameters: {"id"=>"5195fe1ada300c2c64000005"}
+14227 130520 14:57:32 INFO: Username: marcin@sonyx.net
+14227 130520 14:57:32 INFO: Completed 200 OK in 56ms (Views: 0.5ms)
+14227 130520 14:57:32 INFO: 
+
+Started GET "/r/5195fa73da300c2c4e000001/relations_to" for 85.5.98.97 at 2013-05-20 14:57:32 +0000
+14227 130520 14:57:32 INFO:   Processing by RController#relations_to as JSON
+14227 130520 14:57:32 INFO:   Parameters: {"id"=>"5195fa73da300c2c4e000001"}
+14227 130520 14:57:32 INFO: Username: marcin@sonyx.net
+14227 130520 14:57:32 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+14227 130520 14:57:35 INFO: 
+
+Started GET "/r/5195f615da300c2a58000001" for 85.5.98.97 at 2013-05-20 14:57:35 +0000
+14227 130520 14:57:35 INFO:   Processing by RController#show as JSON
+14227 130520 14:57:35 INFO:   Parameters: {"id"=>"5195f615da300c2a58000001"}
+14227 130520 14:57:35 INFO: Username: marcin@sonyx.net
+14227 130520 14:57:35 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+14227 130520 14:57:35 INFO: 
+
+Started GET "/r/5195f2d8da300c2a07000002" for 85.5.98.97 at 2013-05-20 14:57:35 +0000
+14227 130520 14:57:35 INFO:   Processing by RController#show as JSON
+14227 130520 14:57:35 INFO:   Parameters: {"id"=>"5195f2d8da300c2a07000002"}
+14227 130520 14:57:35 INFO: Username: marcin@sonyx.net
+14227 130520 14:57:35 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+14227 130520 14:57:35 INFO: 
+
+Started GET "/r/5195f83dda300c2ba1000001" for 85.5.98.97 at 2013-05-20 14:57:35 +0000
+14227 130520 14:57:35 INFO:   Processing by RController#show as JSON
+14227 130520 14:57:35 INFO:   Parameters: {"id"=>"5195f83dda300c2ba1000001"}
+14227 130520 14:57:35 INFO: Username: marcin@sonyx.net
+14227 130520 14:57:35 INFO: Completed 200 OK in 3ms (Views: 0.5ms)
+14227 130520 14:57:35 INFO: 
+
+Started GET "/r/4faa1da8924ff84f2600000e" for 85.5.98.97 at 2013-05-20 14:57:35 +0000
+14227 130520 14:57:35 INFO:   Processing by RController#show as JSON
+14227 130520 14:57:35 INFO:   Parameters: {"id"=>"4faa1da8924ff84f2600000e"}
+14227 130520 14:57:35 INFO: Username: marcin@sonyx.net
+14227 130520 14:57:35 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+14227 130520 14:57:36 INFO: 
+
+Started GET "/projects" for 85.5.98.97 at 2013-05-20 14:57:36 +0000
+14227 130520 14:57:36 INFO:   Processing by ProjectsController#index as JSON
+14227 130520 14:57:36 INFO: Username: marcin@sonyx.net
+14227 130520 14:57:37 INFO: Completed 200 OK in 821ms (Views: 4.4ms)
+14227 130520 14:58:42 INFO: 
+
+Started POST "/r" for 85.5.98.97 at 2013-05-20 14:58:42 +0000
+14227 130520 14:58:42 INFO:   Processing by RController#create as JSON
+14227 130520 14:58:42 INFO:   Parameters: {"name"=>"Exercise 9", "type"=>"Project"}
+14227 130520 14:58:42 INFO: Username: marcin@sonyx.net
+14227 130520 14:58:42 INFO: Notifying: Project id: 519a3a22da300c3793000001 with action: create class: notify distance: 0
+14227 130520 14:58:42 INFO: Notifying: Project id: 519a3a22da300c3793000001 with action: update class: notify distance: 0
+14227 130520 14:58:42 INFO: Completed 200 OK in 16ms (Views: 0.3ms)
+14227 130520 14:58:42 INFO: 
+
+Started GET "/projects" for 85.5.98.97 at 2013-05-20 14:58:42 +0000
+14227 130520 14:58:42 INFO:   Processing by ProjectsController#index as JSON
+14227 130520 14:58:42 INFO: Username: marcin@sonyx.net
+3623 130520 14:58:42 INFO: 
+
+Started GET "/r/519a3a22da300c3793000001/relations_from" for 85.5.98.97 at 2013-05-20 14:58:42 +0000
+3623 130520 14:58:43 INFO:   Processing by RController#relations_from as JSON
+3623 130520 14:58:43 INFO:   Parameters: {"id"=>"519a3a22da300c3793000001"}
+3623 130520 14:58:43 INFO: Username: marcin@sonyx.net
+3623 130520 14:58:43 INFO: Completed 200 OK in 22ms (Views: 6.8ms)
+14227 130520 14:58:43 INFO: Completed 200 OK in 915ms (Views: 4.6ms)
+14227 130520 14:58:44 INFO: 
+
+Started GET "/r/519a3a22da300c3793000001/relations_from" for 85.5.98.97 at 2013-05-20 14:58:44 +0000
+3623 130520 14:58:44 INFO: 
+
+Started GET "/projects/519a3a22da300c3793000001" for 85.5.98.97 at 2013-05-20 14:58:44 +0000
+14227 130520 14:58:44 INFO:   Processing by RController#relations_from as JSON
+14227 130520 14:58:44 INFO:   Parameters: {"id"=>"519a3a22da300c3793000001"}
+14227 130520 14:58:44 INFO: Username: marcin@sonyx.net
+3623 130520 14:58:44 INFO:   Processing by ProjectsController#show as JSON
+3623 130520 14:58:44 INFO:   Parameters: {"id"=>"519a3a22da300c3793000001"}
+3623 130520 14:58:44 INFO: Username: marcin@sonyx.net
+14227 130520 14:58:44 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+3623 130520 14:58:44 INFO: Completed 200 OK in 11ms (Views: 2.0ms)
+3623 130520 15:32:17 INFO: 
+
+Started GET "/" for 85.5.98.97 at 2013-05-20 15:32:17 +0000
+3623 130520 15:32:17 INFO:   Processing by WelcomeController#index as HTML
+3623 130520 15:32:17 INFO: Username: (none)
+3623 130520 15:32:17 INFO: Rendered welcome/index.html.erb within layouts/application (4.3ms)
+3623 130520 15:32:17 INFO: Completed 200 OK in 11ms (Views: 9.6ms)
+3623 130520 15:32:20 INFO: 
+
+Started GET "/scope/type/Decision" for 85.5.98.97 at 2013-05-20 15:32:20 +0000
+3623 130520 15:32:20 INFO:   Processing by ScopeController#type as JSON
+3623 130520 15:32:20 INFO:   Parameters: {"type_name"=>"Decision"}
+3623 130520 15:32:20 INFO: Username: (none)
+3623 130520 15:32:20 INFO: Completed 200 OK in 15ms (Views: 2.1ms)
+3623 130520 15:32:20 INFO: 
+
+Started GET "/tags" for 85.5.98.97 at 2013-05-20 15:32:20 +0000
+3623 130520 15:32:20 INFO:   Processing by TagsController#index as JSON
+3623 130520 15:32:20 INFO: Username: (none)
+3623 130520 15:32:20 INFO: Completed 200 OK in 209ms (Views: 36.0ms)
+3623 130520 15:32:20 INFO: 
+
+Started GET "/t" for 85.5.98.97 at 2013-05-20 15:32:20 +0000
+3623 130520 15:32:20 INFO:   Processing by TController#index as JSON
+3623 130520 15:32:20 INFO: Username: (none)
+3623 130520 15:32:20 INFO: Completed   in 1ms
+3623 130520 15:32:20 INFO: 
+
+Started GET "/r/518a85d0da300c484c000002/relations_from" for 85.5.98.97 at 2013-05-20 15:32:20 +0000
+3623 130520 15:32:20 INFO:   Processing by RController#relations_from as JSON
+3623 130520 15:32:20 INFO:   Parameters: {"id"=>"518a85d0da300c484c000002"}
+3623 130520 15:32:20 INFO: Username: (none)
+3623 130520 15:32:20 INFO: Completed   in 1ms
+3623 130520 15:32:20 INFO: 
+
+Started GET "/updates/1368032791" for 85.5.98.97 at 2013-05-20 15:32:20 +0000
+3623 130520 15:32:20 INFO:   Processing by NotifyController#stamped as 
+3623 130520 15:32:20 INFO:   Parameters: {"stamp"=>"1368032791"}
+3623 130520 15:32:20 INFO: Username: (none)
+3623 130520 15:32:20 INFO: Completed 200 OK in 34ms (Views: 11.5ms)
+3623 130520 15:32:21 INFO: 
+
+Started GET "/r/51925958da300c697d000001/relations_from" for 85.5.98.97 at 2013-05-20 15:32:21 +0000
+3623 130520 15:32:21 INFO:   Processing by RController#relations_from as JSON
+3623 130520 15:32:21 INFO:   Parameters: {"id"=>"51925958da300c697d000001"}
+3623 130520 15:32:21 INFO: Username: (none)
+3623 130520 15:32:21 INFO: Completed   in 1ms
+3623 130520 15:32:21 INFO: 
+
+Started GET "/r/518a85d0da300c484c000002/relations_from" for 85.5.98.97 at 2013-05-20 15:32:21 +0000
+3623 130520 15:32:21 INFO:   Processing by RController#relations_from as JSON
+3623 130520 15:32:21 INFO:   Parameters: {"id"=>"518a85d0da300c484c000002"}
+3623 130520 15:32:21 INFO: Username: (none)
+3623 130520 15:32:21 INFO: Completed   in 0ms
+3623 130520 15:32:21 INFO: 
+
+Started GET "/r/5193a637da300c3002000001/relations_from" for 85.5.98.97 at 2013-05-20 15:32:21 +0000
+3623 130520 15:32:21 INFO:   Processing by RController#relations_from as JSON
+3623 130520 15:32:21 INFO:   Parameters: {"id"=>"5193a637da300c3002000001"}
+3623 130520 15:32:21 INFO: Username: (none)
+3623 130520 15:32:21 INFO: Completed   in 0ms
+3623 130520 15:32:21 INFO: 
+
+Started GET "/r/51948e11da300c5f22000001/relations_from" for 85.5.98.97 at 2013-05-20 15:32:21 +0000
+3623 130520 15:32:21 INFO:   Processing by RController#relations_from as JSON
+3623 130520 15:32:21 INFO:   Parameters: {"id"=>"51948e11da300c5f22000001"}
+3623 130520 15:32:21 INFO: Username: (none)
+3623 130520 15:32:21 INFO: Completed   in 1ms
+3623 130520 15:32:30 INFO: 
+
+Started GET "/users/sign_in" for 85.5.98.97 at 2013-05-20 15:32:30 +0000
+3623 130520 15:32:30 INFO:   Processing by Devise::SessionsController#new as HTML
+3623 130520 15:32:30 INFO: Username: (none)
+4059 130520 15:32:30 INFO: 
+
+Started GET "/r/519a3a22da300c3793000001/relations_from" for 85.5.98.97 at 2013-05-20 15:32:30 +0000
+3623 130520 15:32:30 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.9ms)
+3623 130520 15:32:30 INFO: Completed 200 OK in 8ms (Views: 4.9ms)
+4059 130520 15:32:31 INFO:   Processing by RController#relations_from as JSON
+4059 130520 15:32:31 INFO:   Parameters: {"id"=>"519a3a22da300c3793000001"}
+4059 130520 15:32:31 INFO: Username: (none)
+4059 130520 15:32:31 INFO: Completed   in 4ms
+4059 130520 16:51:59 INFO: 
+
+Started GET "/" for 85.5.98.97 at 2013-05-20 16:51:59 +0000
+4059 130520 16:51:59 INFO:   Processing by WelcomeController#index as HTML
+4059 130520 16:51:59 INFO: Username: (none)
+4059 130520 16:52:00 INFO: Rendered welcome/index.html.erb within layouts/application (3.9ms)
+4059 130520 16:52:00 INFO: Completed 200 OK in 11ms (Views: 9.5ms)
+4059 130520 23:34:20 INFO: 
+
+Started GET "/" for 178.199.6.80 at 2013-05-20 23:34:20 +0000
+4059 130520 23:34:20 INFO:   Processing by WelcomeController#index as HTML
+4059 130520 23:34:20 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:20 INFO: Rendered welcome/index.html.erb within layouts/application (0.4ms)
+4059 130520 23:34:20 INFO: Completed 200 OK in 6ms (Views: 1.3ms)
+4059 130520 23:34:21 INFO: 
+
+Started GET "/updates/1368630839" for 178.199.6.80 at 2013-05-20 23:34:21 +0000
+4059 130520 23:34:21 INFO:   Processing by NotifyController#stamped as 
+4059 130520 23:34:21 INFO:   Parameters: {"stamp"=>"1368630839"}
+4059 130520 23:34:21 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:21 INFO: Completed 200 OK in 23ms (Views: 11.8ms)
+4059 130520 23:34:21 INFO: 
+
+Started GET "/scope/type/Decision" for 178.199.6.80 at 2013-05-20 23:34:21 +0000
+4059 130520 23:34:21 INFO:   Processing by ScopeController#type as JSON
+4059 130520 23:34:21 INFO:   Parameters: {"type_name"=>"Decision"}
+4059 130520 23:34:21 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:21 INFO: Completed 200 OK in 17ms (Views: 4.5ms)
+4059 130520 23:34:21 INFO: 
+
+Started GET "/t" for 178.199.6.80 at 2013-05-20 23:34:21 +0000
+4059 130520 23:34:21 INFO:   Processing by TController#index as JSON
+4059 130520 23:34:21 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:21 INFO: Completed 200 OK in 128ms (Views: 6.1ms)
+4059 130520 23:34:21 INFO: 
+
+Started GET "/r/5187d355da300c37f7000001/relations_from" for 178.199.6.80 at 2013-05-20 23:34:21 +0000
+4059 130520 23:34:21 INFO:   Processing by RController#relations_from as JSON
+4059 130520 23:34:21 INFO:   Parameters: {"id"=>"5187d355da300c37f7000001"}
+4059 130520 23:34:21 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:21 INFO: Completed 200 OK in 25ms (Views: 3.0ms)
+4059 130520 23:34:21 INFO: 
+
+Started GET "/tags" for 178.199.6.80 at 2013-05-20 23:34:21 +0000
+4059 130520 23:34:21 INFO:   Processing by TagsController#index as JSON
+4059 130520 23:34:21 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:22 INFO: Completed 200 OK in 234ms (Views: 67.0ms)
+4059 130520 23:34:22 INFO: 
+
+Started GET "/r/518a0425da300c2ca3000001" for 178.199.6.80 at 2013-05-20 23:34:22 +0000
+4059 130520 23:34:22 INFO:   Processing by RController#show as JSON
+4059 130520 23:34:22 INFO:   Parameters: {"id"=>"518a0425da300c2ca3000001"}
+4059 130520 23:34:22 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:22 INFO: Completed 200 OK in 5ms (Views: 0.4ms)
+4059 130520 23:34:22 INFO: 
+
+Started GET "/r/5189fafcda300c287e000006/relations_from" for 178.199.6.80 at 2013-05-20 23:34:22 +0000
+4059 130520 23:34:22 INFO:   Processing by RController#relations_from as JSON
+4059 130520 23:34:22 INFO:   Parameters: {"id"=>"5189fafcda300c287e000006"}
+4059 130520 23:34:22 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:22 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+4059 130520 23:34:22 INFO: 
+
+Started GET "/r/5189f51eda300c2888000003/relations_from" for 178.199.6.80 at 2013-05-20 23:34:22 +0000
+4059 130520 23:34:22 INFO:   Processing by RController#relations_from as JSON
+4059 130520 23:34:22 INFO:   Parameters: {"id"=>"5189f51eda300c2888000003"}
+4059 130520 23:34:22 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:22 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130520 23:34:22 INFO: 
+
+Started GET "/r/5189f533da300c2923000001/relations_from" for 178.199.6.80 at 2013-05-20 23:34:22 +0000
+4059 130520 23:34:22 INFO:   Processing by RController#relations_from as JSON
+4059 130520 23:34:22 INFO:   Parameters: {"id"=>"5189f533da300c2923000001"}
+4059 130520 23:34:22 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:22 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130520 23:34:22 INFO: 
+
+Started GET "/r/518a0122da300c2a32000002/relations_from" for 178.199.6.80 at 2013-05-20 23:34:22 +0000
+4059 130520 23:34:22 INFO:   Processing by RController#relations_from as JSON
+4059 130520 23:34:22 INFO:   Parameters: {"id"=>"518a0122da300c2a32000002"}
+4059 130520 23:34:22 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:22 INFO: Completed 200 OK in 14ms (Views: 0.4ms)
+4059 130520 23:34:22 INFO: 
+
+Started GET "/r/5189f718da300c2968000001/relations_from" for 178.199.6.80 at 2013-05-20 23:34:22 +0000
+4059 130520 23:34:22 INFO:   Processing by RController#relations_from as JSON
+4059 130520 23:34:22 INFO:   Parameters: {"id"=>"5189f718da300c2968000001"}
+4059 130520 23:34:22 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:22 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130520 23:34:22 INFO: 
+
+Started GET "/r/5189fb17da300c2a87000002/relations_from" for 178.199.6.80 at 2013-05-20 23:34:22 +0000
+4059 130520 23:34:22 INFO:   Processing by RController#relations_from as JSON
+4059 130520 23:34:22 INFO:   Parameters: {"id"=>"5189fb17da300c2a87000002"}
+4059 130520 23:34:22 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:22 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130520 23:34:22 INFO: 
+
+Started GET "/r/5189fb0bda300c2a87000001/relations_from" for 178.199.6.80 at 2013-05-20 23:34:22 +0000
+4059 130520 23:34:22 INFO:   Processing by RController#relations_from as JSON
+4059 130520 23:34:22 INFO:   Parameters: {"id"=>"5189fb0bda300c2a87000001"}
+4059 130520 23:34:22 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:22 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130520 23:34:22 INFO: 
+
+Started GET "/r/51948e11da300c5f22000001/relations_from" for 178.199.6.80 at 2013-05-20 23:34:22 +0000
+4059 130520 23:34:22 INFO:   Processing by RController#relations_from as JSON
+4059 130520 23:34:22 INFO:   Parameters: {"id"=>"51948e11da300c5f22000001"}
+4059 130520 23:34:22 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:22 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+4059 130520 23:34:22 INFO: 
+
+Started GET "/r/519a3a22da300c3793000001/relations_from" for 178.199.6.80 at 2013-05-20 23:34:22 +0000
+4059 130520 23:34:22 INFO:   Processing by RController#relations_from as JSON
+4059 130520 23:34:22 INFO:   Parameters: {"id"=>"519a3a22da300c3793000001"}
+4059 130520 23:34:22 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:22 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+4059 130520 23:34:22 INFO: 
+
+Started GET "/r/5187d361da300c37f7000002/relations_from" for 178.199.6.80 at 2013-05-20 23:34:22 +0000
+4059 130520 23:34:22 INFO:   Processing by RController#relations_from as JSON
+4059 130520 23:34:22 INFO:   Parameters: {"id"=>"5187d361da300c37f7000002"}
+4059 130520 23:34:22 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:23 INFO: Completed 200 OK in 222ms (Views: 22.8ms)
+4059 130520 23:34:23 INFO: 
+
+Started GET "/r/518a050cda300c2dba000002/relations_from" for 178.199.6.80 at 2013-05-20 23:34:23 +0000
+4059 130520 23:34:23 INFO:   Processing by RController#relations_from as JSON
+4059 130520 23:34:23 INFO:   Parameters: {"id"=>"518a050cda300c2dba000002"}
+4059 130520 23:34:23 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:23 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+4059 130520 23:34:23 INFO: 
+
+Started GET "/r/518a050cda300c2dba000002" for 178.199.6.80 at 2013-05-20 23:34:23 +0000
+4059 130520 23:34:23 INFO:   Processing by RController#show as JSON
+4059 130520 23:34:23 INFO:   Parameters: {"id"=>"518a050cda300c2dba000002"}
+4059 130520 23:34:23 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:23 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130520 23:34:23 INFO: 
+
+Started GET "/r/518a0461da300c2ca3000003" for 178.199.6.80 at 2013-05-20 23:34:23 +0000
+4059 130520 23:34:23 INFO:   Processing by RController#show as JSON
+4059 130520 23:34:23 INFO:   Parameters: {"id"=>"518a0461da300c2ca3000003"}
+4059 130520 23:34:23 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:23 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130520 23:34:23 INFO: 
+
+Started GET "/r/518a049fda300c2dcd000001" for 178.199.6.80 at 2013-05-20 23:34:23 +0000
+4059 130520 23:34:23 INFO:   Processing by RController#show as JSON
+4059 130520 23:34:23 INFO:   Parameters: {"id"=>"518a049fda300c2dcd000001"}
+4059 130520 23:34:23 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:23 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130520 23:34:23 INFO: 
+
+Started GET "/r/518a0461da300c2ca3000003/relations_from" for 178.199.6.80 at 2013-05-20 23:34:23 +0000
+4059 130520 23:34:23 INFO:   Processing by RController#relations_from as JSON
+4059 130520 23:34:23 INFO:   Parameters: {"id"=>"518a0461da300c2ca3000003"}
+4059 130520 23:34:23 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:23 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130520 23:34:23 INFO: 
+
+Started GET "/r/518a049fda300c2dcd000001/relations_from" for 178.199.6.80 at 2013-05-20 23:34:23 +0000
+4059 130520 23:34:23 INFO:   Processing by RController#relations_from as JSON
+4059 130520 23:34:23 INFO:   Parameters: {"id"=>"518a049fda300c2dcd000001"}
+4059 130520 23:34:23 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:23 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+9895 130520 23:34:28 INFO: 
+
+Started GET "/r/4dc26da6798e1c673a000010/relations_to" for 178.199.6.80 at 2013-05-20 23:34:28 +0000
+4059 130520 23:34:28 INFO: 
+
+Started GET "/r/4dc26db1798e1c673a000012/relations_to" for 178.199.6.80 at 2013-05-20 23:34:28 +0000
+4059 130520 23:34:28 INFO:   Processing by RController#relations_to as JSON
+4059 130520 23:34:28 INFO:   Parameters: {"id"=>"4dc26db1798e1c673a000012"}
+4059 130520 23:34:28 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:28 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+4059 130520 23:34:28 INFO: 
+
+Started GET "/r/4dc261a2798e1c64b6000007" for 178.199.6.80 at 2013-05-20 23:34:28 +0000
+4059 130520 23:34:28 INFO:   Processing by RController#show as JSON
+4059 130520 23:34:28 INFO:   Parameters: {"id"=>"4dc261a2798e1c64b6000007"}
+4059 130520 23:34:28 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:28 INFO: Completed 200 OK in 34ms (Views: 0.5ms)
+9895 130520 23:34:28 INFO:   Processing by RController#relations_to as JSON
+9895 130520 23:34:28 INFO:   Parameters: {"id"=>"4dc26da6798e1c673a000010"}
+9895 130520 23:34:28 INFO: Username: mattia.candeloro89@gmail.com
+9895 130520 23:34:28 INFO: Completed 200 OK in 20ms (Views: 5.6ms)
+9895 130520 23:34:50 INFO: 
+
+Started GET "/projects" for 178.199.6.80 at 2013-05-20 23:34:50 +0000
+9895 130520 23:34:50 INFO:   Processing by ProjectsController#index as JSON
+9895 130520 23:34:50 INFO: Username: mattia.candeloro89@gmail.com
+9895 130520 23:34:50 INFO: Completed 200 OK in 836ms (Views: 6.9ms)
+9895 130520 23:34:54 INFO: 
+
+Started GET "/r/5187d355da300c37f7000001/relations_from" for 178.199.6.80 at 2013-05-20 23:34:54 +0000
+9895 130520 23:34:54 INFO:   Processing by RController#relations_from as JSON
+9895 130520 23:34:54 INFO:   Parameters: {"id"=>"5187d355da300c37f7000001"}
+9895 130520 23:34:54 INFO: Username: mattia.candeloro89@gmail.com
+9895 130520 23:34:54 INFO: Completed 200 OK in 24ms (Views: 2.2ms)
+9895 130520 23:34:58 INFO: 
+
+Started GET "/r/5189fafcda300c287e000006/relations_to" for 178.199.6.80 at 2013-05-20 23:34:58 +0000
+9895 130520 23:34:58 INFO:   Processing by RController#relations_to as JSON
+9895 130520 23:34:58 INFO:   Parameters: {"id"=>"5189fafcda300c287e000006"}
+9895 130520 23:34:58 INFO: Username: mattia.candeloro89@gmail.com
+9895 130520 23:34:58 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+4059 130520 23:34:58 INFO: 
+
+Started GET "/r/5189f51eda300c2888000003/relations_to" for 178.199.6.80 at 2013-05-20 23:34:58 +0000
+4059 130520 23:34:58 INFO:   Processing by RController#relations_to as JSON
+4059 130520 23:34:58 INFO:   Parameters: {"id"=>"5189f51eda300c2888000003"}
+4059 130520 23:34:58 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:58 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+4059 130520 23:34:58 INFO: 
+
+Started GET "/r/5189f533da300c2923000001/relations_to" for 178.199.6.80 at 2013-05-20 23:34:58 +0000
+9895 130520 23:34:58 INFO: 
+
+Started GET "/r/5189f4dada300c286d000003" for 178.199.6.80 at 2013-05-20 23:34:58 +0000
+4059 130520 23:34:58 INFO:   Processing by RController#relations_to as JSON
+4059 130520 23:34:58 INFO:   Parameters: {"id"=>"5189f533da300c2923000001"}
+4059 130520 23:34:58 INFO: Username: mattia.candeloro89@gmail.com
+9895 130520 23:34:58 INFO:   Processing by RController#show as JSON
+9895 130520 23:34:58 INFO:   Parameters: {"id"=>"5189f4dada300c286d000003"}
+9895 130520 23:34:58 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:34:58 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+9895 130520 23:34:58 INFO: Completed 200 OK in 4ms (Views: 0.6ms)
+9895 130520 23:40:33 INFO: 
+
+Started GET "/r/518a0122da300c2a32000002/relations_to" for 178.199.6.80 at 2013-05-20 23:40:33 +0000
+9895 130520 23:40:33 INFO:   Processing by RController#relations_to as JSON
+9895 130520 23:40:33 INFO:   Parameters: {"id"=>"518a0122da300c2a32000002"}
+9895 130520 23:40:33 INFO: Username: mattia.candeloro89@gmail.com
+9895 130520 23:40:33 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+9895 130520 23:40:34 INFO: 
+
+Started GET "/r/5189f718da300c2968000001/relations_to" for 178.199.6.80 at 2013-05-20 23:40:34 +0000
+9895 130520 23:40:34 INFO:   Processing by RController#relations_to as JSON
+9895 130520 23:40:34 INFO:   Parameters: {"id"=>"5189f718da300c2968000001"}
+9895 130520 23:40:34 INFO: Username: mattia.candeloro89@gmail.com
+9895 130520 23:40:34 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+9895 130520 23:40:34 INFO: 
+
+Started GET "/r/5189f6afda300c286d000006" for 178.199.6.80 at 2013-05-20 23:40:34 +0000
+9895 130520 23:40:34 INFO:   Processing by RController#show as JSON
+9895 130520 23:40:34 INFO:   Parameters: {"id"=>"5189f6afda300c286d000006"}
+9895 130520 23:40:34 INFO: Username: mattia.candeloro89@gmail.com
+9895 130520 23:40:34 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+9895 130520 23:41:34 INFO: 
+
+Started GET "/r/5189fb17da300c2a87000002/relations_to" for 178.199.6.80 at 2013-05-20 23:41:34 +0000
+9895 130520 23:41:34 INFO:   Processing by RController#relations_to as JSON
+9895 130520 23:41:34 INFO:   Parameters: {"id"=>"5189fb17da300c2a87000002"}
+9895 130520 23:41:34 INFO: Username: mattia.candeloro89@gmail.com
+9895 130520 23:41:34 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+9895 130520 23:41:34 INFO: 
+
+Started GET "/r/5189fb0bda300c2a87000001/relations_to" for 178.199.6.80 at 2013-05-20 23:41:34 +0000
+9895 130520 23:41:34 INFO:   Processing by RController#relations_to as JSON
+9895 130520 23:41:34 INFO:   Parameters: {"id"=>"5189fb0bda300c2a87000001"}
+9895 130520 23:41:34 INFO: Username: mattia.candeloro89@gmail.com
+9895 130520 23:41:34 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+9895 130520 23:41:34 INFO: 
+
+Started GET "/r/5189fa67da300c2a50000001" for 178.199.6.80 at 2013-05-20 23:41:34 +0000
+9895 130520 23:41:34 INFO:   Processing by RController#show as JSON
+9895 130520 23:41:34 INFO:   Parameters: {"id"=>"5189fa67da300c2a50000001"}
+9895 130520 23:41:34 INFO: Username: mattia.candeloro89@gmail.com
+9895 130520 23:41:34 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+9895 130520 23:41:44 INFO: 
+
+Started GET "/r/5189fd16da300c2b9c000001/relations_to" for 178.199.6.80 at 2013-05-20 23:41:44 +0000
+9895 130520 23:41:44 INFO:   Processing by RController#relations_to as JSON
+9895 130520 23:41:44 INFO:   Parameters: {"id"=>"5189fd16da300c2b9c000001"}
+9895 130520 23:41:44 INFO: Username: mattia.candeloro89@gmail.com
+9895 130520 23:41:44 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+9895 130520 23:41:44 INFO: 
+
+Started GET "/r/5189fcf0da300c2a32000001" for 178.199.6.80 at 2013-05-20 23:41:44 +0000
+9895 130520 23:41:44 INFO:   Processing by RController#show as JSON
+9895 130520 23:41:44 INFO:   Parameters: {"id"=>"5189fcf0da300c2a32000001"}
+9895 130520 23:41:44 INFO: Username: mattia.candeloro89@gmail.com
+9895 130520 23:41:44 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+9895 130520 23:42:16 INFO: 
+
+Started GET "/r/518a050cda300c2dba000002/relations_to" for 178.199.6.80 at 2013-05-20 23:42:16 +0000
+4059 130520 23:42:16 INFO: 
+
+Started GET "/r/518a0461da300c2ca3000003/relations_to" for 178.199.6.80 at 2013-05-20 23:42:16 +0000
+9895 130520 23:42:16 INFO:   Processing by RController#relations_to as JSON
+4059 130520 23:42:16 INFO:   Processing by RController#relations_to as JSON
+9895 130520 23:42:16 INFO:   Parameters: {"id"=>"518a050cda300c2dba000002"}
+4059 130520 23:42:16 INFO:   Parameters: {"id"=>"518a0461da300c2ca3000003"}
+4059 130520 23:42:16 INFO: Username: mattia.candeloro89@gmail.com
+9895 130520 23:42:16 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:42:16 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+9895 130520 23:42:16 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+9895 130520 23:42:16 INFO: 
+
+Started GET "/r/518a049fda300c2dcd000001/relations_to" for 178.199.6.80 at 2013-05-20 23:42:16 +0000
+4059 130520 23:42:16 INFO: 
+
+Started GET "/r/518a0425da300c2ca3000001" for 178.199.6.80 at 2013-05-20 23:42:16 +0000
+9895 130520 23:42:16 INFO:   Processing by RController#relations_to as JSON
+4059 130520 23:42:16 INFO:   Processing by RController#show as JSON
+9895 130520 23:42:16 INFO:   Parameters: {"id"=>"518a049fda300c2dcd000001"}
+4059 130520 23:42:16 INFO:   Parameters: {"id"=>"518a0425da300c2ca3000001"}
+4059 130520 23:42:16 INFO: Username: mattia.candeloro89@gmail.com
+9895 130520 23:42:16 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:42:16 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+9895 130520 23:42:16 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+9895 130520 23:45:57 INFO: 
+
+Started GET "/r/518a0122da300c2a32000002/relations_from" for 178.199.6.80 at 2013-05-20 23:45:57 +0000
+9895 130520 23:45:57 INFO:   Processing by RController#relations_from as JSON
+9895 130520 23:45:57 INFO:   Parameters: {"id"=>"518a0122da300c2a32000002"}
+9895 130520 23:45:57 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:45:57 INFO: 
+
+Started GET "/r/5189f718da300c2968000001/relations_from" for 178.199.6.80 at 2013-05-20 23:45:57 +0000
+9895 130520 23:45:57 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+4059 130520 23:45:57 INFO:   Processing by RController#relations_from as JSON
+4059 130520 23:45:57 INFO:   Parameters: {"id"=>"5189f718da300c2968000001"}
+4059 130520 23:45:57 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:45:57 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130520 23:45:57 INFO: 
+
+Started GET "/r/5189f6afda300c286d000006" for 178.199.6.80 at 2013-05-20 23:45:57 +0000
+4059 130520 23:45:57 INFO:   Processing by RController#show as JSON
+4059 130520 23:45:57 INFO:   Parameters: {"id"=>"5189f6afda300c286d000006"}
+4059 130520 23:45:57 INFO: Username: mattia.candeloro89@gmail.com
+4059 130520 23:45:57 INFO: Completed 200 OK in 3ms (Views: 0.3ms)

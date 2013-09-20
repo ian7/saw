@@ -1,0 +1,213 @@
+32743 130422 11:02:25 INFO: 
+
+Started GET "/" for 85.0.44.226 at 2013-04-22 11:02:25 +0000
+32743 130422 11:02:25 INFO:   Processing by WelcomeController#index as HTML
+32743 130422 11:02:25 INFO: Username: rasael
+32743 130422 11:02:25 INFO: Rendered welcome/index.html.erb within layouts/application (0.5ms)
+32743 130422 11:02:25 INFO: Completed 200 OK in 3ms (Views: 1.5ms)
+32743 130422 11:02:33 INFO: 
+
+Started GET "/updates/1366185951" for 85.0.44.226 at 2013-04-22 11:02:33 +0000
+32743 130422 11:02:33 INFO:   Processing by NotifyController#stamped as 
+32743 130422 11:02:33 INFO:   Parameters: {"stamp"=>"1366185951"}
+32743 130422 11:02:33 INFO: Username: rasael
+32743 130422 11:02:33 INFO: Completed 200 OK in 43ms (Views: 10.3ms)
+32743 130422 11:02:33 INFO: 
+
+Started GET "/scope/type/Decision" for 85.0.44.226 at 2013-04-22 11:02:33 +0000
+32743 130422 11:02:33 INFO:   Processing by ScopeController#type as JSON
+32743 130422 11:02:33 INFO:   Parameters: {"type_name"=>"Decision"}
+32743 130422 11:02:33 INFO: Username: rasael
+32743 130422 11:02:33 INFO: Completed 200 OK in 12ms (Views: 1.7ms)
+32743 130422 11:02:33 INFO: 
+
+Started GET "/t" for 85.0.44.226 at 2013-04-22 11:02:33 +0000
+32743 130422 11:02:33 INFO:   Processing by TController#index as JSON
+32743 130422 11:02:33 INFO: Username: rasael
+32743 130422 11:02:33 INFO: Completed 200 OK in 97ms (Views: 5.7ms)
+32743 130422 11:02:33 INFO: 
+
+Started GET "/tags" for 85.0.44.226 at 2013-04-22 11:02:33 +0000
+32743 130422 11:02:33 INFO:   Processing by TagsController#index as JSON
+32743 130422 11:02:33 INFO: Username: rasael
+32743 130422 11:02:33 INFO: Completed 200 OK in 240ms (Views: 32.8ms)
+32743 130422 11:02:33 INFO: 
+
+Started GET "/r/516d4176da300c2ae7000001/relations_from" for 85.0.44.226 at 2013-04-22 11:02:33 +0000
+32743 130422 11:02:33 INFO:   Processing by RController#relations_from as JSON
+32743 130422 11:02:33 INFO:   Parameters: {"id"=>"516d4176da300c2ae7000001"}
+32743 130422 11:02:33 INFO: Username: rasael
+32743 130422 11:02:33 INFO: Completed 200 OK in 43ms (Views: 4.2ms)
+32743 130422 11:02:34 INFO: 
+
+Started GET "/r/516e4de3da300c69d3000001" for 85.0.44.226 at 2013-04-22 11:02:34 +0000
+32743 130422 11:02:34 INFO:   Processing by RController#show as JSON
+32743 130422 11:02:34 INFO:   Parameters: {"id"=>"516e4de3da300c69d3000001"}
+32743 130422 11:02:34 INFO: Username: rasael
+32743 130422 11:02:34 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+32743 130422 11:02:34 INFO: 
+
+Started GET "/r/516ec651da300c7014000001/relations_to" for 85.0.44.226 at 2013-04-22 11:02:34 +0000
+32743 130422 11:02:34 INFO:   Processing by RController#relations_to as JSON
+32743 130422 11:02:34 INFO:   Parameters: {"id"=>"516ec651da300c7014000001"}
+32743 130422 11:02:34 INFO: Username: rasael
+32743 130422 11:02:34 INFO: Completed 200 OK in 11ms (Views: 0.3ms)
+32743 130422 11:02:34 INFO: 
+
+Started GET "/r/516e5130da300c69be000002" for 85.0.44.226 at 2013-04-22 11:02:34 +0000
+32743 130422 11:02:34 INFO:   Processing by RController#show as JSON
+32743 130422 11:02:34 INFO:   Parameters: {"id"=>"516e5130da300c69be000002"}
+32743 130422 11:02:34 INFO: Username: rasael
+32743 130422 11:02:34 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+32743 130422 11:02:34 INFO: 
+
+Started GET "/r/516ec651da300c7014000001" for 85.0.44.226 at 2013-04-22 11:02:34 +0000
+32743 130422 11:02:34 INFO:   Processing by RController#show as JSON
+32743 130422 11:02:34 INFO:   Parameters: {"id"=>"516ec651da300c7014000001"}
+32743 130422 11:02:34 INFO: Username: rasael
+32743 130422 11:02:34 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+32743 130422 11:02:37 INFO: 
+
+Started GET "/r/516fc98bda300c3b96000001/relations_from" for 85.0.44.226 at 2013-04-22 11:02:37 +0000
+32743 130422 11:02:37 INFO:   Processing by RController#relations_from as JSON
+32743 130422 11:02:37 INFO:   Parameters: {"id"=>"516fc98bda300c3b96000001"}
+32743 130422 11:02:37 INFO: Username: rasael
+32743 130422 11:02:37 INFO: Completed 200 OK in 44ms (Views: 4.8ms)
+32743 130422 11:02:37 INFO: 
+
+Started GET "/r/516fc993da300c3b96000002/relations_from" for 85.0.44.226 at 2013-04-22 11:02:37 +0000
+32743 130422 11:02:37 INFO:   Processing by RController#relations_from as JSON
+32743 130422 11:02:37 INFO:   Parameters: {"id"=>"516fc993da300c3b96000002"}
+32743 130422 11:02:37 INFO: Username: rasael
+32743 130422 11:02:37 INFO: Completed 200 OK in 206ms (Views: 16.6ms)
+32743 130422 11:02:38 INFO: 
+
+Started GET "/r/516e4b6dda300c6791000004/relations_from" for 85.0.44.226 at 2013-04-22 11:02:38 +0000
+32743 130422 11:02:38 INFO:   Processing by RController#relations_from as JSON
+32743 130422 11:02:38 INFO:   Parameters: {"id"=>"516e4b6dda300c6791000004"}
+32743 130422 11:02:38 INFO: Username: rasael
+32743 130422 11:02:38 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+32743 130422 11:02:38 INFO: 
+
+Started GET "/r/516e4b56da300c6926000001/relations_from" for 85.0.44.226 at 2013-04-22 11:02:38 +0000
+32743 130422 11:02:38 INFO:   Processing by RController#relations_from as JSON
+32743 130422 11:02:38 INFO:   Parameters: {"id"=>"516e4b56da300c6926000001"}
+32743 130422 11:02:38 INFO: Username: rasael
+32743 130422 11:02:38 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+32743 130422 11:02:38 INFO: 
+
+Started GET "/r/516e4b69da300c6926000002/relations_from" for 85.0.44.226 at 2013-04-22 11:02:38 +0000
+32743 130422 11:02:38 INFO:   Processing by RController#relations_from as JSON
+32743 130422 11:02:38 INFO:   Parameters: {"id"=>"516e4b69da300c6926000002"}
+32743 130422 11:02:38 INFO: Username: rasael
+32743 130422 11:02:38 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+32743 130422 11:02:38 INFO: 
+
+Started GET "/r/516e4e5ada300c69be000001" for 85.0.44.226 at 2013-04-22 11:02:38 +0000
+32743 130422 11:02:38 INFO:   Processing by RController#show as JSON
+32743 130422 11:02:38 INFO:   Parameters: {"id"=>"516e4e5ada300c69be000001"}
+32743 130422 11:02:38 INFO: Username: rasael
+32743 130422 11:02:38 INFO: Completed 200 OK in 4ms (Views: 1.0ms)
+21776 130422 11:02:39 INFO: 
+
+Started GET "/r/516e5145da300c69be000003" for 85.0.44.226 at 2013-04-22 11:02:39 +0000
+32743 130422 11:02:39 INFO: 
+
+Started GET "/r/516e52c5da300c6975000004/relations_from" for 85.0.44.226 at 2013-04-22 11:02:39 +0000
+32743 130422 11:02:39 INFO:   Processing by RController#relations_from as JSON
+32743 130422 11:02:39 INFO:   Parameters: {"id"=>"516e52c5da300c6975000004"}
+32743 130422 11:02:39 INFO: Username: rasael
+32743 130422 11:02:39 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+32743 130422 11:02:39 INFO: 
+
+Started GET "/r/516e5275da300c6ad4000002/relations_from" for 85.0.44.226 at 2013-04-22 11:02:39 +0000
+32743 130422 11:02:39 INFO:   Processing by RController#relations_from as JSON
+32743 130422 11:02:39 INFO:   Parameters: {"id"=>"516e5275da300c6ad4000002"}
+32743 130422 11:02:39 INFO: Username: rasael
+32743 130422 11:02:39 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+32743 130422 11:02:39 INFO: 
+
+Started GET "/r/516e5435da300c6b91000001/relations_from" for 85.0.44.226 at 2013-04-22 11:02:39 +0000
+32743 130422 11:02:39 INFO:   Processing by RController#relations_from as JSON
+32743 130422 11:02:39 INFO:   Parameters: {"id"=>"516e5435da300c6b91000001"}
+32743 130422 11:02:39 INFO: Username: rasael
+32743 130422 11:02:39 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+32743 130422 11:02:39 INFO: 
+
+Started GET "/r/516e528eda300c6ad4000003/relations_from" for 85.0.44.226 at 2013-04-22 11:02:39 +0000
+32743 130422 11:02:39 INFO:   Processing by RController#relations_from as JSON
+32743 130422 11:02:39 INFO:   Parameters: {"id"=>"516e528eda300c6ad4000003"}
+32743 130422 11:02:39 INFO: Username: rasael
+32743 130422 11:02:39 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+32743 130422 11:02:39 INFO: 
+
+Started GET "/r/516e5409da300c6b5e000003/relations_from" for 85.0.44.226 at 2013-04-22 11:02:39 +0000
+32743 130422 11:02:39 INFO:   Processing by RController#relations_from as JSON
+32743 130422 11:02:39 INFO:   Parameters: {"id"=>"516e5409da300c6b5e000003"}
+32743 130422 11:02:39 INFO: Username: rasael
+32743 130422 11:02:39 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+32743 130422 11:02:39 INFO: 
+
+Started GET "/r/516e5404da300c6b88000001/relations_from" for 85.0.44.226 at 2013-04-22 11:02:39 +0000
+32743 130422 11:02:39 INFO:   Processing by RController#relations_from as JSON
+32743 130422 11:02:39 INFO:   Parameters: {"id"=>"516e5404da300c6b88000001"}
+32743 130422 11:02:39 INFO: Username: rasael
+32743 130422 11:02:39 INFO: Completed 200 OK in 11ms (Views: 0.3ms)
+21785 130422 11:02:39 INFO: 
+
+Started GET "/r/516e53ffda300c6975000005/relations_from" for 85.0.44.226 at 2013-04-22 11:02:39 +0000
+21794 130422 11:02:40 INFO: 
+
+Started GET "/r/516e4b69da300c675a000009/relations_to" for 85.0.44.226 at 2013-04-22 11:02:40 +0000
+21776 130422 11:02:40 INFO:   Processing by RController#show as JSON
+21776 130422 11:02:40 INFO:   Parameters: {"id"=>"516e5145da300c69be000003"}
+21776 130422 11:02:40 INFO: Username: rasael
+21776 130422 11:02:40 INFO: Completed 200 OK in 57ms (Views: 18.4ms)
+21785 130422 11:02:40 INFO:   Processing by RController#relations_from as JSON
+21785 130422 11:02:40 INFO:   Parameters: {"id"=>"516e53ffda300c6975000005"}
+21785 130422 11:02:40 INFO: Username: rasael
+21785 130422 11:02:40 INFO: Completed 200 OK in 31ms (Views: 9.4ms)
+21794 130422 11:02:40 INFO:   Processing by RController#relations_to as JSON
+21794 130422 11:02:40 INFO:   Parameters: {"id"=>"516e4b69da300c675a000009"}
+21794 130422 11:02:40 INFO: Username: rasael
+21794 130422 11:02:40 INFO: Completed 200 OK in 19ms (Views: 5.8ms)
+21794 130422 15:05:15 INFO: 
+
+Started GET "/" for 10.40.6.109 at 2013-04-22 15:05:15 +0000
+21794 130422 15:05:15 INFO:   Processing by WelcomeController#index as HTML
+21794 130422 15:05:15 INFO: Username: (none)
+21794 130422 15:05:15 INFO: Rendered welcome/index.html.erb within layouts/application (2.7ms)
+21794 130422 15:05:15 INFO: Completed 200 OK in 9ms (Views: 7.6ms)
+21794 130422 15:05:16 INFO: 
+
+Started GET "/updates/1366365493" for 10.40.6.109 at 2013-04-22 15:05:16 +0000
+21794 130422 15:05:16 INFO:   Processing by NotifyController#stamped as 
+21794 130422 15:05:16 INFO:   Parameters: {"stamp"=>"1366365493"}
+21794 130422 15:05:16 INFO: Username: (none)
+21794 130422 15:05:16 INFO: Completed 200 OK in 18ms (Views: 13.3ms)
+21794 130422 15:05:16 INFO: 
+
+Started GET "/scope/type/Decision" for 10.40.6.109 at 2013-04-22 15:05:16 +0000
+21794 130422 15:05:16 INFO:   Processing by ScopeController#type as JSON
+21794 130422 15:05:16 INFO:   Parameters: {"type_name"=>"Decision"}
+21794 130422 15:05:16 INFO: Username: (none)
+21794 130422 15:05:16 INFO: Completed 200 OK in 16ms (Views: 2.4ms)
+21794 130422 15:05:16 INFO: 
+
+Started GET "/t" for 10.40.6.109 at 2013-04-22 15:05:16 +0000
+21794 130422 15:05:16 INFO:   Processing by TController#index as JSON
+21794 130422 15:05:16 INFO: Username: (none)
+21794 130422 15:05:16 INFO: Completed   in 1ms
+21794 130422 15:05:16 INFO: 
+
+Started GET "/tags" for 10.40.6.109 at 2013-04-22 15:05:16 +0000
+21794 130422 15:05:16 INFO:   Processing by TagsController#index as JSON
+21794 130422 15:05:16 INFO: Username: (none)
+21794 130422 15:05:16 INFO: Completed 200 OK in 182ms (Views: 32.3ms)
+21794 130422 15:05:16 INFO: 
+
+Started GET "/r/516fc98bda300c3b96000001/relations_from" for 10.40.6.109 at 2013-04-22 15:05:16 +0000
+21794 130422 15:05:16 INFO:   Processing by RController#relations_from as JSON
+21794 130422 15:05:16 INFO:   Parameters: {"id"=>"516fc98bda300c3b96000001"}
+21794 130422 15:05:16 INFO: Username: (none)
+21794 130422 15:05:16 INFO: Completed   in 1ms

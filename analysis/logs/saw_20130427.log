@@ -1,0 +1,6 @@
+4474 130427 10:06:25 INFO: 
+
+Started GET "/projects" for 87.5.114.106 at 2013-04-27 10:06:25 +0000
+4474 130427 10:06:25 INFO:   Processing by ProjectsController#index as JSON
+4474 130427 10:06:25 INFO: Username: simocomo90@hotmail.it
+4474 130427 10:06:25 INFO: Completed 200 OK in 565ms (Views: 2.9ms)

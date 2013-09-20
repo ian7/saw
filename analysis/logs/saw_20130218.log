@@ -1,0 +1,68 @@
+3673 130218 14:10:22 INFO: 
+
+Started GET "/" for 10.40.6.115 at 2013-02-18 14:10:22 +0000
+3673 130218 14:10:22 INFO:   Processing by WelcomeController#index as HTML
+3673 130218 14:10:22 INFO: Username: marcin@sonyx.net
+3673 130218 14:10:22 INFO: Rendered welcome/index.html.erb within layouts/application (0.7ms)
+3673 130218 14:10:22 INFO: Completed 200 OK in 3ms (Views: 1.5ms)
+3673 130218 14:10:22 INFO: 
+
+Started GET "/tags" for 10.40.6.115 at 2013-02-18 14:10:22 +0000
+3673 130218 14:10:22 INFO:   Processing by TagsController#index as JSON
+3673 130218 14:10:22 INFO: Username: marcin@sonyx.net
+3673 130218 14:10:22 INFO: Completed 200 OK in 330ms (Views: 84.4ms)
+3673 130218 14:10:23 INFO: 
+
+Started GET "/scope/type/Decision" for 10.40.6.115 at 2013-02-18 14:10:23 +0000
+3673 130218 14:10:23 INFO:   Processing by ScopeController#type as JSON
+3673 130218 14:10:23 INFO:   Parameters: {"type_name"=>"Decision"}
+3673 130218 14:10:23 INFO: Username: marcin@sonyx.net
+3673 130218 14:10:23 INFO: Completed 200 OK in 22ms (Views: 0.8ms)
+3673 130218 14:10:23 INFO: 
+
+Started GET "/t" for 10.40.6.115 at 2013-02-18 14:10:23 +0000
+3673 130218 14:10:23 INFO:   Processing by TController#index as JSON
+3673 130218 14:10:23 INFO: Username: marcin@sonyx.net
+3673 130218 14:10:23 INFO: Completed 200 OK in 154ms (Views: 4.3ms)
+3673 130218 14:10:23 INFO: 
+
+Started GET "/projects/509971bf924ff80831000001" for 10.40.6.115 at 2013-02-18 14:10:23 +0000
+3673 130218 14:10:23 INFO:   Processing by ProjectsController#show as JSON
+3673 130218 14:10:23 INFO:   Parameters: {"id"=>"509971bf924ff80831000001"}
+3673 130218 14:10:23 INFO: Username: marcin@sonyx.net
+3673 130218 14:10:23 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+3673 130218 14:10:23 INFO: 
+
+Started GET "/r/509971bf924ff80831000001/related_from/Issue" for 10.40.6.115 at 2013-02-18 14:10:23 +0000
+3673 130218 14:10:23 INFO:   Processing by RController#related_from as JSON
+3673 130218 14:10:23 INFO:   Parameters: {"id"=>"509971bf924ff80831000001", "type"=>"Issue"}
+3673 130218 14:10:23 INFO: Username: marcin@sonyx.net
+3673 130218 14:10:23 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+3673 130218 14:10:23 INFO: 
+
+Started GET "/r/509971c4924ff80827000001/relations_to" for 10.40.6.115 at 2013-02-18 14:10:23 +0000
+3673 130218 14:10:23 INFO:   Processing by RController#relations_to as JSON
+3673 130218 14:10:23 INFO:   Parameters: {"id"=>"509971c4924ff80827000001"}
+3673 130218 14:10:23 INFO: Username: marcin@sonyx.net
+3673 130218 14:10:23 INFO: Completed 200 OK in 15ms (Views: 0.5ms)
+3673 130218 14:10:23 INFO: 
+
+Started GET "/r/51195664924ff80e7c000001/relations_from" for 10.40.6.115 at 2013-02-18 14:10:23 +0000
+3673 130218 14:10:23 INFO:   Processing by RController#relations_from as JSON
+3673 130218 14:10:23 INFO:   Parameters: {"id"=>"51195664924ff80e7c000001"}
+3673 130218 14:10:23 INFO: Username: marcin@sonyx.net
+3673 130218 14:10:23 INFO: Completed 200 OK in 9ms (Views: 0.4ms)
+3673 130218 14:10:23 INFO: 
+
+Started GET "/r/51195664924ff80e7c000001" for 10.40.6.115 at 2013-02-18 14:10:23 +0000
+3673 130218 14:10:23 INFO:   Processing by RController#show as JSON
+3673 130218 14:10:23 INFO:   Parameters: {"id"=>"51195664924ff80e7c000001"}
+3673 130218 14:10:23 INFO: Username: marcin@sonyx.net
+3673 130218 14:10:23 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+3673 130218 14:10:23 INFO: 
+
+Started GET "/r/51195665924ff80e7c000002/relations_to" for 10.40.6.115 at 2013-02-18 14:10:23 +0000
+3673 130218 14:10:23 INFO:   Processing by RController#relations_to as JSON
+3673 130218 14:10:23 INFO:   Parameters: {"id"=>"51195665924ff80e7c000002"}
+3673 130218 14:10:23 INFO: Username: marcin@sonyx.net
+3673 130218 14:10:23 INFO: Completed 200 OK in 7ms (Views: 0.2ms)

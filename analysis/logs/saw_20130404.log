@@ -1,0 +1,87 @@
+2863 130404 00:06:36 INFO: 
+
+Started GET "/" for 10.40.6.109 at 2013-04-04 00:06:36 +0000
+2863 130404 00:06:36 INFO:   Processing by WelcomeController#index as HTML
+2863 130404 00:06:36 INFO: Username: (none)
+2863 130404 00:06:36 INFO: Rendered welcome/index.html.erb within layouts/application (12.5ms)
+2863 130404 00:06:36 INFO: Completed 200 OK in 52ms (Views: 49.5ms)
+2863 130404 00:06:37 INFO: 
+
+Started GET "/updates/1363947569" for 10.40.6.109 at 2013-04-04 00:06:37 +0000
+2863 130404 00:06:37 INFO:   Processing by NotifyController#stamped as 
+2863 130404 00:06:37 INFO:   Parameters: {"stamp"=>"1363947569"}
+2863 130404 00:06:37 INFO: Username: (none)
+2863 130404 00:06:37 INFO: Completed 200 OK in 364ms (Views: 49.7ms)
+2863 130404 00:06:37 INFO: 
+
+Started GET "/r/514c3031da300c41cd000001/related_from/Issue" for 10.40.6.109 at 2013-04-04 00:06:37 +0000
+2863 130404 00:06:37 INFO:   Processing by RController#related_from as JSON
+2863 130404 00:06:37 INFO:   Parameters: {"id"=>"514c3031da300c41cd000001", "type"=>"Issue"}
+2863 130404 00:06:37 INFO: Username: (none)
+2863 130404 00:06:37 INFO: Completed   in 3ms
+2873 130404 00:06:37 INFO: 
+
+Started GET "/scope/type/Decision" for 10.40.6.109 at 2013-04-04 00:06:37 +0000
+2863 130404 00:06:38 INFO: 
+
+Started GET "/tags" for 10.40.6.109 at 2013-04-04 00:06:38 +0000
+2863 130404 00:06:38 INFO:   Processing by TagsController#index as JSON
+2863 130404 00:06:38 INFO: Username: (none)
+2881 130404 00:06:38 INFO: 
+
+Started GET "/t" for 10.40.6.109 at 2013-04-04 00:06:38 +0000
+2890 130404 00:06:38 INFO: 
+
+Started GET "/users/sign_in" for 10.40.6.109 at 2013-04-04 00:06:38 +0000
+2863 130404 00:06:38 INFO: Completed 200 OK in 729ms (Views: 147.0ms)
+2873 130404 00:06:39 INFO:   Processing by ScopeController#type as JSON
+2873 130404 00:06:39 INFO:   Parameters: {"type_name"=>"Decision"}
+2873 130404 00:06:39 INFO: Username: (none)
+2873 130404 00:06:39 INFO: Completed 200 OK in 54ms (Views: 23.0ms)
+2881 130404 00:06:39 INFO:   Processing by TController#index as JSON
+2881 130404 00:06:39 INFO: Username: (none)
+2881 130404 00:06:39 INFO: Completed   in 4ms
+2890 130404 00:06:39 INFO:   Processing by Devise::SessionsController#new as HTML
+2890 130404 00:06:39 INFO: Username: (none)
+2890 130404 00:06:39 INFO: Rendered devise/sessions/new.html.erb within layouts/application (5.1ms)
+2890 130404 00:06:39 INFO: Completed 200 OK in 26ms (Views: 20.4ms)
+2890 130404 01:00:07 INFO: 
+
+Started GET "/" for 85.5.98.97 at 2013-04-04 01:00:07 +0000
+2890 130404 01:00:07 INFO:   Processing by WelcomeController#index as HTML
+2890 130404 01:00:07 INFO: Username: (none)
+2890 130404 01:00:07 INFO: Rendered welcome/index.html.erb within layouts/application (1.1ms)
+2890 130404 01:00:07 INFO: Completed 200 OK in 5ms (Views: 4.2ms)
+2890 130404 01:00:09 INFO: 
+
+Started GET "/updates/1363947569" for 85.5.98.97 at 2013-04-04 01:00:09 +0000
+2890 130404 01:00:09 INFO:   Processing by NotifyController#stamped as 
+2890 130404 01:00:09 INFO:   Parameters: {"stamp"=>"1363947569"}
+2890 130404 01:00:09 INFO: Username: (none)
+2890 130404 01:00:09 INFO: Completed 200 OK in 22ms (Views: 13.3ms)
+2890 130404 01:00:09 INFO: 
+
+Started GET "/scope/type/Decision" for 85.5.98.97 at 2013-04-04 01:00:09 +0000
+2890 130404 01:00:09 INFO:   Processing by ScopeController#type as JSON
+2890 130404 01:00:09 INFO:   Parameters: {"type_name"=>"Decision"}
+2890 130404 01:00:09 INFO: Username: (none)
+2890 130404 01:00:09 INFO: Completed 200 OK in 16ms (Views: 4.7ms)
+2890 130404 01:00:09 INFO: 
+
+Started GET "/t" for 85.5.98.97 at 2013-04-04 01:00:09 +0000
+2890 130404 01:00:09 INFO:   Processing by TController#index as JSON
+2890 130404 01:00:09 INFO: Username: (none)
+2890 130404 01:00:09 INFO: Completed   in 1ms
+2890 130404 01:00:09 INFO: 
+
+Started GET "/tags" for 85.5.98.97 at 2013-04-04 01:00:09 +0000
+2890 130404 01:00:09 INFO:   Processing by TagsController#index as JSON
+2890 130404 01:00:09 INFO: Username: (none)
+2890 130404 01:00:10 INFO: Completed 200 OK in 232ms (Views: 80.8ms)
+2890 130404 01:00:10 INFO: 
+
+Started GET "/r/514c3031da300c41cd000001/related_from/Issue" for 85.5.98.97 at 2013-04-04 01:00:10 +0000
+2890 130404 01:00:10 INFO:   Processing by RController#related_from as JSON
+2890 130404 01:00:10 INFO:   Parameters: {"id"=>"514c3031da300c41cd000001", "type"=>"Issue"}
+2890 130404 01:00:10 INFO: Username: (none)
+2890 130404 01:00:10 INFO: Completed   in 1ms

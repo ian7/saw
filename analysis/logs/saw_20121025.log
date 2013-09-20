@@ -1,0 +1,1790 @@
+21328 121025 15:00:22 INFO: 
+
+Started GET "/projects" for 10.40.6.103 at 2012-10-25 15:00:22 +0000
+21328 121025 15:00:22 INFO:   Processing by ProjectsController#index as JSON
+21328 121025 15:00:22 INFO: Username: (none)
+21328 121025 15:00:23 INFO: Completed 200 OK in 1144ms (Views: 4.0ms)
+21328 121025 15:00:25 INFO: 
+
+Started GET "/projects/4fb0d1fa924ff85581000003" for 10.40.6.103 at 2012-10-25 15:00:25 +0000
+21328 121025 15:00:25 INFO:   Processing by ProjectsController#show as JSON
+21328 121025 15:00:25 INFO:   Parameters: {"id"=>"4fb0d1fa924ff85581000003"}
+21328 121025 15:00:25 INFO: Username: (none)
+21328 121025 15:00:25 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+21328 121025 15:00:25 INFO: 
+
+Started GET "/r/4fb0d1fa924ff85581000003/related_from/Issue" for 10.40.6.103 at 2012-10-25 15:00:25 +0000
+21328 121025 15:00:25 INFO:   Processing by RController#related_from as JSON
+21328 121025 15:00:25 INFO:   Parameters: {"id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue"}
+21328 121025 15:00:25 INFO: Username: (none)
+21328 121025 15:00:26 INFO: Completed 200 OK in 18ms (Views: 1.6ms)
+21328 121025 15:00:26 INFO: 
+
+Started GET "/r/4fb0d22f924ff85357000003/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:26 +0000
+21328 121025 15:00:26 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:00:26 INFO:   Parameters: {"id"=>"4fb0d22f924ff85357000003", "type"=>"Alternative"}
+21328 121025 15:00:26 INFO: Username: (none)
+21328 121025 15:00:26 INFO: Completed 200 OK in 13ms (Views: 0.5ms)
+21328 121025 15:00:26 INFO: 
+
+Started GET "/r/4fb0d5c9924ff8535700000f/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:26 +0000
+21328 121025 15:00:26 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:00:26 INFO:   Parameters: {"id"=>"4fb0d5c9924ff8535700000f", "type"=>"Alternative"}
+21328 121025 15:00:26 INFO: Username: (none)
+21328 121025 15:00:26 INFO: Completed 200 OK in 14ms (Views: 0.5ms)
+21328 121025 15:00:26 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b900016f/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:26 +0000
+21328 121025 15:00:26 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:00:26 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b900016f", "type"=>"Alternative"}
+21328 121025 15:00:26 INFO: Username: (none)
+21328 121025 15:00:26 INFO: Completed 200 OK in 82ms (Views: 1.0ms)
+21328 121025 15:00:26 INFO: 
+
+Started GET "/r/4fb359c709f9514271000005/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:26 +0000
+21328 121025 15:00:26 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:00:26 INFO:   Parameters: {"id"=>"4fb359c709f9514271000005", "type"=>"Alternative"}
+21328 121025 15:00:26 INFO: Username: (none)
+21328 121025 15:00:26 INFO: Completed 200 OK in 25ms (Views: 1.0ms)
+4614 121025 15:00:40 INFO: 
+
+Started POST "/r" for 10.40.6.103 at 2012-10-25 15:00:40 +0000
+21328 121025 15:00:40 INFO: 
+
+Started GET "/notify/undefined/name/focused" for 10.40.6.103 at 2012-10-25 15:00:40 +0000
+21328 121025 15:00:40 INFO:   Processing by NotifyController#notify as JSON
+21328 121025 15:00:40 INFO:   Parameters: {"id"=>"undefined", "attribute"=>"name", "event"=>"focused"}
+21328 121025 15:00:40 INFO: Username: (none)
+21328 121025 15:00:40 INFO: Completed 500 Internal Server Error in 4ms
+21328 121025 15:00:40 FATAL: 
+BSON::InvalidObjectId (illegal ObjectId format):
+  app/controllers/application_controller.rb:65:in `notify'
+  app/controllers/notify_controller.rb:17:in `notify'
+
+
+4614 121025 15:00:40 INFO:   Processing by RController#create as JSON
+4614 121025 15:00:40 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue"}
+4614 121025 15:00:40 INFO: Username: (none)
+4614 121025 15:00:40 INFO: Completed 200 OK in 25ms (Views: 4.2ms)
+4614 121025 15:00:40 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:40 +0000
+4614 121025 15:00:40 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:00:40 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:00:40 INFO: Username: (none)
+4614 121025 15:00:40 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+21328 121025 15:00:49 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:49 +0000
+4614 121025 15:00:49 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:49 +0000
+4614 121025 15:00:49 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:00:49 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:00:49 INFO: Username: (none)
+21328 121025 15:00:49 INFO:   Processing by RController#update as JSON
+21328 121025 15:00:49 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"W", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:00:49 INFO: Username: (none)
+4614 121025 15:00:49 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+21328 121025 15:00:49 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+21328 121025 15:00:49 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:49 +0000
+4614 121025 15:00:49 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:49 +0000
+4614 121025 15:00:49 INFO:   Processing by RController#update as JSON
+4614 121025 15:00:49 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Whe", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:00:49 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:00:49 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:00:49 INFO: Username: (none)
+21328 121025 15:00:49 INFO: Username: (none)
+4614 121025 15:00:49 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+21328 121025 15:00:49 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+21328 121025 15:00:50 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:50 +0000
+4614 121025 15:00:50 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:50 +0000
+21328 121025 15:00:50 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:00:50 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:00:50 INFO: Username: (none)
+4614 121025 15:00:50 INFO:   Processing by RController#update as JSON
+4614 121025 15:00:50 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where&nbsp;", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:00:50 INFO: Username: (none)
+21328 121025 15:00:50 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4614 121025 15:00:50 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4614 121025 15:00:50 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:50 +0000
+21328 121025 15:00:50 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:50 +0000
+4614 121025 15:00:50 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:00:50 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:00:50 INFO: Username: (none)
+21328 121025 15:00:50 INFO:   Processing by RController#update as JSON
+21328 121025 15:00:50 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where shou", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:00:50 INFO: Username: (none)
+21328 121025 15:00:50 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4614 121025 15:00:50 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+4614 121025 15:00:51 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:51 +0000
+21328 121025 15:00:51 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:51 +0000
+4614 121025 15:00:51 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:00:51 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:00:51 INFO:   Processing by RController#update as JSON
+4614 121025 15:00:51 INFO: Username: (none)
+21328 121025 15:00:51 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should be&nbsp;", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:00:51 INFO: Username: (none)
+4614 121025 15:00:51 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+21328 121025 15:00:51 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+21328 121025 15:00:52 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:52 +0000
+4614 121025 15:00:52 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:52 +0000
+21328 121025 15:00:52 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:00:52 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:00:52 INFO: Username: (none)
+4614 121025 15:00:52 INFO:   Processing by RController#update as JSON
+4614 121025 15:00:52 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should be list", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:00:52 INFO: Username: (none)
+4614 121025 15:00:52 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:00:52 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+21328 121025 15:00:52 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:52 +0000
+4614 121025 15:00:52 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:52 +0000
+21328 121025 15:00:52 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:00:52 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:00:52 INFO:   Processing by RController#update as JSON
+21328 121025 15:00:52 INFO: Username: (none)
+4614 121025 15:00:52 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should be lists&nbsp;", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:00:52 INFO: Username: (none)
+4614 121025 15:00:52 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+21328 121025 15:00:52 INFO: Completed 200 OK in 9ms (Views: 0.1ms)
+21328 121025 15:00:53 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:53 +0000
+4614 121025 15:00:53 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:53 +0000
+21328 121025 15:00:53 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:00:53 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:00:53 INFO: Username: (none)
+4614 121025 15:00:53 INFO:   Processing by RController#update as JSON
+4614 121025 15:00:53 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should be lists a", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:00:53 INFO: Username: (none)
+4614 121025 15:00:53 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:00:53 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+21328 121025 15:00:54 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:54 +0000
+4614 121025 15:00:54 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:54 +0000
+21328 121025 15:00:54 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:00:54 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:00:54 INFO:   Processing by RController#update as JSON
+4614 121025 15:00:54 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should be l", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:00:54 INFO: Username: (none)
+4614 121025 15:00:54 INFO: Username: (none)
+4614 121025 15:00:54 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:00:54 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+21328 121025 15:00:55 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:55 +0000
+21328 121025 15:00:55 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:00:55 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:55 +0000
+21328 121025 15:00:55 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:00:55 INFO: Username: (none)
+4614 121025 15:00:55 INFO:   Processing by RController#update as JSON
+4614 121025 15:00:55 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should be&nbsp;", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:00:55 INFO: Username: (none)
+21328 121025 15:00:55 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+4614 121025 15:00:55 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4614 121025 15:00:56 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:56 +0000
+21328 121025 15:00:56 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:56 +0000
+4614 121025 15:00:56 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:00:56 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:00:56 INFO: Username: (none)
+4614 121025 15:00:56 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+21328 121025 15:00:56 INFO:   Processing by RController#update as JSON
+21328 121025 15:00:56 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should&nbsp;", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:00:56 INFO: Username: (none)
+21328 121025 15:00:56 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+21328 121025 15:00:56 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:56 +0000
+4614 121025 15:00:56 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:56 +0000
+4614 121025 15:00:56 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:00:56 INFO:   Processing by RController#update as JSON
+21328 121025 15:00:56 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should model", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:00:56 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:00:56 INFO: Username: (none)
+4614 121025 15:00:56 INFO: Username: (none)
+21328 121025 15:00:56 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+4614 121025 15:00:56 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+4614 121025 15:00:57 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:57 +0000
+21328 121025 15:00:57 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:57 +0000
+4614 121025 15:00:57 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:00:57 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:00:57 INFO:   Processing by RController#update as JSON
+4614 121025 15:00:57 INFO: Username: (none)
+21328 121025 15:00:57 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should mo", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:00:57 INFO: Username: (none)
+21328 121025 15:00:57 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4614 121025 15:00:57 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+4614 121025 15:00:58 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:58 +0000
+21328 121025 15:00:58 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:58 +0000
+4614 121025 15:00:58 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:00:58 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:00:58 INFO: Username: (none)
+21328 121025 15:00:58 INFO:   Processing by RController#update as JSON
+21328 121025 15:00:58 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should&nbsp;", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:00:58 INFO: Username: (none)
+4614 121025 15:00:58 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+21328 121025 15:00:58 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+21328 121025 15:00:58 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:58 +0000
+4614 121025 15:00:58 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:58 +0000
+21328 121025 15:00:58 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:00:58 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:00:58 INFO: Username: (none)
+21328 121025 15:00:58 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+4614 121025 15:00:58 INFO:   Processing by RController#update as JSON
+4614 121025 15:00:58 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should ins", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:00:58 INFO: Username: (none)
+4614 121025 15:00:58 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4614 121025 15:00:59 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:59 +0000
+21328 121025 15:00:59 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:59 +0000
+4614 121025 15:00:59 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:00:59 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:00:59 INFO:   Processing by RController#update as JSON
+4614 121025 15:00:59 INFO: Username: (none)
+21328 121025 15:00:59 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instance", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:00:59 INFO: Username: (none)
+21328 121025 15:00:59 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4614 121025 15:00:59 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+4614 121025 15:00:59 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:00:59 +0000
+21328 121025 15:00:59 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:00:59 +0000
+4614 121025 15:00:59 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:00:59 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:00:59 INFO:   Processing by RController#update as JSON
+4614 121025 15:00:59 INFO: Username: (none)
+21328 121025 15:00:59 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instance&nbsp;", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:00:59 INFO: Username: (none)
+21328 121025 15:00:59 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4614 121025 15:00:59 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+4614 121025 15:01:00 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:00 +0000
+4614 121025 15:01:00 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:01:00 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:00 +0000
+4614 121025 15:01:00 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:01:00 INFO: Username: (none)
+21328 121025 15:01:00 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:00 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of&nbsp;", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:01:00 INFO: Username: (none)
+4614 121025 15:01:00 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+21328 121025 15:01:00 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+21328 121025 15:01:00 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:00 +0000
+4614 121025 15:01:00 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:00 +0000
+21328 121025 15:01:00 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:01:00 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:01:00 INFO: Username: (none)
+4614 121025 15:01:00 INFO:   Processing by RController#update as JSON
+4614 121025 15:01:00 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of mode", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:01:00 INFO: Username: (none)
+21328 121025 15:01:00 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+4614 121025 15:01:00 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4614 121025 15:01:01 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:01 +0000
+21328 121025 15:01:01 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:01 +0000
+4614 121025 15:01:01 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:01:01 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:01:01 INFO:   Processing by RController#update as JSON
+4614 121025 15:01:01 INFO: Username: (none)
+21328 121025 15:01:01 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models&nbsp;", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:01:01 INFO: Username: (none)
+21328 121025 15:01:01 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4614 121025 15:01:01 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+4614 121025 15:01:02 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:02 +0000
+21328 121025 15:01:02 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:02 +0000
+4614 121025 15:01:02 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:01:02 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:01:02 INFO:   Processing by RController#update as JSON
+4614 121025 15:01:02 INFO: Username: (none)
+21328 121025 15:01:02 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models and&nbsp;", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:01:02 INFO: Username: (none)
+21328 121025 15:01:02 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4614 121025 15:01:02 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+4614 121025 15:01:02 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:02 +0000
+21328 121025 15:01:02 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:02 +0000
+4614 121025 15:01:02 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:01:02 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:01:02 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:02 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models and coll", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:01:02 INFO: Username: (none)
+21328 121025 15:01:02 INFO: Username: (none)
+21328 121025 15:01:02 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+4614 121025 15:01:02 INFO: Completed 200 OK in 9ms (Views: 0.2ms)
+4614 121025 15:01:03 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:03 +0000
+4614 121025 15:01:03 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:01:03 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:03 +0000
+4614 121025 15:01:03 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:01:03 INFO: Username: (none)
+21328 121025 15:01:03 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:03 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models and collecti", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:01:03 INFO: Username: (none)
+4614 121025 15:01:03 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+21328 121025 15:01:03 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+21328 121025 15:01:03 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:03 +0000
+21328 121025 15:01:03 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:01:03 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:01:03 INFO: Username: (none)
+4614 121025 15:01:03 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:03 +0000
+4614 121025 15:01:03 INFO:   Processing by RController#update as JSON
+4614 121025 15:01:03 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models and collections a", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:01:03 INFO: Username: (none)
+21328 121025 15:01:03 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+4614 121025 15:01:03 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4614 121025 15:01:04 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:04 +0000
+4614 121025 15:01:04 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:01:04 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:04 +0000
+4614 121025 15:01:04 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:01:04 INFO: Username: (none)
+21328 121025 15:01:04 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:04 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models and collections atta", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:01:04 INFO: Username: (none)
+4614 121025 15:01:04 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+21328 121025 15:01:04 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+21328 121025 15:01:04 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:04 +0000
+4614 121025 15:01:04 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:04 +0000
+21328 121025 15:01:04 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:01:04 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:01:04 INFO: Username: (none)
+4614 121025 15:01:04 INFO:   Processing by RController#update as JSON
+4614 121025 15:01:04 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models and collections attached&nbsp;", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:01:04 INFO: Username: (none)
+21328 121025 15:01:04 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+4614 121025 15:01:04 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4614 121025 15:01:05 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:05 +0000
+4614 121025 15:01:05 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:01:05 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:05 +0000
+4614 121025 15:01:05 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:01:05 INFO: Username: (none)
+21328 121025 15:01:05 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:05 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models and collections attached to", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:01:05 INFO: Username: (none)
+4614 121025 15:01:05 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+21328 121025 15:01:05 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+21328 121025 15:01:07 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:07 +0000
+4614 121025 15:01:07 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:07 +0000
+21328 121025 15:01:07 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:01:07 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:01:07 INFO: Username: (none)
+4614 121025 15:01:07 INFO:   Processing by RController#update as JSON
+4614 121025 15:01:07 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models and collections attached to&nbsp;", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:01:07 INFO: Username: (none)
+4614 121025 15:01:07 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:07 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+21328 121025 15:01:07 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:07 +0000
+21328 121025 15:01:07 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:01:07 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:01:07 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:07 +0000
+21328 121025 15:01:07 INFO: Username: (none)
+4614 121025 15:01:07 INFO:   Processing by RController#update as JSON
+4614 121025 15:01:07 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models and collections attached to in", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:01:07 INFO: Username: (none)
+4614 121025 15:01:07 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+21328 121025 15:01:07 INFO: Completed 200 OK in 47ms (Views: 0.2ms)
+21328 121025 15:01:08 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:08 +0000
+21328 121025 15:01:08 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:01:08 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:01:08 INFO: Username: (none)
+4614 121025 15:01:08 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:08 +0000
+4614 121025 15:01:08 INFO:   Processing by RController#update as JSON
+4614 121025 15:01:08 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models and collections attached to w", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:01:08 INFO: Username: (none)
+21328 121025 15:01:08 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4614 121025 15:01:08 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+4614 121025 15:01:08 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:08 +0000
+21328 121025 15:01:08 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:08 +0000
+4614 121025 15:01:08 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:01:08 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:01:08 INFO:   Processing by RController#update as JSON
+4614 121025 15:01:08 INFO: Username: (none)
+21328 121025 15:01:08 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models and collections attached to withi", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:01:08 INFO: Username: (none)
+4614 121025 15:01:08 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+21328 121025 15:01:08 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+21328 121025 15:01:09 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:09 +0000
+4614 121025 15:01:09 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:09 +0000
+21328 121025 15:01:09 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:01:09 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:01:09 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:09 INFO: Username: (none)
+4614 121025 15:01:09 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models and collections attached to within the", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:01:09 INFO: Username: (none)
+4614 121025 15:01:09 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+21328 121025 15:01:09 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+21328 121025 15:01:09 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:09 +0000
+21328 121025 15:01:09 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:01:09 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:09 +0000
+21328 121025 15:01:09 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+21328 121025 15:01:09 INFO: Username: (none)
+4614 121025 15:01:09 INFO:   Processing by RController#update as JSON
+4614 121025 15:01:09 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models and collections attached to within the modu", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:01:09 INFO: Username: (none)
+21328 121025 15:01:09 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4614 121025 15:01:09 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4614 121025 15:01:10 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:10 +0000
+21328 121025 15:01:10 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:10 +0000
+21328 121025 15:01:10 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:01:10 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:01:10 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:10 INFO: Username: (none)
+4614 121025 15:01:10 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models and collections attached to within the module", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4614 121025 15:01:10 INFO: Username: (none)
+4614 121025 15:01:10 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:10 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+4614 121025 15:01:13 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:13 +0000
+21328 121025 15:01:13 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:13 +0000
+4614 121025 15:01:13 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:01:13 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:01:13 INFO: Username: (none)
+21328 121025 15:01:13 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:13 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models and collections attached to within the module<div><br></div>", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:01:13 INFO: Username: (none)
+4614 121025 15:01:13 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+21328 121025 15:01:13 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+21328 121025 15:01:14 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:01:14 +0000
+4614 121025 15:01:14 INFO: 
+
+Started PUT "/r/50895418924ff81206000001" for 10.40.6.103 at 2012-10-25 15:01:14 +0000
+21328 121025 15:01:14 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:01:14 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4614 121025 15:01:14 INFO:   Processing by RController#update as JSON
+4614 121025 15:01:14 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"Where should instances of models and collections attached to within the module", "id"=>"50895418924ff81206000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+21328 121025 15:01:14 INFO: Username: (none)
+4614 121025 15:01:14 INFO: Username: (none)
+21328 121025 15:01:14 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+4614 121025 15:01:14 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4614 121025 15:01:17 INFO: 
+
+Started POST "/r" for 10.40.6.103 at 2012-10-25 15:01:17 +0000
+4614 121025 15:01:17 INFO:   Processing by RController#create as JSON
+4614 121025 15:01:17 INFO:   Parameters: {"type"=>"Alternative"}
+4614 121025 15:01:17 INFO: Username: (none)
+4614 121025 15:01:17 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4614 121025 15:01:17 INFO: 
+
+Started GET "/relation/relate?from_taggable_id=5089543d924ff81206000003&to_taggable_id=50895418924ff81206000001&relation_name=SolvedBy" for 10.40.6.103 at 2012-10-25 15:01:17 +0000
+4614 121025 15:01:17 INFO:   Processing by RelationController#relate as JSON
+4614 121025 15:01:17 INFO:   Parameters: {"from_taggable_id"=>"5089543d924ff81206000003", "to_taggable_id"=>"50895418924ff81206000001", "relation_name"=>"SolvedBy"}
+4614 121025 15:01:17 INFO: Username: (none)
+4614 121025 15:01:17 INFO: Rendered text template (0.0ms)
+4614 121025 15:01:17 INFO: Completed 200 OK in 7ms (Views: 3.8ms)
+4614 121025 15:01:17 INFO: 
+
+Started GET "/notify/5089543d924ff81206000003/name/focused" for 10.40.6.103 at 2012-10-25 15:01:17 +0000
+21328 121025 15:01:17 INFO: 
+
+Started GET "/notify/50895418924ff81206000001/name/blured" for 10.40.6.103 at 2012-10-25 15:01:17 +0000
+21328 121025 15:01:17 INFO:   Processing by NotifyController#notify as JSON
+21328 121025 15:01:17 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "attribute"=>"name", "event"=>"blured"}
+4614 121025 15:01:17 INFO:   Processing by NotifyController#notify as JSON
+21328 121025 15:01:17 INFO: Username: (none)
+4614 121025 15:01:17 INFO:   Parameters: {"id"=>"5089543d924ff81206000003", "attribute"=>"name", "event"=>"focused"}
+4614 121025 15:01:17 INFO: Username: (none)
+4614 121025 15:01:17 INFO: Rendered text template (0.0ms)
+4614 121025 15:01:17 INFO: Completed 200 OK in 4ms (Views: 1.1ms)
+21328 121025 15:01:17 INFO: Rendered text template (0.0ms)
+21328 121025 15:01:17 INFO: Completed 200 OK in 5ms (Views: 3.1ms)
+21328 121025 15:01:17 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:17 +0000
+21328 121025 15:01:17 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:17 INFO:   Parameters: {"type"=>"Alternative", "name"=>"", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:17 INFO: Username: (none)
+21328 121025 15:01:17 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+21328 121025 15:01:32 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:32 +0000
+21328 121025 15:01:32 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:32 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:32 INFO: Username: (none)
+21328 121025 15:01:32 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+21328 121025 15:01:33 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:33 +0000
+21328 121025 15:01:33 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:33 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no&nbsp;", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:33 INFO: Username: (none)
+21328 121025 15:01:33 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:34 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:34 +0000
+21328 121025 15:01:34 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:34 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:34 INFO: Username: (none)
+21328 121025 15:01:34 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:35 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:35 +0000
+21328 121025 15:01:35 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:35 INFO:   Parameters: {"type"=>"Alternative", "name"=>"<br>", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:35 INFO: Username: (none)
+21328 121025 15:01:35 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+21328 121025 15:01:35 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:35 +0000
+21328 121025 15:01:35 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:35 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:35 INFO: Username: (none)
+21328 121025 15:01:35 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+21328 121025 15:01:36 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:36 +0000
+21328 121025 15:01:36 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:36 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no col", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:36 INFO: Username: (none)
+21328 121025 15:01:36 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:36 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:36 +0000
+21328 121025 15:01:36 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:36 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no colle", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:36 INFO: Username: (none)
+21328 121025 15:01:36 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+21328 121025 15:01:37 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:37 +0000
+21328 121025 15:01:37 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:37 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no collecti", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:37 INFO: Username: (none)
+21328 121025 15:01:37 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+21328 121025 15:01:37 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:37 +0000
+21328 121025 15:01:37 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:37 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no collect", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:37 INFO: Username: (none)
+21328 121025 15:01:37 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:38 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:38 +0000
+21328 121025 15:01:38 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:38 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no col", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:38 INFO: Username: (none)
+21328 121025 15:01:38 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:38 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:38 +0000
+21328 121025 15:01:38 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:38 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no&nbsp;", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:38 INFO: Username: (none)
+21328 121025 15:01:38 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+21328 121025 15:01:39 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:39 +0000
+21328 121025 15:01:39 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:39 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no mod", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:39 INFO: Username: (none)
+21328 121025 15:01:39 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+21328 121025 15:01:39 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:39 +0000
+21328 121025 15:01:39 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:39 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no modelin", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:39 INFO: Username: (none)
+21328 121025 15:01:39 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+21328 121025 15:01:40 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:40 +0000
+21328 121025 15:01:40 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:40 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no modeling", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:40 INFO: Username: (none)
+21328 121025 15:01:40 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:40 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:40 +0000
+21328 121025 15:01:40 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:40 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no model", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:40 INFO: Username: (none)
+21328 121025 15:01:40 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+21328 121025 15:01:42 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:42 +0000
+21328 121025 15:01:42 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:42 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no model&nbsp;", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:42 INFO: Username: (none)
+21328 121025 15:01:42 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:43 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:43 +0000
+21328 121025 15:01:43 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:43 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:43 INFO: Username: (none)
+21328 121025 15:01:43 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:44 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:44 +0000
+21328 121025 15:01:44 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:44 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models a", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:44 INFO: Username: (none)
+21328 121025 15:01:44 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+21328 121025 15:01:44 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:44 +0000
+21328 121025 15:01:44 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:44 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at a", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:44 INFO: Username: (none)
+21328 121025 15:01:44 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:45 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:45 +0000
+21328 121025 15:01:45 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:45 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at al", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:45 INFO: Username: (none)
+21328 121025 15:01:45 INFO: Completed 200 OK in 45ms (Views: 0.3ms)
+21328 121025 15:01:45 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:45 +0000
+21328 121025 15:01:45 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:45 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at all -&nbsp;", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:45 INFO: Username: (none)
+21328 121025 15:01:45 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:46 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:46 +0000
+21328 121025 15:01:46 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:46 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at all - just&nbsp;", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:46 INFO: Username: (none)
+21328 121025 15:01:46 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+21328 121025 15:01:46 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:46 +0000
+21328 121025 15:01:46 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:46 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at all - just do", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:46 INFO: Username: (none)
+21328 121025 15:01:46 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+21328 121025 15:01:47 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:47 +0000
+21328 121025 15:01:47 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:47 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at all - just dom-", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:47 INFO: Username: (none)
+21328 121025 15:01:47 INFO: Completed 200 OK in 6ms (Views: 0.0ms)
+21328 121025 15:01:47 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:47 +0000
+21328 121025 15:01:47 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:47 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at all - just dom-bas", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:47 INFO: Username: (none)
+21328 121025 15:01:47 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:48 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:48 +0000
+21328 121025 15:01:48 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:48 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at all - just dom-", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:48 INFO: Username: (none)
+21328 121025 15:01:48 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+21328 121025 15:01:48 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:48 +0000
+21328 121025 15:01:48 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:48 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at all - just d", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:48 INFO: Username: (none)
+21328 121025 15:01:48 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+21328 121025 15:01:49 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:49 +0000
+21328 121025 15:01:49 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:49 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at all - just DO", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:49 INFO: Username: (none)
+21328 121025 15:01:49 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+21328 121025 15:01:49 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:49 +0000
+21328 121025 15:01:49 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:49 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at all - just DOM&nbsp;", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:49 INFO: Username: (none)
+21328 121025 15:01:49 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:50 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:50 +0000
+21328 121025 15:01:50 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:50 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at all - just DOM base", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:50 INFO: Username: (none)
+21328 121025 15:01:50 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:50 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:50 +0000
+21328 121025 15:01:50 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:50 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at all - just DOM based st", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:50 INFO: Username: (none)
+21328 121025 15:01:50 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:51 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:51 +0000
+21328 121025 15:01:51 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:51 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at all - just DOM based struc", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:51 INFO: Username: (none)
+21328 121025 15:01:51 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:01:52 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:01:52 +0000
+21328 121025 15:01:52 INFO:   Processing by RController#update as JSON
+21328 121025 15:01:52 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at all - just DOM based structure", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:01:52 INFO: Username: (none)
+21328 121025 15:01:52 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+21328 121025 15:02:22 INFO: 
+
+Started GET "/notify/5089543d924ff81206000003/name/blured" for 10.40.6.103 at 2012-10-25 15:02:22 +0000
+21328 121025 15:02:22 INFO:   Processing by NotifyController#notify as JSON
+21328 121025 15:02:22 INFO:   Parameters: {"id"=>"5089543d924ff81206000003", "attribute"=>"name", "event"=>"blured"}
+21328 121025 15:02:22 INFO: Username: (none)
+21328 121025 15:02:22 INFO: Rendered text template (0.0ms)
+21328 121025 15:02:22 INFO: Completed 200 OK in 42ms (Views: 1.8ms)
+21328 121025 15:03:11 INFO: 
+
+Started GET "/notify/5089543d924ff81206000003/name/focused" for 10.40.6.103 at 2012-10-25 15:03:11 +0000
+21328 121025 15:03:11 INFO:   Processing by NotifyController#notify as JSON
+21328 121025 15:03:11 INFO:   Parameters: {"id"=>"5089543d924ff81206000003", "attribute"=>"name", "event"=>"focused"}
+21328 121025 15:03:11 INFO: Username: (none)
+21328 121025 15:03:11 INFO: Rendered text template (0.0ms)
+21328 121025 15:03:11 INFO: Completed 200 OK in 4ms (Views: 0.7ms)
+21328 121025 15:03:13 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:03:13 +0000
+21328 121025 15:03:13 INFO:   Processing by RController#update as JSON
+21328 121025 15:03:13 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at all - just DOM based structure<div><br></div>", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:03:13 INFO: Username: (none)
+21328 121025 15:03:13 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+21328 121025 15:03:14 INFO: 
+
+Started PUT "/r/5089543d924ff81206000003" for 10.40.6.103 at 2012-10-25 15:03:14 +0000
+21328 121025 15:03:14 INFO:   Processing by RController#update as JSON
+21328 121025 15:03:14 INFO:   Parameters: {"type"=>"Alternative", "name"=>"no models at all - just DOM based structure", "id"=>"5089543d924ff81206000003", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+21328 121025 15:03:14 INFO: Username: (none)
+21328 121025 15:03:14 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+21328 121025 15:03:15 INFO: 
+
+Started POST "/r" for 10.40.6.103 at 2012-10-25 15:03:15 +0000
+21328 121025 15:03:15 INFO:   Processing by RController#create as JSON
+21328 121025 15:03:15 INFO:   Parameters: {"type"=>"Alternative"}
+21328 121025 15:03:15 INFO: Username: (none)
+21328 121025 15:03:15 INFO: Completed 200 OK in 10ms (Views: 0.3ms)
+21328 121025 15:03:15 INFO: 
+
+Started GET "/relation/relate?from_taggable_id=508954b3924ff85350000001&to_taggable_id=50895418924ff81206000001&relation_name=SolvedBy" for 10.40.6.103 at 2012-10-25 15:03:15 +0000
+21328 121025 15:03:15 INFO:   Processing by RelationController#relate as JSON
+21328 121025 15:03:15 INFO:   Parameters: {"from_taggable_id"=>"508954b3924ff85350000001", "to_taggable_id"=>"50895418924ff81206000001", "relation_name"=>"SolvedBy"}
+21328 121025 15:03:15 INFO: Username: (none)
+21328 121025 15:03:15 INFO: Rendered text template (0.0ms)
+21328 121025 15:03:15 INFO: Completed 200 OK in 4ms (Views: 1.0ms)
+21328 121025 15:03:15 INFO: 
+
+Started GET "/notify/508954b3924ff85350000001/name/focused" for 10.40.6.103 at 2012-10-25 15:03:15 +0000
+21328 121025 15:03:15 INFO:   Processing by NotifyController#notify as JSON
+21328 121025 15:03:15 INFO:   Parameters: {"id"=>"508954b3924ff85350000001", "attribute"=>"name", "event"=>"focused"}
+4614 121025 15:03:15 INFO: 
+
+Started GET "/notify/5089543d924ff81206000003/name/blured" for 10.40.6.103 at 2012-10-25 15:03:15 +0000
+21328 121025 15:03:15 INFO: Username: (none)
+21328 121025 15:03:15 INFO: Rendered text template (0.0ms)
+21328 121025 15:03:15 INFO: Completed 200 OK in 3ms (Views: 0.8ms)
+4614 121025 15:03:15 INFO:   Processing by NotifyController#notify as JSON
+4614 121025 15:03:15 INFO:   Parameters: {"id"=>"5089543d924ff81206000003", "attribute"=>"name", "event"=>"blured"}
+4614 121025 15:03:15 INFO: Username: (none)
+4614 121025 15:03:15 INFO: Rendered text template (0.0ms)
+4614 121025 15:03:15 INFO: Completed 200 OK in 4ms (Views: 0.6ms)
+4614 121025 15:03:16 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:16 +0000
+4614 121025 15:03:16 INFO:   Processing by RController#update as JSON
+4614 121025 15:03:16 INFO:   Parameters: {"type"=>"Alternative", "name"=>"", "id"=>"508954b3924ff85350000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4614 121025 15:03:16 INFO: Username: (none)
+4614 121025 15:03:16 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4614 121025 15:03:17 INFO: 
+
+Started GET "/" for 10.40.6.103 at 2012-10-25 15:03:17 +0000
+4614 121025 15:03:17 INFO:   Processing by WelcomeController#index as HTML
+4614 121025 15:03:17 INFO: Username: (none)
+4614 121025 15:03:17 INFO: Rendered welcome/index.html.erb within layouts/application (3.0ms)
+4614 121025 15:03:17 INFO: Completed 200 OK in 8ms (Views: 7.2ms)
+4614 121025 15:03:20 INFO: 
+
+Started GET "/projects" for 10.40.6.103 at 2012-10-25 15:03:20 +0000
+4614 121025 15:03:20 INFO:   Processing by ProjectsController#index as JSON
+4614 121025 15:03:20 INFO: Username: (none)
+4614 121025 15:03:21 INFO: Completed 200 OK in 1145ms (Views: 4.3ms)
+4614 121025 15:03:23 INFO: 
+
+Started GET "/projects/4fb0d1fa924ff85581000003" for 10.40.6.103 at 2012-10-25 15:03:23 +0000
+21328 121025 15:03:23 INFO: 
+
+Started GET "/r/4fb0d1fa924ff85581000003/related_from/Issue" for 10.40.6.103 at 2012-10-25 15:03:23 +0000
+4614 121025 15:03:23 INFO:   Processing by ProjectsController#show as JSON
+21328 121025 15:03:23 INFO:   Processing by RController#related_from as JSON
+4614 121025 15:03:23 INFO:   Parameters: {"id"=>"4fb0d1fa924ff85581000003"}
+21328 121025 15:03:23 INFO:   Parameters: {"id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue"}
+21328 121025 15:03:23 INFO: Username: (none)
+4614 121025 15:03:23 INFO: Username: (none)
+4614 121025 15:03:23 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+21328 121025 15:03:23 INFO: Completed 200 OK in 17ms (Views: 0.8ms)
+4614 121025 15:03:23 INFO: 
+
+Started GET "/r/4fb359c709f9514271000005/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:03:23 +0000
+21328 121025 15:03:23 INFO: 
+
+Started GET "/r/4fb0d22f924ff85357000003/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:03:23 +0000
+4614 121025 15:03:23 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:03:23 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:03:23 INFO:   Parameters: {"id"=>"4fb359c709f9514271000005", "type"=>"Alternative"}
+4614 121025 15:03:23 INFO: Username: (none)
+21328 121025 15:03:23 INFO:   Parameters: {"id"=>"4fb0d22f924ff85357000003", "type"=>"Alternative"}
+21328 121025 15:03:23 INFO: Username: (none)
+21328 121025 15:03:23 INFO: Completed 200 OK in 21ms (Views: 0.9ms)
+21328 121025 15:03:23 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b900016f/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:03:23 +0000
+21328 121025 15:03:23 INFO:   Processing by RController#related_to as JSON
+21328 121025 15:03:23 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b900016f", "type"=>"Alternative"}
+21328 121025 15:03:23 INFO: Username: (none)
+4614 121025 15:03:23 INFO: Completed 200 OK in 58ms (Views: 2.8ms)
+4614 121025 15:03:23 INFO: 
+
+Started GET "/r/4fb0d5c9924ff8535700000f/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:03:23 +0000
+4614 121025 15:03:23 INFO:   Processing by RController#related_to as JSON
+4614 121025 15:03:23 INFO:   Parameters: {"id"=>"4fb0d5c9924ff8535700000f", "type"=>"Alternative"}
+4614 121025 15:03:23 INFO: Username: (none)
+21328 121025 15:03:23 INFO: Completed 200 OK in 53ms (Views: 1.1ms)
+4614 121025 15:03:23 INFO: Completed 200 OK in 24ms (Views: 0.7ms)
+4658 121025 15:03:23 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:03:23 +0000
+4658 121025 15:03:23 INFO:   Processing by RController#related_to as JSON
+4658 121025 15:03:23 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+4658 121025 15:03:23 INFO: Username: (none)
+4658 121025 15:03:23 INFO: Completed 200 OK in 21ms (Views: 4.6ms)
+4658 121025 15:03:28 INFO: 
+
+Started GET "/notify/508954b3924ff85350000001/name/focused" for 10.40.6.103 at 2012-10-25 15:03:28 +0000
+4658 121025 15:03:28 INFO:   Processing by NotifyController#notify as JSON
+4658 121025 15:03:28 INFO:   Parameters: {"id"=>"508954b3924ff85350000001", "attribute"=>"name", "event"=>"focused"}
+4658 121025 15:03:28 INFO: Username: (none)
+4658 121025 15:03:28 INFO: Rendered text template (0.1ms)
+4658 121025 15:03:28 INFO: Completed 200 OK in 40ms (Views: 34.1ms)
+4658 121025 15:03:41 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:41 +0000
+4658 121025 15:03:41 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:41 INFO:   Parameters: {"name"=>"mo", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:41 INFO: Username: (none)
+4658 121025 15:03:41 INFO: Completed 200 OK in 9ms (Views: 0.3ms)
+4658 121025 15:03:41 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:41 +0000
+4658 121025 15:03:41 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:41 INFO:   Parameters: {"name"=>"model", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:41 INFO: Username: (none)
+4658 121025 15:03:41 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+4658 121025 15:03:42 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:42 +0000
+4658 121025 15:03:42 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:42 INFO:   Parameters: {"name"=>"models wi", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:42 INFO: Username: (none)
+4658 121025 15:03:42 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+4658 121025 15:03:42 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:42 +0000
+4658 121025 15:03:42 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:42 INFO:   Parameters: {"name"=>"models withi", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:42 INFO: Username: (none)
+4658 121025 15:03:42 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4658 121025 15:03:43 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:43 +0000
+4658 121025 15:03:43 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:43 INFO:   Parameters: {"name"=>"models wi", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:43 INFO: Username: (none)
+4658 121025 15:03:43 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+4658 121025 15:03:43 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:43 +0000
+4658 121025 15:03:43 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:43 INFO:   Parameters: {"name"=>"models s", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:43 INFO: Username: (none)
+4658 121025 15:03:43 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4658 121025 15:03:44 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:44 +0000
+4658 121025 15:03:44 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:44 INFO:   Parameters: {"name"=>"models&nbsp;", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:44 INFO: Username: (none)
+4658 121025 15:03:44 INFO: Completed 200 OK in 41ms (Views: 0.4ms)
+4658 121025 15:03:44 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:44 +0000
+4658 121025 15:03:44 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:44 INFO:   Parameters: {"name"=>"models load", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:44 INFO: Username: (none)
+4658 121025 15:03:44 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4658 121025 15:03:45 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:45 +0000
+4658 121025 15:03:45 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:45 INFO:   Parameters: {"name"=>"models loaded&nbsp;", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:45 INFO: Username: (none)
+4658 121025 15:03:45 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4658 121025 15:03:45 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:45 +0000
+4658 121025 15:03:45 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:45 INFO:   Parameters: {"name"=>"models loaded/s", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:45 INFO: Username: (none)
+4658 121025 15:03:45 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4658 121025 15:03:46 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:46 +0000
+4658 121025 15:03:46 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:46 INFO:   Parameters: {"name"=>"models loaded/store", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:46 INFO: Username: (none)
+4658 121025 15:03:46 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4658 121025 15:03:46 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:46 +0000
+4658 121025 15:03:46 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:46 INFO:   Parameters: {"name"=>"models loaded/stored a", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:46 INFO: Username: (none)
+4658 121025 15:03:46 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+4658 121025 15:03:47 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:47 +0000
+4658 121025 15:03:47 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:47 INFO:   Parameters: {"name"=>"models loaded/stored and&nbsp;", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:47 INFO: Username: (none)
+4658 121025 15:03:47 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4658 121025 15:03:47 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:47 +0000
+4658 121025 15:03:47 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:47 INFO:   Parameters: {"name"=>"models loaded/stored and up", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:47 INFO: Username: (none)
+4658 121025 15:03:47 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+4658 121025 15:03:48 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:48 +0000
+4658 121025 15:03:48 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:48 INFO:   Parameters: {"name"=>"models loaded/stored and upda", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:48 INFO: Username: (none)
+4658 121025 15:03:48 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+4658 121025 15:03:49 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:49 +0000
+4658 121025 15:03:49 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:49 INFO:   Parameters: {"name"=>"models loaded/s", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:49 INFO: Username: (none)
+4658 121025 15:03:49 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+4658 121025 15:03:49 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:49 +0000
+4658 121025 15:03:49 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:49 INFO:   Parameters: {"name"=>"models loaded", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:49 INFO: Username: (none)
+4658 121025 15:03:49 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4658 121025 15:03:50 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:50 +0000
+4658 121025 15:03:50 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:50 INFO:   Parameters: {"name"=>"models loaded, s", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:50 INFO: Username: (none)
+4658 121025 15:03:50 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4658 121025 15:03:50 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:50 +0000
+4658 121025 15:03:50 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:50 INFO:   Parameters: {"name"=>"models loaded, sto", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:50 INFO: Username: (none)
+4658 121025 15:03:50 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+4658 121025 15:03:51 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:51 +0000
+4658 121025 15:03:51 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:51 INFO:   Parameters: {"name"=>"models loaded, stora", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:51 INFO: Username: (none)
+4658 121025 15:03:51 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+4658 121025 15:03:51 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:51 +0000
+4658 121025 15:03:51 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:51 INFO:   Parameters: {"name"=>"models loaded, stored&nbsp;", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:51 INFO: Username: (none)
+4658 121025 15:03:51 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+4658 121025 15:03:52 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:52 +0000
+4658 121025 15:03:52 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:52 INFO:   Parameters: {"name"=>"models loaded, stored and up", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:52 INFO: Username: (none)
+4658 121025 15:03:52 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+4658 121025 15:03:52 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:52 +0000
+4658 121025 15:03:52 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:52 INFO:   Parameters: {"name"=>"models loaded, stored and update", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:52 INFO: Username: (none)
+4658 121025 15:03:52 INFO: Completed 200 OK in 7ms (Views: 1.0ms)
+4658 121025 15:03:53 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:53 +0000
+4658 121025 15:03:53 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:53 INFO:   Parameters: {"name"=>"models loaded, stored and updated with", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:53 INFO: Username: (none)
+4658 121025 15:03:53 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4658 121025 15:03:53 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:53 +0000
+4658 121025 15:03:53 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:53 INFO:   Parameters: {"name"=>"models loaded, stored and updated within&nbsp;", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:53 INFO: Username: (none)
+4658 121025 15:03:53 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4658 121025 15:03:54 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:54 +0000
+4658 121025 15:03:54 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:54 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the&nbsp;", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:54 INFO: Username: (none)
+4658 121025 15:03:54 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+4658 121025 15:03:56 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:56 +0000
+4658 121025 15:03:56 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:56 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the v", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:56 INFO: Username: (none)
+4658 121025 15:03:56 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+4658 121025 15:03:57 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:57 +0000
+4658 121025 15:03:57 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:57 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the view&nbsp;", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:57 INFO: Username: (none)
+4658 121025 15:03:57 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+4658 121025 15:03:57 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:57 +0000
+4658 121025 15:03:57 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:57 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the view c", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:57 INFO: Username: (none)
+4658 121025 15:03:57 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4658 121025 15:03:58 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:58 +0000
+4658 121025 15:03:58 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:58 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the view ob", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:58 INFO: Username: (none)
+4658 121025 15:03:58 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4658 121025 15:03:58 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:58 +0000
+4658 121025 15:03:58 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:58 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the view objec", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:58 INFO: Username: (none)
+4658 121025 15:03:58 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4658 121025 15:03:59 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:59 +0000
+4658 121025 15:03:59 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:59 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the view object", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:59 INFO: Username: (none)
+4658 121025 15:03:59 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+4658 121025 15:03:59 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:03:59 +0000
+4658 121025 15:03:59 INFO:   Processing by RController#update as JSON
+4658 121025 15:03:59 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the view objec", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:03:59 INFO: Username: (none)
+4658 121025 15:03:59 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4658 121025 15:04:00 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:04:00 +0000
+4658 121025 15:04:00 INFO:   Processing by RController#update as JSON
+4658 121025 15:04:00 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the view ob", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:04:00 INFO: Username: (none)
+4658 121025 15:04:00 INFO: Completed 200 OK in 9ms (Views: 0.3ms)
+4658 121025 15:04:00 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:04:00 +0000
+4658 121025 15:04:00 INFO:   Processing by RController#update as JSON
+4658 121025 15:04:00 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the view&nbsp;", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:04:00 INFO: Username: (none)
+4658 121025 15:04:00 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4658 121025 15:04:01 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:04:01 +0000
+4658 121025 15:04:01 INFO:   Processing by RController#update as JSON
+4658 121025 15:04:01 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the view ins", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:04:01 INFO: Username: (none)
+4658 121025 15:04:01 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4658 121025 15:04:01 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:04:01 +0000
+4658 121025 15:04:01 INFO:   Processing by RController#update as JSON
+4658 121025 15:04:01 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the view instance&nbsp;", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:04:01 INFO: Username: (none)
+4658 121025 15:04:01 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4658 121025 15:04:02 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:04:02 +0000
+4658 121025 15:04:02 INFO:   Processing by RController#update as JSON
+4658 121025 15:04:02 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the view instance ob", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:04:02 INFO: Username: (none)
+4658 121025 15:04:02 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+4658 121025 15:04:02 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:04:02 +0000
+4658 121025 15:04:02 INFO:   Processing by RController#update as JSON
+4658 121025 15:04:02 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the view instance obje", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:04:02 INFO: Username: (none)
+4658 121025 15:04:02 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4658 121025 15:04:03 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:04:03 +0000
+4658 121025 15:04:03 INFO:   Processing by RController#update as JSON
+4658 121025 15:04:03 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the view instance objects", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:04:03 INFO: Username: (none)
+4658 121025 15:04:03 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4658 121025 15:04:03 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:04:03 +0000
+4658 121025 15:04:03 INFO:   Processing by RController#update as JSON
+4658 121025 15:04:03 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the view instance objects<div><br></div>", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:04:03 INFO: Username: (none)
+4658 121025 15:04:03 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4658 121025 15:04:04 INFO: 
+
+Started PUT "/r/508954b3924ff85350000001" for 10.40.6.103 at 2012-10-25 15:04:04 +0000
+4658 121025 15:04:04 INFO:   Processing by RController#update as JSON
+4658 121025 15:04:04 INFO:   Parameters: {"name"=>"models loaded, stored and updated within the view instance objects", "id"=>"508954b3924ff85350000001", "type"=>"Alternative", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:04:04 INFO: Username: (none)
+4658 121025 15:04:04 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+4658 121025 15:04:04 INFO: 
+
+Started POST "/r" for 10.40.6.103 at 2012-10-25 15:04:04 +0000
+4658 121025 15:04:04 INFO:   Processing by RController#create as JSON
+4658 121025 15:04:04 INFO:   Parameters: {"type"=>"Alternative"}
+4658 121025 15:04:04 INFO: Username: (none)
+4658 121025 15:04:04 INFO: Completed 200 OK in 10ms (Views: 0.3ms)
+4658 121025 15:04:04 INFO: 
+
+Started GET "/relation/relate?from_taggable_id=508954e4924ff81232000001&to_taggable_id=50895418924ff81206000001&relation_name=SolvedBy" for 10.40.6.103 at 2012-10-25 15:04:04 +0000
+4658 121025 15:04:04 INFO:   Processing by RelationController#relate as JSON
+4658 121025 15:04:04 INFO:   Parameters: {"from_taggable_id"=>"508954e4924ff81232000001", "to_taggable_id"=>"50895418924ff81206000001", "relation_name"=>"SolvedBy"}
+4658 121025 15:04:04 INFO: Username: (none)
+4658 121025 15:04:04 INFO: Rendered text template (0.0ms)
+4658 121025 15:04:04 INFO: Completed 200 OK in 4ms (Views: 0.9ms)
+4658 121025 15:04:04 INFO: 
+
+Started GET "/notify/508954e4924ff81232000001/name/focused" for 10.40.6.103 at 2012-10-25 15:04:04 +0000
+4658 121025 15:04:04 INFO:   Processing by NotifyController#notify as JSON
+4658 121025 15:04:04 INFO:   Parameters: {"id"=>"508954e4924ff81232000001", "attribute"=>"name", "event"=>"focused"}
+4658 121025 15:04:04 INFO: Username: (none)
+4658 121025 15:04:04 INFO: Rendered text template (0.0ms)
+4658 121025 15:04:04 INFO: Completed 200 OK in 4ms (Views: 1.1ms)
+4666 121025 15:04:04 INFO: 
+
+Started GET "/notify/508954b3924ff85350000001/name/blured" for 10.40.6.103 at 2012-10-25 15:04:04 +0000
+4658 121025 15:04:04 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:04:04 +0000
+4658 121025 15:04:04 INFO:   Processing by RController#update as JSON
+4658 121025 15:04:04 INFO:   Parameters: {"type"=>"Alternative", "name"=>"", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4658 121025 15:04:04 INFO: Username: (none)
+4658 121025 15:04:04 INFO: Completed 200 OK in 10ms (Views: 0.3ms)
+4666 121025 15:04:05 INFO:   Processing by NotifyController#notify as JSON
+4666 121025 15:04:05 INFO:   Parameters: {"id"=>"508954b3924ff85350000001", "attribute"=>"name", "event"=>"blured"}
+4666 121025 15:04:05 INFO: Username: (none)
+4666 121025 15:04:05 INFO: Rendered text template (0.0ms)
+4666 121025 15:04:05 INFO: Completed 200 OK in 42ms (Views: 34.0ms)
+4666 121025 15:04:27 INFO: 
+
+Started GET "/notify/508954e4924ff81232000001/name/blured" for 10.40.6.103 at 2012-10-25 15:04:27 +0000
+4666 121025 15:04:27 INFO:   Processing by NotifyController#notify as JSON
+4666 121025 15:04:27 INFO:   Parameters: {"id"=>"508954e4924ff81232000001", "attribute"=>"name", "event"=>"blured"}
+4666 121025 15:04:27 INFO: Username: (none)
+4666 121025 15:04:27 INFO: Rendered text template (0.1ms)
+4666 121025 15:04:27 INFO: Completed 200 OK in 4ms (Views: 0.9ms)
+4666 121025 15:04:29 INFO: 
+
+Started GET "/notify/508954e4924ff81232000001/name/focused" for 10.40.6.103 at 2012-10-25 15:04:29 +0000
+4666 121025 15:04:29 INFO:   Processing by NotifyController#notify as JSON
+4666 121025 15:04:29 INFO:   Parameters: {"id"=>"508954e4924ff81232000001", "attribute"=>"name", "event"=>"focused"}
+4666 121025 15:04:29 INFO: Username: (none)
+4666 121025 15:04:29 INFO: Rendered text template (0.0ms)
+4666 121025 15:04:29 INFO: Completed 200 OK in 3ms (Views: 0.8ms)
+4666 121025 15:04:29 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:04:29 +0000
+4666 121025 15:04:29 INFO:   Processing by RController#update as JSON
+4666 121025 15:04:29 INFO:   Parameters: {"type"=>"Alternative", "name"=>"<br>", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:04:29 INFO: Username: (none)
+4666 121025 15:04:29 INFO: Completed 200 OK in 14ms (Views: 4.5ms)
+4666 121025 15:04:31 INFO: 
+
+Started GET "/notify/508954e4924ff81232000001/name/blured" for 10.40.6.103 at 2012-10-25 15:04:31 +0000
+4666 121025 15:04:31 INFO:   Processing by NotifyController#notify as JSON
+4666 121025 15:04:31 INFO:   Parameters: {"id"=>"508954e4924ff81232000001", "attribute"=>"name", "event"=>"blured"}
+4666 121025 15:04:31 INFO: Username: (none)
+4666 121025 15:04:31 INFO: Rendered text template (0.0ms)
+4666 121025 15:04:31 INFO: Completed 200 OK in 3ms (Views: 0.8ms)
+4666 121025 15:04:57 INFO: 
+
+Started GET "/notify/508954e4924ff81232000001/name/focused" for 10.40.6.103 at 2012-10-25 15:04:57 +0000
+4666 121025 15:04:57 INFO:   Processing by NotifyController#notify as JSON
+4666 121025 15:04:57 INFO:   Parameters: {"id"=>"508954e4924ff81232000001", "attribute"=>"name", "event"=>"focused"}
+4666 121025 15:04:57 INFO: Username: (none)
+4666 121025 15:04:57 INFO: Rendered text template (0.0ms)
+4666 121025 15:04:57 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+4666 121025 15:04:58 INFO: 
+
+Started GET "/notify/508954e4924ff81232000001/name/blured" for 10.40.6.103 at 2012-10-25 15:04:58 +0000
+4666 121025 15:04:58 INFO:   Processing by NotifyController#notify as JSON
+4666 121025 15:04:58 INFO:   Parameters: {"id"=>"508954e4924ff81232000001", "attribute"=>"name", "event"=>"blured"}
+4666 121025 15:04:58 INFO: Username: (none)
+4666 121025 15:04:58 INFO: Rendered text template (0.0ms)
+4666 121025 15:04:58 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+4666 121025 15:05:01 INFO: 
+
+Started GET "/notify/508954e4924ff81232000001/name/focused" for 10.40.6.103 at 2012-10-25 15:05:01 +0000
+4666 121025 15:05:01 INFO:   Processing by NotifyController#notify as JSON
+4666 121025 15:05:01 INFO:   Parameters: {"id"=>"508954e4924ff81232000001", "attribute"=>"name", "event"=>"focused"}
+4666 121025 15:05:01 INFO: Username: (none)
+4666 121025 15:05:01 INFO: Rendered text template (0.0ms)
+4666 121025 15:05:01 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+4666 121025 15:05:02 INFO: 
+
+Started GET "/notify/508954e4924ff81232000001/name/blured" for 10.40.6.103 at 2012-10-25 15:05:02 +0000
+4666 121025 15:05:02 INFO:   Processing by NotifyController#notify as JSON
+4666 121025 15:05:02 INFO:   Parameters: {"id"=>"508954e4924ff81232000001", "attribute"=>"name", "event"=>"blured"}
+4666 121025 15:05:02 INFO: Username: (none)
+4666 121025 15:05:02 INFO: Rendered text template (0.0ms)
+4666 121025 15:05:02 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+4666 121025 15:06:42 INFO: 
+
+Started GET "/notify/508954e4924ff81232000001/name/focused" for 10.40.6.103 at 2012-10-25 15:06:42 +0000
+4666 121025 15:06:42 INFO:   Processing by NotifyController#notify as JSON
+4666 121025 15:06:42 INFO:   Parameters: {"id"=>"508954e4924ff81232000001", "attribute"=>"name", "event"=>"focused"}
+4666 121025 15:06:42 INFO: Username: (none)
+4666 121025 15:06:42 INFO: Rendered text template (0.0ms)
+4666 121025 15:06:42 INFO: Completed 200 OK in 3ms (Views: 0.9ms)
+4666 121025 15:06:48 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:48 +0000
+4666 121025 15:06:48 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:48 INFO:   Parameters: {"type"=>"Alternative", "name"=>"mo", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:48 INFO: Username: (none)
+4666 121025 15:06:48 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4666 121025 15:06:48 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:48 +0000
+4666 121025 15:06:48 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:48 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:48 INFO: Username: (none)
+4666 121025 15:06:48 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+4666 121025 15:06:49 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:49 +0000
+4666 121025 15:06:49 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:49 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models s", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:49 INFO: Username: (none)
+4666 121025 15:06:49 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4666 121025 15:06:49 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:49 +0000
+4666 121025 15:06:49 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:49 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models st", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:49 INFO: Username: (none)
+4666 121025 15:06:49 INFO: Completed 200 OK in 11ms (Views: 0.3ms)
+4666 121025 15:06:50 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:50 +0000
+4666 121025 15:06:50 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:50 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models stored&nbsp;", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:50 INFO: Username: (none)
+4666 121025 15:06:50 INFO: Completed 200 OK in 9ms (Views: 1.2ms)
+4666 121025 15:06:50 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:50 +0000
+4666 121025 15:06:50 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:50 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models stored and&nbsp;", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:50 INFO: Username: (none)
+4666 121025 15:06:50 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4666 121025 15:06:51 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:51 +0000
+4666 121025 15:06:51 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:51 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models stored and re", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:51 INFO: Username: (none)
+4666 121025 15:06:51 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+4666 121025 15:06:51 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:51 +0000
+4666 121025 15:06:51 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:51 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models stored and reuse", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:51 INFO: Username: (none)
+4666 121025 15:06:51 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4666 121025 15:06:53 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:53 +0000
+4666 121025 15:06:53 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:53 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models&nbsp;", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:53 INFO: Username: (none)
+4666 121025 15:06:53 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+4666 121025 15:06:53 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:53 +0000
+4666 121025 15:06:53 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:53 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models i", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:53 INFO: Username: (none)
+4666 121025 15:06:53 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+4666 121025 15:06:54 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:54 +0000
+4666 121025 15:06:54 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:54 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instan", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:54 INFO: Username: (none)
+4666 121025 15:06:54 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4666 121025 15:06:54 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:54 +0000
+4666 121025 15:06:54 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:54 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instanc", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:54 INFO: Username: (none)
+4666 121025 15:06:54 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4666 121025 15:06:55 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:55 +0000
+4666 121025 15:06:55 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:55 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instanciate", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:55 INFO: Username: (none)
+4666 121025 15:06:55 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4666 121025 15:06:55 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:55 +0000
+4666 121025 15:06:55 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:55 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instanciated a", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:55 INFO: Username: (none)
+4666 121025 15:06:55 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4666 121025 15:06:56 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:56 +0000
+4666 121025 15:06:56 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:56 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instanciated and&nbsp;", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:56 INFO: Username: (none)
+4666 121025 15:06:56 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+4666 121025 15:06:56 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:56 +0000
+4666 121025 15:06:56 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:56 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instanc", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:56 INFO: Username: (none)
+4666 121025 15:06:56 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4666 121025 15:06:57 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:57 +0000
+4666 121025 15:06:57 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:57 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models insta", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:57 INFO: Username: (none)
+4666 121025 15:06:57 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4666 121025 15:06:57 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:57 +0000
+4666 121025 15:06:57 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:57 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instan", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:57 INFO: Username: (none)
+4666 121025 15:06:57 INFO: Completed 200 OK in 45ms (Views: 0.3ms)
+4666 121025 15:06:58 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:58 +0000
+4666 121025 15:06:58 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:58 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiat", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:58 INFO: Username: (none)
+4666 121025 15:06:58 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4666 121025 15:06:58 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:58 +0000
+4666 121025 15:06:58 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:58 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated&nbsp;", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:58 INFO: Username: (none)
+4666 121025 15:06:58 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4666 121025 15:06:59 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:59 +0000
+4666 121025 15:06:59 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:59 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated and&nbsp;", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:59 INFO: Username: (none)
+4666 121025 15:06:59 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+4666 121025 15:06:59 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:06:59 +0000
+4666 121025 15:06:59 INFO:   Processing by RController#update as JSON
+4666 121025 15:06:59 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated and resu", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:06:59 INFO: Username: (none)
+4666 121025 15:06:59 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4666 121025 15:07:00 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:07:00 +0000
+4666 121025 15:07:00 INFO:   Processing by RController#update as JSON
+4666 121025 15:07:00 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated and r", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:07:00 INFO: Username: (none)
+4666 121025 15:07:00 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4666 121025 15:07:01 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:07:01 +0000
+4666 121025 15:07:01 INFO:   Processing by RController#update as JSON
+4666 121025 15:07:01 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated an", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:07:01 INFO: Username: (none)
+4666 121025 15:07:01 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4666 121025 15:07:02 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:07:02 +0000
+4666 121025 15:07:02 INFO:   Processing by RController#update as JSON
+4666 121025 15:07:02 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated w", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:07:02 INFO: Username: (none)
+4666 121025 15:07:02 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4666 121025 15:07:02 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:07:02 +0000
+4666 121025 15:07:02 INFO:   Processing by RController#update as JSON
+4666 121025 15:07:02 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated within&nbsp;", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:07:02 INFO: Username: (none)
+4666 121025 15:07:02 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+4666 121025 15:07:03 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:07:03 +0000
+4666 121025 15:07:03 INFO:   Processing by RController#update as JSON
+4666 121025 15:07:03 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated within the co", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:07:03 INFO: Username: (none)
+4666 121025 15:07:03 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+4666 121025 15:07:04 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:07:04 +0000
+4666 121025 15:07:04 INFO:   Processing by RController#update as JSON
+4666 121025 15:07:04 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated within the context", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:07:04 INFO: Username: (none)
+4666 121025 15:07:04 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+4666 121025 15:07:06 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:07:06 +0000
+4666 121025 15:07:06 INFO:   Processing by RController#update as JSON
+4666 121025 15:07:06 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated within the context re", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:07:06 INFO: Username: (none)
+4666 121025 15:07:06 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4666 121025 15:07:07 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:07:07 +0000
+4666 121025 15:07:07 INFO:   Processing by RController#update as JSON
+4666 121025 15:07:07 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated within the context r", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:07:07 INFO: Username: (none)
+4666 121025 15:07:07 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4666 121025 15:07:11 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:07:11 +0000
+4666 121025 15:07:11 INFO:   Processing by RController#update as JSON
+4666 121025 15:07:11 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated within the c", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:07:11 INFO: Username: (none)
+4666 121025 15:07:11 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4666 121025 15:07:11 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:07:11 +0000
+4666 121025 15:07:11 INFO:   Processing by RController#update as JSON
+4666 121025 15:07:11 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated within the mo", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:07:11 INFO: Username: (none)
+4666 121025 15:07:11 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+4666 121025 15:07:12 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:07:12 +0000
+4666 121025 15:07:12 INFO:   Processing by RController#update as JSON
+4666 121025 15:07:12 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated within the module&nbsp;", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:07:12 INFO: Username: (none)
+4666 121025 15:07:12 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4666 121025 15:07:12 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:07:12 +0000
+4666 121025 15:07:12 INFO:   Processing by RController#update as JSON
+4666 121025 15:07:12 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated within the module cont", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:07:12 INFO: Username: (none)
+4666 121025 15:07:12 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4666 121025 15:07:13 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:07:13 +0000
+4666 121025 15:07:13 INFO:   Processing by RController#update as JSON
+4666 121025 15:07:13 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated within the module context<div><br></div>", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:07:13 INFO: Username: (none)
+4666 121025 15:07:13 INFO: Completed 200 OK in 7ms (Views: 0.7ms)
+4666 121025 15:07:14 INFO: 
+
+Started PUT "/r/508954e4924ff81232000001" for 10.40.6.103 at 2012-10-25 15:07:14 +0000
+4666 121025 15:07:14 INFO:   Processing by RController#update as JSON
+4666 121025 15:07:14 INFO:   Parameters: {"type"=>"Alternative", "name"=>"models instantiated within the module context", "id"=>"508954e4924ff81232000001", "KnownUses"=>nil, "Background"=>nil, "Pros"=>nil, "Cons"=>nil}
+4666 121025 15:07:14 INFO: Username: (none)
+4666 121025 15:07:14 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4666 121025 15:07:17 INFO: 
+
+Started GET "/notify/508954e4924ff81232000001/name/blured" for 10.40.6.103 at 2012-10-25 15:07:17 +0000
+4666 121025 15:07:17 INFO:   Processing by NotifyController#notify as JSON
+4666 121025 15:07:17 INFO:   Parameters: {"id"=>"508954e4924ff81232000001", "attribute"=>"name", "event"=>"blured"}
+4666 121025 15:07:17 INFO: Username: (none)
+4666 121025 15:07:17 INFO: Rendered text template (0.0ms)
+4666 121025 15:07:17 INFO: Completed 200 OK in 3ms (Views: 0.9ms)
+4666 121025 15:35:49 INFO: 
+
+Started POST "/r" for 10.40.6.103 at 2012-10-25 15:35:49 +0000
+4666 121025 15:35:49 INFO:   Processing by RController#create as JSON
+4666 121025 15:35:49 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue"}
+4666 121025 15:35:49 INFO: Username: (none)
+4666 121025 15:35:49 INFO: Completed 200 OK in 14ms (Views: 0.9ms)
+4666 121025 15:35:49 INFO: 
+
+Started GET "/r/50895c55924ff8123a000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:35:49 +0000
+4666 121025 15:35:49 INFO:   Processing by RController#related_to as JSON
+4666 121025 15:35:49 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001", "type"=>"Alternative"}
+4666 121025 15:35:49 INFO: Username: (none)
+4666 121025 15:35:49 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4666 121025 15:35:49 INFO: 
+
+Started GET "/notify/50895c55924ff8123a000001/name/focused" for 10.40.6.103 at 2012-10-25 15:35:49 +0000
+4666 121025 15:35:49 INFO:   Processing by NotifyController#notify as JSON
+4666 121025 15:35:49 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001", "attribute"=>"name", "event"=>"focused"}
+4666 121025 15:35:49 INFO: Username: (none)
+4666 121025 15:35:49 INFO: Rendered text template (0.0ms)
+4666 121025 15:35:49 INFO: Completed 200 OK in 3ms (Views: 0.8ms)
+4666 121025 15:35:51 INFO: 
+
+Started GET "/r/50895c55924ff8123a000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:35:51 +0000
+4666 121025 15:35:51 INFO:   Processing by RController#related_to as JSON
+4666 121025 15:35:51 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001", "type"=>"Alternative"}
+4666 121025 15:35:51 INFO: Username: (none)
+4666 121025 15:35:51 INFO: Completed 200 OK in 10ms (Views: 0.2ms)
+4666 121025 15:35:51 INFO: 
+
+Started PUT "/r/50895c55924ff8123a000001" for 10.40.6.103 at 2012-10-25 15:35:51 +0000
+4666 121025 15:35:51 INFO:   Processing by RController#update as JSON
+4666 121025 15:35:51 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"gj", "id"=>"50895c55924ff8123a000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4666 121025 15:35:51 INFO: Username: (none)
+4666 121025 15:35:51 INFO: Completed 200 OK in 18ms (Views: 0.3ms)
+4666 121025 15:35:51 INFO: 
+
+Started GET "/r/50895c55924ff8123a000001" for 10.40.6.103 at 2012-10-25 15:35:51 +0000
+4666 121025 15:35:51 INFO:   Processing by RController#show as JSON
+4666 121025 15:35:51 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001"}
+4666 121025 15:35:51 INFO: Username: (none)
+4666 121025 15:35:51 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+4666 121025 15:35:51 INFO: 
+
+Started GET "/r/50895c55924ff8123a000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:35:51 +0000
+4666 121025 15:35:51 INFO:   Processing by RController#related_to as JSON
+4666 121025 15:35:51 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001", "type"=>"Alternative"}
+4666 121025 15:35:51 INFO: Username: (none)
+4666 121025 15:35:51 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+4666 121025 15:35:51 INFO: 
+
+Started PUT "/r/50895c55924ff8123a000001" for 10.40.6.103 at 2012-10-25 15:35:51 +0000
+4666 121025 15:35:51 INFO:   Processing by RController#update as JSON
+4666 121025 15:35:51 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"gjhgjhgj", "id"=>"50895c55924ff8123a000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4666 121025 15:35:51 INFO: Username: (none)
+4666 121025 15:35:51 INFO: Completed 200 OK in 10ms (Views: 0.4ms)
+4666 121025 15:35:51 INFO: 
+
+Started GET "/r/50895c55924ff8123a000001" for 10.40.6.103 at 2012-10-25 15:35:51 +0000
+4666 121025 15:35:51 INFO:   Processing by RController#show as JSON
+4666 121025 15:35:51 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001"}
+4666 121025 15:35:51 INFO: Username: (none)
+4666 121025 15:35:51 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4666 121025 15:35:52 INFO: 
+
+Started GET "/r/50895c55924ff8123a000001/related_to/Alternative" for 10.40.6.103 at 2012-10-25 15:35:52 +0000
+4666 121025 15:35:52 INFO:   Processing by RController#related_to as JSON
+4666 121025 15:35:52 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001", "type"=>"Alternative"}
+4666 121025 15:35:52 INFO: Username: (none)
+4666 121025 15:35:52 INFO: Completed 200 OK in 7ms (Views: 0.1ms)
+4666 121025 15:35:52 INFO: 
+
+Started PUT "/r/50895c55924ff8123a000001" for 10.40.6.103 at 2012-10-25 15:35:52 +0000
+4666 121025 15:35:52 INFO:   Processing by RController#update as JSON
+4666 121025 15:35:52 INFO:   Parameters: {"project_id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue", "name"=>"gjhgjhgjghjh", "id"=>"50895c55924ff8123a000001", "Background"=>nil, "Drivers"=>nil, "Status"=>nil, "Recommendation"=>nil}
+4666 121025 15:35:52 INFO: Username: (none)
+4666 121025 15:35:52 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4666 121025 15:35:52 INFO: 
+
+Started GET "/r/50895c55924ff8123a000001" for 10.40.6.103 at 2012-10-25 15:35:52 +0000
+4666 121025 15:35:52 INFO:   Processing by RController#show as JSON
+4666 121025 15:35:52 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001"}
+4666 121025 15:35:52 INFO: Username: (none)
+4666 121025 15:35:52 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+5077 121025 15:36:48 INFO: 
+
+Started GET "/notify/50895c55924ff8123a000001/name/blured" for 10.40.6.103 at 2012-10-25 15:36:48 +0000
+5077 121025 15:36:48 INFO:   Processing by NotifyController#notify as JSON
+5077 121025 15:36:48 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001", "attribute"=>"name", "event"=>"blured"}
+5077 121025 15:36:48 INFO: Username: (none)
+5077 121025 15:36:48 INFO: Rendered text template (0.0ms)
+5077 121025 15:36:48 INFO: Completed 200 OK in 44ms (Views: 35.0ms)
+5077 121025 16:26:03 INFO: 
+
+Started GET "/notify/50895c55924ff8123a000001/name/focused" for 10.40.6.103 at 2012-10-25 16:26:03 +0000
+5077 121025 16:26:03 INFO:   Processing by NotifyController#notify as JSON
+5077 121025 16:26:03 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001", "attribute"=>"name", "event"=>"focused"}
+5077 121025 16:26:03 INFO: Username: (none)
+5077 121025 16:26:03 INFO: Rendered text template (0.0ms)
+5077 121025 16:26:03 INFO: Completed 200 OK in 5ms (Views: 1.2ms)
+5077 121025 16:26:05 INFO: 
+
+Started GET "/notify/50895c55924ff8123a000001/name/blured" for 10.40.6.103 at 2012-10-25 16:26:05 +0000
+5077 121025 16:26:05 INFO:   Processing by NotifyController#notify as JSON
+5077 121025 16:26:05 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001", "attribute"=>"name", "event"=>"blured"}
+5077 121025 16:26:05 INFO: Username: (none)
+5077 121025 16:26:05 INFO: Rendered text template (0.0ms)
+5077 121025 16:26:05 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+5077 121025 16:27:33 INFO: 
+
+Started GET "/notify/50895c55924ff8123a000001/name/focused" for 10.40.6.103 at 2012-10-25 16:27:33 +0000
+5077 121025 16:27:33 INFO:   Processing by NotifyController#notify as JSON
+5077 121025 16:27:33 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001", "attribute"=>"name", "event"=>"focused"}
+5077 121025 16:27:33 INFO: Username: (none)
+5077 121025 16:27:33 INFO: Rendered text template (0.0ms)
+5077 121025 16:27:33 INFO: Completed 200 OK in 4ms (Views: 1.4ms)
+5077 121025 16:27:35 INFO: 
+
+Started GET "/notify/50895c55924ff8123a000001/name/blured" for 10.40.6.103 at 2012-10-25 16:27:35 +0000
+5077 121025 16:27:35 INFO:   Processing by NotifyController#notify as JSON
+5077 121025 16:27:35 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001", "attribute"=>"name", "event"=>"blured"}
+5077 121025 16:27:35 INFO: Username: (none)
+5077 121025 16:27:35 INFO: Rendered text template (0.0ms)
+5077 121025 16:27:35 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+5077 121025 16:27:38 INFO: 
+
+Started GET "/notify/50895c55924ff8123a000001/name/focused" for 10.40.6.103 at 2012-10-25 16:27:38 +0000
+5077 121025 16:27:38 INFO:   Processing by NotifyController#notify as JSON
+5077 121025 16:27:38 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001", "attribute"=>"name", "event"=>"focused"}
+5077 121025 16:27:38 INFO: Username: (none)
+5077 121025 16:27:38 INFO: Rendered text template (0.0ms)
+5077 121025 16:27:38 INFO: Completed 200 OK in 3ms (Views: 0.9ms)
+5077 121025 16:27:56 INFO: 
+
+Started GET "/notify/50895c55924ff8123a000001/name/blured" for 10.40.6.103 at 2012-10-25 16:27:56 +0000
+5077 121025 16:27:56 INFO:   Processing by NotifyController#notify as JSON
+5077 121025 16:27:56 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001", "attribute"=>"name", "event"=>"blured"}
+5077 121025 16:27:56 INFO: Username: (none)
+5077 121025 16:27:56 INFO: Rendered text template (0.0ms)
+5077 121025 16:27:56 INFO: Completed 200 OK in 4ms (Views: 1.4ms)

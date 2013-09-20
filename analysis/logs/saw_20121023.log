@@ -1,0 +1,946 @@
+2892 121023 17:03:53 INFO: 
+
+Started GET "/" for 10.40.6.103 at 2012-10-23 17:03:53 +0000
+2892 121023 17:03:53 INFO:   Processing by WelcomeController#index as HTML
+2892 121023 17:03:53 INFO: Username: (none)
+2892 121023 17:03:53 INFO: Rendered welcome/index.html.erb within layouts/application (2.5ms)
+2892 121023 17:03:53 INFO: Completed 200 OK in 32ms (Views: 30.4ms)
+2892 121023 17:04:03 INFO: 
+
+Started GET "/" for 10.40.6.103 at 2012-10-23 17:04:03 +0000
+2892 121023 17:04:03 INFO:   Processing by WelcomeController#index as HTML
+2892 121023 17:04:03 INFO: Username: (none)
+2892 121023 17:04:03 INFO: Rendered welcome/index.html.erb within layouts/application (0.5ms)
+2892 121023 17:04:03 INFO: Completed 200 OK in 2ms (Views: 1.4ms)
+2892 121023 17:04:04 INFO: 
+
+Started GET "/" for 10.40.6.103 at 2012-10-23 17:04:04 +0000
+2892 121023 17:04:04 INFO:   Processing by WelcomeController#index as HTML
+2892 121023 17:04:04 INFO: Username: (none)
+2892 121023 17:04:04 INFO: Rendered welcome/index.html.erb within layouts/application (0.5ms)
+2892 121023 17:04:04 INFO: Completed 200 OK in 2ms (Views: 1.3ms)
+2892 121023 17:04:09 INFO: 
+
+Started GET "/" for 10.40.6.103 at 2012-10-23 17:04:09 +0000
+2892 121023 17:04:09 INFO:   Processing by WelcomeController#index as HTML
+2892 121023 17:04:09 INFO: Username: (none)
+2892 121023 17:04:09 INFO: Rendered welcome/index.html.erb within layouts/application (0.5ms)
+2892 121023 17:04:09 INFO: Completed 200 OK in 2ms (Views: 1.2ms)
+3257 121023 17:07:02 INFO: 
+
+Started GET "/" for 10.40.6.103 at 2012-10-23 17:07:02 +0000
+3257 121023 17:07:03 INFO:   Processing by WelcomeController#index as HTML
+3257 121023 17:07:03 INFO: Username: (none)
+3257 121023 17:07:03 INFO: Rendered welcome/index.html.erb within layouts/application (2.5ms)
+3257 121023 17:07:03 INFO: Completed 200 OK in 11ms (Views: 8.5ms)
+3257 121023 17:07:03 INFO: 
+
+Started GET "/t" for 10.40.6.103 at 2012-10-23 17:07:03 +0000
+3257 121023 17:07:03 INFO:   Processing by TController#index as JSON
+3257 121023 17:07:03 INFO: Username: (none)
+3267 121023 17:07:04 INFO: 
+
+Started GET "/projects" for 10.40.6.103 at 2012-10-23 17:07:04 +0000
+3267 121023 17:07:04 INFO:   Processing by ProjectsController#index as JSON
+3267 121023 17:07:04 INFO: Username: (none)
+3257 121023 17:07:04 INFO: Completed 200 OK in 713ms (Views: 481.5ms)
+3267 121023 17:07:05 INFO: Completed 200 OK in 1078ms (Views: 7.7ms)
+3267 121023 17:07:07 INFO: 
+
+Started GET "/projects/4faa69f7924ff85c1200000b" for 10.40.6.103 at 2012-10-23 17:07:07 +0000
+3257 121023 17:07:07 INFO: 
+
+Started GET "/r/4faa69f7924ff85c1200000b/related_from/Issue" for 10.40.6.103 at 2012-10-23 17:07:07 +0000
+3267 121023 17:07:07 INFO:   Processing by ProjectsController#show as JSON
+3267 121023 17:07:07 INFO:   Parameters: {"id"=>"4faa69f7924ff85c1200000b"}
+3267 121023 17:07:07 INFO: Username: (none)
+3257 121023 17:07:07 INFO:   Processing by RController#related_from as JSON
+3257 121023 17:07:07 INFO:   Parameters: {"id"=>"4faa69f7924ff85c1200000b", "type"=>"Issue"}
+3257 121023 17:07:07 INFO: Username: (none)
+3267 121023 17:07:07 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+3257 121023 17:07:07 INFO: Completed 200 OK in 126ms (Views: 3.1ms)
+3257 121023 17:07:07 INFO: 
+
+Started GET "/r/4dafee31798e1c6c0b00001b/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:07 +0000
+3267 121023 17:07:07 INFO: 
+
+Started GET "/r/4daff05c798e1c6c0b00002c/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:07 +0000
+3257 121023 17:07:07 INFO:   Processing by RController#related_to as JSON
+3257 121023 17:07:07 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "type"=>"Alternative"}
+3257 121023 17:07:07 INFO: Username: (none)
+3267 121023 17:07:07 INFO:   Processing by RController#related_to as JSON
+3267 121023 17:07:07 INFO:   Parameters: {"id"=>"4daff05c798e1c6c0b00002c", "type"=>"Alternative"}
+3267 121023 17:07:07 INFO: Username: (none)
+3257 121023 17:07:07 INFO: Completed 200 OK in 22ms (Views: 0.5ms)
+3267 121023 17:07:07 INFO: Completed 200 OK in 24ms (Views: 4.0ms)
+3257 121023 17:07:07 INFO: 
+
+Started GET "/r/4daff338798e1c6dec000001/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:07 +0000
+3267 121023 17:07:07 INFO: 
+
+Started GET "/r/4db002b7798e1c6dec000064/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:07 +0000
+3267 121023 17:07:07 INFO:   Processing by RController#related_to as JSON
+3267 121023 17:07:07 INFO:   Parameters: {"id"=>"4db002b7798e1c6dec000064", "type"=>"Alternative"}
+3267 121023 17:07:07 INFO: Username: (none)
+3257 121023 17:07:07 INFO:   Processing by RController#related_to as JSON
+3257 121023 17:07:07 INFO:   Parameters: {"id"=>"4daff338798e1c6dec000001", "type"=>"Alternative"}
+3257 121023 17:07:07 INFO: Username: (none)
+3267 121023 17:07:07 INFO: Completed 200 OK in 26ms (Views: 0.8ms)
+3267 121023 17:07:07 INFO: 
+
+Started GET "/r/4daff1f5798e1c6c0b00003d/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:07 +0000
+3267 121023 17:07:07 INFO:   Processing by RController#related_to as JSON
+3267 121023 17:07:07 INFO:   Parameters: {"id"=>"4daff1f5798e1c6c0b00003d", "type"=>"Alternative"}
+3267 121023 17:07:07 INFO: Username: (none)
+3277 121023 17:07:07 INFO: 
+
+Started GET "/r/4daffaba798e1c6dec00003a/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:07 +0000
+3257 121023 17:07:07 INFO: Completed 200 OK in 35ms (Views: 0.9ms)
+3267 121023 17:07:07 INFO: Completed 200 OK in 14ms (Views: 0.4ms)
+3267 121023 17:07:07 INFO: 
+
+Started GET "/r/4dafef10798e1c6c0b000021/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:07 +0000
+3267 121023 17:07:07 INFO:   Processing by RController#related_to as JSON
+3267 121023 17:07:07 INFO:   Parameters: {"id"=>"4dafef10798e1c6c0b000021", "type"=>"Alternative"}
+3267 121023 17:07:07 INFO: Username: (none)
+3257 121023 17:07:07 INFO: 
+
+Started GET "/r/4daff477798e1c6dec00000d/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:07 +0000
+3257 121023 17:07:07 INFO:   Processing by RController#related_to as JSON
+3257 121023 17:07:07 INFO:   Parameters: {"id"=>"4daff477798e1c6dec00000d", "type"=>"Alternative"}
+3257 121023 17:07:07 INFO: Username: (none)
+3267 121023 17:07:07 INFO: Completed 200 OK in 18ms (Views: 0.5ms)
+3257 121023 17:07:07 INFO: Completed 200 OK in 16ms (Views: 0.5ms)
+3257 121023 17:07:07 INFO: 
+
+Started GET "/r/4daffe6a798e1c6dec000058/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:07 +0000
+3257 121023 17:07:07 INFO:   Processing by RController#related_to as JSON
+3257 121023 17:07:07 INFO:   Parameters: {"id"=>"4daffe6a798e1c6dec000058", "type"=>"Alternative"}
+3257 121023 17:07:07 INFO: Username: (none)
+3257 121023 17:07:07 INFO: Completed 200 OK in 54ms (Views: 0.3ms)
+3257 121023 17:07:07 INFO: 
+
+Started GET "/r/4e6e213a798e1c5aea000001/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:07 +0000
+3286 121023 17:07:07 INFO: 
+
+Started GET "/r/4daff753798e1c6dec000027/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:07 +0000
+3257 121023 17:07:07 INFO:   Processing by RController#related_to as JSON
+3257 121023 17:07:07 INFO:   Parameters: {"id"=>"4e6e213a798e1c5aea000001", "type"=>"Alternative"}
+3257 121023 17:07:07 INFO: Username: (none)
+3267 121023 17:07:07 INFO: 
+
+Started GET "/r/4daffe6f798e1c6dec00005a/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:07 +0000
+3267 121023 17:07:07 INFO:   Processing by RController#related_to as JSON
+3267 121023 17:07:07 INFO:   Parameters: {"id"=>"4daffe6f798e1c6dec00005a", "type"=>"Alternative"}
+3267 121023 17:07:07 INFO: Username: (none)
+3257 121023 17:07:07 INFO: Completed 200 OK in 43ms (Views: 0.5ms)
+3257 121023 17:07:07 INFO: 
+
+Started GET "/r/507d2598071aa5473b000001/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:07 +0000
+3257 121023 17:07:07 INFO:   Processing by RController#related_to as JSON
+3257 121023 17:07:07 INFO:   Parameters: {"id"=>"507d2598071aa5473b000001", "type"=>"Alternative"}
+3257 121023 17:07:07 INFO: Username: (none)
+3257 121023 17:07:07 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+3267 121023 17:07:07 INFO: Completed 200 OK in 30ms (Views: 0.8ms)
+3295 121023 17:07:08 INFO: 
+
+Started GET "/r/4e1eb808798e1c1aac000001/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:08 +0000
+3277 121023 17:07:08 INFO:   Processing by RController#related_to as JSON
+3277 121023 17:07:08 INFO:   Parameters: {"id"=>"4daffaba798e1c6dec00003a", "type"=>"Alternative"}
+3277 121023 17:07:08 INFO: Username: (none)
+3286 121023 17:07:08 INFO:   Processing by RController#related_to as JSON
+3286 121023 17:07:08 INFO:   Parameters: {"id"=>"4daff753798e1c6dec000027", "type"=>"Alternative"}
+3286 121023 17:07:08 INFO: Username: (none)
+3277 121023 17:07:08 INFO: Completed 200 OK in 34ms (Views: 7.9ms)
+3286 121023 17:07:08 INFO: Completed 200 OK in 25ms (Views: 4.7ms)
+3295 121023 17:07:08 INFO:   Processing by RController#related_to as JSON
+3295 121023 17:07:08 INFO:   Parameters: {"id"=>"4e1eb808798e1c1aac000001", "type"=>"Alternative"}
+3295 121023 17:07:08 INFO: Username: (none)
+3295 121023 17:07:08 INFO: Completed 200 OK in 28ms (Views: 4.7ms)
+3295 121023 17:07:11 INFO: 
+
+Started GET "/r/4dafee31798e1c6c0b00001b" for 10.40.6.103 at 2012-10-23 17:07:11 +0000
+3295 121023 17:07:11 INFO:   Processing by RController#show as JSON
+3295 121023 17:07:11 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b"}
+3295 121023 17:07:11 INFO: Username: (none)
+3295 121023 17:07:11 INFO: Completed 200 OK in 3ms (Views: 0.4ms)
+3295 121023 17:07:11 INFO: 
+
+Started GET "/r/4dafee31798e1c6c0b00001b/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:11 +0000
+3295 121023 17:07:11 INFO:   Processing by RController#related_to as JSON
+3295 121023 17:07:11 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "type"=>"Alternative"}
+3295 121023 17:07:11 INFO: Username: (none)
+3295 121023 17:07:11 INFO: Completed 200 OK in 11ms (Views: 0.4ms)
+3295 121023 17:07:14 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Drivers/focused" for 10.40.6.103 at 2012-10-23 17:07:14 +0000
+3295 121023 17:07:14 INFO:   Processing by NotifyController#notify as JSON
+3295 121023 17:07:14 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Drivers", "event"=>"focused"}
+3295 121023 17:07:14 INFO: Username: (none)
+3295 121023 17:07:14 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:14 INFO: Completed 200 OK in 23ms (Views: 17.1ms)
+3295 121023 17:07:15 INFO: 
+
+Started GET "/r/4dafee31798e1c6c0b00001b/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:15 +0000
+3286 121023 17:07:15 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Drivers/blured" for 10.40.6.103 at 2012-10-23 17:07:15 +0000
+3295 121023 17:07:15 INFO:   Processing by RController#related_to as JSON
+3295 121023 17:07:15 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "type"=>"Alternative"}
+3295 121023 17:07:15 INFO: Username: (none)
+3286 121023 17:07:15 INFO:   Processing by NotifyController#notify as JSON
+3286 121023 17:07:15 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Drivers", "event"=>"blured"}
+3286 121023 17:07:15 INFO: Username: (none)
+3286 121023 17:07:15 INFO: Rendered text template (0.0ms)
+3286 121023 17:07:15 INFO: Completed 200 OK in 10ms (Views: 4.7ms)
+3295 121023 17:07:15 INFO: Completed 200 OK in 17ms (Views: 0.5ms)
+3295 121023 17:07:17 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Drivers/focused" for 10.40.6.103 at 2012-10-23 17:07:17 +0000
+3295 121023 17:07:17 INFO:   Processing by NotifyController#notify as JSON
+3295 121023 17:07:17 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Drivers", "event"=>"focused"}
+3295 121023 17:07:17 INFO: Username: (none)
+3286 121023 17:07:17 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Drivers/blured" for 10.40.6.103 at 2012-10-23 17:07:17 +0000
+3295 121023 17:07:17 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:17 INFO: Completed 200 OK in 4ms (Views: 1.1ms)
+3286 121023 17:07:17 INFO:   Processing by NotifyController#notify as JSON
+3286 121023 17:07:17 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Drivers", "event"=>"blured"}
+3286 121023 17:07:17 INFO: Username: (none)
+3286 121023 17:07:17 INFO: Rendered text template (0.0ms)
+3286 121023 17:07:17 INFO: Completed 200 OK in 3ms (Views: 0.8ms)
+3286 121023 17:07:17 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/focused" for 10.40.6.103 at 2012-10-23 17:07:17 +0000
+3286 121023 17:07:17 INFO:   Processing by NotifyController#notify as JSON
+3286 121023 17:07:17 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"focused"}
+3286 121023 17:07:17 INFO: Username: (none)
+3286 121023 17:07:17 INFO: Rendered text template (0.0ms)
+3286 121023 17:07:17 INFO: Completed 200 OK in 3ms (Views: 0.8ms)
+3286 121023 17:07:18 INFO: 
+
+Started GET "/r/4dafee31798e1c6c0b00001b/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:18 +0000
+3295 121023 17:07:18 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/blured" for 10.40.6.103 at 2012-10-23 17:07:18 +0000
+3295 121023 17:07:18 INFO:   Processing by NotifyController#notify as JSON
+3295 121023 17:07:18 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"blured"}
+3295 121023 17:07:18 INFO: Username: (none)
+3286 121023 17:07:18 INFO:   Processing by RController#related_to as JSON
+3286 121023 17:07:18 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "type"=>"Alternative"}
+3286 121023 17:07:18 INFO: Username: (none)
+3295 121023 17:07:18 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:18 INFO: Completed 200 OK in 3ms (Views: 0.9ms)
+3295 121023 17:07:18 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Status/focused" for 10.40.6.103 at 2012-10-23 17:07:18 +0000
+3295 121023 17:07:18 INFO:   Processing by NotifyController#notify as JSON
+3295 121023 17:07:18 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Status", "event"=>"focused"}
+3295 121023 17:07:18 INFO: Username: (none)
+3295 121023 17:07:18 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:18 INFO: Completed 200 OK in 4ms (Views: 0.8ms)
+3286 121023 17:07:18 INFO: Completed 200 OK in 13ms (Views: 0.5ms)
+3286 121023 17:07:19 INFO: 
+
+Started GET "/r/4dafee31798e1c6c0b00001b/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:19 +0000
+3295 121023 17:07:19 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Status/blured" for 10.40.6.103 at 2012-10-23 17:07:19 +0000
+3295 121023 17:07:19 INFO:   Processing by NotifyController#notify as JSON
+3286 121023 17:07:19 INFO:   Processing by RController#related_to as JSON
+3295 121023 17:07:19 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Status", "event"=>"blured"}
+3286 121023 17:07:19 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "type"=>"Alternative"}
+3295 121023 17:07:19 INFO: Username: (none)
+3286 121023 17:07:19 INFO: Username: (none)
+3295 121023 17:07:19 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:19 INFO: Completed 200 OK in 3ms (Views: 0.5ms)
+3295 121023 17:07:19 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Recommendation/focused" for 10.40.6.103 at 2012-10-23 17:07:19 +0000
+3295 121023 17:07:19 INFO:   Processing by NotifyController#notify as JSON
+3295 121023 17:07:19 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Recommendation", "event"=>"focused"}
+3295 121023 17:07:19 INFO: Username: (none)
+3286 121023 17:07:19 INFO: Completed 200 OK in 12ms (Views: 0.4ms)
+3295 121023 17:07:19 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:19 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+3295 121023 17:07:20 INFO: 
+
+Started GET "/r/4dafee31798e1c6c0b00001b/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:07:20 +0000
+3286 121023 17:07:20 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Recommendation/blured" for 10.40.6.103 at 2012-10-23 17:07:20 +0000
+3295 121023 17:07:20 INFO:   Processing by RController#related_to as JSON
+3295 121023 17:07:20 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "type"=>"Alternative"}
+3295 121023 17:07:20 INFO: Username: (none)
+3286 121023 17:07:20 INFO:   Processing by NotifyController#notify as JSON
+3286 121023 17:07:20 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Recommendation", "event"=>"blured"}
+3286 121023 17:07:20 INFO: Username: (none)
+3277 121023 17:07:20 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Drivers/focused" for 10.40.6.103 at 2012-10-23 17:07:20 +0000
+3286 121023 17:07:20 INFO: Rendered text template (0.0ms)
+3286 121023 17:07:20 INFO: Completed 200 OK in 4ms (Views: 0.6ms)
+3277 121023 17:07:20 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:20 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Drivers", "event"=>"focused"}
+3277 121023 17:07:20 INFO: Username: (none)
+3295 121023 17:07:20 INFO: Completed 200 OK in 16ms (Views: 0.6ms)
+3277 121023 17:07:20 INFO: Rendered text template (0.1ms)
+3277 121023 17:07:20 INFO: Completed 200 OK in 11ms (Views: 4.1ms)
+3277 121023 17:07:21 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Drivers/blured" for 10.40.6.103 at 2012-10-23 17:07:21 +0000
+3277 121023 17:07:21 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:21 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Drivers", "event"=>"blured"}
+3277 121023 17:07:21 INFO: Username: (none)
+3277 121023 17:07:21 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:21 INFO: Completed 200 OK in 4ms (Views: 0.8ms)
+3277 121023 17:07:21 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/focused" for 10.40.6.103 at 2012-10-23 17:07:21 +0000
+3277 121023 17:07:21 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:21 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"focused"}
+3277 121023 17:07:21 INFO: Username: (none)
+3277 121023 17:07:21 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:21 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+3277 121023 17:07:22 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/blured" for 10.40.6.103 at 2012-10-23 17:07:22 +0000
+3277 121023 17:07:22 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:22 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"blured"}
+3277 121023 17:07:22 INFO: Username: (none)
+3277 121023 17:07:22 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:22 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+3277 121023 17:07:22 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/name/focused" for 10.40.6.103 at 2012-10-23 17:07:22 +0000
+3277 121023 17:07:22 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:22 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"name", "event"=>"focused"}
+3277 121023 17:07:22 INFO: Username: (none)
+3277 121023 17:07:22 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:22 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+3277 121023 17:07:23 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/name/blured" for 10.40.6.103 at 2012-10-23 17:07:23 +0000
+3295 121023 17:07:23 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/focused" for 10.40.6.103 at 2012-10-23 17:07:23 +0000
+3277 121023 17:07:23 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:23 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"name", "event"=>"blured"}
+3295 121023 17:07:23 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:23 INFO: Username: (none)
+3295 121023 17:07:23 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"focused"}
+3295 121023 17:07:23 INFO: Username: (none)
+3277 121023 17:07:23 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:23 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:23 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+3277 121023 17:07:23 INFO: Completed 200 OK in 3ms (Views: 0.8ms)
+3277 121023 17:07:24 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/blured" for 10.40.6.103 at 2012-10-23 17:07:24 +0000
+3295 121023 17:07:24 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Drivers/focused" for 10.40.6.103 at 2012-10-23 17:07:24 +0000
+3277 121023 17:07:24 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:24 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"blured"}
+3295 121023 17:07:24 INFO:   Processing by NotifyController#notify as JSON
+3295 121023 17:07:24 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Drivers", "event"=>"focused"}
+3277 121023 17:07:24 INFO: Username: (none)
+3295 121023 17:07:24 INFO: Username: (none)
+3277 121023 17:07:24 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:24 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:24 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+3295 121023 17:07:24 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+3295 121023 17:07:24 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Drivers/blured" for 10.40.6.103 at 2012-10-23 17:07:24 +0000
+3295 121023 17:07:24 INFO:   Processing by NotifyController#notify as JSON
+3295 121023 17:07:24 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Drivers", "event"=>"blured"}
+3295 121023 17:07:24 INFO: Username: (none)
+3277 121023 17:07:24 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Recommendation/focused" for 10.40.6.103 at 2012-10-23 17:07:24 +0000
+3277 121023 17:07:24 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:24 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Recommendation", "event"=>"focused"}
+3295 121023 17:07:24 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:24 INFO: Username: (none)
+3295 121023 17:07:24 INFO: Completed 200 OK in 3ms (Views: 1.0ms)
+3277 121023 17:07:24 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:24 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+3277 121023 17:07:25 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Recommendation/blured" for 10.40.6.103 at 2012-10-23 17:07:25 +0000
+3277 121023 17:07:25 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:25 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Recommendation", "event"=>"blured"}
+3277 121023 17:07:25 INFO: Username: (none)
+3277 121023 17:07:25 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:25 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+3277 121023 17:07:26 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Status/focused" for 10.40.6.103 at 2012-10-23 17:07:26 +0000
+3277 121023 17:07:26 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:26 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Status", "event"=>"focused"}
+3277 121023 17:07:26 INFO: Username: (none)
+3277 121023 17:07:26 INFO: Rendered text template (0.1ms)
+3277 121023 17:07:26 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+3277 121023 17:07:26 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Status/blured" for 10.40.6.103 at 2012-10-23 17:07:26 +0000
+3295 121023 17:07:26 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/focused" for 10.40.6.103 at 2012-10-23 17:07:26 +0000
+3277 121023 17:07:26 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:26 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Status", "event"=>"blured"}
+3295 121023 17:07:26 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:26 INFO: Username: (none)
+3295 121023 17:07:26 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"focused"}
+3295 121023 17:07:26 INFO: Username: (none)
+3277 121023 17:07:26 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:26 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:26 INFO: Completed 200 OK in 3ms (Views: 0.9ms)
+3295 121023 17:07:26 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+3295 121023 17:07:31 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/blured" for 10.40.6.103 at 2012-10-23 17:07:31 +0000
+3295 121023 17:07:31 INFO:   Processing by NotifyController#notify as JSON
+3295 121023 17:07:31 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"blured"}
+3277 121023 17:07:31 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Drivers/focused" for 10.40.6.103 at 2012-10-23 17:07:31 +0000
+3295 121023 17:07:31 INFO: Username: (none)
+3277 121023 17:07:31 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:31 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Drivers", "event"=>"focused"}
+3277 121023 17:07:31 INFO: Username: (none)
+3295 121023 17:07:31 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:31 INFO: Completed 200 OK in 3ms (Views: 0.8ms)
+3277 121023 17:07:31 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:31 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+3277 121023 17:07:32 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Drivers/blured" for 10.40.6.103 at 2012-10-23 17:07:32 +0000
+3277 121023 17:07:32 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:32 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Drivers", "event"=>"blured"}
+3277 121023 17:07:32 INFO: Username: (none)
+3277 121023 17:07:32 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:32 INFO: Completed 200 OK in 3ms (Views: 0.8ms)
+3277 121023 17:07:33 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/focused" for 10.40.6.103 at 2012-10-23 17:07:33 +0000
+3277 121023 17:07:33 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:33 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"focused"}
+3277 121023 17:07:33 INFO: Username: (none)
+3277 121023 17:07:33 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:33 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+3277 121023 17:07:34 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/blured" for 10.40.6.103 at 2012-10-23 17:07:34 +0000
+3277 121023 17:07:34 INFO:   Processing by NotifyController#notify as JSON
+3295 121023 17:07:34 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Status/focused" for 10.40.6.103 at 2012-10-23 17:07:34 +0000
+3277 121023 17:07:34 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"blured"}
+3277 121023 17:07:34 INFO: Username: (none)
+3295 121023 17:07:34 INFO:   Processing by NotifyController#notify as JSON
+3295 121023 17:07:34 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Status", "event"=>"focused"}
+3295 121023 17:07:34 INFO: Username: (none)
+3277 121023 17:07:34 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:34 INFO: Completed 200 OK in 3ms (Views: 0.8ms)
+3295 121023 17:07:34 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:34 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+3295 121023 17:07:35 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Status/blured" for 10.40.6.103 at 2012-10-23 17:07:35 +0000
+3277 121023 17:07:35 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Recommendation/focused" for 10.40.6.103 at 2012-10-23 17:07:35 +0000
+3295 121023 17:07:35 INFO:   Processing by NotifyController#notify as JSON
+3295 121023 17:07:35 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Status", "event"=>"blured"}
+3277 121023 17:07:35 INFO:   Processing by NotifyController#notify as JSON
+3295 121023 17:07:35 INFO: Username: (none)
+3277 121023 17:07:35 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Recommendation", "event"=>"focused"}
+3277 121023 17:07:35 INFO: Username: (none)
+3277 121023 17:07:35 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:35 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:35 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+3295 121023 17:07:35 INFO: Completed 200 OK in 4ms (Views: 1.0ms)
+3295 121023 17:07:36 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Recommendation/blured" for 10.40.6.103 at 2012-10-23 17:07:36 +0000
+3277 121023 17:07:36 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Status/focused" for 10.40.6.103 at 2012-10-23 17:07:36 +0000
+3295 121023 17:07:36 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:36 INFO:   Processing by NotifyController#notify as JSON
+3295 121023 17:07:36 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Recommendation", "event"=>"blured"}
+3277 121023 17:07:36 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Status", "event"=>"focused"}
+3295 121023 17:07:36 INFO: Username: (none)
+3277 121023 17:07:36 INFO: Username: (none)
+3277 121023 17:07:36 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:36 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:36 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+3277 121023 17:07:36 INFO: Completed 200 OK in 3ms (Views: 0.9ms)
+3277 121023 17:07:36 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Status/blured" for 10.40.6.103 at 2012-10-23 17:07:36 +0000
+3295 121023 17:07:36 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Drivers/focused" for 10.40.6.103 at 2012-10-23 17:07:36 +0000
+3277 121023 17:07:36 INFO:   Processing by NotifyController#notify as JSON
+3295 121023 17:07:36 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:36 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Status", "event"=>"blured"}
+3295 121023 17:07:36 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Drivers", "event"=>"focused"}
+3277 121023 17:07:36 INFO: Username: (none)
+3295 121023 17:07:36 INFO: Username: (none)
+3295 121023 17:07:36 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:36 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+3277 121023 17:07:36 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:36 INFO: Completed 200 OK in 5ms (Views: 1.0ms)
+3277 121023 17:07:37 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Drivers/blured" for 10.40.6.103 at 2012-10-23 17:07:37 +0000
+3277 121023 17:07:37 INFO:   Processing by NotifyController#notify as JSON
+3295 121023 17:07:37 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/focused" for 10.40.6.103 at 2012-10-23 17:07:37 +0000
+3277 121023 17:07:37 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Drivers", "event"=>"blured"}
+3277 121023 17:07:37 INFO: Username: (none)
+3295 121023 17:07:37 INFO:   Processing by NotifyController#notify as JSON
+3295 121023 17:07:37 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"focused"}
+3295 121023 17:07:37 INFO: Username: (none)
+3295 121023 17:07:37 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:37 INFO: Rendered text template (0.0ms)
+3295 121023 17:07:37 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+3277 121023 17:07:37 INFO: Completed 200 OK in 4ms (Views: 0.9ms)
+3277 121023 17:07:39 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/blured" for 10.40.6.103 at 2012-10-23 17:07:39 +0000
+3277 121023 17:07:39 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:39 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"blured"}
+3277 121023 17:07:39 INFO: Username: (none)
+3277 121023 17:07:39 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:39 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+3277 121023 17:07:40 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/focused" for 10.40.6.103 at 2012-10-23 17:07:40 +0000
+3277 121023 17:07:40 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:40 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"focused"}
+3277 121023 17:07:40 INFO: Username: (none)
+3277 121023 17:07:40 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:40 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+3277 121023 17:07:40 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/blured" for 10.40.6.103 at 2012-10-23 17:07:40 +0000
+3277 121023 17:07:40 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:07:40 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"blured"}
+3277 121023 17:07:40 INFO: Username: (none)
+3277 121023 17:07:40 INFO: Rendered text template (0.0ms)
+3277 121023 17:07:40 INFO: Completed 200 OK in 4ms (Views: 0.7ms)
+3277 121023 17:15:17 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/focused" for 10.40.6.103 at 2012-10-23 17:15:17 +0000
+3277 121023 17:15:17 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:15:17 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"focused"}
+3277 121023 17:15:17 INFO: Username: (none)
+3277 121023 17:15:17 INFO: Rendered text template (0.0ms)
+3277 121023 17:15:17 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+3277 121023 17:16:01 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/blured" for 10.40.6.103 at 2012-10-23 17:16:01 +0000
+3277 121023 17:16:01 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:16:01 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"blured"}
+3277 121023 17:16:01 INFO: Username: (none)
+3277 121023 17:16:01 INFO: Rendered text template (0.0ms)
+3277 121023 17:16:01 INFO: Completed 200 OK in 3ms (Views: 0.8ms)
+3277 121023 17:16:10 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/focused" for 10.40.6.103 at 2012-10-23 17:16:10 +0000
+3277 121023 17:16:10 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:16:10 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"focused"}
+3277 121023 17:16:10 INFO: Username: (none)
+3277 121023 17:16:10 INFO: Rendered text template (0.0ms)
+3277 121023 17:16:10 INFO: Completed 200 OK in 4ms (Views: 0.7ms)
+3277 121023 17:16:11 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/blured" for 10.40.6.103 at 2012-10-23 17:16:11 +0000
+3277 121023 17:16:11 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:16:11 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"blured"}
+3277 121023 17:16:11 INFO: Username: (none)
+3277 121023 17:16:11 INFO: Rendered text template (0.0ms)
+3277 121023 17:16:11 INFO: Completed 200 OK in 3ms (Views: 1.0ms)
+3277 121023 17:16:14 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/focused" for 10.40.6.103 at 2012-10-23 17:16:14 +0000
+3277 121023 17:16:14 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:16:14 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"focused"}
+3277 121023 17:16:14 INFO: Username: (none)
+3277 121023 17:16:14 INFO: Rendered text template (0.0ms)
+3277 121023 17:16:14 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+3277 121023 17:16:17 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/blured" for 10.40.6.103 at 2012-10-23 17:16:17 +0000
+3277 121023 17:16:17 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:16:17 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"blured"}
+3277 121023 17:16:17 INFO: Username: (none)
+3277 121023 17:16:17 INFO: Rendered text template (0.0ms)
+3277 121023 17:16:17 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+3277 121023 17:16:40 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/focused" for 10.40.6.103 at 2012-10-23 17:16:40 +0000
+3277 121023 17:16:40 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:16:40 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"focused"}
+3277 121023 17:16:40 INFO: Username: (none)
+3277 121023 17:16:40 INFO: Rendered text template (0.0ms)
+3277 121023 17:16:40 INFO: Completed 200 OK in 3ms (Views: 0.8ms)
+3277 121023 17:16:41 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/blured" for 10.40.6.103 at 2012-10-23 17:16:41 +0000
+3277 121023 17:16:41 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:16:41 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"blured"}
+3277 121023 17:16:41 INFO: Username: (none)
+3277 121023 17:16:41 INFO: Rendered text template (0.0ms)
+3277 121023 17:16:41 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+3277 121023 17:18:49 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/focused" for 10.40.6.103 at 2012-10-23 17:18:49 +0000
+3277 121023 17:18:49 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:18:49 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"focused"}
+3277 121023 17:18:49 INFO: Username: (none)
+3277 121023 17:18:49 INFO: Rendered text template (0.0ms)
+3277 121023 17:18:49 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+3277 121023 17:18:49 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/blured" for 10.40.6.103 at 2012-10-23 17:18:49 +0000
+3277 121023 17:18:49 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:18:49 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"blured"}
+3277 121023 17:18:49 INFO: Username: (none)
+3277 121023 17:18:49 INFO: Rendered text template (0.0ms)
+3277 121023 17:18:49 INFO: Completed 200 OK in 3ms (Views: 0.6ms)
+3277 121023 17:19:17 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/focused" for 10.40.6.103 at 2012-10-23 17:19:17 +0000
+3277 121023 17:19:17 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:19:17 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"focused"}
+3277 121023 17:19:17 INFO: Username: (none)
+3277 121023 17:19:17 INFO: Rendered text template (0.1ms)
+3277 121023 17:19:17 INFO: Completed 200 OK in 3ms (Views: 0.9ms)
+3277 121023 17:19:32 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/blured" for 10.40.6.103 at 2012-10-23 17:19:32 +0000
+3277 121023 17:19:32 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:19:32 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"blured"}
+3277 121023 17:19:32 INFO: Username: (none)
+3277 121023 17:19:32 INFO: Rendered text template (0.0ms)
+3277 121023 17:19:32 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+3277 121023 17:19:51 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/focused" for 10.40.6.103 at 2012-10-23 17:19:51 +0000
+3277 121023 17:19:51 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:19:51 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"focused"}
+3277 121023 17:19:51 INFO: Username: (none)
+3277 121023 17:19:51 INFO: Rendered text template (0.0ms)
+3277 121023 17:19:51 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+3277 121023 17:20:02 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/blured" for 10.40.6.103 at 2012-10-23 17:20:02 +0000
+3277 121023 17:20:02 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:20:02 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"blured"}
+3277 121023 17:20:02 INFO: Username: (none)
+3277 121023 17:20:02 INFO: Rendered text template (0.0ms)
+3277 121023 17:20:02 INFO: Completed 200 OK in 46ms (Views: 1.3ms)
+3277 121023 17:21:34 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/focused" for 10.40.6.103 at 2012-10-23 17:21:34 +0000
+3277 121023 17:21:34 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:21:34 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"focused"}
+3277 121023 17:21:34 INFO: Username: (none)
+3277 121023 17:21:34 INFO: Rendered text template (0.0ms)
+3277 121023 17:21:34 INFO: Completed 200 OK in 4ms (Views: 0.7ms)
+3277 121023 17:21:40 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/blured" for 10.40.6.103 at 2012-10-23 17:21:40 +0000
+3277 121023 17:21:40 INFO:   Processing by NotifyController#notify as JSON
+3277 121023 17:21:40 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"blured"}
+3277 121023 17:21:40 INFO: Username: (none)
+3277 121023 17:21:40 INFO: Rendered text template (0.0ms)
+3277 121023 17:21:40 INFO: Completed 200 OK in 3ms (Views: 0.8ms)
+3277 121023 17:21:47 INFO: 
+
+Started GET "/projects" for 10.40.6.103 at 2012-10-23 17:21:47 +0000
+3277 121023 17:21:47 INFO:   Processing by ProjectsController#index as JSON
+3277 121023 17:21:47 INFO: Username: (none)
+3277 121023 17:21:48 INFO: Completed 200 OK in 1065ms (Views: 3.8ms)
+3277 121023 17:21:50 INFO: 
+
+Started GET "/r/4dafee31798e1c6c0b00001b" for 10.40.6.103 at 2012-10-23 17:21:50 +0000
+3277 121023 17:21:50 INFO:   Processing by RController#show as JSON
+3277 121023 17:21:50 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b"}
+3277 121023 17:21:50 INFO: Username: (none)
+3277 121023 17:21:50 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+3277 121023 17:22:00 INFO: 
+
+Started GET "/projects/4faa69f7924ff85c1200000b" for 10.40.6.103 at 2012-10-23 17:22:00 +0000
+3277 121023 17:22:00 INFO:   Processing by ProjectsController#show as JSON
+3277 121023 17:22:00 INFO:   Parameters: {"id"=>"4faa69f7924ff85c1200000b"}
+3277 121023 17:22:00 INFO: Username: (none)
+3277 121023 17:22:00 INFO: Completed 200 OK in 4ms (Views: 0.2ms)
+3277 121023 17:22:00 INFO: 
+
+Started GET "/r/4faa69f7924ff85c1200000b/related_from/Issue" for 10.40.6.103 at 2012-10-23 17:22:00 +0000
+3277 121023 17:22:00 INFO:   Processing by RController#related_from as JSON
+3277 121023 17:22:00 INFO:   Parameters: {"id"=>"4faa69f7924ff85c1200000b", "type"=>"Issue"}
+3277 121023 17:22:00 INFO: Username: (none)
+3277 121023 17:22:00 INFO: Completed 200 OK in 182ms (Views: 1.9ms)
+3277 121023 17:22:00 INFO: 
+
+Started GET "/r/4dafee31798e1c6c0b00001b" for 10.40.6.103 at 2012-10-23 17:22:00 +0000
+3277 121023 17:22:00 INFO:   Processing by RController#show as JSON
+3277 121023 17:22:00 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b"}
+3277 121023 17:22:00 INFO: Username: (none)
+3277 121023 17:22:00 INFO: Completed 200 OK in 3ms (Views: 0.2ms)
+3277 121023 17:22:04 INFO: 
+
+Started GET "/" for 10.40.6.103 at 2012-10-23 17:22:04 +0000
+3277 121023 17:22:04 INFO:   Processing by WelcomeController#index as HTML
+3277 121023 17:22:04 INFO: Username: (none)
+3277 121023 17:22:04 INFO: Rendered welcome/index.html.erb within layouts/application (2.4ms)
+3277 121023 17:22:04 INFO: Completed 200 OK in 8ms (Views: 7.0ms)
+3277 121023 17:22:04 INFO: 
+
+Started GET "/t" for 10.40.6.103 at 2012-10-23 17:22:04 +0000
+3277 121023 17:22:04 INFO:   Processing by TController#index as JSON
+3277 121023 17:22:04 INFO: Username: (none)
+3503 121023 17:22:05 INFO: 
+
+Started GET "/projects/4faa69f7924ff85c1200000b" for 10.40.6.103 at 2012-10-23 17:22:05 +0000
+3512 121023 17:22:05 INFO: 
+
+Started GET "/r/4faa69f7924ff85c1200000b/related_from/Issue" for 10.40.6.103 at 2012-10-23 17:22:05 +0000
+3520 121023 17:22:05 INFO: 
+
+Started GET "/r/4dafee31798e1c6c0b00001b" for 10.40.6.103 at 2012-10-23 17:22:05 +0000
+3277 121023 17:22:05 INFO: Completed 200 OK in 693ms (Views: 580.3ms)
+3503 121023 17:22:06 INFO:   Processing by ProjectsController#show as JSON
+3503 121023 17:22:06 INFO:   Parameters: {"id"=>"4faa69f7924ff85c1200000b"}
+3503 121023 17:22:06 INFO: Username: (none)
+3512 121023 17:22:06 INFO:   Processing by RController#related_from as JSON
+3503 121023 17:22:06 INFO: Completed 200 OK in 17ms (Views: 7.3ms)
+3512 121023 17:22:06 INFO:   Parameters: {"id"=>"4faa69f7924ff85c1200000b", "type"=>"Issue"}
+3512 121023 17:22:06 INFO: Username: (none)
+3520 121023 17:22:06 INFO:   Processing by RController#show as JSON
+3520 121023 17:22:06 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b"}
+3520 121023 17:22:06 INFO: Username: (none)
+3520 121023 17:22:06 INFO: Completed 200 OK in 13ms (Views: 5.2ms)
+3520 121023 17:22:06 INFO: 
+
+Started GET "/r/4dafee31798e1c6c0b00001b/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:06 +0000
+3520 121023 17:22:06 INFO:   Processing by RController#related_to as JSON
+3520 121023 17:22:06 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "type"=>"Alternative"}
+3520 121023 17:22:06 INFO: Username: (none)
+3520 121023 17:22:06 INFO: Completed 200 OK in 13ms (Views: 0.6ms)
+3512 121023 17:22:06 INFO: Completed 200 OK in 142ms (Views: 5.7ms)
+3512 121023 17:22:06 INFO: 
+
+Started GET "/r/4dafee31798e1c6c0b00001b/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:06 +0000
+3520 121023 17:22:06 INFO: 
+
+Started GET "/r/4daff05c798e1c6c0b00002c/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:06 +0000
+3503 121023 17:22:06 INFO: 
+
+Started GET "/r/4daff1f5798e1c6c0b00003d/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:06 +0000
+3520 121023 17:22:06 INFO:   Processing by RController#related_to as JSON
+3520 121023 17:22:06 INFO:   Parameters: {"id"=>"4daff05c798e1c6c0b00002c", "type"=>"Alternative"}
+3503 121023 17:22:06 INFO:   Processing by RController#related_to as JSON
+3520 121023 17:22:06 INFO: Username: (none)
+3503 121023 17:22:06 INFO:   Parameters: {"id"=>"4daff1f5798e1c6c0b00003d", "type"=>"Alternative"}
+3503 121023 17:22:06 INFO: Username: (none)
+3512 121023 17:22:06 INFO:   Processing by RController#related_to as JSON
+3512 121023 17:22:06 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "type"=>"Alternative"}
+3512 121023 17:22:06 INFO: Username: (none)
+3277 121023 17:22:06 INFO: 
+
+Started GET "/r/4daff338798e1c6dec000001/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:06 +0000
+3277 121023 17:22:06 INFO:   Processing by RController#related_to as JSON
+3277 121023 17:22:06 INFO:   Parameters: {"id"=>"4daff338798e1c6dec000001", "type"=>"Alternative"}
+3277 121023 17:22:06 INFO: Username: (none)
+3520 121023 17:22:06 INFO: Completed 200 OK in 20ms (Views: 0.5ms)
+3520 121023 17:22:06 INFO: 
+
+Started GET "/r/4daffaba798e1c6dec00003a/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:06 +0000
+3520 121023 17:22:06 INFO:   Processing by RController#related_to as JSON
+3520 121023 17:22:06 INFO:   Parameters: {"id"=>"4daffaba798e1c6dec00003a", "type"=>"Alternative"}
+3520 121023 17:22:06 INFO: Username: (none)
+3512 121023 17:22:06 INFO: Completed 200 OK in 24ms (Views: 0.6ms)
+3512 121023 17:22:06 INFO: 
+
+Started GET "/r/4db002b7798e1c6dec000064/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:06 +0000
+3512 121023 17:22:06 INFO:   Processing by RController#related_to as JSON
+3512 121023 17:22:06 INFO:   Parameters: {"id"=>"4db002b7798e1c6dec000064", "type"=>"Alternative"}
+3512 121023 17:22:06 INFO: Username: (none)
+3503 121023 17:22:06 INFO: Completed 200 OK in 32ms (Views: 3.0ms)
+3520 121023 17:22:06 INFO: Completed 200 OK in 18ms (Views: 0.5ms)
+3520 121023 17:22:06 INFO: 
+
+Started GET "/r/4dafef10798e1c6c0b000021/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:06 +0000
+3503 121023 17:22:06 INFO: 
+
+Started GET "/r/4daff477798e1c6dec00000d/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:06 +0000
+3520 121023 17:22:06 INFO:   Processing by RController#related_to as JSON
+3520 121023 17:22:06 INFO:   Parameters: {"id"=>"4dafef10798e1c6c0b000021", "type"=>"Alternative"}
+3520 121023 17:22:06 INFO: Username: (none)
+3277 121023 17:22:06 INFO: Completed 200 OK in 42ms (Views: 1.3ms)
+3503 121023 17:22:06 INFO:   Processing by RController#related_to as JSON
+3503 121023 17:22:06 INFO:   Parameters: {"id"=>"4daff477798e1c6dec00000d", "type"=>"Alternative"}
+3503 121023 17:22:06 INFO: Username: (none)
+3277 121023 17:22:06 INFO: 
+
+Started GET "/r/4daff753798e1c6dec000027/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:06 +0000
+3277 121023 17:22:06 INFO:   Processing by RController#related_to as JSON
+3277 121023 17:22:06 INFO:   Parameters: {"id"=>"4daff753798e1c6dec000027", "type"=>"Alternative"}
+3277 121023 17:22:06 INFO: Username: (none)
+3512 121023 17:22:06 INFO: Completed 200 OK in 28ms (Views: 0.7ms)
+3512 121023 17:22:06 INFO: 
+
+Started GET "/r/4daffe6f798e1c6dec00005a/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:06 +0000
+3512 121023 17:22:06 INFO:   Processing by RController#related_to as JSON
+3512 121023 17:22:06 INFO:   Parameters: {"id"=>"4daffe6f798e1c6dec00005a", "type"=>"Alternative"}
+3512 121023 17:22:06 INFO: Username: (none)
+3520 121023 17:22:06 INFO: Completed 200 OK in 26ms (Views: 0.4ms)
+3520 121023 17:22:06 INFO: 
+
+Started GET "/r/4e6e213a798e1c5aea000001/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:06 +0000
+3520 121023 17:22:06 INFO:   Processing by RController#related_to as JSON
+3520 121023 17:22:06 INFO:   Parameters: {"id"=>"4e6e213a798e1c5aea000001", "type"=>"Alternative"}
+3520 121023 17:22:06 INFO: Username: (none)
+3503 121023 17:22:06 INFO: Completed 200 OK in 22ms (Views: 0.4ms)
+3503 121023 17:22:06 INFO: 
+
+Started GET "/r/4e1eb808798e1c1aac000001/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:06 +0000
+3503 121023 17:22:06 INFO:   Processing by RController#related_to as JSON
+3503 121023 17:22:06 INFO:   Parameters: {"id"=>"4e1eb808798e1c1aac000001", "type"=>"Alternative"}
+3503 121023 17:22:06 INFO: Username: (none)
+3277 121023 17:22:06 INFO: Completed 200 OK in 31ms (Views: 0.9ms)
+3512 121023 17:22:06 INFO: Completed 200 OK in 29ms (Views: 0.5ms)
+3277 121023 17:22:06 INFO: 
+
+Started GET "/r/507d2598071aa5473b000001/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:06 +0000
+3277 121023 17:22:06 INFO:   Processing by RController#related_to as JSON
+3277 121023 17:22:06 INFO:   Parameters: {"id"=>"507d2598071aa5473b000001", "type"=>"Alternative"}
+3277 121023 17:22:06 INFO: Username: (none)
+3503 121023 17:22:06 INFO: Completed 200 OK in 28ms (Views: 0.7ms)
+3277 121023 17:22:06 INFO: Completed 200 OK in 14ms (Views: 0.2ms)
+3520 121023 17:22:06 INFO: Completed 200 OK in 53ms (Views: 0.5ms)
+3530 121023 17:22:06 INFO: 
+
+Started GET "/r/4daffe6a798e1c6dec000058/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:06 +0000
+3530 121023 17:22:06 INFO:   Processing by RController#related_to as JSON
+3530 121023 17:22:06 INFO:   Parameters: {"id"=>"4daffe6a798e1c6dec000058", "type"=>"Alternative"}
+3530 121023 17:22:06 INFO: Username: (none)
+3530 121023 17:22:06 INFO: Completed 200 OK in 22ms (Views: 4.7ms)
+3530 121023 17:22:10 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/name/focused" for 10.40.6.103 at 2012-10-23 17:22:10 +0000
+3530 121023 17:22:10 INFO:   Processing by NotifyController#notify as JSON
+3530 121023 17:22:10 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"name", "event"=>"focused"}
+3530 121023 17:22:10 INFO: Username: (none)
+3530 121023 17:22:10 INFO: Rendered text template (0.0ms)
+3530 121023 17:22:10 INFO: Completed 200 OK in 12ms (Views: 4.3ms)
+3530 121023 17:22:11 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/name/blured" for 10.40.6.103 at 2012-10-23 17:22:11 +0000
+3530 121023 17:22:11 INFO:   Processing by NotifyController#notify as JSON
+3530 121023 17:22:11 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"name", "event"=>"blured"}
+3530 121023 17:22:11 INFO: Username: (none)
+3530 121023 17:22:11 INFO: Rendered text template (0.0ms)
+3530 121023 17:22:11 INFO: Completed 200 OK in 6ms (Views: 1.0ms)
+3539 121023 17:22:11 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/focused" for 10.40.6.103 at 2012-10-23 17:22:11 +0000
+3539 121023 17:22:11 INFO:   Processing by NotifyController#notify as JSON
+3539 121023 17:22:11 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"focused"}
+3539 121023 17:22:11 INFO: Username: (none)
+3539 121023 17:22:11 INFO: Rendered text template (0.0ms)
+3539 121023 17:22:11 INFO: Completed 200 OK in 15ms (Views: 4.4ms)
+3539 121023 17:22:11 INFO: 
+
+Started GET "/r/4dafee31798e1c6c0b00001b/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:11 +0000
+3530 121023 17:22:11 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Background/blured" for 10.40.6.103 at 2012-10-23 17:22:11 +0000
+3530 121023 17:22:11 INFO:   Processing by NotifyController#notify as JSON
+3530 121023 17:22:11 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Background", "event"=>"blured"}
+3530 121023 17:22:11 INFO: Username: (none)
+3539 121023 17:22:11 INFO:   Processing by RController#related_to as JSON
+3539 121023 17:22:11 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "type"=>"Alternative"}
+3539 121023 17:22:11 INFO: Username: (none)
+3530 121023 17:22:11 INFO: Rendered text template (0.0ms)
+3530 121023 17:22:11 INFO: Completed 200 OK in 19ms (Views: 13.8ms)
+3520 121023 17:22:11 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Drivers/focused" for 10.40.6.103 at 2012-10-23 17:22:11 +0000
+3520 121023 17:22:11 INFO:   Processing by NotifyController#notify as JSON
+3520 121023 17:22:11 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Drivers", "event"=>"focused"}
+3520 121023 17:22:11 INFO: Username: (none)
+3520 121023 17:22:11 INFO: Rendered text template (0.3ms)
+3520 121023 17:22:11 INFO: Completed 200 OK in 14ms (Views: 5.8ms)
+3539 121023 17:22:11 INFO: Completed 200 OK in 43ms (Views: 5.5ms)
+3539 121023 17:22:12 INFO: 
+
+Started GET "/r/4dafee31798e1c6c0b00001b/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:12 +0000
+3520 121023 17:22:12 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Drivers/blured" for 10.40.6.103 at 2012-10-23 17:22:12 +0000
+3520 121023 17:22:12 INFO:   Processing by NotifyController#notify as JSON
+3539 121023 17:22:12 INFO:   Processing by RController#related_to as JSON
+3520 121023 17:22:12 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Drivers", "event"=>"blured"}
+3539 121023 17:22:12 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "type"=>"Alternative"}
+3539 121023 17:22:12 INFO: Username: (none)
+3520 121023 17:22:12 INFO: Username: (none)
+3530 121023 17:22:12 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Status/focused" for 10.40.6.103 at 2012-10-23 17:22:12 +0000
+3530 121023 17:22:12 INFO:   Processing by NotifyController#notify as JSON
+3520 121023 17:22:12 INFO: Rendered text template (0.0ms)
+3520 121023 17:22:12 INFO: Completed 200 OK in 4ms (Views: 1.5ms)
+3530 121023 17:22:12 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Status", "event"=>"focused"}
+3530 121023 17:22:12 INFO: Username: (none)
+3530 121023 17:22:12 INFO: Rendered text template (0.0ms)
+3530 121023 17:22:12 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+3539 121023 17:22:12 INFO: Completed 200 OK in 13ms (Views: 0.4ms)
+3539 121023 17:22:13 INFO: 
+
+Started GET "/r/4dafee31798e1c6c0b00001b/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:13 +0000
+3530 121023 17:22:13 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Status/blured" for 10.40.6.103 at 2012-10-23 17:22:13 +0000
+3539 121023 17:22:13 INFO:   Processing by RController#related_to as JSON
+3530 121023 17:22:13 INFO:   Processing by NotifyController#notify as JSON
+3539 121023 17:22:13 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "type"=>"Alternative"}
+3530 121023 17:22:13 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Status", "event"=>"blured"}
+3539 121023 17:22:13 INFO: Username: (none)
+3530 121023 17:22:13 INFO: Username: (none)
+3530 121023 17:22:13 INFO: Rendered text template (0.0ms)
+3520 121023 17:22:13 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Recommendation/focused" for 10.40.6.103 at 2012-10-23 17:22:13 +0000
+3530 121023 17:22:13 INFO: Completed 200 OK in 3ms (Views: 0.8ms)
+3520 121023 17:22:13 INFO:   Processing by NotifyController#notify as JSON
+3520 121023 17:22:13 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Recommendation", "event"=>"focused"}
+3520 121023 17:22:13 INFO: Username: (none)
+3520 121023 17:22:13 INFO: Rendered text template (0.0ms)
+3520 121023 17:22:13 INFO: Completed 200 OK in 3ms (Views: 0.5ms)
+3539 121023 17:22:13 INFO: Completed 200 OK in 13ms (Views: 0.4ms)
+3539 121023 17:22:21 INFO: 
+
+Started GET "/r/4dafee31798e1c6c0b00001b/related_to/Alternative" for 10.40.6.103 at 2012-10-23 17:22:21 +0000
+3520 121023 17:22:21 INFO: 
+
+Started GET "/notify/4dafee31798e1c6c0b00001b/Recommendation/blured" for 10.40.6.103 at 2012-10-23 17:22:21 +0000
+3539 121023 17:22:21 INFO:   Processing by RController#related_to as JSON
+3539 121023 17:22:21 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "type"=>"Alternative"}
+3520 121023 17:22:21 INFO:   Processing by NotifyController#notify as JSON
+3539 121023 17:22:21 INFO: Username: (none)
+3520 121023 17:22:21 INFO:   Parameters: {"id"=>"4dafee31798e1c6c0b00001b", "attribute"=>"Recommendation", "event"=>"blured"}
+3520 121023 17:22:21 INFO: Username: (none)
+3520 121023 17:22:21 INFO: Rendered text template (0.0ms)
+3520 121023 17:22:21 INFO: Completed 200 OK in 3ms (Views: 0.7ms)
+3539 121023 17:22:21 INFO: Completed 200 OK in 11ms (Views: 0.4ms)

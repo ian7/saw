@@ -1,0 +1,2334 @@
+4059 130521 16:34:59 INFO: 
+
+Started GET "/" for 85.5.98.97 at 2013-05-21 16:34:59 +0000
+4059 130521 16:34:59 INFO:   Processing by WelcomeController#index as HTML
+4059 130521 16:34:59 INFO: Username: (none)
+4059 130521 16:34:59 INFO: Rendered welcome/index.html.erb within layouts/application (0.7ms)
+4059 130521 16:34:59 INFO: Completed 200 OK in 2ms (Views: 1.8ms)
+4059 130521 19:29:56 INFO: 
+
+Started GET "/" for 188.155.155.2 at 2013-05-21 19:29:56 +0000
+4059 130521 19:29:56 INFO:   Processing by WelcomeController#index as HTML
+4059 130521 19:29:56 INFO: Username: Ievgenii
+4059 130521 19:29:56 INFO: Rendered welcome/index.html.erb within layouts/application (0.6ms)
+4059 130521 19:29:56 INFO: Completed 200 OK in 4ms (Views: 1.6ms)
+4059 130521 19:30:00 INFO: 
+
+Started GET "/updates/1368179113" for 188.155.155.2 at 2013-05-21 19:30:00 +0000
+4059 130521 19:30:00 INFO:   Processing by NotifyController#stamped as 
+4059 130521 19:30:00 INFO:   Parameters: {"stamp"=>"1368179113"}
+4059 130521 19:30:00 INFO: Username: Ievgenii
+4059 130521 19:30:00 INFO: Completed 200 OK in 14ms (Views: 0.1ms)
+4059 130521 19:30:00 INFO: 
+
+Started GET "/scope/type/Decision" for 188.155.155.2 at 2013-05-21 19:30:00 +0000
+4059 130521 19:30:00 INFO:   Processing by ScopeController#type as JSON
+4059 130521 19:30:00 INFO:   Parameters: {"type_name"=>"Decision"}
+4059 130521 19:30:00 INFO: Username: Ievgenii
+4059 130521 19:30:00 INFO: Completed 200 OK in 11ms (Views: 0.9ms)
+4059 130521 19:30:00 INFO: 
+
+Started GET "/t" for 188.155.155.2 at 2013-05-21 19:30:00 +0000
+4059 130521 19:30:00 INFO:   Processing by TController#index as JSON
+4059 130521 19:30:00 INFO: Username: Ievgenii
+4059 130521 19:30:00 INFO: Completed 200 OK in 127ms (Views: 4.2ms)
+4059 130521 19:30:00 INFO: 
+
+Started GET "/tags" for 188.155.155.2 at 2013-05-21 19:30:00 +0000
+4059 130521 19:30:00 INFO:   Processing by TagsController#index as JSON
+4059 130521 19:30:00 INFO: Username: Ievgenii
+4059 130521 19:30:01 INFO: Completed 200 OK in 205ms (Views: 33.0ms)
+4059 130521 19:30:01 INFO: 
+
+Started GET "/r/518a833eda300c484c000001/relations_from" for 188.155.155.2 at 2013-05-21 19:30:01 +0000
+4059 130521 19:30:01 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:01 INFO:   Parameters: {"id"=>"518a833eda300c484c000001"}
+4059 130521 19:30:01 INFO: Username: Ievgenii
+4059 130521 19:30:01 INFO: Completed 200 OK in 69ms (Views: 4.6ms)
+4059 130521 19:30:01 INFO: 
+
+Started GET "/r/518cb237da300c3c1f000003" for 188.155.155.2 at 2013-05-21 19:30:01 +0000
+4059 130521 19:30:01 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:01 INFO:   Parameters: {"id"=>"518cb237da300c3c1f000003"}
+4059 130521 19:30:01 INFO: Username: Ievgenii
+4059 130521 19:30:01 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+4059 130521 19:30:01 INFO: 
+
+Started GET "/r/518cb2c1da300c3c70000001" for 188.155.155.2 at 2013-05-21 19:30:01 +0000
+4059 130521 19:30:01 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:01 INFO:   Parameters: {"id"=>"518cb2c1da300c3c70000001"}
+4059 130521 19:30:01 INFO: Username: Ievgenii
+4059 130521 19:30:01 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+4059 130521 19:30:01 INFO: 
+
+Started GET "/r/518cb320da300c3c31000004" for 188.155.155.2 at 2013-05-21 19:30:01 +0000
+4059 130521 19:30:01 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:01 INFO:   Parameters: {"id"=>"518cb320da300c3c31000004"}
+4059 130521 19:30:01 INFO: Username: Ievgenii
+4059 130521 19:30:01 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:01 INFO: 
+
+Started GET "/r/518cb3a5da300c3cf4000001" for 188.155.155.2 at 2013-05-21 19:30:01 +0000
+4059 130521 19:30:01 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:01 INFO:   Parameters: {"id"=>"518cb3a5da300c3cf4000001"}
+4059 130521 19:30:01 INFO: Username: Ievgenii
+4059 130521 19:30:01 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:01 INFO: 
+
+Started GET "/r/518cb749da300c3c70000004" for 188.155.155.2 at 2013-05-21 19:30:01 +0000
+4059 130521 19:30:01 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:01 INFO:   Parameters: {"id"=>"518cb749da300c3c70000004"}
+4059 130521 19:30:01 INFO: Username: Ievgenii
+4059 130521 19:30:01 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+4059 130521 19:30:01 INFO: 
+
+Started GET "/r/518cb868da300c3c70000007" for 188.155.155.2 at 2013-05-21 19:30:01 +0000
+4059 130521 19:30:01 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:01 INFO:   Parameters: {"id"=>"518cb868da300c3c70000007"}
+4059 130521 19:30:01 INFO: Username: Ievgenii
+4059 130521 19:30:01 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:02 INFO: 
+
+Started GET "/r/518cbb9bda300c3cf400000c" for 188.155.155.2 at 2013-05-21 19:30:02 +0000
+4059 130521 19:30:02 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:02 INFO:   Parameters: {"id"=>"518cbb9bda300c3cf400000c"}
+4059 130521 19:30:02 INFO: Username: Ievgenii
+4059 130521 19:30:02 INFO: Completed 200 OK in 4ms (Views: 0.5ms)
+4059 130521 19:30:02 INFO: 
+
+Started GET "/r/518cbcafda300c3cfd000006" for 188.155.155.2 at 2013-05-21 19:30:02 +0000
+4059 130521 19:30:02 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:02 INFO:   Parameters: {"id"=>"518cbcafda300c3cfd000006"}
+4059 130521 19:30:02 INFO: Username: Ievgenii
+4059 130521 19:30:02 INFO: Completed 200 OK in 13ms (Views: 0.5ms)
+4059 130521 19:30:02 INFO: 
+
+Started GET "/r/518cc0aada300c3c2800000e" for 188.155.155.2 at 2013-05-21 19:30:02 +0000
+4059 130521 19:30:02 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:02 INFO:   Parameters: {"id"=>"518cc0aada300c3c2800000e"}
+4059 130521 19:30:02 INFO: Username: Ievgenii
+4059 130521 19:30:02 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:02 INFO: 
+
+Started GET "/r/518cb811da300c3c70000005" for 188.155.155.2 at 2013-05-21 19:30:02 +0000
+4059 130521 19:30:02 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:02 INFO:   Parameters: {"id"=>"518cb811da300c3c70000005"}
+4059 130521 19:30:02 INFO: Username: Ievgenii
+4059 130521 19:30:02 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:02 INFO: 
+
+Started GET "/r/51925958da300c697d000001/relations_from" for 188.155.155.2 at 2013-05-21 19:30:02 +0000
+4059 130521 19:30:02 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:02 INFO:   Parameters: {"id"=>"51925958da300c697d000001"}
+4059 130521 19:30:02 INFO: Username: Ievgenii
+4059 130521 19:30:02 INFO: Completed 200 OK in 29ms (Views: 2.5ms)
+4059 130521 19:30:02 INFO: 
+
+Started GET "/r/5193a637da300c3002000001/relations_from" for 188.155.155.2 at 2013-05-21 19:30:02 +0000
+4059 130521 19:30:02 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:02 INFO:   Parameters: {"id"=>"5193a637da300c3002000001"}
+4059 130521 19:30:02 INFO: Username: Ievgenii
+4059 130521 19:30:02 INFO: Completed 200 OK in 22ms (Views: 1.9ms)
+4059 130521 19:30:02 INFO: 
+
+Started GET "/r/51948e11da300c5f22000001/relations_from" for 188.155.155.2 at 2013-05-21 19:30:02 +0000
+4059 130521 19:30:02 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:02 INFO:   Parameters: {"id"=>"51948e11da300c5f22000001"}
+4059 130521 19:30:02 INFO: Username: Ievgenii
+4059 130521 19:30:02 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:02 INFO: 
+
+Started GET "/r/519a3a22da300c3793000001/relations_from" for 188.155.155.2 at 2013-05-21 19:30:02 +0000
+4059 130521 19:30:02 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:02 INFO:   Parameters: {"id"=>"519a3a22da300c3793000001"}
+4059 130521 19:30:02 INFO: Username: Ievgenii
+4059 130521 19:30:02 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+4059 130521 19:30:02 INFO: 
+
+Started GET "/r/5187d361da300c37f7000002/relations_from" for 188.155.155.2 at 2013-05-21 19:30:02 +0000
+4059 130521 19:30:02 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:02 INFO:   Parameters: {"id"=>"5187d361da300c37f7000002"}
+4059 130521 19:30:02 INFO: Username: Ievgenii
+4059 130521 19:30:02 INFO: Completed 200 OK in 185ms (Views: 22.3ms)
+4059 130521 19:30:02 INFO: 
+
+Started GET "/projects/5187d361da300c37f7000002" for 188.155.155.2 at 2013-05-21 19:30:02 +0000
+4059 130521 19:30:02 INFO:   Processing by ProjectsController#show as JSON
+4059 130521 19:30:02 INFO:   Parameters: {"id"=>"5187d361da300c37f7000002"}
+4059 130521 19:30:02 INFO: Username: Ievgenii
+4059 130521 19:30:02 INFO: Completed 200 OK in 7ms (Views: 1.3ms)
+4059 130521 19:30:02 INFO: 
+
+Started GET "/r/518cb26dda300c3c1f000004" for 188.155.155.2 at 2013-05-21 19:30:02 +0000
+4059 130521 19:30:02 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:02 INFO:   Parameters: {"id"=>"518cb26dda300c3c1f000004"}
+4059 130521 19:30:02 INFO: Username: Ievgenii
+4059 130521 19:30:02 INFO: Completed 200 OK in 3ms (Views: 0.4ms)
+4059 130521 19:30:02 INFO: 
+
+Started GET "/r/518cb253da300c3c16000002" for 188.155.155.2 at 2013-05-21 19:30:02 +0000
+4059 130521 19:30:02 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:02 INFO:   Parameters: {"id"=>"518cb253da300c3c16000002"}
+4059 130521 19:30:02 INFO: Username: Ievgenii
+4059 130521 19:30:02 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+4059 130521 19:30:02 INFO: 
+
+Started GET "/r/518cb3ebda300c3c82000003" for 188.155.155.2 at 2013-05-21 19:30:02 +0000
+4059 130521 19:30:02 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:02 INFO:   Parameters: {"id"=>"518cb3ebda300c3c82000003"}
+4059 130521 19:30:02 INFO: Username: Ievgenii
+4059 130521 19:30:02 INFO: Completed 200 OK in 3ms (Views: 0.4ms)
+4059 130521 19:30:02 INFO: 
+
+Started GET "/r/518cb3e8da300c3b6f000009" for 188.155.155.2 at 2013-05-21 19:30:02 +0000
+4059 130521 19:30:02 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:02 INFO:   Parameters: {"id"=>"518cb3e8da300c3b6f000009"}
+4059 130521 19:30:02 INFO: Username: Ievgenii
+4059 130521 19:30:02 INFO: Completed 200 OK in 3ms (Views: 0.4ms)
+4059 130521 19:30:02 INFO: 
+
+Started GET "/r/518cbc91da300c3ceb000004" for 188.155.155.2 at 2013-05-21 19:30:02 +0000
+4059 130521 19:30:02 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:02 INFO:   Parameters: {"id"=>"518cbc91da300c3ceb000004"}
+4059 130521 19:30:02 INFO: Username: Ievgenii
+4059 130521 19:30:02 INFO: Completed 200 OK in 3ms (Views: 0.4ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/518cb88bda300c3cfd000003" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"518cb88bda300c3cfd000003"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/518cb8cfda300c3c1f00000d" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"518cb8cfda300c3c1f00000d"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/518cb882da300c3c1f00000c" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"518cb882da300c3c1f00000c"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 3ms (Views: 0.1ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc261a2798e1c64b6000007/relations_to" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc261a2798e1c64b6000007"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 13ms (Views: 1.1ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc261a2798e1c64b6000007" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc261a2798e1c64b6000007"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 59ms (Views: 0.5ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc261f0798e1c64b6000009/relations_to" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc261f0798e1c64b6000009"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 14ms (Views: 1.1ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc261f0798e1c64b6000009" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc261f0798e1c64b6000009"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc2631d798e1c64b600000b/relations_to" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc2631d798e1c64b600000b"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 14ms (Views: 1.1ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc2631d798e1c64b600000b" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc2631d798e1c64b600000b"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc2647f798e1c64b6000010/relations_to" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc2647f798e1c64b6000010"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 14ms (Views: 0.9ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc2647f798e1c64b6000010" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc2647f798e1c64b6000010"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc26713798e1c6967000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc26713798e1c6967000001"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 12ms (Views: 1.0ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc26713798e1c6967000001" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc26713798e1c6967000001"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 3ms (Views: 0.4ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc26ef0798e1c673a000014/relations_to" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc26ef0798e1c673a000014"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 14ms (Views: 1.2ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc26ef0798e1c673a000014" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc26ef0798e1c673a000014"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc261a2798e1c64b6000008/relations_to" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc261a2798e1c64b6000008"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc261a2798e1c64b6000008" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc261a2798e1c64b6000008"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc27117798e1c6b0200000a/relations_to" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc27117798e1c6b0200000a"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc27117798e1c6b0200000a" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc27117798e1c6b0200000a"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc27118798e1c673a000017/relations_to" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc27118798e1c673a000017"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 9ms (Views: 0.5ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc27118798e1c673a000017" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc27118798e1c673a000017"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc26f0c798e1c6aee000002/relations_to" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc26f0c798e1c6aee000002"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc26f0c798e1c6aee000002" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc26f0c798e1c6aee000002"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc27112798e1c6b02000009/relations_to" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc27112798e1c6b02000009"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:03 INFO: 
+
+Started GET "/r/4dc27112798e1c6b02000009" for 188.155.155.2 at 2013-05-21 19:30:03 +0000
+4059 130521 19:30:03 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:03 INFO:   Parameters: {"id"=>"4dc27112798e1c6b02000009"}
+4059 130521 19:30:03 INFO: Username: Ievgenii
+4059 130521 19:30:03 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc277cb798e1c6b02000013/relations_to" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc277cb798e1c6b02000013"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 14ms (Views: 0.7ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc277cb798e1c6b02000013" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc277cb798e1c6b02000013"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc27865798e1c6f0e000003/relations_to" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc27865798e1c6f0e000003"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc27865798e1c6f0e000003" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc27865798e1c6f0e000003"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc261f0798e1c64b600000a/relations_to" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc261f0798e1c64b600000a"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 10ms (Views: 0.5ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc261f0798e1c64b600000a" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc261f0798e1c64b600000a"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc262d2798e1c6748000006/relations_to" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc262d2798e1c6748000006"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc262d2798e1c6748000006" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc262d2798e1c6748000006"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc26346798e1c6751000005/relations_to" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc26346798e1c6751000005"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc26346798e1c6751000005" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc26346798e1c6751000005"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc26377798e1c6751000006/relations_to" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc26377798e1c6751000006"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc26377798e1c6751000006" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc26377798e1c6751000006"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc26f0f798e1c6aee000003/relations_to" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc26f0f798e1c6aee000003"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 9ms (Views: 0.5ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc26f0f798e1c6aee000003" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc26f0f798e1c6aee000003"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc2631d798e1c64b600000c/relations_to" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc2631d798e1c64b600000c"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 36ms (Views: 0.5ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc2631d798e1c64b600000c" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc2631d798e1c64b600000c"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc26335798e1c64b600000d/relations_to" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc26335798e1c64b600000d"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 9ms (Views: 0.5ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc26335798e1c64b600000d" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc26335798e1c64b600000d"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc2636b798e1c64b600000f/relations_to" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc2636b798e1c64b600000f"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 9ms (Views: 0.5ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc2636b798e1c64b600000f" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc2636b798e1c64b600000f"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+4059 130521 19:30:04 INFO: 
+
+Started GET "/r/4dc26f13798e1c6aee000005/relations_to" for 188.155.155.2 at 2013-05-21 19:30:04 +0000
+4059 130521 19:30:04 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:04 INFO:   Parameters: {"id"=>"4dc26f13798e1c6aee000005"}
+4059 130521 19:30:04 INFO: Username: Ievgenii
+4059 130521 19:30:04 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc26f13798e1c6aee000005" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc26f13798e1c6aee000005"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 3ms (Views: 0.2ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc26f12798e1c6aee000004/relations_to" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc26f12798e1c6aee000004"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc26f12798e1c6aee000004" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc26f12798e1c6aee000004"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc27122798e1c6aee000009/relations_to" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc27122798e1c6aee000009"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc27122798e1c6aee000009" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc27122798e1c6aee000009"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc277dc798e1c6f1b000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc277dc798e1c6f1b000001"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc277dc798e1c6f1b000001" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc277dc798e1c6f1b000001"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 12ms (Views: 0.4ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc2647f798e1c64b6000011/relations_to" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc2647f798e1c64b6000011"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 9ms (Views: 0.5ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc2647f798e1c64b6000011" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc2647f798e1c64b6000011"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc26f1f798e1c6b02000004/relations_to" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc26f1f798e1c6b02000004"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 7ms (Views: 0.5ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc26f1f798e1c6b02000004" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc26f1f798e1c6b02000004"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 4ms (Views: 0.1ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc2712b798e1c6aee00000a/relations_to" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc2712b798e1c6aee00000a"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 9ms (Views: 0.5ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc2712b798e1c6aee00000a" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc2712b798e1c6aee00000a"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc271fe798e1c6b4b000006/relations_to" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc271fe798e1c6b4b000006"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 9ms (Views: 0.5ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc271fe798e1c6b4b000006" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc271fe798e1c6b4b000006"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc277f2798e1c6f1b000003/relations_to" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc277f2798e1c6f1b000003"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc277f2798e1c6f1b000003" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc277f2798e1c6f1b000003"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc277f4798e1c6b02000014/relations_to" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc277f4798e1c6b02000014"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 8ms (Views: 0.6ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc277f4798e1c6b02000014" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc277f4798e1c6b02000014"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 5ms (Views: 0.7ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc26f1a798e1c6aee000006/relations_to" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc26f1a798e1c6aee000006"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc26f1a798e1c6aee000006" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc26f1a798e1c6aee000006"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc2712e798e1c6b0200000b/relations_to" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc2712e798e1c6b0200000b"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:05 INFO: 
+
+Started GET "/r/4dc2712e798e1c6b0200000b" for 188.155.155.2 at 2013-05-21 19:30:05 +0000
+4059 130521 19:30:05 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:05 INFO:   Parameters: {"id"=>"4dc2712e798e1c6b0200000b"}
+4059 130521 19:30:05 INFO: Username: Ievgenii
+4059 130521 19:30:05 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc271dc798e1c6aee00000c/relations_to" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc271dc798e1c6aee00000c"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 9ms (Views: 0.5ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc271dc798e1c6aee00000c" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc271dc798e1c6aee00000c"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc2778d798e1c6f0e000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc2778d798e1c6f0e000001"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc2778d798e1c6f0e000001" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc2778d798e1c6f0e000001"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 4ms (Views: 1.1ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc277e9798e1c6f1b000002/relations_to" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc277e9798e1c6f1b000002"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc277e9798e1c6f1b000002" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc277e9798e1c6f1b000002"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc26713798e1c6967000002/relations_to" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc26713798e1c6967000002"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc26713798e1c6967000002" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc26713798e1c6967000002"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc26d8b798e1c6b02000003/relations_to" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc26d8b798e1c6b02000003"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc26d8b798e1c6b02000003" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc26d8b798e1c6b02000003"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc26f25798e1c6b4b000002/relations_to" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc26f25798e1c6b4b000002"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 9ms (Views: 0.5ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc26f25798e1c6b4b000002" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc26f25798e1c6b4b000002"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc26b25798e1c673a00000e/relations_to" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc26b25798e1c673a00000e"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc26b25798e1c673a00000e" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc26b25798e1c673a00000e"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc26d74798e1c6b02000002/relations_to" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc26d74798e1c6b02000002"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 8ms (Views: 0.4ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc26d74798e1c6b02000002" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc26d74798e1c6b02000002"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc26d81798e1c673a00000f/relations_to" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc26d81798e1c673a00000f"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc26d81798e1c673a00000f" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc26d81798e1c673a00000f"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc26f27798e1c673a000016/relations_to" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc26f27798e1c673a000016"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 7ms (Views: 0.5ms)
+24449 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc26f27798e1c673a000016" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO: 
+
+Started GET "/r/4dc26ef0798e1c673a000015/relations_to" for 188.155.155.2 at 2013-05-21 19:30:06 +0000
+4059 130521 19:30:06 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:06 INFO:   Parameters: {"id"=>"4dc26ef0798e1c673a000015"}
+4059 130521 19:30:06 INFO: Username: Ievgenii
+4059 130521 19:30:06 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:07 INFO: 
+
+Started GET "/r/4dc26ef0798e1c673a000015" for 188.155.155.2 at 2013-05-21 19:30:07 +0000
+4059 130521 19:30:07 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:07 INFO:   Parameters: {"id"=>"4dc26ef0798e1c673a000015"}
+4059 130521 19:30:07 INFO: Username: Ievgenii
+4059 130521 19:30:07 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:07 INFO: 
+
+Started GET "/r/4dc2713a798e1c6b4b000003/relations_to" for 188.155.155.2 at 2013-05-21 19:30:07 +0000
+4059 130521 19:30:07 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:07 INFO:   Parameters: {"id"=>"4dc2713a798e1c6b4b000003"}
+4059 130521 19:30:07 INFO: Username: Ievgenii
+4059 130521 19:30:07 INFO: Completed 200 OK in 10ms (Views: 0.5ms)
+4059 130521 19:30:07 INFO: 
+
+Started GET "/r/4dc2713a798e1c6b4b000003" for 188.155.155.2 at 2013-05-21 19:30:07 +0000
+4059 130521 19:30:07 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:07 INFO:   Parameters: {"id"=>"4dc2713a798e1c6b4b000003"}
+4059 130521 19:30:07 INFO: Username: Ievgenii
+4059 130521 19:30:07 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:07 INFO: 
+
+Started GET "/r/4dc271c4798e1c6aee00000b/relations_to" for 188.155.155.2 at 2013-05-21 19:30:07 +0000
+4059 130521 19:30:07 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:07 INFO:   Parameters: {"id"=>"4dc271c4798e1c6aee00000b"}
+4059 130521 19:30:07 INFO: Username: Ievgenii
+4059 130521 19:30:07 INFO: Completed 200 OK in 16ms (Views: 0.7ms)
+24458 130521 19:30:07 INFO: 
+
+Started GET "/r/4dc271c4798e1c6aee00000b" for 188.155.155.2 at 2013-05-21 19:30:07 +0000
+4059 130521 19:30:07 INFO: 
+
+Started GET "/r/4dc2721c798e1c6b0200000f/relations_to" for 188.155.155.2 at 2013-05-21 19:30:07 +0000
+4059 130521 19:30:07 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:07 INFO:   Parameters: {"id"=>"4dc2721c798e1c6b0200000f"}
+4059 130521 19:30:07 INFO: Username: Ievgenii
+4059 130521 19:30:07 INFO: Completed 200 OK in 9ms (Views: 0.7ms)
+4059 130521 19:30:07 INFO: 
+
+Started GET "/r/4dc2721c798e1c6b0200000f" for 188.155.155.2 at 2013-05-21 19:30:07 +0000
+4059 130521 19:30:07 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:07 INFO:   Parameters: {"id"=>"4dc2721c798e1c6b0200000f"}
+4059 130521 19:30:07 INFO: Username: Ievgenii
+4059 130521 19:30:07 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:07 INFO: 
+
+Started GET "/r/4dc2724a798e1c6b4b000009/relations_to" for 188.155.155.2 at 2013-05-21 19:30:07 +0000
+4059 130521 19:30:07 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:07 INFO:   Parameters: {"id"=>"4dc2724a798e1c6b4b000009"}
+4059 130521 19:30:07 INFO: Username: Ievgenii
+4059 130521 19:30:07 INFO: Completed 200 OK in 9ms (Views: 0.5ms)
+4059 130521 19:30:07 INFO: 
+
+Started GET "/r/4dc2724a798e1c6b4b000009" for 188.155.155.2 at 2013-05-21 19:30:07 +0000
+4059 130521 19:30:07 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:07 INFO:   Parameters: {"id"=>"4dc2724a798e1c6b4b000009"}
+4059 130521 19:30:07 INFO: Username: Ievgenii
+4059 130521 19:30:07 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+4059 130521 19:30:07 INFO: 
+
+Started GET "/r/4dc27139798e1c6b0200000c/relations_to" for 188.155.155.2 at 2013-05-21 19:30:07 +0000
+4059 130521 19:30:07 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:07 INFO:   Parameters: {"id"=>"4dc27139798e1c6b0200000c"}
+4059 130521 19:30:07 INFO: Username: Ievgenii
+4059 130521 19:30:07 INFO: Completed 200 OK in 11ms (Views: 0.6ms)
+4059 130521 19:30:07 INFO: 
+
+Started GET "/r/4dc27139798e1c6b0200000c" for 188.155.155.2 at 2013-05-21 19:30:07 +0000
+4059 130521 19:30:07 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:07 INFO:   Parameters: {"id"=>"4dc27139798e1c6b0200000c"}
+4059 130521 19:30:07 INFO: Username: Ievgenii
+4059 130521 19:30:07 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+24449 130521 19:30:07 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:07 INFO: 
+
+Started GET "/r/4dc271c2798e1c6b4b000005/relations_to" for 188.155.155.2 at 2013-05-21 19:30:07 +0000
+4059 130521 19:30:07 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:07 INFO:   Parameters: {"id"=>"4dc271c2798e1c6b4b000005"}
+4059 130521 19:30:07 INFO: Username: Ievgenii
+4059 130521 19:30:07 INFO: Completed 200 OK in 8ms (Views: 0.6ms)
+4059 130521 19:30:07 INFO: 
+
+Started GET "/r/4dc271c2798e1c6b4b000005" for 188.155.155.2 at 2013-05-21 19:30:07 +0000
+24449 130521 19:30:07 INFO:   Parameters: {"id"=>"4dc26f27798e1c673a000016"}
+4059 130521 19:30:07 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:07 INFO:   Parameters: {"id"=>"4dc271c2798e1c6b4b000005"}
+4059 130521 19:30:07 INFO: Username: Ievgenii
+4059 130521 19:30:07 INFO: Completed 200 OK in 5ms (Views: 0.3ms)
+24449 130521 19:30:07 INFO: Username: Ievgenii
+24449 130521 19:30:07 INFO: Completed 200 OK in 47ms (Views: 8.9ms)
+24449 130521 19:30:07 INFO: 
+
+Started GET "/r/4dc27239798e1c6b4b000007/relations_to" for 188.155.155.2 at 2013-05-21 19:30:07 +0000
+24449 130521 19:30:07 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:07 INFO:   Parameters: {"id"=>"4dc27239798e1c6b4b000007"}
+24449 130521 19:30:07 INFO: Username: Ievgenii
+24449 130521 19:30:07 INFO: Completed 200 OK in 10ms (Views: 0.9ms)
+24458 130521 19:30:07 INFO:   Processing by RController#show as JSON
+24458 130521 19:30:07 INFO:   Parameters: {"id"=>"4dc271c4798e1c6aee00000b"}
+24458 130521 19:30:07 INFO: Username: Ievgenii
+24449 130521 19:30:08 INFO: 
+
+Started GET "/r/4dc27239798e1c6b4b000007" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+24449 130521 19:30:08 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:08 INFO:   Parameters: {"id"=>"4dc27239798e1c6b4b000007"}
+24449 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4dc2713b798e1c6b4b000004/relations_to" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+24449 130521 19:30:08 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:08 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4dc2713b798e1c6b4b000004"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+24458 130521 19:30:08 INFO: Completed 200 OK in 55ms (Views: 18.5ms)
+4059 130521 19:30:08 INFO: Completed 200 OK in 11ms (Views: 0.6ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4dc2713b798e1c6b4b000004" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4dc2713b798e1c6b4b000004"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4dc271bc798e1c6b0200000d/relations_to" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4dc271bc798e1c6b0200000d"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 14ms (Views: 0.5ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4dc271bc798e1c6b0200000d" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4dc271bc798e1c6b0200000d"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 4ms (Views: 0.6ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4dc27246798e1c6b4b000008/relations_to" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4dc27246798e1c6b4b000008"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 7ms (Views: 0.5ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4dc27246798e1c6b4b000008" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4dc27246798e1c6b4b000008"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4dc27210798e1c6b0200000e/relations_to" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4dc27210798e1c6b0200000e"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 7ms (Views: 0.5ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4dc27210798e1c6b0200000e" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4dc27210798e1c6b0200000e"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 4ms (Views: 1.0ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4dc27233798e1c673a000018/relations_to" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4dc27233798e1c673a000018"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4dc27233798e1c673a000018" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4dc27233798e1c673a000018"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4dc277d0798e1c6f0e000002/relations_to" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4dc277d0798e1c6f0e000002"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 8ms (Views: 0.5ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4dc277d0798e1c6f0e000002" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4dc277d0798e1c6f0e000002"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4fb4cf8209f9510489000006/relations_to" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4fb4cf8209f9510489000006"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4fb4cf8209f9510489000006" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4fb4cf8209f9510489000006"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4fb8fc3209f95162cb000002/relations_to" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4fb8fc3209f95162cb000002"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4fb8fc3209f95162cb000002" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4fb8fc3209f95162cb000002"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4fba044f09f9511ce1000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4fba044f09f9511ce1000001"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4fba044f09f9511ce1000001" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4fba044f09f9511ce1000001"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4fba081d09f9511ef4000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4fba081d09f9511ef4000001"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4fba081d09f9511ef4000001" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4fba081d09f9511ef4000001"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:08 INFO: 
+
+Started GET "/r/4fba149f09f95121f6000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:08 +0000
+4059 130521 19:30:08 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:08 INFO:   Parameters: {"id"=>"4fba149f09f95121f6000001"}
+4059 130521 19:30:08 INFO: Username: Ievgenii
+4059 130521 19:30:08 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fba149f09f95121f6000001" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fba149f09f95121f6000001"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fb4cf8209f9510489000008/relations_to" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fb4cf8209f9510489000008"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fb4cf8209f9510489000008" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fb4cf8209f9510489000008"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fb8fc0509f951637e000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fb8fc0509f951637e000001"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fb8fc0509f951637e000001" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fb8fc0509f951637e000001"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fba07f909f9511e4d000003/relations_to" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fba07f909f9511e4d000003"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fba07f909f9511e4d000003" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fba07f909f9511e4d000003"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fba07f909f9511cbb000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fba07f909f9511cbb000001"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fba07f909f9511cbb000001" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fba07f909f9511cbb000001"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fba080509f9511ee7000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fba080509f9511ee7000001"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fba080509f9511ee7000001" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fba080509f9511ee7000001"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fba0e5b09f951205e000003/relations_to" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fba0e5b09f951205e000003"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fba0e5b09f951205e000003" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fba0e5b09f951205e000003"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fb4cf8209f951048900000a/relations_to" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fb4cf8209f951048900000a"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fb4cf8209f951048900000a" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fb4cf8209f951048900000a"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fb8fbe509f95162cb000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fb8fbe509f95162cb000001"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fb8fbe509f95162cb000001" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fb8fbe509f95162cb000001"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fb9ff4309f9511bb5000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fb9ff4309f9511bb5000001"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fb9ff4309f9511bb5000001" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fb9ff4309f9511bb5000001"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fb9ff6d09f9511c08000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fb9ff6d09f9511c08000001"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fb9ff6d09f9511c08000001" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fb9ff6d09f9511c08000001"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 3ms (Views: 0.4ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fb9ff7309f9511c1b000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fb9ff7309f9511c1b000001"}
+4059 130521 19:30:09 INFO: Username: Ievgenii
+4059 130521 19:30:09 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+4059 130521 19:30:09 INFO: 
+
+Started GET "/r/4fb9ff7309f9511c1b000001" for 188.155.155.2 at 2013-05-21 19:30:09 +0000
+4059 130521 19:30:09 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:09 INFO:   Parameters: {"id"=>"4fb9ff7309f9511c1b000001"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 30ms (Views: 0.3ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/4fba023709f9511cea000003/relations_to" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"4fba023709f9511cea000003"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/4fba023709f9511cea000003" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"4fba023709f9511cea000003"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/4fba13b509f9512208000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"4fba13b509f9512208000001"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/4fba13b509f9512208000001" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"4fba13b509f9512208000001"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/509bcbbe924ff80662000002/relations_to" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"509bcbbe924ff80662000002"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/509bcbbe924ff80662000002" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"509bcbbe924ff80662000002"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/4fb9ff6409f9511b6a000003/relations_to" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"4fb9ff6409f9511b6a000003"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/4fb9ff6409f9511b6a000003" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"4fb9ff6409f9511b6a000003"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/4fba06a409f9511e55000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"4fba06a409f9511e55000001"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/4fba06a409f9511e55000001" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"4fba06a409f9511e55000001"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 3ms (Views: 0.4ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/509bcbc2924ff80650000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"509bcbc2924ff80650000001"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/509bcbc2924ff80650000001" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"509bcbc2924ff80650000001"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/509bcbd6924ff80673000003/relations_to" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"509bcbd6924ff80673000003"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 7ms (Views: 0.9ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/509bcbd6924ff80673000003" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"509bcbd6924ff80673000003"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/509bcbe9924ff80659000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"509bcbe9924ff80659000001"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/509bcbe9924ff80659000001" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"509bcbe9924ff80659000001"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/509bcbf1924ff806aa000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+4059 130521 19:30:10 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"509bcbf1924ff806aa000001"}
+4059 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:10 INFO: 
+
+Started GET "/r/509bcbf1924ff806aa000001" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+24458 130521 19:30:10 INFO: 
+
+Started GET "/r/4fb4cf8209f951048900000c/relations_to" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+24458 130521 19:30:10 INFO:   Processing by RController#relations_to as JSON
+24458 130521 19:30:10 INFO:   Parameters: {"id"=>"4fb4cf8209f951048900000c"}
+24458 130521 19:30:10 INFO: Username: Ievgenii
+24458 130521 19:30:10 INFO: Completed 200 OK in 9ms (Views: 0.8ms)
+4059 130521 19:30:10 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:10 INFO:   Parameters: {"id"=>"509bcbf1924ff806aa000001"}
+24458 130521 19:30:10 INFO: 
+
+Started GET "/r/4fb4cf8209f951048900000c" for 188.155.155.2 at 2013-05-21 19:30:10 +0000
+24458 130521 19:30:10 INFO:   Processing by RController#show as JSON
+24458 130521 19:30:10 INFO:   Parameters: {"id"=>"4fb4cf8209f951048900000c"}
+24458 130521 19:30:10 INFO: Username: Ievgenii
+4059 130521 19:30:10 INFO: Username: Ievgenii
+24458 130521 19:30:10 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:10 INFO: Completed 200 OK in 12ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fb8fbfc09f951638b000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fb8fbfc09f951638b000001"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 7ms (Views: 0.9ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fb8fbfc09f951638b000001" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fb8fbfc09f951638b000001"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fba022d09f9511d10000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fba022d09f9511d10000001"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fba022d09f9511d10000001" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fba022d09f9511d10000001"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 4ms (Views: 0.1ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/509bcfe1924ff80796000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"509bcfe1924ff80796000001"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/509bcfe1924ff80796000001" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"509bcfe1924ff80796000001"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 4ms (Views: 0.5ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fba019809f9511cc4000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fba019809f9511cc4000001"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fba019809f9511cc4000001" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fba019809f9511cc4000001"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fba01a109f9511cea000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fba01a109f9511cea000001"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fba01a109f9511cea000001" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fba01a109f9511cea000001"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fba022b09f9511cc4000003/relations_to" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fba022b09f9511cc4000003"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fba022b09f9511cc4000003" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fba022b09f9511cc4000003"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fba024409f9511d08000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fba024409f9511d08000001"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fba024409f9511d08000001" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fba024409f9511d08000001"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fb4cf8209f951048900000e/relations_to" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fb4cf8209f951048900000e"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fb4cf8209f951048900000e" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fb4cf8209f951048900000e"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fb9034b09f95164ac000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fb9034b09f95164ac000001"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fb9034b09f95164ac000001" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fb9034b09f95164ac000001"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fba045a09f9511cea000005/relations_to" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fba045a09f9511cea000005"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fba045a09f9511cea000005" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fba045a09f9511cea000005"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fba081e09f9511ef4000003/relations_to" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fba081e09f9511ef4000003"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fba081e09f9511ef4000003" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fba081e09f9511ef4000003"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fba0e8809f9512096000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fba0e8809f9512096000001"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:11 INFO: 
+
+Started GET "/r/4fba0e8809f9512096000001" for 188.155.155.2 at 2013-05-21 19:30:11 +0000
+4059 130521 19:30:11 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:11 INFO:   Parameters: {"id"=>"4fba0e8809f9512096000001"}
+4059 130521 19:30:11 INFO: Username: Ievgenii
+4059 130521 19:30:11 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4fba14d809f951223d000005/relations_to" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4fba14d809f951223d000005"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4fba14d809f951223d000005" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4fba14d809f951223d000005"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4fb4cf8209f9510489000010/relations_to" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4fb4cf8209f9510489000010"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4fb4cf8209f9510489000010" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4fb4cf8209f9510489000010"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/518cbea4da300c3c2800000d" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"518cbea4da300c3c2800000d"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 3ms (Views: 0.2ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/518cbd35da300c3b6f00000d" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"518cbd35da300c3b6f00000d"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4dc26da6798e1c673a000010/relations_from" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4dc26da6798e1c673a000010"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4dc26da6798e1c673a000010" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4dc26da6798e1c673a000010"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4dc26db1798e1c673a000012/relations_from" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4dc26db1798e1c673a000012"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4dc26db1798e1c673a000012" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4dc26db1798e1c673a000012"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4dc26284798e1c673a000005/relations_from" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4dc26284798e1c673a000005"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4dc26284798e1c673a000005" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4dc26284798e1c673a000005"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4fba054209f9511cea000007/relations_from" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4fba054209f9511cea000007"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4fba054209f9511cea000007" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4fba054209f9511cea000007"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4dc26329798e1c673a000007/relations_from" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4dc26329798e1c673a000007"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4dc26329798e1c673a000007" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4dc26329798e1c673a000007"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4dc26556798e1c673a00000a/relations_from" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4dc26556798e1c673a00000a"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4dc26556798e1c673a00000a" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4dc26556798e1c673a00000a"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 28ms (Views: 25.6ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4dc2648c798e1c64b6000012/relations_from" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4dc2648c798e1c64b6000012"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4dc2648c798e1c64b6000012" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4dc2648c798e1c64b6000012"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 3ms (Views: 0.1ms)
+4059 130521 19:30:12 INFO: 
+
+Started GET "/r/4dc26490798e1c64b6000014/relations_from" for 188.155.155.2 at 2013-05-21 19:30:12 +0000
+4059 130521 19:30:12 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:12 INFO:   Parameters: {"id"=>"4dc26490798e1c64b6000014"}
+4059 130521 19:30:12 INFO: Username: Ievgenii
+4059 130521 19:30:12 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc26490798e1c64b6000014" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+4059 130521 19:30:13 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc26490798e1c64b6000014"}
+4059 130521 19:30:13 INFO: Username: Ievgenii
+4059 130521 19:30:13 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+4059 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc2765a798e1c6b02000011/relations_from" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+4059 130521 19:30:13 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc2765a798e1c6b02000011"}
+4059 130521 19:30:13 INFO: Username: Ievgenii
+4059 130521 19:30:13 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc2765a798e1c6b02000011" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+4059 130521 19:30:13 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc2765a798e1c6b02000011"}
+4059 130521 19:30:13 INFO: Username: Ievgenii
+4059 130521 19:30:13 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc268b5798e1c695c000001/relations_from" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+4059 130521 19:30:13 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc268b5798e1c695c000001"}
+4059 130521 19:30:13 INFO: Username: Ievgenii
+4059 130521 19:30:13 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc268b5798e1c695c000001" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+4059 130521 19:30:13 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc268b5798e1c695c000001"}
+4059 130521 19:30:13 INFO: Username: Ievgenii
+4059 130521 19:30:13 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc26b1f798e1c673a00000c/relations_from" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+4059 130521 19:30:13 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc26b1f798e1c673a00000c"}
+4059 130521 19:30:13 INFO: Username: Ievgenii
+4059 130521 19:30:13 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc26b1f798e1c673a00000c" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+4059 130521 19:30:13 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc26b1f798e1c673a00000c"}
+4059 130521 19:30:13 INFO: Username: Ievgenii
+4059 130521 19:30:13 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc27053798e1c6aee000007/relations_from" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+4059 130521 19:30:13 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc27053798e1c6aee000007"}
+4059 130521 19:30:13 INFO: Username: Ievgenii
+4059 130521 19:30:13 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc27053798e1c6aee000007" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+4059 130521 19:30:13 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc27053798e1c6aee000007"}
+4059 130521 19:30:13 INFO: Username: Ievgenii
+4059 130521 19:30:13 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc27075798e1c6b02000005/relations_from" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+4059 130521 19:30:13 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc27075798e1c6b02000005"}
+4059 130521 19:30:13 INFO: Username: Ievgenii
+4059 130521 19:30:13 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc27075798e1c6b02000005" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+4059 130521 19:30:13 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc27075798e1c6b02000005"}
+4059 130521 19:30:13 INFO: Username: Ievgenii
+4059 130521 19:30:13 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc27090798e1c6b02000007/relations_from" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+4059 130521 19:30:13 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc27090798e1c6b02000007"}
+4059 130521 19:30:13 INFO: Username: Ievgenii
+4059 130521 19:30:13 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc27090798e1c6b02000007" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+4059 130521 19:30:13 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc27090798e1c6b02000007"}
+4059 130521 19:30:13 INFO: Username: Ievgenii
+4059 130521 19:30:13 INFO: Completed 200 OK in 3ms (Views: 0.2ms)
+4059 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc2720b798e1c6aee00000d/relations_from" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+4059 130521 19:30:13 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc2720b798e1c6aee00000d"}
+4059 130521 19:30:13 INFO: Username: Ievgenii
+4059 130521 19:30:13 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc2720b798e1c6aee00000d" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+4059 130521 19:30:13 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc2720b798e1c6aee00000d"}
+4059 130521 19:30:13 INFO: Username: Ievgenii
+4059 130521 19:30:13 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:13 INFO: 
+
+Started GET "/projects" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+4059 130521 19:30:13 INFO:   Processing by ProjectsController#index as JSON
+4059 130521 19:30:13 INFO: Username: Ievgenii
+24458 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc26da6798e1c673a000011/relations_to" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+24458 130521 19:30:13 INFO:   Processing by RController#relations_to as JSON
+24458 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc26da6798e1c673a000011"}
+24458 130521 19:30:13 INFO: Username: Ievgenii
+24458 130521 19:30:13 INFO: Completed 200 OK in 17ms (Views: 1.9ms)
+24458 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc26db1798e1c673a000013/relations_to" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+24458 130521 19:30:13 INFO:   Processing by RController#relations_to as JSON
+24458 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc26db1798e1c673a000013"}
+24458 130521 19:30:13 INFO: Username: Ievgenii
+24458 130521 19:30:13 INFO: Completed 200 OK in 15ms (Views: 0.8ms)
+24458 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc26284798e1c673a000006/relations_to" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+24458 130521 19:30:13 INFO:   Processing by RController#relations_to as JSON
+24458 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc26284798e1c673a000006"}
+24458 130521 19:30:13 INFO: Username: Ievgenii
+24458 130521 19:30:13 INFO: Completed 200 OK in 15ms (Views: 0.9ms)
+24458 130521 19:30:13 INFO: 
+
+Started GET "/r/4fba054209f9511cea000008/relations_to" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+24458 130521 19:30:13 INFO:   Processing by RController#relations_to as JSON
+24458 130521 19:30:13 INFO:   Parameters: {"id"=>"4fba054209f9511cea000008"}
+24458 130521 19:30:13 INFO: Username: Ievgenii
+24458 130521 19:30:13 INFO: Completed 200 OK in 11ms (Views: 0.7ms)
+24458 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc26329798e1c673a000008/relations_to" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+24458 130521 19:30:13 INFO:   Processing by RController#relations_to as JSON
+24458 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc26329798e1c673a000008"}
+24458 130521 19:30:13 INFO: Username: Ievgenii
+24458 130521 19:30:13 INFO: Completed 200 OK in 22ms (Views: 1.6ms)
+24458 130521 19:30:13 INFO: 
+
+Started GET "/r/4dc26556798e1c673a00000b/relations_to" for 188.155.155.2 at 2013-05-21 19:30:13 +0000
+24458 130521 19:30:13 INFO:   Processing by RController#relations_to as JSON
+24458 130521 19:30:13 INFO:   Parameters: {"id"=>"4dc26556798e1c673a00000b"}
+24458 130521 19:30:13 INFO: Username: Ievgenii
+24449 130521 19:30:14 INFO: 
+
+Started GET "/r/4dc2648c798e1c64b6000013/relations_to" for 188.155.155.2 at 2013-05-21 19:30:14 +0000
+24449 130521 19:30:14 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:14 INFO:   Parameters: {"id"=>"4dc2648c798e1c64b6000013"}
+24449 130521 19:30:14 INFO: Username: Ievgenii
+24458 130521 19:30:14 INFO: Completed 200 OK in 25ms (Views: 1.7ms)
+24458 130521 19:30:14 INFO: 
+
+Started GET "/r/4dc26490798e1c64b6000015/relations_to" for 188.155.155.2 at 2013-05-21 19:30:14 +0000
+24458 130521 19:30:14 INFO:   Processing by RController#relations_to as JSON
+24458 130521 19:30:14 INFO:   Parameters: {"id"=>"4dc26490798e1c64b6000015"}
+24458 130521 19:30:14 INFO: Username: Ievgenii
+24449 130521 19:30:14 INFO: Completed 200 OK in 28ms (Views: 3.8ms)
+24458 130521 19:30:14 INFO: Completed 200 OK in 20ms (Views: 1.2ms)
+24458 130521 19:30:14 INFO: 
+
+Started GET "/r/4dc2765a798e1c6b02000012/relations_to" for 188.155.155.2 at 2013-05-21 19:30:14 +0000
+24458 130521 19:30:14 INFO:   Processing by RController#relations_to as JSON
+24458 130521 19:30:14 INFO:   Parameters: {"id"=>"4dc2765a798e1c6b02000012"}
+24458 130521 19:30:14 INFO: Username: Ievgenii
+24458 130521 19:30:14 INFO: Completed 200 OK in 11ms (Views: 0.6ms)
+24458 130521 19:30:14 INFO: 
+
+Started GET "/r/4dc268b5798e1c695c000002/relations_to" for 188.155.155.2 at 2013-05-21 19:30:14 +0000
+24458 130521 19:30:14 INFO:   Processing by RController#relations_to as JSON
+24458 130521 19:30:14 INFO:   Parameters: {"id"=>"4dc268b5798e1c695c000002"}
+24458 130521 19:30:14 INFO: Username: Ievgenii
+24458 130521 19:30:14 INFO: Completed 200 OK in 13ms (Views: 0.8ms)
+24458 130521 19:30:14 INFO: 
+
+Started GET "/r/4dc26b1f798e1c673a00000d/relations_to" for 188.155.155.2 at 2013-05-21 19:30:14 +0000
+24458 130521 19:30:14 INFO:   Processing by RController#relations_to as JSON
+24458 130521 19:30:14 INFO:   Parameters: {"id"=>"4dc26b1f798e1c673a00000d"}
+24458 130521 19:30:14 INFO: Username: Ievgenii
+24449 130521 19:30:14 INFO: 
+
+Started GET "/r/4dc27053798e1c6aee000008/relations_to" for 188.155.155.2 at 2013-05-21 19:30:14 +0000
+24449 130521 19:30:14 INFO:   Processing by RController#relations_to as JSON
+24458 130521 19:30:14 INFO: Completed 200 OK in 20ms (Views: 1.1ms)
+24449 130521 19:30:14 INFO:   Parameters: {"id"=>"4dc27053798e1c6aee000008"}
+24449 130521 19:30:14 INFO: Username: Ievgenii
+24449 130521 19:30:14 INFO: Completed 200 OK in 15ms (Views: 0.8ms)
+24449 130521 19:30:14 INFO: 
+
+Started GET "/r/4dc27075798e1c6b02000006/relations_to" for 188.155.155.2 at 2013-05-21 19:30:14 +0000
+24449 130521 19:30:14 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:14 INFO:   Parameters: {"id"=>"4dc27075798e1c6b02000006"}
+24449 130521 19:30:14 INFO: Username: Ievgenii
+24449 130521 19:30:14 INFO: Completed 200 OK in 12ms (Views: 0.7ms)
+24449 130521 19:30:14 INFO: 
+
+Started GET "/r/4dc27090798e1c6b02000008/relations_to" for 188.155.155.2 at 2013-05-21 19:30:14 +0000
+24449 130521 19:30:14 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:14 INFO:   Parameters: {"id"=>"4dc27090798e1c6b02000008"}
+24449 130521 19:30:14 INFO: Username: Ievgenii
+24449 130521 19:30:14 INFO: Completed 200 OK in 12ms (Views: 0.6ms)
+24449 130521 19:30:14 INFO: 
+
+Started GET "/r/4dc2720b798e1c6aee00000e/relations_to" for 188.155.155.2 at 2013-05-21 19:30:14 +0000
+24449 130521 19:30:14 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:14 INFO:   Parameters: {"id"=>"4dc2720b798e1c6aee00000e"}
+24449 130521 19:30:14 INFO: Username: Ievgenii
+24449 130521 19:30:14 INFO: Completed 200 OK in 11ms (Views: 0.6ms)
+4059 130521 19:30:14 INFO: Completed 200 OK in 979ms (Views: 5.4ms)
+4059 130521 19:30:45 INFO: 
+
+Started GET "/projects" for 188.155.155.2 at 2013-05-21 19:30:45 +0000
+4059 130521 19:30:45 INFO:   Processing by ProjectsController#index as JSON
+4059 130521 19:30:45 INFO: Username: Ievgenii
+4059 130521 19:30:46 INFO: Completed 200 OK in 868ms (Views: 4.5ms)
+4059 130521 19:30:48 INFO: 
+
+Started GET "/r/5187d355da300c37f7000001/relations_from" for 188.155.155.2 at 2013-05-21 19:30:48 +0000
+4059 130521 19:30:48 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:48 INFO:   Parameters: {"id"=>"5187d355da300c37f7000001"}
+4059 130521 19:30:48 INFO: Username: Ievgenii
+24449 130521 19:30:48 INFO: 
+
+Started GET "/projects/5187d355da300c37f7000001" for 188.155.155.2 at 2013-05-21 19:30:48 +0000
+4059 130521 19:30:48 INFO: Completed 200 OK in 23ms (Views: 2.0ms)
+24449 130521 19:30:48 INFO:   Processing by ProjectsController#show as JSON
+24449 130521 19:30:48 INFO:   Parameters: {"id"=>"5187d355da300c37f7000001"}
+24449 130521 19:30:48 INFO: Username: Ievgenii
+24449 130521 19:30:48 INFO: Completed 200 OK in 7ms (Views: 1.2ms)
+24449 130521 19:30:48 INFO: 
+
+Started GET "/r/5189f4dada300c286d000003/relations_to" for 188.155.155.2 at 2013-05-21 19:30:48 +0000
+24449 130521 19:30:48 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:48 INFO:   Parameters: {"id"=>"5189f4dada300c286d000003"}
+24449 130521 19:30:48 INFO: Username: Ievgenii
+24449 130521 19:30:48 INFO: Completed 200 OK in 11ms (Views: 1.5ms)
+24449 130521 19:30:48 INFO: 
+
+Started GET "/r/5189f4dada300c286d000003" for 188.155.155.2 at 2013-05-21 19:30:48 +0000
+24449 130521 19:30:48 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:48 INFO:   Parameters: {"id"=>"5189f4dada300c286d000003"}
+24449 130521 19:30:48 INFO: Username: Ievgenii
+24449 130521 19:30:48 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+24449 130521 19:30:48 INFO: 
+
+Started GET "/r/5189f53dda300c2923000002/relations_to" for 188.155.155.2 at 2013-05-21 19:30:48 +0000
+24449 130521 19:30:48 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:48 INFO:   Parameters: {"id"=>"5189f53dda300c2923000002"}
+24449 130521 19:30:48 INFO: Username: Ievgenii
+24449 130521 19:30:48 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+24449 130521 19:30:48 INFO: 
+
+Started GET "/r/5189f53dda300c2923000002" for 188.155.155.2 at 2013-05-21 19:30:48 +0000
+24449 130521 19:30:48 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:48 INFO:   Parameters: {"id"=>"5189f53dda300c2923000002"}
+24449 130521 19:30:48 INFO: Username: Ievgenii
+24449 130521 19:30:48 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+24449 130521 19:30:48 INFO: 
+
+Started GET "/r/5189f549da300c286d000004/relations_to" for 188.155.155.2 at 2013-05-21 19:30:48 +0000
+24449 130521 19:30:48 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:48 INFO:   Parameters: {"id"=>"5189f549da300c286d000004"}
+24449 130521 19:30:48 INFO: Username: Ievgenii
+24449 130521 19:30:48 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+24449 130521 19:30:48 INFO: 
+
+Started GET "/r/5189f6afda300c286d000006/relations_to" for 188.155.155.2 at 2013-05-21 19:30:48 +0000
+24449 130521 19:30:48 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:48 INFO:   Parameters: {"id"=>"5189f6afda300c286d000006"}
+24449 130521 19:30:48 INFO: Username: Ievgenii
+24449 130521 19:30:48 INFO: Completed 200 OK in 10ms (Views: 1.1ms)
+24449 130521 19:30:48 INFO: 
+
+Started GET "/r/5189f6afda300c286d000006" for 188.155.155.2 at 2013-05-21 19:30:48 +0000
+24449 130521 19:30:48 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:48 INFO:   Parameters: {"id"=>"5189f6afda300c286d000006"}
+24449 130521 19:30:48 INFO: Username: Ievgenii
+24449 130521 19:30:48 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+24449 130521 19:30:48 INFO: 
+
+Started GET "/r/5189f913da300c287e000003/relations_to" for 188.155.155.2 at 2013-05-21 19:30:48 +0000
+24449 130521 19:30:48 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:48 INFO:   Parameters: {"id"=>"5189f913da300c287e000003"}
+24449 130521 19:30:48 INFO: Username: Ievgenii
+24449 130521 19:30:48 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+24449 130521 19:30:48 INFO: 
+
+Started GET "/r/5189f913da300c287e000003" for 188.155.155.2 at 2013-05-21 19:30:48 +0000
+24449 130521 19:30:48 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:48 INFO:   Parameters: {"id"=>"5189f913da300c287e000003"}
+24449 130521 19:30:48 INFO: Username: Ievgenii
+24449 130521 19:30:48 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+24449 130521 19:30:48 INFO: 
+
+Started GET "/r/5189fa67da300c2a50000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:48 +0000
+24449 130521 19:30:48 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:48 INFO:   Parameters: {"id"=>"5189fa67da300c2a50000001"}
+24449 130521 19:30:48 INFO: Username: Ievgenii
+24449 130521 19:30:48 INFO: Completed 200 OK in 8ms (Views: 0.6ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/5189f549da300c286d000004" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"5189f549da300c286d000004"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/5189fa67da300c2a50000001" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"5189fa67da300c2a50000001"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/5189fcf0da300c2a32000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"5189fcf0da300c2a32000001"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 7ms (Views: 0.5ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/5189fcf0da300c2a32000001" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"5189fcf0da300c2a32000001"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 3ms (Views: 0.0ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/518a01d6da300c2cd2000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"518a01d6da300c2cd2000001"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/518a01d6da300c2cd2000001" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"518a01d6da300c2cd2000001"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/518a0425da300c2ca3000001" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"518a0425da300c2ca3000001"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/518a052bda300c2db1000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"518a052bda300c2db1000001"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/518a0425da300c2ca3000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"518a0425da300c2ca3000001"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 10ms (Views: 0.7ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/518a052bda300c2db1000001" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"518a052bda300c2db1000001"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 3ms (Views: 0.4ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/518a059ada300c2e53000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"518a059ada300c2e53000001"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/518a059ada300c2e53000001" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"518a059ada300c2e53000001"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/518a0626da300c2e5b000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#relations_to as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"518a0626da300c2e5b000001"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/518a0626da300c2e5b000001" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"518a0626da300c2e5b000001"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+4059 130521 19:30:49 INFO: 
+
+Started GET "/r/5189fafcda300c287e000006/relations_from" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+4059 130521 19:30:49 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:49 INFO:   Parameters: {"id"=>"5189fafcda300c287e000006"}
+4059 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 34ms (Views: 0.4ms)
+4059 130521 19:30:49 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/5189fafcda300c287e000006" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"5189fafcda300c287e000006"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/5189f51eda300c2888000003/relations_from" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#relations_from as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"5189f51eda300c2888000003"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/5189f51eda300c2888000003" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"5189f51eda300c2888000003"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+24449 130521 19:30:49 INFO: 
+
+Started GET "/r/5189f533da300c2923000001/relations_from" for 188.155.155.2 at 2013-05-21 19:30:49 +0000
+24449 130521 19:30:49 INFO:   Processing by RController#relations_from as JSON
+24449 130521 19:30:49 INFO:   Parameters: {"id"=>"5189f533da300c2923000001"}
+24449 130521 19:30:49 INFO: Username: Ievgenii
+24449 130521 19:30:49 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+24449 130521 19:30:50 INFO: 
+
+Started GET "/r/5189f533da300c2923000001" for 188.155.155.2 at 2013-05-21 19:30:50 +0000
+24449 130521 19:30:50 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:50 INFO:   Parameters: {"id"=>"5189f533da300c2923000001"}
+24449 130521 19:30:50 INFO: Username: Ievgenii
+24449 130521 19:30:50 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+24449 130521 19:30:50 INFO: 
+
+Started GET "/r/518a0122da300c2a32000002/relations_from" for 188.155.155.2 at 2013-05-21 19:30:50 +0000
+24449 130521 19:30:50 INFO:   Processing by RController#relations_from as JSON
+24449 130521 19:30:50 INFO:   Parameters: {"id"=>"518a0122da300c2a32000002"}
+24449 130521 19:30:50 INFO: Username: Ievgenii
+24449 130521 19:30:50 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+24449 130521 19:30:50 INFO: 
+
+Started GET "/r/518a0122da300c2a32000002" for 188.155.155.2 at 2013-05-21 19:30:50 +0000
+24449 130521 19:30:50 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:50 INFO:   Parameters: {"id"=>"518a0122da300c2a32000002"}
+24449 130521 19:30:50 INFO: Username: Ievgenii
+4059 130521 19:30:50 INFO: 
+
+Started GET "/r/5189f718da300c2968000001/relations_from" for 188.155.155.2 at 2013-05-21 19:30:50 +0000
+4059 130521 19:30:50 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:50 INFO:   Parameters: {"id"=>"5189f718da300c2968000001"}
+4059 130521 19:30:50 INFO: Username: Ievgenii
+4059 130521 19:30:50 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:50 INFO: 
+
+Started GET "/r/5189f718da300c2968000001" for 188.155.155.2 at 2013-05-21 19:30:50 +0000
+4059 130521 19:30:50 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:50 INFO:   Parameters: {"id"=>"5189f718da300c2968000001"}
+4059 130521 19:30:50 INFO: Username: Ievgenii
+4059 130521 19:30:50 INFO: Completed 200 OK in 4ms (Views: 0.5ms)
+24449 130521 19:30:50 INFO: Completed 200 OK in 54ms (Views: 0.5ms)
+24449 130521 19:30:50 INFO: 
+
+Started GET "/r/5189fb17da300c2a87000002/relations_from" for 188.155.155.2 at 2013-05-21 19:30:50 +0000
+24449 130521 19:30:50 INFO:   Processing by RController#relations_from as JSON
+24449 130521 19:30:50 INFO:   Parameters: {"id"=>"5189fb17da300c2a87000002"}
+24449 130521 19:30:50 INFO: Username: Ievgenii
+24449 130521 19:30:50 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+24449 130521 19:30:50 INFO: 
+
+Started GET "/r/5189fd16da300c2b9c000001" for 188.155.155.2 at 2013-05-21 19:30:50 +0000
+24449 130521 19:30:50 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:50 INFO:   Parameters: {"id"=>"5189fd16da300c2b9c000001"}
+24449 130521 19:30:50 INFO: Username: Ievgenii
+24449 130521 19:30:50 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+24449 130521 19:30:50 INFO: 
+
+Started GET "/r/5189fb0bda300c2a87000001/relations_from" for 188.155.155.2 at 2013-05-21 19:30:50 +0000
+24449 130521 19:30:50 INFO:   Processing by RController#relations_from as JSON
+24449 130521 19:30:50 INFO:   Parameters: {"id"=>"5189fb0bda300c2a87000001"}
+24449 130521 19:30:50 INFO: Username: Ievgenii
+24449 130521 19:30:50 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+24449 130521 19:30:50 INFO: 
+
+Started GET "/r/5189fb0bda300c2a87000001" for 188.155.155.2 at 2013-05-21 19:30:50 +0000
+24449 130521 19:30:50 INFO:   Processing by RController#show as JSON
+24449 130521 19:30:50 INFO:   Parameters: {"id"=>"5189fb0bda300c2a87000001"}
+4059 130521 19:30:50 INFO: 
+
+Started GET "/r/5189fb17da300c2a87000002" for 188.155.155.2 at 2013-05-21 19:30:50 +0000
+24449 130521 19:30:50 INFO: Username: Ievgenii
+4059 130521 19:30:50 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:50 INFO:   Parameters: {"id"=>"5189fb17da300c2a87000002"}
+4059 130521 19:30:50 INFO: Username: Ievgenii
+24449 130521 19:30:50 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+4059 130521 19:30:50 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+4059 130521 19:30:50 INFO: 
+
+Started GET "/r/518a050cda300c2dba000002" for 188.155.155.2 at 2013-05-21 19:30:50 +0000
+4059 130521 19:30:50 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:50 INFO:   Parameters: {"id"=>"518a050cda300c2dba000002"}
+4059 130521 19:30:50 INFO: Username: Ievgenii
+4059 130521 19:30:50 INFO: Completed 200 OK in 3ms (Views: 0.3ms)
+4059 130521 19:30:50 INFO: 
+
+Started GET "/r/5189fd16da300c2b9c000001/relations_from" for 188.155.155.2 at 2013-05-21 19:30:50 +0000
+4059 130521 19:30:50 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:50 INFO:   Parameters: {"id"=>"5189fd16da300c2b9c000001"}
+4059 130521 19:30:50 INFO: Username: Ievgenii
+4059 130521 19:30:50 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+4059 130521 19:30:50 INFO: 
+
+Started GET "/r/518a050cda300c2dba000002/relations_from" for 188.155.155.2 at 2013-05-21 19:30:50 +0000
+4059 130521 19:30:50 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:50 INFO:   Parameters: {"id"=>"518a050cda300c2dba000002"}
+4059 130521 19:30:50 INFO: Username: Ievgenii
+4059 130521 19:30:50 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:51 INFO: 
+
+Started GET "/r/518a0461da300c2ca3000003/relations_from" for 188.155.155.2 at 2013-05-21 19:30:51 +0000
+4059 130521 19:30:51 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:51 INFO:   Parameters: {"id"=>"518a0461da300c2ca3000003"}
+4059 130521 19:30:51 INFO: Username: Ievgenii
+4059 130521 19:30:51 INFO: Completed 200 OK in 7ms (Views: 1.2ms)
+4059 130521 19:30:51 INFO: 
+
+Started GET "/r/518a049fda300c2dcd000001/relations_from" for 188.155.155.2 at 2013-05-21 19:30:51 +0000
+4059 130521 19:30:51 INFO:   Processing by RController#relations_from as JSON
+4059 130521 19:30:51 INFO:   Parameters: {"id"=>"518a049fda300c2dcd000001"}
+4059 130521 19:30:51 INFO: Username: Ievgenii
+4059 130521 19:30:51 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+4059 130521 19:30:51 INFO: 
+
+Started GET "/r/518a049fda300c2dcd000001" for 188.155.155.2 at 2013-05-21 19:30:51 +0000
+4059 130521 19:30:51 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:51 INFO:   Parameters: {"id"=>"518a049fda300c2dcd000001"}
+4059 130521 19:30:51 INFO: Username: Ievgenii
+4059 130521 19:30:51 INFO: Completed 200 OK in 3ms (Views: 0.4ms)
+4059 130521 19:30:51 INFO: 
+
+Started GET "/r/518a0461da300c2ca3000003" for 188.155.155.2 at 2013-05-21 19:30:51 +0000
+4059 130521 19:30:51 INFO:   Processing by RController#show as JSON
+4059 130521 19:30:51 INFO:   Parameters: {"id"=>"518a0461da300c2ca3000003"}
+4059 130521 19:30:51 INFO: Username: Ievgenii
+4059 130521 19:30:51 INFO: Completed 200 OK in 3ms (Views: 0.2ms)
+4059 130521 19:30:51 INFO: 
+
+Started GET "/r/5189f51eda300c2876000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:51 +0000
+4059 130521 19:30:51 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:51 INFO:   Parameters: {"id"=>"5189f51eda300c2876000001"}
+4059 130521 19:30:51 INFO: Username: Ievgenii
+4059 130521 19:30:51 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+4059 130521 19:30:51 INFO: 
+
+Started GET "/r/5189fafcda300c287e000007/relations_to" for 188.155.155.2 at 2013-05-21 19:30:51 +0000
+4059 130521 19:30:51 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:51 INFO:   Parameters: {"id"=>"5189fafcda300c287e000007"}
+4059 130521 19:30:51 INFO: Username: Ievgenii
+4059 130521 19:30:51 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+4059 130521 19:30:51 INFO: 
+
+Started GET "/r/5189f533da300c2876000002/relations_to" for 188.155.155.2 at 2013-05-21 19:30:51 +0000
+4059 130521 19:30:51 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:51 INFO:   Parameters: {"id"=>"5189f533da300c2876000002"}
+4059 130521 19:30:51 INFO: Username: Ievgenii
+4059 130521 19:30:51 INFO: Completed 200 OK in 9ms (Views: 0.6ms)
+4059 130521 19:30:51 INFO: 
+
+Started GET "/r/518a0122da300c2a32000003/relations_to" for 188.155.155.2 at 2013-05-21 19:30:51 +0000
+4059 130521 19:30:51 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:51 INFO:   Parameters: {"id"=>"518a0122da300c2a32000003"}
+4059 130521 19:30:51 INFO: Username: Ievgenii
+4059 130521 19:30:51 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+4059 130521 19:30:51 INFO: 
+
+Started GET "/r/5189f718da300c2876000003/relations_to" for 188.155.155.2 at 2013-05-21 19:30:51 +0000
+4059 130521 19:30:51 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:51 INFO:   Parameters: {"id"=>"5189f718da300c2876000003"}
+4059 130521 19:30:51 INFO: Username: Ievgenii
+4059 130521 19:30:51 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:51 INFO: 
+
+Started GET "/r/5189fb17da300c2a63000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:51 +0000
+4059 130521 19:30:51 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:51 INFO:   Parameters: {"id"=>"5189fb17da300c2a63000001"}
+4059 130521 19:30:51 INFO: Username: Ievgenii
+4059 130521 19:30:51 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+4059 130521 19:30:51 INFO: 
+
+Started GET "/r/5189fb0cda300c2aac000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:51 +0000
+4059 130521 19:30:51 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:51 INFO:   Parameters: {"id"=>"5189fb0cda300c2aac000001"}
+4059 130521 19:30:51 INFO: Username: Ievgenii
+4059 130521 19:30:51 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:51 INFO: 
+
+Started GET "/r/5189fd17da300c2a75000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:51 +0000
+4059 130521 19:30:51 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:51 INFO:   Parameters: {"id"=>"5189fd17da300c2a75000001"}
+4059 130521 19:30:51 INFO: Username: Ievgenii
+4059 130521 19:30:51 INFO: Completed 200 OK in 5ms (Views: 0.1ms)
+4059 130521 19:30:51 INFO: 
+
+Started GET "/r/518a050cda300c2dee000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:51 +0000
+4059 130521 19:30:51 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:51 INFO:   Parameters: {"id"=>"518a050cda300c2dee000001"}
+4059 130521 19:30:51 INFO: Username: Ievgenii
+4059 130521 19:30:51 INFO: Completed 200 OK in 7ms (Views: 0.4ms)
+4059 130521 19:30:51 INFO: 
+
+Started GET "/r/518a0461da300c2dba000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:51 +0000
+4059 130521 19:30:51 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:51 INFO:   Parameters: {"id"=>"518a0461da300c2dba000001"}
+4059 130521 19:30:51 INFO: Username: Ievgenii
+4059 130521 19:30:51 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 19:30:51 INFO: 
+
+Started GET "/r/518a049fda300c2dc3000001/relations_to" for 188.155.155.2 at 2013-05-21 19:30:51 +0000
+4059 130521 19:30:51 INFO:   Processing by RController#relations_to as JSON
+4059 130521 19:30:51 INFO:   Parameters: {"id"=>"518a049fda300c2dc3000001"}
+4059 130521 19:30:51 INFO: Username: Ievgenii
+4059 130521 19:30:51 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+4059 130521 21:14:22 INFO: 
+
+Started GET "/" for 92.107.18.234 at 2013-05-21 21:14:22 +0000
+4059 130521 21:14:22 INFO:   Processing by WelcomeController#index as HTML
+4059 130521 21:14:22 INFO: Username: (none)
+4059 130521 21:14:22 INFO: Rendered welcome/index.html.erb within layouts/application (0.7ms)
+4059 130521 21:14:22 INFO: Completed 200 OK in 2ms (Views: 1.5ms)

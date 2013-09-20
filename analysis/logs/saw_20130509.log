@@ -1,0 +1,657 @@
+18679 130509 09:16:43 INFO: 
+
+Started GET "/" for 10.62.97.55 at 2013-05-09 09:16:43 +0000
+18679 130509 09:16:43 INFO:   Processing by WelcomeController#index as HTML
+18679 130509 09:16:43 INFO: Username: (none)
+18679 130509 09:16:43 INFO: Rendered welcome/index.html.erb within layouts/application (0.6ms)
+18679 130509 09:16:43 INFO: Completed 200 OK in 3ms (Views: 1.5ms)
+18679 130509 09:16:44 INFO: 
+
+Started GET "/updates/1366969572" for 10.62.97.55 at 2013-05-09 09:16:44 +0000
+18679 130509 09:16:44 INFO:   Processing by NotifyController#stamped as 
+18679 130509 09:16:44 INFO:   Parameters: {"stamp"=>"1366969572"}
+18679 130509 09:16:44 INFO: Username: (none)
+18679 130509 09:16:44 INFO: Completed 200 OK in 66ms (Views: 0.2ms)
+18679 130509 09:16:44 INFO: 
+
+Started GET "/scope/type/Decision" for 10.62.97.55 at 2013-05-09 09:16:44 +0000
+18679 130509 09:16:44 INFO:   Processing by ScopeController#type as JSON
+18679 130509 09:16:44 INFO:   Parameters: {"type_name"=>"Decision"}
+18679 130509 09:16:44 INFO: Username: (none)
+18679 130509 09:16:44 INFO: Completed 200 OK in 10ms (Views: 0.7ms)
+18679 130509 09:16:44 INFO: 
+
+Started GET "/tags" for 10.62.97.55 at 2013-05-09 09:16:44 +0000
+18679 130509 09:16:44 INFO:   Processing by TagsController#index as JSON
+18679 130509 09:16:44 INFO: Username: (none)
+18679 130509 09:16:45 INFO: Completed 200 OK in 256ms (Views: 34.7ms)
+18679 130509 09:16:45 INFO: 
+
+Started GET "/t" for 10.62.97.55 at 2013-05-09 09:16:45 +0000
+18679 130509 09:16:45 INFO:   Processing by TController#index as JSON
+18679 130509 09:16:45 INFO: Username: (none)
+18679 130509 09:16:45 INFO: Completed   in 1ms
+18679 130509 09:16:45 INFO: 
+
+Started GET "/r/51765a68da300c1849000001/relations_from" for 10.62.97.55 at 2013-05-09 09:16:45 +0000
+18679 130509 09:16:45 INFO:   Processing by RController#relations_from as JSON
+18679 130509 09:16:45 INFO:   Parameters: {"id"=>"51765a68da300c1849000001"}
+18679 130509 09:16:45 INFO: Username: (none)
+18679 130509 09:16:45 INFO: Completed   in 1ms
+18679 130509 09:16:47 INFO: 
+
+Started GET "/users/sign_in" for 10.62.97.55 at 2013-05-09 09:16:47 +0000
+18679 130509 09:16:47 INFO:   Processing by Devise::SessionsController#new as HTML
+18679 130509 09:16:47 INFO: Username: (none)
+18679 130509 09:16:47 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.2ms)
+18679 130509 09:16:47 INFO: Completed 200 OK in 3ms (Views: 2.1ms)
+18679 130509 09:16:49 INFO: 
+
+Started GET "/auth/facebook" for 10.62.97.55 at 2013-05-09 09:16:49 +0000
+18679 130509 09:16:50 INFO: 
+
+Started GET "/auth/facebook/callback?code=AQBERLxjAqxtXhBbHUQkIKZy3hzM3xdRgmfuarfCxA1gp-4aPToMktGNLsEnsXtqzx2JFnFTZwJdJof0vzoqffrQpkrF21yVgVSrz9Nd1ftRTh0HRJDlk8VqegFrkqwuNN3qzf7BMSgqTVZVlxG3VEA21KIR01PTjm4i9gxvA_HZZUDv_W473N8UiJL8rb9wixE-RkhHQgjLc2dB-J70PF2qwVEWaCqYG8ZuYQkZokdEZGNcttM1R-pM2CZF4__Sl2Mo_KNDbQo9nc0-H2Q-mKdkut4UARUbK7SmdyMx6ELU9HII5qYWVcfrtj9_AdwmfOo" for 10.62.97.55 at 2013-05-09 09:16:50 +0000
+18679 130509 09:16:51 INFO:   Processing by AuthenticationsController#create as HTML
+18679 130509 09:16:51 INFO:   Parameters: {"code"=>"AQBERLxjAqxtXhBbHUQkIKZy3hzM3xdRgmfuarfCxA1gp-4aPToMktGNLsEnsXtqzx2JFnFTZwJdJof0vzoqffrQpkrF21yVgVSrz9Nd1ftRTh0HRJDlk8VqegFrkqwuNN3qzf7BMSgqTVZVlxG3VEA21KIR01PTjm4i9gxvA_HZZUDv_W473N8UiJL8rb9wixE-RkhHQgjLc2dB-J70PF2qwVEWaCqYG8ZuYQkZokdEZGNcttM1R-pM2CZF4__Sl2Mo_KNDbQo9nc0-H2Q-mKdkut4UARUbK7SmdyMx6ELU9HII5qYWVcfrtj9_AdwmfOo", "provider"=>"facebook"}
+18679 130509 09:16:51 INFO: Username: (none)
+18679 130509 09:16:51 INFO: Redirected to http://exercises.saw.sonyx.net/welcome/logged_in
+18679 130509 09:16:51 INFO: Completed 302 Found in 6ms
+18679 130509 09:16:51 INFO: 
+
+Started GET "/welcome/logged_in" for 10.62.97.55 at 2013-05-09 09:16:51 +0000
+18679 130509 09:16:51 INFO:   Processing by WelcomeController#logged_in as HTML
+18679 130509 09:16:51 INFO: Username: simocomo90@hotmail.it
+18679 130509 09:16:51 INFO: Rendered welcome/logged_in.html.erb within layouts/application (0.9ms)
+18679 130509 09:16:51 INFO: Completed 200 OK in 5ms (Views: 3.0ms)
+18679 130509 09:16:51 INFO: 
+
+Started GET "/" for 10.62.97.55 at 2013-05-09 09:16:51 +0000
+18679 130509 09:16:51 INFO:   Processing by WelcomeController#index as HTML
+18679 130509 09:16:51 INFO: Username: simocomo90@hotmail.it
+18679 130509 09:16:51 INFO: Rendered welcome/index.html.erb within layouts/application (0.5ms)
+18679 130509 09:16:51 INFO: Completed 200 OK in 3ms (Views: 1.3ms)
+18679 130509 09:16:51 INFO: 
+
+Started GET "/updates/1366969572" for 10.62.97.55 at 2013-05-09 09:16:51 +0000
+18679 130509 09:16:51 INFO:   Processing by NotifyController#stamped as 
+18679 130509 09:16:51 INFO:   Parameters: {"stamp"=>"1366969572"}
+18679 130509 09:16:51 INFO: Username: simocomo90@hotmail.it
+30553 130509 09:16:51 INFO: 
+
+Started GET "/scope/type/Decision" for 10.62.97.55 at 2013-05-09 09:16:51 +0000
+18679 130509 09:16:51 INFO: Completed 200 OK in 160ms (Views: 3.7ms)
+18679 130509 09:16:52 INFO: 
+
+Started GET "/tags" for 10.62.97.55 at 2013-05-09 09:16:52 +0000
+18679 130509 09:16:52 INFO:   Processing by TagsController#index as JSON
+18679 130509 09:16:52 INFO: Username: simocomo90@hotmail.it
+30562 130509 09:16:52 INFO: 
+
+Started GET "/r/51765a68da300c1849000001/relations_from" for 10.62.97.55 at 2013-05-09 09:16:52 +0000
+18679 130509 09:16:52 INFO: Completed 200 OK in 384ms (Views: 36.3ms)
+18679 130509 09:16:52 INFO: 
+
+Started GET "/r/5187d361da300c37f7000002/relations_from" for 10.62.97.55 at 2013-05-09 09:16:52 +0000
+18679 130509 09:16:52 INFO:   Processing by RController#relations_from as JSON
+18679 130509 09:16:52 INFO:   Parameters: {"id"=>"5187d361da300c37f7000002"}
+18679 130509 09:16:52 INFO: Username: simocomo90@hotmail.it
+30570 130509 09:16:52 INFO: 
+
+Started GET "/t" for 10.62.97.55 at 2013-05-09 09:16:52 +0000
+18679 130509 09:16:52 INFO: Completed 200 OK in 374ms (Views: 28.0ms)
+18679 130509 09:16:52 INFO: 
+
+Started GET "/r/5187d355da300c37f7000001/relations_from" for 10.62.97.55 at 2013-05-09 09:16:52 +0000
+18679 130509 09:16:52 INFO:   Processing by RController#relations_from as JSON
+18679 130509 09:16:52 INFO:   Parameters: {"id"=>"5187d355da300c37f7000001"}
+18679 130509 09:16:52 INFO: Username: simocomo90@hotmail.it
+18679 130509 09:16:52 INFO: Completed 200 OK in 42ms (Views: 2.4ms)
+18679 130509 09:16:52 INFO: 
+
+Started GET "/r/518a85d0da300c484c000002/relations_from" for 10.62.97.55 at 2013-05-09 09:16:52 +0000
+18679 130509 09:16:52 INFO:   Processing by RController#relations_from as JSON
+18679 130509 09:16:53 INFO:   Parameters: {"id"=>"518a85d0da300c484c000002"}
+18679 130509 09:16:53 INFO: Username: simocomo90@hotmail.it
+30580 130509 09:16:53 INFO: 
+
+Started GET "/r/518a833eda300c484c000001/relations_from" for 10.62.97.55 at 2013-05-09 09:16:53 +0000
+18679 130509 09:16:53 INFO: Completed 200 OK in 752ms (Views: 75.4ms)
+30553 130509 09:16:57 INFO:   Processing by ScopeController#type as JSON
+30553 130509 09:16:57 INFO:   Parameters: {"type_name"=>"Decision"}
+30553 130509 09:16:57 INFO: Username: simocomo90@hotmail.it
+30553 130509 09:16:57 INFO: Completed 200 OK in 123ms (Views: 31.9ms)
+30562 130509 09:16:57 INFO:   Processing by RController#relations_from as JSON
+30562 130509 09:16:57 INFO:   Parameters: {"id"=>"51765a68da300c1849000001"}
+30562 130509 09:16:57 INFO: Username: simocomo90@hotmail.it
+30570 130509 09:16:57 INFO:   Processing by TController#index as JSON
+30570 130509 09:16:57 INFO: Username: simocomo90@hotmail.it
+30562 130509 09:16:57 INFO: Completed 200 OK in 85ms (Views: 14.5ms)
+30570 130509 09:16:57 INFO: Completed 200 OK in 158ms (Views: 12.2ms)
+30570 130509 09:16:57 INFO: 
+
+Started GET "/r/517a4368da300c691f000001" for 10.62.97.55 at 2013-05-09 09:16:57 +0000
+30570 130509 09:16:57 INFO:   Processing by RController#show as JSON
+30570 130509 09:16:57 INFO:   Parameters: {"id"=>"517a4368da300c691f000001"}
+30570 130509 09:16:57 INFO: Username: simocomo90@hotmail.it
+30570 130509 09:16:57 INFO: Completed 200 OK in 7ms (Views: 1.6ms)
+30580 130509 09:16:57 INFO:   Processing by RController#relations_from as JSON
+30580 130509 09:16:57 INFO:   Parameters: {"id"=>"518a833eda300c484c000001"}
+30580 130509 09:16:57 INFO: Username: simocomo90@hotmail.it
+30580 130509 09:16:57 INFO: Completed 200 OK in 21ms (Views: 6.2ms)
+30570 130509 09:16:58 INFO: 
+
+Started GET "/r/517a49fbda300c6b43000006" for 10.62.97.55 at 2013-05-09 09:16:58 +0000
+30580 130509 09:16:58 INFO: 
+
+Started GET "/r/517a46f7da300c6b31000001" for 10.62.97.55 at 2013-05-09 09:16:58 +0000
+30570 130509 09:16:58 INFO:   Processing by RController#show as JSON
+30570 130509 09:16:58 INFO:   Parameters: {"id"=>"517a49fbda300c6b43000006"}
+30570 130509 09:16:58 INFO: Username: simocomo90@hotmail.it
+30580 130509 09:16:58 INFO:   Processing by RController#show as JSON
+30580 130509 09:16:58 INFO:   Parameters: {"id"=>"517a46f7da300c6b31000001"}
+30580 130509 09:16:58 INFO: Username: simocomo90@hotmail.it
+30570 130509 09:16:58 INFO: Completed 200 OK in 4ms (Views: 0.3ms)
+30570 130509 09:16:58 INFO: 
+
+Started GET "/r/517a4391da300c6a81000003" for 10.62.97.55 at 2013-05-09 09:16:58 +0000
+30570 130509 09:16:58 INFO:   Processing by RController#show as JSON
+30570 130509 09:16:58 INFO:   Parameters: {"id"=>"517a4391da300c6a81000003"}
+30570 130509 09:16:58 INFO: Username: simocomo90@hotmail.it
+30580 130509 09:16:58 INFO: Completed 200 OK in 10ms (Views: 2.1ms)
+30570 130509 09:16:58 INFO: Completed 200 OK in 3ms (Views: 0.5ms)
+30562 130509 09:16:58 INFO: 
+
+Started GET "/r/517a4388da300c6aaa000001/relations_from" for 10.62.97.55 at 2013-05-09 09:16:58 +0000
+30570 130509 09:16:58 INFO: 
+
+Started GET "/r/517a4388da300c6aaa000001" for 10.62.97.55 at 2013-05-09 09:16:58 +0000
+30570 130509 09:16:58 INFO:   Processing by RController#show as JSON
+30570 130509 09:16:58 INFO:   Parameters: {"id"=>"517a4388da300c6aaa000001"}
+30570 130509 09:16:58 INFO: Username: simocomo90@hotmail.it
+30562 130509 09:16:58 INFO:   Processing by RController#relations_from as JSON
+30562 130509 09:16:58 INFO:   Parameters: {"id"=>"517a4388da300c6aaa000001"}
+30562 130509 09:16:58 INFO: Username: simocomo90@hotmail.it
+30580 130509 09:16:58 INFO: 
+
+Started GET "/r/517a4788da300c6c46000001/relations_from" for 10.62.97.55 at 2013-05-09 09:16:58 +0000
+30553 130509 09:16:58 INFO: 
+
+Started GET "/r/517a4788da300c6c46000001" for 10.62.97.55 at 2013-05-09 09:16:58 +0000
+30580 130509 09:16:58 INFO:   Processing by RController#relations_from as JSON
+30580 130509 09:16:58 INFO:   Parameters: {"id"=>"517a4788da300c6c46000001"}
+30580 130509 09:16:58 INFO: Username: simocomo90@hotmail.it
+30553 130509 09:16:58 INFO:   Processing by RController#show as JSON
+30553 130509 09:16:58 INFO:   Parameters: {"id"=>"517a4788da300c6c46000001"}
+30553 130509 09:16:58 INFO: Username: simocomo90@hotmail.it
+30580 130509 09:16:58 INFO: Completed 200 OK in 9ms (Views: 0.4ms)
+30562 130509 09:16:58 INFO: Completed 404 Not Found in 21ms
+30570 130509 09:16:58 INFO: Completed 404 Not Found in 23ms
+30580 130509 09:16:58 INFO: 
+
+Started GET "/r/517a475dda300c6c1c000002/relations_from" for 10.62.97.55 at 2013-05-09 09:16:58 +0000
+30553 130509 09:16:58 INFO: Completed 200 OK in 9ms (Views: 1.9ms)
+30580 130509 09:16:58 INFO:   Processing by RController#relations_from as JSON
+30562 130509 09:16:58 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 517a4388da300c6aaa000001.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+30553 130509 09:16:58 INFO: 
+
+Started GET "/r/517a475dda300c6c1c000002" for 10.62.97.55 at 2013-05-09 09:16:58 +0000
+30580 130509 09:16:58 INFO:   Parameters: {"id"=>"517a475dda300c6c1c000002"}
+30580 130509 09:16:58 INFO: Username: simocomo90@hotmail.it
+30562 130509 09:16:58 INFO: 
+
+Started GET "/r/517a477bda300c6c29000001/relations_from" for 10.62.97.55 at 2013-05-09 09:16:58 +0000
+30553 130509 09:16:58 INFO:   Processing by RController#show as JSON
+18679 130509 09:16:58 INFO: 
+
+Started GET "/r/517a477bda300c6c29000001" for 10.62.97.55 at 2013-05-09 09:16:58 +0000
+30570 130509 09:16:58 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 517a4388da300c6aaa000001.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+30562 130509 09:16:58 INFO:   Processing by RController#relations_from as JSON
+30562 130509 09:16:58 INFO:   Parameters: {"id"=>"517a477bda300c6c29000001"}
+18679 130509 09:16:58 INFO:   Processing by RController#show as JSON
+18679 130509 09:16:58 INFO:   Parameters: {"id"=>"517a477bda300c6c29000001"}
+30562 130509 09:16:58 INFO: Username: simocomo90@hotmail.it
+18679 130509 09:16:58 INFO: Username: simocomo90@hotmail.it
+30553 130509 09:16:58 INFO:   Parameters: {"id"=>"517a475dda300c6c1c000002"}
+30580 130509 09:16:58 INFO: Completed 200 OK in 12ms (Views: 0.4ms)
+18679 130509 09:16:58 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+30553 130509 09:16:58 INFO: Username: simocomo90@hotmail.it
+30562 130509 09:16:58 INFO: Completed 200 OK in 8ms (Views: 0.1ms)
+30553 130509 09:16:58 INFO: Completed 200 OK in 6ms (Views: 0.4ms)
+30553 130509 09:16:58 INFO: 
+
+Started GET "/r/54fb3c57e09f9515d4f000002/relations_from" for 10.62.97.55 at 2013-05-09 09:16:58 +0000
+30562 130509 09:16:58 INFO: 
+
+Started GET "/projects/54fb3c57e09f9515d4f000002" for 10.62.97.55 at 2013-05-09 09:16:58 +0000
+30553 130509 09:16:58 INFO:   Processing by RController#relations_from as JSON
+30553 130509 09:16:58 INFO:   Parameters: {"id"=>"54fb3c57e09f9515d4f000002"}
+30553 130509 09:16:58 INFO: Username: simocomo90@hotmail.it
+30562 130509 09:16:58 INFO:   Processing by ProjectsController#show as JSON
+30562 130509 09:16:58 INFO:   Parameters: {"id"=>"54fb3c57e09f9515d4f000002"}
+30553 130509 09:16:58 INFO: Completed 500 Internal Server Error in 2ms
+30562 130509 09:16:58 INFO: Username: simocomo90@hotmail.it
+30562 130509 09:16:58 INFO: Completed 500 Internal Server Error in 2ms
+30562 130509 09:16:58 FATAL: 
+BSON::InvalidObjectId (illegal ObjectId format):
+  app/controllers/projects_controller.rb:10:in `show'
+
+
+30553 130509 09:16:58 FATAL: 
+BSON::InvalidObjectId (illegal ObjectId format):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+30553 130509 09:16:58 INFO: 
+
+Started GET "/r/517a4388da300c6aaa000001" for 10.62.97.55 at 2013-05-09 09:16:58 +0000
+30562 130509 09:16:58 INFO: 
+
+Started GET "/r/517a4388da300c6aaa000001/relations_from" for 10.62.97.55 at 2013-05-09 09:16:58 +0000
+30562 130509 09:16:58 INFO:   Processing by RController#relations_from as JSON
+30562 130509 09:16:58 INFO:   Parameters: {"id"=>"517a4388da300c6aaa000001"}
+30553 130509 09:16:58 INFO:   Processing by RController#show as JSON
+30562 130509 09:16:58 INFO: Username: simocomo90@hotmail.it
+30553 130509 09:16:58 INFO:   Parameters: {"id"=>"517a4388da300c6aaa000001"}
+30562 130509 09:16:58 INFO: Completed 404 Not Found in 2ms
+30553 130509 09:16:58 INFO: Username: simocomo90@hotmail.it
+30562 130509 09:16:58 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 517a4388da300c6aaa000001.):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+30553 130509 09:16:58 INFO: Completed 404 Not Found in 12ms
+30553 130509 09:16:58 FATAL: 
+Mongoid::Errors::DocumentNotFound (Document not found for class Taggable with id(s) 517a4388da300c6aaa000001.):
+  app/controllers/r_controller.rb:31:in `show'
+
+
+30553 130509 09:17:05 INFO: 
+
+Started GET "/projects" for 10.62.97.55 at 2013-05-09 09:17:05 +0000
+30553 130509 09:17:05 INFO:   Processing by ProjectsController#index as JSON
+30553 130509 09:17:05 INFO: Username: simocomo90@hotmail.it
+30553 130509 09:17:06 INFO: Completed 200 OK in 737ms (Views: 4.2ms)
+30553 130509 09:17:10 INFO: 
+
+Started GET "/r/518a833eda300c484c000001/relations_from" for 10.62.97.55 at 2013-05-09 09:17:10 +0000
+30562 130509 09:17:10 INFO: 
+
+Started GET "/projects/518a833eda300c484c000001" for 10.62.97.55 at 2013-05-09 09:17:10 +0000
+30553 130509 09:17:10 INFO:   Processing by RController#relations_from as JSON
+30553 130509 09:17:10 INFO:   Parameters: {"id"=>"518a833eda300c484c000001"}
+30553 130509 09:17:10 INFO: Username: simocomo90@hotmail.it
+30562 130509 09:17:10 INFO:   Processing by ProjectsController#show as JSON
+30562 130509 09:17:10 INFO:   Parameters: {"id"=>"518a833eda300c484c000001"}
+30562 130509 09:17:10 INFO: Username: simocomo90@hotmail.it
+30553 130509 09:17:10 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+30562 130509 09:17:10 INFO: Completed 200 OK in 7ms (Views: 1.9ms)
+30562 130509 09:17:56 INFO: 
+
+Started GET "/updates/1368032062" for 10.62.97.55 at 2013-05-09 09:17:56 +0000
+30562 130509 09:17:56 INFO:   Processing by NotifyController#stamped as 
+30562 130509 09:17:56 INFO:   Parameters: {"stamp"=>"1368032062"}
+30562 130509 09:17:56 INFO: Username: simocomo90@hotmail.it
+30562 130509 09:17:56 INFO: Completed 200 OK in 49ms (Views: 11.8ms)
+30562 130509 09:17:58 INFO: 
+
+Started GET "/r/54fb3c57e09f9515d4f000002/relations_from" for 10.62.97.55 at 2013-05-09 09:17:58 +0000
+30562 130509 09:17:58 INFO:   Processing by RController#relations_from as JSON
+30562 130509 09:17:58 INFO:   Parameters: {"id"=>"54fb3c57e09f9515d4f000002"}
+30553 130509 09:17:58 INFO: 
+
+Started GET "/projects/54fb3c57e09f9515d4f000002" for 10.62.97.55 at 2013-05-09 09:17:58 +0000
+30562 130509 09:17:58 INFO: Username: simocomo90@hotmail.it
+30562 130509 09:17:58 INFO: Completed 500 Internal Server Error in 2ms
+30562 130509 09:17:58 FATAL: 
+BSON::InvalidObjectId (illegal ObjectId format):
+  app/controllers/r_controller.rb:90:in `relations_from'
+
+
+30553 130509 09:17:58 INFO:   Processing by ProjectsController#show as JSON
+30553 130509 09:17:58 INFO:   Parameters: {"id"=>"54fb3c57e09f9515d4f000002"}
+30553 130509 09:17:58 INFO: Username: simocomo90@hotmail.it
+30553 130509 09:17:58 INFO: Completed 500 Internal Server Error in 3ms
+30553 130509 09:17:58 FATAL: 
+BSON::InvalidObjectId (illegal ObjectId format):
+  app/controllers/projects_controller.rb:10:in `show'
+
+
+30553 130509 09:18:27 INFO: 
+
+Started GET "/projects" for 10.62.97.55 at 2013-05-09 09:18:27 +0000
+30553 130509 09:18:27 INFO:   Processing by ProjectsController#index as JSON
+30553 130509 09:18:27 INFO: Username: simocomo90@hotmail.it
+30553 130509 09:18:28 INFO: Completed 200 OK in 749ms (Views: 3.2ms)
+30553 130509 09:18:30 INFO: 
+
+Started GET "/r/518a833eda300c484c000001/relations_from" for 10.62.97.55 at 2013-05-09 09:18:30 +0000
+30553 130509 09:18:30 INFO:   Processing by RController#relations_from as JSON
+30553 130509 09:18:30 INFO:   Parameters: {"id"=>"518a833eda300c484c000001"}
+30553 130509 09:18:30 INFO: Username: simocomo90@hotmail.it
+30553 130509 09:18:30 INFO: Completed 200 OK in 5ms (Views: 0.2ms)
+30553 130509 09:18:40 INFO: 
+
+Started GET "/projects" for 10.62.97.55 at 2013-05-09 09:18:40 +0000
+30553 130509 09:18:40 INFO:   Processing by ProjectsController#index as JSON
+30553 130509 09:18:40 INFO: Username: simocomo90@hotmail.it
+30553 130509 09:18:41 INFO: Completed 200 OK in 742ms (Views: 3.3ms)
+30553 130509 16:22:33 INFO: 
+
+Started GET "/" for 188.60.2.193 at 2013-05-09 16:22:33 +0000
+30553 130509 16:22:33 INFO:   Processing by WelcomeController#index as HTML
+30553 130509 16:22:33 INFO: Username: (none)
+30553 130509 16:22:33 INFO: Rendered welcome/index.html.erb within layouts/application (3.1ms)
+30553 130509 16:22:33 INFO: Completed 200 OK in 9ms (Views: 8.1ms)
+30553 130509 16:22:34 INFO: 
+
+Started GET "/updates/1367999918" for 188.60.2.193 at 2013-05-09 16:22:34 +0000
+30553 130509 16:22:34 INFO:   Processing by NotifyController#stamped as 
+30553 130509 16:22:34 INFO:   Parameters: {"stamp"=>"1367999918"}
+30553 130509 16:22:34 INFO: Username: (none)
+30553 130509 16:22:34 INFO: Completed 200 OK in 51ms (Views: 10.3ms)
+30553 130509 16:22:34 INFO: 
+
+Started GET "/scope/type/Decision" for 188.60.2.193 at 2013-05-09 16:22:34 +0000
+30553 130509 16:22:34 INFO:   Processing by ScopeController#type as JSON
+30553 130509 16:22:34 INFO:   Parameters: {"type_name"=>"Decision"}
+30553 130509 16:22:34 INFO: Username: (none)
+30553 130509 16:22:34 INFO: Completed 200 OK in 10ms (Views: 0.7ms)
+30553 130509 16:22:34 INFO: 
+
+Started GET "/r/5187d355da300c37f7000001/relations_from" for 188.60.2.193 at 2013-05-09 16:22:34 +0000
+30553 130509 16:22:34 INFO:   Processing by RController#relations_from as JSON
+30553 130509 16:22:34 INFO:   Parameters: {"id"=>"5187d355da300c37f7000001"}
+30553 130509 16:22:34 INFO: Username: (none)
+30553 130509 16:22:34 INFO: Completed   in 0ms
+30553 130509 16:22:34 INFO: 
+
+Started GET "/t" for 188.60.2.193 at 2013-05-09 16:22:34 +0000
+30553 130509 16:22:34 INFO:   Processing by TController#index as JSON
+30553 130509 16:22:34 INFO: Username: (none)
+30553 130509 16:22:34 INFO: Completed   in 1ms
+30553 130509 16:22:34 INFO: 
+
+Started GET "/tags" for 188.60.2.193 at 2013-05-09 16:22:34 +0000
+30553 130509 16:22:34 INFO:   Processing by TagsController#index as JSON
+30553 130509 16:22:34 INFO: Username: (none)
+30553 130509 16:22:35 INFO: Completed 200 OK in 252ms (Views: 33.6ms)
+30553 130509 16:22:35 INFO: 
+
+Started GET "/projects/5187d355da300c37f7000001" for 188.60.2.193 at 2013-05-09 16:22:35 +0000
+30553 130509 16:22:35 INFO:   Processing by ProjectsController#show as JSON
+30553 130509 16:22:35 INFO:   Parameters: {"id"=>"5187d355da300c37f7000001"}
+30553 130509 16:22:35 INFO: Username: (none)
+30553 130509 16:22:35 INFO: Completed   in 0ms
+30553 130509 16:22:35 INFO: 
+
+Started GET "/r/5187d355da300c37f7000001/relations_from" for 188.60.2.193 at 2013-05-09 16:22:35 +0000
+30553 130509 16:22:35 INFO:   Processing by RController#relations_from as JSON
+30553 130509 16:22:35 INFO:   Parameters: {"id"=>"5187d355da300c37f7000001"}
+30553 130509 16:22:35 INFO: Username: (none)
+30553 130509 16:22:35 INFO: Completed   in 1ms
+30553 130509 16:22:35 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b900002d/relations_from" for 188.60.2.193 at 2013-05-09 16:22:35 +0000
+30553 130509 16:22:35 INFO:   Processing by RController#relations_from as JSON
+30553 130509 16:22:35 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b900002d"}
+30553 130509 16:22:35 INFO: Username: (none)
+30553 130509 16:22:35 INFO: Completed   in 1ms
+30553 130509 16:22:35 INFO: 
+
+Started GET "/r/518a85d0da300c484c000002/relations_from" for 188.60.2.193 at 2013-05-09 16:22:35 +0000
+30553 130509 16:22:35 INFO:   Processing by RController#relations_from as JSON
+30553 130509 16:22:35 INFO:   Parameters: {"id"=>"518a85d0da300c484c000002"}
+30553 130509 16:22:35 INFO: Username: (none)
+30553 130509 16:22:35 INFO: Completed   in 1ms
+30553 130509 16:22:35 INFO: 
+
+Started GET "/r/518a833eda300c484c000001/relations_from" for 188.60.2.193 at 2013-05-09 16:22:35 +0000
+30553 130509 16:22:35 INFO:   Processing by RController#relations_from as JSON
+30553 130509 16:22:35 INFO:   Parameters: {"id"=>"518a833eda300c484c000001"}
+30553 130509 16:22:35 INFO: Username: (none)
+30553 130509 16:22:35 INFO: Completed   in 0ms
+30553 130509 16:38:11 INFO: 
+
+Started GET "/" for 188.60.2.193 at 2013-05-09 16:38:11 +0000
+30553 130509 16:38:11 INFO:   Processing by WelcomeController#index as HTML
+30553 130509 16:38:11 INFO: Username: (none)
+30553 130509 16:38:11 INFO: Rendered welcome/index.html.erb within layouts/application (0.4ms)
+30553 130509 16:38:11 INFO: Completed 200 OK in 2ms (Views: 1.3ms)
+30553 130509 16:38:13 INFO: 
+
+Started GET "/scope/type/Decision" for 188.60.2.193 at 2013-05-09 16:38:13 +0000
+30553 130509 16:38:13 INFO:   Processing by ScopeController#type as JSON
+30553 130509 16:38:13 INFO:   Parameters: {"type_name"=>"Decision"}
+30553 130509 16:38:13 INFO: Username: (none)
+30553 130509 16:38:13 INFO: Completed 200 OK in 12ms (Views: 0.4ms)
+30553 130509 16:38:13 INFO: 
+
+Started GET "/updates/1367999918" for 188.60.2.193 at 2013-05-09 16:38:13 +0000
+30553 130509 16:38:13 INFO:   Processing by NotifyController#stamped as 
+30553 130509 16:38:13 INFO:   Parameters: {"stamp"=>"1367999918"}
+30553 130509 16:38:13 INFO: Username: (none)
+30553 130509 16:38:13 INFO: Completed 200 OK in 38ms (Views: 0.2ms)
+30553 130509 16:38:13 INFO: 
+
+Started GET "/r/5187d355da300c37f7000001/relations_from" for 188.60.2.193 at 2013-05-09 16:38:13 +0000
+30553 130509 16:38:13 INFO:   Processing by RController#relations_from as JSON
+30553 130509 16:38:13 INFO:   Parameters: {"id"=>"5187d355da300c37f7000001"}
+30553 130509 16:38:13 INFO: Username: (none)
+30553 130509 16:38:13 INFO: Completed   in 1ms
+30553 130509 16:38:13 INFO: 
+
+Started GET "/t" for 188.60.2.193 at 2013-05-09 16:38:13 +0000
+30553 130509 16:38:13 INFO:   Processing by TController#index as JSON
+30553 130509 16:38:13 INFO: Username: (none)
+30553 130509 16:38:13 INFO: Completed   in 0ms
+30553 130509 16:38:13 INFO: 
+
+Started GET "/tags" for 188.60.2.193 at 2013-05-09 16:38:13 +0000
+30553 130509 16:38:13 INFO:   Processing by TagsController#index as JSON
+30553 130509 16:38:13 INFO: Username: (none)
+30553 130509 16:38:13 INFO: Completed 200 OK in 243ms (Views: 85.8ms)
+30553 130509 16:38:13 INFO: 
+
+Started GET "/projects/5187d355da300c37f7000001" for 188.60.2.193 at 2013-05-09 16:38:13 +0000
+30553 130509 16:38:13 INFO:   Processing by ProjectsController#show as JSON
+30553 130509 16:38:13 INFO:   Parameters: {"id"=>"5187d355da300c37f7000001"}
+30553 130509 16:38:13 INFO: Username: (none)
+30553 130509 16:38:13 INFO: Completed   in 1ms
+30553 130509 16:38:13 INFO: 
+
+Started GET "/users/sign_in" for 188.60.2.193 at 2013-05-09 16:38:13 +0000
+30553 130509 16:38:13 INFO:   Processing by Devise::SessionsController#new as HTML
+30553 130509 16:38:13 INFO: Username: (none)
+30553 130509 16:38:13 INFO: Rendered devise/sessions/new.html.erb within layouts/application (2.0ms)
+30553 130509 16:38:13 INFO: Completed 200 OK in 9ms (Views: 5.2ms)
+30553 130509 17:59:52 INFO: 
+
+Started GET "/" for 188.60.2.193 at 2013-05-09 17:59:52 +0000
+30553 130509 17:59:52 INFO:   Processing by WelcomeController#index as HTML
+30553 130509 17:59:52 INFO: Username: (none)
+30553 130509 17:59:52 INFO: Rendered welcome/index.html.erb within layouts/application (0.8ms)
+30553 130509 17:59:52 INFO: Completed 200 OK in 2ms (Views: 1.7ms)
+30553 130509 17:59:54 INFO: 
+
+Started GET "/scope/type/Decision" for 188.60.2.193 at 2013-05-09 17:59:54 +0000
+30553 130509 17:59:54 INFO:   Processing by ScopeController#type as JSON
+30553 130509 17:59:54 INFO:   Parameters: {"type_name"=>"Decision"}
+30553 130509 17:59:54 INFO: Username: (none)
+30553 130509 17:59:54 INFO: Completed 200 OK in 14ms (Views: 0.8ms)
+30553 130509 17:59:54 INFO: 
+
+Started GET "/tags" for 188.60.2.193 at 2013-05-09 17:59:54 +0000
+30553 130509 17:59:54 INFO:   Processing by TagsController#index as JSON
+30553 130509 17:59:54 INFO: Username: (none)
+30553 130509 17:59:54 INFO: Completed 200 OK in 201ms (Views: 33.0ms)
+30553 130509 17:59:54 INFO: 
+
+Started GET "/r/5187d355da300c37f7000001/relations_from" for 188.60.2.193 at 2013-05-09 17:59:54 +0000
+30553 130509 17:59:54 INFO:   Processing by RController#relations_from as JSON
+30553 130509 17:59:54 INFO:   Parameters: {"id"=>"5187d355da300c37f7000001"}
+30553 130509 17:59:54 INFO: Username: (none)
+30553 130509 17:59:54 INFO: Completed   in 1ms
+30553 130509 17:59:54 INFO: 
+
+Started GET "/updates/1367999918" for 188.60.2.193 at 2013-05-09 17:59:54 +0000
+30553 130509 17:59:54 INFO:   Processing by NotifyController#stamped as 
+30553 130509 17:59:54 INFO:   Parameters: {"stamp"=>"1367999918"}
+30553 130509 17:59:54 INFO: Username: (none)
+30553 130509 17:59:54 INFO: Completed 200 OK in 35ms (Views: 0.2ms)
+30553 130509 17:59:54 INFO: 
+
+Started GET "/projects/5187d355da300c37f7000001" for 188.60.2.193 at 2013-05-09 17:59:54 +0000
+30553 130509 17:59:54 INFO:   Processing by ProjectsController#show as JSON
+30553 130509 17:59:54 INFO:   Parameters: {"id"=>"5187d355da300c37f7000001"}
+30553 130509 17:59:54 INFO: Username: (none)
+30553 130509 17:59:54 INFO: Completed   in 1ms
+30553 130509 17:59:54 INFO: 
+
+Started GET "/t" for 188.60.2.193 at 2013-05-09 17:59:54 +0000
+30553 130509 17:59:54 INFO:   Processing by TController#index as JSON
+30553 130509 17:59:54 INFO: Username: (none)
+30553 130509 17:59:54 INFO: Completed   in 1ms
+30553 130509 17:59:54 INFO: 
+
+Started GET "/r/518a833eda300c484c000001/relations_from" for 188.60.2.193 at 2013-05-09 17:59:54 +0000
+30553 130509 17:59:54 INFO:   Processing by RController#relations_from as JSON
+30553 130509 17:59:54 INFO:   Parameters: {"id"=>"518a833eda300c484c000001"}
+30553 130509 17:59:54 INFO: Username: (none)
+30553 130509 17:59:54 INFO: Completed   in 1ms
+30553 130509 17:59:54 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b900002d/relations_from" for 188.60.2.193 at 2013-05-09 17:59:54 +0000
+30553 130509 17:59:54 INFO:   Processing by RController#relations_from as JSON
+30553 130509 17:59:54 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b900002d"}
+30553 130509 17:59:54 INFO: Username: (none)
+30553 130509 17:59:54 INFO: Completed   in 1ms
+4612 130509 18:00:19 INFO: 
+
+Started GET "/" for 188.60.2.193 at 2013-05-09 18:00:19 +0000
+4612 130509 18:00:20 INFO:   Processing by WelcomeController#index as HTML
+4612 130509 18:00:20 INFO: Username: (none)
+4612 130509 18:00:20 INFO: Rendered welcome/index.html.erb within layouts/application (5.4ms)
+4612 130509 18:00:20 INFO: Completed 200 OK in 48ms (Views: 44.6ms)
+30553 130509 18:00:23 INFO: 
+
+Started GET "/tags" for 188.60.2.193 at 2013-05-09 18:00:23 +0000
+4612 130509 18:00:23 INFO: 
+
+Started GET "/updates/1367999918" for 188.60.2.193 at 2013-05-09 18:00:23 +0000
+30553 130509 18:00:23 INFO:   Processing by TagsController#index as JSON
+30553 130509 18:00:23 INFO: Username: (none)
+4612 130509 18:00:23 INFO:   Processing by NotifyController#stamped as 
+4612 130509 18:00:23 INFO:   Parameters: {"stamp"=>"1367999918"}
+4612 130509 18:00:23 INFO: Username: (none)
+4612 130509 18:00:24 INFO: Completed 200 OK in 117ms (Views: 32.5ms)
+4612 130509 18:00:24 INFO: 
+
+Started GET "/t" for 188.60.2.193 at 2013-05-09 18:00:24 +0000
+4612 130509 18:00:24 INFO:   Processing by TController#index as JSON
+4612 130509 18:00:24 INFO: Username: (none)
+4612 130509 18:00:24 INFO: Completed   in 1ms
+4612 130509 18:00:24 INFO: 
+
+Started GET "/scope/type/Decision" for 188.60.2.193 at 2013-05-09 18:00:24 +0000
+4612 130509 18:00:24 INFO:   Processing by ScopeController#type as JSON
+4612 130509 18:00:24 INFO:   Parameters: {"type_name"=>"Decision"}
+4612 130509 18:00:24 INFO: Username: (none)
+4612 130509 18:00:24 INFO: Completed 200 OK in 67ms (Views: 7.0ms)
+4612 130509 18:00:24 INFO: 
+
+Started GET "/projects/5187d355da300c37f7000001" for 188.60.2.193 at 2013-05-09 18:00:24 +0000
+4626 130509 18:00:24 INFO: 
+
+Started GET "/r/5187d355da300c37f7000001/relations_from" for 188.60.2.193 at 2013-05-09 18:00:24 +0000
+4612 130509 18:00:24 INFO:   Processing by ProjectsController#show as JSON
+4612 130509 18:00:24 INFO:   Parameters: {"id"=>"5187d355da300c37f7000001"}
+4612 130509 18:00:24 INFO: Username: (none)
+4612 130509 18:00:24 INFO: Completed   in 2ms
+30553 130509 18:00:24 INFO: Completed 200 OK in 394ms (Views: 32.7ms)
+4626 130509 18:00:24 INFO:   Processing by RController#relations_from as JSON
+4626 130509 18:00:24 INFO:   Parameters: {"id"=>"5187d355da300c37f7000001"}
+4626 130509 18:00:24 INFO: Username: (none)
+4626 130509 18:00:24 INFO: Completed   in 3ms
+4626 130509 18:00:24 INFO: 
+
+Started GET "/r/4f9d67e2e90a3e18b900002d/relations_from" for 188.60.2.193 at 2013-05-09 18:00:24 +0000
+4626 130509 18:00:24 INFO:   Processing by RController#relations_from as JSON
+4626 130509 18:00:24 INFO:   Parameters: {"id"=>"4f9d67e2e90a3e18b900002d"}
+4626 130509 18:00:24 INFO: Username: (none)
+4626 130509 18:00:24 INFO: Completed   in 1ms
+4626 130509 18:00:24 INFO: 
+
+Started GET "/r/518a85d0da300c484c000002/relations_from" for 188.60.2.193 at 2013-05-09 18:00:24 +0000
+30553 130509 18:00:24 INFO: 
+
+Started GET "/r/518a833eda300c484c000001/relations_from" for 188.60.2.193 at 2013-05-09 18:00:24 +0000
+4626 130509 18:00:24 INFO:   Processing by RController#relations_from as JSON
+30553 130509 18:00:24 INFO:   Processing by RController#relations_from as JSON
+4626 130509 18:00:24 INFO:   Parameters: {"id"=>"518a85d0da300c484c000002"}
+30553 130509 18:00:24 INFO:   Parameters: {"id"=>"518a833eda300c484c000001"}
+30553 130509 18:00:24 INFO: Username: (none)
+4626 130509 18:00:24 INFO: Username: (none)
+30553 130509 18:00:24 INFO: Completed   in 1ms
+4626 130509 18:00:24 INFO: Completed   in 1ms
+4626 130509 18:16:58 INFO: 
+
+Started GET "/" for 188.60.2.193 at 2013-05-09 18:16:58 +0000
+4626 130509 18:16:58 INFO:   Processing by WelcomeController#index as HTML
+4626 130509 18:16:58 INFO: Username: (none)
+4626 130509 18:16:58 INFO: Rendered welcome/index.html.erb within layouts/application (2.6ms)
+4626 130509 18:16:58 INFO: Completed 200 OK in 11ms (Views: 9.3ms)
+4626 130509 18:17:00 INFO: 
+
+Started GET "/tags" for 188.60.2.193 at 2013-05-09 18:17:00 +0000
+4626 130509 18:17:00 INFO:   Processing by TagsController#index as JSON
+4626 130509 18:17:00 INFO: Username: (none)
+4626 130509 18:17:00 INFO: Completed 200 OK in 212ms (Views: 36.2ms)
+4626 130509 18:17:00 INFO: 
+
+Started GET "/updates/1367999918" for 188.60.2.193 at 2013-05-09 18:17:00 +0000
+4626 130509 18:17:00 INFO:   Processing by NotifyController#stamped as 
+4626 130509 18:17:00 INFO:   Parameters: {"stamp"=>"1367999918"}
+4626 130509 18:17:00 INFO: Username: (none)
+4626 130509 18:17:00 INFO: Completed 200 OK in 78ms (Views: 10.9ms)
+4626 130509 18:17:00 INFO: 
+
+Started GET "/t" for 188.60.2.193 at 2013-05-09 18:17:00 +0000
+4626 130509 18:17:00 INFO:   Processing by TController#index as JSON
+4626 130509 18:17:00 INFO: Username: (none)
+4626 130509 18:17:00 INFO: Completed   in 1ms
+4626 130509 18:17:00 INFO: 
+
+Started GET "/projects/5187d355da300c37f7000001" for 188.60.2.193 at 2013-05-09 18:17:00 +0000
+4626 130509 18:17:00 INFO:   Processing by ProjectsController#show as JSON
+4626 130509 18:17:00 INFO:   Parameters: {"id"=>"5187d355da300c37f7000001"}
+4626 130509 18:17:00 INFO: Username: (none)
+4626 130509 18:17:00 INFO: Completed   in 1ms
+4626 130509 18:17:00 INFO: 
+
+Started GET "/scope/type/Decision" for 188.60.2.193 at 2013-05-09 18:17:00 +0000
+4626 130509 18:17:00 INFO:   Processing by ScopeController#type as JSON
+4626 130509 18:17:00 INFO:   Parameters: {"type_name"=>"Decision"}
+4626 130509 18:17:00 INFO: Username: (none)
+4626 130509 18:17:00 INFO: Completed 200 OK in 63ms (Views: 52.7ms)
+4626 130509 18:17:00 INFO: 
+
+Started GET "/r/5187d355da300c37f7000001/relations_from" for 188.60.2.193 at 2013-05-09 18:17:00 +0000
+4626 130509 18:17:00 INFO:   Processing by RController#relations_from as JSON
+4626 130509 18:17:00 INFO:   Parameters: {"id"=>"5187d355da300c37f7000001"}
+4626 130509 18:17:00 INFO: Username: (none)
+4626 130509 18:17:00 INFO: Completed   in 1ms
+4626 130509 18:17:00 INFO: 
+
+Started GET "/users/sign_in" for 188.60.2.193 at 2013-05-09 18:17:00 +0000
+4626 130509 18:17:00 INFO:   Processing by Devise::SessionsController#new as HTML
+4626 130509 18:17:00 INFO: Username: (none)
+4626 130509 18:17:00 INFO: Rendered devise/sessions/new.html.erb within layouts/application (2.0ms)
+4626 130509 18:17:00 INFO: Completed 200 OK in 9ms (Views: 5.7ms)

@@ -1,0 +1,64 @@
+5543 130207 17:02:50 INFO: 
+
+Started GET "/" for 10.40.6.110 at 2013-02-07 17:02:50 +0000
+5543 130207 17:02:50 INFO:   Processing by WelcomeController#index as HTML
+5543 130207 17:02:50 INFO: Username: (none)
+5543 130207 17:02:50 INFO: Rendered welcome/index.html.erb within layouts/application (1.9ms)
+5543 130207 17:02:50 INFO: Completed 200 OK in 6ms (Views: 4.1ms)
+5543 130207 17:02:51 INFO: 
+
+Started GET "/scope/type/Decision" for 10.40.6.110 at 2013-02-07 17:02:51 +0000
+5543 130207 17:02:51 INFO:   Processing by ScopeController#type as JSON
+5543 130207 17:02:51 INFO:   Parameters: {"type_name"=>"Decision"}
+5543 130207 17:02:51 INFO: Username: (none)
+5543 130207 17:02:51 INFO: Completed 200 OK in 247ms (Views: 0.9ms)
+5543 130207 17:02:51 INFO: 
+
+Started GET "/t" for 10.40.6.110 at 2013-02-07 17:02:51 +0000
+5543 130207 17:02:51 INFO:   Processing by TController#index as JSON
+5543 130207 17:02:51 INFO: Username: (none)
+5543 130207 17:02:51 INFO: Completed   in 1ms
+5543 130207 17:02:51 INFO: 
+
+Started GET "/tags" for 10.40.6.110 at 2013-02-07 17:02:51 +0000
+5543 130207 17:02:51 INFO:   Processing by TagsController#index as JSON
+5543 130207 17:02:51 INFO: Username: (none)
+5543 130207 17:02:52 INFO: Completed 200 OK in 271ms (Views: 70.2ms)
+5543 130207 17:02:52 INFO: 
+
+Started GET "/projects/50c5ff40924ff83ada000003" for 10.40.6.110 at 2013-02-07 17:02:52 +0000
+5543 130207 17:02:52 INFO:   Processing by ProjectsController#show as JSON
+5543 130207 17:02:52 INFO:   Parameters: {"id"=>"50c5ff40924ff83ada000003"}
+5543 130207 17:02:52 INFO: Username: (none)
+5543 130207 17:02:52 INFO: Completed   in 1ms
+5543 130207 17:02:52 INFO: 
+
+Started GET "/r/50c5ff40924ff83ada000003/related_from/Issue" for 10.40.6.110 at 2013-02-07 17:02:52 +0000
+5543 130207 17:02:52 INFO:   Processing by RController#related_from as JSON
+5543 130207 17:02:52 INFO:   Parameters: {"id"=>"50c5ff40924ff83ada000003", "type"=>"Issue"}
+5543 130207 17:02:52 INFO: Username: (none)
+5543 130207 17:02:52 INFO: Completed   in 0ms
+28949 130207 18:21:06 INFO: 
+
+Started GET "/" for 23.20.42.85 at 2013-02-07 18:21:06 +0000
+28949 130207 18:21:06 INFO:   Processing by WelcomeController#index as 
+28949 130207 18:21:06 INFO:   Parameters: {"tinfoil_probe"=>"\nhello\n"}
+28949 130207 18:21:06 INFO: Username: (none)
+28949 130207 18:21:06 INFO: Rendered welcome/index.html.erb within layouts/application (3.2ms)
+28949 130207 18:21:06 INFO: Completed 200 OK in 46ms (Views: 43.1ms)
+28949 130207 18:21:07 INFO: 
+
+Started GET "/" for 23.20.42.85 at 2013-02-07 18:21:07 +0000
+28949 130207 18:21:07 FATAL: 
+Hash::DisallowedType (Disallowed type attribute: "yaml"):
+  
+
+
+28949 130207 18:21:07 INFO: 
+
+Started GET "/" for 23.20.42.85 at 2013-02-07 18:21:07 +0000
+28949 130207 18:21:07 FATAL: 
+Hash::DisallowedType (Disallowed type attribute: "yaml"):
+  
+
+

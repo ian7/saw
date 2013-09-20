@@ -1,0 +1,68 @@
+8107 121112 14:55:39 INFO: 
+
+Started GET "/" for 10.61.101.239 at 2012-11-12 14:55:39 +0000
+8107 121112 14:55:39 INFO:   Processing by WelcomeController#index as HTML
+8107 121112 14:55:39 INFO: Username: (none)
+8107 121112 14:55:39 INFO: Rendered welcome/index.html.erb within layouts/application (0.7ms)
+8107 121112 14:55:39 INFO: Completed 200 OK in 3ms (Views: 2.4ms)
+8107 121112 14:55:40 INFO: 
+
+Started GET "/scope/type/Decision" for 10.61.101.239 at 2012-11-12 14:55:40 +0000
+8107 121112 14:55:40 INFO:   Processing by ScopeController#type as JSON
+8107 121112 14:55:40 INFO:   Parameters: {"type_name"=>"Decision"}
+8107 121112 14:55:40 INFO: Username: (none)
+8107 121112 14:55:40 INFO: Completed 200 OK in 12ms (Views: 0.8ms)
+8107 121112 14:55:40 INFO: 
+
+Started GET "/t" for 10.61.101.239 at 2012-11-12 14:55:40 +0000
+8107 121112 14:55:40 INFO:   Processing by TController#index as JSON
+8107 121112 14:55:40 INFO: Username: (none)
+8107 121112 14:55:40 INFO: Completed   in 0ms
+8107 121112 14:55:41 INFO: 
+
+Started GET "/users/sign_in" for 10.61.101.239 at 2012-11-12 14:55:41 +0000
+8107 121112 14:55:41 INFO:   Processing by Devise::SessionsController#new as HTML
+8107 121112 14:55:41 INFO: Username: (none)
+8107 121112 14:55:41 INFO: Rendered devise/sessions/new.html.erb within layouts/application (1.4ms)
+8107 121112 14:55:41 INFO: Completed 200 OK in 3ms (Views: 2.1ms)
+8107 121112 14:55:44 INFO: 
+
+Started POST "/users/sign_in" for 10.61.101.239 at 2012-11-12 14:55:44 +0000
+8107 121112 14:55:44 INFO:   Processing by Devise::SessionsController#create as HTML
+8107 121112 14:55:44 INFO:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"oikWBo1aXitpLRffeZWZGT24UjfgBxeqFOIDoijDXvE=", "user"=>{"email"=>"admin@sonyx.net", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+8107 121112 14:55:44 INFO: Username: admin@sonyx.net
+8107 121112 14:55:44 INFO: Redirected to http://staging.saw.sonyx.net/welcome/logged_in
+8107 121112 14:55:44 INFO: Completed 302 Found in 141ms
+8107 121112 14:55:44 INFO: 
+
+Started GET "/welcome/logged_in" for 10.61.101.239 at 2012-11-12 14:55:44 +0000
+8107 121112 14:55:44 INFO:   Processing by WelcomeController#logged_in as HTML
+8107 121112 14:55:44 INFO: Username: admin@sonyx.net
+8107 121112 14:55:44 INFO: Rendered welcome/logged_in.html.erb within layouts/application (0.9ms)
+8107 121112 14:55:44 INFO: Completed 200 OK in 4ms (Views: 2.6ms)
+8107 121112 14:55:44 INFO: 
+
+Started GET "/" for 10.61.101.239 at 2012-11-12 14:55:44 +0000
+8107 121112 14:55:44 INFO:   Processing by WelcomeController#index as HTML
+8107 121112 14:55:44 INFO: Username: admin@sonyx.net
+8107 121112 14:55:44 INFO: Rendered welcome/index.html.erb within layouts/application (0.6ms)
+8107 121112 14:55:44 INFO: Completed 200 OK in 3ms (Views: 1.4ms)
+8107 121112 14:55:44 INFO: 
+
+Started GET "/scope/type/Decision" for 10.61.101.239 at 2012-11-12 14:55:44 +0000
+8107 121112 14:55:44 INFO:   Processing by ScopeController#type as JSON
+8107 121112 14:55:44 INFO:   Parameters: {"type_name"=>"Decision"}
+8107 121112 14:55:44 INFO: Username: admin@sonyx.net
+8107 121112 14:55:44 INFO: Completed 200 OK in 11ms (Views: 0.8ms)
+8107 121112 14:55:44 INFO: 
+
+Started GET "/t" for 10.61.101.239 at 2012-11-12 14:55:44 +0000
+8107 121112 14:55:44 INFO:   Processing by TController#index as JSON
+8107 121112 14:55:44 INFO: Username: admin@sonyx.net
+8107 121112 14:55:45 INFO: Completed 200 OK in 578ms (Views: 440.4ms)
+8107 121112 14:55:46 INFO: 
+
+Started GET "/projects" for 10.61.101.239 at 2012-11-12 14:55:46 +0000
+8107 121112 14:55:46 INFO:   Processing by ProjectsController#index as JSON
+8107 121112 14:55:46 INFO: Username: admin@sonyx.net
+8107 121112 14:55:47 INFO: Completed 200 OK in 1286ms (Views: 5.5ms)

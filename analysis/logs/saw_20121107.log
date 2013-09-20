@@ -1,0 +1,1150 @@
+2109 121107 13:28:05 INFO: 
+
+Started GET "/" for 10.62.96.107 at 2012-11-07 13:28:05 +0000
+2109 121107 13:28:05 INFO:   Processing by WelcomeController#index as HTML
+2109 121107 13:28:05 INFO: Username: (none)
+2109 121107 13:28:05 INFO: Rendered welcome/index.html.erb within layouts/application (0.8ms)
+2109 121107 13:28:05 INFO: Completed 200 OK in 3ms (Views: 1.6ms)
+2109 121107 13:28:06 INFO: 
+
+Started GET "/scope/type/Decision" for 10.62.96.107 at 2012-11-07 13:28:06 +0000
+2109 121107 13:28:06 INFO:   Processing by ScopeController#type as JSON
+2109 121107 13:28:06 INFO:   Parameters: {"type_name"=>"Decision"}
+2109 121107 13:28:06 INFO: Username: (none)
+2109 121107 13:28:06 INFO: Completed 200 OK in 15ms (Views: 1.1ms)
+2109 121107 13:28:06 INFO: 
+
+Started GET "/t" for 10.62.96.107 at 2012-11-07 13:28:06 +0000
+2109 121107 13:28:06 INFO:   Processing by TController#index as JSON
+2109 121107 13:28:06 INFO: Username: (none)
+2109 121107 13:28:06 INFO: Completed   in 1ms
+2109 121107 13:28:07 INFO: 
+
+Started GET "/users/sign_in" for 10.62.96.107 at 2012-11-07 13:28:07 +0000
+2109 121107 13:28:07 INFO:   Processing by Devise::SessionsController#new as HTML
+2109 121107 13:28:07 INFO: Username: (none)
+2109 121107 13:28:07 INFO: Rendered devise/sessions/new.html.erb within layouts/application (3.1ms)
+2109 121107 13:28:07 INFO: Completed 200 OK in 9ms (Views: 6.5ms)
+2109 121107 14:06:29 INFO: 
+
+Started GET "/" for 10.61.101.239 at 2012-11-07 14:06:29 +0000
+2109 121107 14:06:29 INFO:   Processing by WelcomeController#index as HTML
+2109 121107 14:06:29 INFO: Username: admin@sonyx.net
+2109 121107 14:06:29 INFO: Rendered welcome/index.html.erb within layouts/application (0.7ms)
+2109 121107 14:06:29 INFO: Completed 200 OK in 4ms (Views: 1.7ms)
+2109 121107 14:06:30 INFO: 
+
+Started GET "/t" for 10.61.101.239 at 2012-11-07 14:06:30 +0000
+2109 121107 14:06:30 INFO:   Processing by TController#index as JSON
+2109 121107 14:06:30 INFO: Username: admin@sonyx.net
+2109 121107 14:06:31 INFO: Completed 200 OK in 582ms (Views: 464.2ms)
+2109 121107 14:06:31 INFO: 
+
+Started GET "/scope/type/Decision" for 10.61.101.239 at 2012-11-07 14:06:31 +0000
+2109 121107 14:06:31 INFO:   Processing by ScopeController#type as JSON
+2109 121107 14:06:31 INFO:   Parameters: {"type_name"=>"Decision"}
+2109 121107 14:06:31 INFO: Username: admin@sonyx.net
+2109 121107 14:06:31 INFO: Completed 200 OK in 11ms (Views: 0.7ms)
+2109 121107 14:06:33 INFO: 
+
+Started GET "/projects" for 10.61.101.239 at 2012-11-07 14:06:33 +0000
+2109 121107 14:06:33 INFO:   Processing by ProjectsController#index as JSON
+2109 121107 14:06:33 INFO: Username: admin@sonyx.net
+2109 121107 14:06:34 INFO: Completed 200 OK in 1253ms (Views: 5.7ms)
+2109 121107 14:06:38 INFO: 
+
+Started GET "/r/4fb0d1fa924ff85581000003/related_from/Issue" for 10.61.101.239 at 2012-11-07 14:06:38 +0000
+2109 121107 14:06:38 INFO:   Processing by RController#related_from as JSON
+2109 121107 14:06:38 INFO:   Parameters: {"id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue"}
+15078 121107 14:06:38 INFO: 
+
+Started GET "/projects/4fb0d1fa924ff85581000003" for 10.61.101.239 at 2012-11-07 14:06:38 +0000
+2109 121107 14:06:38 INFO: Username: admin@sonyx.net
+2109 121107 14:06:38 INFO: Completed 200 OK in 25ms (Views: 2.9ms)
+15078 121107 14:06:39 INFO:   Processing by ProjectsController#show as JSON
+15078 121107 14:06:39 INFO:   Parameters: {"id"=>"4fb0d1fa924ff85581000003"}
+15078 121107 14:06:39 INFO: Username: admin@sonyx.net
+15078 121107 14:06:39 INFO: Completed 200 OK in 13ms (Views: 4.2ms)
+15078 121107 14:06:40 INFO: 
+
+Started GET "/r/4fb0d5c9924ff8535700000f/related_to/Alternative" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+2109 121107 14:06:40 INFO: 
+
+Started GET "/r/4fb0d22f924ff85357000003/related_to/Alternative" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+15078 121107 14:06:40 INFO:   Processing by RController#related_to as JSON
+15078 121107 14:06:40 INFO:   Parameters: {"id"=>"4fb0d5c9924ff8535700000f", "type"=>"Alternative"}
+2109 121107 14:06:40 INFO:   Processing by RController#related_to as JSON
+2109 121107 14:06:40 INFO:   Parameters: {"id"=>"4fb0d22f924ff85357000003", "type"=>"Alternative"}
+15078 121107 14:06:40 INFO: Username: admin@sonyx.net
+2109 121107 14:06:40 INFO: Username: admin@sonyx.net
+2109 121107 14:06:40 INFO: Completed 200 OK in 29ms (Views: 0.8ms)
+2109 121107 14:06:40 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+2109 121107 14:06:40 INFO:   Processing by RController#related_to as JSON
+2109 121107 14:06:40 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+15078 121107 14:06:40 INFO: Completed 200 OK in 71ms (Views: 7.2ms)
+15078 121107 14:06:40 INFO: 
+
+Started GET "/r/4fb359c709f9514271000005/related_to/Alternative" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+2109 121107 14:06:40 INFO: Username: admin@sonyx.net
+15078 121107 14:06:40 INFO:   Processing by RController#related_to as JSON
+15078 121107 14:06:40 INFO:   Parameters: {"id"=>"4fb359c709f9514271000005", "type"=>"Alternative"}
+15078 121107 14:06:40 INFO: Username: admin@sonyx.net
+2109 121107 14:06:40 INFO: Completed 200 OK in 78ms (Views: 2.1ms)
+2109 121107 14:06:40 INFO: 
+
+Started GET "/r/4f9d67e4e90a3e18b900016f/related_to/Alternative" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+2109 121107 14:06:40 INFO:   Processing by RController#related_to as JSON
+2109 121107 14:06:40 INFO:   Parameters: {"id"=>"4f9d67e4e90a3e18b900016f", "type"=>"Alternative"}
+2109 121107 14:06:40 INFO: Username: admin@sonyx.net
+15078 121107 14:06:40 INFO: Completed 200 OK in 68ms (Views: 1.4ms)
+15078 121107 14:06:40 INFO: 
+
+Started GET "/r/4fb0d26b924ff85357000007/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+15078 121107 14:06:40 INFO:   Processing by RController#relations_from as JSON
+15078 121107 14:06:40 INFO:   Parameters: {"id"=>"4fb0d26b924ff85357000007", "type"=>"SolvedBy"}
+15078 121107 14:06:40 INFO: Username: admin@sonyx.net
+15088 121107 14:06:40 INFO: 
+
+Started GET "/r/50895c55924ff8123a000001/related_to/Alternative" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+15078 121107 14:06:40 INFO: Completed 200 OK in 18ms (Views: 0.6ms)
+15078 121107 14:06:40 INFO: 
+
+Started GET "/r/4fb0d41f924ff853d1000001/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+2109 121107 14:06:40 INFO: Completed 200 OK in 57ms (Views: 1.9ms)
+15078 121107 14:06:40 INFO:   Processing by RController#relations_from as JSON
+15078 121107 14:06:40 INFO:   Parameters: {"id"=>"4fb0d41f924ff853d1000001", "type"=>"SolvedBy"}
+15078 121107 14:06:40 INFO: Username: admin@sonyx.net
+2109 121107 14:06:40 INFO: 
+
+Started GET "/r/4fb0d623924ff8558e00000b/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+2109 121107 14:06:40 INFO:   Processing by RController#relations_from as JSON
+2109 121107 14:06:40 INFO:   Parameters: {"id"=>"4fb0d623924ff8558e00000b", "type"=>"SolvedBy"}
+2109 121107 14:06:40 INFO: Username: admin@sonyx.net
+15096 121107 14:06:40 INFO: 
+
+Started GET "/r/4fb0d25e924ff85357000005/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+15078 121107 14:06:40 INFO: Completed 200 OK in 22ms (Views: 0.2ms)
+15078 121107 14:06:40 INFO: 
+
+Started GET "/r/4fb0d62e924ff8558e00000d/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+15078 121107 14:06:40 INFO:   Processing by RController#relations_from as JSON
+15078 121107 14:06:40 INFO:   Parameters: {"id"=>"4fb0d62e924ff8558e00000d", "type"=>"SolvedBy"}
+15078 121107 14:06:40 INFO: Username: admin@sonyx.net
+2109 121107 14:06:40 INFO: Completed 200 OK in 25ms (Views: 0.5ms)
+2109 121107 14:06:40 INFO: 
+
+Started GET "/r/4fb0d644924ff8558e00000f/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+15078 121107 14:06:40 INFO: Completed 200 OK in 16ms (Views: 0.4ms)
+2109 121107 14:06:40 INFO:   Processing by RController#relations_from as JSON
+2109 121107 14:06:40 INFO:   Parameters: {"id"=>"4fb0d644924ff8558e00000f", "type"=>"SolvedBy"}
+2109 121107 14:06:40 INFO: Username: admin@sonyx.net
+15078 121107 14:06:40 INFO: 
+
+Started GET "/r/508954b3924ff85350000001/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+15078 121107 14:06:40 INFO:   Processing by RController#relations_from as JSON
+15078 121107 14:06:40 INFO:   Parameters: {"id"=>"508954b3924ff85350000001", "type"=>"SolvedBy"}
+15078 121107 14:06:40 INFO: Username: admin@sonyx.net
+2109 121107 14:06:40 INFO: Completed 200 OK in 23ms (Views: 0.5ms)
+2109 121107 14:06:40 INFO: 
+
+Started GET "/r/508954e4924ff81232000001/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+2109 121107 14:06:40 INFO:   Processing by RController#relations_from as JSON
+2109 121107 14:06:40 INFO:   Parameters: {"id"=>"508954e4924ff81232000001", "type"=>"SolvedBy"}
+15078 121107 14:06:40 INFO: Completed 200 OK in 16ms (Views: 0.4ms)
+15078 121107 14:06:40 INFO: 
+
+Started GET "/r/5089543d924ff81206000003/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+2109 121107 14:06:40 INFO: Username: admin@sonyx.net
+2109 121107 14:06:40 INFO: Completed 200 OK in 30ms (Views: 0.3ms)
+2109 121107 14:06:40 INFO: 
+
+Started GET "/r/4fb359e209f9514361000004/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+2109 121107 14:06:40 INFO:   Processing by RController#relations_from as JSON
+2109 121107 14:06:40 INFO:   Parameters: {"id"=>"4fb359e209f9514361000004", "type"=>"SolvedBy"}
+2109 121107 14:06:40 INFO: Username: admin@sonyx.net
+15078 121107 14:06:40 INFO:   Processing by RController#relations_from as JSON
+15078 121107 14:06:40 INFO:   Parameters: {"id"=>"5089543d924ff81206000003", "type"=>"SolvedBy"}
+15078 121107 14:06:40 INFO: Username: admin@sonyx.net
+2109 121107 14:06:40 INFO: Completed 200 OK in 32ms (Views: 0.4ms)
+15078 121107 14:06:40 INFO: Completed 200 OK in 22ms (Views: 0.5ms)
+15078 121107 14:06:40 INFO: 
+
+Started GET "/r/4fb35a7009f9514361000008/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+15078 121107 14:06:40 INFO:   Processing by RController#relations_from as JSON
+15078 121107 14:06:40 INFO:   Parameters: {"id"=>"4fb35a7009f9514361000008", "type"=>"SolvedBy"}
+15078 121107 14:06:40 INFO: Username: admin@sonyx.net
+2109 121107 14:06:40 INFO: 
+
+Started GET "/r/4fb359f509f95143bc000005/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+15078 121107 14:06:40 INFO: Completed 200 OK in 26ms (Views: 1.5ms)
+15078 121107 14:06:40 INFO: 
+
+Started GET "/r/4fb35a3709f9514361000006/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+15078 121107 14:06:40 INFO:   Processing by RController#relations_from as JSON
+15078 121107 14:06:40 INFO:   Parameters: {"id"=>"4fb35a3709f9514361000006", "type"=>"SolvedBy"}
+15078 121107 14:06:40 INFO: Username: admin@sonyx.net
+2109 121107 14:06:40 INFO:   Processing by RController#relations_from as JSON
+2109 121107 14:06:40 INFO:   Parameters: {"id"=>"4fb359f509f95143bc000005", "type"=>"SolvedBy"}
+2109 121107 14:06:40 INFO: Username: admin@sonyx.net
+15078 121107 14:06:40 INFO: Completed 200 OK in 25ms (Views: 0.4ms)
+15078 121107 14:06:40 INFO: 
+
+Started GET "/r/4fb35a7509f951424a00000d/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:40 +0000
+15078 121107 14:06:40 INFO:   Processing by RController#relations_from as JSON
+15078 121107 14:06:40 INFO:   Parameters: {"id"=>"4fb35a7509f951424a00000d", "type"=>"SolvedBy"}
+15078 121107 14:06:41 INFO: Username: admin@sonyx.net
+2109 121107 14:06:41 INFO: Completed 200 OK in 37ms (Views: 0.8ms)
+15078 121107 14:06:41 INFO: Completed 200 OK in 28ms (Views: 0.3ms)
+2109 121107 14:06:41 INFO: 
+
+Started GET "/r/4fb35b1b09f951428400000b/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+15078 121107 14:06:41 INFO: 
+
+Started GET "/r/4fb0d26b924ff85357000008/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+2109 121107 14:06:41 INFO:   Processing by RController#relations_from as JSON
+2109 121107 14:06:41 INFO:   Parameters: {"id"=>"4fb35b1b09f951428400000b", "type"=>"SolvedBy"}
+15078 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+15078 121107 14:06:41 INFO:   Parameters: {"id"=>"4fb0d26b924ff85357000008", "type"=>"Tagging"}
+15078 121107 14:06:41 INFO: Username: admin@sonyx.net
+2109 121107 14:06:41 INFO: Username: admin@sonyx.net
+2109 121107 14:06:41 INFO: Completed 200 OK in 53ms (Views: 0.4ms)
+15078 121107 14:06:41 INFO: Completed 200 OK in 47ms (Views: 1.0ms)
+15078 121107 14:06:41 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b9000346/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+2109 121107 14:06:41 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b900034d/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+2109 121107 14:06:41 INFO:   Processing by RController#relations_from as JSON
+15078 121107 14:06:41 INFO:   Processing by RController#relations_from as JSON
+2109 121107 14:06:41 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b900034d", "type"=>"SolvedBy"}
+15078 121107 14:06:41 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b9000346", "type"=>"SolvedBy"}
+2109 121107 14:06:41 INFO: Username: admin@sonyx.net
+15078 121107 14:06:41 INFO: Username: admin@sonyx.net
+2109 121107 14:06:41 INFO: Completed 200 OK in 33ms (Views: 0.4ms)
+2109 121107 14:06:41 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b9000354/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+2109 121107 14:06:41 INFO:   Processing by RController#relations_from as JSON
+2109 121107 14:06:41 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b9000354", "type"=>"SolvedBy"}
+2109 121107 14:06:41 INFO: Username: admin@sonyx.net
+15078 121107 14:06:41 INFO: Completed 200 OK in 82ms (Views: 1.9ms)
+2109 121107 14:06:41 INFO: Completed 200 OK in 38ms (Views: 0.4ms)
+15078 121107 14:06:41 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b900035b/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+15078 121107 14:06:41 INFO:   Processing by RController#relations_from as JSON
+15078 121107 14:06:41 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b900035b", "type"=>"SolvedBy"}
+15078 121107 14:06:41 INFO: Username: admin@sonyx.net
+15078 121107 14:06:41 INFO: Completed 200 OK in 26ms (Views: 0.4ms)
+15078 121107 14:06:41 INFO: 
+
+Started GET "/r/4fb0d41f924ff853d1000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+15078 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+15078 121107 14:06:41 INFO:   Parameters: {"id"=>"4fb0d41f924ff853d1000002", "type"=>"Tagging"}
+15078 121107 14:06:41 INFO: Username: admin@sonyx.net
+15106 121107 14:06:41 INFO: 
+
+Started GET "/r/4fb359ed09f95143bc000003/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+2109 121107 14:06:41 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b900035e/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+15078 121107 14:06:41 INFO: Completed 200 OK in 62ms (Views: 0.7ms)
+15078 121107 14:06:41 INFO: 
+
+Started GET "/r/4fb0d623924ff8558e00000c/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+15078 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+15078 121107 14:06:41 INFO:   Parameters: {"id"=>"4fb0d623924ff8558e00000c", "type"=>"Tagging"}
+15078 121107 14:06:41 INFO: Username: admin@sonyx.net
+15078 121107 14:06:41 INFO: Completed 200 OK in 11ms (Views: 0.2ms)
+2109 121107 14:06:41 INFO:   Processing by RController#relations_from as JSON
+15078 121107 14:06:41 INFO: 
+
+Started GET "/r/4fb0d62e924ff8558e00000e/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+2109 121107 14:06:41 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b900035e", "type"=>"SolvedBy"}
+15078 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+15078 121107 14:06:41 INFO:   Parameters: {"id"=>"4fb0d62e924ff8558e00000e", "type"=>"Tagging"}
+15078 121107 14:06:41 INFO: Username: admin@sonyx.net
+2109 121107 14:06:41 INFO: Username: admin@sonyx.net
+15078 121107 14:06:41 INFO: Completed 200 OK in 22ms (Views: 0.4ms)
+15078 121107 14:06:41 INFO: 
+
+Started GET "/r/4fb0d644924ff8558e000010/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+15078 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+15078 121107 14:06:41 INFO:   Parameters: {"id"=>"4fb0d644924ff8558e000010", "type"=>"Tagging"}
+2109 121107 14:06:41 INFO: Completed 200 OK in 45ms (Views: 0.5ms)
+15078 121107 14:06:41 INFO: Username: admin@sonyx.net
+2109 121107 14:06:41 INFO: 
+
+Started GET "/r/508954b3924ff85350000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+2109 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+15114 121107 14:06:41 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b900033f/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+2109 121107 14:06:41 INFO:   Parameters: {"id"=>"508954b3924ff85350000002", "type"=>"Tagging"}
+2109 121107 14:06:41 INFO: Username: admin@sonyx.net
+2109 121107 14:06:41 INFO: Completed 200 OK in 19ms (Views: 0.2ms)
+15078 121107 14:06:41 INFO: Completed 200 OK in 49ms (Views: 0.7ms)
+15078 121107 14:06:41 INFO: 
+
+Started GET "/r/508954e4924ff81232000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+15078 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+15078 121107 14:06:41 INFO:   Parameters: {"id"=>"508954e4924ff81232000002", "type"=>"Tagging"}
+15078 121107 14:06:41 INFO: Username: admin@sonyx.net
+2109 121107 14:06:41 INFO: 
+
+Started GET "/r/4fb359e209f9514361000005/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+2109 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+2109 121107 14:06:41 INFO:   Parameters: {"id"=>"4fb359e209f9514361000005", "type"=>"Tagging"}
+2109 121107 14:06:41 INFO: Username: admin@sonyx.net
+15078 121107 14:06:41 INFO: Completed 200 OK in 13ms (Views: 0.2ms)
+2109 121107 14:06:41 INFO: Completed 200 OK in 11ms (Views: 0.2ms)
+15078 121107 14:06:41 INFO: 
+
+Started GET "/r/5089543d924ff81206000004/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+15078 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+15078 121107 14:06:41 INFO:   Parameters: {"id"=>"5089543d924ff81206000004", "type"=>"Tagging"}
+2109 121107 14:06:41 INFO: 
+
+Started GET "/r/4fb35a7009f9514361000009/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+15078 121107 14:06:41 INFO: Username: admin@sonyx.net
+2109 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+2109 121107 14:06:41 INFO:   Parameters: {"id"=>"4fb35a7009f9514361000009", "type"=>"Tagging"}
+2109 121107 14:06:41 INFO: Username: admin@sonyx.net
+15078 121107 14:06:41 INFO: Completed 200 OK in 26ms (Views: 0.3ms)
+2109 121107 14:06:41 INFO: Completed 200 OK in 27ms (Views: 0.2ms)
+15078 121107 14:06:41 INFO: 
+
+Started GET "/r/4fb35a3709f9514361000007/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+15078 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+2109 121107 14:06:41 INFO: 
+
+Started GET "/r/4fb359f509f95143bc000006/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+15078 121107 14:06:41 INFO:   Parameters: {"id"=>"4fb35a3709f9514361000007", "type"=>"Tagging"}
+15078 121107 14:06:41 INFO: Username: admin@sonyx.net
+2109 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+2109 121107 14:06:41 INFO:   Parameters: {"id"=>"4fb359f509f95143bc000006", "type"=>"Tagging"}
+2109 121107 14:06:41 INFO: Username: admin@sonyx.net
+2109 121107 14:06:41 INFO: Completed 200 OK in 18ms (Views: 0.1ms)
+2109 121107 14:06:41 INFO: 
+
+Started GET "/r/4fb35a7509f951424a00000e/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+2109 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+2109 121107 14:06:41 INFO:   Parameters: {"id"=>"4fb35a7509f951424a00000e", "type"=>"Tagging"}
+2109 121107 14:06:41 INFO: Username: admin@sonyx.net
+15078 121107 14:06:41 INFO: Completed 200 OK in 41ms (Views: 0.2ms)
+2109 121107 14:06:41 INFO: Completed 200 OK in 8ms (Views: 0.2ms)
+2109 121107 14:06:41 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b9000352/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+15078 121107 14:06:41 INFO: 
+
+Started GET "/r/4fb35b1b09f951428400000c/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+2109 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+15078 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+2109 121107 14:06:41 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b9000352", "type"=>"Tagging"}
+15078 121107 14:06:41 INFO:   Parameters: {"id"=>"4fb35b1b09f951428400000c", "type"=>"Tagging"}
+15078 121107 14:06:41 INFO: Username: admin@sonyx.net
+2109 121107 14:06:41 INFO: Username: admin@sonyx.net
+15078 121107 14:06:41 INFO: Completed 200 OK in 18ms (Views: 0.2ms)
+15078 121107 14:06:41 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b900034b/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+15078 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+15078 121107 14:06:41 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b900034b", "type"=>"Tagging"}
+15078 121107 14:06:41 INFO: Username: admin@sonyx.net
+2109 121107 14:06:41 INFO: Completed 200 OK in 42ms (Views: 0.4ms)
+2109 121107 14:06:41 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b9000359/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+2109 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+2109 121107 14:06:41 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b9000359", "type"=>"Tagging"}
+2109 121107 14:06:41 INFO: Username: admin@sonyx.net
+2109 121107 14:06:41 INFO: Completed 200 OK in 32ms (Views: 0.4ms)
+2109 121107 14:06:41 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b900035c/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+2109 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+2109 121107 14:06:41 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b900035c", "type"=>"Tagging"}
+2109 121107 14:06:41 INFO: Username: admin@sonyx.net
+2109 121107 14:06:41 INFO: Completed 200 OK in 43ms (Views: 0.5ms)
+15078 121107 14:06:41 INFO: Completed 200 OK in 136ms (Views: 7.2ms)
+2109 121107 14:06:41 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b900035f/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:41 +0000
+2109 121107 14:06:41 INFO:   Processing by RController#relations_to as JSON
+2109 121107 14:06:41 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b900035f", "type"=>"Tagging"}
+2109 121107 14:06:41 INFO: Username: admin@sonyx.net
+2109 121107 14:06:41 INFO: Completed 200 OK in 19ms (Views: 0.3ms)
+15088 121107 14:06:43 INFO:   Processing by RController#related_to as JSON
+15088 121107 14:06:43 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001", "type"=>"Alternative"}
+15088 121107 14:06:43 INFO: Username: admin@sonyx.net
+15096 121107 14:06:43 INFO:   Processing by RController#relations_from as JSON
+15096 121107 14:06:43 INFO:   Parameters: {"id"=>"4fb0d25e924ff85357000005", "type"=>"SolvedBy"}
+15088 121107 14:06:43 INFO: Completed 200 OK in 71ms (Views: 24.4ms)
+15096 121107 14:06:43 INFO: Username: admin@sonyx.net
+15096 121107 14:06:43 INFO: Completed 200 OK in 99ms (Views: 11.7ms)
+15096 121107 14:06:43 INFO: 
+
+Started GET "/r/4fb0d25e924ff85357000006/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:43 +0000
+15096 121107 14:06:43 INFO:   Processing by RController#relations_to as JSON
+15096 121107 14:06:43 INFO:   Parameters: {"id"=>"4fb0d25e924ff85357000006", "type"=>"Tagging"}
+15096 121107 14:06:43 INFO: Username: admin@sonyx.net
+15096 121107 14:06:43 INFO: Completed 200 OK in 30ms (Views: 1.1ms)
+15106 121107 14:06:43 INFO:   Processing by RController#relations_from as JSON
+15106 121107 14:06:43 INFO:   Parameters: {"id"=>"4fb359ed09f95143bc000003", "type"=>"SolvedBy"}
+15106 121107 14:06:43 INFO: Username: admin@sonyx.net
+15114 121107 14:06:43 INFO:   Processing by RController#relations_from as JSON
+15114 121107 14:06:43 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b900033f", "type"=>"SolvedBy"}
+15114 121107 14:06:43 INFO: Username: admin@sonyx.net
+15106 121107 14:06:43 INFO: Completed 200 OK in 32ms (Views: 5.9ms)
+15114 121107 14:06:43 INFO: Completed 200 OK in 29ms (Views: 5.1ms)
+15114 121107 14:06:43 INFO: 
+
+Started GET "/r/4fb359ed09f95143bc000004/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:43 +0000
+15106 121107 14:06:43 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b9000344/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:06:43 +0000
+15114 121107 14:06:43 INFO:   Processing by RController#relations_to as JSON
+15114 121107 14:06:43 INFO:   Parameters: {"id"=>"4fb359ed09f95143bc000004", "type"=>"Tagging"}
+15114 121107 14:06:43 INFO: Username: admin@sonyx.net
+15106 121107 14:06:43 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:06:43 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b9000344", "type"=>"Tagging"}
+15106 121107 14:06:43 INFO: Username: admin@sonyx.net
+15114 121107 14:06:43 INFO: Completed 200 OK in 7ms (Views: 0.3ms)
+15106 121107 14:06:43 INFO: Completed 200 OK in 15ms (Views: 0.4ms)
+15106 121107 14:07:04 INFO: 
+
+Started GET "/r/4fb0d22f924ff85357000003" for 10.61.101.239 at 2012-11-07 14:07:04 +0000
+15106 121107 14:07:04 INFO:   Processing by RController#show as JSON
+15106 121107 14:07:04 INFO:   Parameters: {"id"=>"4fb0d22f924ff85357000003"}
+15106 121107 14:07:04 INFO: Username: admin@sonyx.net
+15106 121107 14:07:04 INFO: Completed 200 OK in 4ms (Views: 0.4ms)
+15106 121107 14:07:04 INFO: 
+
+Started GET "/r/4fb0d22f924ff85357000003/relations_to" for 10.61.101.239 at 2012-11-07 14:07:04 +0000
+15114 121107 14:07:04 INFO: 
+
+Started GET "/r/4fb0d22f924ff85357000003/related_to/Alternative" for 10.61.101.239 at 2012-11-07 14:07:04 +0000
+15106 121107 14:07:04 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:07:04 INFO:   Parameters: {"id"=>"4fb0d22f924ff85357000003"}
+15106 121107 14:07:04 INFO: Username: admin@sonyx.net
+15114 121107 14:07:04 INFO:   Processing by RController#related_to as JSON
+15114 121107 14:07:04 INFO:   Parameters: {"id"=>"4fb0d22f924ff85357000003", "type"=>"Alternative"}
+15114 121107 14:07:04 INFO: Username: admin@sonyx.net
+15114 121107 14:07:04 INFO: Completed 200 OK in 19ms (Views: 0.8ms)
+15114 121107 14:07:04 INFO: 
+
+Started GET "/r/4fb0d25e924ff85357000005/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:07:04 +0000
+15106 121107 14:07:04 INFO: Completed 200 OK in 40ms (Views: 0.7ms)
+15114 121107 14:07:04 INFO:   Processing by RController#relations_from as JSON
+15114 121107 14:07:04 INFO:   Parameters: {"id"=>"4fb0d25e924ff85357000005", "type"=>"SolvedBy"}
+15114 121107 14:07:04 INFO: Username: admin@sonyx.net
+15106 121107 14:07:04 INFO: 
+
+Started GET "/r/4fb0d26b924ff85357000007/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:07:04 +0000
+15106 121107 14:07:04 INFO:   Processing by RController#relations_from as JSON
+15106 121107 14:07:04 INFO:   Parameters: {"id"=>"4fb0d26b924ff85357000007", "type"=>"SolvedBy"}
+15106 121107 14:07:04 INFO: Username: admin@sonyx.net
+15114 121107 14:07:04 INFO: Completed 200 OK in 15ms (Views: 0.4ms)
+15114 121107 14:07:04 INFO: 
+
+Started GET "/r/4fb0d41f924ff853d1000001/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:07:04 +0000
+15114 121107 14:07:04 INFO:   Processing by RController#relations_from as JSON
+15114 121107 14:07:04 INFO:   Parameters: {"id"=>"4fb0d41f924ff853d1000001", "type"=>"SolvedBy"}
+15114 121107 14:07:04 INFO: Username: admin@sonyx.net
+15106 121107 14:07:04 INFO: Completed 200 OK in 15ms (Views: 1.1ms)
+15106 121107 14:07:04 INFO: 
+
+Started GET "/r/4fb0d25e924ff85357000006/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:04 +0000
+15106 121107 14:07:04 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:07:04 INFO:   Parameters: {"id"=>"4fb0d25e924ff85357000006", "type"=>"Tagging"}
+15106 121107 14:07:04 INFO: Username: admin@sonyx.net
+15114 121107 14:07:04 INFO: Completed 200 OK in 19ms (Views: 0.3ms)
+15096 121107 14:07:04 INFO: 
+
+Started GET "/r/4fb0d26b924ff85357000008/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:04 +0000
+15096 121107 14:07:04 INFO:   Processing by RController#relations_to as JSON
+15096 121107 14:07:04 INFO:   Parameters: {"id"=>"4fb0d26b924ff85357000008", "type"=>"Tagging"}
+15096 121107 14:07:04 INFO: Username: admin@sonyx.net
+15114 121107 14:07:04 INFO: 
+
+Started GET "/r/4fb0d41f924ff853d1000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:04 +0000
+15114 121107 14:07:04 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:07:04 INFO: Completed 200 OK in 19ms (Views: 0.3ms)
+15114 121107 14:07:04 INFO:   Parameters: {"id"=>"4fb0d41f924ff853d1000002", "type"=>"Tagging"}
+15114 121107 14:07:04 INFO: Username: admin@sonyx.net
+15106 121107 14:07:04 INFO: 
+
+Started GET "/r/4fb0d271924ff8558e000003/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:04 +0000
+15106 121107 14:07:04 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:07:04 INFO:   Parameters: {"id"=>"4fb0d271924ff8558e000003", "type"=>"Tagging"}
+15106 121107 14:07:04 INFO: Username: admin@sonyx.net
+15096 121107 14:07:04 INFO: Completed 200 OK in 24ms (Views: 0.5ms)
+15106 121107 14:07:04 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+15114 121107 14:07:04 INFO: Completed 200 OK in 24ms (Views: 0.6ms)
+15114 121107 14:07:04 INFO: 
+
+Started GET "/r/4fb0d276924ff8535700000b/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:04 +0000
+15114 121107 14:07:04 INFO:   Processing by RController#relations_to as JSON
+15114 121107 14:07:04 INFO:   Parameters: {"id"=>"4fb0d276924ff8535700000b", "type"=>"Tagging"}
+15114 121107 14:07:04 INFO: Username: admin@sonyx.net
+15106 121107 14:07:04 INFO: 
+
+Started GET "/r/4fc6089bf60f940769000001/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:04 +0000
+15106 121107 14:07:04 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:07:04 INFO:   Parameters: {"id"=>"4fc6089bf60f940769000001", "type"=>"Tagging"}
+15106 121107 14:07:04 INFO: Username: admin@sonyx.net
+15114 121107 14:07:04 INFO: Completed 200 OK in 8ms (Views: 0.3ms)
+15114 121107 14:07:04 INFO: 
+
+Started GET "/r/4fb0d42c924ff8532a000007/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:04 +0000
+15114 121107 14:07:04 INFO:   Processing by RController#relations_to as JSON
+15114 121107 14:07:04 INFO:   Parameters: {"id"=>"4fb0d42c924ff8532a000007", "type"=>"Tagging"}
+15114 121107 14:07:04 INFO: Username: admin@sonyx.net
+15096 121107 14:07:04 INFO: 
+
+Started GET "/r/4fc6088cf60f940758000001/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:04 +0000
+15096 121107 14:07:04 INFO:   Processing by RController#relations_to as JSON
+15096 121107 14:07:04 INFO:   Parameters: {"id"=>"4fc6088cf60f940758000001", "type"=>"Tagging"}
+15096 121107 14:07:04 INFO: Username: admin@sonyx.net
+15106 121107 14:07:04 INFO: Completed 200 OK in 14ms (Views: 0.3ms)
+15114 121107 14:07:04 INFO: Completed 200 OK in 16ms (Views: 0.3ms)
+15096 121107 14:07:04 INFO: Completed 200 OK in 15ms (Views: 0.3ms)
+15096 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb0d25e924ff85357000006/dotag?from_taggable_id=4f9d67e2e90a3e18b900002c&project_id=4fb0d1fa924ff85581000003" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15096 121107 14:07:21 INFO:   Processing by TagController#dotag as JSON
+15096 121107 14:07:21 INFO:   Parameters: {"from_taggable_id"=>"4f9d67e2e90a3e18b900002c", "project_id"=>"4fb0d1fa924ff85581000003", "item_id"=>"4fb0d25e924ff85357000006"}
+15096 121107 14:07:21 INFO: Username: admin@sonyx.net
+15096 121107 14:07:21 INFO: Completed 200 OK in 28ms (Views: 1.4ms)
+15096 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb0d26b924ff85357000008/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15096 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15096 121107 14:07:21 INFO:   Parameters: {"id"=>"4fb0d26b924ff85357000008", "type"=>"Tagging"}
+15096 121107 14:07:21 INFO: Username: admin@sonyx.net
+15106 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb0d623924ff8558e00000c/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15088 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb0d62e924ff8558e00000e/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15078 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb0d644924ff8558e000010/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15114 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb0d41f924ff853d1000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15106 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:07:21 INFO:   Parameters: {"id"=>"4fb0d623924ff8558e00000c", "type"=>"Tagging"}
+2109 121107 14:07:21 INFO: 
+
+Started GET "/r/508954b3924ff85350000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15088 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:07:21 INFO: Username: admin@sonyx.net
+15088 121107 14:07:21 INFO:   Parameters: {"id"=>"4fb0d62e924ff8558e00000e", "type"=>"Tagging"}
+15088 121107 14:07:21 INFO: Username: admin@sonyx.net
+15114 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+2109 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15114 121107 14:07:21 INFO:   Parameters: {"id"=>"4fb0d41f924ff853d1000002", "type"=>"Tagging"}
+2109 121107 14:07:21 INFO:   Parameters: {"id"=>"508954b3924ff85350000002", "type"=>"Tagging"}
+15114 121107 14:07:21 INFO: Username: admin@sonyx.net
+2109 121107 14:07:21 INFO: Username: admin@sonyx.net
+15078 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15078 121107 14:07:21 INFO:   Parameters: {"id"=>"4fb0d644924ff8558e000010", "type"=>"Tagging"}
+15078 121107 14:07:21 INFO: Username: admin@sonyx.net
+15106 121107 14:07:21 INFO: Completed 200 OK in 29ms (Views: 0.2ms)
+2109 121107 14:07:21 INFO: Completed 200 OK in 20ms (Views: 0.6ms)
+2109 121107 14:07:21 INFO: 
+
+Started GET "/r/508954e4924ff81232000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+2109 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+2109 121107 14:07:21 INFO:   Parameters: {"id"=>"508954e4924ff81232000002", "type"=>"Tagging"}
+2109 121107 14:07:21 INFO: Username: admin@sonyx.net
+15106 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb359e209f9514361000005/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15106 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:07:21 INFO:   Parameters: {"id"=>"4fb359e209f9514361000005", "type"=>"Tagging"}
+15106 121107 14:07:21 INFO: Username: admin@sonyx.net
+2109 121107 14:07:21 INFO: Completed 200 OK in 11ms (Views: 0.2ms)
+15088 121107 14:07:21 INFO: Completed 200 OK in 48ms (Views: 1.1ms)
+15088 121107 14:07:21 INFO: 
+
+Started GET "/r/5089543d924ff81206000004/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15106 121107 14:07:21 INFO: Completed 200 OK in 16ms (Views: 0.2ms)
+15096 121107 14:07:21 INFO: Completed 200 OK in 158ms (Views: 1.4ms)
+15106 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb35a7009f9514361000009/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15106 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:07:21 INFO:   Parameters: {"id"=>"4fb35a7009f9514361000009", "type"=>"Tagging"}
+15114 121107 14:07:21 INFO: Completed 200 OK in 53ms (Views: 0.7ms)
+15106 121107 14:07:21 INFO: Username: admin@sonyx.net
+15088 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15088 121107 14:07:21 INFO:   Parameters: {"id"=>"5089543d924ff81206000004", "type"=>"Tagging"}
+15078 121107 14:07:21 INFO: Completed 200 OK in 54ms (Views: 0.6ms)
+15114 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb35a3709f9514361000007/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15088 121107 14:07:21 INFO: Username: admin@sonyx.net
+15114 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:07:21 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+15114 121107 14:07:21 INFO:   Parameters: {"id"=>"4fb35a3709f9514361000007", "type"=>"Tagging"}
+15096 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb359f509f95143bc000006/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15114 121107 14:07:21 INFO: Username: admin@sonyx.net
+15106 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb35b1b09f951428400000c/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15096 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15096 121107 14:07:21 INFO:   Parameters: {"id"=>"4fb359f509f95143bc000006", "type"=>"Tagging"}
+15106 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15096 121107 14:07:21 INFO: Username: admin@sonyx.net
+15106 121107 14:07:21 INFO:   Parameters: {"id"=>"4fb35b1b09f951428400000c", "type"=>"Tagging"}
+15078 121107 14:07:21 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b9000352/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15106 121107 14:07:21 INFO: Username: admin@sonyx.net
+15078 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15078 121107 14:07:21 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b9000352", "type"=>"Tagging"}
+2109 121107 14:07:21 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b900034b/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15078 121107 14:07:21 INFO: Username: admin@sonyx.net
+2109 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+2109 121107 14:07:21 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b900034b", "type"=>"Tagging"}
+2109 121107 14:07:21 INFO: Username: admin@sonyx.net
+15088 121107 14:07:21 INFO: Completed 200 OK in 15ms (Views: 0.9ms)
+15114 121107 14:07:21 INFO: Completed 200 OK in 14ms (Views: 0.2ms)
+15114 121107 14:07:21 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b9000359/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15114 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15096 121107 14:07:21 INFO: Completed 200 OK in 17ms (Views: 0.2ms)
+15114 121107 14:07:21 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b9000359", "type"=>"Tagging"}
+15088 121107 14:07:21 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b900035c/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15114 121107 14:07:21 INFO: Username: admin@sonyx.net
+15106 121107 14:07:21 INFO: Completed 200 OK in 18ms (Views: 0.2ms)
+15088 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15088 121107 14:07:21 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b900035c", "type"=>"Tagging"}
+15088 121107 14:07:21 INFO: Username: admin@sonyx.net
+15106 121107 14:07:21 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b900035f/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15106 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:07:21 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b900035f", "type"=>"Tagging"}
+15096 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb0d25e924ff85357000006/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15106 121107 14:07:21 INFO: Username: admin@sonyx.net
+15096 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15096 121107 14:07:21 INFO:   Parameters: {"id"=>"4fb0d25e924ff85357000006", "type"=>"Tagging"}
+15096 121107 14:07:21 INFO: Username: admin@sonyx.net
+2109 121107 14:07:21 INFO: Completed 200 OK in 25ms (Views: 0.3ms)
+2109 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb359ed09f95143bc000004/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15078 121107 14:07:21 INFO: Completed 200 OK in 38ms (Views: 0.3ms)
+2109 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+2109 121107 14:07:21 INFO:   Parameters: {"id"=>"4fb359ed09f95143bc000004", "type"=>"Tagging"}
+2109 121107 14:07:21 INFO: Username: admin@sonyx.net
+15088 121107 14:07:21 INFO: Completed 200 OK in 24ms (Views: 0.4ms)
+15088 121107 14:07:21 INFO: 
+
+Started GET "/r/4f9d67e6e90a3e18b9000344/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15088 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15088 121107 14:07:21 INFO:   Parameters: {"id"=>"4f9d67e6e90a3e18b9000344", "type"=>"Tagging"}
+15114 121107 14:07:21 INFO: Completed 200 OK in 32ms (Views: 0.4ms)
+15088 121107 14:07:21 INFO: Username: admin@sonyx.net
+15114 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb35a7509f951424a00000e/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15114 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15114 121107 14:07:21 INFO:   Parameters: {"id"=>"4fb35a7509f951424a00000e", "type"=>"Tagging"}
+15114 121107 14:07:21 INFO: Username: admin@sonyx.net
+2109 121107 14:07:21 INFO: Completed 200 OK in 15ms (Views: 0.2ms)
+15106 121107 14:07:21 INFO: Completed 200 OK in 32ms (Views: 0.4ms)
+15078 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb0d26b924ff85357000008/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15078 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15078 121107 14:07:21 INFO:   Parameters: {"id"=>"4fb0d26b924ff85357000008", "type"=>"Tagging"}
+15078 121107 14:07:21 INFO: Username: admin@sonyx.net
+15106 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb0d41f924ff853d1000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15106 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:07:21 INFO:   Parameters: {"id"=>"4fb0d41f924ff853d1000002", "type"=>"Tagging"}
+15106 121107 14:07:21 INFO: Username: admin@sonyx.net
+15114 121107 14:07:21 INFO: Completed 200 OK in 16ms (Views: 0.2ms)
+15096 121107 14:07:21 INFO: Completed 200 OK in 43ms (Views: 0.5ms)
+15088 121107 14:07:21 INFO: Completed 200 OK in 27ms (Views: 0.3ms)
+15088 121107 14:07:21 INFO: 
+
+Started GET "/r/4fb0d25e924ff85357000006/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15088 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15088 121107 14:07:21 INFO:   Parameters: {"id"=>"4fb0d25e924ff85357000006", "type"=>"Tagging"}
+15088 121107 14:07:21 INFO: Username: admin@sonyx.net
+15078 121107 14:07:21 INFO: Completed 200 OK in 29ms (Views: 0.5ms)
+15106 121107 14:07:21 INFO: Completed 200 OK in 28ms (Views: 0.5ms)
+15088 121107 14:07:21 INFO: Completed 200 OK in 23ms (Views: 0.4ms)
+15088 121107 14:07:21 INFO: 
+
+Started GET "/r/509a6b19924ff83af8000001/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:07:21 +0000
+15088 121107 14:07:21 INFO:   Processing by RController#relations_to as JSON
+15088 121107 14:07:21 INFO:   Parameters: {"id"=>"509a6b19924ff83af8000001", "type"=>"Tagging"}
+15088 121107 14:07:21 INFO: Username: admin@sonyx.net
+15088 121107 14:07:21 INFO: Completed 200 OK in 12ms (Views: 0.3ms)
+15088 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d22f924ff85357000003/related_to/Alternative" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15106 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d25e924ff85357000005/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15088 121107 14:08:44 INFO:   Processing by RController#related_to as JSON
+15088 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d22f924ff85357000003", "type"=>"Alternative"}
+15106 121107 14:08:44 INFO:   Processing by RController#relations_from as JSON
+15106 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d25e924ff85357000005", "type"=>"SolvedBy"}
+15088 121107 14:08:44 INFO: Username: admin@sonyx.net
+15106 121107 14:08:44 INFO: Username: admin@sonyx.net
+15078 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d26b924ff85357000007/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15078 121107 14:08:44 INFO:   Processing by RController#relations_from as JSON
+15078 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d26b924ff85357000007", "type"=>"SolvedBy"}
+2109 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d623924ff8558e00000b/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15078 121107 14:08:44 INFO: Username: admin@sonyx.net
+15106 121107 14:08:44 INFO: Completed 200 OK in 30ms (Views: 0.3ms)
+2109 121107 14:08:44 INFO:   Processing by RController#relations_from as JSON
+2109 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d623924ff8558e00000b", "type"=>"SolvedBy"}
+15114 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d5c9924ff8535700000f/related_to/Alternative" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+2109 121107 14:08:44 INFO: Username: admin@sonyx.net
+15096 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d41f924ff853d1000001/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15114 121107 14:08:44 INFO:   Processing by RController#related_to as JSON
+15078 121107 14:08:44 INFO: Completed 200 OK in 25ms (Views: 0.4ms)
+15114 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d5c9924ff8535700000f", "type"=>"Alternative"}
+15106 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d62e924ff8558e00000d/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15114 121107 14:08:44 INFO: Username: admin@sonyx.net
+15106 121107 14:08:44 INFO:   Processing by RController#relations_from as JSON
+15106 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d62e924ff8558e00000d", "type"=>"SolvedBy"}
+15106 121107 14:08:44 INFO: Username: admin@sonyx.net
+15096 121107 14:08:44 INFO:   Processing by RController#relations_from as JSON
+15096 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d41f924ff853d1000001", "type"=>"SolvedBy"}
+15096 121107 14:08:44 INFO: Username: admin@sonyx.net
+15078 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d644924ff8558e00000f/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15078 121107 14:08:44 INFO:   Processing by RController#relations_from as JSON
+15088 121107 14:08:44 INFO: Completed 200 OK in 57ms (Views: 0.7ms)
+2109 121107 14:08:44 INFO: Completed 200 OK in 16ms (Views: 0.4ms)
+15078 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d644924ff8558e00000f", "type"=>"SolvedBy"}
+15078 121107 14:08:44 INFO: Username: admin@sonyx.net
+2109 121107 14:08:44 INFO: 
+
+Started GET "/r/5089543d924ff81206000003/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15088 121107 14:08:44 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15088 121107 14:08:44 INFO:   Processing by RController#related_to as JSON
+2109 121107 14:08:44 INFO:   Processing by RController#relations_from as JSON
+15088 121107 14:08:44 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+2109 121107 14:08:44 INFO:   Parameters: {"id"=>"5089543d924ff81206000003", "type"=>"SolvedBy"}
+2109 121107 14:08:44 INFO: Username: admin@sonyx.net
+15088 121107 14:08:44 INFO: Username: admin@sonyx.net
+15114 121107 14:08:44 INFO: Completed 200 OK in 24ms (Views: 0.7ms)
+15106 121107 14:08:44 INFO: Completed 200 OK in 29ms (Views: 0.4ms)
+15114 121107 14:08:44 INFO: 
+
+Started GET "/r/508954b3924ff85350000001/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15114 121107 14:08:44 INFO:   Processing by RController#relations_from as JSON
+15114 121107 14:08:44 INFO:   Parameters: {"id"=>"508954b3924ff85350000001", "type"=>"SolvedBy"}
+15114 121107 14:08:44 INFO: Username: admin@sonyx.net
+15078 121107 14:08:44 INFO: Completed 200 OK in 25ms (Views: 0.3ms)
+15078 121107 14:08:44 INFO: 
+
+Started GET "/r/508954e4924ff81232000001/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15078 121107 14:08:44 INFO:   Processing by RController#relations_from as JSON
+15078 121107 14:08:44 INFO:   Parameters: {"id"=>"508954e4924ff81232000001", "type"=>"SolvedBy"}
+15088 121107 14:08:44 INFO: Completed 200 OK in 21ms (Views: 0.6ms)
+15078 121107 14:08:44 INFO: Username: admin@sonyx.net
+15096 121107 14:08:44 INFO: Completed 200 OK in 39ms (Views: 0.7ms)
+15106 121107 14:08:44 INFO: 
+
+Started GET "/r/50895c55924ff8123a000001/related_to/Alternative" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15106 121107 14:08:44 INFO:   Processing by RController#related_to as JSON
+15106 121107 14:08:44 INFO:   Parameters: {"id"=>"50895c55924ff8123a000001", "type"=>"Alternative"}
+15106 121107 14:08:44 INFO: Username: admin@sonyx.net
+15088 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d25e924ff85357000006/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15088 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+15088 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d25e924ff85357000006", "type"=>"Tagging"}
+15096 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d26b924ff85357000008/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15088 121107 14:08:44 INFO: Username: admin@sonyx.net
+15096 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+15096 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d26b924ff85357000008", "type"=>"Tagging"}
+15096 121107 14:08:44 INFO: Username: admin@sonyx.net
+15106 121107 14:08:44 INFO: Completed 200 OK in 15ms (Views: 0.2ms)
+15114 121107 14:08:44 INFO: Completed 200 OK in 35ms (Views: 0.6ms)
+15106 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d623924ff8558e00000c/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15114 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d62e924ff8558e00000e/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15114 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+15114 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d62e924ff8558e00000e", "type"=>"Tagging"}
+15078 121107 14:08:44 INFO: Completed 200 OK in 40ms (Views: 3.8ms)
+15114 121107 14:08:44 INFO: Username: admin@sonyx.net
+15106 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d623924ff8558e00000c", "type"=>"Tagging"}
+15106 121107 14:08:44 INFO: Username: admin@sonyx.net
+15088 121107 14:08:44 INFO: Completed 200 OK in 34ms (Views: 0.5ms)
+15088 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d644924ff8558e000010/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15088 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+15088 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d644924ff8558e000010", "type"=>"Tagging"}
+15088 121107 14:08:44 INFO: Username: admin@sonyx.net
+15078 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d41f924ff853d1000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15078 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+15078 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d41f924ff853d1000002", "type"=>"Tagging"}
+15078 121107 14:08:44 INFO: Username: admin@sonyx.net
+15106 121107 14:08:44 INFO: Completed 200 OK in 15ms (Views: 0.3ms)
+15096 121107 14:08:44 INFO: Completed 200 OK in 51ms (Views: 0.6ms)
+15096 121107 14:08:44 INFO: 
+
+Started GET "/r/508954b3924ff85350000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+2109 121107 14:08:44 INFO: Completed 200 OK in 89ms (Views: 0.4ms)
+15096 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+15096 121107 14:08:44 INFO:   Parameters: {"id"=>"508954b3924ff85350000002", "type"=>"Tagging"}
+15096 121107 14:08:44 INFO: Username: admin@sonyx.net
+2109 121107 14:08:44 INFO: 
+
+Started GET "/r/508954e4924ff81232000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15114 121107 14:08:44 INFO: Completed 200 OK in 34ms (Views: 0.4ms)
+2109 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+2109 121107 14:08:44 INFO:   Parameters: {"id"=>"508954e4924ff81232000002", "type"=>"Tagging"}
+2109 121107 14:08:44 INFO: Username: admin@sonyx.net
+15114 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d25e924ff85357000006/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15114 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+15114 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d25e924ff85357000006", "type"=>"Tagging"}
+15106 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d623924ff8558e00000c/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15114 121107 14:08:44 INFO: Username: admin@sonyx.net
+15106 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d623924ff8558e00000c", "type"=>"Tagging"}
+15106 121107 14:08:44 INFO: Username: admin@sonyx.net
+2109 121107 14:08:44 INFO: Completed 200 OK in 9ms (Views: 0.2ms)
+15078 121107 14:08:44 INFO: Completed 200 OK in 34ms (Views: 0.6ms)
+15096 121107 14:08:44 INFO: Completed 200 OK in 20ms (Views: 0.2ms)
+15096 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d26b924ff85357000008/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15096 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+15096 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d26b924ff85357000008", "type"=>"Tagging"}
+15088 121107 14:08:44 INFO: Completed 200 OK in 46ms (Views: 1.1ms)
+15106 121107 14:08:44 INFO: Completed 200 OK in 15ms (Views: 0.2ms)
+15096 121107 14:08:44 INFO: Username: admin@sonyx.net
+15106 121107 14:08:44 INFO: 
+
+Started GET "/r/5089543d924ff81206000004/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15088 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d62e924ff8558e00000e/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15106 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:08:44 INFO:   Parameters: {"id"=>"5089543d924ff81206000004", "type"=>"Tagging"}
+15088 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:08:44 INFO: Username: admin@sonyx.net
+15088 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d62e924ff8558e00000e", "type"=>"Tagging"}
+15088 121107 14:08:44 INFO: Username: admin@sonyx.net
+15078 121107 14:08:44 INFO: 
+
+Started GET "/r/508954e4924ff81232000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15078 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+2109 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d41f924ff853d1000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15078 121107 14:08:44 INFO:   Parameters: {"id"=>"508954e4924ff81232000002", "type"=>"Tagging"}
+15078 121107 14:08:44 INFO: Username: admin@sonyx.net
+2109 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+2109 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d41f924ff853d1000002", "type"=>"Tagging"}
+2109 121107 14:08:44 INFO: Username: admin@sonyx.net
+15114 121107 14:08:44 INFO: Completed 200 OK in 33ms (Views: 0.6ms)
+15106 121107 14:08:44 INFO: Completed 200 OK in 18ms (Views: 0.1ms)
+15078 121107 14:08:44 INFO: Completed 200 OK in 17ms (Views: 0.2ms)
+15106 121107 14:08:44 INFO: 
+
+Started GET "/r/508954b3924ff85350000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15106 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+15106 121107 14:08:44 INFO:   Parameters: {"id"=>"508954b3924ff85350000002", "type"=>"Tagging"}
+15106 121107 14:08:44 INFO: Username: admin@sonyx.net
+15078 121107 14:08:44 INFO: 
+
+Started GET "/r/4fb0d644924ff8558e000010/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15078 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+15078 121107 14:08:44 INFO:   Parameters: {"id"=>"4fb0d644924ff8558e000010", "type"=>"Tagging"}
+15078 121107 14:08:44 INFO: Username: admin@sonyx.net
+15088 121107 14:08:44 INFO: Completed 200 OK in 30ms (Views: 0.3ms)
+15088 121107 14:08:44 INFO: 
+
+Started GET "/r/5089543d924ff81206000004/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 14:08:44 +0000
+15106 121107 14:08:44 INFO: Completed 200 OK in 11ms (Views: 0.2ms)
+15088 121107 14:08:44 INFO:   Processing by RController#relations_to as JSON
+15088 121107 14:08:44 INFO:   Parameters: {"id"=>"5089543d924ff81206000004", "type"=>"Tagging"}
+15088 121107 14:08:44 INFO: Username: admin@sonyx.net
+15096 121107 14:08:44 INFO: Completed 200 OK in 49ms (Views: 0.5ms)
+2109 121107 14:08:44 INFO: Completed 200 OK in 40ms (Views: 1.4ms)
+15088 121107 14:08:44 INFO: Completed 200 OK in 10ms (Views: 0.2ms)
+15078 121107 14:08:44 INFO: Completed 200 OK in 75ms (Views: 1.0ms)
+15078 121107 14:11:46 INFO: 
+
+Started GET "/" for 10.61.101.239 at 2012-11-07 14:11:46 +0000
+15078 121107 14:11:46 INFO:   Processing by WelcomeController#index as HTML
+15078 121107 14:11:46 INFO: Username: admin@sonyx.net
+15078 121107 14:11:46 INFO: Rendered welcome/index.html.erb within layouts/application (2.6ms)
+15078 121107 14:11:46 INFO: Completed 200 OK in 11ms (Views: 8.8ms)
+15078 121107 14:11:47 INFO: 
+
+Started GET "/scope/type/Decision" for 10.61.101.239 at 2012-11-07 14:11:47 +0000
+15078 121107 14:11:47 INFO:   Processing by ScopeController#type as JSON
+15078 121107 14:11:47 INFO:   Parameters: {"type_name"=>"Decision"}
+15078 121107 14:11:47 INFO: Username: admin@sonyx.net
+2109 121107 14:11:47 INFO: 
+
+Started GET "/t" for 10.61.101.239 at 2012-11-07 14:11:47 +0000
+2109 121107 14:11:47 INFO:   Processing by TController#index as JSON
+2109 121107 14:11:47 INFO: Username: admin@sonyx.net
+15078 121107 14:11:47 INFO: Completed 200 OK in 17ms (Views: 2.4ms)
+2109 121107 14:11:48 INFO: Completed 200 OK in 548ms (Views: 434.9ms)
+2109 121107 15:08:40 INFO: 
+
+Started GET "/r/4fb0d22f924ff85357000003" for 10.62.97.119 at 2012-11-07 15:08:40 +0000
+2109 121107 15:08:40 INFO:   Processing by RController#show as JSON
+2109 121107 15:08:40 INFO:   Parameters: {"id"=>"4fb0d22f924ff85357000003"}
+2109 121107 15:08:40 INFO: Username: admin@sonyx.net
+2109 121107 15:08:40 INFO: Completed 200 OK in 6ms (Views: 0.6ms)
+2109 121107 15:08:40 INFO: 
+
+Started GET "/r/509a6b19924ff83af8000001/relations_to/Tagging" for 10.62.97.119 at 2012-11-07 15:08:40 +0000
+2109 121107 15:08:40 INFO:   Processing by RController#relations_to as JSON
+2109 121107 15:08:40 INFO:   Parameters: {"id"=>"509a6b19924ff83af8000001", "type"=>"Tagging"}
+2109 121107 15:08:40 INFO: Username: admin@sonyx.net
+2109 121107 15:08:40 INFO: Completed 200 OK in 16ms (Views: 0.4ms)
+2109 121107 15:08:40 INFO: 
+
+Started GET "/r/4fb0d22f924ff85357000003/related_to/Alternative" for 10.62.97.119 at 2012-11-07 15:08:40 +0000
+2109 121107 15:08:40 INFO:   Processing by RController#related_to as JSON
+2109 121107 15:08:40 INFO:   Parameters: {"id"=>"4fb0d22f924ff85357000003", "type"=>"Alternative"}
+2109 121107 15:08:40 INFO: Username: admin@sonyx.net
+2109 121107 15:08:40 INFO: Completed 200 OK in 15ms (Views: 0.7ms)
+2109 121107 15:08:40 INFO: 
+
+Started GET "/r/4fb0d276924ff8535700000b/relations_to/Tagging" for 10.62.97.119 at 2012-11-07 15:08:40 +0000
+2109 121107 15:08:40 INFO:   Processing by RController#relations_to as JSON
+2109 121107 15:08:40 INFO:   Parameters: {"id"=>"4fb0d276924ff8535700000b", "type"=>"Tagging"}
+2109 121107 15:08:40 INFO: Username: admin@sonyx.net
+2109 121107 15:08:40 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+2109 121107 15:08:40 INFO: 
+
+Started GET "/r/4fc6089bf60f940769000001/relations_to/Tagging" for 10.62.97.119 at 2012-11-07 15:08:40 +0000
+2109 121107 15:08:40 INFO:   Processing by RController#relations_to as JSON
+2109 121107 15:08:40 INFO:   Parameters: {"id"=>"4fc6089bf60f940769000001", "type"=>"Tagging"}
+2109 121107 15:08:40 INFO: Username: admin@sonyx.net
+2109 121107 15:08:40 INFO: Completed 200 OK in 12ms (Views: 0.3ms)
+2109 121107 15:08:40 INFO: 
+
+Started GET "/r/4fc6088cf60f940758000001/relations_to/Tagging" for 10.62.97.119 at 2012-11-07 15:08:40 +0000
+2109 121107 15:08:40 INFO:   Processing by RController#relations_to as JSON
+2109 121107 15:08:40 INFO:   Parameters: {"id"=>"4fc6088cf60f940758000001", "type"=>"Tagging"}
+2109 121107 15:08:40 INFO: Username: admin@sonyx.net
+2109 121107 15:08:40 INFO: Completed 200 OK in 12ms (Views: 0.3ms)
+2109 121107 15:08:40 INFO: 
+
+Started GET "/r/4fb0d42c924ff8532a000007/relations_to/Tagging" for 10.62.97.119 at 2012-11-07 15:08:40 +0000
+2109 121107 15:08:40 INFO:   Processing by RController#relations_to as JSON
+2109 121107 15:08:40 INFO:   Parameters: {"id"=>"4fb0d42c924ff8532a000007", "type"=>"Tagging"}
+2109 121107 15:08:40 INFO: Username: admin@sonyx.net
+2109 121107 15:08:40 INFO: Completed 200 OK in 12ms (Views: 0.3ms)
+2109 121107 15:08:40 INFO: 
+
+Started GET "/r/4fb0d271924ff8558e000003/relations_to/Tagging" for 10.62.97.119 at 2012-11-07 15:08:40 +0000
+2109 121107 15:08:40 INFO:   Processing by RController#relations_to as JSON
+2109 121107 15:08:40 INFO:   Parameters: {"id"=>"4fb0d271924ff8558e000003", "type"=>"Tagging"}
+2109 121107 15:08:40 INFO: Username: admin@sonyx.net
+2109 121107 15:08:40 INFO: Completed 200 OK in 6ms (Views: 0.3ms)
+2109 121107 16:08:46 INFO: 
+
+Started GET "/projects" for 10.61.101.239 at 2012-11-07 16:08:46 +0000
+2109 121107 16:08:46 INFO:   Processing by ProjectsController#index as JSON
+2109 121107 16:08:46 INFO: Username: admin@sonyx.net
+2109 121107 16:08:47 INFO: Completed 200 OK in 1206ms (Views: 5.0ms)
+2109 121107 16:08:47 INFO: 
+
+Started GET "/r/4fb0d22f924ff85357000003/related_to/Alternative" for 10.61.101.239 at 2012-11-07 16:08:47 +0000
+2109 121107 16:08:47 INFO:   Processing by RController#related_to as JSON
+2109 121107 16:08:47 INFO:   Parameters: {"id"=>"4fb0d22f924ff85357000003", "type"=>"Alternative"}
+2109 121107 16:08:47 INFO: Username: admin@sonyx.net
+2109 121107 16:08:47 INFO: Completed 200 OK in 15ms (Views: 0.7ms)
+2109 121107 16:08:47 INFO: 
+
+Started GET "/r/4fb0d25e924ff85357000005/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 16:08:47 +0000
+2109 121107 16:08:47 INFO:   Processing by RController#relations_from as JSON
+2109 121107 16:08:47 INFO:   Parameters: {"id"=>"4fb0d25e924ff85357000005", "type"=>"SolvedBy"}
+2109 121107 16:08:47 INFO: Username: admin@sonyx.net
+2109 121107 16:08:47 INFO: Completed 200 OK in 15ms (Views: 0.3ms)
+2109 121107 16:08:47 INFO: 
+
+Started GET "/r/4fb0d41f924ff853d1000001/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 16:08:47 +0000
+2109 121107 16:08:47 INFO:   Processing by RController#relations_from as JSON
+2109 121107 16:08:47 INFO:   Parameters: {"id"=>"4fb0d41f924ff853d1000001", "type"=>"SolvedBy"}
+2109 121107 16:08:47 INFO: Username: admin@sonyx.net
+2109 121107 16:08:47 INFO: Completed 200 OK in 13ms (Views: 0.3ms)
+2109 121107 16:08:47 INFO: 
+
+Started GET "/r/4fb0d5c9924ff8535700000f/related_to/Alternative" for 10.61.101.239 at 2012-11-07 16:08:47 +0000
+2109 121107 16:08:47 INFO:   Processing by RController#related_to as JSON
+2109 121107 16:08:47 INFO:   Parameters: {"id"=>"4fb0d5c9924ff8535700000f", "type"=>"Alternative"}
+2109 121107 16:08:47 INFO: Username: admin@sonyx.net
+2109 121107 16:08:47 INFO: Completed 200 OK in 14ms (Views: 0.6ms)
+2109 121107 16:08:47 INFO: 
+
+Started GET "/r/4fb0d26b924ff85357000007/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 16:08:47 +0000
+2109 121107 16:08:47 INFO:   Processing by RController#relations_from as JSON
+2109 121107 16:08:47 INFO:   Parameters: {"id"=>"4fb0d26b924ff85357000007", "type"=>"SolvedBy"}
+2109 121107 16:08:47 INFO: Username: admin@sonyx.net
+2109 121107 16:08:47 INFO: Completed 200 OK in 14ms (Views: 0.3ms)
+2109 121107 16:08:47 INFO: 
+
+Started GET "/r/4fb0d623924ff8558e00000b/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 16:08:47 +0000
+2109 121107 16:08:47 INFO:   Processing by RController#relations_from as JSON
+2109 121107 16:08:47 INFO:   Parameters: {"id"=>"4fb0d623924ff8558e00000b", "type"=>"SolvedBy"}
+2109 121107 16:08:47 INFO: Username: admin@sonyx.net
+2109 121107 16:08:47 INFO: Completed 200 OK in 12ms (Views: 0.3ms)
+2109 121107 16:08:47 INFO: 
+
+Started GET "/r/4fb0d62e924ff8558e00000d/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 16:08:47 +0000
+2109 121107 16:08:47 INFO:   Processing by RController#relations_from as JSON
+2109 121107 16:08:47 INFO:   Parameters: {"id"=>"4fb0d62e924ff8558e00000d", "type"=>"SolvedBy"}
+2109 121107 16:08:47 INFO: Username: admin@sonyx.net
+2109 121107 16:08:47 INFO: Completed 200 OK in 17ms (Views: 0.3ms)
+2109 121107 16:08:47 INFO: 
+
+Started GET "/r/4fb0d644924ff8558e00000f/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 16:08:47 +0000
+2109 121107 16:08:47 INFO:   Processing by RController#relations_from as JSON
+2109 121107 16:08:47 INFO:   Parameters: {"id"=>"4fb0d644924ff8558e00000f", "type"=>"SolvedBy"}
+2109 121107 16:08:47 INFO: Username: admin@sonyx.net
+2109 121107 16:08:47 INFO: Completed 200 OK in 14ms (Views: 0.3ms)
+2109 121107 16:08:47 INFO: 
+
+Started GET "/r/50895418924ff81206000001/related_to/Alternative" for 10.61.101.239 at 2012-11-07 16:08:47 +0000
+2109 121107 16:08:47 INFO:   Processing by RController#related_to as JSON
+2109 121107 16:08:47 INFO:   Parameters: {"id"=>"50895418924ff81206000001", "type"=>"Alternative"}
+2109 121107 16:08:47 INFO: Username: admin@sonyx.net
+2109 121107 16:08:47 INFO: Completed 200 OK in 13ms (Views: 0.6ms)
+2109 121107 16:08:47 INFO: 
+
+Started GET "/r/5089543d924ff81206000003/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 16:08:47 +0000
+2109 121107 16:08:47 INFO:   Processing by RController#relations_from as JSON
+2109 121107 16:08:47 INFO:   Parameters: {"id"=>"5089543d924ff81206000003", "type"=>"SolvedBy"}
+2109 121107 16:08:47 INFO: Username: admin@sonyx.net
+2109 121107 16:08:47 INFO: Completed 200 OK in 13ms (Views: 0.3ms)
+2109 121107 16:08:47 INFO: 
+
+Started GET "/r/508954b3924ff85350000001/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 16:08:47 +0000
+2109 121107 16:08:47 INFO:   Processing by RController#relations_from as JSON
+2109 121107 16:08:47 INFO:   Parameters: {"id"=>"508954b3924ff85350000001", "type"=>"SolvedBy"}
+2109 121107 16:08:47 INFO: Username: admin@sonyx.net
+2109 121107 16:08:47 INFO: Completed 200 OK in 13ms (Views: 0.3ms)
+2109 121107 16:08:47 INFO: 
+
+Started GET "/r/508954e4924ff81232000001/relations_from/SolvedBy" for 10.61.101.239 at 2012-11-07 16:08:47 +0000
+2109 121107 16:08:47 INFO:   Processing by RController#relations_from as JSON
+2109 121107 16:08:47 INFO:   Parameters: {"id"=>"508954e4924ff81232000001", "type"=>"SolvedBy"}
+2109 121107 16:08:47 INFO: Username: admin@sonyx.net
+2109 121107 16:08:48 INFO: Completed 200 OK in 15ms (Views: 0.3ms)
+2109 121107 16:08:48 INFO: 
+
+Started GET "/r/4fb0d25e924ff85357000006/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 16:08:48 +0000
+2109 121107 16:08:48 INFO:   Processing by RController#relations_to as JSON
+2109 121107 16:08:48 INFO:   Parameters: {"id"=>"4fb0d25e924ff85357000006", "type"=>"Tagging"}
+2109 121107 16:08:48 INFO: Username: admin@sonyx.net
+2109 121107 16:08:48 INFO: Completed 200 OK in 21ms (Views: 0.6ms)
+2109 121107 16:08:49 INFO: 
+
+Started GET "/r/4fb0d41f924ff853d1000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 16:08:49 +0000
+2109 121107 16:08:49 INFO:   Processing by RController#relations_to as JSON
+2109 121107 16:08:49 INFO:   Parameters: {"id"=>"4fb0d41f924ff853d1000002", "type"=>"Tagging"}
+2109 121107 16:08:49 INFO: Username: admin@sonyx.net
+2109 121107 16:08:49 INFO: Completed 200 OK in 23ms (Views: 0.5ms)
+2109 121107 16:08:49 INFO: 
+
+Started GET "/r/4fb0d26b924ff85357000008/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 16:08:49 +0000
+2109 121107 16:08:49 INFO:   Processing by RController#relations_to as JSON
+2109 121107 16:08:49 INFO:   Parameters: {"id"=>"4fb0d26b924ff85357000008", "type"=>"Tagging"}
+2109 121107 16:08:49 INFO: Username: admin@sonyx.net
+2109 121107 16:08:49 INFO: Completed 200 OK in 21ms (Views: 0.5ms)
+2109 121107 16:08:49 INFO: 
+
+Started GET "/r/4fb0d62e924ff8558e00000e/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 16:08:49 +0000
+2109 121107 16:08:49 INFO:   Processing by RController#relations_to as JSON
+2109 121107 16:08:49 INFO:   Parameters: {"id"=>"4fb0d62e924ff8558e00000e", "type"=>"Tagging"}
+2109 121107 16:08:49 INFO: Username: admin@sonyx.net
+2109 121107 16:08:49 INFO: Completed 200 OK in 15ms (Views: 0.5ms)
+2109 121107 16:08:49 INFO: 
+
+Started GET "/r/4fb0d644924ff8558e000010/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 16:08:49 +0000
+2109 121107 16:08:49 INFO:   Processing by RController#relations_to as JSON
+2109 121107 16:08:49 INFO:   Parameters: {"id"=>"4fb0d644924ff8558e000010", "type"=>"Tagging"}
+2109 121107 16:08:49 INFO: Username: admin@sonyx.net
+2109 121107 16:08:49 INFO: Completed 200 OK in 23ms (Views: 0.5ms)
+2109 121107 16:08:49 INFO: 
+
+Started GET "/r/5089543d924ff81206000004/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 16:08:49 +0000
+2109 121107 16:08:49 INFO:   Processing by RController#relations_to as JSON
+2109 121107 16:08:49 INFO:   Parameters: {"id"=>"5089543d924ff81206000004", "type"=>"Tagging"}
+2109 121107 16:08:49 INFO: Username: admin@sonyx.net
+2109 121107 16:08:49 INFO: Completed 200 OK in 7ms (Views: 0.2ms)
+2109 121107 16:08:49 INFO: 
+
+Started GET "/r/508954b3924ff85350000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 16:08:49 +0000
+2109 121107 16:08:49 INFO:   Processing by RController#relations_to as JSON
+2109 121107 16:08:49 INFO:   Parameters: {"id"=>"508954b3924ff85350000002", "type"=>"Tagging"}
+2109 121107 16:08:49 INFO: Username: admin@sonyx.net
+2109 121107 16:08:49 INFO: Completed 200 OK in 6ms (Views: 0.2ms)
+2109 121107 16:08:49 INFO: 
+
+Started GET "/r/508954e4924ff81232000002/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 16:08:49 +0000
+2109 121107 16:08:49 INFO:   Processing by RController#relations_to as JSON
+2109 121107 16:08:49 INFO:   Parameters: {"id"=>"508954e4924ff81232000002", "type"=>"Tagging"}
+2109 121107 16:08:49 INFO: Username: admin@sonyx.net
+2109 121107 16:08:49 INFO: Completed 200 OK in 6ms (Views: 0.1ms)
+2109 121107 16:08:49 INFO: 
+
+Started GET "/r/4fb0d623924ff8558e00000c/relations_to/Tagging" for 10.61.101.239 at 2012-11-07 16:08:49 +0000
+2109 121107 16:08:49 INFO:   Processing by RController#relations_to as JSON
+2109 121107 16:08:49 INFO:   Parameters: {"id"=>"4fb0d623924ff8558e00000c", "type"=>"Tagging"}
+2109 121107 16:08:49 INFO: Username: admin@sonyx.net
+2109 121107 16:08:49 INFO: Completed 200 OK in 6ms (Views: 0.1ms)

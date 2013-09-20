@@ -1,0 +1,80 @@
+1968 130315 19:18:13 INFO: 
+
+Started GET "/" for 10.40.6.109 at 2013-03-15 19:18:13 +0000
+1968 130315 19:18:13 INFO:   Processing by WelcomeController#index as HTML
+1968 130315 19:18:13 INFO: Username: (none)
+1968 130315 19:18:13 INFO: Rendered welcome/index.html.erb within layouts/application (11.2ms)
+1968 130315 19:18:13 INFO: Completed 200 OK in 52ms (Views: 50.2ms)
+1968 130315 19:18:14 INFO: 
+
+Started GET "/scope/type/Decision" for 10.40.6.109 at 2013-03-15 19:18:14 +0000
+1968 130315 19:18:14 INFO:   Processing by ScopeController#type as JSON
+1968 130315 19:18:14 INFO:   Parameters: {"type_name"=>"Decision"}
+1968 130315 19:18:14 INFO: Username: (none)
+1978 130315 19:18:14 INFO: 
+
+Started GET "/t" for 10.40.6.109 at 2013-03-15 19:18:14 +0000
+1986 130315 19:18:14 INFO: 
+
+Started GET "/r/4fb0d1fa924ff85581000003/related_from/Issue" for 10.40.6.109 at 2013-03-15 19:18:14 +0000
+1995 130315 19:18:15 INFO: 
+
+Started GET "/tags" for 10.40.6.109 at 2013-03-15 19:18:14 +0000
+1968 130315 19:18:15 INFO: Completed 200 OK in 966ms (Views: 24.7ms)
+2004 130315 19:18:15 INFO: 
+
+Started GET "/projects/4fb0d1fa924ff85581000003" for 10.40.6.109 at 2013-03-15 19:18:15 +0000
+1986 130315 19:18:18 INFO:   Processing by RController#related_from as JSON
+1986 130315 19:18:18 INFO:   Parameters: {"id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue"}
+1986 130315 19:18:18 INFO: Username: (none)
+1986 130315 19:18:18 INFO: Completed   in 2ms
+1978 130315 19:18:18 INFO:   Processing by TController#index as JSON
+1978 130315 19:18:18 INFO: Username: (none)
+1978 130315 19:18:18 INFO: Completed   in 2ms
+1995 130315 19:18:18 INFO:   Processing by TagsController#index as JSON
+2004 130315 19:18:18 INFO:   Processing by ProjectsController#show as JSON
+2004 130315 19:18:18 INFO:   Parameters: {"id"=>"4fb0d1fa924ff85581000003"}
+1995 130315 19:18:18 INFO: Username: (none)
+2004 130315 19:18:18 INFO: Username: (none)
+2004 130315 19:18:18 INFO: Completed   in 2ms
+1995 130315 19:18:18 INFO: Completed 200 OK in 228ms (Views: 35.8ms)
+1995 130315 21:34:23 INFO: 
+
+Started GET "/" for 64.237.37.121 at 2013-03-15 21:34:23 +0000
+1995 130315 21:34:23 INFO:   Processing by WelcomeController#index as HTML
+1995 130315 21:34:23 INFO: Username: (none)
+1995 130315 21:34:23 INFO: Rendered welcome/index.html.erb within layouts/application (2.9ms)
+1995 130315 21:34:23 INFO: Completed 200 OK in 8ms (Views: 6.8ms)
+1995 130315 21:34:33 INFO: 
+
+Started GET "/scope/type/Decision" for 64.237.37.121 at 2013-03-15 21:34:33 +0000
+1995 130315 21:34:33 INFO:   Processing by ScopeController#type as JSON
+1995 130315 21:34:33 INFO:   Parameters: {"type_name"=>"Decision"}
+1995 130315 21:34:33 INFO: Username: (none)
+1995 130315 21:34:33 INFO: Completed 200 OK in 18ms (Views: 2.4ms)
+1995 130315 21:34:33 INFO: 
+
+Started GET "/tags" for 64.237.37.121 at 2013-03-15 21:34:33 +0000
+1995 130315 21:34:33 INFO:   Processing by TagsController#index as JSON
+1995 130315 21:34:33 INFO: Username: (none)
+1995 130315 21:34:34 INFO: Completed 200 OK in 223ms (Views: 32.2ms)
+1995 130315 21:34:34 INFO: 
+
+Started GET "/t" for 64.237.37.121 at 2013-03-15 21:34:34 +0000
+1995 130315 21:34:34 INFO:   Processing by TController#index as JSON
+1995 130315 21:34:34 INFO: Username: (none)
+1995 130315 21:34:34 INFO: Completed   in 1ms
+1995 130315 21:34:34 INFO: 
+
+Started GET "/projects/4fb0d1fa924ff85581000003" for 64.237.37.121 at 2013-03-15 21:34:34 +0000
+1995 130315 21:34:34 INFO:   Processing by ProjectsController#show as JSON
+1995 130315 21:34:34 INFO:   Parameters: {"id"=>"4fb0d1fa924ff85581000003"}
+1995 130315 21:34:34 INFO: Username: (none)
+1995 130315 21:34:34 INFO: Completed   in 3ms
+1995 130315 21:34:34 INFO: 
+
+Started GET "/r/4fb0d1fa924ff85581000003/related_from/Issue" for 64.237.37.121 at 2013-03-15 21:34:34 +0000
+1995 130315 21:34:34 INFO:   Processing by RController#related_from as JSON
+1995 130315 21:34:34 INFO:   Parameters: {"id"=>"4fb0d1fa924ff85581000003", "type"=>"Issue"}
+1995 130315 21:34:34 INFO: Username: (none)
+1995 130315 21:34:34 INFO: Completed   in 1ms
