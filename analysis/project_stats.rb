@@ -4,6 +4,7 @@ require './analysis/toolkit/items.rb'
 
 # let's clean up a bit
 FileUtils.rm_rf(Dir.glob('./analysis/output/*.item'))
+FileUtils.rm_rf(Dir.glob('./analysis/output/*.full'))
 
 
 decisionTags = Taggable.find :all, :conditions=>{:type=>"Decision"}
@@ -42,23 +43,26 @@ end
 
 puts 'smallest timestamp found to be: ' + smallestTimestamp.to_s
 
+sortedDigest = File.open rootPath+'digest.csv','w'
 
 #digestLog.each { |line| puts line[1] }
 digestLog.each do |line| 
-	#puts line[1]
 	line[1] = (line[1].to_i - smallestTimestamp).to_s 
-	#puts digestLog[0][1] 
-	#puts line[1]
+	sortedDigest.puts line.join("\t")
 end
 
+sortedDigest.close
+
 puts 'split done.'
+
+
 
 #allProjects.each do |project|
 
 	# some project
 	#project = Project.find_by_id '516d4176da300c2ae7000001'
 	# ex3
-	#project = Project.find_by_id '517652dfda300c1675000001'
+	project = Project.find_by_id '517652dfda300c1675000001'
 	# ex4
 	project = Project.find_by_id '51765a68da300c1849000001'
 
@@ -75,20 +79,23 @@ puts 'split done.'
 	issues.each do |issue|
 
 		ilm = IssueLogItem.new issue.id.to_s, digestLog 
+		ilm.analyze outputIssues
 		ilms << ilm
+
 
 		outputIssues.print issue.id.to_s + "\t " + issue['name'].to_s
 		alternatives = issue.related_to "SolvedBy"
+		
 		alternativeCount += alternatives.count
 
 		# let's find how many entries do we have in the log for it
 		logEvents = digestLog.select { |line| line[9] == issue.id.to_s }
 		
-		puts 'issue ' + issue.id.to_s + ' has ' + logEvents.size.to_s + ' log entries'
+		#puts 'issue ' + issue.id.to_s + ' has ' + logEvents.size.to_s + ' log entries'
 
-		puts logEvents.select { |line| line[5] == 'GET' }.count.to_s + ' GETs'
-		puts logEvents.select { |line| line[5] == 'PUT' }.count.to_s + ' PUTs'
-		puts logEvents.select { |line| line[5] == 'POST' }.count.to_s + ' POSTs'
+		#puts logEvents.select { |line| line[5] == 'GET' }.count.to_s + ' GETs'
+		#puts logEvents.select { |line| line[5] == 'PUT' }.count.to_s + ' PUTs'
+		#puts logEvents.select { |line| line[5] == 'POST' }.count.to_s + ' POSTs'
 
 		outputIssues.print "\t" + alternatives.count.to_s
 
@@ -96,20 +103,31 @@ puts 'split done.'
 		decidedAlternativeCount = 0
 		undecidedAlternativeCount = 0
 
-		alternatives.each do |alternative|
+		ilm.alternativesLog.each do |la|
+
+		#alternatives.each do |alternative|
+		
 			decisionCounts=[]
 
-
-			alm = AlternativeLogItem.new alternative.id.to_s, digestLog 
+			alm = AlternativeLogItem.new la, digestLog 
+			alm.analyze outputAlternaitves
 			ilms << alm
 
+			#sb = alternative.relations_from("SolvedBy").first
 
-			sb = alternative.relations_from("SolvedBy").first
+			sb = alm.sbLog
 
-			sbli = SolvedByLogItem.new sb.id.to_s, digestLog 
+			if not sb
+				puts 'solvedBy not found for alternative - skipping'
+				next
+			end
+
+			sbli = SolvedByLogItem.new alm.sbLog.to_id, digestLog 
 			sbli.analyze outputDecisions
 			ilms << sbli
+#			debugger
 
+=begin
 			sb.relations_to.each do |decisionTagging|
 				#puts decisionTagging.id
 				#puts decisionTagging.origin
@@ -155,7 +173,8 @@ puts 'split done.'
 				end
 			end
 			outputAlternaitves.puts ''
-	
+=end
+
 				#decisionTags = alternative.related_to().select{ |x| x["type"]=="Decision"}
 		end
 		outputIssues.print "\t" + decidedAlternativeCount.to_s + "\t" + collidingAlternativeCount.to_s + "\t" + undecidedAlternativeCount.to_s

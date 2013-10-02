@@ -1,2 +1,6 @@
 require_relative './events/creation.rb'
 require_relative './events/decision.rb'
+require_relative './events/update.rb'
+require_relative './events/focus.rb'
+require_relative './events/relation.rb'
+require_relative './events/destruction.rb'

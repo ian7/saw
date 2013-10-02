@@ -4,7 +4,10 @@ class LogItem
 		
 	def initialize( paramId = nil, paramEvents = nil )
 		if paramEvents
+#			puts 'rememberging paramEvents'
 			@allEvents = paramEvents
+		else
+			@allEvents = []
 		end
 
 
@@ -24,16 +27,30 @@ class LogItem
 	def id=(value)
 		@id = value
 
-		@taggable = Taggable.find id
+		if Taggable.exists? :conditions=>{:id=>@id}
+			@taggable = Taggable.find @id
+			type = @taggable['type']
+		else
+			@taggable = nil
+			# if it was deleted - then let's figure what was its type
+			ce = @allEvents.find { |x| x.to_id == @id && x.distance == '0'}
+			if ce
+				type = ce.itemType.to_s + '-deleted'
+				puts 'found type: ' + ce.itemType.to_s
+			else
+				puts 'no type found'
+			end
+		end
 
-		@output = File.open './analysis/output/item-' + @taggable['type'] + '-' + id.to_s + '.item', 'w'
-		@outputFull = File.open './analysis/output/item-' + @taggable['type'] + '-' + id.to_s + '.full', 'w'
+		@output = File.open './analysis/output/item-' + type + '-' + id.to_s + '.item', 'w'
+		@outputFull = File.open './analysis/output/item-' + type + '-' + id.to_s + '.full', 'w'
 		#@output.puts 'ip, timestamp, user, latency, rendering, verb, controller, action, distance, type, params'
 	end
 
 	def parse( digestLog = nil )
 		if digestLog
 			@allEvents = digestLog
+			puts 'changing digestlog'
 		end
 
 		@filteredEvents = @allEvents.select { |line| line[9] == @id || line[8] == @id }
@@ -45,6 +62,28 @@ class LogItem
 	end
 
 	def to_s
-		return self.join("\t").to_s
+		return @taggable.attributes.join("\t").to_s
+	end
+	def focus
+		focuses = @filteredEvents.select{ |x| x.verb == 'notify' && (x.controller == 'focused' || x.controller == 'blured') }.map { |x| FocusEvent.new x }
+
+		focuses.each do |x|
+			if  x.controller == 'blured'
+				# let's choose all the focuses of that user
+				earlierFocuses = focuses.select{ |y| y.controller == 'focused' && y.time.to_i < x.time.to_i && y.user == x.user }
+				# and then find the last one. 
+				match = earlierFocuses.last
+				#debugger
+				if match
+					x.focusTimestamp = match.time
+				else
+					#puts 'no focus match for blur event'
+				end
+			end
+		end
+		return focuses
+	end
+	def update
+		updates = @filteredEvents.select { |x| x.verb == 'PUT' && x.action == 'update' } .map { |x| UpdateEvent.new(x) } 
 	end
 end
