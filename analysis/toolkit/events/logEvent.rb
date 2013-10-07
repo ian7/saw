@@ -31,10 +31,18 @@ class LogEvent < Array
 	def distance
 		return self[10]
 	end
+	def related_to
+		return self[10]
+	end
+	def related_from
+		return self[11]
+	end
 	def itemType
 		return self[11]
 	end
 	def taggingTip
 		return self[11]
 	end
+
+
 end

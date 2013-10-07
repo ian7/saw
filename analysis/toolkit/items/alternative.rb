@@ -1,4 +1,5 @@
 require_relative './logItem.rb'
+require_relative './solvedBy.rb'
 
 class AlternativeLogItem < LogItem
 	def initialize( paramId = nil, paramEvents = nil )
@@ -6,28 +7,29 @@ class AlternativeLogItem < LogItem
 	end
 	def status
 	end
-	def analyze( output )
-		@output.puts creation.to_s
-		update.each do |x|
-			@output.print x.to_s + "\t"
-			@output.print (x.time.to_i-creation.time.to_i ).to_s + "\t"
-			@output.print "\n"
+	def analyze
+		@events = []
+		eventClasses = [CreationEvent,UpdateEvent,FocusEvent,RelationEvent,DestructionEvent]
+		eventClasses.each{ |x| @events.concat( x.find( self.id, @allEvents ) ) }
+
+		# this instantiates SolvedBy items 
+		@events.concat( statuses )
+
+		if relate
+			@solvedByID = relate.to_id
 		end
-		focus.each do |x|
-			@output.print x.to_s + "\t"
-			@output.print "\n"
-		end
-		self.sbLog
-#		relate.each do |x|
-#			@output.print x.to_s + "\t"
-#			@output.print "\n"
-#		end
-		if delete
-			@output.print delete.to_s + "\t"
-			@output.print (delete.time.to_i - creation.time.to_i).to_s + "\t"
-			@output.puts
+
+		@sortedEvents = @events.sort {|x,y| x.time.to_i <=> y.time.to_i }
+
+		return @sortedEvents
+	end
+
+	def to_s
+		@sortedEvents.each do |x|
+			@output.puts x.to_s( self ) 
 		end
 	end
+
 	def creation
 		e = @filteredEvents.find { |x| x.controller == 'create' && x.distance == '0' && x.itemType == 'Alternative'}
 		if( e )
@@ -41,7 +43,12 @@ class AlternativeLogItem < LogItem
 	end	
 	def relate
 		ce = @filteredEvents.find { |x| x.controller == 'create' && x.distance == '0' && x.itemType == 'Alternative'}
-		iev = @allEvents.find{ |x| x.time == ce.time && 
+		
+		if not ce
+			return nil
+		end
+		
+		ie = @allEvents.find{ |x| x.time == ce.time && 
 			x.user == ce.user && 
 			x.distance == '1' &&
 			x.itemType == 'Issue' &&
@@ -50,20 +57,17 @@ class AlternativeLogItem < LogItem
 
 
 		#debugger
-		if re
+		if ce && ie
 			sbe = @allEvents.find{ |x|  x.time == ce.time &&
 			x.distance == '0' &&
 			x.itemType == 'SolvedBy' &&
 			x.controller == 'relate' &&
 			x.action == 'Notify'
 			}	
-			if Taggable.exists? :conditions=>{:id=>sbe.id}
-				rei = Taggable.find :first, :conditions=>{:origin=>@id, :tip=>re.to_id}
-			else
-				puts 'found tagging event, but no relation '
+			#debugger
+			if sbe
+				return RelationEvent.new sbe, ce.to_id, ie.to_id
 			end
-
-			return RelationEvent.new re
 		else
 			return nil
 		end
@@ -71,7 +75,7 @@ class AlternativeLogItem < LogItem
 	def sbLog
 		ce = @filteredEvents.find { |x| x.controller == 'create' && x.distance == '0' && x.itemType == 'Alternative'}
 		if not ce
-			puts "didn't find creation - bailing out"
+			#puts "didn't find creation - bailing out"
 			return nil
 		end
 
@@ -93,7 +97,7 @@ class AlternativeLogItem < LogItem
 			#puts 'found solvedBy and issue - creating relation event'
 			return RelationEvent.new sbe, @id, ie.to_id 
 		else
-			puts "didn't find either sb or issue - bailing out"
+			#puts "didn't find either sb or issue - bailing out"
 			return nil 
 		end
 	end
@@ -106,5 +110,17 @@ class AlternativeLogItem < LogItem
 		else
 			#puts 'failed to find destruction event'
 		end
+	end
+	def statuses
+		re = relate
+		
+		# if there is no SB (akward) then there is nothing to observe 
+		if not relate
+			return []
+		end
+		
+		sbli = SolvedByLogItem.new re.to_id, @allEvents
+		sblievs = sbli.analyze 
+		return sblievs
 	end
 end

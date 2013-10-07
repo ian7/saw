@@ -76,20 +76,26 @@ puts 'split done.'
 
 	ilms = []
 
-	issues.each do |issue|
+	logIssues = IssueLogItem.find( digestLog )
 
-		ilm = IssueLogItem.new issue.id.to_s, digestLog 
-		ilm.analyze outputIssues
+	logIssues.each do |logIssue|
+#	issues.each do |issue|
+
+		ilm = logIssue
+		#ilm = IssueLogItem.new issue.id.to_s, digestLog 
+		ilm.analyze 
+		ilm.to_s outputIssues
+
 		ilms << ilm
 
 
-		outputIssues.print issue.id.to_s + "\t " + issue['name'].to_s
-		alternatives = issue.related_to "SolvedBy"
+		#outputIssues.print issue.id.to_s + "\t " + issue['name'].to_s
+		#alternatives = issue.related_to "SolvedBy"
 		
-		alternativeCount += alternatives.count
+		#alternativeCount += alternatives.count
 
 		# let's find how many entries do we have in the log for it
-		logEvents = digestLog.select { |line| line[9] == issue.id.to_s }
+		#logEvents = digestLog.select { |line| line[9] == issue.id.to_s }
 		
 		#puts 'issue ' + issue.id.to_s + ' has ' + logEvents.size.to_s + ' log entries'
 
@@ -97,7 +103,7 @@ puts 'split done.'
 		#puts logEvents.select { |line| line[5] == 'PUT' }.count.to_s + ' PUTs'
 		#puts logEvents.select { |line| line[5] == 'POST' }.count.to_s + ' POSTs'
 
-		outputIssues.print "\t" + alternatives.count.to_s
+		#outputIssues.print "\t" + alternatives.count.to_s
 
 		collidingAlternativeCount = 0
 		decidedAlternativeCount = 0
@@ -110,7 +116,8 @@ puts 'split done.'
 			decisionCounts=[]
 
 			alm = AlternativeLogItem.new la, digestLog 
-			alm.analyze outputAlternaitves
+			alm.analyze 
+			alm.to_s
 			ilms << alm
 
 			#sb = alternative.relations_from("SolvedBy").first
@@ -123,7 +130,8 @@ puts 'split done.'
 			end
 
 			sbli = SolvedByLogItem.new alm.sbLog.to_id, digestLog 
-			sbli.analyze outputDecisions
+			sbli.analyze 
+			sbli.to_s
 			ilms << sbli
 #			debugger
 

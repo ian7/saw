@@ -1,15 +1,16 @@
 class LogItem 
 	@allEvents = []
 	@output = nil
-		
+
 	def initialize( paramId = nil, paramEvents = nil )
+		@events = []
+
 		if paramEvents
 #			puts 'rememberging paramEvents'
 			@allEvents = paramEvents
 		else
 			@allEvents = []
 		end
-
 
 		if paramId
 			self.id = paramId
@@ -18,6 +19,16 @@ class LogItem
 		if paramEvents 
 			self.parse
 		end
+	end
+	def events
+		return @events
+	end
+	def allEvents
+		return @allEvents
+	end
+
+	def getFilteredEvents
+		return @filteredEvents
 	end
 
 	def id
@@ -30,15 +41,16 @@ class LogItem
 		if Taggable.exists? :conditions=>{:id=>@id}
 			@taggable = Taggable.find @id
 			type = @taggable['type']
+			#puts 'type found'
 		else
 			@taggable = nil
 			# if it was deleted - then let's figure what was its type
 			ce = @allEvents.find { |x| x.to_id == @id && x.distance == '0'}
 			if ce
 				type = ce.itemType.to_s + '-deleted'
-				puts 'found type: ' + ce.itemType.to_s
+			#	puts 'found type: ' + ce.itemType.to_s
 			else
-				puts 'no type found'
+				puts 'no type found - id: ' + value
 			end
 		end
 

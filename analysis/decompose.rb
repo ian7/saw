@@ -26,19 +26,6 @@ o.puts "ip, timestamp, username, req_time, view_time, command, controller, actio
 #o.puts "p(1), ip(2), timestamp(3), username(4), req_time(5), view_time(6), command(7), controller(8), action(9),item_id(10), id(11), "
 
 
-=begin
-f=File.new inputFilename
-l = f.readlines
-notificationLines = l.select { |line| line.match 'Notifying' }
-notificationLines.each do |line|
-#	puts line
-	notificationArray = line.split ' '
-	puts notificationArray[3] + ','
-end
-=end
-
-
-
 s.split("Started").each do |c|
 
 # this logs tabular output to the 
@@ -114,7 +101,11 @@ s.split("Started").each do |c|
 	o.print dig_param( c, 'item_id')+","
 
 	o.print dig_param( c, 'id')+","
-	o.print dig_param( c, 'taggable_id')+","
+	if dig_param( c, 'taggable_id') == '(no)'
+		o.print dig_param( c, 'to_taggable_id')+","
+	else
+		o.print dig_param( c, 'taggable_id')+","
+	end
 	o.print dig_param( c, 'from_taggable_id')+","
 	o.print dig_param( c, 'type')+','
 	o.puts ""
@@ -157,6 +148,8 @@ end
 =end
 #f.close
 o.close
+
+
 #return
 
 #system("R -f response_time.r")
