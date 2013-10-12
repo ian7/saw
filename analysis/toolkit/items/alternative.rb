@@ -9,7 +9,7 @@ class AlternativeLogItem < LogItem
 	end
 	def analyze
 		@events = []
-		eventClasses = [CreationEvent,UpdateEvent,FocusEvent,RelationEvent,DestructionEvent]
+		eventClasses = [CreationEvent,DecisionEvent,UpdateEvent,FocusEvent,RelationEvent,DestructionEvent]
 		eventClasses.each{ |x| @events.concat( x.find( self.id, @allEvents ) ) }
 
 		# this instantiates SolvedBy items 

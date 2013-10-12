@@ -10,10 +10,17 @@ class DecisionEvent < LogEvent
 			cutEvents = events
 		end
 
+		# this should catch SAW decisions
 		de = cutEvents.select{ |x| x.id == id && x.controller == 'TagController' && x.action == 'dotag' } .map { |x| 
 			#puts x
 			DecisionEvent.new( x ) 
 		}
+
+		#this should catch EP encoded decisions
+		de = cutEvents.select{ |x| x.to_id == id && x.controller == 'decide'} . map{ |x|
+			DecisionEvent.new( x )
+		}
+		#debugger
 
 		de.each do |x|
 			x.state = DecisionEvent.integrateState( de.select { |y| y.time.to_i <= x.time.to_i })
@@ -51,7 +58,13 @@ class DecisionEvent < LogEvent
 
 		super( param )
 		@state = "haha"
-		@decision = Taggable.find self.taggingTip
+
+		if Taggable.exists? :conditions=>{:id=>self.taggingTip }
+			@decision = Taggable.find(self.taggingTip)['name']
+		else
+			@decision = self.param
+		end
+
 	end
 	def decision 
 		return @decision
@@ -63,6 +76,6 @@ class DecisionEvent < LogEvent
 		return @state
 	end
 	def to_s( item = nil)
-		return self.time + "\t" + 'decision' + "\t" + @decision['name'] + "\t" + self.user + "\t" + @state
+		return self.time + "\t" + 'decision' + "\t" + @decision + "\t" + self.user + "\t" + @state
 	end
 end

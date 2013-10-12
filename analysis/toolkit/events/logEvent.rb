@@ -3,7 +3,7 @@
 class LogEvent < Array
 	def id
 		return self[8]
-	end
+	end 
 	def ip
 		return self[0]
 	end
@@ -43,6 +43,10 @@ class LogEvent < Array
 	def taggingTip
 		return self[11]
 	end
-
-
+	def payload
+		return self[12].to_s.strip
+	end
+	def param
+		return self[4]
+	end
 end

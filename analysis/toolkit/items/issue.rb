@@ -5,25 +5,37 @@ require_relative './alternative.rb'
 
 class IssueLogItem < LogItem
 	def self.find( events )
-		return events.select { |x| x.itemType == 'Issue' && x.controller == 'create'}. map { |x| IssueLogItem.new( x.to_id, events )}
+#		debugger
+		return events.select { |x| 
+			x.itemType == 'Issue' && x.controller == 'create'}. map { |x| IssueLogItem.new( x.to_id, events )
+			}
 	end
 
 	def initialize( paramId = nil, paramEvents = nil )
+		puts paramId.to_s
 		super paramId, paramEvents
 	end
 	def status
 	end
-	def analyze
+	def analyze( logType = :SAW )
 		@events = []
 		eventClasses = [ CreationEvent,UpdateEvent,FocusEvent,RelationEvent,DestructionEvent ]
 		eventClasses.each{ |x| @events.concat( x.find( self.id, @allEvents ) ) }
 
 
-		@alis = alternativesLog.map {|x| AlternativeLogItem.new x, @allEvents }
+		if( logType == :SAW )
+			@alis = alternativesLog.map { |x| AlternativeLogItem.new x, @allEvents }
+		else
+			@alis = alternativesEP.map { |x| AlternativeLogItem.new x, @allEvents }
+		end
+
 
 		#let's analyze them for the deicsions
-		@alis.each{ |x| x.analyze }
-
+		@alis.each{ |x|
+			puts 'analyzing ' + x.id.to_s
+			x.analyze 
+			x.to_s
+		}
 		
 		#let's go over the relations
 		#
@@ -121,7 +133,7 @@ class IssueLogItem < LogItem
 		if alternativeDecisionStats.size == 1 && alternativeDecisionStats['none']
 			return 'no decisions'
 		end
-
+ 
 		#only alligned decisions
 		if alternativeDecisionStats.size == 1 && alternativeDecisionStats['alligned']
 			return 'complete'
@@ -130,14 +142,12 @@ class IssueLogItem < LogItem
 		#everything else
 		return 'incomplete'
 	end
-
-	def to_s( output )
-		#puts "puts'ing " + @sortedEvents.size.to_s
+	def to_s( output = nil )
+		puts "puts'ing " + @sortedEvents.size.to_s
 		@sortedEvents.each do |x|
 			@output.puts x.to_s( self ) 
 		end
 	end
-
 	def alternativesSnapshot
 		if @taggable 
 			return	@taggable.related_to "SolvedBy"
@@ -180,6 +190,10 @@ class IssueLogItem < LogItem
 
 		puts 'Found: ' + alternatives.size.to_s + ' alternatives in log, but ' + alternativesSnapshot.size.to_s + " in graph"
 		return alternatives
+	end
+	def alternativesEP
+		doTagEvents = @allEvents.select {|x| x.itemType == 'Alternative' && x.action == 'relate' && x.payload == @id }.map{ |x| x.item_id }
+		return doTagEvents
 	end
 
 end

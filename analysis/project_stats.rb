@@ -62,7 +62,7 @@ puts 'split done.'
 	# some project
 	#project = Project.find_by_id '516d4176da300c2ae7000001'
 	# ex3
-	project = Project.find_by_id '517652dfda300c1675000001'
+	#project = Project.find_by_id '517652dfda300c1675000001'
 	# ex4
 	project = Project.find_by_id '51765a68da300c1849000001'
 
@@ -84,7 +84,7 @@ puts 'split done.'
 		ilm = logIssue
 		#ilm = IssueLogItem.new issue.id.to_s, digestLog 
 		ilm.analyze 
-		ilm.to_s outputIssues
+		ilm.to_s
 
 		ilms << ilm
 
@@ -95,7 +95,7 @@ puts 'split done.'
 		#alternativeCount += alternatives.count
 
 		# let's find how many entries do we have in the log for it
-		#logEvents = digestLog.select { |line| line[9] == issue.id.to_s }
+		# => logEvents = digestLog.select { |line| line[9] == issue.id.to_s }
 		
 		#puts 'issue ' + issue.id.to_s + ' has ' + logEvents.size.to_s + ' log entries'
 
