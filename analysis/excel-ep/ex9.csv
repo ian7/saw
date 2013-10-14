@@ -1,0 +1,36 @@
+	31808	time 	type	id	action	user	parameter	content
+0	0	08:50:08	Issue 	101	create	Masiar		
+0	9	08:50:17	Issue	101	update	Masiar		Coordinates data flow
+0	10	08:50:18	Alternative	1	create	Masiar		
+0	10	08:50:18	Alternative	1	relate	Masiar	Issue	101
+0	26	08:50:34	Alternative	1	update	Masiar		NaviSys pushes on Emergency System
+0	26	08:50:34	Alternative	2	create	Masiar		
+0	26	08:50:34	Alternative	2	relate	Masiar	Issue	101
+1	34	08:50:42	Alternative	2	update	Masiar		Emergency System pulls from NaviSys
+1	34	08:50:42	Issue	102	create	Masiar		
+1	42	08:50:50	Issue	102	update	Masiar		Coordinates control flow
+1	43	08:50:51	Alternative	3	create	Masiar		
+1	43	08:50:51	Alternative	3	relate	Masiar	Issue	102
+1	53	08:51:01	Alternative	3	update	Masiar		NaviSys publishes periodically coordinates
+1	54	08:51:02	Alternative	3	create	Masiar		
+1	54	08:51:02	Alternative	3	relate	Masiar	Issue	102
+1	63	08:51:11	Alternative	3	update	Masiar		Others pull coordinates out of NaviSys when needed
+5	305	08:55:13	Issue	103	create	Marcelo		
+5	309	08:55:17	Issue	103	update	Marcelo		Connector
+5	314	08:55:22	Alternative	3	create	Masiar		
+5	314	08:55:22	Alternative	3	relate	Masiar	Issue	103
+5	316	08:55:24	Alternative	3	update	Masiar		pub/sub
+5	318	08:55:26	Alternative	4	create	Masiar		
+5	318	08:55:26	Alternative	4	relate	Masiar	Issue	103
+5	321	08:55:29	Alternative	4	update	Masiar		tuple space
+5	322	08:55:30	Alternative	5	create	Masiar		
+5	322	08:55:30	Alternative	5	relate	Masiar	Issue	103
+5	329	08:55:37	Alternative	5	update	Masiar		broadcast
+7	423	08:57:11	Issue	3	update	Marcelo		Internal car connector
+31	1839	09:20:47	Alternative	3	update	Marcelo		pub/sub (everyone is subscribed to crash events)
+31	1839	09:20:47	Issue	104	create	Fabio		
+67	3992	09:56:40	Issue	104	update	Fabio		connector interface
+67	3997	09:56:45	Alternative	6	create	Fabio		
+67	3997	09:56:45	Alternative	6	relate	Fabio	Issue	104
+67	4006	09:56:54	Alternative	6	delete	Fabio		
+67	4019	09:57:07	Alternative	4	update	Fabio		decide which are required interfaces and which are provided

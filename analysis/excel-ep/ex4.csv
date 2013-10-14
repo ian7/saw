@@ -1,0 +1,50 @@
+	46972	time 	type	id	action	user	parameter	
+0	0	13:02:52	Issue	101	create	Gianluca		
+5	322	13:08:14	Issue	101	update	Gianluca		
+10	575	13:12:27	Issue	2	create	Masiar		
+10	576	13:12:28	Issue	3	create	Masiar		
+12	725	13:14:57	Alternative	1	create	Jakub		
+12	725	13:14:57	Alternative	1	relate	Jakub	Issue	102
+14	847	13:16:59	Alternative	1	update	Jakub		
+14	857	13:17:09	Alternative	2	create	Jakub		
+14	857	13:17:09	Alternative	2	relate	Jakub	Issue	102
+17	1032	13:20:04	Alternative	2	update	Jakub		
+10	576	13:12:28	Issue	102	update	Masiar		
+11	635	13:13:27	Issue	103	update	Masiar		
+11	653	13:13:45	Issue 	104	create	Gianluca		
+19	1133	13:21:45	Issue 	104	update	Gianluca		
+19	1166	13:22:18	Alternative	3	create	Gianluca		
+19	1166	13:22:18	Alternative	3	relate	Gianluca	Issue	104
+20	1224	13:23:16	Alternative	3	update	Gianluca		
+27	1628	13:30:00	Issue	5	create	Marcello		
+28	1663	13:30:35	Issue	5	update	Marcello		
+28	1666	13:30:38	Alternative	4	create	Marcello		
+28	1666	13:30:38	Alternative	4	relate	Marcello	Issue	104
+29	1761	13:32:13	Alternative	4	update	Marcello		
+32	1907	13:34:39	Alternative	4	decision 	Marcello	Postive	Alligned
+32	1911	13:34:43	Issue	106	create	Ievgenii		
+32	1928	13:35:00	Issue	106	update	Ievgenii		
+35	2108	13:38:00	Issue	107	create	Jofi		
+36	2168	13:39:00	Issue	107	update	Jofi		
+36	2171	13:39:03	Issue	108	create	Jakub		
+37	2235	13:40:07	Issue	108	update	Jakub		
+44	2630	13:46:42	Alternative	5	create	Ievgenii		
+44	2630	13:46:42	Alternative	5	relate	Ievgenii	Issue	106
+44	2649	13:47:01	Alternative	5	update	Ievgenii		
+45	2672	13:47:24	Issue	109	create	Ievgenii		
+45	2697	13:47:49	Issue	109	update	Ievgenii		
+45	2701	13:47:53	Alternative	6	create	Ievgenii		
+45	2701	13:47:53	Alternative	6	relate	Ievgenii	Issue	106
+45	2707	13:47:59	Alternative	6	update	Ievgenii		
+46	2776	13:49:08	Alternative	6	decision 	Ievgenii		
+48	2862	13:50:34	Issue	107	update	Masiar		
+48	2863	13:50:35	Alternative	7	create	Masiar		
+48	2863	13:50:35	Alternative	7	relate	Masiar	Issue	107
+48	2868	13:50:40	Alternative	7	update	Masiar		
+48	2869	13:50:41	Alternative	8	create	Masiar		
+48	2869	13:50:41	Alternative	8	relate	Masiar	Issue	107
+48	2876	13:50:48	Alternative	8	update	Masiar		
+48	2877	13:50:49	Alternative	9	create	Masiar		
+48	2877	13:50:49	Alternative	9	relate	Masiar	Issue	107
+53	3198	13:56:10	Alternative	9	update	Masiar		
+54	3238	13:56:50	Alternative	1	update	Jakub		

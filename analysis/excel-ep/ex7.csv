@@ -1,0 +1,137 @@
+	32094	time 	type	id	action	user	parameter	content
+0	0	08:54:54	Issue	101	create	Andrea		
+6	351	09:00:45	Issue	101	update	Andrea		create a warehouse component
+6	355	09:00:49	Alternative	1	create	Andrea		
+6	355	09:00:49	Alternative	1	relate	Andrea	Issue	101
+6	356	09:00:50	Alternative	1	update	Andrea		yes
+6	357	09:00:51	Alternative	2	create	Andrea		
+6	357	09:00:51	Alternative	2	relate	Andrea	Issue	101
+6	365	09:00:59	Alternative	2	update	Andrea		no
+6	368	09:01:02	Alternative	3	create	Andrea		
+6	368	09:01:02	Alternative	3	relate	Andrea	Issue	101
+6	375	09:01:09	Alternative	3	update	Andrea		I don't understand
+7	402	09:01:36	Alternative	3	decide	Andrea	Negative	what's the rationale of this component
+7	409	09:01:43	Alternative	2	decide	Simone	Negative	 not really necessary as a component, db is could be seen as datawarehouse
+7	423	09:01:57	Issue	102	create	Fabio		
+7	435	09:02:09	Issue	102	update	Fabio		Single DB for all?
+7	439	09:02:13	Alternative	4	create	Fabio		
+7	439	09:02:13	Alternative	4	relate	Fabio	Issue	102
+7	439	09:02:13	Issue	103	create	Cesare		
+7	440	09:02:14	Issue	103	update	Cesare		Distributed DB?
+8	466	09:02:40	Alternative	4	update	Fabio		a DB to store the catalogue data and one for the user & their orderds
+8	499	09:03:13	Alternative	5	create	Rasel		
+8	500	09:03:14	Alternative	5	relate	Rasel	Issue	102
+8	500	09:03:14	Alternative	5	update	Rasel		no
+8	506	09:03:20	Alternative	5	decide	Rasel	Open	can be good to separate sensitive data (customer credit card number not in same database ad catalog/order)
+9	512	09:03:26	Alternative	4	update	Fabio		a DB to store the catalogue data and one for the user (address, e-mail,...) & their orderds
+9	512	09:03:26	Issue	104	create	Cesare		
+9	555	09:04:09	Issue	104	update	Cesare		What is the order of activation?
+9	556	09:04:10	Alternative	6	create	Cesare		
+9	556	09:04:10	Alternative	6	relate	Cesare	Issue	104
+9	561	09:04:15	Alternative	6	update	Cesare		order - auth
+9	562	09:04:16	Alternative	7	create	Cesare		
+9	562	09:04:16	Alternative	7	relate	Cesare	Issue	104
+9	567	09:04:21	Alternative	7	update	Cesare		auth - order
+10	595	09:04:49	Alternative	7	decide	Andrea	Positive	positive sounds logic
+13	757	09:07:31	Alternative	6	decide	Fabio	Open	usefull to browusefull to browse the catalogue whitout orderingse
+13	759	09:07:33	Alternative	8	create	Fabio		
+13	759	09:07:33	Alternative	8	relate	Fabio	Issue	104
+13	775	09:07:49	Alternative	8	update	Fabio		authentication must be done at least when the user submit an order
+13	782	09:07:56	Alternative	9	create	Fabio		
+13	782	09:07:56	Alternative	9	relate	Fabio	Issue	104
+13	790	09:08:04	Alternative	9	update	Fabio		orthogonal
+16	968	09:11:02	Alternative	6	decide	Andrea	Postiive	usefull to browse the catalogue whitout ordering
+24	1443	09:18:57	Alternative	6	decide	Ievgenii	Positive	 agree with thi
+24	1443	09:18:57	Issue	105	create	Cesare		
+24	1447	09:19:01	Issue	105	update	Cesare		discount applied when:
+24	1448	09:19:02	Alternative	10	create	Cesare		
+24	1448	09:19:02	Alternative	10	relate	Cesare	Issue	105
+24	1452	09:19:06	Alternative	10	update	Cesare		during catalog browse
+24	1459	09:19:13	Alternative	11	create	Cesare		
+24	1459	09:19:13	Alternative	11	relate	Cesare	Issue	105
+24	1462	09:19:16	Alternative	11	update	Cesare		upon order submission
+25	1500	09:19:54	Alternative	11	decide	Andrea	Positive	 positive, because of the requirments
+26	1536	09:20:30	Alternative	10	decide	Andrea	Positive	(positive if later we will apply )
+26	1575	09:21:09	Alternative	11	decide	Simone	Positive	positive, we can applied specific discounts for specific users
+27	1603	09:21:37	Issue	106	create	Ievgenii		
+27	1611	09:21:45	Issue	106	update	Ievgenii		Recall previous orders:
+27	1615	09:21:49	Alternative	11	create	Cesare		
+27	1615	09:21:49	Alternative	11	relate	Cesare	Issue	105
+27	1620	09:21:54	Alternative	11	update	Cesare		 recall full order
+27	1621	09:21:55	Alternative	12	create	Cesare		
+27	1621	09:21:55	Alternative	12	relate	Cesare	Issue	105
+28	1662	09:22:36	Alternative	12	update	Cesare		 recall single products from different orders
+28	1666	09:22:40	Alternative	13	create	Cesare		
+28	1666	09:22:40	Alternative	13	relate	Cesare	Issue	105
+30	1772	09:24:26	Alternative	13	update	Cesare		both
+28	1666	09:22:40	Issue	107	create	Ievgenii		
+31	1834	09:25:28	Issue	107	update	Ievgenii		What does the cart component?
+30	1779	09:24:33	Issue	108	create	Ievgenii		
+31	1881	09:26:15	Issue	108	update	Ievgenii		We can see the browse history only if we were authenticated before? Can't browser it while we are browsing catalog?
+32	1929	09:27:03	Alternative	14	create	Rasel		
+32	1929	09:27:03	Alternative	14	relate	Rasel	Issue	107
+34	2043	09:28:57	Alternative	14	update	Rasel		possible answer : keeps track of current items in customer cart, after checkout record it in order component
+34	2043	09:28:57	Alternative	14	decide	Andrea	Positive	I think this is the correct answer, but it doesn't do that right now
+35	2083	09:29:37	Alternative	12	decide	Simone	Positive	as the requirement say
+37	2200	09:31:34	Issue	109	create	Cesare		
+37	2203	09:31:37	Issue	109	update	Cesare		which layer for authentication?
+37	2209	09:31:43	Alternative	15	create	Rasel		
+37	2209	09:31:43	Alternative	15	relate	Rasel	Issue	109
+37	2209	09:31:43	Alternative	15	update	Rasel		UI
+37	2209	09:31:43	Alternative	16	create	Rasel		
+37	2209	09:31:43	Alternative	16	relate	Rasel	Issue	109
+37	2209	09:31:43	Alternative	16	update	Rasel		business
+37	2209	09:31:43	Alternative	17	create	Rasel		
+37	2209	09:31:43	Alternative	17	relate	Rasel	Issue	109
+37	2209	09:31:43	Alternative	17	update	Rasel		database
+37	2211	09:31:45	Issue	110	create	Cesare		
+37	2223	09:31:57	Issue	110	update	Cesare		ho is authentication built?
+37	2223	09:31:57	Alternative	18	create	Cesare		
+37	2223	09:31:57	Alternative	18	relate	Cesare	Issue	110
+37	2232	09:32:06	Alternative	18	update	Cesare		reuse fb, g+, tw OAuth
+37	2232	09:32:06	Alternative	19	create	Cesare		
+37	2232	09:32:06	Alternative	19	relate	Cesare	Issue	110
+37	2238	09:32:12	Alternative	19	update	Cesare		 inhouse user/pw database
+37	2247	09:32:21	Alternative	20	create	Rasel		
+37	2247	09:32:21	Alternative	20	relate	Rasel	Issue	110
+37	2248	09:32:22	Alternative	20	update	Rasel		both
+38	2266	09:32:40	Alternative	20	decide	Rasel	Negative	some people don't have other auths and need inhouse
+38	2271	09:32:45	Alternative	16	decide	Andrea	Positive	 positive three layer authentication 
+39	2312	09:33:26	Alternative	18	decide	Rasel	Negative	 some people don't have this accounts or maybe they are not sure that this approach is secure
+39	2365	09:34:19	Alternative	19	decide	Rasel	Negative	 Negative: more complex to implement
+40	2428	09:35:22	Alternative	19	decide	Andrea	Positive	Positive I would use only this one, for a shop system you want to have the data in YOUR database (addresses, wathever), for many reasons
+42	2529	09:37:03	Alternative	15	decide	Rasel	Positive	positive, prevent actions that are not allowed
+43	2561	09:37:35	Alternative	17	decide	Simone	Negative	 negative, performance issue caused by fine-grained access control
+44	2643	09:38:57	Alternative	17	decide	Fabio	Open	 depends what the DB contains: only the table for the customer? or also some administration things....
+44	2659	09:39:13	Alternative	17	decide	Rasel	Negative	 there may be security problem 
+44	2648	09:39:02	Issue	111	create	Cesare		
+44	2648	09:39:02	Issue	111	update	Cesare		data modeling
+44	2648	09:39:02	Alternative	18	create	Cesare		
+44	2648	09:39:02	Alternative	18	relate	Cesare	Issue	111
+44	2654	09:39:08	Alternative	18	update	Cesare		functional decomposition
+45	2673	09:39:27	Issue	11	update	Cesare		 data modeling (entity, relationships - classes)
+49	2939	09:43:53	Alternative	18	decide	Andrea	Positive	positive controllers
+51	3055	09:45:49	Issue	112	create	Andrea		
+51	3048	09:45:42	Issue	112	update	Andrea		where is the cart
+51	3060	09:45:54	Alternative	19	create	Andrea		
+51	3060	09:45:54	Alternative	19	relate	Andrea	Issue	112
+51	3062	09:45:56	Alternative	19	update	Andrea		Database
+51	3065	09:45:59	Alternative	20	create	Andrea		
+51	3065	09:45:59	Alternative	20	relate	Andrea	Issue	112
+51	3070	09:46:04	Alternative	20	update	Andrea		Functional Component
+51	3077	09:46:11	Alternative	21	create	Andrea		
+51	3077	09:46:11	Alternative	21	relate	Andrea	Issue	112
+51	3080	09:46:14	Alternative	21	update	Andrea		Cookies
+52	3099	09:46:33	Alternative	21	decide	Rasel		 saved per computer and requires less complexity and data management in the db
+52	3112	09:46:46	Issue	113	create	Ievgenii		
+52	3128	09:47:02	Issue	113	update	Ievgenii		How do you check if the user is alredy authenticated?
+52	3133	09:47:07	Alternative	21	create	Ievgenii		
+52	3133	09:47:07	Alternative	21	relate	Ievgenii	Issue	113
+52	3144	09:47:18	Alternative	21	update	Ievgenii		> single component which keeps track of the authentication
+52	3146	09:47:20	Alternative	22	create	Ievgenii		
+52	3146	09:47:20	Alternative	22	relate	Ievgenii	Issue	113
+53	3157	09:47:31	Alternative	22	update	Ievgenii		use Authentication component to keep track fo that
+53	3185	09:47:59	Alternative	22	decide	Ievgenii	Open	 you need to go through this component before each DB query
+54	3247	09:49:01	Alternative	21	update	Ievgenii		new component which keeps track of the authentication and it handles the 
+55	3274	09:49:28	Alternative	21	decide	Andrea	Positive	sessions!
+66	3957	10:00:51	Alternative	18	decide	Simone	Positive	in trend with many other sites

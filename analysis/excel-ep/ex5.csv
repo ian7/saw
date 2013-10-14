@@ -1,0 +1,37 @@
+	40532	time 	type	id	action	user	parameter	content
+0	0	11:15:32	issue	101	create	Masiar		
+0	5	11:15:37	issue	101	update	Masiar		
+0	7	11:15:39	Alternative	1	create	Masiar		
+0	7	11:15:39	Alternative	1	relate	Masiar	Issue	101
+0	13	11:15:45	Alternative	1	update	Masiar		
+0	14	11:15:46	Alternative	2	create	Masiar		
+0	14	11:15:46	Alternative	2	relate	Masiar	Issue	101
+0	28	11:16:00	Alternative	2	update	Masiar		
+1	67	11:16:39	Alternative	2	create	Andrea		
+1	67	11:16:39	Alternative	3	create	Andrea		
+1	67	11:16:39	Alternative	3	relate	Andrea	Issue	101
+1	81	11:16:53	Alternative	3	update	Andrea		
+2	101	11:17:13	Alternative	3	decision	Andrea	Positive	
+2	114	11:17:26	Alternative	2	decision	Andrea	Positive	
+2	147	11:17:59	Alternative	2	decision	Andrea	Positive	
+2	147	11:17:59	Alternative	1	decision	Andrea	Negative	
+14	836	11:29:28	Issue	102	create	Masiar		
+14	846	11:29:38	Issue	102	update	Masiar		
+14	848	11:29:40	Alternative	4	create	Masiar		
+14	848	11:29:40	Alternative	4	relate	Masiar	Issue	102
+14	857	11:29:49	Alternative	4	update	Masiar		
+14	858	11:29:50	Alternative	5	create	Masiar		
+14	858	11:29:50	Alternative	5	relate	Masiar	Issue	102
+15	874	11:30:06	Alternative	5	update	Masiar		
+27	1602	11:42:14	Issue	103	create	Jakub		
+28	1671	11:43:23	Issue	103	update	Jakub		
+28	1675	11:43:27	Alternative	6	create	Jakub		
+28	1675	11:43:27	Alternative	6	relate	Jakub	Issue	103
+28	1684	11:43:36	Alternative	6	update	Jakub		
+29	1717	11:44:09	Alternative	7	create	Jakub		
+29	1717	11:44:09	Alternative	7	relate	Jakub	Issue	103
+29	1732	11:44:24	Alternative	7	update	Jakub		
+29	1742	11:44:34	Alternative	8	create	Jakub		
+29	1742	11:44:34	Alternative	8	relate	Jakub	Issue	103
+31	1889	11:47:01	Alternative	8	update	Jakub		
+34	2064	11:49:56	Alternative	5	decision	Andrea	Positive	

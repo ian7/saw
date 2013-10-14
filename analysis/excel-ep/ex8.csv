@@ -1,0 +1,37 @@
+	38376	time 	type	id	action	user	parameter	content
+0	0	10:39:36	Issue 	101	create	Cesare		
+3	159	10:42:15	Issue 	101	update	Cesare		Req interpretation:
+3	159	10:42:15	Alternative	1	create	Cesare		
+3	159	10:42:15	Alternative	1	relate	Cesare	Issue	101
+3	163	10:42:19	Alternative	1	update	Cesare		manned post office
+3	163	10:42:19	Alternative	2	create	Cesare		
+3	163	10:42:19	Alternative	2	relate	Cesare	Issue	101
+3	166	10:42:22	Alternative	2	update	Cesare		 automated post office
+6	353	10:45:29	Alternative	1	decide	Andrea	Positive	customers don't need to "learn" the process, the clerk will do the process for the customer (less people must learn it)
+6	381	10:45:57	Alternative	1	decide	Rasel	Positive	 easier to implement and to manage
+7	433	10:46:49	Alternative	2	decide	Simone	Positive	cheaper for the post office
+19	1162	10:58:58	Issue 	102	create	Cesare		
+24	1449	11:03:45	Issue 	102	update	Cesare		
+24	1449	11:03:45	Alternative	3	create	Cesare		
+24	1449	11:03:45	Alternative	3	relate	Cesare	Issue	102
+24	1466	11:04:02	Alternative	3	update	Cesare		hold and ask recipient for pickup
+24	1467	11:04:03	Alternative	4	create	Cesare		
+24	1467	11:04:03	Alternative	4	relate	Cesare	Issue	102
+25	1474	11:04:10	Alternative	4	update	Cesare		 hold and retry every day (for 7 days)
+26	1539	11:05:15	Alternative	3	decide	Andrea	Positive	positive less effort for the postma
+26	1546	11:05:22	Alternative	4	decide	Andrea	Positive	 we ensure that the system is efficient
+26	1547	11:05:23	Alternative	4	decide	Rasel	Positive	phsysically too much packages to bring around. From the I.T. side doesn't change much.
+26	1556	11:05:32	Alternative	3	decide	Simone	Positive	cheaper
+61	3682	11:40:58	Issue 	103	create	Cesare		
+61	3683	11:40:59	Alternative	4	create	Cesare		
+61	3683	11:40:59	Alternative	4	relate	Cesare	Issue	103
+61	3689	11:41:05	Alternative	4	update	Cesare		check if address is valid
+62	3690	11:41:06	Alternative	5	create	Cesare		
+62	3690	11:41:06	Alternative	5	relate	Cesare	Issue	103
+62	3697	11:41:13	Alternative	5	update	Cesare		check if current city = destination city
+62	3697	11:41:13	Alternative	6	create	Cesare		
+62	3697	11:41:13	Alternative	6	relate	Cesare	Issue	103
+62	3710	11:41:26	Alternative	6	update	Cesare		 lookup next routing decision based on city
+65	3906	11:44:42	Alternative	5	decide	Simone	Positive	intuitive
+68	4077	11:47:33	Alternative	6	decide	Simone	Negative	 this is "route"
+70	4194	11:49:30	Alternative	6	decide	Simone	Positive	 compute only "next hop" instead of global route
