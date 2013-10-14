@@ -22,40 +22,48 @@ outputDecisions = File.open rootPath+'output/decisions.csv','w'
 
 require './analysis/toolkit/models.rb'
 
-# load up digested log
-digestFile = File.open rootPath+'digest.log'
-digestLines = digestFile.readlines
-puts 'Loaded ' + digestLines.size.to_s + ' digest lines, splitting...'
-
-digestLog = []
-digestLines.each { |line| digestLog << LogEvent.new( line.split(",") ) }
-digestLog.sort! { |x,y| x[1].to_i <=> y[1].to_i }
-
-smallestTimestamp = 9999999999
 
 
-# let's find the smallest timestamp
-digestLog.each do |line|  
-	if line[1].to_i < smallestTimestamp && line[1].to_i > 0 
-		smallestTimestamp = line[1].to_i
+Dir.foreach('./analysis/logs-digested') do |sourcePath|
+	next if sourcePath == '.' or sourcePath == '..'
+
+	# load up digested log
+	#digestFile = File.open rootPath+'digest.log'
+	digestFile = File.open './analysis/logs-digested/'+ sourcePath
+
+	digestLines = digestFile.readlines
+	puts 'Loaded ' + digestLines.size.to_s + ' digest lines, splitting...'
+
+	digestLog = []
+	digestLines.each { |line| digestLog << LogEvent.new( line.split(",") ) }
+	digestLog.sort! { |x,y| x[1].to_i <=> y[1].to_i }
+
+	smallestTimestamp = 9999999999
+
+
+	# let's find the smallest timestamp
+	digestLog.each do |line|  
+		if line[1].to_i < smallestTimestamp && line[1].to_i > 0 
+			smallestTimestamp = line[1].to_i
+		end
 	end
-end
 
-puts 'smallest timestamp found to be: ' + smallestTimestamp.to_s
+	puts 'smallest timestamp found to be: ' + smallestTimestamp.to_s
 
-sortedDigest = File.open rootPath+'digest.csv','w'
+	sortedDigest = File.open rootPath+'digest.csv','w'
 
-#digestLog.each { |line| puts line[1] }
-digestLog.each do |line| 
-	line[1] = (line[1].to_i - smallestTimestamp).to_s 
-	sortedDigest.puts line.join("\t")
-end
+	#digestLog.each { |line| puts line[1] }
+	digestLog.each do |line| 
+		line[1] = (line[1].to_i - smallestTimestamp).to_s 
+		sortedDigest.puts line.join("\t")
+	end
 
-sortedDigest.close
+	sortedDigest.close
 
-puts 'split done.'
+	puts 'split done.'
 
 
+	projectID = sourcePath[/\.(.*?)\./].gsub("\.","")
 
 #allProjects.each do |project|
 
@@ -64,7 +72,7 @@ puts 'split done.'
 	# ex3
 	#project = Project.find_by_id '517652dfda300c1675000001'
 	# ex4
-	project = Project.find_by_id '51765a68da300c1849000001'
+	project = Project.find_by_id projectID
 
 	issues = project.related_from().select{ |x| x["type"]=="Issue"}
 	#puts "Project ID: " + project.id.to_s + 
@@ -211,6 +219,7 @@ puts 'split done.'
 
 	end
 
+end
 #	break
 #end
 
