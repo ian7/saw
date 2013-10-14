@@ -4,16 +4,16 @@ require_relative './alternative.rb'
 
 
 class IssueLogItem < LogItem
-	def self.find( events )
+	def self.find( events, projectID = nil)
 #		debugger
 		return events.select { |x| 
-			x.itemType == 'Issue' && x.controller == 'create'}. map { |x| IssueLogItem.new( x.to_id, events )
+			x.itemType == 'Issue' && x.controller == 'create'}. map { |x| IssueLogItem.new( x.to_id, events, projectID )
 			}
 	end
 
-	def initialize( paramId = nil, paramEvents = nil )
+	def initialize( paramId = nil, paramEvents = nil, projectID = nil)
 		puts paramId.to_s
-		super paramId, paramEvents
+		super paramId, paramEvents, projectID
 	end
 	def status
 	end
@@ -24,15 +24,15 @@ class IssueLogItem < LogItem
 
 
 		if( logType == :SAW )
-			@alis = alternativesLog.map { |x| AlternativeLogItem.new x, @allEvents }
+			@alis = alternativesLog.map { |x| AlternativeLogItem.new( x, @allEvents, @projectID ) }
 		else
-			@alis = alternativesEP.map { |x| AlternativeLogItem.new x, @allEvents }
+			@alis = alternativesEP.map { |x| AlternativeLogItem.new( x, @allEvents, @projectID ) }
 		end
 
 
 		#let's analyze them for the deicsions
 		@alis.each{ |x|
-			puts 'analyzing ' + x.id.to_s
+			#puts 'analyzing ' + x.id.to_s
 			x.analyze 
 			x.to_s
 		}
@@ -40,7 +40,7 @@ class IssueLogItem < LogItem
 		#let's go over the relations
 		#
 		RelationEvent.find( self.id, @allEvents ).each do |relation|
-			relatedAlternative = @alis.find { |x| relation.related_from == x.id }
+			relatedAlternative = @alis.find { |x| relation.related_from == x.id || relation.id == x.id }
 			if( relatedAlternative )
 				#print 'relatedAlternative found: ' + relatedAlternative.id
 
@@ -85,7 +85,7 @@ class IssueLogItem < LogItem
 		alternativeDecisionStats = {}
 
 		res.each do |relation|
-			relatedAlternative = @alis.find { |x| relation.related_from == x.id }
+			relatedAlternative = @alis.find { |x| relation.related_from == x.id || relation.id == x.id }
 
 			alternativeDecisions = relatedAlternative.events.select { |x| x.class == DecisionEvent && x.time <= treshold }
 			allAlternativeDecisions = relatedAlternative.events.select { |x| x.class == DecisionEvent }

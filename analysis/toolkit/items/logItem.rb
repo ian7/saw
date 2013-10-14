@@ -2,9 +2,15 @@ class LogItem
 	@allEvents = []
 	@output = nil
 
-	def initialize( paramId = nil, paramEvents = nil )
+	def initialize( paramId = nil, paramEvents = nil, projectID = nil )
 		@events = []
-#debugger
+
+		if projectID.to_s != ""
+			@projectID = projectID
+		else
+			@projectID = 'item'
+		end
+
 		if paramEvents
 #			puts 'rememberging paramEvents'
 			@allEvents = paramEvents
@@ -19,6 +25,7 @@ class LogItem
 		if paramEvents 
 			self.parse
 		end
+
 	end
 	def events
 		return @events
@@ -55,7 +62,9 @@ class LogItem
 			end
 		end
 		
-		outputFileName = './analysis/output/item-' + type + '-' + id.to_s
+		#outputFileName = './analysis/output/item-' + type + '-' + id.to_s
+		
+		outputFileName = "./analysis/output/#{@projectID}-#{type}-#{id.to_s}"
 		#puts "output file name: " + outputFileName
 
 		@output = File.open  outputFileName + '.item', 'w'
@@ -77,9 +86,9 @@ class LogItem
 		#puts 'found ' + filteredEvents.size.to_s + ' events'
 	end
 
-#	def to_s
+	def to_s
 #		return @taggable.attributes.join("\t").to_s
-#	end
+	end
 	def focus
 		focuses = @filteredEvents.select{ |x| x.verb == 'notify' && (x.controller == 'focused' || x.controller == 'blured') }.map { |x| FocusEvent.new x }
 

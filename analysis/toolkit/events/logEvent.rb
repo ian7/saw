@@ -38,7 +38,7 @@ class LogEvent < Array
 		return self[11]
 	end
 	def itemType
-		return self[11]
+		return self[11].to_s.strip
 	end
 	def taggingTip
 		return self[11]

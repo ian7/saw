@@ -2,8 +2,8 @@ require_relative './logItem.rb'
 require_relative './solvedBy.rb'
 
 class AlternativeLogItem < LogItem
-	def initialize( paramId = nil, paramEvents = nil )
-		super paramId, paramEvents
+	def initialize( paramId = nil, paramEvents = nil, projectID = nil )
+		super paramId, paramEvents, projectID
 	end
 	def status
 	end
