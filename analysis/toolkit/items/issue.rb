@@ -12,10 +12,11 @@ class IssueLogItem < LogItem
 	end
 
 	def initialize( paramId = nil, paramEvents = nil, projectID = nil)
-		puts paramId.to_s
+		#puts paramId.to_s
 		super paramId, paramEvents, projectID
 	end
-	def status
+	def alternatives
+		return @alis
 	end
 	def analyze( logType = :SAW )
 		@events = []
@@ -74,7 +75,7 @@ class IssueLogItem < LogItem
 
 		res = RelationEvent.find( self.id, cutEvents )
 
-		puts res.size.to_s + " younger (" + treshold.to_s + ") alternatives found"
+		#puts res.size.to_s + " younger (" + treshold.to_s + ") alternatives found"
 
 		#this serves state zero
 		if res.size == 0 
@@ -90,7 +91,7 @@ class IssueLogItem < LogItem
 			alternativeDecisions = relatedAlternative.events.select { |x| x.class == DecisionEvent && x.time <= treshold }
 			allAlternativeDecisions = relatedAlternative.events.select { |x| x.class == DecisionEvent }
 
-			print relatedAlternative.id.to_s + " " + alternativeDecisions.size.to_s + "/" + allAlternativeDecisions.size.to_s + " " + treshold.to_s + " "
+			#print relatedAlternative.id.to_s + " " + alternativeDecisions.size.to_s + "/" + allAlternativeDecisions.size.to_s + " " + treshold.to_s + " "
 
 			alternativeState = ""
 			if alternativeDecisions.size > 0 
@@ -99,7 +100,7 @@ class IssueLogItem < LogItem
 				alternativeState = "none"
 			end
 
-			puts alternativeState
+			#puts alternativeState
 
 			alternativeDecisionStats[ alternativeState ] = alternativeDecisionStats[ alternativeState ].to_i + 1
 
@@ -143,7 +144,7 @@ class IssueLogItem < LogItem
 		return 'incomplete'
 	end
 	def to_s( output = nil )
-		puts "puts'ing " + @sortedEvents.size.to_s
+		#puts "puts'ing " + @sortedEvents.size.to_s
 		@sortedEvents.each do |x|
 			@output.puts x.to_s( self ) 
 		end
@@ -188,7 +189,7 @@ class IssueLogItem < LogItem
 			end
 		end
 
-		puts 'Found: ' + alternatives.size.to_s + ' alternatives in log, but ' + alternativesSnapshot.size.to_s + " in graph"
+#		puts 'Found: ' + alternatives.size.to_s + ' alternatives in log, but ' + alternativesSnapshot.size.to_s + " in graph"
 		return alternatives
 	end
 	def alternativesEP

@@ -1,28 +1,21 @@
 require './analysis/toolkit/events.rb'
 require './analysis/toolkit/items.rb'
 require './analysis/toolkit/metrics.rb'
+require 'fileutils'
+require 'optparse'
+
+sourcePath = nil
 
 
 # let's clean up a bit
 FileUtils.rm_rf(Dir.glob('./analysis/output/*.item'))
 FileUtils.rm_rf(Dir.glob('./analysis/output/*.full'))
 
-
-decisionTags = Taggable.find :all, :conditions=>{:type=>"Decision"}
-
-
-allIssues = Taggable.find :all, :conditions=>{:type=>"Issue"}
-allProjects = Taggable.find :all, :conditions=>{:type=>"Project"}
-
 rootPath = '/home/vagrant/workspace/analysis/'
 
 outputProject = File.open rootPath+'output/projects.csv','w'
 
 outputIssues = File.open rootPath+'output/issues.csv','w'
-
-
-# let's dump some headers 
-
 Metric.findMetricsFor(IssueLogItem).map { |metric| outputIssues.print metric.header + "\t" }
 outputIssues.puts ""
 
@@ -35,49 +28,81 @@ outputDecisions = File.open rootPath+'output/decisions.csv','w'
 
 require './analysis/toolkit/models.rb'
 
+#sourcePath = './analysis/excel-ep/ex7.csv'
 
 
-Dir.foreach('./analysis/logs-digested') do |sourcePath|
+Dir.foreach('./analysis/excel-ep') do |sourcePath|
 	next if sourcePath == '.' or sourcePath == '..'
 
-	# load up digested log
-	#digestFile = File.open rootPath+'digest.log'
-	digestFile = File.open './analysis/logs-digested/'+ sourcePath
+	puts "analyzing: #{sourcePath}"
 
-	digestLines = digestFile.readlines
-	puts 'Loaded ' + digestLines.size.to_s + ' digest lines, splitting...'
+	sourceFile = File.open "./analysis/excel-ep/"+sourcePath
+	sourceLines = sourceFile.readlines
 
+
+	puts 'read ' + sourceLines.size.to_s
+
+	lineCount = 0
 	digestLog = []
-	digestLines.each { |line| digestLog << LogEvent.new( line.split(",") ) }
-	digestLog.sort! { |x,y| x[1].to_i <=> y[1].to_i }
 
-	smallestTimestamp = 9999999999
-
-
-	# let's find the smallest timestamp
-	digestLog.each do |line|  
-		if line[1].to_i < smallestTimestamp && line[1].to_i > 0 
-			smallestTimestamp = line[1].to_i
+	sourceLines.each do |sourceLine|
+		splitSourceLine = sourceLine.split "\t"
+	#	puts splitSourceLine.to_s
+		# let's skip the headers
+		lineCount = lineCount + 1
+		if lineCount == 1
+			next
 		end
+		#declare new line
+		line = Array.new( 13, "" )
+
+		# item id
+		line[8] = splitSourceLine[4]
+		# time
+		line[1] = splitSourceLine[1]
+		# user
+		line[2] = splitSourceLine[6]
+		# action 
+		line[6] = splitSourceLine[5]
+		line[7] = splitSourceLine[5]
+		# to_id (this carries a decision too)
+		line[9] = splitSourceLine[4]
+		#line[8] = splitSourceLine[7]
+		# itemType
+		line[11] = splitSourceLine[3]
+		# distance
+		line[10] = '0'
+		# payload
+		line[12] = splitSourceLine[8]
+		#lame param passed in the server response time fiel
+		line[4] = splitSourceLine[7]
+	#debugger
+	#	le = LogEvent.new , line
+	#	debugger
+		#and dump it in the digestLog
+		digestLog << LogEvent.new(line) 
 	end
 
-	puts 'smallest timestamp found to be: ' + smallestTimestamp.to_s
+	puts 'split done'
 
-	sortedDigest = File.open rootPath+'digest.csv','w'
+		logIssues = IssueLogItem.find( digestLog, sourcePath.chomp(".csv") )
 
-	#digestLog.each { |line| puts line[1] }
-	digestLog.each do |line| 
-		line[1] = (line[1].to_i - smallestTimestamp).to_s 
-		sortedDigest.puts line.join("\t")
+	puts 'found ' + logIssues.size.to_s + " issues"
+
+	logIssues.each do |logIssue|
+
+		logIssue.analyze(:EP)
+		logIssue.to_s
+		outputIssues.puts logIssue.status
+
+
+		logIssue.alternatives.each{ |x| outputAlternaitves.puts x.status }
 	end
-
-	sortedDigest.close
-
-	puts 'split done.'
+end
 
 
-	projectID = sourcePath[/\.(.*?)\./].gsub("\.","")
 
+=begin
 #allProjects.each do |project|
 
 	# some project
@@ -85,7 +110,7 @@ Dir.foreach('./analysis/logs-digested') do |sourcePath|
 	# ex3
 	#project = Project.find_by_id '517652dfda300c1675000001'
 	# ex4
-	project = Project.find_by_id projectID
+	project = Project.find_by_id '51765a68da300c1849000001'
 
 	issues = project.related_from().select{ |x| x["type"]=="Issue"}
 	#puts "Project ID: " + project.id.to_s + 
@@ -97,16 +122,15 @@ Dir.foreach('./analysis/logs-digested') do |sourcePath|
 
 	ilms = []
 
-	logIssues = IssueLogItem.find( digestLog, projectID )
+	logIssues = IssueLogItem.find( digestLog )
 
 	logIssues.each do |logIssue|
 #	issues.each do |issue|
 
-	#debugger
 		ilm = logIssue
 		#ilm = IssueLogItem.new issue.id.to_s, digestLog 
 		ilm.analyze 
-		ilm.to_s
+		ilm.to_s outputIssues
 
 		ilms << ilm
 
@@ -137,10 +161,9 @@ Dir.foreach('./analysis/logs-digested') do |sourcePath|
 		
 			decisionCounts=[]
 
-			alm = AlternativeLogItem.new la, digestLog, projectID 
+			alm = AlternativeLogItem.new la, digestLog 
 			alm.analyze 
 			alm.to_s
-			outputAlternaitves.puts alm.status
 			ilms << alm
 
 			#sb = alternative.relations_from("SolvedBy").first
@@ -152,13 +175,12 @@ Dir.foreach('./analysis/logs-digested') do |sourcePath|
 				next
 			end
 
-			sbli = SolvedByLogItem.new alm.sbLog.to_id, digestLog
+			sbli = SolvedByLogItem.new alm.sbLog.to_id, digestLog 
 			sbli.analyze 
 			sbli.to_s
 			ilms << sbli
 #			debugger
 
-=begin
 			sb.relations_to.each do |decisionTagging|
 				#puts decisionTagging.id
 				#puts decisionTagging.origin
@@ -204,20 +226,19 @@ Dir.foreach('./analysis/logs-digested') do |sourcePath|
 				end
 			end
 			outputAlternaitves.puts ''
-=end
 
 				#decisionTags = alternative.related_to().select{ |x| x["type"]=="Decision"}
 		end
-#		outputIssues.print "\t" + decidedAlternativeCount.to_s + "\t" + collidingAlternativeCount.to_s + "\t" + undecidedAlternativeCount.to_s
-#		outputIssues.puts ''
+		outputIssues.print "\t" + decidedAlternativeCount.to_s + "\t" + collidingAlternativeCount.to_s + "\t" + undecidedAlternativeCount.to_s
+		outputIssues.puts ''
 
 		# finished dumping issue details
 		
-		outputIssues.puts ilm.status
-#		debugger
+
+
 
 	end
-=begin
+
 	outputProject.print alternativeCount.to_s + "\t"
 	(0..2).each do |decisionIndex|
 		if totalDecisionCounts[decisionIndex]
@@ -233,10 +254,7 @@ Dir.foreach('./analysis/logs-digested') do |sourcePath|
 	ilms.each do |lm|
 
 	end
-=end
-	# break out after the first project
 
-end
 #	break
 #end
-
+=end

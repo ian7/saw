@@ -5,8 +5,6 @@ class AlternativeLogItem < LogItem
 	def initialize( paramId = nil, paramEvents = nil, projectID = nil )
 		super paramId, paramEvents, projectID
 	end
-	def status
-	end
 	def analyze
 		@events = []
 		eventClasses = [CreationEvent,DecisionEvent,UpdateEvent,FocusEvent,RelationEvent,DestructionEvent]

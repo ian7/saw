@@ -17,7 +17,7 @@ class DecisionEvent < LogEvent
 		}
 
 		#this should catch EP encoded decisions
-		de = cutEvents.select{ |x| x.to_id == id && x.controller == 'decide'} . map{ |x|
+		de.concat cutEvents.select{ |x| x.to_id == id && x.controller == 'decide'} . map{ |x|
 			DecisionEvent.new( x )
 		}
 		#debugger

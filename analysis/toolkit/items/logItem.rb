@@ -25,7 +25,16 @@ class LogItem
 		if paramEvents 
 			self.parse
 		end
+	end
+	def status
+		result = ""
 
+		Metric.findMetricsFor( self.class ).each { |metric| result << metric.calculate( self ) + "\t" }
+			   
+		return result 
+	end
+	def c
+		return self.class
 	end
 	def events
 		return @events
@@ -87,7 +96,7 @@ class LogItem
 	end
 
 	def to_s
-#		return @taggable.attributes.join("\t").to_s
+
 	end
 	def focus
 		focuses = @filteredEvents.select{ |x| x.verb == 'notify' && (x.controller == 'focused' || x.controller == 'blured') }.map { |x| FocusEvent.new x }
@@ -110,5 +119,8 @@ class LogItem
 	end
 	def update
 		updates = @filteredEvents.select { |x| x.verb == 'PUT' && x.action == 'update' } .map { |x| UpdateEvent.new(x) } 
+	end
+	def projectID
+		return @projectID
 	end
 end
