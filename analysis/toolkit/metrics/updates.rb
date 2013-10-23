@@ -12,6 +12,6 @@ class UpdatesMetric < Metric
 	end
 	def self.calculate( logItem )
 		updateEvents = logItem.events.select{ |x| x.class == UpdateEvent }
-		return updateEvents.size.to_i.to_s
+		return updateEvents.size.to_i.to_s 
 	end
 end

@@ -5,7 +5,13 @@ class IDMetric < Metric
 		return "ID"
 	end
 	def self.header
-		return "Project\t ID"
+		fields = [
+			"Project",
+			"ID",
+			"Destroyed"
+		]
+
+		return fields.join "\t"
 	end
 	def self.suitableItems
 		return [ IssueLogItem, AlternativeLogItem ]
@@ -14,6 +20,11 @@ class IDMetric < Metric
 		return 10
 	end
 	def self.calculate( logItem )
-		return "#{logItem.projectID}\t#{logItem.id}"
+		values = []
+		values << logItem.projectID.to_s
+		values << logItem.id.to_s
+		values << logItem.events.select{ |x| x.class == DestructionEvent }.size.to_s
+
+		return values.join "\t"
 	end
 end

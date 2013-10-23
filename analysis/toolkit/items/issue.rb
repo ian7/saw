@@ -15,8 +15,26 @@ class IssueLogItem < LogItem
 		#puts paramId.to_s
 		super paramId, paramEvents, projectID
 	end
-	def alternatives
-		return @alis
+	def alternatives( treshold = nil )
+		if treshold
+			pre = @alis.select do |a|
+				ce = a.events.find{ |e| e.class == CreationEvent } 
+				de = a.events.find{ |e| e.class == DestructionEvent } 
+				case
+				when (not ce)
+					false
+				when (ce.time.to_i > treshold)
+					false
+				when (de && de.time.to_i < treshold)
+					false
+				else
+					true
+				end
+			end
+			return pre.uniq {|x| x.id }
+		else
+			return @alis
+		end
 	end
 	def analyze( logType = :SAW )
 		@events = []
@@ -37,7 +55,8 @@ class IssueLogItem < LogItem
 			x.analyze 
 			x.to_s
 		}
-		
+	
+=begin	
 		#let's go over the relations
 		#
 		RelationEvent.find( self.id, @allEvents ).each do |relation|
@@ -64,6 +83,9 @@ class IssueLogItem < LogItem
 			end
 
 		end
+=end
+		@events.concat alternatives.map{ |a| a.events }.flatten(1).select{ |e| e.class == DecisionEvent }
+		@events.concat IssueStateEvent.find( self )
 
 		@sortedEvents = @events.sort {|x,y| x.time.to_i <=> y.time.to_i }
 	end
@@ -119,7 +141,7 @@ class IssueLogItem < LogItem
 
 		reportedState = getIssueState( alternativeDecisionStats ) + " " + alternativeDecisionStats.to_s
 
-		return [ StateEvent.new( [ "0.0.0.0",treshold.to_s ],  reportedState) ]
+		return [ IssueStateEvent.new( [ "0.0.0.0",treshold.to_s ],  reportedState) ]
 
 	end
 
@@ -196,5 +218,4 @@ class IssueLogItem < LogItem
 		doTagEvents = @allEvents.select {|x| x.itemType == 'Alternative' && x.action == 'relate' && x.payload == @id }.map{ |x| x.item_id }
 		return doTagEvents
 	end
-
 end

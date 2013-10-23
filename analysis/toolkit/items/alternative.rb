@@ -121,4 +121,19 @@ class AlternativeLogItem < LogItem
 		sblievs = sbli.analyze 
 		return sblievs
 	end
+	def state( treshold = nil )
+		decisions = []
+
+		if treshold 
+			decisions = @events.select{ |x| x.class == DecisionEvent && x.time.to_i <= treshold }
+		else
+			decisions = @events.select{ |x| x.class == DecisionEvent }
+		end
+		
+		if decisions.size == 0
+			return 'no positions'
+		end
+
+		return decisions.last.state
+	end
 end

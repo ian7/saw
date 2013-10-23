@@ -33,7 +33,7 @@ class DecisionsMetric < Metric
 			state << "n/a\t"
 		end
 
-		state << decisionEvents.uniq{ |x| x.user }.size.to_s 
+		state << decisionEvents.uniq{ |x| x.user }.size.to_s  
 		return state
 	end
 end

@@ -44,7 +44,7 @@ class SolvedByLogItem < LogItem
 		
 		ds.each do |d|
 			if d.decision != firstD.decision
-				return 'conflicting'
+				return 'colliding'
 			end
 		end
 
