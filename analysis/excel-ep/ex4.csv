@@ -1,8 +1,8 @@
 	46972	time 	type	id	action	user	parameter	
 0	0	13:02:52	Issue	101	create	Gianluca		
 5	322	13:08:14	Issue	101	update	Gianluca		
-10	575	13:12:27	Issue	2	create	Masiar		
-10	576	13:12:28	Issue	3	create	Masiar		
+10	575	13:12:27	Issue	102	create	Masiar		
+10	576	13:12:28	Issue	103	create	Masiar		
 12	725	13:14:57	Alternative	1	create	Jakub		
 12	725	13:14:57	Alternative	1	relate	Jakub	Issue	102
 14	847	13:16:59	Alternative	1	update	Jakub		
@@ -16,10 +16,10 @@
 19	1166	13:22:18	Alternative	3	create	Gianluca		
 19	1166	13:22:18	Alternative	3	relate	Gianluca	Issue	104
 20	1224	13:23:16	Alternative	3	update	Gianluca		
-27	1628	13:30:00	Issue	5	create	Marcello		
-28	1663	13:30:35	Issue	5	update	Marcello		
+27	1628	13:30:00	Issue	105	create	Marcello		
+28	1663	13:30:35	Issue	105	update	Marcello		
 28	1666	13:30:38	Alternative	4	create	Marcello		
-28	1666	13:30:38	Alternative	4	relate	Marcello	Issue	104
+28	1666	13:30:38	Alternative	4	relate	Marcello	Issue	105
 29	1761	13:32:13	Alternative	4	update	Marcello		
 32	1907	13:34:39	Alternative	4	decision 	Marcello	Postive	Alligned
 32	1911	13:34:43	Issue	106	create	Ievgenii		
