@@ -13,13 +13,13 @@ FileUtils.rm_rf(Dir.glob('./analysis/output/*.full'))
 
 rootPath = '/home/vagrant/workspace/analysis/'
 
-outputProject = File.open rootPath+'output/projects.csv','w'
+outputProject = File.open rootPath+'output/aggregates-ep/projects.csv','w'
 
-outputIssues = File.open rootPath+'output/issues.csv','w'
+outputIssues = File.open rootPath+'output/aggregates-ep/issues.csv','w'
 Metric.findMetricsFor(IssueLogItem).map { |metric| outputIssues.print metric.header + "\t" }
 outputIssues.puts ""
 
-outputAlternaitves = File.open rootPath+'output/alternatives.csv','w'
+outputAlternaitves = File.open rootPath+'output/aggregates-ep/alternatives.csv','w'
 
 Metric.findMetricsFor(AlternativeLogItem).map { |metric| outputAlternaitves.print metric.header + "\t" }
 outputAlternaitves.puts ""

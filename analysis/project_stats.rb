@@ -16,9 +16,9 @@ allProjects = Taggable.find :all, :conditions=>{:type=>"Project"}
 
 rootPath = '/home/vagrant/workspace/analysis/'
 
-outputProject = File.open rootPath+'output/projects.csv','w'
+outputProject = File.open rootPath+'output/aggregates-saw/projects.csv','w'
 
-outputIssues = File.open rootPath+'output/issues.csv','w'
+outputIssues = File.open rootPath+'output/aggregates-saw/issues.csv','w'
 
 
 # let's dump some headers 
@@ -26,7 +26,7 @@ outputIssues = File.open rootPath+'output/issues.csv','w'
 Metric.findMetricsFor(IssueLogItem).map { |metric| outputIssues.print metric.header + "\t" }
 outputIssues.puts ""
 
-outputAlternaitves = File.open rootPath+'output/alternatives.csv','w'
+outputAlternaitves = File.open rootPath+'output/aggregates-saw/alternatives.csv','w'
 
 Metric.findMetricsFor(AlternativeLogItem).map { |metric| outputAlternaitves.print metric.header + "\t" }
 outputAlternaitves.puts ""
