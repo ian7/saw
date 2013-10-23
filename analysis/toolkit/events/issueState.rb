@@ -18,7 +18,7 @@ class IssueStateEvent < LogEvent
 			interestingEvents.sort!  { |x,y| x.time.to_i <=> y.time.to_i }
 
 
-			puts "total interesting events: #{interestingEvents.size.to_s} for: #{issueLogItem.id.to_s} "
+#			puts "total interesting events: #{interestingEvents.size.to_s} for: #{issueLogItem.id.to_s} "
 
 			interestingEvents.each do |x|
 
@@ -36,6 +36,8 @@ class IssueStateEvent < LogEvent
 		#let's sort this stuff first. 
 		stateEvents.sort! { |x,y| x.time.to_i <=> y.time.to_i }
 
+# if squasing works well above, then this is redundant
+=begin
 		squashedStateEvents = []
 
 		#before returning them, it would be good to squash duplicates 
@@ -53,7 +55,8 @@ class IssueStateEvent < LogEvent
 
 		puts "after squashing: #{stateEvents.size.to_s}, #{squashedStateEvents.size.to_s}"
 		return squashedStateEvents
-		#return stateEvents
+=end
+		return stateEvents
 	end
 
 	def self.integrateState( issueLogItem, treshold = 999999999 )

@@ -14,9 +14,9 @@ class IssueStateMetric < Metric
 			"FinalChoice",
 			"ChoiceStateChanges",
 			"TimeInNoAlternatives",
-#			"TimeInNoPositions",
-#			"TimeInAlligned",
-#			"TimeInSealed",
+			"TimeInNoPositions",
+			"TimeInIncomplete",
+			"TimeInComplete",
 		]
 
 		return fields.join "\t"
@@ -77,7 +77,10 @@ class IssueStateMetric < Metric
 			
 			# in case there was no finish for it. 
 			if not nextOne
-				nextOne = logItem.events.sort {|x,y| x.time.to_i <=> y.time.to_i }.last
+				# this is counting till the last event of the item
+				#nextOne = logItem.events.sort {|x,y| x.time.to_i <=> y.time.to_i }.last
+				# instead of that maybe we should count until the the end of the exercise
+				nextOne = logItem.allEvents.last
 			end
 			integratedTime = integratedTime + (nextOne.time.to_i - start.time.to_i)
 		end

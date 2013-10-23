@@ -16,6 +16,6 @@ class RelationEvent < LogEvent
 		@tip = tip
 	end
 	def to_s( item = nil )
-		return self.time + "\t" + 'relation created' + "\t from: " + self.related_from + "\t to: " + self.related_to + "\t" + self.user 
+		return self.time + "\t" + 'relation created' + "\t from: " + self.related_from + "\t to: " + self.related_to.to_s + " " + self.id + "\t" + self.user 
 	end
 end
