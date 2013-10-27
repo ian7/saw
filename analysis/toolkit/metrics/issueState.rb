@@ -7,7 +7,7 @@ class IssueStateMetric < Metric
 	def self.header
 		fields = [
 			"AlternativesCount",
-			"NoDecisions",
+			"NoPositions",
 			"Colliding",
 			"Alligned",
 			"Sealed",
@@ -29,6 +29,10 @@ class IssueStateMetric < Metric
 		state = []
 			
 		state << logItem.alternatives.size.to_s 
+		if logItem.id == '102'
+			#debugger
+		end
+
 		state << logItem.alternatives.select{ |x| x.state == 'no positions'}.size.to_s
 		state << logItem.alternatives.select{ |x| x.state == 'colliding'}.size.to_s
 		state << logItem.alternatives.select{ |x| x.state == 'alligned'}.size.to_s

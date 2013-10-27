@@ -5,35 +5,93 @@ class DecisionsMetric < Metric
 		return "Decisions"
 	end
 	def self.header
-		return "Decisions\tPositive\tNegative\tOpen\tFinalState\tFinalDecision\tDeciders"
+		fields = [
+			"DecisionCount",
+			"Positive",
+			"Negative",
+			"Open",
+			"FinalState",
+			"FinalDecision",
+			"Deciders",
+			"TimeInNoPositions",
+			"TimeInAlligned",
+			"TimeInColliding",
+			"TimeInSealed",
+		]
+
+		return fields.join "\t"
 	end
 	def self.suitableItems
 		return [ AlternativeLogItem ]
 	end
 	def self.calculate( logItem )
-		state = ""
+		state = []
 		
-		decisionEvents = logItem.events.select{ |x| x.class == DecisionEvent }
+		decisionEvents = logItem.events.select{ |x| x.class == DecisionEvent }.sort{ |x,y| x.time.to_i <=> y.time.to_i }
 
-		state << decisionEvents.size.to_i.to_s + "\t"
-		state << decisionEvents.select{ |x| x.decision == "Positive"}.size.to_s + "\t"
-		state << decisionEvents.select{ |x| x.decision == "Negative"}.size.to_s + "\t"
-		state << decisionEvents.select{ |x| x.decision == "Open"}.size.to_s << "\t"
+		state << decisionEvents.select{ |x| x.decision != "" }.size.to_i.to_s 
+		state << decisionEvents.select{ |x| x.decision == "Positive"}.size.to_s 
+		state << decisionEvents.select{ |x| x.decision == "Negative"}.size.to_s 
+		state << decisionEvents.select{ |x| x.decision == "Open"}.size.to_s 
 
 		# let's find last decision
 		if decisionEvents.size > 0
-			state << decisionEvents.last.state + "\t"
+			state << decisionEvents.last.state 
 			if decisionEvents.last.state == "alligned"
-				state << decisionEvents.last.decision + "\t"
+				state << decisionEvents.last.decision 
 			else
-				state << "n/a\t"
+				state << "n/a"
 			end
 		else
-			state << "n/a\t"
-			state << "n/a\t"
+			state << "n/a"
+			state << "n/a"
 		end
 
+		#  deciders
 		state << decisionEvents.uniq{ |x| x.user }.size.to_s  
-		return state
+
+		# time in no positions
+		state << self.integrateTimeInAllignment( logItem, "no positions" ).to_s
+
+		# time in alligned
+		state << self.integrateTimeInAllignment( logItem, "alligned" ).to_s
+
+		# time in colliding
+		state << self.integrateTimeInAllignment( logItem, "colliding" ).to_s
+
+		# time in no positions
+		state << self.integrateTimeInAllignment( logItem, "sealed" ).to_s
+
+		return state.join "\t"
+	end
+	def self.integrateTimeInAllignment( logItem, state )
+		
+		decisionEvents = logItem.events.select { |x| x.class == DecisionEvent }  
+
+		starts = decisionEvents.select { |x| x.state == state }
+
+		if starts.size == 0
+			return "0"
+		end
+
+		integratedTime = 0
+
+		starts.each do |start|
+			#let's find the end
+			if decisionEvents.size == 1
+#				debugger
+			end
+			nextOne = decisionEvents.find {|x| x.state != state && x.time.to_i >= start.time.to_i }
+			
+			# in case there was no finish for it. 
+			if not nextOne
+				# this is counting till the last event of the item
+				#nextOne = logItem.events.sort {|x,y| x.time.to_i <=> y.time.to_i }.last
+				# instead of that maybe we should count until the the end of the exercise
+				nextOne = logItem.allEvents.last
+			end
+			integratedTime = integratedTime + (nextOne.time.to_i - start.time.to_i)
+		end
+		return integratedTime
 	end
 end

@@ -13,6 +13,12 @@ class AlternativeLogItem < LogItem
 		# this instantiates SolvedBy items 
 		@events.concat( statuses )
 
+		# this is a bad hack to analyze decision state in the moment of creation - nasty but works
+		ces = CreationEvent.find( self.id, @allEvents )
+		if ces.size > 0
+			@events.push DecisionEvent.new ces.first
+		end
+
 		if relate
 			@solvedByID = relate.to_id
 		end
@@ -129,11 +135,13 @@ class AlternativeLogItem < LogItem
 		else
 			decisions = @events.select{ |x| x.class == DecisionEvent }
 		end
-		
 		if decisions.size == 0
 			return 'no positions'
 		end
 
-		return decisions.last.state
+#		if decisions.size > 1 
+#			debugger
+#		end
+		return decisions.sort {|x,y| x.time.to_i <=> y.time.to_i }.last.state
 	end
 end

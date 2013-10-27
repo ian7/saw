@@ -57,7 +57,7 @@ class DecisionEvent < LogEvent
 	def initialize( param )
 
 		super( param )
-		@state = "haha"
+		@state = "no positions"
 
 		if Taggable.exists? :conditions=>{:id=>self.taggingTip }
 			@decision = Taggable.find(self.taggingTip)['name']

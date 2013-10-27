@@ -40,7 +40,7 @@
 13	782	09:07:56	Alternative	9	create	Fabio		
 13	782	09:07:56	Alternative	9	relate	Fabio	Issue	104
 13	790	09:08:04	Alternative	9	update	Fabio		orthogonal
-16	968	09:11:02	Alternative	6	decide	Andrea	Postiive	usefull to browse the catalogue whitout ordering
+16	968	09:11:02	Alternative	6	decide	Andrea	Positive	usefull to browse the catalogue whitout ordering
 24	1443	09:18:57	Alternative	6	decide	Ievgenii	Positive	 agree with thi
 24	1443	09:18:57	Issue	105	create	Cesare		
 24	1447	09:19:01	Issue	105	update	Cesare		discount applied when:
@@ -85,7 +85,7 @@
 37	2209	09:31:43	Alternative	17	relate	Rasel	Issue	109
 37	2209	09:31:43	Alternative	17	update	Rasel		database
 37	2211	09:31:45	Issue	110	create	Cesare		
-37	2223	09:31:57	Issue	110	update	Cesare		ho is authentication built?
+37	2223	09:31:57	Issue	110	update	Cesare		how is authentication built?
 37	2223	09:31:57	Alternative	18	create	Cesare		
 37	2223	09:31:57	Alternative	18	relate	Cesare	Issue	110
 37	2232	09:32:06	Alternative	18	update	Cesare		reuse fb, g+, tw OAuth
@@ -106,32 +106,32 @@
 44	2659	09:39:13	Alternative	17	decide	Rasel	Negative	 there may be security problem 
 44	2648	09:39:02	Issue	111	create	Cesare		
 44	2648	09:39:02	Issue	111	update	Cesare		data modeling
-44	2648	09:39:02	Alternative	18	create	Cesare		
-44	2648	09:39:02	Alternative	18	relate	Cesare	Issue	111
-44	2654	09:39:08	Alternative	18	update	Cesare		functional decomposition
-45	2673	09:39:27	Issue	11	update	Cesare		 data modeling (entity, relationships - classes)
-49	2939	09:43:53	Alternative	18	decide	Andrea	Positive	positive controllers
+44	2648	09:39:02	Alternative	22	create	Cesare		
+44	2648	09:39:02	Alternative	22	relate	Cesare	Issue	111
+44	2654	09:39:08	Alternative	22	update	Cesare		functional decomposition
+45	2673	09:39:27	Issue	111	update	Cesare		 data modeling (entity, relationships - classes)
+49	2939	09:43:53	Alternative	22	decide	Andrea	Positive	positive controllers
 51	3055	09:45:49	Issue	112	create	Andrea		
-51	3048	09:45:42	Issue	112	update	Andrea		where is the cart
-51	3060	09:45:54	Alternative	19	create	Andrea		
-51	3060	09:45:54	Alternative	19	relate	Andrea	Issue	112
-51	3062	09:45:56	Alternative	19	update	Andrea		Database
-51	3065	09:45:59	Alternative	20	create	Andrea		
-51	3065	09:45:59	Alternative	20	relate	Andrea	Issue	112
-51	3070	09:46:04	Alternative	20	update	Andrea		Functional Component
-51	3077	09:46:11	Alternative	21	create	Andrea		
-51	3077	09:46:11	Alternative	21	relate	Andrea	Issue	112
-51	3080	09:46:14	Alternative	21	update	Andrea		Cookies
-52	3099	09:46:33	Alternative	21	decide	Rasel		 saved per computer and requires less complexity and data management in the db
+51	3058	09:45:52	Issue	112	update	Andrea		where is the cart
+51	3060	09:45:54	Alternative	23	create	Andrea		
+51	3060	09:45:54	Alternative	23	relate	Andrea	Issue	112
+51	3062	09:45:56	Alternative	23	update	Andrea		Database
+51	3065	09:45:59	Alternative	24	create	Andrea		
+51	3065	09:45:59	Alternative	24	relate	Andrea	Issue	112
+51	3070	09:46:04	Alternative	24	update	Andrea		Functional Component
+51	3077	09:46:11	Alternative	25	create	Andrea		
+51	3077	09:46:11	Alternative	25	relate	Andrea	Issue	112
+51	3080	09:46:14	Alternative	25	update	Andrea		Cookies
+52	3099	09:46:33	Alternative	25	decide	Rasel		 saved per computer and requires less complexity and data management in the db
 52	3112	09:46:46	Issue	113	create	Ievgenii		
 52	3128	09:47:02	Issue	113	update	Ievgenii		How do you check if the user is alredy authenticated?
-52	3133	09:47:07	Alternative	21	create	Ievgenii		
-52	3133	09:47:07	Alternative	21	relate	Ievgenii	Issue	113
-52	3144	09:47:18	Alternative	21	update	Ievgenii		> single component which keeps track of the authentication
-52	3146	09:47:20	Alternative	22	create	Ievgenii		
-52	3146	09:47:20	Alternative	22	relate	Ievgenii	Issue	113
-53	3157	09:47:31	Alternative	22	update	Ievgenii		use Authentication component to keep track fo that
-53	3185	09:47:59	Alternative	22	decide	Ievgenii	Open	 you need to go through this component before each DB query
-54	3247	09:49:01	Alternative	21	update	Ievgenii		new component which keeps track of the authentication and it handles the 
-55	3274	09:49:28	Alternative	21	decide	Andrea	Positive	sessions!
+52	3133	09:47:07	Alternative	26	create	Ievgenii		
+52	3133	09:47:07	Alternative	26	relate	Ievgenii	Issue	113
+52	3144	09:47:18	Alternative	26	update	Ievgenii		> single component which keeps track of the authentication
+52	3146	09:47:20	Alternative	27	create	Ievgenii		
+52	3146	09:47:20	Alternative	27	relate	Ievgenii	Issue	113
+53	3157	09:47:31	Alternative	27	update	Ievgenii		use Authentication component to keep track fo that
+53	3185	09:47:59	Alternative	27	decide	Ievgenii	Open	 you need to go through this component before each DB query
+54	3247	09:49:01	Alternative	26	update	Ievgenii		new component which keeps track of the authentication and it handles the 
+55	3274	09:49:28	Alternative	26	decide	Andrea	Positive	sessions!
 66	3957	10:00:51	Alternative	18	decide	Simone	Positive	in trend with many other sites

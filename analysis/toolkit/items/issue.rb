@@ -147,6 +147,7 @@ class IssueLogItem < LogItem
 
 	def getIssueState( alternativeDecisionStats )
 
+#		debugger
 		# with no alternaitves
 		if alternativeDecisionStats.size == 0 
 			return 'no alternatives'
@@ -154,7 +155,7 @@ class IssueLogItem < LogItem
 
 		#with no decisions
 		if alternativeDecisionStats.size == 1 && alternativeDecisionStats['none']
-			return 'no decisions'
+			return 'no positions'
 		end
  
 		#only alligned decisions
