@@ -67,7 +67,7 @@ class IssueStateMetric < Metric
 		starts = stateEvents.select { |x| x.state == state }
 
 		if starts.size == 0
-			return "-"
+			return "0"
 		end
 
 		integratedTime = 0
