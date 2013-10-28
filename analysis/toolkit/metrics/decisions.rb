@@ -66,7 +66,7 @@ class DecisionsMetric < Metric
 	end
 	def self.integrateTimeInAllignment( logItem, state )
 		
-		decisionEvents = logItem.events.select { |x| x.class == DecisionEvent }  
+		decisionEvents = logItem.events.select { |x| x.class == DecisionEvent }.sort {|x,y| x.time.to_i <=> y.time.to_i }
 
 		starts = decisionEvents.select { |x| x.state == state }
 
@@ -78,17 +78,20 @@ class DecisionsMetric < Metric
 
 		starts.each do |start|
 			#let's find the end
-			if decisionEvents.size == 1
-#				debugger
+			
+			#nextOne = decisionEvents.find {|x| x.state != state && x.time.to_i >= start.time.to_i }			
+			nextOne = decisionEvents.find {|x| x.time.to_i > start.time.to_i }
+
+			if logItem.id == '6'
+			#	debugger
 			end
-			nextOne = decisionEvents.find {|x| x.state != state && x.time.to_i >= start.time.to_i }
 			
 			# in case there was no finish for it. 
 			if not nextOne
 				# this is counting till the last event of the item
 				#nextOne = logItem.events.sort {|x,y| x.time.to_i <=> y.time.to_i }.last
 				# instead of that maybe we should count until the the end of the exercise
-				nextOne = logItem.allEvents.last
+				nextOne = logItem.allEvents.sort {|x,y| x.time.to_i <=> y.time.to_i }.last
 			end
 			integratedTime = integratedTime + (nextOne.time.to_i - start.time.to_i)
 		end

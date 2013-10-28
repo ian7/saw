@@ -75,7 +75,7 @@ class IssueStateEvent < LogEvent
 
 		decisionEvents = alternativesEvents.select{ |x| x.class == DecisionEvent }
 
-		if decisionEvents.size == 0
+		if decisionEvents.size == 1
 			return 'no positions'# t: ' + treshold.to_s + ' (' + issueLogItem.alternatives(treshold).map{ |x| x.id }.join(" ") + ")"
 		end
 
