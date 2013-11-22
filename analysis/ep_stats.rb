@@ -7,9 +7,7 @@ require 'optparse'
 sourcePath = nil
 
 
-# let's clean up a bit
-FileUtils.rm_rf(Dir.glob('./analysis/output/*.item'))
-FileUtils.rm_rf(Dir.glob('./analysis/output/*.full'))
+
 
 rootPath = '/home/vagrant/workspace/analysis/'
 
@@ -31,10 +29,14 @@ require './analysis/toolkit/models.rb'
 #sourcePath = './analysis/excel-ep/ex7.csv'
 
 
+
+
 Dir.foreach('./analysis/excel-ep') do |sourcePath|
 	next if sourcePath == '.' or sourcePath == '..'
 
 	puts "analyzing: #{sourcePath}"
+
+	projectName = sourcePath[0..sourcePath.length-5]
 
 	sourceFile = File.open "./analysis/excel-ep/"+sourcePath
 	sourceLines = sourceFile.readlines
@@ -80,7 +82,8 @@ Dir.foreach('./analysis/excel-ep') do |sourcePath|
 	#	le = LogEvent.new , line
 	#	debugger
 		#and dump it in the digestLog
-		digestLog << LogEvent.new(line) 
+		nLE = LogEvent.new(line) 
+		digestLog << nLE
 	end
 
 	puts 'split done'

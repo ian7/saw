@@ -3,10 +3,6 @@ require './analysis/toolkit/items.rb'
 require './analysis/toolkit/metrics.rb'
 
 
-# let's clean up a bit
-FileUtils.rm_rf(Dir.glob('./analysis/output/*.item'))
-FileUtils.rm_rf(Dir.glob('./analysis/output/*.full'))
-
 
 decisionTags = Taggable.find :all, :conditions=>{:type=>"Decision"}
 
