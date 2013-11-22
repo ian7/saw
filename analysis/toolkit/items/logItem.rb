@@ -25,6 +25,7 @@ class LogItem
 		if paramEvents 
 			self.parse
 		end
+
 	end
 	def status
 		result = ""

@@ -135,6 +135,9 @@ class AlternativeLogItem < LogItem
 		else
 			decisions = @events.select{ |x| x.class == DecisionEvent }
 		end
+
+#		compactedDecisions = DecisionEvent.anihilate( decisions )
+
 		if decisions.size == 0
 			return 'no positions'
 		end

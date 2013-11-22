@@ -6,17 +6,18 @@ class IssueStateMetric < Metric
 	end
 	def self.header
 		fields = [
-			"AlternativesCount",
-			"NoPositions",
-			"Colliding",
-			"Alligned",
-			"Sealed",
-			"FinalChoice",
-			"ChoiceStateChanges",
-			"TimeInNoAlternatives",
-			"TimeInNoPositions",
-			"TimeInIncomplete",
-			"TimeInComplete",
+			"Alternatives Count",
+			"Alternatives in NoPositions",
+			"Alternatives in Colliding",
+			"Alternatives in Aligned",
+			"Alternatives in Sealed",
+			"Final Choice",
+			"ChoiceState Changes",
+			"Time In NoAlternatives",
+			"Time In NoPositions",
+			"Time In Incomplete",
+			"Time In Complete",
+			"Deciders"
 		]
 
 		return fields.join "\t"
@@ -29,13 +30,10 @@ class IssueStateMetric < Metric
 		state = []
 			
 		state << logItem.alternatives.size.to_s 
-		if logItem.id == '102'
-			#debugger
-		end
 
 		state << logItem.alternatives.select{ |x| x.state == 'no positions'}.size.to_s
 		state << logItem.alternatives.select{ |x| x.state == 'colliding'}.size.to_s
-		state << logItem.alternatives.select{ |x| x.state == 'alligned'}.size.to_s
+		state << logItem.alternatives.select{ |x| x.state == 'aligned'}.size.to_s
 		state << logItem.alternatives.select{ |x| x.state == 'sealed'}.size.to_s
 		state << IssueStateEvent.integrateState( logItem )
 
@@ -56,6 +54,9 @@ class IssueStateMetric < Metric
 
 		# time in complete
 		state << self.integrateTimeInState( logItem, "complete" ).to_s
+
+		# number of deciders
+		state << logItem.events.select{ |x| x.class == DecisionEvent && x.decision != "(no)" }.uniq{ |x| x.user }.size.to_s 
 
 		return state.join "\t"
 	end

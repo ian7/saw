@@ -6,17 +6,22 @@ class DecisionsMetric < Metric
 	end
 	def self.header
 		fields = [
-			"DecisionCount",
+			"Position Count",
+			"Compacted Position Count",
 			"Positive",
+			"PositiveRevoked",
 			"Negative",
+			"NegativeRevoked",
 			"Open",
-			"FinalState",
-			"FinalDecision",
+			"OpenRevoked",
+			"Final State",
+			"Final Decision",
 			"Deciders",
-			"TimeInNoPositions",
-			"TimeInAlligned",
-			"TimeInColliding",
-			"TimeInSealed",
+			"Time In NoPositions",
+			"Time In Aligned",
+			"Time In Colliding",
+			"Time In Sealed",
+			"Consensus State Changes"
 		]
 
 		return fields.join "\t"
@@ -27,18 +32,25 @@ class DecisionsMetric < Metric
 	def self.calculate( logItem )
 		state = []
 		
-		decisionEvents = logItem.events.select{ |x| x.class == DecisionEvent }.sort{ |x,y| x.time.to_i <=> y.time.to_i }
+		decisionEvents = logItem.events.sort{ |x,y| x.time.to_i <=> y.time.to_i }.select{ |x| x.class == DecisionEvent && x.decision != "(no)"}
+		
+		state << decisionEvents.select{ |x| x.decision != "" && x.decision != "(no)" }.size.to_i.to_s 
+		
+		compactedDecisionEvents = DecisionEvent.anihilate( decisionEvents ) 
 
-		state << decisionEvents.select{ |x| x.decision != "" }.size.to_i.to_s 
-		state << decisionEvents.select{ |x| x.decision == "Positive"}.size.to_s 
-		state << decisionEvents.select{ |x| x.decision == "Negative"}.size.to_s 
-		state << decisionEvents.select{ |x| x.decision == "Open"}.size.to_s 
+		state << compactedDecisionEvents.select{ |x| x.decision != "" && x.decision != "(no)" }.size.to_i.to_s 
+		state << compactedDecisionEvents.select{ |x| x.decision == "Positive"}.size.to_s 
+		state << decisionEvents.select{|x| x.decision == "AntiPositive"}.size.to_s
+		state << compactedDecisionEvents.select{ |x| x.decision == "Negative"}.size.to_s 
+		state << decisionEvents.select{|x| x.decision == "AntiNegative"}.size.to_s
+		state << compactedDecisionEvents.select{ |x| x.decision == "Open"}.size.to_s 
+		state << decisionEvents.select{|x| x.decision == "AntiOpen"}.size.to_s
 
 		# let's find last decision
-		if decisionEvents.size > 0
+		if compactedDecisionEvents.size > 0
 			state << decisionEvents.last.state 
-			if decisionEvents.last.state == "alligned"
-				state << decisionEvents.last.decision 
+			if decisionEvents.last.state == "aligned"
+				state << compactedDecisionEvents.last.decision
 			else
 				state << "n/a"
 			end
@@ -54,13 +66,27 @@ class DecisionsMetric < Metric
 		state << self.integrateTimeInAllignment( logItem, "no positions" ).to_s
 
 		# time in alligned
-		state << self.integrateTimeInAllignment( logItem, "alligned" ).to_s
+		state << self.integrateTimeInAllignment( logItem, "aligned" ).to_s
 
 		# time in colliding
 		state << self.integrateTimeInAllignment( logItem, "colliding" ).to_s
 
 		# time in no positions
 		state << self.integrateTimeInAllignment( logItem, "sealed" ).to_s
+
+		# state transitions
+		transitionsCounter = 0
+		lastDecisionState = ""
+
+		decisionEvents.each do |decisionEvent|
+			if decisionEvent.state != lastDecisionState
+				lastDecisionState = decisionEvent.state
+				transitionsCounter += 1
+			end
+		end
+
+		state << transitionsCounter.to_s
+
 
 		return state.join "\t"
 	end

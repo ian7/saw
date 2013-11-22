@@ -159,7 +159,7 @@ class IssueLogItem < LogItem
 		end
  
 		#only alligned decisions
-		if alternativeDecisionStats.size == 1 && alternativeDecisionStats['alligned']
+		if alternativeDecisionStats.size == 1 && alternativeDecisionStats['aligned']
 			return 'complete'
 		end
 

@@ -13,7 +13,7 @@ class Metric
 	end
 	def self.findMetricsFor( logItemClass )
 		Metric.subclasses
-			.sort {|x,y| y.priority <=> x.priority }
+			.sort_by {|x| [ -x.priority,x.name ] }
 			.select{ |metric| metric.suitableItems.find {|x| x == logItemClass }}
 	end
 end

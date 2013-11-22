@@ -19,7 +19,6 @@ class SolvedByLogItem < LogItem
 		@events.concat( DecisionEvent.find( self.id, @allEvents));
 		@events.concat( DestructionEvent.find( self.id, @allEvents));
 
-		
 		@sortedEvents = @events.sort {|x,y| x.time.to_i <=> y.time.to_i }
 
 		return @sortedEvents
@@ -31,7 +30,7 @@ class SolvedByLogItem < LogItem
 		end
 	end
 	def integrateState( timeTreshold )
-		ds = decisions( timeTreshold )
+		ds = decisions( timeTreshold ).select{ |x| x.decision != "(no)" }
 
 		if( ds.length == 0 )
 			return 'no positions'
@@ -48,7 +47,7 @@ class SolvedByLogItem < LogItem
 			end
 		end
 
-		return 'alligned'
+		return 'aligned'
 	end
 
 	def creation

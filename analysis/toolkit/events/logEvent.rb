@@ -1,6 +1,21 @@
+require 'json'
+
 # this actually wrapes single line of digest and gives names to the fields
 # mind, that if digest changes this is going to change too
 class LogEvent < Array
+	def initialize( content )
+		super( content )
+		if self[13] && self[13] != "(no)" #&& (self[13].match(/created_at/)==nil)
+			begin
+				@parameters = JSON.parse(self[13].gsub("\;",",").gsub("nil","\"nil\""))
+				#@parameters = {}
+			rescue Exception => e
+				@parameters = {}
+			end
+		else
+			@parameters = {}
+		end
+	end
 	def id
 		return self[8]
 	end 
@@ -48,5 +63,8 @@ class LogEvent < Array
 	end
 	def param
 		return self[4]
+	end
+	def parameters
+		return @parameters
 	end
 end

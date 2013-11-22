@@ -80,7 +80,7 @@ class IssueStateEvent < LogEvent
 		end
 
 
-		if issueLogItem.alternatives( treshold ).find {|x| x.state(treshold) != 'alligned' }
+		if issueLogItem.alternatives( treshold ).find {|x| x.state(treshold) != 'aligned' }
 			return 'incomplete'# ('  + issueLogItem.alternatives(treshold).map{ |x| x.id }.join(" ") + ")"
 		end
 
