@@ -122,7 +122,7 @@
 51	3077	09:46:11	Alternative	25	create	Andrea		
 51	3077	09:46:11	Alternative	25	relate	Andrea	Issue	112
 51	3080	09:46:14	Alternative	25	update	Andrea		Cookies
-52	3099	09:46:33	Alternative	25	decide	Rasel		 saved per computer and requires less complexity and data management in the db
+52	3099	09:46:33	Alternative	25	decide	Rasel	Positive	 saved per computer and requires less complexity and data management in the db
 52	3112	09:46:46	Issue	113	create	Ievgenii		
 52	3128	09:47:02	Issue	113	update	Ievgenii		How do you check if the user is alredy authenticated?
 52	3133	09:47:07	Alternative	26	create	Ievgenii		
