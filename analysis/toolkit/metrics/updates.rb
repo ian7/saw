@@ -14,7 +14,7 @@ class UpdatesMetric < Metric
 			"Time since last decision"
 		]
 
-		return fields.join "\t"
+		return fields
 	end
 	def self.suitableItems
 		return [ IssueLogItem, AlternativeLogItem ]
@@ -57,6 +57,6 @@ class UpdatesMetric < Metric
 			state << " "
 		end
 		
-		return state.join "\t"
+		return state
 	end
 end

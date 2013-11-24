@@ -20,7 +20,7 @@ class IssueStateMetric < Metric
 			"Deciders"
 		]
 
-		return fields.join "\t"
+		return fields
 
 	end
 	def self.suitableItems
@@ -58,7 +58,7 @@ class IssueStateMetric < Metric
 		# number of deciders
 		state << logItem.events.select{ |x| x.class == DecisionEvent && x.decision != "(no)" }.uniq{ |x| x.user }.size.to_s 
 
-		return state.join "\t"
+		return state
 	end
 
 	def self.integrateTimeInState( logItem, state )

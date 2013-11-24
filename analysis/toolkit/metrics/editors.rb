@@ -5,13 +5,14 @@ class EditorsMetric < Metric
 		return "Editors"
 	end
 	def self.header
-		return "Editors"
+		return ["Editors"]
 	end
 	def self.suitableItems
 		return [ IssueLogItem, AlternativeLogItem ]
 	end
 	def self.calculate( logItem )
-		
+		state = []
+
 		editors = {}
 		logItem.events.each{ |x| 
 			if editors[x.user] 
@@ -20,6 +21,7 @@ class EditorsMetric < Metric
 				editors[x.user] = 1
 			end
 		}
-		return editors.size.to_i.to_s
+		state << editors.size
+		return state
 	end
 end

@@ -24,7 +24,7 @@ class DecisionsMetric < Metric
 			"Consensus State Changes"
 		]
 
-		return fields.join "\t"
+		return fields
 	end
 	def self.suitableItems
 		return [ AlternativeLogItem ]
@@ -88,7 +88,7 @@ class DecisionsMetric < Metric
 		state << transitionsCounter.to_s
 
 
-		return state.join "\t"
+		return state
 	end
 	def self.integrateTimeInAllignment( logItem, state )
 		

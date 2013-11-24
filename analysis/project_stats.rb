@@ -96,32 +96,12 @@ Dir.foreach('./analysis/logs-digested') do |sourcePath|
 	logIssues = IssueLogItem.find( digestLog, projectID )
 
 	logIssues.each do |logIssue|
-#	issues.each do |issue|
-
-	#debugger
 		ilm = logIssue
-		#ilm = IssueLogItem.new issue.id.to_s, digestLog 
 		ilm.analyze 
 		ilm.to_s
 
 		ilms << ilm
 
-
-		#outputIssues.print issue.id.to_s + "\t " + issue['name'].to_s
-		#alternatives = issue.related_to "SolvedBy"
-		
-		#alternativeCount += alternatives.count
-
-		# let's find how many entries do we have in the log for it
-		# => logEvents = digestLog.select { |line| line[9] == issue.id.to_s }
-		
-		#puts 'issue ' + issue.id.to_s + ' has ' + logEvents.size.to_s + ' log entries'
-
-		#puts logEvents.select { |line| line[5] == 'GET' }.count.to_s + ' GETs'
-		#puts logEvents.select { |line| line[5] == 'PUT' }.count.to_s + ' PUTs'
-		#puts logEvents.select { |line| line[5] == 'POST' }.count.to_s + ' POSTs'
-
-		#outputIssues.print "\t" + alternatives.count.to_s
 
 		collidingAlternativeCount = 0
 		decidedAlternativeCount = 0
@@ -129,7 +109,6 @@ Dir.foreach('./analysis/logs-digested') do |sourcePath|
 
 		ilm.alternativesLog.each do |la|
 
-		#alternatives.each do |alternative|
 		
 			decisionCounts=[]
 
@@ -138,8 +117,6 @@ Dir.foreach('./analysis/logs-digested') do |sourcePath|
 			alm.to_s
 			outputAlternaitves.puts alm.status
 			ilms << alm
-
-			#sb = alternative.relations_from("SolvedBy").first
 
 			sb = alm.sbLog
 
@@ -152,87 +129,10 @@ Dir.foreach('./analysis/logs-digested') do |sourcePath|
 			sbli.analyze 
 			sbli.to_s
 			ilms << sbli
-#			debugger
-
-=begin
-			sb.relations_to.each do |decisionTagging|
-				#puts decisionTagging.id
-				#puts decisionTagging.origin
-				decisionIndex = decisionTags.to_a.index{ |x| x.id == decisionTagging.origin }
-	
-
-				if decisionIndex then
-					decision = decisionTags[decisionIndex]
-
-					if decisionCounts[decisionIndex] then
-						decisionCounts[decisionIndex] = decisionCounts[decisionIndex] + 1 					
-					else
-						decisionCounts[decisionIndex] = 1
-					end
-				end
-			end
-
-			outputAlternaitves.print alternative.id.to_s + "\t" + alternative['name'].to_s + "\t"
-
-			(0..2).each do |decisionIndex|
-				totalDecisionCounts[decisionIndex] = totalDecisionCounts[decisionIndex].to_i + decisionCounts[decisionIndex].to_i
-				if decisionCounts[decisionIndex]
-					outputAlternaitves.print  decisionCounts[decisionIndex].to_s + "\t"
-				else
-					outputAlternaitves.print  "0\t"
-				end
-
-			end
-
-
-
-			if is_colliding( sb, project ) then
-				outputAlternaitves.print 'colliding'
-				collidingAlternativeCount = collidingAlternativeCount + 1
-			else
-				decision = get_decision( sb, project )
-				if decision then 
-					outputAlternaitves.print decision['name']
-					decidedAlternativeCount = decidedAlternativeCount + 1
-				else
-					outputAlternaitves.print 'undecided'
-					undecidedAlternativeCount = undecidedAlternativeCount + 1
-				end
-			end
-			outputAlternaitves.puts ''
-=end
-
-				#decisionTags = alternative.related_to().select{ |x| x["type"]=="Decision"}
 		end
-#		outputIssues.print "\t" + decidedAlternativeCount.to_s + "\t" + collidingAlternativeCount.to_s + "\t" + undecidedAlternativeCount.to_s
-#		outputIssues.puts ''
-
-		# finished dumping issue details
 		
 		outputIssues.puts ilm.status
-#		debugger
 
 	end
-=begin
-	outputProject.print alternativeCount.to_s + "\t"
-	(0..2).each do |decisionIndex|
-		if totalDecisionCounts[decisionIndex]
-			outputProject.print totalDecisionCounts[decisionIndex].to_i.to_s + "\t"
-		else
-			outputProject.print "0\t"
-		end
-	end
-	outputProject.puts ""
-	puts 'Project: ' + project['name'] + ' processed'
-
-
-	ilms.each do |lm|
-
-	end
-=end
-	# break out after the first project
-
 end
-#	break
-#end
 

@@ -13,7 +13,7 @@ class IDMetric < Metric
 			"LastChange"
 		]
 
-		return fields.join "\t"
+		return fields
 	end
 	def self.suitableItems
 		return [ IssueLogItem, AlternativeLogItem ]
@@ -39,6 +39,7 @@ class IDMetric < Metric
 		values << (allSortedEvents.last.time.to_i - itemSortedEvents.first.time.to_i).to_s
 		# last event
 		values << (allSortedEvents.last.time.to_i - itemSortedEvents.last.time.to_i).to_s
-		return values.join "\t"
+		
+		return values
 	end
 end

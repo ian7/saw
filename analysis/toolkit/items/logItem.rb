@@ -28,11 +28,14 @@ class LogItem
 
 	end
 	def status
-		result = ""
+		result = []
 
-		Metric.findMetricsFor( self.class ).each { |metric| result << metric.calculate( self ) + "\t" }
-			   
-		return result 
+		Metric.findMetricsFor( self.class ).each { |metric| 
+			#puts metric
+			#puts metric.calculate( self ).map{ |x| x.to_s }
+			result << metric.calculate( self ).map{|x| (x.to_s) } 
+		}
+		return result.flatten(1)
 	end
 	def c
 		return self.class
