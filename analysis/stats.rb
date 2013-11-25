@@ -1,22 +1,19 @@
 require './analysis/toolkit/events.rb'
 require './analysis/toolkit/items.rb'
 require './analysis/toolkit/metrics.rb'
+require './analysis/toolkit/indicators.rb'
+require './analysis/toolkit/metricMatrix.rb'
 require 'fileutils'
 require 'optparse'
 
 sourcePath = nil
 
-class MetricMatrix < Array
-	def setHeaders( headers)
-		@headers = headers
-	end
-	def get( name )
-		return @headers.index {|x| x == name}
-	end
-end
+
 
 rootPath = '/home/vagrant/workspace/analysis/'
 outputProject = File.open rootPath+'output/aggregates-all/projects.csv','w'
+
+
 outputIssues = File.open rootPath+'output/aggregates-all/issues.csv','w'
 
 Metric.findMetricsFor(IssueLogItem).map { |metric| outputIssues.print metric.header.join("\t") + "\t" }
@@ -27,14 +24,14 @@ Metric.findMetricsFor(AlternativeLogItem).map { |metric| outputAlternaitves.prin
 outputAlternaitves.puts ""
 outputDecisions = File.open rootPath+'output/decisions.csv','w'
 
+allProjects = MetricMatrix.new
+#allProjects =
 
 allIssues = MetricMatrix.new
 allIssues.setHeaders( Metric.findMetricsFor(IssueLogItem).map { |metric| metric.header } .flatten(1) )
 
 allAlternaitves = MetricMatrix.new
 allAlternaitves.setHeaders( Metric.findMetricsFor(AlternativeLogItem).map { |metric| metric.header } .flatten(1))
-
-debugger
 
 require './analysis/toolkit/models.rb'
 
@@ -218,4 +215,7 @@ Dir.foreach('./analysis/logs-digested') do |sourcePath|
 		allIssues << ilm.status
 	end
 end
+
+allIssues.save("issues.mm")
+allAlternaitves.save("alternatives.mm")
 

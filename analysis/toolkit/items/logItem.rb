@@ -77,7 +77,7 @@ class LogItem
 		
 		#outputFileName = './analysis/output/item-' + type + '-' + id.to_s
 		
-		outputFileName = "./analysis/output/#{@projectID}-#{type}-#{id.to_s}"
+		outputFileName = "./analysis/output/raw/#{@projectID}-#{type}-#{id.to_s}"
 		#puts "output file name: " + outputFileName
 
 		@output = File.open  outputFileName + '.item', 'w'
