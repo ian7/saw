@@ -24,14 +24,18 @@ Metric.findMetricsFor(AlternativeLogItem).map { |metric| outputAlternaitves.prin
 outputAlternaitves.puts ""
 outputDecisions = File.open rootPath+'output/decisions.csv','w'
 
-allProjects = MetricMatrix.new
+#allProjects = MetricMatrix.new
 #allProjects =
 
 allIssues = MetricMatrix.new
 allIssues.setHeaders( Metric.findMetricsFor(IssueLogItem).map { |metric| metric.header } .flatten(1) )
+allIssueObjects = []
 
 allAlternaitves = MetricMatrix.new
 allAlternaitves.setHeaders( Metric.findMetricsFor(AlternativeLogItem).map { |metric| metric.header } .flatten(1))
+allAlternativeObjects = []
+
+allProjectObjects = []
 
 require './analysis/toolkit/models.rb'
 
@@ -108,16 +112,22 @@ Dir.foreach('./analysis/excel-ep') do |sourcePath|
 
 		logIssue.alternatives.each{ |x| 
 			allAlternaitves << x.status
+			allAlternativeObjects << x
+
 			outputAlternaitves.puts x.status.join("\t") + "\n" 
 		}
+
 	end
+	projectObject = ProjectLogItem.new( sourcePath.chomp(".csv"), digestLog )
+	projectObject.issues = logIssues
+	allProjectObjects << projectObject
 
-
+	allIssueObjects.concat logIssues
 end
 
 
 
-
+#=begin
 
 Dir.foreach('./analysis/logs-digested') do |sourcePath|
 	next if sourcePath == '.' or sourcePath == '..'
@@ -196,6 +206,8 @@ Dir.foreach('./analysis/logs-digested') do |sourcePath|
 			alm.to_s
 			outputAlternaitves.puts alm.status.join("\t") + "\n"
 			allAlternaitves << alm.status
+			allAlternativeObjects << alm
+
 			ilms << alm
 
 			sb = alm.sbLog
@@ -213,9 +225,62 @@ Dir.foreach('./analysis/logs-digested') do |sourcePath|
 		
 		outputIssues.puts ilm.status.join("\t") + "\n"
 		allIssues << ilm.status
+		allIssueObjects << ilm
 	end
+
+	projectObject = ProjectLogItem.new( projectID, digestLog )
+	projectObject.issues = logIssues
+	allProjectObjects << projectObject
 end
+
+#=end
+
 
 allIssues.save("issues.mm")
 allAlternaitves.save("alternatives.mm")
+
+allItems = allIssueObjects.clone()
+allItems.concat allAlternativeObjects
+
+allProjects = allItems.uniq{ |x| x.projectID }.map{ |x| x.projectID }
+
+allProjectsMM = MetricMatrix.new
+allProjectsMM.setHeaders( Metric.findMetricsFor(ProjectLogItem).map { |metric| metric.header } .flatten(1) )
+
+allProjectObjects.each do |project|
+	allProjectsMM << project.status
+end
+
+#debugger
+allProjectsMM.save("projects.mm")
+
+
+allUsers = []
+allItems.each do |item|
+	allUsers.concat item.events.map{ |event| event.user }.uniq
+end
+allUsers.uniq!
+
+userMMs = {}
+allUsers.each{|user| 
+	allProjectsMM = MetricMatrix.new
+	allProjectsMM.setHeaders( Metric.findMetricsFor(ProjectLogItem).map { |metric| metric.header } .flatten(1) )
+	
+	#userObject = UserLogItem.new user, allProjectObjects
+
+	allProjectObjects.each do |project|
+			extraFilter = Proc.new{ |e| 
+				e.user==user }
+			allProjectsMM << project.status( extraFilter )
+		end
+	allProjectsMM.save( "analysis/output/users/#{user}.csv" )
+}
+
+puts "we have: #{allUsers.size} unique users"
+
+
+
+allUsersMM = MetricMatrix.new
+allProjectsMM.setHeaders( Metric.findMetricsFor(ProjectLogItem).map { |metric| metric.header } .flatten(1) )
+
 

@@ -10,7 +10,7 @@ class EditorsMetric < Metric
 	def self.suitableItems
 		return [ IssueLogItem, AlternativeLogItem ]
 	end
-	def self.calculate( logItem )
+	def self.calculate( logItem, extraFilter=nil )
 		state = []
 
 		editors = {}

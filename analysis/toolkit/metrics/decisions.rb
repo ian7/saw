@@ -29,7 +29,7 @@ class DecisionsMetric < Metric
 	def self.suitableItems
 		return [ AlternativeLogItem ]
 	end
-	def self.calculate( logItem )
+	def self.calculate( logItem, extraFilter=nil )
 		state = []
 		
 		decisionEvents = logItem.events.sort{ |x,y| x.time.to_i <=> y.time.to_i }.select{ |x| x.class == DecisionEvent && x.decision != "(no)"}

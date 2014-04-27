@@ -27,13 +27,13 @@ class LogItem
 		end
 
 	end
-	def status
+	def status( extraFilter=nil )
 		result = []
 
 		Metric.findMetricsFor( self.class ).each { |metric| 
 			#puts metric
 			#puts metric.calculate( self ).map{ |x| x.to_s }
-			result << metric.calculate( self ).map{|x| (x.to_s) } 
+			result << metric.calculate( self, extraFilter ).map{|x| (x.to_s) } 
 		}
 		return result.flatten(1)
 	end

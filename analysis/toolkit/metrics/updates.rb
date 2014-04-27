@@ -19,7 +19,7 @@ class UpdatesMetric < Metric
 	def self.suitableItems
 		return [ IssueLogItem, AlternativeLogItem ]
 	end
-	def self.calculate( logItem )
+	def self.calculate( logItem, extraFilter=nil )
 		state = []
 
 		updateEvents = logItem.events.select{ |x| x.class == UpdateEvent }.sort_by { |x| x.time.to_i }

@@ -21,7 +21,7 @@ class IDMetric < Metric
 	def self.priority
 		return 10
 	end
-	def self.calculate( logItem )
+	def self.calculate( logItem, extraFilter=nil )
 		values = []
 		# project
 		values << logItem.projectID.to_s
