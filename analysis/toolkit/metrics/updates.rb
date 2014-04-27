@@ -54,7 +54,7 @@ class UpdatesMetric < Metric
 		if de.size > 0
 			state << ae.last.time.to_i - de.last.time.to_i 
 		else
-			state << " "
+			state << "-1"
 		end
 		
 		return state

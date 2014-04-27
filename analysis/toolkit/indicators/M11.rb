@@ -21,8 +21,8 @@ class M11 < Indicator
 		decisionStates.each{ |decisionState|
 			lineOut = []
 
-			lineOut << decisionState
 			filteredAlternatives = @alternatives.select{ |x| x["Final State"] == decisionState }
+			lineOut << "#{decisionState}\\\\(#{filteredAlternatives.size.to_s})"
 
 			timeSums = {}
 			decisionStates.each{ |x| timeSums[x] = 0 }
@@ -39,8 +39,8 @@ class M11 < Indicator
 		}
 
 		lineOut = []
-		lineOut << "all"
 		filteredAlternatives = @alternatives
+		lineOut << "all\\\\(#{filteredAlternatives.size.to_s})" 
 		timeSums = {}
 		decisionStates.each{ |x| timeSums[x] = 0 }
 
