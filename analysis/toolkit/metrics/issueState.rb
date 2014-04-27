@@ -26,7 +26,7 @@ class IssueStateMetric < Metric
 	def self.suitableItems
 		return [ IssueLogItem ]
 	end
-	def self.calculate( logItem )
+	def self.calculate( logItem, extraFilter=nil )
 		state = []
 			
 		state << logItem.alternatives.size.to_s 

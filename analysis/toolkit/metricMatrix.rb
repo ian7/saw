@@ -2,8 +2,11 @@ class MetricMatrix < Array
 	def setHeaders( headers)
 		@headers = headers
 	end
+	def getHeaders
+		return @headers
+	end
 	def get( name )
-		return @headers.index {|x| x == name}
+		return @headers.index {|x| x.strip == name}
 	end
 	def save( filename )
 		f = File.open filename,'w'
@@ -30,6 +33,6 @@ class MetricRow < Array
 		super( content )
 	end
 	def []( name )
-		return self.fetch( @headers.index {|x| x==name} )
+		return self.fetch( @headers.index {|x| x.strip==name} )
 	end	
 end

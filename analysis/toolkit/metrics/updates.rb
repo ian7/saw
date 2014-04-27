@@ -19,7 +19,7 @@ class UpdatesMetric < Metric
 	def self.suitableItems
 		return [ IssueLogItem, AlternativeLogItem ]
 	end
-	def self.calculate( logItem )
+	def self.calculate( logItem, extraFilter=nil )
 		state = []
 
 		updateEvents = logItem.events.select{ |x| x.class == UpdateEvent }.sort_by { |x| x.time.to_i }
@@ -54,7 +54,7 @@ class UpdatesMetric < Metric
 		if de.size > 0
 			state << ae.last.time.to_i - de.last.time.to_i 
 		else
-			state << " "
+			state << "-1"
 		end
 		
 		return state
