@@ -1,0 +1,1126 @@
+%%
+%% Copyright 2007, 2008, 2009 Elsevier Ltd
+%%
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%%
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+
+%% version 1999/12/01 or later.
+%%
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%%
+
+%% Template article for Elsevier's document class `elsarticle'
+%% with harvard style bibliographic references
+%% SP 2008/03/01
+%%§§``
+%%
+%%
+%% $Id: elsarticle-template-harv.tex 4 2009-10-24 08:22:58Z rishi $
+%%
+%%
+%\documentclass[preprint,authoryear,12pt]{elsarticle}
+\documentclass[article]{elsarticle}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\pgfplotstableread{
+1   19.178  26.027  8.219   6.849   39.726
+2   54.795  21.918  4.110   6.849   12.329
+3   28.767  16.438  6.849   8.219   39.726
+4   63.014  2.740   2.740   2.740   28.767
+5   90.411  1.370   6.849   0.000   1.370
+6   15.068  2.740   16.438  8.219   57.534
+7   67.123  0.000   0.000   0.000   32.877
+8   72.603  6.849   5.479   0.000   15.068
+9   56.164  12.329  6.849   4.110   20.548
+10  50.685  4.110   8.219   1.370   35.616
+}\datatable
+
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,authoryear,1p,times]{elsarticle}
+%% \documentclass[final,authoryear,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,authoryear,3p,times]{elsarticle}
+%% \documentclass[final,authoryear,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,authoryear,5p,times]{elsarticle}
+%% \documentclass[final,authoryear,5p,times,twocolumn]{elsarticle}
+
+%% if you use PostScript figures in your article
+%% use the graphics package for simple commands
+%% \usepackage{graphics}
+%% or use the graphicx package for more complicated commands
+%% \usepackage{graphicx}
+%% or use the epsfig package if you prefer to use the old commands
+%% \usepackage{epsfig}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+\usepackage{lineno}
+
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon (default)
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   authoryear - selects author-year citations (default)
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%   longnamesfirst  -  makes first citation full author list
+%%
+%% \biboptions{longnamesfirst,comma}
+
+% \biboptions{}
+
+%%% out of ecsa paper
+\usepackage{amssymb}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{paralist}
+%\usepackage{hyperref}
+\usepackage{marginnote}
+\usepackage{pgfplotstable}
+%\pgfplotsset{compat=1.8}
+\usepackage{pdflscape}
+%\usepackage{pgfplotstable}
+% recommended:
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{varwidth}
+\usepackage{geometry}
+\usepackage[subject={Top1},author={Marcin}]{pdfcomment}
+\usepackage{framed}
+\usepackage{paralist}
+
+
+\journal{Future Generation Computer Systems}
+
+\makeatletter
+\pgfplotsset{grid style={dashed,gray}}
+\pgfplotsset{
+    /pgfplots/flexible xticklabels from table/.code n args={3}{%
+        \pgfplotstableread[#3]{#1}\coordinate@table
+        \pgfplotstablegetcolumn{#2}\of{\coordinate@table}\to\pgfplots@xticklabels
+        \let\pgfplots@xticklabel=\pgfplots@user@ticklabel@list@x
+    } 
+}
+\makeatother
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for the associated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for the associated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for the associated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%%
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+%\title{Team Situational Awareness\\and Architectural Decision Making with the Software Architecture Warehouse}
+\title{Team Situational Awareness in Software Architecture Decision making}
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{<author name>}
+%% \address[label1]{<address>}
+%% \address[label2]{<address>}
+
+\author{Marcin Nowak and Cesare Pautasso}
+
+
+\end{frontmatter}
+
+%\linenumbers
+\noindent
+\textbf{Metric 1} -- \textbf{Issue count} \\
+Domain: \emph{Project}, Scale: \emph{Ratio}, Range: \emph{[0,N]}
+
+In Figure~\ref{fig:M1} we present the number of the issues collected in five runs of the experiment. The average number of issues per project is slightly higher for EP (4.2) than for SAW (4.8), but it has also higher standard deviation (4.7 and 1.6 respectively). 
+\begin{figure}
+  \begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=\textwidth,
+			height=6cm,
+		    ylabel=,
+		    xtick=data, 
+			flexible xticklabels from table={M1.csv}{Project}{col sep=tab},
+		    enlarge y limits=false,
+		    enlarge x limits=0.1,
+		    ymajorgrids = true,
+		    ybar,
+		    bar width=10pt,
+		    legend style={
+		      font=\footnotesize,
+		      cells={anchor=west},
+		      legend columns=5,
+		      /tikz/every even column/.append style={column sep=0.2cm}
+		    },
+		]
+		\addplot+ table[x expr=\coordindex,y={EP issues}, col sep=tab] {"M1.csv"};
+		\addplot+ table[x expr=\coordindex,y={SAW issues}, col sep=tab] {"M1.csv"};
+		\legend{EP,SAW}
+		\end{axis}
+	\end{tikzpicture}
+	\begin{comment}
+	  \includegraphics[width=0.85\textwidth]{M1.pdf}
+	\end{comment}
+  \caption{Number of issues counted in the design workshop exercises}
+  \label{fig:M1}
+  \end{center}
+\end{figure}
+\\
+\\
+\noindent
+\textbf{Metric 2} -- \textbf{Alternative count} \\
+Domain: \emph{Issue}, Scale: \emph{Ratio}, Range: \emph{[0,N]}
+
+%Analogously to previous metric, in Figure~\ref{fig:M2} we present the distribution of the number of design alternatives collected within the experiment runs. The average number of alternatives is very similar for SAW and EP (11.6 and 11.2). Similarly to the Metric 1, the later is characterized by higher standard deviation (1.7 for SAW and 8.9 for EP).
+
+Figure~\ref{fig:M2} presents the distribution of the number of design alternatives per design issue within the population of the design issues. It is noticeable that for EP most design issues have only two alternatives, whereas for SAW the same number of issues have two and three alternatives. The average number of alternatives per issue for SAW and EP is very similar (2.14 vs 2.15) as well as its standard deviation (1.28, and 1.23).
+\begin{figure}
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data,
+				flexible xticklabels from table={M2.csv}{Alternatives Count}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    ybar,
+			    ymajorgrids = true,			
+			    bar width=10pt,
+			    legend style={
+			      font=\footnotesize,
+			      cells={anchor=west},
+			      legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=north,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },
+			]
+
+			\addplot+ table[x expr=\coordindex,y={EP percent}, col sep=tab] {"M2.csv"};
+			\addplot+ table[x expr=\coordindex,y={SAW percent}, col sep=tab] {"M2.csv"};
+			
+			\legend{EP, SAW} 
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+
+	\caption{Histogram of the relative number of alternatives per design issue}
+	\label{fig:M2}
+
+	\begin{comment}
+	  \begin{center}
+	  \includegraphics[width=0.85\textwidth]{M2.pdf}
+	  \caption{Histogram of the relative number of alternatives per design issue}
+	  \label{fig:M2}
+	  \end{center}
+	\end{comment}
+
+\end{figure}
+%\subsubsection{Content metrics}
+\\
+\\
+\noindent
+\textbf{Metric 3} -- \textbf{Relative number of contributors}\\
+Domain: \emph{Issue, Alternative}, Scale: \emph{Ratio} Range: \emph{\%}
+
+
+The Metric 3 is defined as the number of contributors relative to the size of the design team. Here for the sake of clarity we are going to be operating on the absolute numbers\footnote{In the experiments the team size was 9 (both groups -- SAW and EP).}. The histogram presented in Figure~\ref{fig:M3-histogram} shows that the majority of design issues and alternatives was addressed only by single user. 
+
+%CP: move correlation figures to the questions part
+In Figure~\ref{fig:M3-alternatives} it is visible that the consensus state is related with the number of contributors in a way that alternatives with more than two contributors always have positions, and even more interestingly, that the proportion between colliding and aligned alternatives grows with the number of contributors. Figure~\ref{fig:M3-issues} shows similar connection between design issue choice state and the number of contributors. In particular, in our dataset, design issues with more than two contributors always have positions stated. The relation with the complete/incomplete choice states is not clearly visible. 
+%See Figure~\{fig:M3-alternatives2}.
+\begin{figure}
+  \begin{center}  
+		\begin{tikzpicture}
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data,
+				flexible xticklabels from table={M3.csv}{Contributors count}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar,
+			    ymajorgrids = true,			  
+			    bar width=10pt,
+			    legend style={
+			      font=\footnotesize,
+			      %cells={anchor=west},
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=north,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },
+			]      
+
+			\addplot+ table[x expr=\coordindex,y={Issues percent}, col sep=tab] {"M3.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={Alternaitves percent}, col sep=tab] {"M3.csv"};
+			\legend{Issues,Alternatives}
+			\end{axis}
+		\end{tikzpicture}
+%  \includegraphics[width=0.85\textwidth]{M3-histogram.pdf}
+  \caption{Number of contributors -- histogram}
+  \label{fig:M3-histogram}
+  \end{center}
+\end{figure}
+\begin{comment}
+  \begin{figure}
+    \begin{center}
+    %\includegraphics[width=0.85\textwidth]{M3-alternatives2.pdf}
+    \caption{Proportion of the consensus states in relation to the number of contributors}
+    \label{fig:M3-alternatives}
+    \end{center}
+  \end{figure}
+\end{comment}
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data,
+				flexible xticklabels from table={M3.csv}{Contributors alternaitves}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt, 
+			    legend style={
+			      font=\footnotesize,
+			      %cells={anchor=west},   
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=north,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },
+			]      
+
+			\addplot+ table[x expr=\coordindex,y={no positions percent}, col sep=tab] {"M3.csv"};
+			\addplot+ table[x expr=\coordindex,y={aligned percent}, col sep=tab] {"M3.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={colliding percent}, col sep=tab] {"M3.csv"};
+			\legend{no positions, aligned, colliding}
+			\end{axis}
+		\end{tikzpicture}  
+%  \includegraphics[width=0.85\textwidth]{M3-alternatives.pdf}
+  \caption{Proportion of the consensus states in relation to the number of contributors}
+  \label{fig:M3-alternatives}
+  \end{center}
+\end{figure}
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data,
+				flexible xticklabels from table={M3.csv}{Contributors issues}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt, 
+			    legend style={
+			      font=\footnotesize,
+			      %cells={anchor=west},   
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=north,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },
+			]      
+
+			\addplot+ table[x expr=\coordindex,y={no alternatives percent}, col sep=tab] {"M3.csv"};
+			\addplot+ table[x expr=\coordindex,y={i no positions percent}, col sep=tab] {"M3.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={incomplete percent}, col sep=tab] {"M3.csv"};
+			\addplot+ table[x expr=\coordindex,y={complete percent}, col sep=tab] {"M3.csv"};
+			\legend{no alternatives, no positions, incomplete, complete}
+			\end{axis}
+		\end{tikzpicture}  
+  %\includegraphics[width=0.85\textwidth]{M3-issues.pdf}
+  \caption{Relative number of contributors in relation with the choice state}
+  \label{fig:M3-issues}
+  \end{center}
+\end{figure}
+\\
+\\
+\noindent
+\textbf{Metric 4} -- \textbf{Relative number of decision makers} \\
+Domain: \emph{Issue, Decision}, Scale: \emph{Ratio}, Range: \emph{\%}
+
+The histogram of the number of decision makers presented on Figure~\ref{fig:M4-histogram} shows a picture very similar to the one for Metric 3 (Figure~\ref{fig:M3-histogram}): the majority of positions has been expressed by a single decision maker.
+\begin{figure}
+  \begin{center}
+  %\includegraphics[width=0.85\textwidth]{M4-histogram.pdf}
+	\begin{tikzpicture}
+	\begin{axis}[
+		width=\textwidth,
+		height=6cm,
+	    ylabel=,
+	    xtick=data,
+		flexible xticklabels from table={M4.csv}{Contributors count}{col sep=tab},
+	    enlarge y limits=false,
+	    enlarge x limits=0.1,
+	    %ymin=0,ymax=100,
+	    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+	    xticklabel style={align=center},
+	    ybar,
+	    ymajorgrids = true,			  
+	    bar width=10pt,
+	    legend style={
+	      font=\footnotesize,
+	      %cells={anchor=west},
+	      %legend columns=5,
+	      %at={(0.5,-0.15)},
+	      %anchor=north,
+	      /tikz/every even column/.append style={column sep=0.2cm}
+	    },
+	]      
+
+	\addplot+ table[x expr=\coordindex,y={Issues percent}, col sep=tab] {"M4.csv"}; 
+	\addplot+ table[x expr=\coordindex,y={Alternaitves percent}, col sep=tab] {"M4.csv"};
+	\legend{Issues,Alternatives}
+  	\end{axis}
+	\end{tikzpicture}
+    \caption{Number of decision makers -- histogram}
+  \label{fig:M4-histogram}
+  \end{center}
+\end{figure}
+\begin{figure}
+  \begin{center}
+  %\includegraphics[width=0.85\textwidth]{M4-alternatives.pdf}
+     \begin{tikzpicture}
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data,
+				flexible xticklabels from table={M4.csv}{Contributors alternaitves}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt, 
+			    legend style={
+			      font=\footnotesize,
+			      %cells={anchor=west},   
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=north,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },
+			]      
+
+			\addplot+ table[x expr=\coordindex,y={no positions percent}, col sep=tab] {"M4.csv"};
+			\addplot+ table[x expr=\coordindex,y={aligned percent}, col sep=tab] {"M4.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={colliding percent}, col sep=tab] {"M4.csv"};
+			\legend{no positions, aligned, colliding}
+			\end{axis}
+		\end{tikzpicture}  
+  \caption{Number of decision makers in relation to the consensus state}
+  \label{fig:M4-alternatives}
+  \end{center}
+\end{figure}
+\begin{figure}
+  \begin{center}
+   \begin{tikzpicture}
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data,
+				flexible xticklabels from table={M3.csv}{Contributors issues}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt, 
+			    legend style={
+			      font=\footnotesize,
+			      %cells={anchor=west},   
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=north,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },
+			]      
+
+			\addplot+ table[x expr=\coordindex,y={no alternatives percent}, col sep=tab] {"M4.csv"};
+			\addplot+ table[x expr=\coordindex,y={i no positions percent}, col sep=tab] {"M4.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={incomplete percent}, col sep=tab] {"M4.csv"};
+			\addplot+ table[x expr=\coordindex,y={complete percent}, col sep=tab] {"M4.csv"};
+			\legend{no alternatives, no positions, incomplete, complete}
+			\end{axis}
+		\end{tikzpicture}  
+  %\includegraphics[width=0.85\textwidth]{M4-issues.pdf}
+  \caption{Number of decision makers in relation with the choice state}
+  \label{fig:M4-issues}
+  \end{center}
+\end{figure}
+
+
+\clearpage
+
+\noindent
+\textbf{Metric 5} -- \textbf{Activity timespan} \\
+Domain: \emph{Issue, Alternative} Scale: \emph{Ratio} Range: \emph{[0,N]}
+
+The histogram of the decision item activity timespan presented in Figure~\ref{fig:M5-classes} shows that there is a significant disparity between the level of activity over time of design issues and design alternatives. It appears that 60\% of the design issues are created within the first 10 minutes, whereas most alternatives are refined over a longer period of time (see also the cumulative distribution shown in Figure~\ref{fig:M5-summative}). 
+\begin{figure}
+  \begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+		width=\textwidth,
+		height=6cm,
+	    ylabel=,
+	    xtick=data,
+		flexible xticklabels from table={M5.csv}{Timespan bucket}{col sep=tab},
+	    enlarge y limits=false,
+	    enlarge x limits=0.1,
+	    %ymin=0,ymax=100,
+	    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+	    ybar,
+	    ymajorgrids = true,			
+	    bar width=10pt,
+	    legend style={
+	      font=\footnotesize,
+	      cells={anchor=west},
+	      legend columns=5,
+	      %at={(0.5,-0.15)},
+	      %anchor=north,
+	      /tikz/every even column/.append style={column sep=0.2cm}
+	    },
+	]  
+
+	\addplot+ table[x expr=\coordindex,y={Activity Timespan Issues percent}, col sep=tab] {"M5.csv"};
+	\addplot+ table[x expr=\coordindex,y={Activity Timespan Alternatives percent}, col sep=tab] {"M5.csv"};
+	\legend{Issues, Alternatives}     
+	\end{axis} 
+\end{tikzpicture}
+  %\includegraphics[width=0.85\textwidth]{M5-classes.pdf}
+  \caption{Activity timespan -- histogram (10 minute intervals)}
+  \label{fig:M5-classes}
+  \end{center}
+\end{figure}
+\begin{figure}
+  \begin{center}
+  %\includegraphics[width=0.85\textwidth]{M5-summative.pdf}
+  \begin{tikzpicture}
+	\begin{axis}[
+		width=\textwidth,
+		height=6cm,
+	    ylabel=,
+	    xtick=data,
+		flexible xticklabels from table={M5.csv}{Timespan bucket}{col sep=tab},
+	    enlarge y limits=false,
+	    enlarge x limits=0.1,
+	    %ymin=0,ymax=100,
+	    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+	    ybar,
+	    ymajorgrids = true,			
+	    bar width=10pt,
+	    legend style={
+	      font=\footnotesize,
+	      cells={anchor=west},
+	      legend columns=5,
+	      %at={(0.5,-0.15)},
+	      %anchor=north,
+	      /tikz/every even column/.append style={column sep=0.2cm}
+	    },
+	]  
+
+	\addplot+ table[x expr=\coordindex,y={Activity Timespan Issues sum}, col sep=tab] {"M5.csv"};
+	\addplot+ table[x expr=\coordindex,y={Activity Timespan Alternatives sum}, col sep=tab] {"M5.csv"};
+	\legend{Issues, Alternatives}     
+	\end{axis} 
+\end{tikzpicture}
+  \caption{Cumulative distribution of activity timespan. Alternatives are refined over a longer timespan than design issues}
+  \label{fig:M5-summative}
+  \end{center}
+\end{figure}
+
+\clearpage
+
+\noindent
+\textbf{Metric 6} -- \textbf{Time since last change} \\
+Domain: \emph{Issue, Alternative, Position}, Scale: \emph{Ratio} Range: \emph{[0,N]}
+
+The histogram of the time since last change for the design issues and alternatives (Figure~\ref{fig:M6-classes}) reveals that changes are distributed rather evenly though the duration of the design workshop. %It is noticeable that more the design issues are identified at the beginning of the time-window (long time since last-change), whereas later through focus drifts towards the design alternatives.  
+\begin{figure}
+  \begin{center}
+  \begin{tikzpicture}
+	\begin{axis}[
+		width=\textwidth,
+		height=6cm,
+	    ylabel=,
+	    xtick=data,
+		flexible xticklabels from table={M6.csv}{Timespan bucket}{col sep=tab},
+	    enlarge y limits=false,
+	    enlarge x limits=0.1,
+	    %ymin=0,ymax=100,
+	    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+	    ybar,
+	    ymajorgrids = true,			
+	    bar width=10pt,
+	    legend style={
+	      font=\footnotesize,
+	      cells={anchor=west},
+	      legend columns=5,
+	      %at={(0.5,-0.15)},
+	      %anchor=north,
+	      /tikz/every even column/.append style={column sep=0.2cm}
+	    },
+	]  
+ 
+	\addplot+ table[x expr=\coordindex,y={Last change Issues percent}, col sep=tab] {"M6.csv"};
+	\addplot+ table[x expr=\coordindex,y={Last change Alternatives percent}, col sep=tab] {"M6.csv"};
+	\legend{Issues, Alternatives}     
+	\end{axis} 
+	\end{tikzpicture}
+  %\includegraphics[width=0.85\textwidth]{M6-classes.pdf}
+  \caption{Time since last change -- histogram (10 minute intervals). Very recently edited items are on the left, while old items are towards the right.}
+  \label{fig:M6-classes}
+  \end{center}
+\end{figure}
+% IMHO this figure brings nothing %CP: ok, also the previous one is rather messy
+\begin{comment}
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=0.85\textwidth]{M6-summative.pdf}
+  \caption{Cumulative distribution of the time since last change.}
+  \label{fig:M6-summative}
+  \end{center}
+\end{figure}
+\end{comment}
+%\subsubsection{Argumentation metrics}
+%The following metrics relate to the argumentation viewpoint (see Figure~\ref{fig:argumentation-view-small}).
+
+\clearpage
+\noindent
+\textbf{Metric 7} -- \textbf{Position type count}\\
+Parameter: \emph{position type} Domain: \emph{Decision} Scale: \emph{Ratio} Range:\emph{[0,N]}
+
+In the histogram presented in Figure~\ref{fig:M7-summative} it can be observed that the vast majority of the design decisions has no positions recorded. Out of 139 decisions, 55\% have \emph{no positions}, 37\% has \emph{aligned} positions, and 8\% has \emph{colliding} positions.
+%CP: this is the weakest figure, how can you measure consensus if there is only 1 position????
+\begin{figure}
+  \begin{center}
+%  \includegraphics[width=0.85\textwidth]{M7.pdf}
+  \begin{tikzpicture}
+	\begin{axis}[
+		width=\textwidth,
+		height=6cm,
+	    ylabel=,
+	    xtick=data,
+		flexible xticklabels from table={M7.csv}{Count bucket}{col sep=tab},
+	    enlarge y limits=false,
+	    enlarge x limits=0.1,
+	    %ymin=0,ymax=100,
+	    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+	    ybar,
+	    ymajorgrids = true,			
+	    bar width=7pt,
+	    legend style={
+	      font=\footnotesize,
+	      %cells={anchor=west}, 
+	      %legend columns=5,
+	      %at={(0.5,-0.15)},
+	      %anchor=north,
+	      %/tikz/every even column/.append style={column sep=0.2cm}
+	    },
+	]  
+ 
+	\addplot+ table[x expr=\coordindex,y={Positive decisions}, col sep=tab] {"M7.csv"};
+	\addplot+ table[x expr=\coordindex,y={Negative decisions}, col sep=tab] {"M7.csv"};
+	\addplot+ table[x expr=\coordindex,y={Open decisions}, col sep=tab] {"M7.csv"};
+	\addplot+ table[x expr=\coordindex,y={Any decisions}, col sep=tab] {"M7.csv"};
+	\legend{Positive, Negative, Open, Any}     
+	\end{axis} 
+	\end{tikzpicture}
+
+  \caption{Number of positive, negative, and open positions within an alternative -- histogram}
+  \label{fig:M7-summative}
+  \end{center}
+\end{figure}
+
+\vspace{1em}
+\noindent
+\textbf{Metric 8} -- \textbf{Consensus state}\\
+\emph{Domain: Decision} \emph{Scale: Ordinal} \emph{Range: \{no positions, aligned, colliding, sealed\}}
+
+In Figure~\ref{fig:M8} we can see how decision consensus depends on the number of positions over the decision. The number in parenthesis on the X axis labels indicates the population size (in this case the absolute number of decisions).  Concerning the first two bars, these are derived directly from the state definitions (0 positions = no positions; 1 position = aligned by definition, see Section~\ref{section:metrics}). As expected two or more positions allow for conflicts. Still, decisions with a large number of positions (4-6) are all aligned; this might an artifact caused by the small size of the population (1-2 decisions) in our sample. 
+\begin{figure}
+  \begin{center}
+  \begin{tikzpicture} 
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data, 
+				flexible xticklabels from table={M8.csv}{Decision count}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt, 
+			    legend style={
+			      font=\footnotesize,
+			      %cells={anchor=west},   
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=north,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },
+			]      
+
+			\addplot+ table[x expr=\coordindex,y={no positions}, col sep=tab] {"M8.csv"};
+			\addplot+ table[x expr=\coordindex,y={colliding}, col sep=tab] {"M8.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={aligned}, col sep=tab] {"M8.csv"};
+			\legend{no positions, colliding, aligned}
+			\end{axis}
+		\end{tikzpicture}  
+
+%  \includegraphics[width=0.85\textwidth]{M8.pdf}
+  \caption{Proportion of the consensus states in relation with the number of positions}
+  \label{fig:M8}
+  \end{center}
+\end{figure}
+
+\clearpage
+\noindent
+\textbf{Metric 9} -- \textbf{Decision consensus state count}\\
+Parameter: \emph{consensus state} Domain: \emph{Issue} Scale: \emph{Ratio} Range: \emph{[0,N]}
+
+The number of decisions that has reached a given consensus state can be observed in relationship with the number of alternatives that need to be chosen.
+In Figure~\ref{fig:M9} we can see that independently of the number of alternatives, the majority of the decisions are left without positions. Interestingly, positions for single alternatives are never colliding. For completeness, we show the number of issues considered in parenthesis.
+\begin{figure}
+  \begin{center}
+  %\includegraphics[width=0.85\textwidth]{M9.pdf}
+  \begin{tikzpicture} 
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data, 
+				flexible xticklabels from table={M9.csv}{Alternative count}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt,  
+			    legend style={
+			      font=\footnotesize,
+			      %cells={anchor=west},   
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=north,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },  
+			]       
+
+			\addplot+ table[x expr=\coordindex,y={no positions}, col sep=tab] {"M9.csv"};
+			\addplot+ table[x expr=\coordindex,y={colliding}, col sep=tab] {"M9.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={aligned}, col sep=tab] {"M9.csv"};
+			\legend{no positions, colliding, aligned}
+			\end{axis}
+		\end{tikzpicture}   
+
+  \caption{Proportion of the consensus states in relation with the number of alternatives (population size: number of issues shown in parenthesis)}
+  \label{fig:M9}
+  \end{center}
+\end{figure}
+
+\clearpage
+\noindent
+\textbf{Metric 10} -- \textbf{Choice state}\\
+Domain: \emph{Issue} Scale: \emph{Issue} Range: \emph{\{no alternatives, no positions, incomplete, conclusive, inconclusive, warring\}}
+
+Out of 89 design issues, 30 (34\%) are with \emph{no alternatives}, 8 (9\%) have \emph{no positions}, 39 (44\%) have the \emph{incomplete} choice, and finally 12 (13\%) issues have reached a complete choice. In Figure \ref{fig:M10} it is visible that in case of the design issues with one alternative, in the majority of cases the decision is going to have no positions, thus be in \emph{no positions} choice state. It is also apparent, that the proportion of the issues in \emph{complete} choice state decreases with the number of alternatives. 
+\begin{figure}
+  \begin{center}
+%  \includegraphics[width=0.85\textwidth]{M10.pdf}
+  \begin{tikzpicture} 
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data, 
+				flexible xticklabels from table={M10.csv}{Alternative count}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt,  
+			    legend style={
+			      font=\footnotesize,
+			      %cells={anchor=west},   
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=north,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },  
+			]         
+
+			\addplot+ table[x expr=\coordindex,y={no alternatives}, col sep=tab] {"M10.csv"};
+			\addplot+ table[x expr=\coordindex,y={no positions}, col sep=tab] {"M10.csv"};
+			\addplot+ table[x expr=\coordindex,y={incomplete}, col sep=tab] {"M10.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={complete}, col sep=tab] {"M10.csv"};
+			\legend{no alternatives, no positions, colliding, aligned}
+			\end{axis}
+ 		\end{tikzpicture}   
+
+  \caption{Proportion of the choice states in relation to the number of alternatives (population size: number of issues shown in parenthesis)}
+  \label{fig:M10}
+  \end{center}
+\end{figure}
+
+\vspace{1em}
+\noindent
+\textbf{Metric 11} -- \textbf{Relative consensus state timespan}\\
+Parameter: \emph{consensus state} \emph{Domain: Decision} Scale: \emph{Ratio} \emph{Range: \%}
+
+The amount of time that each decision spends in a given consensus state can be observed depending on the final consensus state that it will eventually reach.
+%
+In Figure~\ref{fig:M11} we can observe that decisions whose final consensus state is \emph{no positions}, are not visiting any other states (compare with Metric 14). Similarly with decisions in \emph{aligned} state, the only other visited state is \emph{no positions}. Finally the decisions with \emph{colliding} final state, remain for some time in both \emph{no positions} and \emph{aligned} states. The general observation that can be drawn from the fact that the state in which decisions spent the most of time is consistent with their final consensus state, decisions change their consensus state mostly towards the beginning of their lifecycle. 
+\begin{figure}
+  \begin{center}
+ 
+  \begin{tikzpicture} 
+			\begin{axis}[
+				width=\textwidth, 
+				height=6cm,
+			    ylabel=,
+			    xtick=data, 
+				flexible xticklabels from table={M11.csv}{Decision state}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt,  
+			    legend style={ 
+			      font=\footnotesize,
+			      %cells={anchor=east},   
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=west,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },  
+			]         
+
+			\addplot+ table[x expr=\coordindex,y={no positions}, col sep=tab] {"M11.csv"};
+			\addplot+ table[x expr=\coordindex,y={aligned}, col sep=tab] {"M11.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={colliding}, col sep=tab] {"M11.csv"};
+			\legend{no alternatives, no positions, colliding, aligned}
+			\end{axis}
+ 		\end{tikzpicture}   
+
+%  \includegraphics[width=0.85\textwidth]{M11.pdf}
+  \caption{Relative amount of time that decisions spend in the consensus state, in relation to their final consensus state}
+  \label{fig:M11}
+  \end{center}
+\end{figure}
+
+\vspace{1em}
+\noindent
+\textbf{Metric 12} -- \textbf{Relative choice state timespan}\\
+Parameter: \emph{consensus state} \emph{Domain: Issue} Scale: \emph{Ratio} \emph{Range: \%}\\
+
+Also in this case, we show the amount of time each issue spends in a given choice state as a function of the final choice state of the issue.
+As pictured in Figure~\ref{fig:M12}, the design issues that have final state of \emph{no alternatives}, \emph{no positions}, and \emph{complete} show no surprising behavior (see Metric 11). An interesting behavior can be observed in the bar representing the \emph{incomplete} final choice state, since it shows that 5\% of the time was spent in the \emph{complete} choice state. This can be a result of having reached the \emph{complete} choice state before a new design alternative was proposed, which would flip the choice state back to \emph{incomplete}. Similarly, to the observation made for Metric 11, judging by the correspondence of the state with the largest timespan and the final choice state, it is apparent that issues change their choice state mostly towards the beginning of their lifecycle. 
+\begin{figure}
+  \begin{center}
+   \begin{tikzpicture} 
+			\begin{axis}[
+				width=\textwidth, 
+				height=6cm,
+			    ylabel=,
+			    xtick=data, 
+				flexible xticklabels from table={M12.csv}{Choice state}{col sep=tab},
+			    enlarge y limits=false, 
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100, 
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt,   
+			    legend style={ 
+			      font=\footnotesize,
+			      %cells={anchor=east},   
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=west,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },  
+			]          
+
+			\addplot+ table[x expr=\coordindex,y={no alternatives}, col sep=tab] {"M12.csv"};
+			\addplot+ table[x expr=\coordindex,y={no positions}, col sep=tab] {"M12.csv"};
+			\addplot+ table[x expr=\coordindex,y={incomplete}, col sep=tab] {"M12.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={complete}, col sep=tab] {"M12.csv"};
+			\legend{no alternatives, no positions, colliding, aligned}
+			\end{axis}
+	\end{tikzpicture}   
+
+%  \includegraphics[width=0.85\textwidth]{M12.pdf}
+  \caption{Relative amount of time that issues spend in the choice state, in relation to their final  choice state}
+  \label{fig:M12}
+  \end{center}
+\end{figure}
+
+\vspace{1em}
+\noindent
+\textbf{Metric 13} -- \textbf{Time since last position}\\
+Domain: \emph{Issue, Decision} Scale: \emph{Ratio} Range: \emph{[0,T]}\\
+
+The amount of time since a position was expressed does not appear uniformly distributed (Figure~\ref{fig:M13}). Less than 10\% of the positions were expressed in the first 20 minutes of the design workshop, while the majority was captured during the second half hour. The metric also shows that how the rate at which positions are expressed changes throughout the design workshop.
+\begin{figure}
+  \begin{center}
+  %\includegraphics[width=0.85\textwidth]{M13.pdf}
+    \begin{tikzpicture}
+	\begin{axis}[
+		width=\textwidth,
+		height=6cm,
+	    ylabel=,
+	    xtick=data,
+		flexible xticklabels from table={M13.csv}{Timespan bucket}{col sep=tab},
+	    enlarge y limits=false,
+	    enlarge x limits=0.1,
+	    %ymin=0,ymax=100,
+	    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+	    ybar,
+	    ymajorgrids = true,			
+	    bar width=10pt,
+	    legend style={
+	      font=\footnotesize,
+	      cells={anchor=west},
+	      legend columns=5,
+	      %at={(0.5,-0.15)},
+	      %anchor=north,
+	      /tikz/every even column/.append style={column sep=0.2cm}
+	    },
+	]  
+ 
+	\addplot+ table[x expr=\coordindex,y={Last decision Issues percent}, col sep=tab] {"M13.csv"};
+	\addplot+ table[x expr=\coordindex,y={Last decision Alternatives percent}, col sep=tab] {"M13.csv"};
+	\legend{Issues, Alternatives}     
+	\end{axis} 
+	\end{tikzpicture}
+
+  \caption{Time since last position - histogram for decisions and issues}
+  \label{fig:M13}
+  \end{center}
+\end{figure}
+
+\vspace{1em}
+\noindent
+\textbf{Metric 14} -- \textbf{Consensus state transition count}\\
+Domain: \emph{Decision} Scale: \emph{Ratio} Range: \emph{[0,N]}\\
+
+Figure~\ref{fig:M14} presents the histogram of consensus state transitions. The numbers in parenthesis represent the size of the population, in terms of number of decisions. The decision creation is accounted for as the first state change. The investigation of relation between the number of consensus state changes and the final consensus state shows that all decisions in \emph{no positions} state have exactly one transition, states in \emph{aligned} state have exactly two transitions, and \emph{colliding} states have precisely three. In context of the decision life-cycle (see Figure~\ref{fig:positions-cycle}) this implies that the consensus state was not volatile during the design workshops.  
+\begin{figure}
+  \begin{center}
+%  \includegraphics[width=0.85\textwidth]{M14.pdf}
+ 
+    \begin{tikzpicture}
+	\begin{axis}[
+		width=\textwidth,
+		height=6cm,
+	    ylabel=,
+	    xtick=data,
+		flexible xticklabels from table={M14.csv}{Number of state changes}{col sep=tab},
+	    enlarge y limits=false,
+	    enlarge x limits=0.1,
+	    %ymin=0,ymax=100,
+	    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+	    ybar,
+	    ymajorgrids = true,			
+	    bar width=10pt,
+	    legend style={
+	      font=\footnotesize,
+	      %cells={anchor=west},
+	      %legend columns=5,
+	      %at={(0.5,-0.15)},
+	      %anchor=north,
+	      %/tikz/every even column/.append style={column sep=0.2cm}
+	    },
+	]  
+ 
+	\addplot+ table[x expr=\coordindex,y={Alternaitves count}, col sep=tab] {"M14.csv"};
+	\legend{Alternatives}     
+	\end{axis} 
+	\end{tikzpicture}
+
+  \caption{Consensus state transitions for the alternatives -- histogram (population size: number of decisions)}
+  \label{fig:M14}
+  \end{center}
+\end{figure}
+
+\vspace{1em}
+\noindent
+\textbf{Metric 15} -- \textbf{Choice state transition count}\\
+Domain: \emph{Issue} Scale: \emph{Ratio} Range: \emph{[0,N]}\\
+
+Analogously to Metric 14, but referring to the design issue life-cycle (Figure~\ref{fig:issue-cycle}), in Figure~\ref{fig:M15-histogram} we present the histogram of the choice state transitions within the population of the design issues. The design issue creation is accounted as first transition. Figure \ref{fig:M15-choice-states} presents the proportions of the final choice state in relation to the number of transitions. From the observation that choice state \emph{no alternatives} applies only to issues with one choice state change, it can be inferred that no alternatives nor positions were deleted in the process. Similarly, from the fact that the \emph{no positions} choice state applies only to design issues with two choice state transitions, it can be inferred that no positions were revoked. The fact that some design issues have more than four state changes (minimum to reach complete choice) indicates that the choice state has flipped at least once during the time-frame of the design workshop. 
+
+\begin{figure}
+  \begin{center}
+%  \includegraphics[width=0.85\textwidth]{M15-histogram.pdf}
+    \begin{tikzpicture}
+	\begin{axis}[
+		width=\textwidth,
+		height=6cm,
+	    ylabel=,
+	    xtick=data,
+		flexible xticklabels from table={M15.csv}{Number of choice changes}{col sep=tab},
+	    enlarge y limits=false,
+	    enlarge x limits=0.1,
+	    %ymin=0,ymax=100,
+	    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+	    ybar,
+	    ymajorgrids = true,			
+	    bar width=10pt,
+	    legend style={
+	      font=\footnotesize,
+	      %cells={anchor=west},
+	      %legend columns=5,
+	      %at={(0.5,-0.15)},
+	      %anchor=north,
+	      %/tikz/every even column/.append style={column sep=0.2cm}
+	    },
+	]  
+ 
+	\addplot+ table[x expr=\coordindex,y={Issues count}, col sep=tab] {"M15.csv"};
+	\legend{Issues}     
+	\end{axis} 
+	\end{tikzpicture}
+
+  \caption{Number of choice state transitions for the issues -- histogram}
+  \label{fig:M15-histogram}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+  \begin{center}
+%  \includegraphics[width=0.85\textwidth]{M15-choice-states.pdf}
+
+   \begin{tikzpicture} 
+			\begin{axis}[
+				width=\textwidth, 
+				height=6cm,
+			    ylabel=,   
+			    xtick=data, 
+				flexible xticklabels from table={M15.csv}{Number of choice changes}{col sep=tab},
+			    enlarge y limits=false, 
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100, 
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt,   
+			    legend style={ 
+			      font=\footnotesize,
+			      %cells={anchor=east},   
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=west,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },  
+			]          
+
+			\addplot+ table[x expr=\coordindex,y={Issues in NoAlternatives}, col sep=tab] {"M15.csv"};
+			\addplot+ table[x expr=\coordindex,y={Issues in NoPositions}, col sep=tab] {"M15.csv"};
+			\addplot+ table[x expr=\coordindex,y={Issues in Incomplete}, col sep=tab] {"M15.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={Issues in Complete}, col sep=tab] {"M15.csv"};
+			\legend{no alternatives, no positions, colliding, aligned}
+			\end{axis}
+	\end{tikzpicture}   
+
+  \caption{Proportion of the final choice states in relation to the number of state transitions.}
+  \label{fig:M15-choice-states}
+  \end{center}
+\end{figure}
+
+\end{document}
+
+%%
+%% End of file `elsarticle-template-harv.tex'.
