@@ -35,4 +35,10 @@ class MetricRow < Array
 	def []( name )
 		return self.fetch( @headers.index {|x| x.strip==name} )
 	end	
+	def isSAW
+		self["Project"].length == 24
+	end
+	def isEP
+		not self.isSAW
+	end
 end
