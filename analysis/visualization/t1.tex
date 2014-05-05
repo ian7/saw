@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.8}
+\usepackage{pdflscape}
+\usepackage{amssymb}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+\usepackage{comment}
+
+
+\makeatletter
+\newcommand\resetstackedplots{
+\makeatletter
+\pgfplots@stacked@isfirstplottrue
+\makeatother
+\addplot [forget plot,draw=none] coordinates{(1,0) (2,0) (3,0)};
+}
+\makeatother
+
+\begin{document}
+
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data,
+				flexible xticklabels from table={M3.csv}{label}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt,
+			    bar shift=1cm, 
+			    legend style={
+			      font=\footnotesize,
+			      %cells={anchor=west},   
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=north,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },
+			]      
+
+			\addplot+ table[x expr=\coordindex,y={no alternatives percent EP}, col sep=tab] {"M3.csv"};
+			\addplot+ table[x expr=\coordindex,y={i no positions percent EP}, col sep=tab] {"M3.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={incomplete percent EP}, col sep=tab] {"M3.csv"};
+			\addplot+ table[x expr=\coordindex,y={complete percent EP}, col sep=tab] {"M3.csv"};
+			\legend{no alternatives, no positions, incomplete, complete}
+			\end{axis}
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data,
+				flexible xticklabels from table={M3.csv}{label}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt,
+			    bar shift=0cm, 
+			]      
+
+			\addplot+ table[x expr=\coordindex,y={no alternatives percent EP}, col sep=tab] {"M3.csv"};
+			\addplot+ table[x expr=\coordindex,y={i no positions percent EP}, col sep=tab] {"M3.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={incomplete percent EP}, col sep=tab] {"M3.csv"};
+			\addplot+ table[x expr=\coordindex,y={complete percent EP}, col sep=tab] {"M3.csv"};
+			\end{axis}
+
+		\end{tikzpicture}  
+  %\includegraphics[width=0.85\textwidth]{M3-issues.pdf}
+  \caption{Relative number of contributors in relation with the choice state}
+  \label{fig:M3-issues}
+  \end{center}
+\end{figure}
+
+
+
+\end{document}

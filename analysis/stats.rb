@@ -261,6 +261,18 @@ allItems.each do |item|
 end
 allUsers.uniq!
 
+	userMap = {
+			"andrea.gallidabino@gmail.com" => "Andrea",
+			"Marcelo" => "Marcello",
+			"tatone80@hotmail.com" => "Marcello",
+			"marcin.nowak@sonyx.net" => "marcin@sonyx.net",
+			"rasel" => "Rasel",
+			"simocomo90@hotmail.it" => "Simone",
+			"gioasis86@hotmail.it" => "Gianluca",
+			"fabio.landoni"=>"Fabio"
+		}
+
+
 userMMs = {}
 allUsers.each{|user| 
 	allProjectsMM = MetricMatrix.new
@@ -268,12 +280,19 @@ allUsers.each{|user|
 	
 	#userObject = UserLogItem.new user, allProjectObjects
 
+
+
 	allProjectObjects.each do |project|
 			extraFilter = Proc.new{ |e| 
-				e.user==user }
+				e.user==user || userMap[e.user]==user}
 			allProjectsMM << project.status( extraFilter )
 		end
-	allProjectsMM.save( "analysis/output/users/#{user}.csv" )
+
+	#!!(self =~ /^[-+]?[0-9]+$/)
+
+	if not userMap[user]
+		allProjectsMM.save( "analysis/output/users/#{user}.csv" )
+	end
 }
 
 puts "we have: #{allUsers.size} unique users"

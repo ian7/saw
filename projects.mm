@@ -1,0 +1,15 @@
+ProjectID	Issues Created	Issues Edited	Alternatives Created	Alternatives Edited	Positive Decisions Created	Negative Decisions Created	Open Decisions Created	Decisions Revoked
+ex4	9	9	9	9	0	0	0	0
+ex5	2	2	5	5	0	0	0	0
+ex7	13	13	27	27	14	6	4	0
+ex8	3	2	7	7	7	1	0	0
+ex9	4	4	8	7	0	0	0	0
+516d4176da300c2ae7000001	0	0	0	0	0	0	0	0
+516fc98bda300c3b96000001	0	0	0	0	0	0	0	0
+517652dfda300c1675000001	6	6	10	4	2	3	1	0
+51765a68da300c1849000001	6	6	11	6	4	5	0	0
+5187d355da300c37f7000001	5	5	11	6	2	4	1	1
+518a833eda300c484c000001	26	9	18	9	2	1	1	1
+51925958da300c697d000001	6	6	13	9	4	4	1	2
+5193a637da300c3002000001	5	4	7	4	2	0	0	0
+519a3a22da300c3793000001	5	5	13	8	5	0	0	0

@@ -30,6 +30,7 @@
 
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usetikzlibrary{pgfplots.groupplots}
 
 \pgfplotstableread{
 1   19.178  26.027  8.219   6.849   39.726
@@ -208,7 +209,7 @@ In Figure~\ref{fig:M1} we present the number of the issues collected in five run
 	\begin{comment}
 	  \includegraphics[width=0.85\textwidth]{M1.pdf}
 	\end{comment}
-  \caption{Number of issues counted in the design workshop exercises}
+  \caption{Number of issues counted in the design workshop exercises (M1)}
   \label{fig:M1}
   \end{center}
 \end{figure}
@@ -255,7 +256,7 @@ Figure~\ref{fig:M2} presents the distribution of the number of design alternativ
 		\end{tikzpicture}
 	\end{center}
 
-	\caption{Histogram of the relative number of alternatives per design issue}
+	\caption{Histogram of the relative number of alternatives per design issue (M2)}
 	\label{fig:M2}
 
 	\begin{comment}
@@ -288,7 +289,7 @@ In Figure~\ref{fig:M3-alternatives} it is visible that the consensus state is re
 				height=6cm,
 			    ylabel=,
 			    xtick=data,
-				flexible xticklabels from table={M3.csv}{Contributors count}{col sep=tab},
+				flexible xticklabels from table={M3.csv}{label}{col sep=tab},
 			    enlarge y limits=false,
 			    enlarge x limits=0.1,
 			    %ymin=0,ymax=100,
@@ -307,16 +308,97 @@ In Figure~\ref{fig:M3-alternatives} it is visible that the consensus state is re
 			    },
 			]      
 
-			\addplot+ table[x expr=\coordindex,y={Issues percent}, col sep=tab] {"M3.csv"}; 
-			\addplot+ table[x expr=\coordindex,y={Alternaitves percent}, col sep=tab] {"M3.csv"};
-			\legend{Issues,Alternatives}
+			\addplot+ table[x expr=\coordindex,y={Issues percent EP}, col sep=tab] {"M3.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={Issues percent SAW}, col sep=tab] {"M3.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={Alternaitves percent EP}, col sep=tab] {"M3.csv"};
+			\addplot+ table[x expr=\coordindex,y={Alternaitves percent SAW}, col sep=tab] {"M3.csv"};
+			\legend{Issues EP,Issues SAW,Alternatives EP, Alternatives SAW}
 			\end{axis}
 		\end{tikzpicture}
 %  \includegraphics[width=0.85\textwidth]{M3-histogram.pdf}
-  \caption{Number of contributors -- histogram}
+  \caption{Number of contributors -- histogram (M3)}
   \label{fig:M3-histogram}
   \end{center}
 \end{figure}
+
+\begin{figure}
+  \begin{center}  
+		\begin{tikzpicture}
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data,
+				flexible xticklabels from table={M3.csv}{Label Issues}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar,
+			    ymajorgrids = true,			  
+			    bar width=10pt,
+			    legend style={
+			      font=\footnotesize,
+			      %cells={anchor=west},
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=north,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },
+			]      
+
+			\addplot+ table[x expr=\coordindex,y={Issues percent EP}, col sep=tab] {"M3.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={Issues percent SAW}, col sep=tab] {"M3.csv"}; 
+			\legend{Issues EP,Issues SAW}
+			\end{axis}
+		\end{tikzpicture}
+%  \includegraphics[width=0.85\textwidth]{M3-histogram.pdf}
+  \caption{Number of contributors for issues -- histogram (M3)}
+  \label{fig:M3-histogram}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+  \begin{center}  
+		\begin{tikzpicture}
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data,
+				flexible xticklabels from table={M3.csv}{Label Alternatives}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar,
+			    ymajorgrids = true,			  
+			    bar width=10pt,
+			    legend style={
+			      font=\footnotesize,
+			      %cells={anchor=west},
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=north,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },
+			]      
+
+			\addplot+ table[x expr=\coordindex,y={Alternaitves percent EP}, col sep=tab] {"M3.csv"};
+			\addplot+ table[x expr=\coordindex,y={Alternaitves percent SAW}, col sep=tab] {"M3.csv"};
+			\legend{Alternatives EP, Alternatives SAW}
+			\end{axis}
+		\end{tikzpicture}
+%  \includegraphics[width=0.85\textwidth]{M3-histogram.pdf}
+  \caption{Number of contributors for alternatives -- histogram (M3)}
+  \label{fig:M3-histogram}
+  \end{center}
+\end{figure}
+
+
+
 \begin{comment}
   \begin{figure}
     \begin{center}
@@ -326,6 +408,16 @@ In Figure~\ref{fig:M3-alternatives} it is visible that the consensus state is re
     \end{center}
   \end{figure}
 \end{comment}
+
+\makeatletter
+\newcommand\resetstackedplots{
+\makeatletter
+\pgfplots@stacked@isfirstplottrue
+\makeatother
+\addplot [forget plot,draw=none] coordinates{(1,0) (2,0) (3,0)};
+}
+\makeatother
+
 \begin{figure}
   \begin{center}
     \begin{tikzpicture}
@@ -334,7 +426,39 @@ In Figure~\ref{fig:M3-alternatives} it is visible that the consensus state is re
 				height=6cm,
 			    ylabel=,
 			    xtick=data,
-				flexible xticklabels from table={M3.csv}{Contributors alternaitves}{col sep=tab},
+				flexible xticklabels from table={M3.csv}{Label Alternatives}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    xmajorgrids = true,			  
+			    bar width=10pt, 
+			    bar shift=-0.3cm,
+%			    legend style={
+%			      font=\footnotesize,
+			      %cells={anchor=west},   
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=north,
+%			      /tikz/every even column/.append style={column sep=0.2cm}
+%			    },
+			]      
+
+			\addplot+ table[x expr=\coordindex,y={no positions percent EP}, col sep=tab] {"M3.csv"};
+			\addplot+ table[x expr=\coordindex,y={aligned percent EP}, col sep=tab] {"M3.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={colliding percent EP}, col sep=tab] {"M3.csv"};
+
+			\end{axis}
+
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data,
+				flexible xticklabels from table={M3.csv}{Label Alternatives}{col sep=tab},
 			    enlarge y limits=false,
 			    enlarge x limits=0.1,
 			    %ymin=0,ymax=100,
@@ -343,6 +467,7 @@ In Figure~\ref{fig:M3-alternatives} it is visible that the consensus state is re
 			    ybar stacked,
 			    ymajorgrids = true,			  
 			    bar width=10pt, 
+			    bar shift=0.3cm,
 			    legend style={
 			      font=\footnotesize,
 			      %cells={anchor=west},   
@@ -353,11 +478,12 @@ In Figure~\ref{fig:M3-alternatives} it is visible that the consensus state is re
 			    },
 			]      
 
-			\addplot+ table[x expr=\coordindex,y={no positions percent}, col sep=tab] {"M3.csv"};
-			\addplot+ table[x expr=\coordindex,y={aligned percent}, col sep=tab] {"M3.csv"}; 
-			\addplot+ table[x expr=\coordindex,y={colliding percent}, col sep=tab] {"M3.csv"};
-			\legend{no positions, aligned, colliding}
-			\end{axis}
+			\addplot+ table[x expr=\coordindex,y={no positions percent SAW}, col sep=tab] {"M3.csv"};
+			\addplot+ table[x expr=\coordindex,y={aligned percent SAW}, col sep=tab] {"M3.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={colliding percent SAW}, col sep=tab] {"M3.csv"};
+			\legend{no positions, aligned, colliding,no positions, aligned, colliding}
+		\end{axis}
+
 		\end{tikzpicture}  
 %  \includegraphics[width=0.85\textwidth]{M3-alternatives.pdf}
   \caption{Proportion of the consensus states in relation to the number of contributors}
@@ -372,7 +498,7 @@ In Figure~\ref{fig:M3-alternatives} it is visible that the consensus state is re
 				height=6cm,
 			    ylabel=,
 			    xtick=data,
-				flexible xticklabels from table={M3.csv}{Contributors issues}{col sep=tab},
+				flexible xticklabels from table={M3.csv}{Label Issues}{col sep=tab},
 			    enlarge y limits=false,
 			    enlarge x limits=0.1,
 			    %ymin=0,ymax=100,
@@ -381,6 +507,35 @@ In Figure~\ref{fig:M3-alternatives} it is visible that the consensus state is re
 			    ybar stacked,
 			    ymajorgrids = true,			  
 			    bar width=10pt, 
+			    bar shift=-0.3cm,
+			    xmin=0,
+			    xmax=6,
+			]      
+
+			\addplot+ table[x expr=\coordindex,y={no alternatives percent EP}, col sep=tab] {"M3.csv"};
+			\addplot+ table[x expr=\coordindex,y={i no positions percent EP}, col sep=tab] {"M3.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={incomplete percent EP}, col sep=tab] {"M3.csv"};
+			\addplot+ table[x expr=\coordindex,y={complete percent EP}, col sep=tab] {"M3.csv"};
+			\end{axis}
+
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data,
+				flexible xticklabels from table={M3.csv}{Label Issues}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    xmin=0,
+			    xmax=6,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    %ymajorgrids = true,			  
+			    bar width=10pt, 
+			    bar shift=0.3cm,
+			    xmajorgrids = true,			  			    
 			    legend style={
 			      font=\footnotesize,
 			      %cells={anchor=west},   
@@ -391,10 +546,10 @@ In Figure~\ref{fig:M3-alternatives} it is visible that the consensus state is re
 			    },
 			]      
 
-			\addplot+ table[x expr=\coordindex,y={no alternatives percent}, col sep=tab] {"M3.csv"};
-			\addplot+ table[x expr=\coordindex,y={i no positions percent}, col sep=tab] {"M3.csv"}; 
-			\addplot+ table[x expr=\coordindex,y={incomplete percent}, col sep=tab] {"M3.csv"};
-			\addplot+ table[x expr=\coordindex,y={complete percent}, col sep=tab] {"M3.csv"};
+			\addplot+ table[x expr=\coordindex,y={no alternatives percent SAW}, col sep=tab] {"M3.csv"};
+			\addplot+ table[x expr=\coordindex,y={i no positions percent SAW}, col sep=tab] {"M3.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={incomplete percent SAW}, col sep=tab] {"M3.csv"};
+			\addplot+ table[x expr=\coordindex,y={complete percent SAW}, col sep=tab] {"M3.csv"};
 			\legend{no alternatives, no positions, incomplete, complete}
 			\end{axis}
 		\end{tikzpicture}  
@@ -419,7 +574,7 @@ The histogram of the number of decision makers presented on Figure~\ref{fig:M4-h
 		height=6cm,
 	    ylabel=,
 	    xtick=data,
-		flexible xticklabels from table={M4.csv}{Contributors count}{col sep=tab},
+		flexible xticklabels from table={M4.csv}{Contributors count EP}{col sep=tab},
 	    enlarge y limits=false,
 	    enlarge x limits=0.1,
 	    %ymin=0,ymax=100,
@@ -438,8 +593,8 @@ The histogram of the number of decision makers presented on Figure~\ref{fig:M4-h
 	    },
 	]      
 
-	\addplot+ table[x expr=\coordindex,y={Issues percent}, col sep=tab] {"M4.csv"}; 
-	\addplot+ table[x expr=\coordindex,y={Alternaitves percent}, col sep=tab] {"M4.csv"};
+	\addplot+ table[x expr=\coordindex,y={Issues percent EP}, col sep=tab] {"M4.csv"}; 
+	\addplot+ table[x expr=\coordindex,y={Alternaitves percent EP}, col sep=tab] {"M4.csv"};
 	\legend{Issues,Alternatives}
   	\end{axis}
 	\end{tikzpicture}
@@ -456,7 +611,7 @@ The histogram of the number of decision makers presented on Figure~\ref{fig:M4-h
 				height=6cm,
 			    ylabel=,
 			    xtick=data,
-				flexible xticklabels from table={M4.csv}{Contributors alternaitves}{col sep=tab},
+				flexible xticklabels from table={M4.csv}{Label Alternatives}{col sep=tab},
 			    enlarge y limits=false,
 			    enlarge x limits=0.1,
 			    %ymin=0,ymax=100,
@@ -465,6 +620,29 @@ The histogram of the number of decision makers presented on Figure~\ref{fig:M4-h
 			    ybar stacked,
 			    ymajorgrids = true,			  
 			    bar width=10pt, 
+			    bar shift=-0.3cm,
+			]      
+
+			\addplot+ table[x expr=\coordindex,y={no positions percent EP}, col sep=tab] {"M4.csv"};
+			\addplot+ table[x expr=\coordindex,y={aligned percent EP}, col sep=tab] {"M4.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={colliding percent EP}, col sep=tab] {"M4.csv"};
+			\end{axis}
+			
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data,
+				flexible xticklabels from table={M4.csv}{Label Alternatives}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt,
+			    bar shift=0.3cm,  
 			    legend style={
 			      font=\footnotesize,
 			      %cells={anchor=west},   
@@ -475,30 +653,54 @@ The histogram of the number of decision makers presented on Figure~\ref{fig:M4-h
 			    },
 			]      
 
-			\addplot+ table[x expr=\coordindex,y={no positions percent}, col sep=tab] {"M4.csv"};
-			\addplot+ table[x expr=\coordindex,y={aligned percent}, col sep=tab] {"M4.csv"}; 
-			\addplot+ table[x expr=\coordindex,y={colliding percent}, col sep=tab] {"M4.csv"};
+			\addplot+ table[x expr=\coordindex,y={no positions percent SAW}, col sep=tab] {"M4.csv"};
+			\addplot+ table[x expr=\coordindex,y={aligned percent SAW}, col sep=tab] {"M4.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={colliding percent SAW}, col sep=tab] {"M4.csv"};
 			\legend{no positions, aligned, colliding}
 			\end{axis}
+
 		\end{tikzpicture}  
-  \caption{Number of decision makers in relation to the consensus state}
+  \caption{Proportion of the alternative consensus state in relation to the decision makers}
   \label{fig:M4-alternatives}
   \end{center}
 \end{figure}
 \begin{figure}
   \begin{center}
    \begin{tikzpicture}
+
 			\begin{axis}[
 				width=\textwidth,
 				height=6cm,
 			    ylabel=,
 			    xtick=data,
-				flexible xticklabels from table={M3.csv}{Contributors issues}{col sep=tab},
+				flexible xticklabels from table={M4.csv}{Label Issues}{col sep=tab},
 			    enlarge y limits=false,
 			    enlarge x limits=0.1,
-			    %ymin=0,ymax=100,
 			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
 			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt, 
+			    xmin=0, xmax=5,
+			    bar shift=-0.3cm,
+			]       
+
+			\addplot+ table[x expr=\coordindex,y={no alternatives percent EP}, col sep=tab] {"M4.csv"};
+			\addplot+ table[x expr=\coordindex,y={i no positions percent EP}, col sep=tab] {"M4.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={incomplete percent EP}, col sep=tab] {"M4.csv"};
+			\addplot+ table[x expr=\coordindex,y={complete percent EP}, col sep=tab] {"M4.csv"};
+			\end{axis} 
+
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data,
+				flexible xticklabels from table={M4.csv}{Label Issues}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center}, 
 			    ybar stacked,
 			    ymajorgrids = true,			  
 			    bar width=10pt, 
@@ -510,17 +712,22 @@ The histogram of the number of decision makers presented on Figure~\ref{fig:M4-h
 			      %anchor=north,
 			      /tikz/every even column/.append style={column sep=0.2cm}
 			    },
+			    bar shift=0.3cm,			    
+			    xmin=0,
+			    xmax=5,
 			]      
 
-			\addplot+ table[x expr=\coordindex,y={no alternatives percent}, col sep=tab] {"M4.csv"};
-			\addplot+ table[x expr=\coordindex,y={i no positions percent}, col sep=tab] {"M4.csv"}; 
-			\addplot+ table[x expr=\coordindex,y={incomplete percent}, col sep=tab] {"M4.csv"};
-			\addplot+ table[x expr=\coordindex,y={complete percent}, col sep=tab] {"M4.csv"};
+			\addplot+ table[x expr=\coordindex,y={no alternatives percent SAW}, col sep=tab] {"M4.csv"};
+			\addplot+ table[x expr=\coordindex,y={i no positions percent SAW}, col sep=tab] {"M4.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={incomplete percent SAW}, col sep=tab] {"M4.csv"};
+			\addplot+ table[x expr=\coordindex,y={complete percent SAW}, col sep=tab] {"M4.csv"};
 			\legend{no alternatives, no positions, incomplete, complete}
 			\end{axis}
+
+
 		\end{tikzpicture}  
   %\includegraphics[width=0.85\textwidth]{M4-issues.pdf}
-  \caption{Number of decision makers in relation with the choice state}
+  \caption{Porpoprtion of the choice states to the number of the decision makers (M4)}
   \label{fig:M4-issues}
   \end{center}
 \end{figure}
@@ -533,6 +740,7 @@ The histogram of the number of decision makers presented on Figure~\ref{fig:M4-h
 Domain: \emph{Issue, Alternative} Scale: \emph{Ratio} Range: \emph{[0,N]}
 
 The histogram of the decision item activity timespan presented in Figure~\ref{fig:M5-classes} shows that there is a significant disparity between the level of activity over time of design issues and design alternatives. It appears that 60\% of the design issues are created within the first 10 minutes, whereas most alternatives are refined over a longer period of time (see also the cumulative distribution shown in Figure~\ref{fig:M5-summative}). 
+
 \begin{figure}
   \begin{center}
 	\begin{tikzpicture}
@@ -541,14 +749,14 @@ The histogram of the decision item activity timespan presented in Figure~\ref{fi
 		height=6cm,
 	    ylabel=,
 	    xtick=data,
-		flexible xticklabels from table={M5.csv}{Timespan bucket}{col sep=tab},
 	    enlarge y limits=false,
 	    enlarge x limits=0.1,
-	    %ymin=0,ymax=100,
 	    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+	    xticklabel style={align=center},
 	    ybar,
-	    ymajorgrids = true,			
-	    bar width=10pt,
+	    ymajorgrids = true,			  
+	    bar width=10pt, 
+		flexible xticklabels from table={M5.csv}{Label Issues}{col sep=tab},
 	    legend style={
 	      font=\footnotesize,
 	      cells={anchor=west},
@@ -559,9 +767,11 @@ The histogram of the decision item activity timespan presented in Figure~\ref{fi
 	    },
 	]  
 
-	\addplot+ table[x expr=\coordindex,y={Activity Timespan Issues percent}, col sep=tab] {"M5.csv"};
-	\addplot+ table[x expr=\coordindex,y={Activity Timespan Alternatives percent}, col sep=tab] {"M5.csv"};
-	\legend{Issues, Alternatives}     
+	\addplot+ table[x expr=\coordindex,y={Activity Timespan Issues percent EP}, col sep=tab] {"M5.csv"};
+	\addplot+ table[x expr=\coordindex,y={Activity Timespan Issues percent SAW}, col sep=tab] {"M5.csv"};
+%	\addplot+ table[x expr=\coordindex,y={Activity Timespan Alternatives percent EP}, col sep=tab] {"M5.csv"};
+%	\addplot+ table[x expr=\coordindex,y={Activity Timespan Alternatives percent SAW}, col sep=tab] {"M5.csv"};
+	\legend{Issues EP, Issues SAW}     
 	\end{axis} 
 \end{tikzpicture}
   %\includegraphics[width=0.85\textwidth]{M5-classes.pdf}
@@ -569,6 +779,48 @@ The histogram of the decision item activity timespan presented in Figure~\ref{fi
   \label{fig:M5-classes}
   \end{center}
 \end{figure}
+
+\begin{figure}
+  \begin{center}
+	\begin{tikzpicture}
+	\begin{axis}[
+		width=\textwidth,
+		height=6cm,
+	    ylabel=,
+	    xtick=data,
+	    enlarge y limits=false,
+	    enlarge x limits=0.1,
+	    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+	    xticklabel style={align=center},
+	    ybar,
+	    ymajorgrids = true,			  
+	    bar width=10pt, 
+		flexible xticklabels from table={M5.csv}{Label Alternatives}{col sep=tab},
+	    legend style={
+	      font=\footnotesize,
+	      cells={anchor=west},
+	      legend columns=5,
+	      %at={(0.5,-0.15)},
+	      %anchor=north,
+	      /tikz/every even column/.append style={column sep=0.2cm}
+	    },
+	]   
+
+%	\addplot+ table[x expr=\coordindex,y={Activity Timespan Issues percent EP}, col sep=tab] {"M5.csv"};
+%	\addplot+ table[x expr=\coordindex,y={Activity Timespan Issues percent SAW}, col sep=tab] {"M5.csv"};
+	\addplot+ table[x expr=\coordindex,y={Activity Timespan Alternatives percent EP}, col sep=tab] {"M5.csv"};
+	\addplot+ table[x expr=\coordindex,y={Activity Timespan Alternatives percent SAW}, col sep=tab] {"M5.csv"};
+	\legend{Alternatives EP, Alternatives SAW}     
+	\end{axis} 
+\end{tikzpicture}
+  %\includegraphics[width=0.85\textwidth]{M5-classes.pdf}
+  \caption{Activity timespan -- histogram (10 minute intervals)}
+  \label{fig:M5-classes}
+  \end{center}
+\end{figure}
+ 
+
+
 \begin{figure}
   \begin{center}
   %\includegraphics[width=0.85\textwidth]{M5-summative.pdf}
@@ -585,7 +837,7 @@ The histogram of the decision item activity timespan presented in Figure~\ref{fi
 	    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
 	    ybar,
 	    ymajorgrids = true,			
-	    bar width=10pt,
+	    bar width=4pt,
 	    legend style={
 	      font=\footnotesize,
 	      cells={anchor=west},
@@ -596,9 +848,11 @@ The histogram of the decision item activity timespan presented in Figure~\ref{fi
 	    },
 	]  
 
-	\addplot+ table[x expr=\coordindex,y={Activity Timespan Issues sum}, col sep=tab] {"M5.csv"};
-	\addplot+ table[x expr=\coordindex,y={Activity Timespan Alternatives sum}, col sep=tab] {"M5.csv"};
-	\legend{Issues, Alternatives}     
+	\addplot+ table[x expr=\coordindex,y={Activity Timespan Issues sum EP}, col sep=tab] {"M5.csv"};
+	\addplot+ table[x expr=\coordindex,y={Activity Timespan Issues sum SAW}, col sep=tab] {"M5.csv"};
+	\addplot+ table[x expr=\coordindex,y={Activity Timespan Alternatives sum EP} , col sep=tab] {"M5.csv"};
+	\addplot+ table[x expr=\coordindex,y={Activity Timespan Alternatives sum SAW} , col sep=tab] {"M5.csv"};
+	\legend{Issues EP, Issues SAW, Alternatives EP, Alternatives SAW}     
 	\end{axis} 
 \end{tikzpicture}
   \caption{Cumulative distribution of activity timespan. Alternatives are refined over a longer timespan than design issues}
@@ -628,21 +882,23 @@ The histogram of the time since last change for the design issues and alternativ
 	    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
 	    ybar,
 	    ymajorgrids = true,			
-	    bar width=10pt,
+	    bar width=4pt,
 	    legend style={
 	      font=\footnotesize,
 	      cells={anchor=west},
-	      legend columns=5,
-	      %at={(0.5,-0.15)},
+	      legend columns=5, 
+	      %at={(0.5,-0.15)}, 
 	      %anchor=north,
 	      /tikz/every even column/.append style={column sep=0.2cm}
 	    },
-	]  
+	]   
  
-	\addplot+ table[x expr=\coordindex,y={Last change Issues percent}, col sep=tab] {"M6.csv"};
-	\addplot+ table[x expr=\coordindex,y={Last change Alternatives percent}, col sep=tab] {"M6.csv"};
-	\legend{Issues, Alternatives}     
-	\end{axis} 
+	\addplot+ table[x expr=\coordindex,y={Last change Issues percent EP}, col sep=tab] {"M6.csv"};
+	\addplot+ table[x expr=\coordindex,y={Last change Issues percent SAW}, col sep=tab] {"M6.csv"};
+	\addplot+ table[x expr=\coordindex,y={Last change Alternatives percent EP}, col sep=tab] {"M6.csv"};
+	\addplot+ table[x expr=\coordindex,y={Last change Alternatives percent SAW}, col sep=tab] {"M6.csv"};
+	\legend{Issues EP, Issues SAW, Alternatives EP, Alternatives SAW}     
+	\end{axis}  
 	\end{tikzpicture}
   %\includegraphics[width=0.85\textwidth]{M6-classes.pdf}
   \caption{Time since last change -- histogram (10 minute intervals). Very recently edited items are on the left, while old items are towards the right.}
@@ -672,6 +928,7 @@ In the histogram presented in Figure~\ref{fig:M7-summative} it can be observed t
 \begin{figure}
   \begin{center}
 %  \includegraphics[width=0.85\textwidth]{M7.pdf}
+\begin{comment}
   \begin{tikzpicture}
 	\begin{axis}[
 		width=\textwidth,
@@ -696,20 +953,75 @@ In the histogram presented in Figure~\ref{fig:M7-summative} it can be observed t
 	    },
 	]  
  
-	\addplot+ table[x expr=\coordindex,y={Positive decisions}, col sep=tab] {"M7.csv"};
-	\addplot+ table[x expr=\coordindex,y={Negative decisions}, col sep=tab] {"M7.csv"};
-	\addplot+ table[x expr=\coordindex,y={Open decisions}, col sep=tab] {"M7.csv"};
-	\addplot+ table[x expr=\coordindex,y={Any decisions}, col sep=tab] {"M7.csv"};
+	\addplot+ table[x expr=\coordindex,y={Positive decisions EP}, col sep=tab] {"M7.csv"};
+	\addplot+ table[x expr=\coordindex,y={Negative decisions EP}, col sep=tab] {"M7.csv"};
+	\addplot+ table[x expr=\coordindex,y={Open decisions EP}, col sep=tab] {"M7.csv"};
+	\addplot+ table[x expr=\coordindex,y={Any decisions EP}, col sep=tab] {"M7.csv"};
+	\nextgroupplot
+	\addplot+ table[x expr=\coordindex,y={Positive decisions SAW}, col sep=tab] {"M7.csv"};
+	\addplot+ table[x expr=\coordindex,y={Negative decisions SAW}, col sep=tab] {"M7.csv"};
+	\addplot+ table[x expr=\coordindex,y={Open decisions SAW}, col sep=tab] {"M7.csv"};
+	\addplot+ table[x expr=\coordindex,y={Any decisions SAW}, col sep=tab] {"M7.csv"};
 	\legend{Positive, Negative, Open, Any}     
 	\end{axis} 
-	\end{tikzpicture}
 
-  \caption{Number of positive, negative, and open positions within an alternative -- histogram}
+	\end{tikzpicture}
+\end{comment}
+
+\begin{tikzpicture}
+	\begin{groupplot}[
+	    group style={
+	        group name=my plots,
+	        group size=1 by 2,
+	        xlabels at=edge bottom,
+	        xticklabels at=edge bottom,
+	        vertical sep=0pt,
+	    },
+        width=\textwidth,
+        height=6cm,
+        ylabel=,
+        xtick=data,
+        flexible xticklabels from table={M7.csv}{Count bucket}{col sep=tab},
+        enlarge y limits=false,
+        enlarge x limits=0.1,
+        ymin=0,ymax=100,
+        yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+        ybar,
+        ymajorgrids = true,         
+        legend style={
+          font=\footnotesize,
+          %cells={anchor=west}, 
+          %legend columns=5,
+          %at={(0.5,-0.15)},
+          %anchor=north,
+          %/tikz/every even column/.append style={column sep=0.2cm}
+        }, 
+] 
+
+\nextgroupplot[bar width=5pt]
+%\addplot [fill=blue] coordinates{(0,0) (1,9.94) (2,0.72)(3,1.17)(4,1.05)(5,0.67)(6,0.24)(7,1.75)(8,0)(9,0)(10,1.21)(11,0)};
+    \addplot+ table[x expr=\coordindex,y={Positive decisions EP}, col sep=tab] {"M7.csv"};
+    \addplot+ table[x expr=\coordindex,y={Negative decisions EP}, col sep=tab] {"M7.csv"};
+    \addplot+ table[x expr=\coordindex,y={Open decisions EP}, col sep=tab] {"M7.csv"};
+    \addplot+ table[x expr=\coordindex,y={Any decisions EP}, col sep=tab] {"M7.csv"};
+	\legend{Positive, Negative, Open, Any}     
+    \nextgroupplot[bar width=5pt,y dir=reverse]
+    \addplot+ table[x expr=\coordindex,y={Positive decisions SAW}, col sep=tab] {"M7.csv"};
+    \addplot+ table[x expr=\coordindex,y={Negative decisions SAW}, col sep=tab] {"M7.csv"};
+    \addplot+ table[x expr=\coordindex,y={Open decisions SAW}, col sep=tab] {"M7.csv"};
+    \addplot+ table[x expr=\coordindex,y={Any decisions SAW}, col sep=tab] {"M7.csv"};
+
+%\addplot [fill=red] coordinates{(0,0) (1,14.04) (2,0.72)(3,0)(4,22.81)(5,3.34)(6,2.05)(7,11.23)(8,2.59)(9,0)(10,0.61)(11,0)};
+%\nextgroupplot[ymax=5]
+%\addplot [fill=red] coordinates{(0,0) (1,0) (2,0)(3,0)(4,0.53)(5,0.33)(6,0.73)(7,0)(8,0)(9,0)(10,3.9)(11,0.17)};
+\end{groupplot}
+\end{tikzpicture}
+  \caption{Distribution of position types (positive, negative and open) in relation to the number of positions per decision (histogram) M7}
   \label{fig:M7-summative}
   \end{center}
 \end{figure}
 
-\vspace{1em}
+\vspace{1em} 
 \noindent
 \textbf{Metric 8} -- \textbf{Consensus state}\\
 \emph{Domain: Decision} \emph{Scale: Ordinal} \emph{Range: \{no positions, aligned, colliding, sealed\}}
@@ -723,7 +1035,7 @@ In Figure~\ref{fig:M8} we can see how decision consensus depends on the number o
 				height=6cm,
 			    ylabel=,
 			    xtick=data, 
-				flexible xticklabels from table={M8.csv}{Decision count}{col sep=tab},
+				flexible xticklabels from table={M8.csv}{Label}{col sep=tab},
 			    enlarge y limits=false,
 			    enlarge x limits=0.1,
 			    %ymin=0,ymax=100,
@@ -732,6 +1044,36 @@ In Figure~\ref{fig:M8} we can see how decision consensus depends on the number o
 			    ybar stacked,
 			    ymajorgrids = true,			  
 			    bar width=10pt, 
+			    bar shift=-0.3cm,
+			    legend style={
+			      font=\footnotesize,
+			      %cells={anchor=west},   
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=north, 
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },
+			]      
+
+			\addplot+ table[x expr=\coordindex,y={no positions EP}, col sep=tab] {"M8.csv"};
+			\addplot+ table[x expr=\coordindex,y={colliding EP}, col sep=tab] {"M8.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={aligned EP}, col sep=tab] {"M8.csv"};
+			\end{axis}
+			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=, 
+			    xtick=data, 
+				flexible xticklabels from table={M8.csv}{Label}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt, 
+				bar shift=0.3cm,
 			    legend style={
 			      font=\footnotesize,
 			      %cells={anchor=west},   
@@ -742,15 +1084,16 @@ In Figure~\ref{fig:M8} we can see how decision consensus depends on the number o
 			    },
 			]      
 
-			\addplot+ table[x expr=\coordindex,y={no positions}, col sep=tab] {"M8.csv"};
-			\addplot+ table[x expr=\coordindex,y={colliding}, col sep=tab] {"M8.csv"}; 
-			\addplot+ table[x expr=\coordindex,y={aligned}, col sep=tab] {"M8.csv"};
+			\addplot+ table[x expr=\coordindex,y={no positions SAW}, col sep=tab] {"M8.csv"};
+			\addplot+ table[x expr=\coordindex,y={colliding SAW}, col sep=tab] {"M8.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={aligned SAW}, col sep=tab] {"M8.csv"};
 			\legend{no positions, colliding, aligned}
 			\end{axis}
+
 		\end{tikzpicture}  
 
 %  \includegraphics[width=0.85\textwidth]{M8.pdf}
-  \caption{Proportion of the consensus states in relation with the number of positions}
+  \caption{Proportion of the consensus states in relation with the number of positions (M8)} 
   \label{fig:M8}
   \end{center}
 \end{figure}
@@ -771,7 +1114,7 @@ In Figure~\ref{fig:M9} we can see that independently of the number of alternativ
 				height=6cm,
 			    ylabel=,
 			    xtick=data, 
-				flexible xticklabels from table={M9.csv}{Alternative count}{col sep=tab},
+				flexible xticklabels from table={M9.csv}{Label}{col sep=tab},
 			    enlarge y limits=false,
 			    enlarge x limits=0.1,
 			    ymin=0,ymax=100,
@@ -779,7 +1122,8 @@ In Figure~\ref{fig:M9} we can see that independently of the number of alternativ
 			    xticklabel style={align=center},
 			    ybar stacked,
 			    ymajorgrids = true,			  
-			    bar width=10pt,  
+			    bar width=10pt,   
+			    bar shift=-0.3cm,
 			    legend style={
 			      font=\footnotesize,
 			      %cells={anchor=west},   
@@ -790,14 +1134,45 @@ In Figure~\ref{fig:M9} we can see that independently of the number of alternativ
 			    },  
 			]       
 
-			\addplot+ table[x expr=\coordindex,y={no positions}, col sep=tab] {"M9.csv"};
-			\addplot+ table[x expr=\coordindex,y={colliding}, col sep=tab] {"M9.csv"}; 
-			\addplot+ table[x expr=\coordindex,y={aligned}, col sep=tab] {"M9.csv"};
+			\addplot+ table[x expr=\coordindex,y={no positions EP}, col sep=tab] {"M9.csv"};
+			\addplot+ table[x expr=\coordindex,y={colliding EP}, col sep=tab] {"M9.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={aligned EP}, col sep=tab] {"M9.csv"};
+			\end{axis}
+
+			\begin{axis}[ 
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data, 
+				flexible xticklabels from table={M9.csv}{Label}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt,   
+			    bar shift=0.3cm,
+			    legend style={
+			      font=\footnotesize,
+			      %cells={anchor=west},   
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=north,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },  
+			]       
+
+			\addplot+ table[x expr=\coordindex,y={no positions SAW}, col sep=tab] {"M9.csv"};
+			\addplot+ table[x expr=\coordindex,y={colliding SAW}, col sep=tab] {"M9.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={aligned SAW}, col sep=tab] {"M9.csv"};
 			\legend{no positions, colliding, aligned}
 			\end{axis}
-		\end{tikzpicture}   
 
-  \caption{Proportion of the consensus states in relation with the number of alternatives (population size: number of issues shown in parenthesis)}
+		\end{tikzpicture}    
+
+  \caption{Proportion of the consensus states in relation with the number of alternatives (population size: number of issues shown in parenthesis)(M9)}
   \label{fig:M9}
   \end{center}
 \end{figure}
@@ -817,7 +1192,7 @@ Out of 89 design issues, 30 (34\%) are with \emph{no alternatives}, 8 (9\%) have
 				height=6cm,
 			    ylabel=,
 			    xtick=data, 
-				flexible xticklabels from table={M10.csv}{Alternative count}{col sep=tab},
+				flexible xticklabels from table={M10.csv}{Label}{col sep=tab},
 			    enlarge y limits=false,
 			    enlarge x limits=0.1,
 			    %ymin=0,ymax=100,
@@ -826,6 +1201,38 @@ Out of 89 design issues, 30 (34\%) are with \emph{no alternatives}, 8 (9\%) have
 			    ybar stacked,
 			    ymajorgrids = true,			  
 			    bar width=10pt,  
+			    bar shift=-0.3cm,
+			    legend style={
+			      font=\footnotesize,
+			      %cells={anchor=west},   
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=north,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },  
+			]         
+ 
+			\addplot+ table[x expr=\coordindex,y={no alternatives EP}, col sep=tab] {"M10.csv"};
+			\addplot+ table[x expr=\coordindex,y={no positions EP}, col sep=tab] {"M10.csv"};
+			\addplot+ table[x expr=\coordindex,y={incomplete EP}, col sep=tab] {"M10.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={complete EP}, col sep=tab] {"M10.csv"};
+			\legend{no alternatives, no positions, colliding, aligned}
+			\end{axis}
+			\begin{axis}[ 
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data, 
+				flexible xticklabels from table={M10.csv}{Label}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt,  
+			    bar shift=0.3cm,
 			    legend style={
 			      font=\footnotesize,
 			      %cells={anchor=west},   
@@ -836,12 +1243,13 @@ Out of 89 design issues, 30 (34\%) are with \emph{no alternatives}, 8 (9\%) have
 			    },  
 			]         
 
-			\addplot+ table[x expr=\coordindex,y={no alternatives}, col sep=tab] {"M10.csv"};
-			\addplot+ table[x expr=\coordindex,y={no positions}, col sep=tab] {"M10.csv"};
-			\addplot+ table[x expr=\coordindex,y={incomplete}, col sep=tab] {"M10.csv"}; 
-			\addplot+ table[x expr=\coordindex,y={complete}, col sep=tab] {"M10.csv"};
+			\addplot+ table[x expr=\coordindex,y={no alternatives SAW}, col sep=tab] {"M10.csv"};
+			\addplot+ table[x expr=\coordindex,y={no positions SAW}, col sep=tab] {"M10.csv"};
+			\addplot+ table[x expr=\coordindex,y={incomplete SAW}, col sep=tab] {"M10.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={complete SAW}, col sep=tab] {"M10.csv"};
 			\legend{no alternatives, no positions, colliding, aligned}
 			\end{axis}
+
  		\end{tikzpicture}   
 
   \caption{Proportion of the choice states in relation to the number of alternatives (population size: number of issues shown in parenthesis)}
