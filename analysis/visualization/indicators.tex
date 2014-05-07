@@ -938,12 +938,12 @@ In the histogram presented in Figure~\ref{fig:M7-summative} it can be observed t
 		flexible xticklabels from table={M7.csv}{Count bucket}{col sep=tab},
 	    enlarge y limits=false,
 	    enlarge x limits=0.1,
-	    %ymin=0,ymax=100,
+	    ymin=0,ymax=40,
 	    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
 	    ybar,
 	    ymajorgrids = true,			
-	    bar width=7pt,
-	    legend style={
+	    bar width=7pt, 
+	    legend style={ 
 	      font=\footnotesize,
 	      %cells={anchor=west}, 
 	      %legend columns=5,
@@ -984,7 +984,7 @@ In the histogram presented in Figure~\ref{fig:M7-summative} it can be observed t
         flexible xticklabels from table={M7.csv}{Count bucket}{col sep=tab},
         enlarge y limits=false,
         enlarge x limits=0.1,
-        ymin=0,ymax=100,
+        ymin=0,ymax=30,
         yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
         ybar,
         ymajorgrids = true,         
@@ -1266,7 +1266,7 @@ The amount of time that each decision spends in a given consensus state can be o
 %
 In Figure~\ref{fig:M11} we can observe that decisions whose final consensus state is \emph{no positions}, are not visiting any other states (compare with Metric 14). Similarly with decisions in \emph{aligned} state, the only other visited state is \emph{no positions}. Finally the decisions with \emph{colliding} final state, remain for some time in both \emph{no positions} and \emph{aligned} states. The general observation that can be drawn from the fact that the state in which decisions spent the most of time is consistent with their final consensus state, decisions change their consensus state mostly towards the beginning of their lifecycle. 
 \begin{figure}
-  \begin{center}
+  \begin{center} 
  
   \begin{tikzpicture} 
 			\begin{axis}[
@@ -1274,15 +1274,16 @@ In Figure~\ref{fig:M11} we can observe that decisions whose final consensus stat
 				height=6cm,
 			    ylabel=,
 			    xtick=data, 
-				flexible xticklabels from table={M11.csv}{Decision state}{col sep=tab},
+				flexible xticklabels from table={M11.csv}{Label}{col sep=tab},
 			    enlarge y limits=false,
 			    enlarge x limits=0.1,
-			    %ymin=0,ymax=100,
+			    ymin=0,ymax=100,
 			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
 			    xticklabel style={align=center},
 			    ybar stacked,
 			    ymajorgrids = true,			  
-			    bar width=10pt,  
+			    bar width=10pt,   
+			    bar shift=-0.3cm,
 			    legend style={ 
 			      font=\footnotesize,
 			      %cells={anchor=east},   
@@ -1293,15 +1294,48 @@ In Figure~\ref{fig:M11} we can observe that decisions whose final consensus stat
 			    },  
 			]         
 
-			\addplot+ table[x expr=\coordindex,y={no positions}, col sep=tab] {"M11.csv"};
-			\addplot+ table[x expr=\coordindex,y={aligned}, col sep=tab] {"M11.csv"}; 
-			\addplot+ table[x expr=\coordindex,y={colliding}, col sep=tab] {"M11.csv"};
-			\legend{no alternatives, no positions, colliding, aligned}
+			\addplot+ table[x expr=\coordindex,y={no positions EP}, col sep=tab] {"M11.csv"};
+			\addplot+ table[x expr=\coordindex,y={aligned EP}, col sep=tab] {"M11.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={colliding EP}, col sep=tab] {"M11.csv"};
+%			\legend{no alternatives, no positions, colliding, aligned}
 			\end{axis}
+
+			\begin{axis}[
+				width=\textwidth,  
+				height=6cm,
+			    ylabel=,
+			    xtick=data, 
+				flexible xticklabels from table={M11.csv}{Label}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt,  
+   			    bar shift=0.3cm,
+			    legend style={ 
+			      font=\footnotesize,
+			      %cells={anchor=east},   
+			      %legend columns=5,
+			      %at={(0.5,-0.15)},
+			      %anchor=west,
+   			      at={(0.01,0.75)},
+			      anchor=west,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },  
+			]         
+
+			\addplot+ table[x expr=\coordindex,y={no positions SAW}, col sep=tab] {"M11.csv"};
+			\addplot+ table[x expr=\coordindex,y={aligned SAW}, col sep=tab] {"M11.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={colliding SAW}, col sep=tab] {"M11.csv"};
+			\legend{no positions, aligned, colliding}
+			\end{axis}			
  		\end{tikzpicture}   
 
 %  \includegraphics[width=0.85\textwidth]{M11.pdf}
-  \caption{Relative amount of time that decisions spend in the consensus state, in relation to their final consensus state}
+  \caption{Relative amount of time that decisions spend in the consensus state, in relation to their final consensus state (M11)}
   \label{fig:M11}
   \end{center}
 \end{figure}
@@ -1321,15 +1355,16 @@ As pictured in Figure~\ref{fig:M12}, the design issues that have final state of 
 				height=6cm,
 			    ylabel=,
 			    xtick=data, 
-				flexible xticklabels from table={M12.csv}{Choice state}{col sep=tab},
+				flexible xticklabels from table={M12.csv}{Label}{col sep=tab},
 			    enlarge y limits=false, 
 			    enlarge x limits=0.1,
-			    %ymin=0,ymax=100, 
+			    ymin=0,ymax=100, 
 			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
 			    xticklabel style={align=center},
 			    ybar stacked,
 			    ymajorgrids = true,			  
 			    bar width=10pt,   
+			    bar shift=-0.3cm,
 			    legend style={ 
 			      font=\footnotesize,
 			      %cells={anchor=east},   
@@ -1338,18 +1373,48 @@ As pictured in Figure~\ref{fig:M12}, the design issues that have final state of 
 			      %anchor=west,
 			      /tikz/every even column/.append style={column sep=0.2cm}
 			    },  
-			]          
+			]           
 
-			\addplot+ table[x expr=\coordindex,y={no alternatives}, col sep=tab] {"M12.csv"};
-			\addplot+ table[x expr=\coordindex,y={no positions}, col sep=tab] {"M12.csv"};
-			\addplot+ table[x expr=\coordindex,y={incomplete}, col sep=tab] {"M12.csv"}; 
-			\addplot+ table[x expr=\coordindex,y={complete}, col sep=tab] {"M12.csv"};
-			\legend{no alternatives, no positions, colliding, aligned}
+			\addplot+ table[x expr=\coordindex,y={no alternatives EP}, col sep=tab] {"M12.csv"};
+			\addplot+ table[x expr=\coordindex,y={no positions EP}, col sep=tab] {"M12.csv"};
+			\addplot+ table[x expr=\coordindex,y={incomplete EP}, col sep=tab] {"M12.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={complete EP}, col sep=tab] {"M12.csv"};
+			\end{axis}
+			\begin{axis}[
+				width=\textwidth, 
+				height=6cm,
+			    ylabel=,
+			    xtick=data, 
+				flexible xticklabels from table={M12.csv}{Label}{col sep=tab},
+			    enlarge y limits=false, 
+			    enlarge x limits=0.1,
+			    ymin=0,ymax=100, 
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    xticklabel style={align=center},
+			    ybar stacked,
+			    ymajorgrids = true,			  
+			    bar width=10pt,   
+			    bar shift=0.3cm,
+			    legend style={ 
+			      font=\footnotesize,
+			      %cells={anchor=east},   
+			      %legend columns=5,
+			      at={(0.01,0.75)},
+			      anchor=west,
+			      /tikz/every even column/.append style={column sep=0.2cm}
+			    },  
+			]           
+
+			\addplot+ table[x expr=\coordindex,y={no alternatives SAW}, col sep=tab] {"M12.csv"};
+			\addplot+ table[x expr=\coordindex,y={no positions SAW}, col sep=tab] {"M12.csv"};
+			\addplot+ table[x expr=\coordindex,y={incomplete SAW}, col sep=tab] {"M12.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={complete SAW}, col sep=tab] {"M12.csv"};
+			\legend{no alternatives, no positions, incomplete, complete}
 			\end{axis}
 	\end{tikzpicture}   
 
 %  \includegraphics[width=0.85\textwidth]{M12.pdf}
-  \caption{Relative amount of time that issues spend in the choice state, in relation to their final  choice state}
+  \caption{Relative amount of time that issues spend in the choice state, in relation to their final  choice state (M12)}
   \label{fig:M12}
   \end{center}
 \end{figure}
@@ -1363,9 +1428,10 @@ The amount of time since a position was expressed does not appear uniformly dist
 \begin{figure}
   \begin{center}
   %\includegraphics[width=0.85\textwidth]{M13.pdf}
+  \begin{comment}
     \begin{tikzpicture}
 	\begin{axis}[
-		width=\textwidth,
+		width=\textwidth, 
 		height=6cm,
 	    ylabel=,
 	    xtick=data,
@@ -1387,11 +1453,57 @@ The amount of time since a position was expressed does not appear uniformly dist
 	    },
 	]  
  
-	\addplot+ table[x expr=\coordindex,y={Last decision Issues percent}, col sep=tab] {"M13.csv"};
-	\addplot+ table[x expr=\coordindex,y={Last decision Alternatives percent}, col sep=tab] {"M13.csv"};
+	\addplot+ table[x expr=\coordindex,y={Last decision Issues sum SAW}, col sep=tab] {"M13.csv"};
+	\addplot+ table[x expr=\coordindex,y={Last decision Alternatives sum SAW}, col sep=tab] {"M13.csv"};
 	\legend{Issues, Alternatives}     
 	\end{axis} 
 	\end{tikzpicture}
+	\end{comment}
+
+
+	\begin{tikzpicture}
+	\begin{groupplot}[
+	    group style={
+	        group name=my plots,
+	        group size=1 by 2,
+	        xlabels at=edge bottom,
+	        xticklabels at=edge bottom,
+	        vertical sep=0pt,
+	    },
+        width=\textwidth,
+        height=6cm,
+        ylabel=,
+        xtick=data,
+		flexible xticklabels from table={M13.csv}{Timespan bucket}{col sep=tab},
+        enlarge y limits=false,
+        enlarge x limits=0.1,
+        yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+        ybar,
+        ymajorgrids = true,         
+        legend style={
+          font=\footnotesize,
+          %cells={anchor=west}, 
+          %legend columns=5,
+          %at={(0.5,-0.15)},
+          %anchor=north,
+          %/tikz/every even column/.append style={column sep=0.2cm}
+        }, 
+] 
+
+\nextgroupplot[bar width=10pt]
+%\addplot [fill=blue] coordinates{(0,0) (1,9.94) (2,0.72)(3,1.17)(4,1.05)(5,0.67)(6,0.24)(7,1.75)(8,0)(9,0)(10,1.21)(11,0)};
+	\addplot+ table[x expr=\coordindex,y={Last decision Issues percent EP}, col sep=tab] {"M13.csv"};
+	\addplot+ table[x expr=\coordindex,y={Last decision Alternatives percent EP}, col sep=tab] {"M13.csv"};
+	\legend{Issues, Alternatives}     
+    \nextgroupplot[bar width=10pt,y dir=reverse]
+	\addplot+ table[x expr=\coordindex,y={Last decision Issues percent SAW}, col sep=tab] {"M13.csv"};
+	\addplot+ table[x expr=\coordindex,y={Last decision Alternatives percent SAW}, col sep=tab] {"M13.csv"};
+
+%\addplot [fill=red] coordinates{(0,0) (1,14.04) (2,0.72)(3,0)(4,22.81)(5,3.34)(6,2.05)(7,11.23)(8,2.59)(9,0)(10,0.61)(11,0)};
+%\nextgroupplot[ymax=5]
+%\addplot [fill=red] coordinates{(0,0) (1,0) (2,0)(3,0)(4,0.53)(5,0.33)(6,0.73)(7,0)(8,0)(9,0)(10,3.9)(11,0.17)};
+\end{groupplot}
+\end{tikzpicture}
 
   \caption{Time since last position - histogram for decisions and issues}
   \label{fig:M13}
@@ -1410,34 +1522,38 @@ Figure~\ref{fig:M14} presents the histogram of consensus state transitions. The 
  
     \begin{tikzpicture}
 	\begin{axis}[
-		width=\textwidth,
-		height=6cm,
-	    ylabel=,
-	    xtick=data,
-		flexible xticklabels from table={M14.csv}{Number of state changes}{col sep=tab},
-	    enlarge y limits=false,
-	    enlarge x limits=0.1,
-	    %ymin=0,ymax=100,
-	    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
-	    ybar,
-	    ymajorgrids = true,			
-	    bar width=10pt,
-	    legend style={
-	      font=\footnotesize,
-	      %cells={anchor=west},
-	      %legend columns=5,
-	      %at={(0.5,-0.15)},
-	      %anchor=north,
-	      %/tikz/every even column/.append style={column sep=0.2cm}
-	    },
+		width=\textwidth, 
+			height=6cm,
+		    ylabel=,
+		    xtick=data, 
+			flexible xticklabels from table={M14.csv}{Label}{col sep=tab},
+		    enlarge y limits=false, 
+		    enlarge x limits=0.1,
+		    %ymin=0,ymax=100, 
+		    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+		    xticklabel style={align=center},
+		    ybar,
+		    ymajorgrids = true,			  
+		    bar width=10pt,   
+%		    bar shift=0.3cm,
+		    legend style={ 
+		      font=\footnotesize,
+		      %cells={anchor=east},   
+		      %legend columns=5,
+		      %at={(0.01,0.75)},
+		      %anchor=west,
+		      /tikz/every even column/.append style={column sep=0.2cm}
+		    },  
 	]  
  
-	\addplot+ table[x expr=\coordindex,y={Alternaitves count}, col sep=tab] {"M14.csv"};
-	\legend{Alternatives}     
-	\end{axis} 
+	\addplot+ table[x expr=\coordindex,y={Alternaitves count EP}, col sep=tab] {"M14.csv"};
+	\addplot+ table[x expr=\coordindex,y={Alternaitves count SAW}, col sep=tab] {"M14.csv"};
+	\legend{Alternatives EP, Alteratives SAW}     
+	\end{axis}  
+
 	\end{tikzpicture}
 
-  \caption{Consensus state transitions for the alternatives -- histogram (population size: number of decisions)}
+  \caption{Consensus state transitions for the alternatives -- histogram (population size: number of decisions) (M14)}
   \label{fig:M14}
   \end{center}
 \end{figure}
@@ -1458,7 +1574,7 @@ Analogously to Metric 14, but referring to the design issue life-cycle (Figure~\
 		height=6cm,
 	    ylabel=,
 	    xtick=data,
-		flexible xticklabels from table={M15.csv}{Number of choice changes}{col sep=tab},
+		flexible xticklabels from table={M15.csv}{Label}{col sep=tab},
 	    enlarge y limits=false,
 	    enlarge x limits=0.1,
 	    %ymin=0,ymax=100,
@@ -1466,18 +1582,20 @@ Analogously to Metric 14, but referring to the design issue life-cycle (Figure~\
 	    ybar,
 	    ymajorgrids = true,			
 	    bar width=10pt,
+	    xticklabel style={align=center},
 	    legend style={
 	      font=\footnotesize,
 	      %cells={anchor=west},
 	      %legend columns=5,
-	      %at={(0.5,-0.15)},
-	      %anchor=north,
+	      %at={(0.5,-0.15)}, 
+	      %anchor=north, 
 	      %/tikz/every even column/.append style={column sep=0.2cm}
 	    },
 	]  
  
-	\addplot+ table[x expr=\coordindex,y={Issues count}, col sep=tab] {"M15.csv"};
-	\legend{Issues}     
+	\addplot+ table[x expr=\coordindex,y={Issues count EP}, col sep=tab] {"M15.csv"};
+	\addplot+ table[x expr=\coordindex,y={Issues count SAW}, col sep=tab] {"M15.csv"};
+	\legend{Issues EP, Issues SAW}     
 	\end{axis} 
 	\end{tikzpicture}
 
@@ -1492,19 +1610,52 @@ Analogously to Metric 14, but referring to the design issue life-cycle (Figure~\
 
    \begin{tikzpicture} 
 			\begin{axis}[
+				width=\textwidth,
+				height=6cm,
+			    ylabel=,
+			    xtick=data,
+				flexible xticklabels from table={M15.csv}{Label}{col sep=tab},
+			    enlarge y limits=false,
+			    enlarge x limits=0.1,
+			    xticklabel style={align=center},
+			    %ymin=0,ymax=100,
+			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
+			    ybar stacked,
+			    ymajorgrids = true,			
+			    bar width=10pt,
+			    bar shift=-0.3cm,
+			    legend style={
+			      font=\footnotesize,
+			      %cells={anchor=west},
+			      %legend columns=5,
+			      %at={(0.5,-0.15)}, 
+			      %anchor=north, 
+			      %/tikz/every even column/.append style={column sep=0.2cm}
+			    },
+			]          
+
+			\addplot+ table[x expr=\coordindex,y={Issues in NoAlternatives EP}, col sep=tab] {"M15.csv"};
+			\addplot+ table[x expr=\coordindex,y={Issues in NoPositions EP}, col sep=tab] {"M15.csv"};
+			\addplot+ table[x expr=\coordindex,y={Issues in Incomplete EP}, col sep=tab] {"M15.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={Issues in Complete EP}, col sep=tab] {"M15.csv"};
+			%\legend{no alternatives, no positions, colliding, aligned}
+			\end{axis}
+			\begin{axis}[
 				width=\textwidth, 
 				height=6cm,
 			    ylabel=,   
 			    xtick=data, 
-				flexible xticklabels from table={M15.csv}{Number of choice changes}{col sep=tab},
+				flexible xticklabels from table={M15.csv}{Label}{col sep=tab},
 			    enlarge y limits=false, 
 			    enlarge x limits=0.1,
 			    %ymin=0,ymax=100, 
 			    yticklabel={\pgfmathparse{\tick}\pgfmathprintnumber{\pgfmathresult}\%},
-			    xticklabel style={align=center},
+			    %xticklabel style={align=center},
 			    ybar stacked,
 			    ymajorgrids = true,			  
 			    bar width=10pt,   
+			    bar shift=0.3cm,
+			    xticklabel style={align=center},
 			    legend style={ 
 			      font=\footnotesize,
 			      %cells={anchor=east},   
@@ -1515,12 +1666,13 @@ Analogously to Metric 14, but referring to the design issue life-cycle (Figure~\
 			    },  
 			]          
 
-			\addplot+ table[x expr=\coordindex,y={Issues in NoAlternatives}, col sep=tab] {"M15.csv"};
-			\addplot+ table[x expr=\coordindex,y={Issues in NoPositions}, col sep=tab] {"M15.csv"};
-			\addplot+ table[x expr=\coordindex,y={Issues in Incomplete}, col sep=tab] {"M15.csv"}; 
-			\addplot+ table[x expr=\coordindex,y={Issues in Complete}, col sep=tab] {"M15.csv"};
+			\addplot+ table[x expr=\coordindex,y={Issues in NoAlternatives SAW}, col sep=tab] {"M15.csv"};
+			\addplot+ table[x expr=\coordindex,y={Issues in NoPositions SAW}, col sep=tab] {"M15.csv"};
+			\addplot+ table[x expr=\coordindex,y={Issues in Incomplete SAW}, col sep=tab] {"M15.csv"}; 
+			\addplot+ table[x expr=\coordindex,y={Issues in Complete SAW}, col sep=tab] {"M15.csv"};
 			\legend{no alternatives, no positions, colliding, aligned}
 			\end{axis}
+
 	\end{tikzpicture}   
 
   \caption{Proportion of the final choice states in relation to the number of state transitions.}
