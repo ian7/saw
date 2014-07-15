@@ -91,11 +91,27 @@ class M3 < Indicator
 			bucketStats( lineOutSAW, bucket, @issues.select{|x| x.isSAW}, @alternatives.select{|x| x.isSAW} );
 	#		debugger
 			#label = "\{#{bucket}\\\\(#{@issues.select{|x| x.isEP}.length},#{@issues.select{|x| x.isSAW}.length},#{@alternatives.select{|x| x.isEP}},#{@alternatives.select{|x| x.isSAW}})\}"
-			label ="\{#{bucket}\\\\(#{lineOutEP[1]},#{lineOutSAW[1]},#{lineOutEP[2]},#{lineOutSAW[2]})\}"
+			label ="\{#{bucket}\\\\(#{lineOutEP[1]},#{lineOutSAW[1]},\\\\#{lineOutEP[2]},#{lineOutSAW[2]})\}"
 			labelIssues = "\{#{bucket}\\\\(#{lineOutEP[1]},#{lineOutSAW[1]})\}"
 			labelAlternatives = "\{#{bucket}\\\\(#{lineOutEP[2]},#{lineOutSAW[2]})\}"
 			out << [label, labelIssues, labelAlternatives] + lineOutEP + lineOutSAW
 		}
+
+		puts "EP issues contrib avg: " + @issues.select{|x| x.isEP}.map{ |x| x['Contributors'].to_i }.mean.to_s
+		puts "EP issues contrib median: " + @issues.select{|x| x.isEP}.map{ |x| x['Contributors'].to_i }.median.to_s
+		puts "EP issues contrib sd: " + @issues.select{|x| x.isEP}.map{ |x| x['Contributors'].to_i }.standard_deviation.to_s
+		puts "SAW issues contrib avg: " + @issues.select{|x| x.isSAW}.map{ |x| x['Contributors'].to_i }.mean.to_s
+		puts "SAW issues contrib median: " + @issues.select{|x| x.isSAW}.map{ |x| x['Contributors'].to_i }.median.to_s
+		puts "SAW issues contrib sd: " + @issues.select{|x| x.isSAW}.map{ |x| x['Contributors'].to_i }.standard_deviation.to_s
+
+		puts "EP alternatives contrib avg: " + @alternatives.select{|x| x.isEP}.map{ |x| x['Contributors'].to_i }.mean.to_s
+		puts "EP alternatives contrib median: " + @alternatives.select{|x| x.isEP}.map{ |x| x['Contributors'].to_i }.median.to_s
+		puts "EP alternatives contrib sd: " + @alternatives.select{|x| x.isEP}.map{ |x| x['Contributors'].to_i }.standard_deviation.to_s
+		puts "SAW alternatives contrib avg: " + @alternatives.select{|x| x.isSAW}.map{ |x| x['Contributors'].to_i }.mean.to_s
+		puts "SAW alternatives contrib avg: " + @alternatives.select{|x| x.isSAW}.map{ |x| x['Contributors'].to_i }.median.to_s
+		puts "SAW alternatives contrib sd: " + @alternatives.select{|x| x.isSAW}.map{ |x| x['Contributors'].to_i }.standard_deviation.to_s
+
 		return out
+
 	end
 end

@@ -45,7 +45,7 @@ class UpdatesMetric < Metric
 		# contributors
 		state << logItem.events.uniq{ |x| x.user }.size.to_s  
 
-		de = logItem.events.select{ |x| x.class == DecisionEvent && x.decision != "(no)" }.sort_by { |x| x.time.to_i }
+		de = logItem.events.select{ |x| x.class == DecisionEvent && x.decision != "(no)" && x.decision != "" }.sort_by { |x| x.time.to_i }
 
 		# number of deciders
 		state << de.uniq{ |x| x.user }.size.to_s 

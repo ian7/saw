@@ -54,7 +54,7 @@ class M6 < Indicator
 		buckets.each{ |bucket|
 			lineOut = []
 
-			lineOut << "#{(bucket*10)} -- #{((bucket+1)*10 - 1)}"
+			lineOut << "#{(bucket*10)}--#{((bucket+1)*10 - 1)}"
 
 			calculateBucket( lineOut, bucket, @issues.select{|x| x.isEP}, @alternatives.select{|x| x.isEP})
 			calculateBucket( lineOut, bucket, @issues.select{|x| x.isSAW}, @alternatives.select{|x| x.isSAW})

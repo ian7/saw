@@ -45,6 +45,26 @@ class M8 < Indicator
 			lineOut[1] = "\{#{lineOut[0]}\\\\(#{lineOut[2]},#{lineOut[6]})\}"
 			out << lineOut
 		}
+
+		print "EP "
+		alternativeCategoryStats( @alternatives.select{|x| x.isEP} )
+		puts ""
+		print "SAW "
+		alternativeCategoryStats( @alternatives.select{|x| x.isSAW} )
+		puts
+		print "total "
+		alternativeCategoryStats( @alternatives )
+		puts
+
+
 		return out
 	end
+	def alternativeCategoryStats( list )
+		print "M8: alternative Counts: " + list.size.to_s + " "
+		print "np: " +list.select{ |x| x['Final State'] == "no positions" }.count.to_s + " "
+		print "co: " +list.select{ |x| x['Final State'] == "colliding" }.count.to_s + " "
+		print "al: " +list.select{ |x| x['Final State'] == "aligned" }.count.to_s 
+	end
+
+
 end

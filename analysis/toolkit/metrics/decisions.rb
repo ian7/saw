@@ -55,7 +55,7 @@ class DecisionsMetric < Metric
 				state << "n/a"
 			end
 		else
-			state << "n/a"
+			state << "no positions"
 			state << "n/a"
 		end
 

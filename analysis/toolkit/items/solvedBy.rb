@@ -30,7 +30,7 @@ class SolvedByLogItem < LogItem
 		end
 	end
 	def integrateState( timeTreshold )
-		ds = decisions( timeTreshold ).select{ |x| x.decision != "(no)" }
+		ds = decisions( timeTreshold ).select{ |x| x.decision != "(no)" }.select{ |x| x.decision != "" }
 
 		if( ds.length == 0 )
 			return 'no positions'

@@ -75,8 +75,7 @@ class M13 < Indicator
 			@alternativesSumSAW += lineOut[12]
 			lineOut[13] = @alternativesSumSAW
 
-			lineOut 
-	
+			lineOut[1] = "{" + (bucket*10).to_s + "-" + (((bucket+1)*10)-1).to_s + "\\\\(" + lineOut[2].to_s + "," + lineOut[5].to_s + ",\\\\" + lineOut[8].to_s + "," + lineOut[11].to_s + ")}"
 			out << lineOut
 		}
 		return out

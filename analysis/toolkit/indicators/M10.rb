@@ -46,6 +46,24 @@ class M10 < Indicator
 
 			out << lineOut
 		}
+
+		print "EP "
+		issueCategoryStats( @issues.select{|x| x.isEP} )
+		puts ""
+		print "SAW "
+		issueCategoryStats( @issues.select{|x| x.isSAW} )
+		puts
+		print "total "
+		issueCategoryStats( @issues )
+		puts
+
 		return out
+	end
+	def issueCategoryStats( list )
+		print "M10: issueCounts: " + list.size.to_s + " "
+		print "na: " +list.select{ |x| x['Final Choice'] == "no alternatives" }.count.to_s + " "
+		print "np: " +list.select{ |x| x['Final Choice'] == "no positions" }.count.to_s + " "
+		print "ic: " +list.select{ |x| x['Final Choice'] == "incomplete" }.count.to_s + " "
+		print "co: " +list.select{ |x| x['Final Choice'] == "complete" }.count.to_s 
 	end
 end

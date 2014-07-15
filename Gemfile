@@ -59,3 +59,4 @@ gem 'useragent'
 # group :development, :test do
 #   gem 'webrat'
 # end
+gem 'descriptive_statistics'

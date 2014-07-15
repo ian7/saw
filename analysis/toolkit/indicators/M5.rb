@@ -54,7 +54,7 @@ class M5 < Indicator
 
 		buckets.each{ |bucket|
 			lineOut = []
-			bucketText =  "#{(bucket*10)} -- #{((bucket+1)*10 - 1)}"
+			bucketText =  "#{(bucket*10)}--#{((bucket+1)*10 - 1)}"
 			lineOut << bucketText
 			lineOut << "label Issues Placeholder"
 			lineOut << "label Alternatives Placeholder"
