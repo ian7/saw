@@ -1,57 +1,57 @@
 [submodule "public/javascripts/lib/morris.js"]
 	path = public/javascripts/lib/morris.js
-	url = git@github.com:ian7/morris.js.git
+	url = https://github.com/ian7/morris.js.git
 [submodule "public/javascripts/lib/underscore"]
 	path = public/javascripts/lib/underscore
-	url = git@github.com:ian7/underscore.git
+	url = https://github.com/ian7/underscore.git
 [submodule "public/javascripts/lib/backbone"]
 	path = public/javascripts/lib/backbone
-	url = git@github.com:ian7/backbone.git
+	url = https://github.com/ian7/backbone.git
 [submodule "public/javascripts/lib/backbone.marionette"]
 	path = public/javascripts/lib/backbone.marionette
-	url = git@github.com:ian7/backbone.marionette.git
+	url = https://github.com/ian7/backbone.marionette.git
 [submodule "public/javascripts/lib/backbone.gepetto"]
 	path = public/javascripts/lib/backbone.gepetto
-	url = git@github.com:ian7/backbone.geppetto.git
+	url = https://github.com/ian7/backbone.geppetto.git
 [submodule "public/javascripts/lib/backbone.subroute"]
 	path = public/javascripts/lib/backbone.subroute
-	url = git@github.com:ian7/backbone.subroute.git
+	url = https://github.com/ian7/backbone.subroute.git
 [submodule "public/javascripts/lib/backbone.shortcuts"]
 	path = public/javascripts/lib/backbone.shortcuts
-	url = git@github.com:ian7/backbone-shortcuts.git
+	url = https://github.com/ian7/backbone-shortcuts.git
 [submodule "public/javascripts/lib/keymaster"]
 	path = public/javascripts/lib/keymaster
-url=git@github.com:ian7/keymaster.git
+	url=https://github.com/ian7/keymaster.git
 [submodule "public/javascripts/lib/bootstrap"]
 	path = public/javascripts/lib/bootstrap
-	url = git@github.com:ian7/bootstrap.git
+	url = https://github.com/ian7/bootstrap.git
 [submodule "public/javascripts/lib/jquery"]
 	path = public/javascripts/lib/jquery
-	url = git@github.com:ian7/jquery.git
+	url = https://github.com/ian7/jquery.git
 [submodule "public/javascripts/lib/jquery-ui"]
 	path = public/javascripts/lib/jquery-ui
-	url = git@github.com:ian7/jquery-ui.git
+	url = https://github.com/ian7/jquery-ui.git
 [submodule "public/javascripts/lib/jquery-tools"]
 	path = public/javascripts/lib/jquery-tools
-	url = git@github.com:ian7/jquerytools.git
+	url = https://github.com/ian7/jquerytools.git
 [submodule "public/javascripts/lib/font-awesome"]
 	path = public/javascripts/lib/font-awesome
-	url = git@github.com:ian7/Font-Awesome.git
+	url = https://github.com/ian7/Font-Awesome.git
 [submodule "public/javascripts/lib/mocha"]
 	path = public/javascripts/lib/mocha
-	url = git@github.com:ian7/mocha.git
+	url = https://github.com/ian7/mocha.git
 [submodule "public/javascripts/lib/chai"]
 	path = public/javascripts/lib/chai
-	url = git@github.com:ian7/chai.git
+	url = https://github.com/ian7/chai.git
 [submodule "public/javascripts/lib/jQuery.File-Upload"]
 	path = public/javascripts/lib/jQuery.File-Upload
-	url = git@github.com:ian7/jQuery-File-Upload.git
+	url = https://github.com/ian7/jQuery-File-Upload.git
 [submodule "jquery.iframe-transport"]
 	path = public/javascripts/lib/jquery.iframe-transport
 	url = https://github.com/cmlenz/jquery-iframe-transport.git
 [submodule "public/assets/smt2"]
 	path = public/assets/smt2
-	url = git@github.com:ian7/smt3.git
+	url = https://github.com/ian7/smt3.git
 [submodule "public/javascripts/lib/impress.js"]
 	path = public/javascripts/lib/impress.js
-	url = git@github.com:ian7/impress.js.git
+	url = https://github.com/ian7/impress.js.git
