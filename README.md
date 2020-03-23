@@ -7,7 +7,7 @@ It is probably as far from 'learning example' as it gets ;)
 You've been warned.
 
 # Giving it a try
-Given enough effort invested into collecting all the (outdated) dependencies, it should be possible to run SAW natively on your machine. 
+With enough effort invested into collecting all the (outdated) dependencies, it should be possible to run SAW natively on your machine. 
 If you are here only to see what it can do for you, I'd strongly advise you to check out a [docker image available on dockerhub](https://hub.docker.com/repository/docker/ian7/saw)
 
 # Content
