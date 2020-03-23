@@ -17,10 +17,10 @@ Fundamentally there are two systems here.
 Ruby-on-Rails based web application - app, config, db, lib, public, test and vendor directories. 
 
 ### meta-model 
-Contains architecture decision meta-model based on ISO 42010. For details see [dissertation] (https://design.inf.usi.ch/sites/default/files/biblio/marcin-nowak-phd-software-architecture-warehouse.pdf) chapter 3.
+Contains architecture decision meta-model based on ISO 42010. For details see [dissertation](http://design.inf.usi.ch/sites/default/files/biblio/marcin-nowak-phd-software-architecture-warehouse.pdf) chapter 3.
 
 # Analysis  
-A set of scripts that I have used to analyze user's behavior during design workshops. For details see [dissertation] (https://design.inf.usi.ch/sites/default/files/biblio/marcin-nowak-phd-software-architecture-warehouse.pdf) chapter 8.
+A set of scripts that I have used to analyze user's behavior during design workshops. For details see [dissertation](http://design.inf.usi.ch/sites/default/files/biblio/marcin-nowak-phd-software-architecture-warehouse.pdf) chapter 8.
 
 ## mongo-backups
 Database snapshots taken before and after each design workshop exercise. 
